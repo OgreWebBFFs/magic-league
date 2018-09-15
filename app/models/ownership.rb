@@ -1,0 +1,2 @@
+class Ownership < ApplicationRecord
+end
