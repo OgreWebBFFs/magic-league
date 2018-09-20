@@ -2,4 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
-User.create!(email: "patrickwroach@gmail.com", password: "12345678", name: "Pat Roach")
+pat = User.find_or_create_by(email: "patrickwroach@gmail.com", name: "Pat Roach")
+pat.password = '12345678'
+pat.save!
