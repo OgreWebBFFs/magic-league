@@ -1,0 +1,16 @@
+{
+  "name": "magic-league",
+  "scripts": {
+    "postdeploy": "rake db:reset"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
