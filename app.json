@@ -1,7 +1,7 @@
 {
   "name": "magic-league",
   "scripts": {
-    "postdeploy": "rake db:reset"
+    "postdeploy": "rake db:migrate && rake db:seed"
   },
   "env": {
   },
