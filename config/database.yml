@@ -11,6 +11,7 @@ development:
 test:
   <<: *default
   database: mtg_league_test
+  url: <%= ENV['DATABASE_URL'] %>
 
 production:
   <<: *default
