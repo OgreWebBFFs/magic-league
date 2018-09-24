@@ -40,7 +40,7 @@ describe 'RankingEngine' do
 
       time = Benchmark.measure { RankingEngine.new(users, Match.all).generate_rankings }
 
-      expect(time.real).to be < 0.05
+      expect(time.real).to be < 0.1
     end
   end
 end
