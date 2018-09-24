@@ -4,6 +4,9 @@
     "postdeploy": "rake db:migrate && rake db:seed"
   },
   "env": {
+    "GOOGLE_OAUTH2_CLIENT_ID": "131929309054-uqoi39347gcmvbj0e1kah5m12nm7bjhg.apps.googleusercontent.com",
+    "GOOGLE_OAUTH2_CLIENT_SECRET": "Giznv8m-gi-KST9n0N3Nrp_m"
+
   },
   "formation": {
   },
