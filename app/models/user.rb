@@ -15,6 +15,10 @@ class User < ApplicationRecord
     Match.where("winner_id = ? OR loser_id = ?", id, id)
   end
 
+  def to_s
+    email
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
