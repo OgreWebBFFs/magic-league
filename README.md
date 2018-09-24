@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## Adding/Modifying Omniauth Providers
+* Google - https://console.cloud.google.com/apis/dashboard?project=ogre-mtg
