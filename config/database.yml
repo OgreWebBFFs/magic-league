@@ -4,12 +4,18 @@ default: &default
 
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
+docker: &docker
   <<: *default
-  database: development
+  host: magic_league_db
+  username: planeswalker
+  password: 12345678
+
+development:
+  <<: *docker
+  database: mtg_league_development
 
 test:
-  <<: *default
+  <<: *docker
   database: mtg_league_test
 
 production:
