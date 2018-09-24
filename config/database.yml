@@ -6,9 +6,9 @@ default: &default
 
 docker: &docker
   <<: *default
-  host: magic_league_db
-  username: planeswalker
-  password: 12345678
+  host: <%= ENV['MAGIC_LEAGUE_HOST'] %>
+  username: <%= ENV['MAGIC_LEAGUE_DATABASE_USERNAME'] %>
+  password: <%= ENV['MAGIC_LEAGUE_DATABASE_PASSWORD'] %>
 
 development:
   <<: *docker

@@ -1,28 +1,16 @@
-# README
+## How do I run it?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Download the source
+2. Run `docker-compose up`
+3. Wait for "PostgreSQL init process complete; ready for start up."
+4. Run `chmod +x ./lib/bin/setup_docker_db.sh`
+5. Run `sh /lib/bin/setup_docker_db.sh`
+6. Visit `localhost:3000`
 
-Things you may want to cover:
+## Using the Rails Console
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+1. Run `docker exec -it mtg-league_web_1 bash` to connect to the Docker container
+2. Run `rails c`
 
 ## Adding/Modifying Omniauth Providers
 * Google - https://console.cloud.google.com/apis/dashboard?project=ogre-mtg
