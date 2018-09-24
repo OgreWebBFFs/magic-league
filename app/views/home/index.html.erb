@@ -1,1 +1,114 @@
-hello world
+<div id="cycling-background-container" style="background: url('<%= get_random_bg_image %>') 0% 0% / cover no-repeat;"></div>
+<nav role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">
+      <%= image_tag "logo.svg" %>
+    </a>
+    <ul class="menu">
+      <li>
+        <a href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle(event, 'match-logger-container')">
+          <i class="material-icons">note_add</i>Log a match
+        </a>
+    </ul>
+  </div>
+  <div id="match-logger-container">
+    <div class="background-click-container" onclick="idedElementToggle(event, 'match-logger-container')"></div>
+    <div class="section">
+      <a class="close-button" href="#" class="match-log-close" onclick="idedElementToggle(event, 'match-logger-container')">
+        <i class="material-icons">cancel</i>
+      </a>
+      <%= form_tag "/matches", method: "post", id: "match-logger" do %>
+        <p></p>
+        <h3>Log Match</h3>
+        <p>Who played?</p>
+        <select class="browser-default player-selector" name="match[playerA]">
+          <% @users.each do |user| %>
+            <option value="<%=user.id%>"><%=user.name%></option>
+          <% end %>
+        </select>
+        <select class="browser-default player-selector" name="match[playerB]">
+          <% @users.each do |user| %>
+            <option value="<%=user.id%>"><%=user.name%></option>
+          <% end %>
+        </select>
+        <p>Who won?</p>
+        <select class="browser-default winner-selector" name="match[winner]">
+        </select>
+        <p>When?</p>
+        <input type="date" name="match[date]"/>
+        <input type="time" name="match[time]"/>
+        <input type="submit" />
+      <% end %>
+    </div>
+
+  </div>
+</nav>
+<div class="section full-page image-background-overlay">
+  <div id="ranking-wrapper" class="container">
+    <h1>Rankings</h1>
+    <div id="ranking-board">
+      <div id="ranking-border">
+        <div class="vert left"></div>
+        <div class="vert right"></div>
+        <div class="horz top"></div>
+        <div class="horz bottom"></div>
+      </div>
+      <div class="scroll-catcher">
+        <div class="vert-centerer">
+          <ul id="rankings">
+            <% @users.each do |user| %>
+              <li><%="#{user.name} (#{user.wins.count}-#{user.losses.count})" %> - <span><%=user.ranking.round(2) %></span></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="footer-copyright">
+
+    </div>
+  </div>
+  </div>
+</footer>
+
+
+<!--  Scripts-->
+<!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
+<!--List animation cue-->
+<script>
+  var ul = document.getElementById("rankings");
+var items = ul.getElementsByTagName("li");
+for (var i = 0; i < items.length; i++) {
+
+  items[i].style.animationDuration = .2 + (i / 3) + "s";
+}
+</script>
+<!-- Temp Background Cycler -->
+<script>
+
+function idedElementToggle(e, elementId){
+  e.preventDefault();
+  var target = document.getElementById(elementId);
+  target.classList.toggle("active");
+}
+
+var addPlayerOption = function(name, id) {
+return `
+<option value="${id}">${name}</option>
+`
+}
+
+$(function() {
+  $('.player-selector').on('change', function() {
+    $('.winner-selector').empty();
+    $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
+  });
+});
+</script>
