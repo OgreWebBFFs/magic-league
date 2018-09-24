@@ -19,8 +19,8 @@ body {
   background: url("images/bg-Unbridled-Growth.jpg");
   position: fixed;
   z-index: -1;
-  -webkit-filter: sepia(0.9);
-  filter: sepia(0.5);
+  -webkit-filter: saturate(3);
+  filter: saturate(3);
   animation: fadeInBGFilter;
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
@@ -29,7 +29,7 @@ body {
 }
 nav {
   position: relative;
-  background: white !important;
+  background: white;
   height: 64px;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -180,20 +180,30 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board {
   box-sizing: border-box;
-  width: 50%;
+  width: 35%;
+  padding: 5px;
   margin: 0 auto;
   height: calc(100vh - 64px - 32px - 60px - (2*25px));
   position: relative;
-  min-height: 500px;
   min-width: 300px;
 }
 #ranking-wrapper #ranking-board .scroll-catcher {
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  background-color: transparent;
+}
+#ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
 }
 #ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar-thumb {
-  background-color: red;
+  border-radius: 10px;
+  background-color: white;
 }
 #ranking-wrapper #ranking-board .scroll-catcher .vert-centerer {
   display: table;
@@ -222,14 +232,25 @@ footer.page-footer .container .footer-copyright p {
   animation-timing-function: ease-out;
   -webkit-animation-timing-function: ease-out;
   visibility: visible !important;
+  position: relative;
+}
+#ranking-wrapper #ranking-board ul li:first-of-type ::before {
+  content: "\2726";
+  position: absolute;
+  left: 5px;
+}
+#ranking-wrapper #ranking-board ul li:first-of-type ::after {
+  content: "\2726";
+  position: absolute;
+  right: 5px;
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
   height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  min-height: 500px;
   z-index: -1;
 }
 #ranking-wrapper #ranking-board #ranking-border div {
@@ -309,12 +330,8 @@ footer.page-footer .container .footer-copyright p {
 }
 @keyframes fadeInBGFilter {
   0% {
-    -webkit-filter: sepia(0);
-    filter: sepia(0);
-  }
-  50% {
-    -webkit-filter: sepia(0);
-    filter: sepia(0);
+    -webkit-filter: saturate(0.5);
+    filter: saturate(0.5);
   }
 }
 @keyframes bigEntrance {
