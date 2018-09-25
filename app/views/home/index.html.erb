@@ -5,18 +5,58 @@
       <%= image_tag "logo.svg" %>
     </a>
     <ul class="menu">
+    <li>
+      <a>Cards</a>
+    </li>
+    <li>
+      <a>Rules</a>
+    </li>
+    <li>
+      <a>Contact</a>
+    </li>
+    <li>
+      <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="idedElementToggle('match-logger-container')">
+        <i class="material-icons">note_add</i>Log a match
+      </button>
+  </ul>
+  <ul class="mobile-menu">
       <li>
-        <a href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle(event, 'match-logger-container')">
-          <i class="material-icons">note_add</i>Log a match
-        </a>
-    </ul>
+          <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle('match-logger-container')">
+            <i class="material-icons">note_add</i>Log a match
+          </button>
+        </li>
+    <li>
+      <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu')">
+        <i class="material-icons">menu</i>
+        
+      </button>
+      <ul id="dd-menu" class="dropdown-content">
+          <li>
+            <a>Cards</a>
+          </li>
+          <li>
+            <a>Rules</a>
+          </li>
+          <li>
+            <a>Contact</a>
+          </li>
+        </ul>
+
+    </li>
+
+    <li>
+
+     
+    </li>
+
+  </ul>
   </div>
   <div id="match-logger-container">
-    <div class="background-click-container" onclick="idedElementToggle(event, 'match-logger-container')"></div>
+    <div class="background-click-container" onclick="idedElementToggle('match-logger-container')"></div>
     <div class="section">
-      <a class="close-button" href="#" class="match-log-close" onclick="idedElementToggle(event, 'match-logger-container')">
+      <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('match-logger-container')">
         <i class="material-icons">cancel</i>
-      </a>
+      </button>
       <%= form_tag "/matches", method: "post", id: "match-logger" do %>
         <p></p>
         <h3>Log Match</h3>
@@ -97,8 +137,7 @@ for (var i = 0; i < items.length; i++) {
 <!-- Temp Background Cycler -->
 <script>
 
-function idedElementToggle(e, elementId){
-  e.preventDefault();
+function idedElementToggle(elementId){
   var target = document.getElementById(elementId);
   target.classList.toggle("active");
 }
