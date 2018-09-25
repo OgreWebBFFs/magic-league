@@ -15,7 +15,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'mtg_sdk'
-gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-sass', '~> 5.0.6'
 gem 'jquery-rails'
 
