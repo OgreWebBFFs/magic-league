@@ -75,8 +75,8 @@
         <select class="browser-default winner-selector" name="match[winner]">
         </select>
         <p>When?</p>
-        <input type="date" name="match[date]"/>
-        <input type="time" name="match[time]"/>
+        <input type="date" name="match[date]" value="<%= @default_match_date %>"/>
+        <input type="time" name="match[time]" value="<%= @default_match_time %>"/>
         <input type="submit" />
       <% end %>
     </div>
