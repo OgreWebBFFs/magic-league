@@ -19,8 +19,8 @@ body {
   background: url("images/bg-Unbridled-Growth.jpg");
   position: fixed;
   z-index: -1;
-  -webkit-filter: saturate(3);
-  filter: saturate(3);
+  -webkit-filter: saturate(2);
+  filter: saturate(2);
   animation: fadeInBGFilter;
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
@@ -44,18 +44,59 @@ nav .nav-wrapper #logo-container img {
   width: auto;
   height: 100%;
 }
-nav .nav-wrapper ul li a.btn#match-log-toggle {
+nav .nav-wrapper .menu li a,
+nav .nav-wrapper .mobile-menu li a {
+  color: #26a69a;
+}
+nav .nav-wrapper .menu li a:hover,
+nav .nav-wrapper .mobile-menu li a:hover {
+  background-color: rgba(209, 191, 167, 0.25);
+  transition: .5s;
+}
+nav .nav-wrapper .menu li button.btn,
+nav .nav-wrapper .mobile-menu li button.btn {
   color: white;
   height: 40px;
   margin-top: -5px;
   background: #26a69a;
 }
-nav .nav-wrapper ul li a.btn#match-log-toggle i {
+nav .nav-wrapper .menu li button.btn i,
+nav .nav-wrapper .mobile-menu li button.btn i {
   margin-right: 5px;
   vertical-align: middle;
 }
 nav .nav-wrapper .menu {
   float: right;
+}
+nav .nav-wrapper .mobile-menu {
+  display: none;
+}
+nav .nav-wrapper .mobile-menu li button {
+  margin-left: 5px;
+  background: #26a69a;
+}
+nav .nav-wrapper .mobile-menu li button.drop-down-toggle {
+  background-color: rgba(209, 191, 167, 0.5);
+}
+nav .nav-wrapper .mobile-menu li .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 64px;
+  transition: .25s;
+  opacity: 1;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  right: 0;
+  width: 150px;
+  left: 65%;
+  z-index: 99;
+  moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+nav .nav-wrapper .mobile-menu li .dropdown-content.active {
+  display: block;
+  height: initial;
 }
 nav #match-logger-container {
   position: absolute;
@@ -80,6 +121,8 @@ nav #match-logger-container .close-button {
   color: #26a69a;
   float: right;
   margin: 0;
+  background: transparent;
+  border: none;
 }
 nav #match-logger-container .close-button .material-icons {
   font-size: 30px;
@@ -295,9 +338,24 @@ footer.page-footer .container .footer-copyright p {
     background-size: contain;
   }
 }
-@media only screen and (max-width: 400px) {
-  nav .nav-wrapper #logo-container img {
-    padding: 20px 0;
+@media only screen and (max-width: 650px) {
+  nav .nav-wrapper .menu {
+    display: none;
+  }
+  nav .nav-wrapper .mobile-menu {
+    display: block;
+    float: right;
+    margin-top: 5px;
+  }
+  nav .nav-wrapper .mobile-menu li button.btn:last-child {
+    margin-right: 0;
+  }
+  nav .nav-wrapper #logo-container {
+    display: block;
+    left: 0;
+    width: 30px;
+    overflow: hidden;
+    float: left;
   }
   #ranking-wrapper {
     width: 100%;
