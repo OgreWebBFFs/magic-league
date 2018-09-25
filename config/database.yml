@@ -4,12 +4,18 @@ default: &default
 
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
+docker: &docker
   <<: *default
-  database: development
+  host: <%= ENV['MAGIC_LEAGUE_HOST'] %>
+  username: <%= ENV['MAGIC_LEAGUE_DATABASE_USERNAME'] %>
+  password: <%= ENV['MAGIC_LEAGUE_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *docker
+  database: mtg_league_development
 
 test:
-  <<: *default
+  <<: *docker
   database: mtg_league_test
 
 production:
