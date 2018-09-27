@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "home#index"
   resources :matches, only: [:create]
   resources :dashboard, only: [:index]
+  resources :rules, only: [:index]
 end

@@ -22,6 +22,9 @@ nav .nav-wrapper #logo-container img {
   width: auto;
   height: 100%;
 }
+nav .nav-wrapper a {
+  text-transform: capitalize;
+}
 nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
   color: #26a69a;

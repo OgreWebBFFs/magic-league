@@ -19,7 +19,7 @@
   <% if user_signed_in? %>
     <nav role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">
+        <a href="/" id="logo-container" href="#" class="brand-logo">
           <%= image_tag "logo.svg" %>
         </a>
         <ul class="menu">
@@ -27,10 +27,10 @@
           <a href="/dashboard">dashboard</a>
         </li>
         <li>
-          <a>Rules</a>
+          <a href="/rules">Rules</a>
         </li>
         <li>
-          <a>Contact</a>
+        <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>  
         </li>
         <li>
           <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="idedElementToggle('match-logger-container')">
@@ -53,10 +53,10 @@
               <a href="/dashboard">dashboard</a>
               </li>
               <li>
-                <a>Rules</a>
+              <a href="/rules">Rules</a>
               </li>
               <li>
-                <a>Contact</a>
+              <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>  
               </li>
             </ul>
     
@@ -71,36 +71,7 @@
       </div> 
     </nav>
   
-    # <div id="match-logger-container">
-    #   <div class="background-click-container" onclick="idedElementToggle('match-logger-container')"></div>
-    #   <div class="section">
-    #     <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('match-logger-container')">
-    #       <i class="material-icons">cancel</i>
-    #     </button>
-    #     <%= form_tag "/matches", method: "post", id: "match-logger" do %>
-    #       <p></p>
-    #       <h3>Log Match</h3>
-    #       <p>Who played?</p>
-    #       <select class="browser-default player-selector" name="match[playerA]">
-    #         <% @users.each do |user| %>
-    #           <option value="<%=user.id%>"><%=user.name%></option>
-    #         <% end %>
-    #       </select>
-    #       <select class="browser-default player-selector" name="match[playerB]">
-    #         <% @users.each do |user| %>
-    #           <option value="<%=user.id%>"><%=user.name%></option>
-    #         <% end %>
-    #       </select>
-    #       <p>Who won?</p>
-    #       <select class="browser-default winner-selector" name="match[winner]">
-    #       </select>
-    #       <p>When?</p>
-    #       <input type="date" name="match[date]"/>
-    #       <input type="time" name="match[time]"/>
-    #       <input type="submit" />
-    #     <% end %>
-    #   </div>    
-    # </div>
+
   <% end %>
 
   <%= yield %>
