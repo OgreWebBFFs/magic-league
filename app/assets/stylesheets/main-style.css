@@ -5,28 +5,6 @@ html {
 body {
   overflow-x: hidden;
 }
-#cycling-background-container {
-  height: 100%;
-  width: 100vw;
-  min-height: 500px;
-  overflow: hidden;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background: url("images/bg-Unbridled-Growth.jpg");
-  position: fixed;
-  z-index: -1;
-  -webkit-filter: saturate(2);
-  filter: saturate(2);
-  animation: fadeInBGFilter;
-  animation-duration: 10s;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
 nav {
   position: relative;
   background: white;
@@ -90,80 +68,13 @@ nav .nav-wrapper .mobile-menu li .dropdown-content {
   width: 150px;
   left: 65%;
   z-index: 99;
-  moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content.active {
   display: block;
   height: initial;
-}
-nav #match-logger-container {
-  position: absolute;
-  height: 100vh;
-  min-height: 662px;
-  padding-bottom: 2 rem;
-  width: 0;
-  background-color: transparent;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  display: block;
-  transition-duration: .51s;
-  color: #49494b;
-  text-align: center;
-}
-nav #match-logger-container .close-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #26a69a;
-  float: right;
-  margin: 0;
-  background: transparent;
-  border: none;
-}
-nav #match-logger-container .close-button .material-icons {
-  font-size: 30px;
-}
-nav #match-logger-container .background-click-container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-nav #match-logger-container .section {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  max-width: 300px;
-  min-height: 662px;
-  width: 75%;
-}
-nav #match-logger-container .section h3 {
-  margin-top: 0;
-}
-nav #match-logger-container .section p {
-  margin: 25px 0;
-  line-height: 1.25;
-}
-nav #match-logger-container .section input[type="submit"] {
-  margin-top: 25px;
-  background: #26a69a;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 10px;
-  color: white;
-  cursor: pointer;
-  font-size: 25px;
-  border-radius: 5px;
-}
-nav #match-logger-container.active {
-  width: 100%;
-  background-color: rgba(73, 73, 75, 0.5);
 }
 footer {
   box-sizing: border-box;
@@ -203,11 +114,131 @@ footer.page-footer .container .footer-copyright p {
   width: 70%;
   margin: 0 auto;
 }
+.section .container .table {
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+}
+.section .container .table .row {
+  display: table-row;
+  height: 36px;
+  padding: 5px;
+}
+.section .container .table .row a,
+.section .container .table .row p {
+  margin: 5px;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+.section .container .table .row a.btn,
+.section .container .table .row p.btn {
+  width: 100px;
+}
+.section .container .table .row.headings {
+  text-transform: uppercase;
+}
+.section .container .table .row.headings p {
+  padding-bottom: 2px;
+  border-bottom: 2px solid #d1bfa7;
+}
+.section .container .table.alternating .row:nth-child(even) {
+  background: rgba(209, 191, 167, 0.25);
+}
 .section.full-page {
-  height: calc(100vh - 64px - 32px);
+  min-height: calc(100vh - 64px - 32px);
 }
 .section.full-page.image-background-overlay {
   background: transparent;
+}
+#match-logger-container {
+  position: absolute;
+  height: 100vh;
+  min-height: 662px;
+  padding-bottom: 2 rem;
+  width: 0;
+  background-color: transparent;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: block;
+  transition-duration: .51s;
+  color: #49494b;
+  text-align: center;
+}
+#match-logger-container .close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #26a69a;
+  float: right;
+  margin: 0;
+  background: transparent;
+  border: none;
+}
+#match-logger-container .close-button .material-icons {
+  font-size: 30px;
+}
+#match-logger-container .background-click-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#match-logger-container .section {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 300px;
+  min-height: 662px;
+  width: 75%;
+}
+#match-logger-container .section h3 {
+  margin-top: 0;
+}
+#match-logger-container .section p {
+  margin: 25px 0;
+  line-height: 1.25;
+}
+#match-logger-container .section input[type="submit"] {
+  margin-top: 25px;
+  background: #26a69a;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 5px;
+}
+#match-logger-container.active {
+  width: 100%;
+  background-color: rgba(73, 73, 75, 0.5);
+}
+#cycling-background-container {
+  height: 100%;
+  width: 100vw;
+  min-height: 500px;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: url("images/bg-Unbridled-Growth.jpg");
+  position: fixed;
+  z-index: -1;
+  -webkit-filter: saturate(2);
+  filter: saturate(2);
+  animation: fadeInBGFilter;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 #ranking-wrapper {
   text-align: center;
@@ -238,6 +269,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
+  box-shadow: none;
   background-color: transparent;
 }
 #ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar {
@@ -333,6 +365,168 @@ footer.page-footer .container .footer-copyright p {
 #ranking-wrapper #ranking-board .row {
   margin-bottom: 0;
 }
+#cards-wrapper #deck-table .row p:last-of-type {
+  width: 100px;
+}
+#cards-wrapper #collection-table .row .checkbox-container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 200px;
+}
+#cards-wrapper #collection-table .row .checkbox-container .checkbox {
+  width: 200px;
+  height: 36px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+#cards-wrapper #collection-table .row .checkbox-container .checkbox label {
+  position: relative;
+  color: white;
+}
+#cards-wrapper #collection-table .row .checkbox-container .checkbox label:before {
+  width: 200px;
+  position: absolute;
+  left: 0;
+  content: "Set For Trade";
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(209, 191, 167, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#cards-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
+  background-color: #26a69a;
+  content: "Not for Trade";
+}
+#card-search-wrapper #search.container {
+  white-space: nowrap;
+}
+#card-search-wrapper #search.container input[type=text] {
+  width: calc(100% - 110px);
+}
+#card-search-wrapper #search.container input[type=submit] {
+  width: 100px;
+  margin-left: 10px;
+  border: none;
+  color: white;
+  background-color: #26a69a;
+  box-sizing: border-box;
+}
+#card-search-wrapper #easy-filter-tabs.container {
+  position: relative;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox {
+  width: 100px;
+  height: 36px;
+  margin: 0 5px 5px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox label {
+  position: relative;
+  color: white;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox label:before {
+  width: 100px;
+  position: absolute;
+  left: 0;
+  content: "OWNED";
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(209, 191, 167, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox:first-of-type {
+  margin-left: 0;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox#CB-trade label:before {
+  content: "For trade";
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox#CB-league label:before {
+  content: "In League";
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox input[type="checkbox"]:checked + label::before {
+  background-color: #26a69a;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon {
+  width: 36px;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon label:before {
+  content: "";
+  width: 36px;
+  background-color: transparent;
+  background-image: url("../images/red.svg");
+  padding: 0;
+  border-radius: none;
+  -webkit-filter: saturate(0);
+  opacity: .5;
+  filter: saturate(0);
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#black label:before {
+  background-image: url("../images/black.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#black label:before {
+  background-image: url("../images/black.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#white label:before {
+  background-image: url("../images/white.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#green label:before {
+  background-image: url("../images/green.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#blue label:before {
+  background-image: url("../images/blue.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#colorless label:before {
+  background-image: url("../images/colorless.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#common label:before {
+  background-image: url("../images/common.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#uncommon label:before {
+  background-image: url("../images/uncommon.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#rare label:before {
+  background-image: url("../images/rare.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon input[type="checkbox"]:checked + label::before {
+  background-color: transparent;
+  -webkit-filter: saturate(1);
+  filter: saturate(1);
+  opacity: 1;
+}
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
     background-size: contain;
@@ -356,6 +550,9 @@ footer.page-footer .container .footer-copyright p {
     width: 30px;
     overflow: hidden;
     float: left;
+  }
+  .section .container {
+    width: 90%;
   }
   #ranking-wrapper {
     width: 100%;
