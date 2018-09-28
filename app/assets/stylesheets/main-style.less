@@ -1,3 +1,4 @@
+//TODO: Break up Style Sheets
 //Color Library
 @Rose-Gold: #bd8c7d;
 @Soft-Gold: #d1bfa7;
@@ -51,9 +52,11 @@ nav {
         height: 100%;
       }
     }
-    a{
+
+    a {
       text-transform: capitalize;
     }
+
     .menu,
     .mobile-menu {
       li {
@@ -128,9 +131,7 @@ nav {
     }
   }
 
-
 }
-
 
 footer {
   box-sizing: border-box;
@@ -177,33 +178,43 @@ footer {
 
     .table {
       display: table;
+      table-layout: fixed;
       width: 100%;
       box-sizing: border-box;
+      border: 2px solid @color-dark;
 
       .row {
         display: table-row;
-        height: 36px;
+        height: 46px;
         padding: 5px;
 
         a,
+        input,
         p {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
           margin: 5px;
           display: table-cell;
           vertical-align: middle;
-          padding: 10px;
+          padding: 5px;
 
           &.btn {
             width: 100px;
 
           }
+
         }
 
         &.headings {
           text-transform: uppercase;
+          color: @color-light;
+          background: @color-dark;
+          border-bottom: 2px solid @color-highlight-import;
 
           p {
             padding-bottom: 2px;
-            border-bottom: 2px solid @color-highlight-mid-import;
+
           }
         }
 
@@ -212,22 +223,46 @@ footer {
       &.alternating {
         .row {
           &:nth-child(even) {
-            background: fade(@color-highlight-mid-import, 25%);
+            background: fade(@color-dark, 15%);
           }
         }
       }
+
+      &.three-col {
+        .row {
+          a,
+          p {
+            width: 33%;
+          }
+
+          &:first-child {
+            width: 34%;
+          }
+        }
+      }
+
+      &.two-col {
+        .row {
+          a,
+          p {
+            width: 50%;
+          }
+        }
+
+      }
     }
+
   }
   //Section Types 
   &.full-page {
+    background: transparent;
 
     min-height: ~"calc(100vh - @{nav-height} - @{footer-height})";
 
-    &.image-background-overlay {
-      background: transparent;
-    }
+  
   }
 }
+
 #match-logger-container {
   position: absolute;
   height: 100vh;
@@ -311,6 +346,8 @@ footer {
 }
 //IDed Elements 
 #cycling-background-container {
+  top:0;
+  left:0;
   height: 100%;
   width: 100vw;
   min-height: 500px;
@@ -492,73 +529,175 @@ footer {
   }
 
 }
-//Cards Page 
-#cards-wrapper {
+//Dashboard Page 
+#dashboard-wrapper {
+  .container{
+    margin:50px auto;
+  }
+  #collection-table,
   #deck-table {
+    .main-toggle {
+      float: right;
+      margin-top: 6px;
+    }
+
     .row {
       p {
-        &:last-of-type {
+        &:nth-of-type(2) {
+          text-align: center;
+        }
+
+        &:last-child {
+
+          text-align: right;
+          text-align: -webkit-right;
+
+        }
+      }
+    }
+
+  }
+
+
+#user-and-trades{
+  white-space: nowrap;
+  #user, 
+  #trades-table{
+    white-space: normal;
+    display:inline-block;
+    box-sizing: border-box;
+    width:50%;
+    vertical-align:bottom;
+    min-height:330px;
+    position: relative;
+    h3{
+      margin-top:0;
+    }
+
+  }
+  #user{
+    text-align:center;
+    img{
+      height:210px;
+      width:auto;
+      background:@color-dark;
+    }
+    p{
+      width:95%;
+      padding:5px;
+      color:@color-light;
+      background: @color-highlight-import;
+      vertical-align: bottom;
+      margin-bottom:0;
+      position: relative;
+      bottom:0;
+    }
+  }
+  #trades-table{
+  
+  
+  .table {
+ 
+       
+    input,
+    p:last-child {
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 5px 0;
+
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: auto;
+      margin: 0;
+    }
+  }
+}
+}
+
+#deck-table {
+  .row {
+    p {
+      padding: 5px;
+
+      &:last-of-type {
+        a {
           width: 100px;
         }
       }
     }
   }
+}
 
-  #collection-table {
-    .row {
-      .checkbox-container {
-        display: table-cell;
-        vertical-align: middle;
-        width:200px;
+#collection-table {
+  .row {
+    .checkbox-container {
+      @coll-table-check-width: 100px;
+      display: table-cell;
+      vertical-align: middle;
+      width: @coll-table-check-width;
+      text-align: right;
 
-        .checkbox {
-          width: 200px;
-          height: 36px;
-          display: inline-block;
+      .checkbox {
+        width: @coll-table-check-width;
+        height: 36px;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+
+        label {
           position: relative;
-          vertical-align: top;
+          color: @color-light;
 
-          label {
-            position: relative;
+          &:before {
+            width: @coll-table-check-width;
+            position: absolute;
+            left: 0;
+            content: "Not For Trade";
+            display: inline-block;
+            text-decoration: none;
             color: @color-light;
-
-            &:before {
-              width: 200px;
-              position: absolute;
-              left: 0;
-              content: "Set For Trade";
-              display: inline-block;
-              text-decoration: none;
-              color: @color-light;
-              text-align: center;
-              letter-spacing: .5px;
-              -webkit-transition: background-color .2s ease-out;
-              transition: background-color .2s ease-out;
-              cursor: pointer;
-              background: fade(@color-highlight-mid-import, 50%);
-              padding: 5px;
-              border-radius: 2px;
-              display: inline-block;
-              height: 36px;
-              line-height: 36px;
-              padding: 0 16px;
-              text-transform: uppercase;
-              vertical-align: middle;
-              -webkit-tap-highlight-color: transparent;
-              transition: .25s;
-            }
-
-          }
-
-          input[type="checkbox"]:checked + label::before {
-            background-color: @color-highlight-import;
-            content: "Not for Trade";
-
+            text-align: center;
+            letter-spacing: .5px;
+            -webkit-transition: background-color .2s ease-out;
+            transition: background-color .2s ease-out;
+            cursor: pointer;
+            background: fade(@color-highlight-mid-import, 50%);
+            padding: 5px;
+            border-radius: 2px;
+            display: inline-block;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 5px;
+            text-transform: uppercase;
+            vertical-align: middle;
+            -webkit-tap-highlight-color: transparent;
+            transition: .25s;
           }
 
         }
+
+        input[type="checkbox"]:checked + label::before {
+          background-color: @color-highlight-import;
+          content: "For Trade";
+
+        }
+
       }
     }
+  }
+}
+}
+//Log in
+//TO DO GENERATE LOG IN WRAPPER
+form{
+  &.new_user{
+    width:50%;
+    margin:0 auto;
   }
 }
 

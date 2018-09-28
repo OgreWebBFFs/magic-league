@@ -119,40 +119,58 @@ footer.page-footer .container .footer-copyright p {
 }
 .section .container .table {
   display: table;
+  table-layout: fixed;
   width: 100%;
   box-sizing: border-box;
+  border: 2px solid #49494b;
 }
 .section .container .table .row {
   display: table-row;
-  height: 36px;
+  height: 46px;
   padding: 5px;
 }
 .section .container .table .row a,
+.section .container .table .row input,
 .section .container .table .row p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 5px;
   display: table-cell;
   vertical-align: middle;
-  padding: 10px;
+  padding: 5px;
 }
 .section .container .table .row a.btn,
+.section .container .table .row input.btn,
 .section .container .table .row p.btn {
   width: 100px;
 }
 .section .container .table .row.headings {
   text-transform: uppercase;
+  color: white;
+  background: #49494b;
+  border-bottom: 2px solid #26a69a;
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
-  border-bottom: 2px solid #d1bfa7;
 }
 .section .container .table.alternating .row:nth-child(even) {
-  background: rgba(209, 191, 167, 0.25);
+  background: rgba(73, 73, 75, 0.15);
+}
+.section .container .table.three-col .row a,
+.section .container .table.three-col .row p {
+  width: 33%;
+}
+.section .container .table.three-col .row:first-child {
+  width: 34%;
+}
+.section .container .table.two-col .row a,
+.section .container .table.two-col .row p {
+  width: 50%;
 }
 .section.full-page {
-  min-height: calc(100vh - 64px - 32px);
-}
-.section.full-page.image-background-overlay {
   background: transparent;
+  min-height: calc(100vh - 64px - 32px);
 }
 #match-logger-container {
   position: absolute;
@@ -222,6 +240,8 @@ footer.page-footer .container .footer-copyright p {
   background-color: rgba(73, 73, 75, 0.5);
 }
 #cycling-background-container {
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100vw;
   min-height: 500px;
@@ -368,30 +388,99 @@ footer.page-footer .container .footer-copyright p {
 #ranking-wrapper #ranking-board .row {
   margin-bottom: 0;
 }
-#cards-wrapper #deck-table .row p:last-of-type {
+#dashboard-wrapper .container {
+  margin: 50px auto;
+}
+#dashboard-wrapper #collection-table .main-toggle,
+#dashboard-wrapper #deck-table .main-toggle {
+  float: right;
+  margin-top: 6px;
+}
+#dashboard-wrapper #collection-table .row p:nth-of-type(2),
+#dashboard-wrapper #deck-table .row p:nth-of-type(2) {
+  text-align: center;
+}
+#dashboard-wrapper #collection-table .row p:last-child,
+#dashboard-wrapper #deck-table .row p:last-child {
+  text-align: right;
+  text-align: -webkit-right;
+}
+#dashboard-wrapper #user-and-trades {
+  white-space: nowrap;
+}
+#dashboard-wrapper #user-and-trades #user,
+#dashboard-wrapper #user-and-trades #trades-table {
+  white-space: normal;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  vertical-align: bottom;
+  min-height: 330px;
+  position: relative;
+}
+#dashboard-wrapper #user-and-trades #user h3,
+#dashboard-wrapper #user-and-trades #trades-table h3 {
+  margin-top: 0;
+}
+#dashboard-wrapper #user-and-trades #user {
+  text-align: center;
+}
+#dashboard-wrapper #user-and-trades #user img {
+  height: 210px;
+  width: auto;
+  background: #49494b;
+}
+#dashboard-wrapper #user-and-trades #user p {
+  width: 95%;
+  padding: 5px;
+  color: white;
+  background: #26a69a;
+  vertical-align: bottom;
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input,
+#dashboard-wrapper #user-and-trades #trades-table .table p:last-child {
+  text-align: center;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input {
+  width: 90%;
+  padding: 5px 0;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input[type=number]::-webkit-inner-spin-button,
+#dashboard-wrapper #user-and-trades #trades-table .table input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
+}
+#dashboard-wrapper #deck-table .row p {
+  padding: 5px;
+}
+#dashboard-wrapper #deck-table .row p:last-of-type a {
   width: 100px;
 }
-#cards-wrapper #collection-table .row .checkbox-container {
+#dashboard-wrapper #collection-table .row .checkbox-container {
   display: table-cell;
   vertical-align: middle;
-  width: 200px;
+  width: 100px;
+  text-align: right;
 }
-#cards-wrapper #collection-table .row .checkbox-container .checkbox {
-  width: 200px;
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
+  width: 100px;
   height: 36px;
   display: inline-block;
   position: relative;
   vertical-align: top;
 }
-#cards-wrapper #collection-table .row .checkbox-container .checkbox label {
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox label {
   position: relative;
   color: white;
 }
-#cards-wrapper #collection-table .row .checkbox-container .checkbox label:before {
-  width: 200px;
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
+  width: 100px;
   position: absolute;
   left: 0;
-  content: "Set For Trade";
+  content: "Not For Trade";
   text-decoration: none;
   color: white;
   text-align: center;
@@ -405,15 +494,19 @@ footer.page-footer .container .footer-copyright p {
   display: inline-block;
   height: 36px;
   line-height: 36px;
-  padding: 0 16px;
+  padding: 0 5px;
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
 }
-#cards-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
   background-color: #26a69a;
-  content: "Not for Trade";
+  content: "For Trade";
+}
+form.new_user {
+  width: 50%;
+  margin: 0 auto;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;

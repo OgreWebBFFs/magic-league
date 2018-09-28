@@ -1,8 +1,38 @@
-<div class="section full-page">
-  <div id="cards-wrapper">
-    <div class="container">
+
+  <div id="dashboard-wrapper">
+  <div id="user-and-trades" class="container">
+    <div id="user">
+         <%= image_tag "user.svg" %>
+      <h3>1028</h3>
+      <p>You have logged your cards for this month, thanks!</p>
+    </div>
+    <div id="trades-table">
+      <h3>Your Trades</h3>
+      <div class="alternating table two-col">
+        <div class="headings row">
+          <p>Type</p>
+          <p>Amount</p>
+        </div>
+        <div class="row">
+          <p>Rare:</p>
+          <input type="number" value="1" name="rare" label="Rare">
+        </div>
+        <div class="row">
+         <p>Uncommon</p><input type="number" value="3" name="uncommon" label="Uncommon">
+        </div>
+        <div class="row">
+          <p>Common:</p>
+          <input type="number" value="11" name="rare" label="Common">
+          </div>     
+        </div>
+    </div>
+  </div>
+   
+
+    <div id="deck-table" class="container">    
+       <a href="/edit-collection.html"class="main-toggle btn">Edit Decks</a> 
       <h3>Your Decks</h3>
-      <div id="deck-table" class="alternating table">
+      <div  class="alternating three-col table">
         <div class="row headings">
           <p>Deck</p>
           <p>Colors</p>
@@ -24,145 +54,46 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div id="collection-table" class="container">
+      <a href="/edit-collection.html" class="main-toggle btn">Edit Collection</a>
       <h3>Your Collection</h3>
-
-      <a href="/edit-collection.html" class="btn">Edit Collection</a>
-      <div id="collection-table" class="alternating table">
+      <div  class="alternating three-col table">
         <div class="row headings">
           <p>Card</p>
           <p>Amount</p>
-          <p>Tradable</p>
+          <p></p>
         </div>
         <div class="row">
           <p>Adelize the Cinderwind</p>
           <p>3</p>
           <div class="checkbox-container">
             <div class="checkbox">
-              <input type="checkbox" id="importedCardName">
-              <label for="importedCardName"></label>
+              <input type="checkbox" id="importedCardName_1">
+              <label for="importedCardName_1"></label>
             </div>
           </div>
         </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
+            <div class="row">
+          <p>Goblin Gobomancerd</p>
           <p>3</p>
+          <div class="checkbox-container">
+            <div class="checkbox">
+              <input type="checkbox" id="importedCardName_2">
+              <label for="importedCardName_2"></label>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
+            <div class="row">
+          <p>Lugburious, the Long Winded and Severly Overtitled Who Never Ceases</p>
           <p>3</p>
+          <div class="checkbox-container">
+            <div class="checkbox">
+              <input type="checkbox" id="importedCardName_3">
+              <label for="importedCardName_3"></label>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
-        </div>
-        <div class="row">
-          <p>Goblin Someduder</p>
-          <p>1</p>
-        </div>
-        <div class="row">
-          <p>Card Cardester</p>
-          <p>1</p>
-        </div>
+     
       </div>
     </div>
   </div>
-</div>
-
-
