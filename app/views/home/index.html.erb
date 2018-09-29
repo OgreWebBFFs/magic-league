@@ -14,7 +14,7 @@
       <div class="scroll-catcher">
         <div class="vert-centerer">
           <ul id="rankings">
-            <% @users.each do |user| %>
+            <% @rankings.each do |user| %>
               <li><%="#{user.name} (#{user.wins.count}-#{user.losses.count})" %> - <span><%=user.ranking.round(2) %></span></li>
             <% end %>
           </ul>
