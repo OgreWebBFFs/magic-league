@@ -259,7 +259,6 @@ footer {
 
     min-height: ~"calc(100vh - @{nav-height} - @{footer-height})";
 
-  
   }
 }
 
@@ -346,8 +345,8 @@ footer {
 }
 //IDed Elements 
 #cycling-background-container {
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100vw;
   min-height: 500px;
@@ -531,9 +530,10 @@ footer {
 }
 //Dashboard Page 
 #dashboard-wrapper {
-  .container{
-    margin:50px auto;
+  .container {
+    margin: 50px auto;
   }
+
   #collection-table,
   #deck-table {
     .main-toggle {
@@ -558,149 +558,210 @@ footer {
 
   }
 
+  #user-and-trades {
+    white-space: nowrap;
 
-#user-and-trades{
-  white-space: nowrap;
-  #user, 
-  #trades-table{
-    white-space: normal;
-    display:inline-block;
-    box-sizing: border-box;
-    width:50%;
-    vertical-align:bottom;
-    min-height:330px;
-    position: relative;
-    h3{
-      margin-top:0;
-    }
-
-  }
-  #user{
-    text-align:center;
-    img{
-      height:210px;
-      width:auto;
-      background:@color-dark;
-    }
-    p{
-      width:95%;
-      padding:5px;
-      color:@color-light;
-      background: @color-highlight-import;
+    #trades-table,
+    #user {
+      white-space: normal;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 50%;
       vertical-align: bottom;
-      margin-bottom:0;
+      min-height: 330px;
       position: relative;
-      bottom:0;
+
+      h3 {
+        margin-top: 0;
+      }
+
     }
-  }
-  #trades-table{
-  
-  
-  .table {
- 
-       
-    input,
-    p:last-child {
+
+    #user {
       text-align: center;
+
+      img {
+        height: 210px;
+        width: auto;
+        background: @color-dark;
+      }
+
+      p {
+        width: 95%;
+        padding: 5px;
+        color: @color-light;
+        background: @color-highlight-import;
+        vertical-align: bottom;
+        margin-bottom: 0;
+        position: relative;
+        bottom: 0;
+      }
     }
 
-    input {
-      width: 90%;
-      padding: 5px 0;
+    #trades-table {
+      .table {
+        input,
+        p:last-child {
+          text-align: center;
+        }
 
-    }
+        input {
+          width: 90%;
+          padding: 5px 0;
 
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: auto;
-      margin: 0;
-    }
-  }
-}
-}
+        }
 
-#deck-table {
-  .row {
-    p {
-      padding: 5px;
-
-      &:last-of-type {
-        a {
-          width: 100px;
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: auto;
+          margin: 0;
         }
       }
     }
   }
-}
 
-#collection-table {
-  .row {
-    .checkbox-container {
-      @coll-table-check-width: 100px;
-      display: table-cell;
-      vertical-align: middle;
-      width: @coll-table-check-width;
-      text-align: right;
+  #deck-table {
+    .row {
+      p {
+        padding: 5px;
 
-      .checkbox {
+        &:last-of-type {
+          a {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+  #collection-table {
+    .row {
+      .checkbox-container {
+        @coll-table-check-width: 100px;
+        display: table-cell;
+        vertical-align: middle;
         width: @coll-table-check-width;
-        height: 36px;
-        display: inline-block;
-        position: relative;
-        vertical-align: top;
+        text-align: right;
 
-        label {
+        .checkbox {
+          width: @coll-table-check-width;
+          height: 36px;
+          display: inline-block;
           position: relative;
-          color: @color-light;
+          vertical-align: top;
 
-          &:before {
-            width: @coll-table-check-width;
-            position: absolute;
-            left: 0;
-            content: "Not For Trade";
-            display: inline-block;
-            text-decoration: none;
+          label {
+            position: relative;
             color: @color-light;
-            text-align: center;
-            letter-spacing: .5px;
-            -webkit-transition: background-color .2s ease-out;
-            transition: background-color .2s ease-out;
-            cursor: pointer;
-            background: fade(@color-highlight-mid-import, 50%);
-            padding: 5px;
-            border-radius: 2px;
-            display: inline-block;
-            height: 36px;
-            line-height: 36px;
-            padding: 0 5px;
-            text-transform: uppercase;
-            vertical-align: middle;
-            -webkit-tap-highlight-color: transparent;
-            transition: .25s;
+
+            &:before {
+              width: @coll-table-check-width;
+              position: absolute;
+              left: 0;
+              content: "Not For Trade";
+              display: inline-block;
+              text-decoration: none;
+              color: @color-light;
+              text-align: center;
+              -webkit-transition: background-color .2s ease-out;
+              transition: background-color .2s ease-out;
+              cursor: pointer;
+              background: fade(@color-highlight-mid-import, 50%);
+              padding: 5px;
+              border-radius: 2px;
+              display: inline-block;
+              height: 36px;
+              line-height: 36px;
+              padding: 0 5px;
+              text-transform: uppercase;
+              vertical-align: middle;
+              -webkit-tap-highlight-color: transparent;
+              transition: .25s;
+            }
+
+          }
+
+          input[type="checkbox"]:checked + label::before {
+            background-color: @color-highlight-import;
+            content: "For Trade";
+
           }
 
         }
-
-        input[type="checkbox"]:checked + label::before {
-          background-color: @color-highlight-import;
-          content: "For Trade";
-
-        }
-
       }
     }
   }
 }
-}
 //Log in
 //TO DO GENERATE LOG IN WRAPPER
-form{
-  &.new_user{
-    width:50%;
-    margin:0 auto;
+#log-in-wrapper {
+  display: table;
+  width: 40%;
+  margin: 0 auto;
+
+  .container {
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    background: @color-light;
+    height: ~"calc(100vh - (2*@{section-padding}))";
+    padding: @section-padding;
+    text-align: center;
+    .field{
+      margin:5px 0;
+    }
+    input[type="checkbox"]{
+        position: relative;
+        opacity: 1;
+        pointer-events: fill;
+        margin:5px 0;
+        vertical-align: middle;
+      }
+    
+
+    .btn {
+      margin: 5px 0;
+      min-width:250px;
+      input{
+        background: transparent;
+        color:@color-light;
+        text-transform: uppercase;
+        vertical-align: middle;
+        border:none;
+        padding:0;
+        &:active{
+          outline: none;
+        }
+      }
+    }
+ // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
+    a {
+      width:250px;
+      margin: 10px 0;
+      text-decoration: none;
+      color: @color-light;
+      text-align: center;     
+      -webkit-transition: background-color .2s ease-out;
+      transition: background-color .2s ease-out;
+      cursor: pointer;
+      background: fade(@color-dark, 50%);
+      padding: 5px;
+      border-radius: 2px;
+      display: inline-block;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 16px;
+      text-transform: uppercase;
+      vertical-align: middle;
+      -webkit-tap-highlight-color: transparent;
+      transition: .25s;
+      &:hover{
+        background: fade(@color-dark, 60%);
+      }
+      }
+
   }
 }
-
 //Card Search
 #card-search-wrapper {
   #search.container {
@@ -964,6 +1025,10 @@ form{
     .container {
       width: 90%;
     }
+  }
+  #log-in-wrapper{
+    width:95%;
+  
   }
   // Responsive section for specific pages
   //TO DO Store in specific pages style files

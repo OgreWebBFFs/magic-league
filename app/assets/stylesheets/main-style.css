@@ -408,8 +408,8 @@ footer.page-footer .container .footer-copyright p {
 #dashboard-wrapper #user-and-trades {
   white-space: nowrap;
 }
-#dashboard-wrapper #user-and-trades #user,
-#dashboard-wrapper #user-and-trades #trades-table {
+#dashboard-wrapper #user-and-trades #trades-table,
+#dashboard-wrapper #user-and-trades #user {
   white-space: normal;
   display: inline-block;
   box-sizing: border-box;
@@ -418,8 +418,8 @@ footer.page-footer .container .footer-copyright p {
   min-height: 330px;
   position: relative;
 }
-#dashboard-wrapper #user-and-trades #user h3,
-#dashboard-wrapper #user-and-trades #trades-table h3 {
+#dashboard-wrapper #user-and-trades #trades-table h3,
+#dashboard-wrapper #user-and-trades #user h3 {
   margin-top: 0;
 }
 #dashboard-wrapper #user-and-trades #user {
@@ -484,7 +484,6 @@ footer.page-footer .container .footer-copyright p {
   text-decoration: none;
   color: white;
   text-align: center;
-  letter-spacing: .5px;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
@@ -504,9 +503,68 @@ footer.page-footer .container .footer-copyright p {
   background-color: #26a69a;
   content: "For Trade";
 }
-form.new_user {
-  width: 50%;
+#log-in-wrapper {
+  display: table;
+  width: 40%;
   margin: 0 auto;
+}
+#log-in-wrapper .container {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  background: white;
+  height: calc(100vh - (2*25px));
+  padding: 25px;
+  text-align: center;
+}
+#log-in-wrapper .container .field {
+  margin: 5px 0;
+}
+#log-in-wrapper .container input[type="checkbox"] {
+  position: relative;
+  opacity: 1;
+  pointer-events: fill;
+  margin: 5px 0;
+  vertical-align: middle;
+}
+#log-in-wrapper .container .btn {
+  margin: 5px 0;
+  min-width: 250px;
+}
+#log-in-wrapper .container .btn input {
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: none;
+  padding: 0;
+}
+#log-in-wrapper .container .btn input:active {
+  outline: none;
+}
+#log-in-wrapper .container a {
+  width: 250px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(73, 73, 75, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#log-in-wrapper .container a:hover {
+  background: rgba(73, 73, 75, 0.6);
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -649,6 +707,9 @@ form.new_user {
   }
   .section .container {
     width: 90%;
+  }
+  #log-in-wrapper {
+    width: 95%;
   }
   #ranking-wrapper {
     width: 100%;
