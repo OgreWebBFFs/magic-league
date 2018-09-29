@@ -5,28 +5,6 @@ html {
 body {
   overflow-x: hidden;
 }
-#cycling-background-container {
-  height: 100%;
-  width: 100vw;
-  min-height: 500px;
-  overflow: hidden;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background: url("images/bg-Unbridled-Growth.jpg");
-  position: fixed;
-  z-index: -1;
-  -webkit-filter: saturate(2);
-  filter: saturate(2);
-  animation: fadeInBGFilter;
-  animation-duration: 10s;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
 nav {
   position: relative;
   background: white;
@@ -43,6 +21,9 @@ nav .nav-wrapper #logo-container {
 nav .nav-wrapper #logo-container img {
   width: auto;
   height: 100%;
+}
+nav .nav-wrapper a {
+  text-transform: capitalize;
 }
 nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
@@ -90,80 +71,13 @@ nav .nav-wrapper .mobile-menu li .dropdown-content {
   width: 150px;
   left: 65%;
   z-index: 99;
-  moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content.active {
   display: block;
   height: initial;
-}
-nav #match-logger-container {
-  position: absolute;
-  height: 100vh;
-  min-height: 662px;
-  padding-bottom: 2 rem;
-  width: 0;
-  background-color: transparent;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  display: block;
-  transition-duration: .51s;
-  color: #49494b;
-  text-align: center;
-}
-nav #match-logger-container .close-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #26a69a;
-  float: right;
-  margin: 0;
-  background: transparent;
-  border: none;
-}
-nav #match-logger-container .close-button .material-icons {
-  font-size: 30px;
-}
-nav #match-logger-container .background-click-container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-nav #match-logger-container .section {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  max-width: 300px;
-  min-height: 662px;
-  width: 75%;
-}
-nav #match-logger-container .section h3 {
-  margin-top: 0;
-}
-nav #match-logger-container .section p {
-  margin: 25px 0;
-  line-height: 1.25;
-}
-nav #match-logger-container .section input[type="submit"] {
-  margin-top: 25px;
-  background: #26a69a;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 10px;
-  color: white;
-  cursor: pointer;
-  font-size: 25px;
-  border-radius: 5px;
-}
-nav #match-logger-container.active {
-  width: 100%;
-  background-color: rgba(73, 73, 75, 0.5);
 }
 footer {
   box-sizing: border-box;
@@ -203,11 +117,151 @@ footer.page-footer .container .footer-copyright p {
   width: 70%;
   margin: 0 auto;
 }
-.section.full-page {
-  height: calc(100vh - 64px - 32px);
+.section .container .table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #49494b;
 }
-.section.full-page.image-background-overlay {
+.section .container .table .row {
+  display: table-row;
+  height: 46px;
+  padding: 5px;
+}
+.section .container .table .row a,
+.section .container .table .row input,
+.section .container .table .row p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 5px;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 5px;
+}
+.section .container .table .row a.btn,
+.section .container .table .row input.btn,
+.section .container .table .row p.btn {
+  width: 100px;
+}
+.section .container .table .row.headings {
+  text-transform: uppercase;
+  color: white;
+  background: #49494b;
+  border-bottom: 2px solid #26a69a;
+}
+.section .container .table .row.headings p {
+  padding-bottom: 2px;
+}
+.section .container .table.alternating .row:nth-child(even) {
+  background: rgba(73, 73, 75, 0.15);
+}
+.section .container .table.three-col .row a,
+.section .container .table.three-col .row p {
+  width: 33%;
+}
+.section .container .table.three-col .row:first-child {
+  width: 34%;
+}
+.section .container .table.two-col .row a,
+.section .container .table.two-col .row p {
+  width: 50%;
+}
+.section.full-page {
   background: transparent;
+  min-height: calc(100vh - 64px - 32px);
+}
+#match-logger-container {
+  position: absolute;
+  height: 100vh;
+  min-height: 662px;
+  padding-bottom: 2 rem;
+  width: 0;
+  background-color: transparent;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: block;
+  transition-duration: .51s;
+  color: #49494b;
+  text-align: center;
+}
+#match-logger-container .close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #26a69a;
+  float: right;
+  margin: 0;
+  background: transparent;
+  border: none;
+}
+#match-logger-container .close-button .material-icons {
+  font-size: 30px;
+}
+#match-logger-container .background-click-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#match-logger-container .section {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-width: 300px;
+  min-height: 662px;
+  width: 75%;
+}
+#match-logger-container .section h3 {
+  margin-top: 0;
+}
+#match-logger-container .section p {
+  margin: 25px 0;
+  line-height: 1.25;
+}
+#match-logger-container .section input[type="submit"] {
+  margin-top: 25px;
+  background: #26a69a;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 5px;
+}
+#match-logger-container.active {
+  width: 100%;
+  background-color: rgba(73, 73, 75, 0.5);
+}
+#cycling-background-container {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  min-height: 500px;
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: url("images/bg-Unbridled-Growth.jpg");
+  position: fixed;
+  z-index: -1;
+  -webkit-filter: saturate(2);
+  filter: saturate(2);
+  animation: fadeInBGFilter;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 #ranking-wrapper {
   text-align: center;
@@ -238,6 +292,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar-track {
   -webkit-box-shadow: none;
+  box-shadow: none;
   background-color: transparent;
 }
 #ranking-wrapper #ranking-board .scroll-catcher::-webkit-scrollbar {
@@ -333,6 +388,299 @@ footer.page-footer .container .footer-copyright p {
 #ranking-wrapper #ranking-board .row {
   margin-bottom: 0;
 }
+#dashboard-wrapper .container {
+  margin: 50px auto;
+}
+#dashboard-wrapper #collection-table .main-toggle,
+#dashboard-wrapper #deck-table .main-toggle {
+  float: right;
+  margin-top: 6px;
+}
+#dashboard-wrapper #collection-table .row p:nth-of-type(2),
+#dashboard-wrapper #deck-table .row p:nth-of-type(2) {
+  text-align: center;
+}
+#dashboard-wrapper #collection-table .row p:last-child,
+#dashboard-wrapper #deck-table .row p:last-child {
+  text-align: right;
+  text-align: -webkit-right;
+}
+#dashboard-wrapper #user-and-trades {
+  white-space: nowrap;
+}
+#dashboard-wrapper #user-and-trades #trades-table,
+#dashboard-wrapper #user-and-trades #user {
+  white-space: normal;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  vertical-align: bottom;
+  min-height: 330px;
+  position: relative;
+}
+#dashboard-wrapper #user-and-trades #trades-table h3,
+#dashboard-wrapper #user-and-trades #user h3 {
+  margin-top: 0;
+}
+#dashboard-wrapper #user-and-trades #user {
+  text-align: center;
+}
+#dashboard-wrapper #user-and-trades #user img {
+  height: 210px;
+  width: auto;
+  background: #49494b;
+}
+#dashboard-wrapper #user-and-trades #user p {
+  width: 95%;
+  padding: 5px;
+  color: white;
+  background: #26a69a;
+  vertical-align: bottom;
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input,
+#dashboard-wrapper #user-and-trades #trades-table .table p:last-child {
+  text-align: center;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input {
+  width: 90%;
+  padding: 5px 0;
+}
+#dashboard-wrapper #user-and-trades #trades-table .table input[type=number]::-webkit-inner-spin-button,
+#dashboard-wrapper #user-and-trades #trades-table .table input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
+}
+#dashboard-wrapper #deck-table .row p {
+  padding: 5px;
+}
+#dashboard-wrapper #deck-table .row p:last-of-type a {
+  width: 100px;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100px;
+  text-align: right;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
+  width: 100px;
+  height: 36px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox label {
+  position: relative;
+  color: white;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
+  width: 100px;
+  position: absolute;
+  left: 0;
+  content: "Not For Trade";
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(209, 191, 167, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
+  background-color: #26a69a;
+  content: "For Trade";
+}
+#log-in-wrapper {
+  display: table;
+  width: 40%;
+  margin: 0 auto;
+}
+#log-in-wrapper .container {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  background: white;
+  height: calc(100vh - (2*25px));
+  padding: 25px;
+  text-align: center;
+}
+#log-in-wrapper .container .field {
+  margin: 5px 0;
+}
+#log-in-wrapper .container input[type="checkbox"] {
+  position: relative;
+  opacity: 1;
+  pointer-events: fill;
+  margin: 5px 0;
+  vertical-align: middle;
+}
+#log-in-wrapper .container .btn {
+  margin: 5px 0;
+  min-width: 250px;
+}
+#log-in-wrapper .container .btn input {
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: none;
+  padding: 0;
+}
+#log-in-wrapper .container .btn input:active {
+  outline: none;
+}
+#log-in-wrapper .container a {
+  width: 250px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(73, 73, 75, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#log-in-wrapper .container a:hover {
+  background: rgba(73, 73, 75, 0.6);
+}
+#card-search-wrapper #search.container {
+  white-space: nowrap;
+}
+#card-search-wrapper #search.container input[type=text] {
+  width: calc(100% - 110px);
+}
+#card-search-wrapper #search.container input[type=submit] {
+  width: 100px;
+  margin-left: 10px;
+  border: none;
+  color: white;
+  background-color: #26a69a;
+  box-sizing: border-box;
+}
+#card-search-wrapper #easy-filter-tabs.container {
+  position: relative;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox {
+  width: 100px;
+  height: 36px;
+  margin: 0 5px 5px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox label {
+  position: relative;
+  color: white;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox label:before {
+  width: 100px;
+  position: absolute;
+  left: 0;
+  content: "OWNED";
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  background: rgba(209, 191, 167, 0.5);
+  padding: 5px;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox:first-of-type {
+  margin-left: 0;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox#CB-trade label:before {
+  content: "For trade";
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox#CB-league label:before {
+  content: "In League";
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox input[type="checkbox"]:checked + label::before {
+  background-color: #26a69a;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon {
+  width: 36px;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon label:before {
+  content: "";
+  width: 36px;
+  background-color: transparent;
+  background-image: url("../images/red.svg");
+  padding: 0;
+  border-radius: none;
+  -webkit-filter: saturate(0);
+  opacity: .5;
+  filter: saturate(0);
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#black label:before {
+  background-image: url("../images/black.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#black label:before {
+  background-image: url("../images/black.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#white label:before {
+  background-image: url("../images/white.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#green label:before {
+  background-image: url("../images/green.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#blue label:before {
+  background-image: url("../images/blue.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#colorless label:before {
+  background-image: url("../images/colorless.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#common label:before {
+  background-image: url("../images/common.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#uncommon label:before {
+  background-image: url("../images/uncommon.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon#rare label:before {
+  background-image: url("../images/rare.svg");
+}
+#card-search-wrapper #easy-filter-tabs.container .checkbox.icon input[type="checkbox"]:checked + label::before {
+  background-color: transparent;
+  -webkit-filter: saturate(1);
+  filter: saturate(1);
+  opacity: 1;
+}
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
     background-size: contain;
@@ -356,6 +704,12 @@ footer.page-footer .container .footer-copyright p {
     width: 30px;
     overflow: hidden;
     float: left;
+  }
+  .section .container {
+    width: 90%;
+  }
+  #log-in-wrapper {
+    width: 95%;
   }
   #ranking-wrapper {
     width: 100%;
