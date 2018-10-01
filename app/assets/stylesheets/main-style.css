@@ -4,6 +4,7 @@ html {
 }
 body {
   overflow-x: hidden;
+  background: #fdfdfd;
 }
 nav {
   position: relative;
@@ -87,7 +88,7 @@ footer.page-footer {
   padding: 0;
   height: 32px;
   width: 100%;
-  background: #dadada;
+  background: #e4e4e4;
   display: table;
 }
 footer.page-footer .container {
@@ -109,9 +110,108 @@ footer.page-footer .container .footer-copyright p {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  background: #f3f3f3;
+  background: #fdfdfd;
   padding: 25px;
   min-height: 600px;
+  color: #49494b;
+}
+.section a {
+  color: #219187;
+}
+.section a:hover {
+  color: #1c7d74;
+}
+.section h1.color-blocked,
+.section h2.color-blocked,
+.section h3.color-blocked,
+.section h4.color-blocked,
+.section h5.color-blocked {
+  padding: 10px;
+  margin: 10px 0 0 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.section h1.color-blocked.highlight-main,
+.section h2.color-blocked.highlight-main,
+.section h3.color-blocked.highlight-main,
+.section h4.color-blocked.highlight-main,
+.section h5.color-blocked.highlight-main {
+  color: white;
+  background: #26a69a;
+  border: 2px solid #26a69a;
+  border-bottom: none;
+}
+.section h1.color-blocked.highlight-main ~ .copy,
+.section h2.color-blocked.highlight-main ~ .copy,
+.section h3.color-blocked.highlight-main ~ .copy,
+.section h4.color-blocked.highlight-main ~ .copy,
+.section h5.color-blocked.highlight-main ~ .copy {
+  border: 2px solid #26a69a;
+}
+.section h1.color-blocked.highlight-mid,
+.section h2.color-blocked.highlight-mid,
+.section h3.color-blocked.highlight-mid,
+.section h4.color-blocked.highlight-mid,
+.section h5.color-blocked.highlight-mid {
+  background: #d1bfa7;
+  border: 2px solid #d1bfa7;
+  border-bottom: none;
+}
+.section h1.color-blocked.highlight-mid ~ .copy,
+.section h2.color-blocked.highlight-mid ~ .copy,
+.section h3.color-blocked.highlight-mid ~ .copy,
+.section h4.color-blocked.highlight-mid ~ .copy,
+.section h5.color-blocked.highlight-mid ~ .copy {
+  border: 2px solid #d1bfa7;
+}
+.section h1.color-blocked.dark,
+.section h2.color-blocked.dark,
+.section h3.color-blocked.dark,
+.section h4.color-blocked.dark,
+.section h5.color-blocked.dark {
+  color: white;
+  background: #49494b;
+  border: 2px solid #49494b;
+  border-bottom: none;
+}
+.section h1.color-blocked.dark ~ .copy,
+.section h2.color-blocked.dark ~ .copy,
+.section h3.color-blocked.dark ~ .copy,
+.section h4.color-blocked.dark ~ .copy,
+.section h5.color-blocked.dark ~ .copy {
+  border: 2px solid #49494b;
+}
+.section h1.color-blocked.light,
+.section h2.color-blocked.light,
+.section h3.color-blocked.light,
+.section h4.color-blocked.light,
+.section h5.color-blocked.light {
+  background: white;
+  border: 2px solid white;
+  border-bottom: none;
+}
+.section h1.color-blocked.light ~ .copy,
+.section h2.color-blocked.light ~ .copy,
+.section h3.color-blocked.light ~ .copy,
+.section h4.color-blocked.light ~ .copy,
+.section h5.color-blocked.light ~ .copy {
+  border: 2px solid white;
+}
+.section h1.color-blocked ~ .copy,
+.section h2.color-blocked ~ .copy,
+.section h3.color-blocked ~ .copy,
+.section h4.color-blocked ~ .copy,
+.section h5.color-blocked ~ .copy {
+  box-sizing: border-box;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.section h1.color-blocked ~ .copy p:first-of-type,
+.section h2.color-blocked ~ .copy p:first-of-type,
+.section h3.color-blocked ~ .copy p:first-of-type,
+.section h4.color-blocked ~ .copy p:first-of-type,
+.section h5.color-blocked ~ .copy p:first-of-type {
+  margin-top: 0;
 }
 .section .container {
   width: 70%;
@@ -123,6 +223,8 @@ footer.page-footer .container .footer-copyright p {
   width: 100%;
   box-sizing: border-box;
   border: 2px solid #49494b;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  background: white;
 }
 .section .container .table .row {
   display: table-row;
@@ -167,6 +269,19 @@ footer.page-footer .container .footer-copyright p {
 .section .container .table.two-col .row a,
 .section .container .table.two-col .row p {
   width: 50%;
+}
+.section .container ul.indented {
+  padding-left: initial;
+  margin-left: 16px;
+}
+.section .container ul.bulleted {
+  list-style-type: disc;
+}
+.section .container ul.bulleted li {
+  list-style-type: disc;
+}
+.section .container ul.bulleted ul {
+  padding-left: 15px;
 }
 .section.full-page {
   background: transparent;
@@ -396,6 +511,10 @@ footer.page-footer .container .footer-copyright p {
   float: right;
   margin-top: 6px;
 }
+#dashboard-wrapper #collection-table .btn,
+#dashboard-wrapper #deck-table .btn {
+  color: white;
+}
 #dashboard-wrapper #collection-table .row p:nth-of-type(2),
 #dashboard-wrapper #deck-table .row p:nth-of-type(2) {
   text-align: center;
@@ -487,7 +606,7 @@ footer.page-footer .container .footer-copyright p {
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  background: rgba(209, 191, 167, 0.5);
+  background: #d8c9b4;
   padding: 5px;
   border-radius: 2px;
   display: inline-block;
@@ -498,6 +617,9 @@ footer.page-footer .container .footer-copyright p {
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
+}
+#dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:hover:before {
+  background: #dfd2c2;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
   background-color: #26a69a;
