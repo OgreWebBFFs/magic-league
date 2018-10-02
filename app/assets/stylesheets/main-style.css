@@ -864,6 +864,12 @@ footer.page-footer .container .footer-copyright p {
   filter: saturate(1);
   opacity: 1;
 }
+@-moz-document url-prefix() {
+  .card-grid .card-wrapper .card-count-component span input {
+    line-height: 34px;
+    -moz-appearance: textfield;
+  }
+}
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
     background-size: contain;

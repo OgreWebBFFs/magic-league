@@ -1154,6 +1154,25 @@ footer {
 
   }
 }
+//Cross browser fixes 
+//FireFox
+
+@-moz-document url-prefix() {
+  .card-grid{
+    .card-wrapper{
+      .card-count-component{
+        span{
+        input{
+          line-height:34px;
+          -moz-appearance:textfield;
+        }
+      }
+      }
+      
+    }
+  }
+
+}
 
 //Responsive Adjustments for whole site
 @media only screen and (orientation : portrait) {
