@@ -728,7 +728,6 @@ footer.page-footer .container .footer-copyright p {
   font-weight: bolder;
   width: 36px;
   padding: 0;
-  vertical-align: top;
 }
 .card-grid .card-wrapper .card-count-component span input {
   border-radius: 2px;
@@ -742,12 +741,21 @@ footer.page-footer .container .footer-copyright p {
   line-height: 26px;
   font-weight: bold;
   text-overflow: ellipsis;
+  vertical-align: bottom;
   overflow: hidden;
 }
 .card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
 .card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span input,
+.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+  display: none;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+  width: 100%;
+  background-color: #d1bfa7;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;

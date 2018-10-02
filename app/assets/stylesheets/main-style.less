@@ -906,7 +906,7 @@ footer {
           font-weight:bolder;
           width: 36px;
           padding: 0;
-          vertical-align: top;
+          
         }
         input{
           border-radius: 2px;
@@ -920,6 +920,7 @@ footer {
           line-height: 26px;
           font-weight: bold;
           text-overflow: ellipsis;
+          vertical-align: bottom;
           overflow: hidden;
           &[type=number]::-webkit-inner-spin-button, 
           &[type=number]::-webkit-outer-spin-button{
@@ -930,6 +931,19 @@ footer {
 
         }
       
+      }
+      &.not-in-collection{
+        span{
+          input,
+          .remove-card.btn{
+            display:none;
+          }
+          .add-card.btn{
+            width:100%;
+            background-color:@color-highlight-mid-import;
+          }
+
+        }
       }
     }
   }
