@@ -8,6 +8,8 @@ class User < ApplicationRecord
   attr_accessor :ranking
 
   has_one :collection
+  has_many :ownerships, through: :collection
+  has_many :cards, through: :ownerships
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
 

@@ -1,0 +1,16 @@
+<div id="edit-collections-wrapper">
+  <div id="collections" class="container">
+    <h3><%= "#{@collection.user.name}'s Collection" %> </h3>
+    <div class="card-grid">
+      <% @cards.each do |card| %>
+        <div class="card-wrapper">
+          <a class="card-grid-item">
+            <img class="card" alt="<%= card.name %>" title="${card.name}" src="<%= card.image_url %>">
+          </a>  
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

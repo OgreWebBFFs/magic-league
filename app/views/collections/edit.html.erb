@@ -1,0 +1,117 @@
+<div id="edit-collections-wrapper">
+  <div id="collections" class="container">
+    <input id="card-search" type="text" placeholder="Begin typing to find a card..."/>
+    <div class="card-grid">
+    </div>
+  </div>
+</div>
+
+<script>
+  var cardTemplate = function(card) {
+    return `
+    <div class="card-wrapper">
+      <a class="card-grid-item" href="/cards/${card.id}">
+        <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
+      </a>  
+      <div class="card-count-component">
+        <span>
+          <button type="button" class="remove-card" data-id="${card.id}">-</button>
+          <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
+          <button type="button" class="add-card" data-id="${card.id}">+</button>
+        </span>
+      </div>
+    </div>
+      `
+  };
+
+  var debounce = function(func, delay) {
+    var inDebounce;
+    return function() {
+      var context = this;
+      var args = arguments;
+      clearTimeout(inDebounce);
+      inDebounce = setTimeout(function() {
+        func.apply(context, args);
+      }, delay);
+    }
+  }
+
+  var current_user_cards = <%= @cards.to_json.html_safe %>
+
+  var cardCount = function(id) {
+    return current_user_cards[id] || 0;
+  }
+
+  $(function() {
+    var token = $("meta[name='csrf-token']").attr("content");
+
+    var populateGrid = function(res) {
+      clearGrid();
+      res.forEach(function(card) {
+        $('.card-grid').append(cardTemplate(card));
+      });
+    };
+
+    var clearGrid = function() {
+      $('.card-grid').empty();
+    }
+
+    $('#card-search').keyup(debounce(function() {
+      query = $(this).val();
+      if (query.length > 0) {
+      $.ajax({
+        url: "/cards?query=" + query,
+        type: "GET",
+        dataType: "json",
+        error: function(e) {
+        },
+        success: function(res) {
+          populateGrid(res);
+        }
+      });
+      } else {
+        clearGrid(); 
+      }
+    }, 300));
+
+    $(document).on('click', '.add-card', function() {
+      id = $(this).attr('data-id');
+      $(`input[type=number][data-id=${id}]`).val(function(i, val) { 
+        return parseInt(val) + 1 
+      });
+    });
+
+    $(document).on('click', '.remove-card', function() {
+      id = $(this).attr('data-id');
+      $(`input[type=number][data-id=${id}]`).val(function(i, val) { 
+        if (val > 0) {
+          return parseInt(val) - 1 
+        } else {
+          return val
+        }
+      });
+    });
+
+    $(document).on('click', '.add-card, .remove-card', debounce(function(){
+      id = $(this).attr('data-id');
+      count = $(`input[type=number][data-id=${id}]`).val() 
+      console.log(count);
+      console.log('call the service'); 
+      $.ajax({
+        url: '/collections/<%=@collection.id %>',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("X-CSRF-Token", token)
+        },
+        type: "PUT",
+        data: { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}},
+        dataType: 'json',
+        success: function(res) {
+          console.log("success");
+        },
+        error: function(res) {
+          console.log("error");
+        }
+      });
+    }, 200));
+  });
+</script>

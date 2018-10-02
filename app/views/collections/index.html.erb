@@ -1,0 +1,7 @@
+<ul>
+  <% @collections.each do |collection| %>
+    <li>
+    <%= link_to collection.user.name, collection_path(collection.id) %> 
+    </li>
+  <% end %>
+</ul>

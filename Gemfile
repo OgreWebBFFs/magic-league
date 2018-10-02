@@ -17,7 +17,7 @@ gem 'omniauth-google-oauth2'
 gem 'mtg_sdk'
 gem 'font-awesome-sass', '~> 5.0.6'
 gem 'jquery-rails'
-
+gem "pundit"
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
