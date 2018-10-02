@@ -1,0 +1,23 @@
+<h1>Users</h1>
+
+<%= link_to 'Edit', [:edit, @user] %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Last signin at:</strong>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <strong>Last signin IP:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>

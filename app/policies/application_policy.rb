@@ -5,4 +5,8 @@ class ApplicationPolicy
     @user = user
     @record = record
   end
+
+  def is_admin?
+    user.admin?
+  end
 end
