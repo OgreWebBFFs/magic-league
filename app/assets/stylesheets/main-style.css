@@ -600,25 +600,26 @@ footer.page-footer .container .footer-copyright p {
 #dashboard-wrapper #collection-table .row .checkbox-container {
   display: table-cell;
   vertical-align: middle;
-  width: 100px;
+  width: 36px;
   text-align: right;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
-  width: 100px;
+  width: 36px;
   height: 36px;
   display: inline-block;
   position: relative;
   vertical-align: top;
+  margin-right: 22px;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label {
   position: relative;
   color: white;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
-  width: 100px;
+  width: 36px;
   position: absolute;
   left: 0;
-  content: "Not For Trade";
+  content: "No";
   text-decoration: none;
   color: white;
   text-align: center;
@@ -642,7 +643,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
   background-color: #26a69a;
-  content: "For Trade";
+  content: "Yes";
 }
 #log-in-wrapper {
   display: table;
@@ -706,6 +707,95 @@ footer.page-footer .container .footer-copyright p {
 }
 #log-in-wrapper .container a:hover {
   background: rgba(73, 73, 75, 0.6);
+}
+.card-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+}
+.card-grid .card-wrapper {
+  width: 100%;
+  margin: 10px auto;
+}
+.card-grid .card-wrapper .card-grid-item {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.card-grid .card-wrapper .card-grid-item img {
+  width: 90%;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+.card-grid .card-wrapper .card-count-component span {
+  display: table;
+  background: #26a69a;
+  height: 35px;
+  border-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span .btn,
+.card-grid .card-wrapper .card-count-component span input {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.card-grid .card-wrapper .card-count-component span .btn {
+  font-weight: bolder;
+  width: 36px;
+  border-left: 2px solid white;
+  padding: 0;
+  float: right;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card-grid .card-wrapper .card-count-component span .btn:first-of-type {
+  float: left;
+  border-left: none;
+  border-right: 2px solid white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span input {
+  border-radius: 2px;
+  width: 30%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span {
+  display: block;
+  background: transparent;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span input,
+.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+  display: none;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+  width: 100%;
+  border-left: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: #d1bfa7;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -822,6 +912,12 @@ footer.page-footer .container .footer-copyright p {
   filter: saturate(1);
   opacity: 1;
 }
+@-moz-document url-prefix() {
+  .card-grid .card-wrapper .card-count-component span input {
+    line-height: 34px;
+    -moz-appearance: textfield;
+  }
+}
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
     background-size: contain;
@@ -830,6 +926,20 @@ footer.page-footer .container .footer-copyright p {
 @media only screen and (max-width: 993px) {
   nav .nav-wrapper ul.menu {
     margin-right: -10%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+@media only screen and (max-width: 720px) {
+  #dashboard-wrapper #user-and-trades {
+    white-space: normal;
+  }
+  #dashboard-wrapper #user-and-trades #user,
+  #dashboard-wrapper #user-and-trades #trades-table {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 650px) {
@@ -874,6 +984,20 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-grid {
+    display: block;
+  }
+  .card-grid .card-wrapper {
+    margin-bottom: 25px;
+  }
+  .container {
+    width: 100%;
   }
 }
 @keyframes growVert {

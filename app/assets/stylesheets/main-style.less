@@ -752,7 +752,7 @@ footer {
   #collection-table {
     .row {
       .checkbox-container {
-        @coll-table-check-width: 100px;
+        @coll-table-check-width: 36px;
         display: table-cell;
         vertical-align: middle;
         width: @coll-table-check-width;
@@ -764,6 +764,7 @@ footer {
           display: inline-block;
           position: relative;
           vertical-align: top;
+          margin-right:22px;
 
           label {
             position: relative;
@@ -773,7 +774,7 @@ footer {
               width: @coll-table-check-width;
               position: absolute;
               left: 0;
-              content: "Not For Trade";
+              content: "No";
               display: inline-block;
               text-decoration: none;
               color: @color-light;
@@ -803,7 +804,7 @@ footer {
 
           input[type="checkbox"]:checked + label::before {
             background-color: @color-highlight-import;
-            content: "For Trade";
+            content: "Yes";
 
           }
 
@@ -887,6 +888,113 @@ footer {
   }
 }
 //Card Search
+.card-grid{
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+
+
+  
+  .card-wrapper{
+    width: 100%;
+    margin: 10px auto;
+   
+
+  
+    .card-grid-item{
+      width:100%;
+      text-align:center;
+      display:block;
+      img{
+        width:90%;
+        margin:0;
+      }
+    }
+    .card-count-component{
+     
+      margin: 0 auto;
+      text-align:center;
+      width: 90%;      
+      span{ 
+        display:table;
+        background: #26a69a;   
+        height:35px;
+        border-radius: 2px;
+        .btn,
+        input{
+          display:table-cell;
+          vertical-align: middle;
+          text-align:center;  
+        }   
+        .btn{
+          font-weight:bolder;
+          width: 36px;
+          border-left:2px solid @color-light;
+          padding: 0; 
+          float:right;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          &:first-of-type{
+            float:left;
+            border-left:none;
+            border-right:2px solid @color-light;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }           
+         
+        }
+
+        input{
+          border-radius: 2px;
+          width: 30%;        
+          color: white;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          font-size: 26px;
+          line-height: 26px;
+          font-weight: bold;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
+          overflow: hidden;
+          &[type=number]::-webkit-inner-spin-button, 
+          &[type=number]::-webkit-outer-spin-button{
+            -webkit-appearance: none; 
+            margin: 0;
+          } 
+         
+
+        }
+      
+      }
+      &.not-in-collection{
+        span{
+          display:block;
+          background: transparent;
+          input,
+          .remove-card.btn{
+            display:none;
+          }
+          .add-card.btn{
+            width:100%;
+            border-left:none;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            background: @color-highlight-mid-import;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+
 #card-search-wrapper {
   #search.container {
     white-space: nowrap;
@@ -1104,14 +1212,35 @@ footer {
 
   }
 }
+//Cross browser fixes 
+//FireFox
 
-//Responsive Adjustments for whole site
+@-moz-document url-prefix() {
+  .card-grid{
+    .card-wrapper{
+      .card-count-component{
+        span{
+        input{
+          line-height:34px;
+          -moz-appearance:textfield;
+        }
+      }
+      }
+      
+    }
+  }
+
+}
+
+//Responsive Adjustments
 @media only screen and (orientation : portrait) {
   #cycling-background-container {
     background-size: contain;
   }
 
 }
+
+
 @media only screen and (max-width: 993px) {
   nav{
     .nav-wrapper{
@@ -1122,6 +1251,28 @@ footer {
       }
     }
   }
+}
+@media only screen and (max-width: 800px){
+  .card-grid{
+    grid-template-columns: repeat(3, auto);
+  }
+
+}
+
+@media only screen and (max-width: 720px){
+ #dashboard-wrapper{
+   #user-and-trades{
+     white-space: normal;
+     #user, 
+     #trades-table{
+       width:100%;
+     }
+   }
+
+ }
+ 
+
+
 }
 @media only screen and (max-width: 650px) {
   nav {
@@ -1167,8 +1318,7 @@ footer {
     width: 95%;
 
   }
-  // Responsive section for specific pages
-  //TO DO Store in specific pages style files
+
   #ranking-wrapper {
     width: 100%;
     min-width: 100px;
@@ -1189,6 +1339,22 @@ footer {
         }
       }
     }
+  }
+  .card-grid{
+    grid-template-columns: repeat(2, auto);
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  .card-grid{
+    display:block;
+    .card-wrapper{
+      margin-bottom:25px;
+    }
+  }
+  .container{
+    width:100%;
   }
 
 }
