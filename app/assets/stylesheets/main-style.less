@@ -12,7 +12,7 @@
 @color-dark: @Onyx;
 @color-highlight-mid-import: @Soft-Gold;
 @color-highlight-import: @Turquoise;
-@background-color: lighten(@Light-Grey, 40%);
+@background-color: lighten(@Light-Grey, 44%);
 @ranking-border-color: @color-light;
 
 //Static Reused Numbers
@@ -31,6 +31,7 @@ html {
 
 body {
   overflow-x: hidden;
+  background: @background-color;
 }
 
 nav {
@@ -171,6 +172,82 @@ footer {
   background: @background-color;
   padding: @section-padding;
   min-height: 600px;
+  color: @color-dark;
+
+  a {
+    color: darken(@color-highlight-import, 5%);
+
+    &:hover {
+      color: darken(@color-highlight-import, 10%);
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+ 
+
+    &.color-blocked {
+      
+      padding: 10px;
+      margin: 10px 0 0 0;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      
+     
+      &.highlight-main {
+        color: @color-light;
+        background: @color-highlight-import;
+        border:2px solid @color-highlight-import;
+        border-bottom:none;
+        & ~ .copy {
+          border:2px solid @color-highlight-import;
+        }
+      }
+
+      &.highlight-mid {
+        background: @color-highlight-mid-import;
+        border:2px solid @color-highlight-mid-import;
+        border-bottom:none;
+        & ~ .copy {
+          border:2px solid @color-highlight-mid-import;
+        }
+      }
+
+      &.dark {
+        color: @color-light;
+        background: @color-dark;
+        border:2px solid @color-dark;
+        border-bottom:none;
+        & ~ .copy {
+          border:2px solid @color-dark;
+        }
+      }
+
+      &.light {
+        background: @color-light;
+        border:2px solid @color-light;
+        border-bottom:none;
+        & ~ .copy {
+          border:2px solid @color-light;
+        }
+      }
+
+      & ~ .copy {
+        box-sizing: border-box;
+        padding: 15px;
+        background: @color-light;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+        p{
+          &:first-of-type{
+            margin-top:0;
+          }
+        }
+      }
+    }
+  }
 
   .container {
     width: 70%;
@@ -182,6 +259,8 @@ footer {
       width: 100%;
       box-sizing: border-box;
       border: 2px solid @color-dark;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      background: @color-light;
 
       .row {
         display: table-row;
@@ -249,6 +328,25 @@ footer {
           }
         }
 
+      }
+    }
+
+    ul {
+      &.indented {
+        padding-left: initial;
+        margin-left: 16px;
+      }
+
+      &.bulleted {
+        list-style-type: disc;
+
+        li {
+          list-style-type: disc;
+        }
+
+        ul {
+          padding-left: 15px;
+        }
       }
     }
 
@@ -539,8 +637,11 @@ footer {
     .main-toggle {
       float: right;
       margin-top: 6px;
+     
     }
-
+    .btn{
+      color:@color-light;
+    }
     .row {
       p {
         &:nth-of-type(2) {
@@ -666,7 +767,7 @@ footer {
               -webkit-transition: background-color .2s ease-out;
               transition: background-color .2s ease-out;
               cursor: pointer;
-              background: fade(@color-highlight-mid-import, 50%);
+              background: lighten(@color-highlight-mid-import, 4%);
               padding: 5px;
               border-radius: 2px;
               display: inline-block;
@@ -677,8 +778,13 @@ footer {
               vertical-align: middle;
               -webkit-tap-highlight-color: transparent;
               transition: .25s;
+         
             }
-
+            &:hover{
+              &:before {
+              background: lighten(@color-highlight-mid-import, 8%);
+              }
+            }
           }
 
           input[type="checkbox"]:checked + label::before {
@@ -707,40 +813,43 @@ footer {
     height: ~"calc(100vh - (2*@{section-padding}))";
     padding: @section-padding;
     text-align: center;
-    .field{
-      margin:5px 0;
+
+    .field {
+      margin: 5px 0;
     }
-    input[type="checkbox"]{
-        position: relative;
-        opacity: 1;
-        pointer-events: fill;
-        margin:5px 0;
-        vertical-align: middle;
-      }
-    
+
+    input[type="checkbox"] {
+      position: relative;
+      opacity: 1;
+      pointer-events: fill;
+      margin: 5px 0;
+      vertical-align: middle;
+    }
 
     .btn {
       margin: 5px 0;
-      min-width:250px;
-      input{
+      min-width: 250px;
+
+      input {
         background: transparent;
-        color:@color-light;
+        color: @color-light;
         text-transform: uppercase;
         vertical-align: middle;
-        border:none;
-        padding:0;
-        &:active{
+        border: none;
+        padding: 0;
+
+        &:active {
           outline: none;
         }
       }
     }
- // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
+    // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
     a {
-      width:250px;
+      width: 250px;
       margin: 10px 0;
       text-decoration: none;
       color: @color-light;
-      text-align: center;     
+      text-align: center;
       -webkit-transition: background-color .2s ease-out;
       transition: background-color .2s ease-out;
       cursor: pointer;
@@ -755,10 +864,11 @@ footer {
       vertical-align: middle;
       -webkit-tap-highlight-color: transparent;
       transition: .25s;
-      &:hover{
+
+      &:hover {
         background: fade(@color-dark, 60%);
       }
-      }
+    }
 
   }
 }
@@ -1026,9 +1136,10 @@ footer {
       width: 90%;
     }
   }
-  #log-in-wrapper{
-    width:95%;
-  
+
+  #log-in-wrapper {
+    width: 95%;
+
   }
   // Responsive section for specific pages
   //TO DO Store in specific pages style files
