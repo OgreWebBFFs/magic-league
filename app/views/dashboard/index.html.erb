@@ -55,7 +55,7 @@
       </div>
     </div>
     <div id="collection-table" class="container">
-      <a href="/edit-collection.html" class="main-toggle btn">Edit Collection</a>
+      <%= link_to 'Edit Collection', edit_collection_path(current_user.collection.id), class: 'main-toggle btn' %>
       <h3>Your Collection</h3>
       <div  class="alternating three-col table">
         <div class="row headings">
@@ -63,37 +63,18 @@
           <p>Amount</p>
           <p></p>
         </div>
+        <% @cards.each do |card| %>
         <div class="row">
-          <p>Adelize the Cinderwind</p>
-          <p>3</p>
+          <p><%= card.name %></p>
+          <p><%= @count[card.id] %></p>
           <div class="checkbox-container">
             <div class="checkbox">
-              <input type="checkbox" id="importedCardName_1">
-              <label for="importedCardName_1"></label>
+              <input type="checkbox" id="<%= "#{card.name}_#{card.id}" %>">
+              <label for="<%= "#{card.name}_#{card.id}" %>"></label>
             </div>
           </div>
         </div>
-            <div class="row">
-          <p>Goblin Gobomancerd</p>
-          <p>3</p>
-          <div class="checkbox-container">
-            <div class="checkbox">
-              <input type="checkbox" id="importedCardName_2">
-              <label for="importedCardName_2"></label>
-            </div>
-          </div>
-        </div>
-            <div class="row">
-          <p>Lugburious, the Long Winded and Severly Overtitled Who Never Ceases</p>
-          <p>3</p>
-          <div class="checkbox-container">
-            <div class="checkbox">
-              <input type="checkbox" id="importedCardName_3">
-              <label for="importedCardName_3"></label>
-            </div>
-          </div>
-        </div>
-     
+        <% end %>
       </div>
     </div>
   </div>

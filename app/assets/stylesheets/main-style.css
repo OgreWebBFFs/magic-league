@@ -926,3 +926,9 @@ footer.page-footer .container .footer-copyright p {
     opacity: 1;
   }
 }
+.card-wrapper {
+  display:inline-block;
+}
+.card-grid-item img {
+  margin: 0 0.25% 0.75% 0.25%;
+}
