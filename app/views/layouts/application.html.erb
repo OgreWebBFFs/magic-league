@@ -36,7 +36,7 @@
               <a href="/rules">Rules</a>
             </li>
             <li>
-              <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>  
+              <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
             </li>
             <li>
               <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="idedElementToggle('match-logger-container')">
@@ -65,7 +65,7 @@
                   <a href="/rules">Rules</a>
                 </li>
                 <li>
-                  <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>  
+                  <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
                 </li>
               </ul>
 
@@ -77,7 +77,7 @@
             </li>
 
           </ul>
-        </div> 
+        </div>
       </nav>
 
     <% end %>
@@ -121,18 +121,18 @@
         <footer class="page-footer">
           <div class="container">
             <% if current_user %>
-              Logged in as <%= current_user %>,
+              Logged in as <%= link_to current_user, current_user %>,
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
             <% end %>
             <div class="footer-copyright">
 
             </div>
-          </div>   
+          </div>
         </footer>
 
       <% end %>
       <!-- Site Wide Scipts -->
-      <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->    
+      <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
       <script>
 
         function idedElementToggle(elementId){
