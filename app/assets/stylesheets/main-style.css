@@ -13,10 +13,14 @@ nav {
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
+nav .nav-wrapper {
+  width: 80%;
+}
 nav .nav-wrapper #logo-container {
   height: 100%;
   width: auto;
-  box-sizing: border-box;
+  position: absolute;
+  left: 0;
 }
 nav .nav-wrapper #logo-container img {
   width: auto;
@@ -34,7 +38,7 @@ nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
   color: #26a69a;
   font-size: 13px;
-  padding: 15px 10px;
+  padding: 0px 10px;
 }
 nav .nav-wrapper .menu li a:hover,
 nav .nav-wrapper .mobile-menu li a:hover {
@@ -58,10 +62,12 @@ nav .nav-wrapper .mobile-menu li button.btn i {
 }
 nav .nav-wrapper .menu {
   float: right;
-  width: 400px;
 }
 nav .nav-wrapper .mobile-menu {
   display: none;
+}
+nav .nav-wrapper .mobile-menu li {
+  float: right;
 }
 nav .nav-wrapper .mobile-menu li button {
   margin-left: 5px;
@@ -85,6 +91,9 @@ nav .nav-wrapper .mobile-menu li .dropdown-content {
   -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+nav .nav-wrapper .mobile-menu li .dropdown-content a {
+  padding: 15px 10px;
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content.active {
   display: block;
@@ -818,6 +827,11 @@ footer.page-footer .container .footer-copyright p {
     background-size: contain;
   }
 }
+@media only screen and (max-width: 993px) {
+  nav .nav-wrapper ul.menu {
+    margin-right: -10%;
+  }
+}
 @media only screen and (max-width: 650px) {
   nav .nav-wrapper .menu {
     display: none;
@@ -925,10 +939,4 @@ footer.page-footer .container .footer-copyright p {
   100% {
     opacity: 1;
   }
-}
-.card-wrapper {
-  display:inline-block;
-}
-.card-grid-item img {
-  margin: 0 0.25% 0.75% 0.25%;
 }
