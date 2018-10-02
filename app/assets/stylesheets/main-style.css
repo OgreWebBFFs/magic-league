@@ -707,6 +707,48 @@ footer.page-footer .container .footer-copyright p {
 #log-in-wrapper .container a:hover {
   background: rgba(73, 73, 75, 0.6);
 }
+.card-grid {
+  margin: 0 auto;
+}
+.card-grid .card-wrapper {
+  display: inline-block;
+  width: 30%;
+  margin: 1.5%;
+  min-width: 223px;
+  text-align: center;
+}
+.card-grid .card-wrapper .card-grid-item {
+  width: 100%;
+}
+.card-grid .card-wrapper .card-count-component {
+  width: 223px;
+  margin: 0 auto;
+}
+.card-grid .card-wrapper .card-count-component span .btn {
+  font-weight: bolder;
+  width: 36px;
+  padding: 0;
+  vertical-align: top;
+}
+.card-grid .card-wrapper .card-count-component span input {
+  border-radius: 2px;
+  width: 140px;
+  text-align: center;
+  color: white;
+  background: #26a69a;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 #card-search-wrapper #search.container {
   white-space: nowrap;
 }
@@ -827,9 +869,21 @@ footer.page-footer .container .footer-copyright p {
     background-size: contain;
   }
 }
+@media only screen and (max-width: 1180px) {
+  .card-grid .card-wrapper {
+    width: 47%;
+    margin: 1%;
+  }
+}
 @media only screen and (max-width: 993px) {
   nav .nav-wrapper ul.menu {
     margin-right: -10%;
+  }
+}
+@media only screen and (max-width: 720px) {
+  .card-grid .card-wrapper {
+    width: 100%;
+    margin: 25px 0;
   }
 }
 @media only screen and (max-width: 650px) {

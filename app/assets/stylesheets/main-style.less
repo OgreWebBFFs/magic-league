@@ -887,6 +887,56 @@ footer {
   }
 }
 //Card Search
+.card-grid{
+  margin: 0 auto;
+  .card-wrapper{
+   display:inline-block;
+   width:30%;
+   margin:1.5%;
+   min-width:223px;
+   text-align:center;
+    .card-grid-item{
+      width:100%;
+    }
+    .card-count-component{
+      width:223px;
+      margin: 0 auto;
+      span{
+        .btn{
+          font-weight:bolder;
+          width: 36px;
+          padding: 0;
+          vertical-align: top;
+        }
+        input{
+          border-radius: 2px;
+          width: 140px;
+          text-align: center;
+          color: white;
+          background: #26a69a;
+          border: none;
+          outline: none;
+          font-size: 26px;
+          line-height: 26px;
+          font-weight: bold;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          &[type=number]::-webkit-inner-spin-button, 
+          &[type=number]::-webkit-outer-spin-button{
+            -webkit-appearance: none; 
+            margin: 0;
+          } 
+         
+
+        }
+      
+      }
+    }
+  }
+}
+
+
+
 #card-search-wrapper {
   #search.container {
     white-space: nowrap;
@@ -1112,6 +1162,17 @@ footer {
   }
 
 }
+@media only screen and (max-width: 1180px){
+.card-grid{
+  .card-wrapper{
+    width:47%;
+    margin:1%;
+    
+  }
+}
+
+}
+
 @media only screen and (max-width: 993px) {
   nav{
     .nav-wrapper{
@@ -1122,6 +1183,17 @@ footer {
       }
     }
   }
+}
+
+@media only screen and (max-width: 720px){
+  .card-grid{
+    .card-wrapper{
+     width:100%;
+      margin:25px 0;
+      
+    }
+  }
+
 }
 @media only screen and (max-width: 650px) {
   nav {
