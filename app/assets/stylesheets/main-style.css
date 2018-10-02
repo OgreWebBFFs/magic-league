@@ -883,7 +883,7 @@ footer.page-footer .container .footer-copyright p {
     background-size: contain;
   }
 }
-@media only screen and (min-width: 1518px) {
+@media only screen and (min-width: 1300px) {
   .card-grid .card-wrapper {
     width: 21%;
     margin: 1.5%;
@@ -901,6 +901,13 @@ footer.page-footer .container .footer-copyright p {
   }
 }
 @media only screen and (max-width: 720px) {
+  #dashboard-wrapper #user-and-trades {
+    white-space: normal;
+  }
+  #dashboard-wrapper #user-and-trades #user,
+  #dashboard-wrapper #user-and-trades #trades-table {
+    width: 100%;
+  }
   .card-grid .card-wrapper {
     width: 100%;
     margin: 25px 0;
