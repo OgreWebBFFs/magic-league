@@ -708,33 +708,61 @@ footer.page-footer .container .footer-copyright p {
   background: rgba(73, 73, 75, 0.6);
 }
 .card-grid {
-  margin: 0 auto;
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
 }
 .card-grid .card-wrapper {
-  display: inline-block;
-  width: 30%;
-  margin: 1.5%;
-  min-width: 223px;
-  text-align: center;
+  width: 100%;
+  margin: 10px auto;
 }
 .card-grid .card-wrapper .card-grid-item {
   width: 100%;
+  text-align: center;
+  display: block;
+}
+.card-grid .card-wrapper .card-grid-item img {
+  width: 90%;
+  margin: 0;
 }
 .card-grid .card-wrapper .card-count-component {
-  width: 223px;
   margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+.card-grid .card-wrapper .card-count-component span {
+  display: table;
+  background: #26a69a;
+  height: 35px;
+  border-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span .btn,
+.card-grid .card-wrapper .card-count-component span input {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 .card-grid .card-wrapper .card-count-component span .btn {
   font-weight: bolder;
   width: 36px;
+  border-left: 2px solid white;
   padding: 0;
+  float: right;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card-grid .card-wrapper .card-count-component span .btn:first-of-type {
+  float: left;
+  border-left: none;
+  border-right: 2px solid white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .card-grid .card-wrapper .card-count-component span input {
   border-radius: 2px;
-  width: 140px;
-  text-align: center;
+  width: 30%;
   color: white;
-  background: #26a69a;
+  background-color: transparent;
   border: none;
   outline: none;
   font-size: 26px;
@@ -749,13 +777,20 @@ footer.page-footer .container .footer-copyright p {
   -webkit-appearance: none;
   margin: 0;
 }
+.card-grid .card-wrapper .card-count-component.not-in-collection span {
+  display: block;
+  background: transparent;
+}
 .card-grid .card-wrapper .card-count-component.not-in-collection span input,
 .card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
   display: none;
 }
 .card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
   width: 100%;
-  background-color: #d1bfa7;
+  border-left: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: #d1bfa7;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -883,21 +918,14 @@ footer.page-footer .container .footer-copyright p {
     background-size: contain;
   }
 }
-@media only screen and (min-width: 1300px) {
-  .card-grid .card-wrapper {
-    width: 21%;
-    margin: 1.5%;
-  }
-}
-@media only screen and (max-width: 1180px) {
-  .card-grid .card-wrapper {
-    width: 47%;
-    margin: 1%;
-  }
-}
 @media only screen and (max-width: 993px) {
   nav .nav-wrapper ul.menu {
     margin-right: -10%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
   }
 }
 @media only screen and (max-width: 720px) {
@@ -907,10 +935,6 @@ footer.page-footer .container .footer-copyright p {
   #dashboard-wrapper #user-and-trades #user,
   #dashboard-wrapper #user-and-trades #trades-table {
     width: 100%;
-  }
-  .card-grid .card-wrapper {
-    width: 100%;
-    margin: 25px 0;
   }
 }
 @media only screen and (max-width: 650px) {
@@ -955,6 +979,17 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-grid {
+    display: block;
+  }
+  .card-grid .card-wrapper {
+    margin-bottom: 25px;
   }
 }
 @keyframes growVert {
