@@ -1,0 +1,23 @@
+<div id="collection-table" class="container">
+  <%= link_to 'Edit Collection', edit_collection_path(current_user.collection.id), class: 'main-toggle btn' %>
+  <h3>Your Collection</h3>
+  <div  class="alternating three-col table">
+    <div class="row headings">
+      <p>Card</p>
+      <p>Amount</p>
+      <p></p>
+    </div>
+    <% @cards.each do |card| %>
+    <div class="row">
+      <p><%= card.name %></p>
+      <p><%= @count[card.id] %></p>
+      <div class="checkbox-container">
+        <div class="checkbox">
+          <input type="checkbox" id="<%= "#{card.name}_#{card.id}" %>">
+          <label for="<%= "#{card.name}_#{card.id}" %>"></label>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
