@@ -16,9 +16,9 @@
       </a>
       <div class="card-count-component">
         <span>
-          <button type="button" class="remove-card" data-id="${card.id}">-</button>
+          <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
           <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
-          <button type="button" class="add-card" data-id="${card.id}">+</button>
+          <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
         </span>
       </div>
     </div>
