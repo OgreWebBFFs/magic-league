@@ -119,6 +119,7 @@ footer.page-footer .container p,
 footer.page-footer .container .copyright {
   display: table-cell;
   vertical-align: middle;
+  font-size: 10px;
 }
 footer.page-footer .container p {
   text-align: left;
