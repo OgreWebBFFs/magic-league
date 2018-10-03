@@ -1,23 +1,10 @@
-<h1>User Show</h1>
+<div id="dashboard-wrapper">
+  <div class="container">
+    <h2><%= @user.name %></h2>
+    <%= link_to 'Edit', [:edit, @user], class: 'btn small' if policy(@user).edit? %>
+  </div>
 
-<%= link_to 'Edit', [:edit, @user] if policy(@user).edit? %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Last signin at:</strong>
-  <%= @user.last_sign_in_at %>
-</p>
-
-<p>
-  <strong>Last signin IP:</strong>
-  <%= @user.last_sign_in_ip %>
-</p>
+  <%= render 'dashboard/user_trades', user: @user %>
+  <%= render 'dashboard/user_decks', user: @user %>
+  <%= render 'dashboard/user_collections', user: @user %>
+</div>

@@ -4,7 +4,7 @@
     <%= link_to 'Edit', [:edit, @user], class: 'btn small' if policy(@user).edit? %>
   </div>
 
-  <%= render 'user_trades' %>
-  <%= render 'user_decks' %>
-  <%= render 'user_collections' %>
+  <%= render 'user_trades', user: @user %>
+  <%= render 'user_decks', user: @user %>
+  <%= render 'user_collections', user: @user %>
 </div>

@@ -1,5 +1,5 @@
 <div id="collection-table" class="container">
-  <%= link_to 'Edit Collection', edit_collection_path(current_user.collection.id), class: 'main-toggle btn' %>
+  <%= link_to 'Edit Collection', edit_collection_path(user.collection.id), class: 'main-toggle btn' if policy(user.collection).edit? %>
   <h3>Your Collection</h3>
   <div  class="alternating three-col table">
     <div class="row headings">
