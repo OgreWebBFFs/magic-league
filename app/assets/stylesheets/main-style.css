@@ -250,6 +250,9 @@ footer.page-footer .container .footer-copyright p {
   height: 46px;
   padding: 5px;
 }
+.section .container .table .row:after {
+  content: none;
+}
 .section .container .table .row a,
 .section .container .table .row input,
 .section .container .table .row p {
@@ -270,10 +273,10 @@ footer.page-footer .container .footer-copyright p {
   text-transform: uppercase;
   color: white;
   background: #49494b;
-  border-bottom: 2px solid #26a69a;
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
+  border-bottom: 4px solid #30d0c1;
 }
 .section .container .table.alternating .row:nth-child(even) {
   background: rgba(73, 73, 75, 0.15);
@@ -545,15 +548,15 @@ footer.page-footer .container .footer-copyright p {
 }
 #dashboard-wrapper #user-and-trades {
   white-space: nowrap;
+  display: table;
 }
 #dashboard-wrapper #user-and-trades #trades-table,
 #dashboard-wrapper #user-and-trades #user {
   white-space: normal;
-  display: inline-block;
+  display: table-cell;
   box-sizing: border-box;
   width: 50%;
-  vertical-align: bottom;
-  min-height: 330px;
+  vertical-align: middle;
   position: relative;
 }
 #dashboard-wrapper #user-and-trades #trades-table h3,
@@ -929,17 +932,20 @@ footer.page-footer .container .footer-copyright p {
   }
 }
 @media only screen and (max-width: 800px) {
-  .card-grid {
-    grid-template-columns: repeat(3, auto);
-  }
-}
-@media only screen and (max-width: 720px) {
   #dashboard-wrapper #user-and-trades {
     white-space: normal;
+    display: block;
+  }
+  #dashboard-wrapper #user-and-trades #user {
+    margin-bottom: 25px;
   }
   #dashboard-wrapper #user-and-trades #user,
   #dashboard-wrapper #user-and-trades #trades-table {
+    display: block;
     width: 100%;
+  }
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
   }
 }
 @media only screen and (max-width: 650px) {
@@ -964,6 +970,10 @@ footer.page-footer .container .footer-copyright p {
   .section .container {
     width: 90%;
   }
+  .section .container h3 {
+    font-size: 1.9rem;
+    line-height: 100%;
+  }
   #log-in-wrapper {
     width: 95%;
   }
@@ -984,6 +994,12 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  #dashboard-wrapper .container {
+    margin: 25px auto;
+  }
+  #dashboard-wrapper .container h3 {
+    margin: 10px 0;
   }
   .card-grid {
     grid-template-columns: repeat(2, auto);

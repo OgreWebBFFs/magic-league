@@ -43,6 +43,7 @@ nav {
 
   .nav-wrapper {
     width:80%;
+
     #logo-container {
       height: 100%;
       width: auto;
@@ -280,6 +281,9 @@ footer {
         display: table-row;
         height: 46px;
         padding: 5px;
+        &:after{
+          content:none;
+        }
 
         a,
         input,
@@ -303,10 +307,11 @@ footer {
           text-transform: uppercase;
           color: @color-light;
           background: @color-dark;
-          border-bottom: 2px solid @color-highlight-import;
+         
 
           p {
             padding-bottom: 2px;
+            border-bottom: 4px solid lighten(@color-highlight-import, 10%);
 
           }
         }
@@ -675,15 +680,16 @@ footer {
 
   #user-and-trades {
     white-space: nowrap;
+    display: table;
 
     #trades-table,
     #user {
       white-space: normal;
-      display: inline-block;
+      display: table-cell;
       box-sizing: border-box;
       width: 50%;
-      vertical-align: bottom;
-      min-height: 330px;
+      vertical-align: middle;
+    
       position: relative;
 
       h3 {
@@ -694,7 +700,7 @@ footer {
 
     #user {
       text-align: center;
-
+  
       img {
         height: 210px;
         width: auto;
@@ -810,6 +816,7 @@ footer {
 
         }
       }
+
     }
   }
 }
@@ -1253,6 +1260,22 @@ footer {
   }
 }
 @media only screen and (max-width: 800px){
+  #dashboard-wrapper{
+    #user-and-trades{
+      white-space: normal;
+      display:block;
+      #user{
+        margin-bottom:25px;
+      }
+      #user, 
+      #trades-table{
+        display:block;
+        width:100%;
+      }
+    }
+ 
+  }
+
   .card-grid{
     grid-template-columns: repeat(3, auto);
   }
@@ -1260,16 +1283,7 @@ footer {
 }
 
 @media only screen and (max-width: 720px){
- #dashboard-wrapper{
-   #user-and-trades{
-     white-space: normal;
-     #user, 
-     #trades-table{
-       width:100%;
-     }
-   }
 
- }
  
 
 
@@ -1311,6 +1325,10 @@ footer {
   .section {
     .container {
       width: 90%;
+      h3{
+        font-size: 1.9rem;
+        line-height: 100%;
+      }
     }
   }
 
@@ -1340,9 +1358,18 @@ footer {
       }
     }
   }
+  #dashboard-wrapper {
+    .container {
+      margin:25px auto;
+      h3{
+        margin:10px 0;
+      }
+    }
+  }
   .card-grid{
     grid-template-columns: repeat(2, auto);
   }
+  
 
 }
 
