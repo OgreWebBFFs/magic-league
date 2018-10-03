@@ -17,7 +17,7 @@
 
 //Static Reused Numbers
 @nav-height: 64px;
-@footer-height: 32px;
+@footer-height: 40px;
 @section-padding: 25px;
 @animation-delay: 2s;
 
@@ -155,26 +155,34 @@ footer {
 
   &.page-footer {
     padding: 0;
-    height: @footer-height;
+ 
     width: 100%;
     background: darken(@background-color, 10%);
-    display: table;
+  
 
     .container {
-      display: table-cell;
-      vertical-align: middle;
-      width: 95%;
-
-      .footer-copyright {
-        background: transparent;
-        min-height: 25px;
-        color: @color-dark;
-        float: right;
-        text-align: right;
+      height: @footer-height;
+      width:80%;
+      margin:0 auto;
+      text-align:center;
+      display: table;
+      p,
+      .copyright  {
+        display:table-cell;
+        vertical-align: middle;
+      }
+      p{
+        text-align:left;
+      }
+      .copyright {
+        text-align:right;       
+       
+      
 
         p {
-          margin: 0;
-        }
+          display:inline;
+          text-align:right;   
+           }
       }
     }
   }

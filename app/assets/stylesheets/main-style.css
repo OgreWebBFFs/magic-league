@@ -105,25 +105,30 @@ footer {
 }
 footer.page-footer {
   padding: 0;
-  height: 32px;
   width: 100%;
   background: #e4e4e4;
-  display: table;
 }
 footer.page-footer .container {
+  height: 40px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+}
+footer.page-footer .container p,
+footer.page-footer .container .copyright {
   display: table-cell;
   vertical-align: middle;
-  width: 95%;
 }
-footer.page-footer .container .footer-copyright {
-  background: transparent;
-  min-height: 25px;
-  color: #49494b;
-  float: right;
+footer.page-footer .container p {
+  text-align: left;
+}
+footer.page-footer .container .copyright {
   text-align: right;
 }
-footer.page-footer .container .footer-copyright p {
-  margin: 0;
+footer.page-footer .container .copyright p {
+  display: inline;
+  text-align: right;
 }
 .section {
   padding-top: 1rem;
@@ -307,7 +312,7 @@ footer.page-footer .container .footer-copyright p {
 }
 .section.full-page {
   background: transparent;
-  min-height: calc(100vh - 64px - 32px);
+  min-height: calc(100vh - 64px - 40px);
 }
 #match-logger-container {
   position: absolute;
@@ -417,7 +422,7 @@ footer.page-footer .container .footer-copyright p {
   width: 35%;
   padding: 5px;
   margin: 0 auto;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   position: relative;
   min-width: 300px;
 }
@@ -481,7 +486,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   height: 100%;
   position: absolute;
   top: 0;
