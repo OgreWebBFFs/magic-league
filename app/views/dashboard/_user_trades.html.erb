@@ -1,14 +1,12 @@
 <div id="user-and-trades" class="container">
   <div id="user">
        <%= image_tag "user.svg" %>
-    <h3>1028</h3>
-    <p>You have logged your cards for this month, thanks!</p>
+       <%= link_to 'Edit Account', [:edit, @user], class: 'btn small' if policy(@user).edit? %>
   </div>
   <div id="trades-table">
-    <h3>Your Trades</h3>
     <div class="alternating table two-col">
       <div class="headings row">
-        <p>Type</p>
+        <p>Trades</p>
         <p>Amount</p>
       </div>
       <div class="row">
