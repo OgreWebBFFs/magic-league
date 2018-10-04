@@ -673,11 +673,11 @@ footer.page-footer .container .footer-copyright p {
 #dashboard-wrapper #collection-table .row .checkbox-container {
   display: table-cell;
   vertical-align: middle;
-  width: 100px;
   text-align: right;
+  padding-right: 29px;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
-  width: 100px;
+  width: 36px;
   height: 36px;
   display: inline-block;
   position: relative;
@@ -688,7 +688,7 @@ footer.page-footer .container .footer-copyright p {
   color: white;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
-  width: 100px;
+  width: 36px;
   position: absolute;
   left: 0;
   content: "No";
