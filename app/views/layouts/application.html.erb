@@ -120,14 +120,16 @@
       <% if user_signed_in? %>
         <footer class="page-footer">
           <div class="container">
+        
             <% if current_user %>
-              Logged in as <%= current_user %>,
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            <p>Logged in as <% if current_user%><%=current_user.name%><%end%>,
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
             <% end %>
-            <div class="footer-copyright">
-
+          
+            <div class="copyright">
+              <p>Developed by OWB</p>
             </div>
-          </div>   
+          </div>
         </footer>
 
       <% end %>

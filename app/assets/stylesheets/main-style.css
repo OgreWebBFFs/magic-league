@@ -105,25 +105,31 @@ footer {
 }
 footer.page-footer {
   padding: 0;
-  height: 32px;
   width: 100%;
   background: #e4e4e4;
-  display: table;
 }
 footer.page-footer .container {
+  height: 40px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+}
+footer.page-footer .container p,
+footer.page-footer .container .copyright {
   display: table-cell;
   vertical-align: middle;
-  width: 95%;
+  font-size: 10px;
 }
-footer.page-footer .container .footer-copyright {
-  background: transparent;
-  min-height: 25px;
-  color: #49494b;
-  float: right;
+footer.page-footer .container p {
+  text-align: left;
+}
+footer.page-footer .container .copyright {
   text-align: right;
 }
-footer.page-footer .container .footer-copyright p {
-  margin: 0;
+footer.page-footer .container .copyright p {
+  display: inline;
+  text-align: right;
 }
 .section {
   padding-top: 1rem;
@@ -250,6 +256,9 @@ footer.page-footer .container .footer-copyright p {
   height: 46px;
   padding: 5px;
 }
+.section .container .table .row:after {
+  content: none;
+}
 .section .container .table .row a,
 .section .container .table .row input,
 .section .container .table .row p {
@@ -270,10 +279,10 @@ footer.page-footer .container .footer-copyright p {
   text-transform: uppercase;
   color: white;
   background: #49494b;
-  border-bottom: 2px solid #26a69a;
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
+  border-bottom: 4px solid #30d0c1;
 }
 .section .container .table.alternating .row:nth-child(even) {
   background: rgba(73, 73, 75, 0.15);
@@ -304,7 +313,7 @@ footer.page-footer .container .footer-copyright p {
 }
 .section.full-page {
   background: transparent;
-  min-height: calc(100vh - 64px - 32px);
+  min-height: calc(100vh - 64px - 40px);
 }
 #match-logger-container {
   position: absolute;
@@ -414,7 +423,7 @@ footer.page-footer .container .footer-copyright p {
   width: 35%;
   padding: 5px;
   margin: 0 auto;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   position: relative;
   min-width: 300px;
 }
@@ -478,7 +487,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   height: 100%;
   position: absolute;
   top: 0;
@@ -545,15 +554,15 @@ footer.page-footer .container .footer-copyright p {
 }
 #dashboard-wrapper #user-and-trades {
   white-space: nowrap;
+  display: table;
 }
 #dashboard-wrapper #user-and-trades #trades-table,
 #dashboard-wrapper #user-and-trades #user {
   white-space: normal;
-  display: inline-block;
+  display: table-cell;
   box-sizing: border-box;
   width: 50%;
-  vertical-align: bottom;
-  min-height: 330px;
+  vertical-align: middle;
   position: relative;
 }
 #dashboard-wrapper #user-and-trades #trades-table h3,
@@ -929,17 +938,20 @@ footer.page-footer .container .footer-copyright p {
   }
 }
 @media only screen and (max-width: 800px) {
-  .card-grid {
-    grid-template-columns: repeat(3, auto);
-  }
-}
-@media only screen and (max-width: 720px) {
   #dashboard-wrapper #user-and-trades {
     white-space: normal;
+    display: block;
+  }
+  #dashboard-wrapper #user-and-trades #user {
+    margin-bottom: 25px;
   }
   #dashboard-wrapper #user-and-trades #user,
   #dashboard-wrapper #user-and-trades #trades-table {
+    display: block;
     width: 100%;
+  }
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
   }
 }
 @media only screen and (max-width: 650px) {
@@ -964,6 +976,10 @@ footer.page-footer .container .footer-copyright p {
   .section .container {
     width: 90%;
   }
+  .section .container h3 {
+    font-size: 1.9rem;
+    line-height: 100%;
+  }
   #log-in-wrapper {
     width: 95%;
   }
@@ -984,6 +1000,12 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  #dashboard-wrapper .container {
+    margin: 25px auto;
+  }
+  #dashboard-wrapper .container h3 {
+    margin: 10px 0;
   }
   .card-grid {
     grid-template-columns: repeat(2, auto);
