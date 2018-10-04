@@ -473,6 +473,113 @@ footer {
   animation-iteration-count: infinite;
 
 }
+
+.card-grid{
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+
+
+  
+  .card-wrapper{
+    width: 100%;
+    margin: 10px auto;
+   
+
+  
+    .card-grid-item{
+      width:100%;
+      text-align:center;
+      display:block;
+      img{
+        width:90%;
+        margin:0;
+      }
+    }
+    .card-count-component{
+     
+      margin: 0 auto;
+      text-align:center;
+      width: 90%;      
+      span{ 
+        display:table;
+        background: #26a69a;   
+        height:35px;
+        border-radius: 2px;
+        .btn,
+        input{
+          display:table-cell;
+          vertical-align: middle;
+          text-align:center;  
+        }   
+        .btn{
+          font-weight:bolder;
+          width: 36px;
+          border-left:2px solid @color-light;
+          padding: 0; 
+          float:right;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          &:first-of-type{
+            float:left;
+            border-left:none;
+            border-right:2px solid @color-light;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }           
+         
+        }
+
+        input{
+          border-radius: 2px;
+          width: 30%;        
+          color: white;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          font-size: 26px;
+          line-height: 26px;
+          font-weight: bold;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
+          overflow: hidden;
+          &[type=number]::-webkit-inner-spin-button, 
+          &[type=number]::-webkit-outer-spin-button{
+            -webkit-appearance: none; 
+            margin: 0;
+          } 
+         
+
+        }
+      
+      }
+      &.not-in-collection{
+        span{
+          display:block;
+          background: transparent;
+          input,
+          .remove-card.btn{
+            display:none;
+          }
+          .add-card.btn{
+            width:100%;
+            border-left:none;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            background: @color-highlight-mid-import;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
 //TO DO: BREAK INTO OWN FILES 
 //Ranking Page
 

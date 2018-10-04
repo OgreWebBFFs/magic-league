@@ -368,6 +368,95 @@ footer.page-footer .container .footer-copyright p {
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
+.card-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+}
+.card-grid .card-wrapper {
+  width: 100%;
+  margin: 10px auto;
+}
+.card-grid .card-wrapper .card-grid-item {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.card-grid .card-wrapper .card-grid-item img {
+  width: 90%;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+.card-grid .card-wrapper .card-count-component span {
+  display: table;
+  background: #26a69a;
+  height: 35px;
+  border-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span .btn,
+.card-grid .card-wrapper .card-count-component span input {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.card-grid .card-wrapper .card-count-component span .btn {
+  font-weight: bolder;
+  width: 36px;
+  border-left: 2px solid white;
+  padding: 0;
+  float: right;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card-grid .card-wrapper .card-count-component span .btn:first-of-type {
+  float: left;
+  border-left: none;
+  border-right: 2px solid white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span input {
+  border-radius: 2px;
+  width: 30%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span {
+  display: block;
+  background: transparent;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span input,
+.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+  display: none;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+  width: 100%;
+  border-left: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: #d1bfa7;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
 #ranking-wrapper {
   text-align: center;
 }
