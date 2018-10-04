@@ -105,25 +105,31 @@ footer {
 }
 footer.page-footer {
   padding: 0;
-  height: 32px;
   width: 100%;
   background: #e4e4e4;
-  display: table;
 }
 footer.page-footer .container {
+  height: 40px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+}
+footer.page-footer .container p,
+footer.page-footer .container .copyright {
   display: table-cell;
   vertical-align: middle;
-  width: 95%;
+  font-size: 10px;
 }
-footer.page-footer .container .footer-copyright {
-  background: transparent;
-  min-height: 25px;
-  color: #49494b;
-  float: right;
+footer.page-footer .container p {
+  text-align: left;
+}
+footer.page-footer .container .copyright {
   text-align: right;
 }
-footer.page-footer .container .footer-copyright p {
-  margin: 0;
+footer.page-footer .container .copyright p {
+  display: inline;
+  text-align: right;
 }
 .section {
   padding-top: 1rem;
@@ -222,6 +228,9 @@ footer.page-footer .container .footer-copyright p {
   height: 46px;
   padding: 5px;
 }
+.section .container .table .row:after {
+  content: none;
+}
 .section .container .table .row a,
 .section .container .table .row input,
 .section .container .table .row p {
@@ -242,10 +251,10 @@ footer.page-footer .container .footer-copyright p {
   text-transform: uppercase;
   color: white;
   background: #49494b;
-  border-bottom: 2px solid #26a69a;
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
+  border-bottom: 4px solid #30d0c1;
 }
 .section .container .table.alternating .row:nth-child(even) {
   background: rgba(73, 73, 75, 0.15);
@@ -276,7 +285,7 @@ footer.page-footer .container .footer-copyright p {
 }
 .section.full-page {
   background: transparent;
-  min-height: calc(100vh - 64px - 32px);
+  min-height: calc(100vh - 64px - 40px);
 }
 #match-logger-container {
   position: absolute;
@@ -386,7 +395,7 @@ footer.page-footer .container .footer-copyright p {
   width: 35%;
   padding: 5px;
   margin: 0 auto;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   position: relative;
   min-width: 300px;
 }
@@ -450,7 +459,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 40px - 60px - (2*25px));
   height: 100%;
   position: absolute;
   top: 0;
@@ -517,15 +526,15 @@ footer.page-footer .container .footer-copyright p {
 }
 #dashboard-wrapper #user-and-trades {
   white-space: nowrap;
+  display: table;
 }
 #dashboard-wrapper #user-and-trades #trades-table,
 #dashboard-wrapper #user-and-trades #user {
   white-space: normal;
-  display: inline-block;
+  display: table-cell;
   box-sizing: border-box;
   width: 50%;
-  vertical-align: bottom;
-  min-height: 330px;
+  vertical-align: middle;
   position: relative;
 }
 #dashboard-wrapper #user-and-trades #trades-table h3,
@@ -572,25 +581,26 @@ footer.page-footer .container .footer-copyright p {
 #dashboard-wrapper #collection-table .row .checkbox-container {
   display: table-cell;
   vertical-align: middle;
-  width: 100px;
+  width: 36px;
   text-align: right;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
-  width: 100px;
+  width: 36px;
   height: 36px;
   display: inline-block;
   position: relative;
   vertical-align: top;
+  margin-right: 22px;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label {
   position: relative;
   color: white;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
-  width: 100px;
+  width: 36px;
   position: absolute;
   left: 0;
-  content: "Not For Trade";
+  content: "No";
   text-decoration: none;
   color: white;
   text-align: center;
@@ -614,7 +624,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
   background-color: #26a69a;
-  content: "For Trade";
+  content: "Yes";
 }
 #log-in-wrapper {
   display: table;
@@ -678,6 +688,95 @@ footer.page-footer .container .footer-copyright p {
 }
 #log-in-wrapper .container a:hover {
   background: rgba(73, 73, 75, 0.6);
+}
+.card-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+}
+.card-grid .card-wrapper {
+  width: 100%;
+  margin: 10px auto;
+}
+.card-grid .card-wrapper .card-grid-item {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.card-grid .card-wrapper .card-grid-item img {
+  width: 90%;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+.card-grid .card-wrapper .card-count-component span {
+  display: table;
+  background: #26a69a;
+  height: 35px;
+  border-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span .btn,
+.card-grid .card-wrapper .card-count-component span input {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.card-grid .card-wrapper .card-count-component span .btn {
+  font-weight: bolder;
+  width: 36px;
+  border-left: 2px solid white;
+  padding: 0;
+  float: right;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card-grid .card-wrapper .card-count-component span .btn:first-of-type {
+  float: left;
+  border-left: none;
+  border-right: 2px solid white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span input {
+  border-radius: 2px;
+  width: 30%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span {
+  display: block;
+  background: transparent;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span input,
+.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+  display: none;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+  width: 100%;
+  border-left: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: #d1bfa7;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -794,11 +893,19 @@ footer.page-footer .container .footer-copyright p {
   filter: saturate(1);
   opacity: 1;
 }
+
 #user-wrapper .btn.user {
   margin: 5px 0;
   width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
+
+@-moz-document url-prefix() {
+  .card-grid .card-wrapper .card-count-component span input {
+    line-height: 34px;
+    -moz-appearance: textfield;
+  }
+
 }
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
@@ -808,6 +915,23 @@ footer.page-footer .container .footer-copyright p {
 @media only screen and (max-width: 993px) {
   nav .nav-wrapper ul.menu {
     margin-right: -10%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  #dashboard-wrapper #user-and-trades {
+    white-space: normal;
+    display: block;
+  }
+  #dashboard-wrapper #user-and-trades #user {
+    margin-bottom: 25px;
+  }
+  #dashboard-wrapper #user-and-trades #user,
+  #dashboard-wrapper #user-and-trades #trades-table {
+    display: block;
+    width: 100%;
+  }
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
   }
 }
 @media only screen and (max-width: 650px) {
@@ -832,6 +956,10 @@ footer.page-footer .container .footer-copyright p {
   .section .container {
     width: 90%;
   }
+  .section .container h3 {
+    font-size: 1.9rem;
+    line-height: 100%;
+  }
   #log-in-wrapper {
     width: 95%;
   }
@@ -852,6 +980,26 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  #dashboard-wrapper .container {
+    margin: 25px auto;
+  }
+  #dashboard-wrapper .container h3 {
+    margin: 10px 0;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-grid {
+    display: block;
+  }
+  .card-grid .card-wrapper {
+    margin-bottom: 25px;
+  }
+  .container {
+    width: 100%;
   }
 }
 @keyframes growVert {
