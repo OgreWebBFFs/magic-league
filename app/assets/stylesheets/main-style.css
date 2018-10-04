@@ -38,7 +38,7 @@ nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
   color: #26a69a;
   font-size: 13px;
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 nav .nav-wrapper .menu li a:hover,
 nav .nav-wrapper .mobile-menu li a:hover {
@@ -140,13 +140,16 @@ footer.page-footer .container .footer-copyright p {
 .section a:hover {
   color: #1c7d74;
 }
+.section .btn a {
+  color: white;
+}
 .section h1.color-blocked,
 .section h2.color-blocked,
 .section h3.color-blocked,
 .section h4.color-blocked,
 .section h5.color-blocked {
   padding: 10px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .section h1.color-blocked.highlight-main,
@@ -156,15 +159,7 @@ footer.page-footer .container .footer-copyright p {
 .section h5.color-blocked.highlight-main {
   color: white;
   background: #26a69a;
-  border: 2px solid #26a69a;
-  border-bottom: none;
-}
-.section h1.color-blocked.highlight-main ~ .copy,
-.section h2.color-blocked.highlight-main ~ .copy,
-.section h3.color-blocked.highlight-main ~ .copy,
-.section h4.color-blocked.highlight-main ~ .copy,
-.section h5.color-blocked.highlight-main ~ .copy {
-  border: 2px solid #26a69a;
+  border-bottom: 4px solid #30d0c1;
 }
 .section h1.color-blocked.highlight-mid,
 .section h2.color-blocked.highlight-mid,
@@ -172,15 +167,7 @@ footer.page-footer .container .footer-copyright p {
 .section h4.color-blocked.highlight-mid,
 .section h5.color-blocked.highlight-mid {
   background: #d1bfa7;
-  border: 2px solid #d1bfa7;
-  border-bottom: none;
-}
-.section h1.color-blocked.highlight-mid ~ .copy,
-.section h2.color-blocked.highlight-mid ~ .copy,
-.section h3.color-blocked.highlight-mid ~ .copy,
-.section h4.color-blocked.highlight-mid ~ .copy,
-.section h5.color-blocked.highlight-mid ~ .copy {
-  border: 2px solid #d1bfa7;
+  border-bottom: 4px solid #e3d7c8;
 }
 .section h1.color-blocked.dark,
 .section h2.color-blocked.dark,
@@ -189,15 +176,7 @@ footer.page-footer .container .footer-copyright p {
 .section h5.color-blocked.dark {
   color: white;
   background: #49494b;
-  border: 2px solid #49494b;
-  border-bottom: none;
-}
-.section h1.color-blocked.dark ~ .copy,
-.section h2.color-blocked.dark ~ .copy,
-.section h3.color-blocked.dark ~ .copy,
-.section h4.color-blocked.dark ~ .copy,
-.section h5.color-blocked.dark ~ .copy {
-  border: 2px solid #49494b;
+  border-bottom: 4px solid #626265;
 }
 .section h1.color-blocked.light,
 .section h2.color-blocked.light,
@@ -205,21 +184,14 @@ footer.page-footer .container .footer-copyright p {
 .section h4.color-blocked.light,
 .section h5.color-blocked.light {
   background: white;
-  border: 2px solid white;
-  border-bottom: none;
-}
-.section h1.color-blocked.light ~ .copy,
-.section h2.color-blocked.light ~ .copy,
-.section h3.color-blocked.light ~ .copy,
-.section h4.color-blocked.light ~ .copy,
-.section h5.color-blocked.light ~ .copy {
-  border: 2px solid white;
+  border-bottom: 4px solid #e6e6e6;
 }
 .section h1.color-blocked ~ .copy,
 .section h2.color-blocked ~ .copy,
 .section h3.color-blocked ~ .copy,
 .section h4.color-blocked ~ .copy,
 .section h5.color-blocked ~ .copy {
+  margin-bottom: 25px;
   box-sizing: border-box;
   padding: 15px;
   background: white;
@@ -816,6 +788,21 @@ footer.page-footer .container .footer-copyright p {
   filter: saturate(1);
   opacity: 1;
 }
+
+#user-wrapper .btn.user {
+  margin: 5px 0;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+@-moz-document url-prefix() {
+  .card-grid .card-wrapper .card-count-component span input {
+    line-height: 34px;
+    -moz-appearance: textfield;
+  }
+
+}
+
 @media only screen and (orientation: portrait) {
   #cycling-background-container {
     background-size: contain;

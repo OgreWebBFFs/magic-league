@@ -1,9 +1,17 @@
-<h1>Users</h1>
+
+<div id="user-wrapper" class="container">
+<h3 class="color-blocked dark">Users</h3>
+<div class="copy">
+
 
 <ul>
   <% @users.each do |user| %>
     <li>
-      <%= link_to user.email, user_path(user) %> 
+
+
+      <button class="user btn"><%= link_to user.name, user_path(user) %></button>
     </li>
   <% end %>
 </ul>
+</div>
+</div>
