@@ -47,9 +47,9 @@ nav {
     #logo-container {
       height: 100%;
       width: auto;
-     position: absolute;
-     left:0;
-   
+      position: absolute;
+      left: 0;
+
       img {
         width: auto;
         height: 100%;
@@ -63,13 +63,14 @@ nav {
 
     .menu,
     .mobile-menu {
-      li { 
-         min-height:0;
-        
+      li {
+        min-height: 0;
+
         a {
           color: @color-highlight-import;
-          font-size:13px; 
-          padding:0px 10px;
+          font-size: 13px;
+          padding: 0 10px;
+
           &:hover {
             background-color: fade(@color-highlight-mid-import, 25%);
             transition: .5s;
@@ -84,8 +85,8 @@ nav {
           height: 40px;
           margin-top: -5px;
           background: @color-highlight-import;
-          padding:0 5px;
-          font-size:12px;
+          padding: 0 5px;
+          font-size: 12px;
 
           i {
             margin-right: 3px;
@@ -99,16 +100,16 @@ nav {
     }
 
     .menu {
-    
-     float:right;
+
+      float: right;
     }
 
     .mobile-menu {
       display: none;
 
-      li { 
-        float:right;
-       
+      li {
+        float: right;
+
         button {
           margin-left: 5px;
           background: @color-highlight-import;
@@ -118,9 +119,9 @@ nav {
           }
         }
 
-        .dropdown-content { 
-          a{
-            padding:15px 10px;
+        .dropdown-content {
+          a {
+            padding: 15px 10px;
           }
           display: none;
           position: absolute;
@@ -206,67 +207,59 @@ footer {
     }
   }
 
+  .btn {
+    a {
+      color: @color-light;
+    }
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5 {
- 
-
     &.color-blocked {
-      
+
       padding: 10px;
-      margin: 10px 0 0 0;
+      margin: 10px 0 0;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      
-     
+
       &.highlight-main {
         color: @color-light;
         background: @color-highlight-import;
-        border:2px solid @color-highlight-import;
-        border-bottom:none;
-        & ~ .copy {
-          border:2px solid @color-highlight-import;
-        }
+        border-bottom: 4px solid lighten(@color-highlight-import, 10%);
+
       }
 
       &.highlight-mid {
         background: @color-highlight-mid-import;
-        border:2px solid @color-highlight-mid-import;
-        border-bottom:none;
-        & ~ .copy {
-          border:2px solid @color-highlight-mid-import;
-        }
+        border-bottom: 4px solid lighten(@color-highlight-mid-import, 10%);
+
       }
 
       &.dark {
         color: @color-light;
         background: @color-dark;
-        border:2px solid @color-dark;
-        border-bottom:none;
-        & ~ .copy {
-          border:2px solid @color-dark;
-        }
+        border-bottom: 4px solid lighten(@color-dark, 10%);
+
       }
 
       &.light {
         background: @color-light;
-        border:2px solid @color-light;
-        border-bottom:none;
-        & ~ .copy {
-          border:2px solid @color-light;
-        }
+        border-bottom: 4px solid darken(@color-light, 10%);
+
       }
 
       & ~ .copy {
+        margin-bottom: 25px;
         box-sizing: border-box;
         padding: 15px;
         background: @color-light;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-        p{
-          &:first-of-type{
-            margin-top:0;
+        p {
+          &:first-of-type {
+            margin-top: 0;
           }
         }
       }
@@ -665,11 +658,13 @@ footer {
     .main-toggle {
       float: right;
       margin-top: 6px;
-     
+
     }
-    .btn{
-      color:@color-light;
+
+    .btn {
+      color: @color-light;
     }
+
     .row {
       p {
         &:nth-of-type(2) {
@@ -808,11 +803,12 @@ footer {
               vertical-align: middle;
               -webkit-tap-highlight-color: transparent;
               transition: .25s;
-         
+
             }
-            &:hover{
+
+            &:hover {
               &:before {
-              background: lighten(@color-highlight-mid-import, 8%);
+                background: lighten(@color-highlight-mid-import, 8%);
               }
             }
           }
@@ -1228,6 +1224,21 @@ footer {
 
   }
 }
+
+//USers 
+#user-wrapper {
+  .btn {
+    &.user {
+      margin: 5px 0;
+      width:200px;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+}
+//Responsive Adjustments for whole site
+
 //Cross browser fixes 
 //FireFox
 
@@ -1249,6 +1260,7 @@ footer {
 }
 
 //Responsive Adjustments
+
 @media only screen and (orientation : portrait) {
   #cycling-background-container {
     background-size: contain;
@@ -1258,11 +1270,11 @@ footer {
 
 
 @media only screen and (max-width: 993px) {
-  nav{
-    .nav-wrapper{
-      ul{
-        &.menu{
-          margin-right:-10%;
+  nav {
+    .nav-wrapper {
+      ul {
+        &.menu {
+          margin-right: -10%;
         }
       }
     }
@@ -1325,7 +1337,6 @@ footer {
         width: 30px;
         overflow: hidden;
         float: left;
-
 
       }
     }

@@ -13,6 +13,12 @@
 1. Run `docker exec -it magic-league_web_1 bash` to connect to the Docker container
 2. Run `rails c`
 
+## How do I make myself an Admin from the console?
+1. Run `rails c`
+2. `user = User.find_by_email('email_address')`
+3. `user.admin = true`
+4. `user.save`
+
 ## Troubleshooting
 
 * If any of steps 4-5 fail under "How do I run it?", try: `docker exec -it magic-league_web_1 //bin/sh -c "rake db:create && rake db:migrate"`

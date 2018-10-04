@@ -1,0 +1,30 @@
+<div id="user-wrapper" class="container">
+<h3 class="color-blocked dark">User Details</h3>
+<div class="copy">
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Last signin at:</strong>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <strong>Last signin IP:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<button class="user btn">
+<%= link_to 'Edit', [:edit, @user] if policy(@user).edit? %>
+</button>
+</div>
+</div>
