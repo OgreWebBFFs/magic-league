@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
-    def index
-      @cards = current_user.cards.order(:name).group(:id)
-      @count = @cards.count
-    end
+  def index
+    @user = current_user
+    @cards = @user.cards.order(:name).group(:id)
+    @count = @cards.count
   end
-
+end

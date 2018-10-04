@@ -7,7 +7,6 @@
 </div>
 
 <script>
-
   var cardTemplate = function(card) {
     return `
     <div class="card-wrapper">
@@ -16,9 +15,9 @@
       </a>
       <div class="card-count-component">
         <span>
-          <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
+          <button type="button" class="remove-card" data-id="${card.id}">-</button>
           <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
-          <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
+          <button type="button" class="add-card" data-id="${card.id}">+</button>
         </span>
       </div>
     </div>
@@ -75,7 +74,6 @@
       }
     }, 300));
 
-    $(document).off('click', '.add-card');
     $(document).on('click', '.add-card', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
@@ -83,7 +81,6 @@
       });
     });
 
-    $(document).off('click', '.remove-card');
     $(document).on('click', '.remove-card', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
@@ -95,7 +92,6 @@
       });
     });
 
-    $(document).off('click', '.add-card, .remove-card');
     $(document).on('click', '.add-card, .remove-card', debounce(function(){
       id = $(this).attr('data-id');
       count = $(`input[type=number][data-id=${id}]`).val()
@@ -118,5 +114,4 @@
       });
     }, 200));
   });
-
 </script>

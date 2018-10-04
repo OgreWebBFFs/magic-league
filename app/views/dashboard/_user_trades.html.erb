@@ -1,0 +1,25 @@
+<div id="user-and-trades" class="container">
+  <div id="user">
+       <%= image_tag "user.svg" %>
+       <%= link_to 'Edit Account', [:edit, @user], class: 'btn small' if policy(@user).edit? %>
+  </div>
+  <div id="trades-table">
+    <div class="alternating table two-col">
+      <div class="headings row">
+        <p>Trades</p>
+        <p>Amount</p>
+      </div>
+      <div class="row">
+        <p>Rare:</p>
+        <input type="number" value="1" name="rare" label="Rare">
+      </div>
+      <div class="row">
+       <p>Uncommon</p><input type="number" value="3" name="uncommon" label="Uncommon">
+      </div>
+      <div class="row">
+        <p>Common:</p>
+        <input type="number" value="11" name="rare" label="Common">
+        </div>
+      </div>
+  </div>
+</div>

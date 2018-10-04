@@ -1,81 +1,9 @@
-
-  <div id="dashboard-wrapper">
-  <div id="user-and-trades" class="container">
-    <div id="user">
-         <%= image_tag "user.svg" %>
-      <h3>1028</h3>
-      <p>You have logged your cards for this month, thanks!</p>
-    </div>
-    <div id="trades-table">
-      <h3>Your Trades</h3>
-      <div class="alternating table two-col">
-        <div class="headings row">
-          <p>Type</p>
-          <p>Amount</p>
-        </div>
-        <div class="row">
-          <p>Rare:</p>
-          <input type="number" value="1" name="rare" label="Rare">
-        </div>
-        <div class="row">
-         <p>Uncommon</p><input type="number" value="3" name="uncommon" label="Uncommon">
-        </div>
-        <div class="row">
-          <p>Common:</p>
-          <input type="number" value="11" name="rare" label="Common">
-          </div>     
-        </div>
-    </div>
+<div id="dashboard-wrapper">
+  <div id="dash-heading" class="container">
+    <h2><%= @user.name %></h2>    
   </div>
-   
-<%#   <div id="deck-table" class="container">  
-       <a href="/edit-collection.html"class="main-toggle btn">Edit Decks</a> 
-      <h3>Your Decks</h3>
-      <div  class="alternating three-col table">
-        <div class="row headings">
-          <p>Deck</p>
-          <p>Colors</p>
-          <p></p>
-        </div>
-        <div class="row">
-          <p>IzzWizzit</p>
-          <p>Red/Blue</p>
-          <p>
-            <a class="small btn" href="/edit-deck.html">Edit</a>
-          </p>
-        </div>
-        <div class="row">
-          <p>ZomTown</p>
-          <p>Black</p>
-          <p>
-            <a class="small btn" href="/edit-deck.html">Edit</a>
-          </p>
-        </div>
-      </div>
-    </div> %>
 
-    
-    <div id="collection-table" class="container">
-      <%= link_to 'Edit Collection', edit_collection_path(current_user.collection.id), class: 'main-toggle btn' %>
-      <h3>Your Collection</h3>
-      <div  class="alternating three-col table">
-        <div class="row headings">
-          <p>Card</p>
-          <p>Amount</p>
-          <p>Tradable</p>
-        </div>
-        <% @cards.each do |card| %>
-        <div class="row">
-          <p><%= card.name %></p>
-          <p><%= @count[card.id] %></p>
-          <div class="checkbox-container">
-            <div class="checkbox">
-              <input type="checkbox" id="<%= "#{card.name}_#{card.id}" %>">
-              <label for="<%= "#{card.name}_#{card.id}" %>"></label>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render 'user_trades', user: @user %>
+  <%= render 'user_decks', user: @user %>
+  <%= render 'user_collections', user: @user %>
+</div>

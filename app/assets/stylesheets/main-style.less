@@ -17,7 +17,7 @@
 
 //Static Reused Numbers
 @nav-height: 64px;
-@footer-height: 40px;
+@footer-height: 32px;
 @section-padding: 25px;
 @animation-delay: 2s;
 
@@ -43,7 +43,6 @@ nav {
 
   .nav-wrapper {
     width:80%;
-
     #logo-container {
       height: 100%;
       width: auto;
@@ -156,35 +155,26 @@ footer {
 
   &.page-footer {
     padding: 0;
- 
+    height: @footer-height;
     width: 100%;
     background: darken(@background-color, 10%);
-  
+    display: table;
 
     .container {
-      height: @footer-height;
-      width:80%;
-      margin:0 auto;
-      text-align:center;
-      display: table;
-      p,
-      .copyright  {
-        display:table-cell;
-        vertical-align: middle;
-        font-size:10px;
-      }
-      p{
-        text-align:left;
-      }
-      .copyright {
-        text-align:right;       
-       
-      
+      display: table-cell;
+      vertical-align: middle;
+      width: 95%;
+
+      .footer-copyright {
+        background: transparent;
+        min-height: 25px;
+        color: @color-dark;
+        float: right;
+        text-align: right;
 
         p {
-          display:inline;
-          text-align:right;   
-           }
+          margin: 0;
+        }
       }
     }
   }
@@ -282,11 +272,7 @@ footer {
       .row {
         display: table-row;
         height: 46px;
-        padding: 5px;
-        &:after{
-          content:none;
-        }
-
+       
         a,
         input,
         p {
@@ -296,7 +282,7 @@ footer {
           margin: 5px;
           display: table-cell;
           vertical-align: middle;
-          padding: 5px;
+          padding: 5px 15px;
 
           &.btn {
             width: 100px;
@@ -309,11 +295,10 @@ footer {
           text-transform: uppercase;
           color: @color-light;
           background: @color-dark;
-         
+          border-bottom: 2px solid @color-highlight-import;
 
           p {
             padding-bottom: 2px;
-            border-bottom: 4px solid lighten(@color-highlight-import, 10%);
 
           }
         }
@@ -649,9 +634,11 @@ footer {
 }
 //Dashboard Page 
 #dashboard-wrapper {
+
   .container {
     margin: 50px auto;
   }
+
 
   #collection-table,
   #deck-table {
@@ -682,49 +669,52 @@ footer {
 
   }
 
-  #user-and-trades {
-    white-space: nowrap;
-    display: table;
 
+  #user-and-trades {
+    display:table;
+   
     #trades-table,
     #user {
-      white-space: normal;
       display: table-cell;
       box-sizing: border-box;
-      width: 50%;
       vertical-align: middle;
-    
       position: relative;
-
+    }
+    #user{
       h3 {
-        margin-top: 0;
+        margin: 0;
       }
+       
+   
 
     }
 
     #user {
       text-align: center;
-  
-      img {
-        height: 210px;
-        width: auto;
-        background: @color-dark;
-      }
+      padding-right:10px;
+   
 
-      p {
-        width: 95%;
-        padding: 5px;
-        color: @color-light;
-        background: @color-highlight-import;
-        vertical-align: bottom;
-        margin-bottom: 0;
-        position: relative;
-        bottom: 0;
+      img {
+       width:100%;
+        background: @color-dark;
+        height: 207px;
+        width: auto;        
+        
+      }
+      a.btn{
+        width:100%;
+        margin:0 auto;
+        color:@color-light;
+        display:block;
+         }
+      img,
+      a.btn{
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
       }
     }
 
     #trades-table {
-      .table {
+        .table {
         input,
         p:last-child {
           text-align: center;
@@ -744,12 +734,39 @@ footer {
       }
     }
   }
+  #collection-table,
+  #deck-table {
+    .main-toggle {
+      float: right;
+      margin-top: 6px;
+     
+    }
+    .btn{
+      color:@color-light;
+    }
+    .row {
+      p {
+        &:nth-of-type(2) {
+          text-align: center;
+        }
+
+        &:last-child {
+
+          text-align: right;
+          text-align: -webkit-right;
+
+        }
+      }
+    }
+
+  }
+
+ 
 
   #deck-table {
     .row {
       p {
-        padding: 5px;
-
+       
         &:last-of-type {
           a {
             width: 100px;
@@ -762,7 +779,7 @@ footer {
   #collection-table {
     .row {
       .checkbox-container {
-        @coll-table-check-width: 36px;
+        @coll-table-check-width: 100px;
         display: table-cell;
         vertical-align: middle;
         width: @coll-table-check-width;
@@ -774,7 +791,6 @@ footer {
           display: inline-block;
           position: relative;
           vertical-align: top;
-          margin-right:22px;
 
           label {
             position: relative;
@@ -784,7 +800,7 @@ footer {
               width: @coll-table-check-width;
               position: absolute;
               left: 0;
-              content: "No";
+              content: "Not For Trade";
               display: inline-block;
               text-decoration: none;
               color: @color-light;
@@ -815,13 +831,12 @@ footer {
 
           input[type="checkbox"]:checked + label::before {
             background-color: @color-highlight-import;
-            content: "Yes";
+            content: "For Trade";
 
           }
 
         }
       }
-
     }
   }
 }
@@ -900,113 +915,6 @@ footer {
   }
 }
 //Card Search
-.card-grid{
-  display: inline-grid;
-  grid-template-columns: repeat(4, auto);
-  width: 100%;
-
-
-  
-  .card-wrapper{
-    width: 100%;
-    margin: 10px auto;
-   
-
-  
-    .card-grid-item{
-      width:100%;
-      text-align:center;
-      display:block;
-      img{
-        width:90%;
-        margin:0;
-      }
-    }
-    .card-count-component{
-     
-      margin: 0 auto;
-      text-align:center;
-      width: 90%;      
-      span{ 
-        display:table;
-        background: #26a69a;   
-        height:35px;
-        border-radius: 2px;
-        .btn,
-        input{
-          display:table-cell;
-          vertical-align: middle;
-          text-align:center;  
-        }   
-        .btn{
-          font-weight:bolder;
-          width: 36px;
-          border-left:2px solid @color-light;
-          padding: 0; 
-          float:right;
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          &:first-of-type{
-            float:left;
-            border-left:none;
-            border-right:2px solid @color-light;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            border-top-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-          }           
-         
-        }
-
-        input{
-          border-radius: 2px;
-          width: 30%;        
-          color: white;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          font-size: 26px;
-          line-height: 26px;
-          font-weight: bold;
-          text-overflow: ellipsis;
-          vertical-align: bottom;
-          overflow: hidden;
-          &[type=number]::-webkit-inner-spin-button, 
-          &[type=number]::-webkit-outer-spin-button{
-            -webkit-appearance: none; 
-            margin: 0;
-          } 
-         
-
-        }
-      
-      }
-      &.not-in-collection{
-        span{
-          display:block;
-          background: transparent;
-          input,
-          .remove-card.btn{
-            display:none;
-          }
-          .add-card.btn{
-            width:100%;
-            border-left:none;
-            border-top-right-radius: 2px;
-            border-bottom-right-radius: 2px;
-            background: @color-highlight-mid-import;
-            border-top-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-          }
-
-        }
-      }
-    }
-  }
-}
-
-
-
 #card-search-wrapper {
   #search.container {
     white-space: nowrap;
@@ -1225,6 +1133,7 @@ footer {
   }
 }
 
+
 //USers 
 #user-wrapper {
   .btn {
@@ -1267,8 +1176,6 @@ footer {
   }
 
 }
-
-
 @media only screen and (max-width: 993px) {
   nav {
     .nav-wrapper {
@@ -1279,35 +1186,6 @@ footer {
       }
     }
   }
-}
-@media only screen and (max-width: 800px){
-  #dashboard-wrapper{
-    #user-and-trades{
-      white-space: normal;
-      display:block;
-      #user{
-        margin-bottom:25px;
-      }
-      #user, 
-      #trades-table{
-        display:block;
-        width:100%;
-      }
-    }
- 
-  }
-
-  .card-grid{
-    grid-template-columns: repeat(3, auto);
-  }
-
-}
-
-@media only screen and (max-width: 720px){
-
- 
-
-
 }
 @media only screen and (max-width: 650px) {
   nav {
@@ -1345,10 +1223,6 @@ footer {
   .section {
     .container {
       width: 90%;
-      h3{
-        font-size: 1.9rem;
-        line-height: 100%;
-      }
     }
   }
 
@@ -1356,7 +1230,8 @@ footer {
     width: 95%;
 
   }
-
+  // Responsive section for specific pages
+  //TO DO Store in specific pages style files
   #ranking-wrapper {
     width: 100%;
     min-width: 100px;
@@ -1377,31 +1252,6 @@ footer {
         }
       }
     }
-  }
-  #dashboard-wrapper {
-    .container {
-      margin:25px auto;
-      h3{
-        margin:10px 0;
-      }
-    }
-  }
-  .card-grid{
-    grid-template-columns: repeat(2, auto);
-  }
-  
-
-}
-
-@media only screen and (max-width: 400px) {
-  .card-grid{
-    display:block;
-    .card-wrapper{
-      margin-bottom:25px;
-    }
-  }
-  .container{
-    width:100%;
   }
 
 }

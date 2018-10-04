@@ -19,6 +19,13 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+
+  def show
+    @cards = @user.cards.order(:name).group(:id)
+    @count = @cards.count
+  end
+
+
   private
   def set_user
     @user = User.find_by_id(params[:id])
