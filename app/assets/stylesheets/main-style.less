@@ -1292,16 +1292,75 @@ footer {
   }
 
 }
+
+
 @media only screen and (max-width: 993px) {
-  nav {
-    .nav-wrapper {
-      ul {
-        &.menu {
-          margin-right: -10%;
+  nav{
+    .nav-wrapper{
+      ul{
+        &.menu{
+          margin-right:-10%;
         }
       }
     }
   }
+}
+@media only screen and (max-width: 800px){
+  .card-grid{
+    grid-template-columns: repeat(3, auto);
+  }
+
+}
+
+@media only screen and (max-width: 720px){
+ #dashboard-wrapper{
+   h2{
+     text-align:center;
+     margin:0;
+     font-size:2.1rem;
+   }
+   .container{
+     margin:10px auto;
+     &:first-of-type{
+       margin-top:0;
+     }
+   
+    &#user-and-trades{
+
+
+      display:block;
+      #user, 
+      #trades-table{
+        display:block;
+
+      }
+      #user{
+        margin-bottom:20px;
+        .btn{
+          width:207px;
+          
+        }
+      }
+    }
+    &#deck-table, 
+    &#collection-table{
+     
+      h3{
+        font-size:2rem;
+        .btn{
+          &.main-toggle{
+            width:100px;
+            margin-top: -1px;
+            overflow:hidden;
+          }
+        }
+      }
+    }
+  }
+ }
+ 
+
+
 }
 @media only screen and (max-width: 650px) {
   nav {
@@ -1332,6 +1391,7 @@ footer {
         overflow: hidden;
         float: left;
 
+
       }
     }
   }
@@ -1346,8 +1406,7 @@ footer {
     width: 95%;
 
   }
-  // Responsive section for specific pages
-  //TO DO Store in specific pages style files
+
   #ranking-wrapper {
     width: 100%;
     min-width: 100px;
@@ -1369,8 +1428,25 @@ footer {
       }
     }
   }
+  .card-grid{
+    grid-template-columns: repeat(2, auto);
+  }
 
 }
+
+@media only screen and (max-width: 400px) {
+  .card-grid{
+    display:block;
+    .card-wrapper{
+      margin-bottom:25px;
+    }
+  }
+  .container{
+    width:100%;
+  }
+
+}
+
 
 //Animations
 @keyframes growVert {

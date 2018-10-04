@@ -924,6 +924,47 @@ footer.page-footer .container .copyright p {
     margin-right: -10%;
   }
 }
+@media only screen and (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+@media only screen and (max-width: 720px) {
+  #dashboard-wrapper h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 2.1rem;
+  }
+  #dashboard-wrapper .container {
+    margin: 10px auto;
+  }
+  #dashboard-wrapper .container:first-of-type {
+    margin-top: 0;
+  }
+  #dashboard-wrapper .container#user-and-trades {
+    display: block;
+  }
+  #dashboard-wrapper .container#user-and-trades #user,
+  #dashboard-wrapper .container#user-and-trades #trades-table {
+    display: block;
+  }
+  #dashboard-wrapper .container#user-and-trades #user {
+    margin-bottom: 20px;
+  }
+  #dashboard-wrapper .container#user-and-trades #user .btn {
+    width: 207px;
+  }
+  #dashboard-wrapper .container#deck-table h3,
+  #dashboard-wrapper .container#collection-table h3 {
+    font-size: 2rem;
+  }
+  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle,
+  #dashboard-wrapper .container#collection-table h3 .btn.main-toggle {
+    width: 100px;
+    margin-top: -1px;
+    overflow: hidden;
+  }
+}
 @media only screen and (max-width: 650px) {
   nav .nav-wrapper .menu {
     display: none;
@@ -966,6 +1007,20 @@ footer.page-footer .container .copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-grid {
+    display: block;
+  }
+  .card-grid .card-wrapper {
+    margin-bottom: 25px;
+  }
+  .container {
+    width: 100%;
   }
 }
 @keyframes growVert {
