@@ -79,7 +79,7 @@ nav {
         }
 
         button.btn {
-
+          margin-left:5px;
           color: @color-light;
           height: 40px;
           margin-top: -5px;
@@ -155,26 +155,35 @@ footer {
 
   &.page-footer {
     padding: 0;
-    height: @footer-height;
+ 
     width: 100%;
     background: darken(@background-color, 10%);
-    display: table;
+  
 
     .container {
-      display: table-cell;
-      vertical-align: middle;
-      width: 95%;
-
-      .footer-copyright {
-        background: transparent;
-        min-height: 25px;
-        color: @color-dark;
-        float: right;
-        text-align: right;
+      height: @footer-height;
+      width:80%;
+      margin:0 auto;
+      text-align:center;
+      display: table;
+      p,
+      .copyright  {
+        display:table-cell;
+        vertical-align: middle;
+        font-size:10px;
+      }
+      p{
+        text-align:left;
+      }
+      .copyright {
+        text-align:right;       
+       
+      
 
         p {
-          margin: 0;
-        }
+          display:inline;
+          text-align:right;   
+           }
       }
     }
   }
@@ -603,7 +612,7 @@ footer {
     width: 35%;
     padding: 5px;
     margin: 0 auto;
-    height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (2*@{section-padding}))";
+    height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
     position: relative;
     min-width: 300px;
 
@@ -681,7 +690,7 @@ footer {
 
     #ranking-border {
       width: 100%;
-      height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (2*@{section-padding}))";
+      height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
       height: 100%;
       position: absolute;
       top: 0;
