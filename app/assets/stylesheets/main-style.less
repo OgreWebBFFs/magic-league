@@ -79,7 +79,7 @@ nav {
         }
 
         button.btn {
-
+          margin-left:5px;
           color: @color-light;
           height: 40px;
           margin-top: -5px;
@@ -155,26 +155,35 @@ footer {
 
   &.page-footer {
     padding: 0;
-    height: @footer-height;
+ 
     width: 100%;
     background: darken(@background-color, 10%);
-    display: table;
+  
 
     .container {
-      display: table-cell;
-      vertical-align: middle;
-      width: 95%;
-
-      .footer-copyright {
-        background: transparent;
-        min-height: 25px;
-        color: @color-dark;
-        float: right;
-        text-align: right;
+      height: @footer-height;
+      width:80%;
+      margin:0 auto;
+      text-align:center;
+      display: table;
+      p,
+      .copyright  {
+        display:table-cell;
+        vertical-align: middle;
+        font-size:10px;
+      }
+      p{
+        text-align:left;
+      }
+      .copyright {
+        text-align:right;       
+       
+      
 
         p {
-          margin: 0;
-        }
+          display:inline;
+          text-align:right;   
+           }
       }
     }
   }
@@ -473,6 +482,113 @@ footer {
   animation-iteration-count: infinite;
 
 }
+
+.card-grid{
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+
+
+  
+  .card-wrapper{
+    width: 100%;
+    margin: 10px auto;
+   
+
+  
+    .card-grid-item{
+      width:100%;
+      text-align:center;
+      display:block;
+      img{
+        width:90%;
+        margin:0;
+      }
+    }
+    .card-count-component{
+     
+      margin: 0 auto;
+      text-align:center;
+      width: 90%;      
+      span{ 
+        display:table;
+        background: #26a69a;   
+        height:35px;
+        border-radius: 2px;
+        .btn,
+        input{
+          display:table-cell;
+          vertical-align: middle;
+          text-align:center;  
+        }   
+        .btn{
+          font-weight:bolder;
+          width: 36px;
+          border-left:2px solid @color-light;
+          padding: 0; 
+          float:right;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          &:first-of-type{
+            float:left;
+            border-left:none;
+            border-right:2px solid @color-light;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }           
+         
+        }
+
+        input{
+          border-radius: 2px;
+          width: 30%;        
+          color: white;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          font-size: 26px;
+          line-height: 26px;
+          font-weight: bold;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
+          overflow: hidden;
+          &[type=number]::-webkit-inner-spin-button, 
+          &[type=number]::-webkit-outer-spin-button{
+            -webkit-appearance: none; 
+            margin: 0;
+          } 
+         
+
+        }
+      
+      }
+      &.not-in-collection{
+        span{
+          display:block;
+          background: transparent;
+          input,
+          .remove-card.btn{
+            display:none;
+          }
+          .add-card.btn{
+            width:100%;
+            border-left:none;
+            border-top-right-radius: 2px;
+            border-bottom-right-radius: 2px;
+            background: @color-highlight-mid-import;
+            border-top-left-radius: 2px;
+            border-bottom-left-radius: 2px;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
 //TO DO: BREAK INTO OWN FILES 
 //Ranking Page
 
@@ -496,7 +612,7 @@ footer {
     width: 35%;
     padding: 5px;
     margin: 0 auto;
-    height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (2*@{section-padding}))";
+    height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
     position: relative;
     min-width: 300px;
 
@@ -574,7 +690,7 @@ footer {
 
     #ranking-border {
       width: 100%;
-      height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (2*@{section-padding}))";
+      height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
       height: 100%;
       position: absolute;
       top: 0;
@@ -779,12 +895,12 @@ footer {
   #collection-table {
     .row {
       .checkbox-container {
-        @coll-table-check-width: 100px;
+        @coll-table-check-width: 36px;
         display: table-cell;
         vertical-align: middle;
-        width: @coll-table-check-width;
         text-align: right;
-
+        padding-right: 29px;
+    
         .checkbox {
           width: @coll-table-check-width;
           height: 36px;
@@ -1176,16 +1292,75 @@ footer {
   }
 
 }
+
+
 @media only screen and (max-width: 993px) {
-  nav {
-    .nav-wrapper {
-      ul {
-        &.menu {
-          margin-right: -10%;
+  nav{
+    .nav-wrapper{
+      ul{
+        &.menu{
+          margin-right:-10%;
         }
       }
     }
   }
+}
+@media only screen and (max-width: 800px){
+  .card-grid{
+    grid-template-columns: repeat(3, auto);
+  }
+
+}
+
+@media only screen and (max-width: 720px){
+ #dashboard-wrapper{
+   h2{
+     text-align:center;
+     margin:0;
+     font-size:2.1rem;
+   }
+   .container{
+     margin:10px auto;
+     &:first-of-type{
+       margin-top:0;
+     }
+   
+    &#user-and-trades{
+
+
+      display:block;
+      #user, 
+      #trades-table{
+        display:block;
+
+      }
+      #user{
+        margin-bottom:20px;
+        .btn{
+          width:207px;
+          
+        }
+      }
+    }
+    &#deck-table, 
+    &#collection-table{
+     
+      h3{
+        font-size:2rem;
+        .btn{
+          &.main-toggle{
+            width:100px;
+            margin-top: -1px;
+            overflow:hidden;
+          }
+        }
+      }
+    }
+  }
+ }
+ 
+
+
 }
 @media only screen and (max-width: 650px) {
   nav {
@@ -1216,6 +1391,7 @@ footer {
         overflow: hidden;
         float: left;
 
+
       }
     }
   }
@@ -1230,8 +1406,7 @@ footer {
     width: 95%;
 
   }
-  // Responsive section for specific pages
-  //TO DO Store in specific pages style files
+
   #ranking-wrapper {
     width: 100%;
     min-width: 100px;
@@ -1253,8 +1428,25 @@ footer {
       }
     }
   }
+  .card-grid{
+    grid-template-columns: repeat(2, auto);
+  }
 
 }
+
+@media only screen and (max-width: 400px) {
+  .card-grid{
+    display:block;
+    .card-wrapper{
+      margin-bottom:25px;
+    }
+  }
+  .container{
+    width:100%;
+  }
+
+}
+
 
 //Animations
 @keyframes growVert {

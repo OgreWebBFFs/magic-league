@@ -1,11 +1,11 @@
 <div id="collection-table" class="container">
-  <%= link_to 'Edit Collection', edit_collection_path(user.collection.id), class: 'main-toggle btn' if policy(user.collection).edit? %>
-  <h3>Your Collection</h3>
+
+  <h3>Collection   <%= link_to 'Edit Collection', edit_collection_path(user.collection.id), class: 'main-toggle btn' if policy(user.collection).edit? %></h3>
   <div  class="alternating three-col table">
     <div class="row headings">
       <p>Card</p>
       <p>Amount</p>
-      <p></p>
+      <p>Tradable</p>
     </div>
     <% @cards.each do |card| %>
     <div class="row">

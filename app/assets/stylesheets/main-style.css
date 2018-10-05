@@ -47,6 +47,7 @@ nav .nav-wrapper .mobile-menu li a:hover {
 }
 nav .nav-wrapper .menu li button.btn,
 nav .nav-wrapper .mobile-menu li button.btn {
+  margin-left: 5px;
   color: white;
   height: 40px;
   margin-top: -5px;
@@ -105,25 +106,31 @@ footer {
 }
 footer.page-footer {
   padding: 0;
-  height: 32px;
   width: 100%;
   background: #e4e4e4;
-  display: table;
 }
 footer.page-footer .container {
+  height: 32px;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: table;
+}
+footer.page-footer .container p,
+footer.page-footer .container .copyright {
   display: table-cell;
   vertical-align: middle;
-  width: 95%;
+  font-size: 10px;
 }
-footer.page-footer .container .footer-copyright {
-  background: transparent;
-  min-height: 25px;
-  color: #49494b;
-  float: right;
+footer.page-footer .container p {
+  text-align: left;
+}
+footer.page-footer .container .copyright {
   text-align: right;
 }
-footer.page-footer .container .footer-copyright p {
-  margin: 0;
+footer.page-footer .container .copyright p {
+  display: inline;
+  text-align: right;
 }
 .section {
   padding-top: 1rem;
@@ -368,6 +375,95 @@ footer.page-footer .container .footer-copyright p {
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
+.card-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  width: 100%;
+}
+.card-grid .card-wrapper {
+  width: 100%;
+  margin: 10px auto;
+}
+.card-grid .card-wrapper .card-grid-item {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.card-grid .card-wrapper .card-grid-item img {
+  width: 90%;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component {
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+}
+.card-grid .card-wrapper .card-count-component span {
+  display: table;
+  background: #26a69a;
+  height: 35px;
+  border-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span .btn,
+.card-grid .card-wrapper .card-count-component span input {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.card-grid .card-wrapper .card-count-component span .btn {
+  font-weight: bolder;
+  width: 36px;
+  border-left: 2px solid white;
+  padding: 0;
+  float: right;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.card-grid .card-wrapper .card-count-component span .btn:first-of-type {
+  float: left;
+  border-left: none;
+  border-right: 2px solid white;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.card-grid .card-wrapper .card-count-component span input {
+  border-radius: 2px;
+  width: 30%;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-inner-spin-button,
+.card-grid .card-wrapper .card-count-component span input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span {
+  display: block;
+  background: transparent;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span input,
+.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+  display: none;
+}
+.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+  width: 100%;
+  border-left: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: #d1bfa7;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
 #ranking-wrapper {
   text-align: center;
 }
@@ -385,7 +481,7 @@ footer.page-footer .container .footer-copyright p {
   width: 35%;
   padding: 5px;
   margin: 0 auto;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 32px - 60px - (4*25px));
   position: relative;
   min-width: 300px;
 }
@@ -449,7 +545,7 @@ footer.page-footer .container .footer-copyright p {
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
-  height: calc(100vh - 64px - 32px - 60px - (2*25px));
+  height: calc(100vh - 64px - 32px - 60px - (4*25px));
   height: 100%;
   position: absolute;
   top: 0;
@@ -584,11 +680,11 @@ footer.page-footer .container .footer-copyright p {
 #dashboard-wrapper #collection-table .row .checkbox-container {
   display: table-cell;
   vertical-align: middle;
-  width: 100px;
   text-align: right;
+  padding-right: 29px;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox {
-  width: 100px;
+  width: 36px;
   height: 36px;
   display: inline-block;
   position: relative;
@@ -599,7 +695,7 @@ footer.page-footer .container .footer-copyright p {
   color: white;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:before {
-  width: 100px;
+  width: 36px;
   position: absolute;
   left: 0;
   content: "No";
@@ -828,6 +924,47 @@ footer.page-footer .container .footer-copyright p {
     margin-right: -10%;
   }
 }
+@media only screen and (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+@media only screen and (max-width: 720px) {
+  #dashboard-wrapper h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 2.1rem;
+  }
+  #dashboard-wrapper .container {
+    margin: 10px auto;
+  }
+  #dashboard-wrapper .container:first-of-type {
+    margin-top: 0;
+  }
+  #dashboard-wrapper .container#user-and-trades {
+    display: block;
+  }
+  #dashboard-wrapper .container#user-and-trades #user,
+  #dashboard-wrapper .container#user-and-trades #trades-table {
+    display: block;
+  }
+  #dashboard-wrapper .container#user-and-trades #user {
+    margin-bottom: 20px;
+  }
+  #dashboard-wrapper .container#user-and-trades #user .btn {
+    width: 207px;
+  }
+  #dashboard-wrapper .container#deck-table h3,
+  #dashboard-wrapper .container#collection-table h3 {
+    font-size: 2rem;
+  }
+  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle,
+  #dashboard-wrapper .container#collection-table h3 .btn.main-toggle {
+    width: 100px;
+    margin-top: -1px;
+    overflow: hidden;
+  }
+}
 @media only screen and (max-width: 650px) {
   nav .nav-wrapper .menu {
     display: none;
@@ -870,6 +1007,20 @@ footer.page-footer .container .footer-copyright p {
     width: 95%;
     padding: 5px 2px;
     margin: 2px auto;
+  }
+  .card-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-grid {
+    display: block;
+  }
+  .card-grid .card-wrapper {
+    margin-bottom: 25px;
+  }
+  .container {
+    width: 100%;
   }
 }
 @keyframes growVert {

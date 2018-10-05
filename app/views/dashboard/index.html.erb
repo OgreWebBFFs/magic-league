@@ -1,9 +1,8 @@
 <div id="dashboard-wrapper">
-  <div id="dash-heading" class="container">
-    <h2><%= @user.name %></h2>    
-  </div>
-
-  <%= render 'user_trades', user: @user %>
-  <%= render 'user_decks', user: @user %>
-  <%= render 'user_collections', user: @user %>
+  <div class="container">
+    <h2><%= @user.name %></h2>
+  </div>    
+    <%= render 'user_trades', user: @user %>
+    <%= render 'user_decks', user: @user %>
+    <%= render 'user_collections', user: @user %>
 </div>

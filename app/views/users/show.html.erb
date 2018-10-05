@@ -2,7 +2,6 @@
 <div id="dashboard-wrapper">
   <div class="container">
     <h2><%= @user.name %></h2>
-    <%= link_to 'Edit', [:edit, @user], class: 'btn small' if policy(@user).edit? %>
   </div>
 
   <%= render 'dashboard/user_trades', user: @user %>

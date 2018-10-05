@@ -36,7 +36,7 @@
               <a href="/rules">Rules</a>
             </li>
             <li>
-              <a href="/users">Users</a>
+              <a href="/users">Roster</a>
             </li>
             <li>
               <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
@@ -47,12 +47,7 @@
               </button>
           </ul>
           <ul class="mobile-menu">
-            <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle('match-logger-container')">
-                <i class="material-icons">note_add</i>Log a match
-              </button>
-            </li>
-            <li>
+           <li>
               <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu')">
                 <i class="material-icons">menu</i>
 
@@ -68,7 +63,7 @@
                   <a href="/rules">Rules</a>
                 </li>
                 <li>
-                  <a href="/users">Users</a>
+                  <a href="/users">Roster</a>
                 </li>
                 <li>
                   <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
@@ -76,11 +71,14 @@
               </ul>
 
             </li>
-
             <li>
-
-
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle('match-logger-container')">
+                <i class="material-icons">note_add</i>Log a match
+              </button>
             </li>
+           
+
+           
 
           </ul>
         </div>
@@ -123,15 +121,17 @@
       </div>
     </div>
 
-      <% if user_signed_in? %>
+          <% if user_signed_in? %>
         <footer class="page-footer">
           <div class="container">
+        
             <% if current_user %>
-              Logged in as <%= link_to current_user, current_user %>,
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            <p>Logged in as <% if current_user%><%=current_user.name%><%end%>,
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
             <% end %>
-            <div class="footer-copyright">
-
+          
+            <div class="copyright">
+              <p>Developed by OWB</p>
             </div>
           </div>
         </footer>
