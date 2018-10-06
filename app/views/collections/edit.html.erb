@@ -7,49 +7,12 @@
 </div>
 <script>
 
-  var cardTemplate = function(card) {
-    return `
-      <div class="card-wrapper">
-        <div class="wishlist-checkbox">
-                <input class="toggle-wishlist" wish-list-id="${search('id', card.id, wishlist) === undefined ? -1 : search('id', card.id, wishlist).id}" data-id="${card.id}" id="checkbox-for-${card.id}" type="checkbox" ${search('id', card.id, wishlist) === undefined ? '' : 'checked' }>
-                <label for="checkbox-for-${card.id}"></label>
-            </div>
-      <a class="card-grid-item" href="/cards/${card.id}">
-        <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
-      </a>
-      <div class="card-count-component">
-        <span>
-          <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
-          <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
-          <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
-        </span>
-      </div>
-        `
-  };
-
-  var debounce = function(func, delay) {
-    var inDebounce;
-    return function() {
-      var context = this;
-      var args = arguments;
-      clearTimeout(inDebounce);
-      inDebounce = setTimeout(function() {
-        func.apply(context, args);
-      }, delay);
-    }
-  }
 
   var wishlist = []
   var current_user_cards = <%= @cards.to_json.html_safe %>
 
   var cardCount = function(id) {
     return current_user_cards[id] || 0;
-  }
-
-  var search = function(key, value, arr){
-    return arr.find(function(item) {
-      return item[key] == value
-    });
   }
 
   $(function() {
@@ -69,32 +32,13 @@
     $('#card-search').keyup(debounce(function() {
       query = $(this).val();
       if (query.length > 0) {
-        $.ajax({
-          url: "/cards?query=" + query,
-          type: "GET",
-          dataType: "json",
-          error: function(e) {
-          },
-          success: function(res) {
-            populateGrid(res);
-          }
-        });
+        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res) } )
       } else {
         clearGrid();
       }
     }, 300));
 
-    $.ajax({
-      url: '/wishlists/' + <%= current_user.id %>,
-      type: 'GET',
-      dataType: "json",
-      error: function(e) {
-
-      },
-      success: function(res) {
-        wishlist = res;
-      }
-    })
+    xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
 
     $(document).off('click', '.add-card');
     $(document).on('click', '.add-card', function() {
@@ -120,39 +64,13 @@
     $(document).on('click', '.add-card, .remove-card', debounce(function(){
       id = $(this).attr('data-id');
       count = $(`input[type=number][data-id=${id}]`).val()
-      $.ajax({
-        url: '/collections/<%=@collection.id %>',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader("X-CSRF-Token", token)
-        },
-        type: "PUT",
-        data: { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}},
-        dataType: 'json',
-        success: function(res) {
-          current_user_cards[id] = count 
-        },
-        error: function(res) {
-        }
-      });
+      xhrRequest('/collections/<%=@collection.id %>', "PUT", function(res){ current_user_cards[id] = count }, { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}});
     }, 200));
 
     $(document).off('click', '.toggle-wishlist');
     $(document).on('click', '.toggle-wishlist', function(){
       card_id = $(this).attr('data-id');
-      $.ajax({
-        url: '/wishlists/<%= current_user.id %>',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader("X-CSRF-Token", token)
-        },
-        type: "PUT",
-        data: { card_id: card_id },
-        dataType: 'json',
-        success: function(res) {
-          wishlist = res;
-        },
-        error: function(res) {
-        }
-      });
+      xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
     });
   
  });
