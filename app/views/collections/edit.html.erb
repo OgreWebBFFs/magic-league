@@ -9,17 +9,20 @@
 
   var cardTemplate = function(card) {
     return `
-        <div class="card-wrapper">
-        <a class="card-grid-item" href="/cards/${card.id}">
-          <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
-        </a>
-        <div class="card-count-component">
-          <span>
-            <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
-            <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
-            <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
-          </span>
-        </div>
+      <div class="card-wrapper">
+        <div class="wishlist-checkbox">
+                <input id="checkbox-for-${card.id}" type="checkbox" >
+                <label for="checkbox-for-${card.id}"></label>
+            </div>
+      <a class="card-grid-item" href="/cards/${card.id}">
+        <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
+      </a>
+      <div class="card-count-component">
+        <span>
+          <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
+          <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
+          <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
+        </span>
       </div>
         `
   };
