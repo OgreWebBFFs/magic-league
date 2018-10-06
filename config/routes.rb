@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :collections, only: [:index, :show, :edit, :update]
   resources :cards, only: [:index]
   resources :ownerships, only: [:create, :destroy]
+  resources :wishlists, only: [:show, :update]
 end

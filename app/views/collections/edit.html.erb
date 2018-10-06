@@ -11,7 +11,7 @@
     return `
       <div class="card-wrapper">
         <div class="wishlist-checkbox">
-                <input id="checkbox-for-${card.id}" type="checkbox" >
+                <input class="toggle-wishlist" wish-list-id="${search('id', card.id, wishlist) === undefined ? -1 : search('id', card.id, wishlist).id}" data-id="${card.id}" id="checkbox-for-${card.id}" type="checkbox" ${search('id', card.id, wishlist) === undefined ? '' : 'checked' }>
                 <label for="checkbox-for-${card.id}"></label>
             </div>
       <a class="card-grid-item" href="/cards/${card.id}">
@@ -39,10 +39,17 @@
     }
   }
 
-    var current_user_cards = <%= @cards.to_json.html_safe %>
+  var wishlist = []
+  var current_user_cards = <%= @cards.to_json.html_safe %>
 
   var cardCount = function(id) {
     return current_user_cards[id] || 0;
+  }
+
+  var search = function(key, value, arr){
+    return arr.find(function(item) {
+      return item[key] == value
+    });
   }
 
   $(function() {
@@ -77,6 +84,18 @@
       }
     }, 300));
 
+    $.ajax({
+      url: '/wishlists/' + <%= current_user.id %>,
+      type: 'GET',
+      dataType: "json",
+      error: function(e) {
+
+      },
+      success: function(res) {
+        wishlist = res;
+      }
+    })
+
     $(document).off('click', '.add-card');
     $(document).on('click', '.add-card', function() {
       id = $(this).attr('data-id');
@@ -110,10 +129,31 @@
         data: { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}},
         dataType: 'json',
         success: function(res) {
+          current_user_cards[id] = count 
         },
         error: function(res) {
         }
       });
     }, 200));
-  });
+
+    $(document).off('click', '.toggle-wishlist');
+    $(document).on('click', '.toggle-wishlist', function(){
+      card_id = $(this).attr('data-id');
+      $.ajax({
+        url: '/wishlists/<%= current_user.id %>',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("X-CSRF-Token", token)
+        },
+        type: "PUT",
+        data: { card_id: card_id },
+        dataType: 'json',
+        success: function(res) {
+          wishlist = res;
+        },
+        error: function(res) {
+        }
+      });
+    });
+  
+ });
 </script>
