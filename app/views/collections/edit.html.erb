@@ -10,6 +10,10 @@
   var cardTemplate = function(card) {
     return `
       <div class="card-wrapper">
+        <div class="wishlist-checkbox">
+                <input id="checkbox-for-${card.id}" type="checkbox" >
+                <label for="checkbox-for-${card.id}"></label>
+            </div>
       <a class="card-grid-item" href="/cards/${card.id}">
         <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
       </a>
