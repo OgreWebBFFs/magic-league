@@ -285,7 +285,9 @@ footer {
 
         a,
         input,
-        p {
+        p,
+        button, 
+        div {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -300,7 +302,9 @@ footer {
           }
 
         }
-
+        button{
+          line-height:26px;
+        }
         &.headings {
           text-transform: uppercase;
           color: @color-light;
@@ -312,7 +316,9 @@ footer {
 
           }
         }
-
+        &:after{
+          content:none;
+        }
       }
 
       &.alternating {
@@ -508,7 +514,7 @@ footer {
 
         &:before {
           cursor: pointer;
-          opacity: .5;
+          opacity: .4;
           content: "\2665";
           position: absolute;
           color: white;
@@ -868,7 +874,8 @@ footer {
   }
 
   #collection-table,
-  #deck-table {
+  #deck-table, 
+  #wishlist-table {
     .main-toggle {
       float: right;
       margin-top: 6px;
@@ -880,7 +887,8 @@ footer {
     }
 
     .row {
-      p {
+      p,
+       {
         &:nth-of-type(2) {
           text-align: center;
         }
@@ -892,6 +900,16 @@ footer {
 
         }
       }
+      .button-wrapper{
+        &:last-of-type{
+          text-align: right;
+          .btn{
+            margin-right:0;
+          }
+        }
+      }
+      
+      
     }
 
   }
@@ -962,7 +980,8 @@ footer {
   }
 
   #collection-table,
-  #deck-table {
+  #deck-table,
+  #wishlist-table {
     .main-toggle {
       float: right;
       margin-top: 6px;
@@ -1002,7 +1021,8 @@ footer {
     }
   }
 
-  #collection-table {
+  #collection-table
+ {
     .row {
       .checkbox-container {
         @coll-table-check-width: 36px;
@@ -1065,6 +1085,8 @@ footer {
       }
     }
   }
+
+
 }
 //Log in
 //TO DO GENERATE LOG IN WRAPPER
@@ -1452,7 +1474,8 @@ footer {
       }
 
       &#collection-table,
-      &#deck-table {
+      &#deck-table,
+      &#wishlist-table {
         h3 {
           font-size: 2rem;
 

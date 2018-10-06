@@ -230,7 +230,9 @@ footer.page-footer .container .copyright p {
 }
 .section .container .table .row a,
 .section .container .table .row input,
-.section .container .table .row p {
+.section .container .table .row p,
+.section .container .table .row button,
+.section .container .table .row div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -241,8 +243,13 @@ footer.page-footer .container .copyright p {
 }
 .section .container .table .row a.btn,
 .section .container .table .row input.btn,
-.section .container .table .row p.btn {
+.section .container .table .row p.btn,
+.section .container .table .row button.btn,
+.section .container .table .row div.btn {
   width: 100px;
+}
+.section .container .table .row button {
+  line-height: 26px;
 }
 .section .container .table .row.headings {
   text-transform: uppercase;
@@ -252,6 +259,9 @@ footer.page-footer .container .copyright p {
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
+}
+.section .container .table .row:after {
+  content: none;
 }
 .section .container .table.alternating .row:nth-child(even) {
   background: rgba(73, 73, 75, 0.15);
@@ -399,7 +409,7 @@ footer.page-footer .container .copyright p {
 }
 .card-grid .card-wrapper .wishlist-checkbox label:before {
   cursor: pointer;
-  opacity: .5;
+  opacity: .4;
   content: "\2665";
   position: absolute;
   color: white;
@@ -664,22 +674,36 @@ footer.page-footer .container .copyright p {
   margin: 50px auto;
 }
 #dashboard-wrapper #collection-table .main-toggle,
-#dashboard-wrapper #deck-table .main-toggle {
+#dashboard-wrapper #deck-table .main-toggle,
+#dashboard-wrapper #wishlist-table .main-toggle {
   float: right;
   margin-top: 6px;
 }
 #dashboard-wrapper #collection-table .btn,
-#dashboard-wrapper #deck-table .btn {
+#dashboard-wrapper #deck-table .btn,
+#dashboard-wrapper #wishlist-table .btn {
   color: white;
 }
 #dashboard-wrapper #collection-table .row p:nth-of-type(2),
-#dashboard-wrapper #deck-table .row p:nth-of-type(2) {
+#dashboard-wrapper #deck-table .row p:nth-of-type(2),
+#dashboard-wrapper #wishlist-table .row p:nth-of-type(2) {
   text-align: center;
 }
 #dashboard-wrapper #collection-table .row p:last-child,
-#dashboard-wrapper #deck-table .row p:last-child {
+#dashboard-wrapper #deck-table .row p:last-child,
+#dashboard-wrapper #wishlist-table .row p:last-child {
   text-align: right;
   text-align: -webkit-right;
+}
+#dashboard-wrapper #collection-table .row .button-wrapper:last-of-type,
+#dashboard-wrapper #deck-table .row .button-wrapper:last-of-type,
+#dashboard-wrapper #wishlist-table .row .button-wrapper:last-of-type {
+  text-align: right;
+}
+#dashboard-wrapper #collection-table .row .button-wrapper:last-of-type .btn,
+#dashboard-wrapper #deck-table .row .button-wrapper:last-of-type .btn,
+#dashboard-wrapper #wishlist-table .row .button-wrapper:last-of-type .btn {
+  margin-right: 0;
 }
 #dashboard-wrapper #user-and-trades {
   display: table;
@@ -728,20 +752,24 @@ footer.page-footer .container .copyright p {
   margin: 0;
 }
 #dashboard-wrapper #collection-table .main-toggle,
-#dashboard-wrapper #deck-table .main-toggle {
+#dashboard-wrapper #deck-table .main-toggle,
+#dashboard-wrapper #wishlist-table .main-toggle {
   float: right;
   margin-top: 6px;
 }
 #dashboard-wrapper #collection-table .btn,
-#dashboard-wrapper #deck-table .btn {
+#dashboard-wrapper #deck-table .btn,
+#dashboard-wrapper #wishlist-table .btn {
   color: white;
 }
 #dashboard-wrapper #collection-table .row p:nth-of-type(2),
-#dashboard-wrapper #deck-table .row p:nth-of-type(2) {
+#dashboard-wrapper #deck-table .row p:nth-of-type(2),
+#dashboard-wrapper #wishlist-table .row p:nth-of-type(2) {
   text-align: center;
 }
 #dashboard-wrapper #collection-table .row p:last-child,
-#dashboard-wrapper #deck-table .row p:last-child {
+#dashboard-wrapper #deck-table .row p:last-child,
+#dashboard-wrapper #wishlist-table .row p:last-child {
   text-align: right;
   text-align: -webkit-right;
 }
@@ -1026,11 +1054,13 @@ footer.page-footer .container .copyright p {
     width: 207px;
   }
   #dashboard-wrapper .container#collection-table h3,
-  #dashboard-wrapper .container#deck-table h3 {
+  #dashboard-wrapper .container#deck-table h3,
+  #dashboard-wrapper .container#wishlist-table h3 {
     font-size: 2rem;
   }
   #dashboard-wrapper .container#collection-table h3 .btn.main-toggle,
-  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle {
+  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle,
+  #dashboard-wrapper .container#wishlist-table h3 .btn.main-toggle {
     width: 100px;
     margin-top: -1px;
     overflow: hidden;
