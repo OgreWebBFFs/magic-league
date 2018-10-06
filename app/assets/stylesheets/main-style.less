@@ -381,7 +381,7 @@ footer {
 
   }
 }
-
+//Repetitious Elements 
 #match-logger-container {
   position: absolute;
   height: 100vh;
@@ -398,20 +398,7 @@ footer {
   color: @color-dark;
   text-align: center;
 
-  .close-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: @color-highlight-import;
-    float: right;
-    margin: 0;
-    background: transparent;
-    border: none;
-
-    .material-icons {
-      font-size: 30px;
-    }
-  }
+ 
 
   .background-click-container {
     width: 100%;
@@ -463,7 +450,7 @@ footer {
   }
 
 }
-//IDed Elements 
+
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -489,7 +476,20 @@ footer {
   animation-iteration-count: infinite;
 
 }
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: @color-highlight-import;
+  float: right;
+  margin: 0;
+  background: transparent;
+  border: none;
 
+  .material-icons {
+    font-size: 30px;
+  }
+}
 .card-grid {
   display: inline-grid;
   grid-template-columns: repeat(4, 25%);
@@ -694,8 +694,10 @@ footer {
       }
 
       .trade-proposal-request {
+        
         .btn {
           background: @color-dark;
+          cursor: auto;
 
           &:after {
             content: "Not in League";
@@ -707,6 +709,64 @@ footer {
 
   }
 }
+.modal-wrapper{
+  display:none;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: fade(@color-dark, 50%);
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  padding-bottom: 2 rem; 
+  transition-duration: .51s;
+  color: @color-dark;
+  text-align: center;
+  .background-click-container{
+    width:100%;
+    height:100vh;
+    top:0;
+    position: absolute;
+    z-index:-1;
+  }
+  .modal{
+    position: relative;    
+    height:50vh;
+    width:75%;
+    margin:25vh auto;
+    background: @color-light;
+    vertical-align: middle;
+    overflow:auto;
+    padding:25px;
+    border-radius: 2px;
+    display: table;
+
+    .content{
+      display:table-cell;
+      vertical-align: middle;
+    h1, 
+    h2,
+    h3,
+    h4,
+    p{
+      margin-top: 0;
+    }
+   
+  }
+  }
+  &.active{
+    display:block;
+  }
+ &.narrow{
+  .modal{
+    width:40%;
+    min-width:250px;
+  }
+ }
+}
+
+
 
 //TO DO: BREAK INTO OWN FILES 
 //Ranking Page

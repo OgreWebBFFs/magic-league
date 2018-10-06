@@ -310,19 +310,6 @@ footer.page-footer .container .copyright p {
   color: #49494b;
   text-align: center;
 }
-#match-logger-container .close-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #26a69a;
-  float: right;
-  margin: 0;
-  background: transparent;
-  border: none;
-}
-#match-logger-container .close-button .material-icons {
-  font-size: 30px;
-}
 #match-logger-container .background-click-container {
   width: 100%;
   height: 100%;
@@ -384,6 +371,19 @@ footer.page-footer .container .copyright p {
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   animation-iteration-count: infinite;
+}
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #26a69a;
+  float: right;
+  margin: 0;
+  background: transparent;
+  border: none;
+}
+.close-button .material-icons {
+  font-size: 30px;
 }
 .card-grid {
   display: inline-grid;
@@ -541,9 +541,62 @@ footer.page-footer .container .copyright p {
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn {
   background: #49494b;
+  cursor: auto;
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn:after {
   content: "Not in League";
+}
+.modal-wrapper {
+  display: none;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(73, 73, 75, 0.5);
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  padding-bottom: 2 rem;
+  transition-duration: .51s;
+  color: #49494b;
+  text-align: center;
+}
+.modal-wrapper .background-click-container {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+}
+.modal-wrapper .modal {
+  position: relative;
+  height: 50vh;
+  width: 75%;
+  margin: 25vh auto;
+  background: white;
+  vertical-align: middle;
+  overflow: auto;
+  padding: 25px;
+  border-radius: 2px;
+  display: table;
+}
+.modal-wrapper .modal .content {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal-wrapper .modal .content h1,
+.modal-wrapper .modal .content h2,
+.modal-wrapper .modal .content h3,
+.modal-wrapper .modal .content h4,
+.modal-wrapper .modal .content p {
+  margin-top: 0;
+}
+.modal-wrapper.active {
+  display: block;
+}
+.modal-wrapper.narrow .modal {
+  width: 40%;
+  min-width: 250px;
 }
 #ranking-wrapper {
   text-align: center;
