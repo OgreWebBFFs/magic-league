@@ -10,7 +10,7 @@
     <% @cards.each do |card| %>
     <div class="row">
       <p><%= card.name %></p>
-      <p><%= @count[card.id] %></p>
+      <p><%= @cards.count[card.id] %></p>
       <div class="checkbox-container">
         <div class="checkbox">
           <input type="checkbox" id="<%= "#{card.name}_#{card.id}" %>">
