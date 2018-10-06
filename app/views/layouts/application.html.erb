@@ -42,7 +42,7 @@
               <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="idedElementToggle('match-logger-container'), setMatchDateAndTime()">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
           </ul>
@@ -72,7 +72,7 @@
 
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle('match-logger-container')">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
             </li>
@@ -154,6 +154,11 @@
           let time = `${hour}:${min}`;
           document.getElementById('match-date').value = today;
           document.getElementById('match-time').value = time;
+        }
+
+        function logMatchOnClick() {
+          idedElementToggle('match-logger-container');
+          setMatchDateAndTime();
         }
 
         var addPlayerOption = function(name, id) {
