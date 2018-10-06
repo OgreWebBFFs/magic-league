@@ -149,13 +149,11 @@
         function setMatchDateAndTime(){
           let date  = new Date();
           let today = date.toISOString().substr(0, 10);
-          let hour = date.getHours();
-          let min= date.getMinutes(); 
-          let sec= date.getSeconds();
-          let time = hour.toString()+ ":"+ min.toString()+":"+sec.toString();
+          let hour = ('0' + date.getHours()).slice(-2);
+          let min= ('0' + date.getMinutes()).slice(-2);
+          let time = `${hour}:${min}`;
           document.getElementById('match-date').value = today;
-          document.getElementById('match-time').value = time;       
-
+          document.getElementById('match-time').value = time;
         }
 
         var addPlayerOption = function(name, id) {
