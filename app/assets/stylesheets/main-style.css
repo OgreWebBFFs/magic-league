@@ -116,8 +116,8 @@ footer.page-footer .container {
   text-align: center;
   display: table;
 }
-footer.page-footer .container p,
-footer.page-footer .container .copyright {
+footer.page-footer .container .copyright,
+footer.page-footer .container p {
   display: table-cell;
   vertical-align: middle;
   font-size: 10px;
@@ -377,12 +377,42 @@ footer.page-footer .container .copyright p {
 }
 .card-grid {
   display: inline-grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 25%);
   width: 100%;
 }
 .card-grid .card-wrapper {
   width: 100%;
-  margin: 10px auto;
+  margin: 30px auto;
+  position: relative;
+}
+.card-grid .card-wrapper .wishlist-checkbox {
+  width: 36px;
+  height: 36px;
+  top: -25px;
+  right: -10px;
+  opacity: 1;
+  position: absolute;
+  z-index: 2;
+}
+.card-grid .card-wrapper .wishlist-checkbox label {
+  position: relative;
+}
+.card-grid .card-wrapper .wishlist-checkbox label:before {
+  cursor: pointer;
+  opacity: .5;
+  content: "\2665";
+  position: absolute;
+  color: white;
+  font-size: 35px;
+  background-color: #d1bfa7;
+  padding: 6px;
+  border-radius: 25px;
+  line-height: 24px;
+  -webkit-tap-highlight-color: transparent;
+  transition: .25s;
+}
+.card-grid .card-wrapper .wishlist-checkbox input[type="checkbox"]:checked + label::before {
+  opacity: 1;
 }
 .card-grid .card-wrapper .card-grid-item {
   width: 100%;
@@ -447,15 +477,26 @@ footer.page-footer .container .copyright p {
   -webkit-appearance: none;
   margin: 0;
 }
-.card-grid .card-wrapper .card-count-component.not-in-collection span {
+.card-grid .card-wrapper .trade-proposal-request {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+.card-grid .card-wrapper .trade-proposal-request .btn {
+  width: 100%;
+}
+.card-grid .card-wrapper .trade-proposal-request .btn span {
+  display: none;
+}
+.card-grid .card-wrapper.not-in-collection .card-count-component span {
   display: block;
   background: transparent;
 }
-.card-grid .card-wrapper .card-count-component.not-in-collection span input,
-.card-grid .card-wrapper .card-count-component.not-in-collection span .remove-card.btn {
+.card-grid .card-wrapper.not-in-collection .card-count-component span .remove-card.btn,
+.card-grid .card-wrapper.not-in-collection .card-count-component span input {
   display: none;
 }
-.card-grid .card-wrapper .card-count-component.not-in-collection span .add-card.btn {
+.card-grid .card-wrapper.not-in-collection .card-count-component span .add-card.btn {
   width: 100%;
   border-left: none;
   border-top-right-radius: 2px;
@@ -463,6 +504,36 @@ footer.page-footer .container .copyright p {
   background: #d1bfa7;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
+}
+.card-grid .card-wrapper.not-in-collection .card-count-component span .add-card.btn:hover {
+  background: #dacbb8;
+}
+.card-grid .card-wrapper.for-trade .trade-proposal-request .btn {
+  background: #26a69a;
+}
+.card-grid .card-wrapper.for-trade .trade-proposal-request .btn:hover {
+  background: #2bbbad;
+}
+.card-grid .card-wrapper.for-trade .trade-proposal-request .btn:after {
+  content: "Propose Trade";
+}
+.card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn {
+  background: #d1bfa7;
+}
+.card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn:hover {
+  background: #dacbb8;
+}
+.card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn:after {
+  content: "Make an Offer";
+}
+.card-grid .card-wrapper.not-in-league .card-grid-item {
+  opacity: .5;
+}
+.card-grid .card-wrapper.not-in-league .trade-proposal-request .btn {
+  background: #49494b;
+}
+.card-grid .card-wrapper.not-in-league .trade-proposal-request .btn:after {
+  content: "Not in League";
 }
 #ranking-wrapper {
   text-align: center;
@@ -639,8 +710,8 @@ footer.page-footer .container .copyright p {
   color: white;
   display: block;
 }
-#dashboard-wrapper #user-and-trades #user img,
-#dashboard-wrapper #user-and-trades #user a.btn {
+#dashboard-wrapper #user-and-trades #user a.btn,
+#dashboard-wrapper #user-and-trades #user img {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 #dashboard-wrapper #user-and-trades #trades-table .table input,
@@ -926,7 +997,7 @@ footer.page-footer .container .copyright p {
 }
 @media only screen and (max-width: 800px) {
   .card-grid {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 33.3%);
   }
 }
 @media only screen and (max-width: 720px) {
@@ -944,8 +1015,8 @@ footer.page-footer .container .copyright p {
   #dashboard-wrapper .container#user-and-trades {
     display: block;
   }
-  #dashboard-wrapper .container#user-and-trades #user,
-  #dashboard-wrapper .container#user-and-trades #trades-table {
+  #dashboard-wrapper .container#user-and-trades #trades-table,
+  #dashboard-wrapper .container#user-and-trades #user {
     display: block;
   }
   #dashboard-wrapper .container#user-and-trades #user {
@@ -954,12 +1025,12 @@ footer.page-footer .container .copyright p {
   #dashboard-wrapper .container#user-and-trades #user .btn {
     width: 207px;
   }
-  #dashboard-wrapper .container#deck-table h3,
-  #dashboard-wrapper .container#collection-table h3 {
+  #dashboard-wrapper .container#collection-table h3,
+  #dashboard-wrapper .container#deck-table h3 {
     font-size: 2rem;
   }
-  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle,
-  #dashboard-wrapper .container#collection-table h3 .btn.main-toggle {
+  #dashboard-wrapper .container#collection-table h3 .btn.main-toggle,
+  #dashboard-wrapper .container#deck-table h3 .btn.main-toggle {
     width: 100px;
     margin-top: -1px;
     overflow: hidden;
@@ -1009,7 +1080,7 @@ footer.page-footer .container .copyright p {
     margin: 2px auto;
   }
   .card-grid {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 50%);
   }
 }
 @media only screen and (max-width: 400px) {

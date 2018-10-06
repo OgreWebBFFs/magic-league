@@ -42,7 +42,8 @@ nav {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
   .nav-wrapper {
-    width:80%;
+    width: 80%;
+
     #logo-container {
       height: 100%;
       width: auto;
@@ -79,7 +80,7 @@ nav {
         }
 
         button.btn {
-          margin-left:5px;
+          margin-left: 5px;
           color: @color-light;
           height: 40px;
           margin-top: -5px;
@@ -155,35 +156,35 @@ footer {
 
   &.page-footer {
     padding: 0;
- 
+
     width: 100%;
     background: darken(@background-color, 10%);
-  
 
     .container {
       height: @footer-height;
-      width:80%;
-      margin:0 auto;
-      text-align:center;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
       display: table;
-      p,
-      .copyright  {
-        display:table-cell;
+
+      .copyright,
+      p {
+        display: table-cell;
         vertical-align: middle;
-        font-size:10px;
+        font-size: 10px;
       }
-      p{
-        text-align:left;
+
+      p {
+        text-align: left;
       }
+
       .copyright {
-        text-align:right;       
-       
-      
+        text-align: right;
 
         p {
-          display:inline;
-          text-align:right;   
-           }
+          display: inline;
+          text-align: right;
+        }
       }
     }
   }
@@ -281,7 +282,7 @@ footer {
       .row {
         display: table-row;
         height: 46px;
-       
+
         a,
         input,
         p {
@@ -483,67 +484,105 @@ footer {
 
 }
 
-.card-grid{
+.card-grid {
   display: inline-grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 25%);
   width: 100%;
 
-
-  
-  .card-wrapper{
+  .card-wrapper {
     width: 100%;
-    margin: 10px auto;
-   
+    margin: 30px auto;
+    position: relative;
 
-  
-    .card-grid-item{
-      width:100%;
-      text-align:center;
-      display:block;
-      img{
-        width:90%;
-        margin:0;
+    .wishlist-checkbox {
+      width: 36px;
+      height: 36px;
+      top: -25px;
+      right: -10px;
+      opacity: 1;
+      position: absolute;
+      z-index: 2;
+
+      label {
+        position: relative;
+
+        &:before {
+          cursor: pointer;
+          opacity: .5;
+          content: "\2665";
+          position: absolute;
+          color: white;
+          font-size: 35px;
+          background-color: @color-highlight-mid-import;
+          padding: 6px;
+          border-radius: 25px;
+          line-height: 24px;
+          -webkit-tap-highlight-color: transparent;
+          transition: .25s;
+        }
+
+      }
+
+      input[type="checkbox"]:checked + label::before {
+        opacity: 1;
+      }
+
+    }
+
+    .card-grid-item {
+      width: 100%;
+      text-align: center;
+      display: block;
+
+      img {
+        width: 90%;
+        margin: 0;
       }
     }
-    .card-count-component{
-     
+
+    .card-count-component {
+
       margin: 0 auto;
-      text-align:center;
-      width: 90%;      
-      span{ 
-        display:table;
-        background: #26a69a;   
-        height:35px;
+      text-align: center;
+      width: 90%;
+
+      span {
+        display: table;
+        background: #26a69a;
+        height: 35px;
         border-radius: 2px;
+
         .btn,
-        input{
-          display:table-cell;
+        input {
+          display: table-cell;
           vertical-align: middle;
-          text-align:center;  
-        }   
-        .btn{
-          font-weight:bolder;
+          text-align: center;
+        }
+
+        .btn {
+          font-weight: bolder;
           width: 36px;
-          border-left:2px solid @color-light;
-          padding: 0; 
-          float:right;
+          border-left: 2px solid @color-light;
+          padding: 0;
+          float: right;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
-          &:first-of-type{
-            float:left;
-            border-left:none;
-            border-right:2px solid @color-light;
+
+          &:first-of-type {
+            float: left;
+            border-left: none;
+            border-right: 2px solid @color-light;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
-          }           
-         
+          }
+
         }
 
-        input{
+        input {
           border-radius: 2px;
-          width: 30%;        
+          width: 30%;
           color: white;
           background-color: transparent;
           border: none;
@@ -554,40 +593,114 @@ footer {
           text-overflow: ellipsis;
           vertical-align: bottom;
           overflow: hidden;
-          &[type=number]::-webkit-inner-spin-button, 
-          &[type=number]::-webkit-outer-spin-button{
-            -webkit-appearance: none; 
+
+          &[type=number]::-webkit-inner-spin-button,
+          &[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
             margin: 0;
-          } 
-         
+          }
 
         }
-      
+
       }
-      &.not-in-collection{
-        span{
-          display:block;
+
+    }
+
+    .trade-proposal-request {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+
+      .btn {
+        width: 100%;
+
+        span {
+          display: none;
+        }
+      }
+    }
+
+    &.not-in-collection {
+      .card-count-component {
+        span {
+          display: block;
           background: transparent;
-          input,
-          .remove-card.btn{
-            display:none;
+
+          .remove-card.btn,
+          input {
+            display: none;
           }
-          .add-card.btn{
-            width:100%;
-            border-left:none;
+
+          .add-card.btn {
+            width: 100%;
+            border-left: none;
             border-top-right-radius: 2px;
             border-bottom-right-radius: 2px;
             background: @color-highlight-mid-import;
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
+
+            &:hover {
+              background: lighten(@color-highlight-mid-import, 5%);
+            }
           }
 
         }
       }
     }
+
+    &.for-trade {
+      .trade-proposal-request {
+        .btn {
+          background: @color-highlight-import;
+
+          &:hover {
+            background: lighten(@color-highlight-import, 5%);
+          }
+
+          &:after {
+            content: "Propose Trade";
+          }
+
+        }
+      }
+    }
+
+    &.not-for-trade {
+      .trade-proposal-request {
+        .btn {
+          background: @color-highlight-mid-import;
+
+          &:hover {
+            background: lighten(@color-highlight-mid-import, 5%);
+          }
+
+          &:after {
+            content: "Make an Offer";
+          }
+        }
+      }
+    }
+
+    &.not-in-league {
+      .card-grid-item {
+        opacity: .5;
+      }
+
+      .trade-proposal-request {
+        .btn {
+          background: @color-dark;
+
+          &:after {
+            content: "Not in League";
+          }
+
+        }
+      }
+    }
+
   }
 }
-
 
 //TO DO: BREAK INTO OWN FILES 
 //Ranking Page
@@ -750,11 +863,9 @@ footer {
 }
 //Dashboard Page 
 #dashboard-wrapper {
-
   .container {
     margin: 50px auto;
   }
-
 
   #collection-table,
   #deck-table {
@@ -785,10 +896,9 @@ footer {
 
   }
 
-
   #user-and-trades {
-    display:table;
-   
+    display: table;
+
     #trades-table,
     #user {
       display: table-cell;
@@ -796,41 +906,41 @@ footer {
       vertical-align: middle;
       position: relative;
     }
-    #user{
+
+    #user {
       h3 {
         margin: 0;
       }
-       
-   
 
     }
 
     #user {
       text-align: center;
-      padding-right:10px;
-   
+      padding-right: 10px;
 
       img {
-       width:100%;
+        width: 100%;
         background: @color-dark;
         height: 207px;
-        width: auto;        
-        
+        width: auto;
+
       }
-      a.btn{
-        width:100%;
-        margin:0 auto;
-        color:@color-light;
-        display:block;
-         }
-      img,
-      a.btn{
+
+      a.btn {
+        width: 100%;
+        margin: 0 auto;
+        color: @color-light;
+        display: block;
+      }
+
+      a.btn,
+      img {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
       }
     }
 
     #trades-table {
-        .table {
+      .table {
         input,
         p:last-child {
           text-align: center;
@@ -850,16 +960,19 @@ footer {
       }
     }
   }
+
   #collection-table,
   #deck-table {
     .main-toggle {
       float: right;
       margin-top: 6px;
-     
+
     }
-    .btn{
-      color:@color-light;
+
+    .btn {
+      color: @color-light;
     }
+
     .row {
       p {
         &:nth-of-type(2) {
@@ -877,12 +990,9 @@ footer {
 
   }
 
- 
-
   #deck-table {
     .row {
       p {
-       
         &:last-of-type {
           a {
             width: 100px;
@@ -900,7 +1010,7 @@ footer {
         vertical-align: middle;
         text-align: right;
         padding-right: 29px;
-    
+
         .checkbox {
           width: @coll-table-check-width;
           height: 36px;
@@ -1249,14 +1359,13 @@ footer {
   }
 }
 
-
 //USers 
 #user-wrapper {
   .btn {
     &.user {
       margin: 5px 0;
-      width:200px;
-      overflow:hidden;
+      width: 200px;
+      overflow: hidden;
       text-overflow: ellipsis;
     }
   }
@@ -1266,100 +1375,98 @@ footer {
 
 //Cross browser fixes 
 //FireFox
-
 @-moz-document url-prefix() {
-  .card-grid{
-    .card-wrapper{
-      .card-count-component{
-        span{
-        input{
-          line-height:34px;
-          -moz-appearance:textfield;
+  .card-grid {
+    .card-wrapper {
+      .card-count-component {
+        span {
+          input {
+            line-height: 34px;
+            -moz-appearance: textfield;
+          }
         }
       }
-      }
-      
+
     }
   }
 
 }
 
 //Responsive Adjustments
-
 @media only screen and (orientation : portrait) {
   #cycling-background-container {
     background-size: contain;
   }
 
 }
-
-
 @media only screen and (max-width: 993px) {
-  nav{
-    .nav-wrapper{
-      ul{
-        &.menu{
-          margin-right:-10%;
+  nav {
+    .nav-wrapper {
+      ul {
+        &.menu {
+          margin-right: -10%;
         }
       }
     }
   }
 }
-@media only screen and (max-width: 800px){
-  .card-grid{
-    grid-template-columns: repeat(3, auto);
+@media only screen and (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 33.3%);
   }
 
 }
+@media only screen and (max-width: 720px) {
+  #dashboard-wrapper {
+    h2 {
+      text-align: center;
+      margin: 0;
+      font-size: 2.1rem;
+    }
 
-@media only screen and (max-width: 720px){
- #dashboard-wrapper{
-   h2{
-     text-align:center;
-     margin:0;
-     font-size:2.1rem;
-   }
-   .container{
-     margin:10px auto;
-     &:first-of-type{
-       margin-top:0;
-     }
-   
-    &#user-and-trades{
+    .container {
+      margin: 10px auto;
 
-
-      display:block;
-      #user, 
-      #trades-table{
-        display:block;
-
+      &:first-of-type {
+        margin-top: 0;
       }
-      #user{
-        margin-bottom:20px;
-        .btn{
-          width:207px;
-          
+
+      &#user-and-trades {
+
+        display: block;
+
+        #trades-table,
+        #user {
+          display: block;
+
+        }
+
+        #user {
+          margin-bottom: 20px;
+
+          .btn {
+            width: 207px;
+
+          }
         }
       }
-    }
-    &#deck-table, 
-    &#collection-table{
-     
-      h3{
-        font-size:2rem;
-        .btn{
-          &.main-toggle{
-            width:100px;
-            margin-top: -1px;
-            overflow:hidden;
+
+      &#collection-table,
+      &#deck-table {
+        h3 {
+          font-size: 2rem;
+
+          .btn {
+            &.main-toggle {
+              width: 100px;
+              margin-top: -1px;
+              overflow: hidden;
+            }
           }
         }
       }
     }
   }
- }
- 
-
 
 }
 @media only screen and (max-width: 650px) {
@@ -1390,7 +1497,6 @@ footer {
         width: 30px;
         overflow: hidden;
         float: left;
-
 
       }
     }
@@ -1428,25 +1534,26 @@ footer {
       }
     }
   }
-  .card-grid{
-    grid-template-columns: repeat(2, auto);
+
+  .card-grid {
+    grid-template-columns: repeat(2, 50%);
   }
 
 }
-
 @media only screen and (max-width: 400px) {
-  .card-grid{
-    display:block;
-    .card-wrapper{
-      margin-bottom:25px;
+  .card-grid {
+    display: block;
+
+    .card-wrapper {
+      margin-bottom: 25px;
     }
   }
-  .container{
-    width:100%;
+
+  .container {
+    width: 100%;
   }
 
 }
-
 
 //Animations
 @keyframes growVert {
