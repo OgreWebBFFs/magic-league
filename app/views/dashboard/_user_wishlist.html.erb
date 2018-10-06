@@ -6,13 +6,40 @@
       <p>Card</p>
       <p></p>
     </div>
-   
+    <% @user.wishlist_items.each do |card| %>   
     <div class="row">
-      <p>Card Name</p>
+      <p><%= card.name %></p>
       <div class="button-wrapper">
-       <button class="small btn">Remove</button>
+        <button data-id="<%= card.id %>" class="remove-from-wishlist small btn">Remove</button>
       </div>
     </div>
+    <% end %>
   
   </div>
 </div>
+
+  <script>
+    $(function() {
+    var token = $("meta[name='csrf-token']").attr("content");
+    $(document).off('click', '.remove-from-wishlist');
+    $(document).on('click', '.remove-from-wishlist', function(){
+      card_id = $(this).attr('data-id');
+      that = this;
+      $.ajax({
+        url: '/wishlists/<%= current_user.id %>',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("X-CSRF-Token", token)
+        },
+        type: "PUT",
+        data: { card_id: card_id },
+        dataType: 'json',
+        success: function(res) {
+          $(that).closest('.row').remove();
+        },
+        error: function(res) {
+        }
+      });
+    });
+    });
+ 
+  </script>
