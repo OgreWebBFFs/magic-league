@@ -42,7 +42,7 @@
               <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="idedElementToggle('match-logger-container')">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
           </ul>
@@ -72,7 +72,7 @@
 
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="idedElementToggle('match-logger-container')">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
             </li>
@@ -114,8 +114,8 @@
           <select class="browser-default winner-selector" name="match[winner]">
           </select>
           <p>When?</p>
-          <input type="date" name="match[date]"/>
-          <input type="time" name="match[time]"/>
+          <input id="match-date" type="date" name="match[date]"/>
+          <input id="match-time" type="time" name="match[time]"/>
           <input type="submit" />
         <% end %>
       </div>
@@ -146,18 +146,33 @@
           target.classList.toggle("active");
         }
 
-var addPlayerOption = function(name, id) {
-  return `
-        <option value="${id}">${name}</option>
-        `
-}
+        function setMatchDateAndTime(){
+          let date  = new Date();
+          let today = date.toISOString().substr(0, 10);
+          let hour = ('0' + date.getHours()).slice(-2);
+          let min= ('0' + date.getMinutes()).slice(-2);
+          let time = `${hour}:${min}`;
+          document.getElementById('match-date').value = today;
+          document.getElementById('match-time').value = time;
+        }
 
-$(function() {
-  $('.player-selector').on('change', function() {
-    $('.winner-selector').empty();
-    $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
-  });
-});
+        function logMatchOnClick() {
+          idedElementToggle('match-logger-container');
+          setMatchDateAndTime();
+        }
+
+        var addPlayerOption = function(name, id) {
+          return `
+                <option value="${id}">${name}</option>
+                `
+        }
+
+        $(function() {
+          $('.player-selector').on('change', function() {
+            $('.winner-selector').empty();
+            $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
+          });
+        });
       </script>
   </body>
 </html>
