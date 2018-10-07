@@ -1,7 +1,7 @@
 <div id="dashboard-wrapper">
   <div class="container">
     <h2><%= @user.name %></h2>
-  </div>    
+  </div>
     <%= render 'user_trades', user: @user %>
     <%= render 'dashboard/user_wishlist', user: @user %>
     <%= render 'user_collections', user: @user %>
