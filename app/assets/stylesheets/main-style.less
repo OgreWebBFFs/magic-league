@@ -284,10 +284,10 @@ footer {
         height: 46px;
 
         a,
+        button,
+        div,
         input,
-        p,
-        button, 
-        div {
+        p {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -302,9 +302,11 @@ footer {
           }
 
         }
-        button{
-          line-height:26px;
+
+        button {
+          line-height: 26px;
         }
+
         &.headings {
           text-transform: uppercase;
           color: @color-light;
@@ -316,8 +318,9 @@ footer {
 
           }
         }
-        &:after{
-          content:none;
+
+        &:after {
+          content: none;
         }
       }
 
@@ -398,8 +401,6 @@ footer {
   color: @color-dark;
   text-align: center;
 
- 
-
   .background-click-container {
     width: 100%;
     height: 100%;
@@ -476,6 +477,7 @@ footer {
   animation-iteration-count: infinite;
 
 }
+
 .close-button {
   position: absolute;
   top: 5px;
@@ -490,10 +492,47 @@ footer {
     font-size: 30px;
   }
 }
+
 .card-grid {
   display: inline-grid;
   grid-template-columns: repeat(4, 25%);
   width: 100%;
+
+  #legend {
+    position: fixed;
+    z-index: 99;
+    bottom: @footer-height;
+    right: -15px;
+    padding: 5px;
+
+    ul {
+      margin: 0;
+      padding:0;
+      background: transparent;
+      
+
+      li {
+        border: 1px solid @color-light;
+        color: @color-light;
+        padding: 5px;
+        width: 100px;
+        margin: 2px auto;
+        border-radius: 2px;
+        font-size: 8px;
+          &.mid-highlight {
+          background: @color-highlight-mid-import;
+        }
+
+        &.highlight {
+          background: @color-highlight-import;
+        }
+
+        &.dark {
+          background: @color-dark;
+        }
+      }
+    }
+  }
 
   .card-wrapper {
     width: 100%;
@@ -682,7 +721,8 @@ footer {
           }
 
           &:after {
-            content: "Make an Offer";
+            content: "Propose Trade";
+            // content: "Make an Offer";
           }
         }
       }
@@ -694,7 +734,6 @@ footer {
       }
 
       .trade-proposal-request {
-        
         .btn {
           background: @color-dark;
           cursor: auto;
@@ -709,8 +748,9 @@ footer {
 
   }
 }
-.modal-wrapper{
-  display:none;
+
+.modal-wrapper {
+  display: none;
   position: absolute;
   height: 100vh;
   width: 100%;
@@ -719,54 +759,57 @@ footer {
   top: 0;
   left: 0;
   z-index: 99;
-  padding-bottom: 2 rem; 
+  padding-bottom: 2 rem;
   transition-duration: .51s;
   color: @color-dark;
   text-align: center;
-  .background-click-container{
-    width:100%;
-    height:100vh;
-    top:0;
+
+  .background-click-container {
+    width: 100%;
+    height: 100vh;
+    top: 0;
     position: absolute;
-    z-index:-1;
+    z-index: -1;
   }
-  .modal{
-    position: relative;    
-    height:50vh;
-    width:75%;
-    margin:25vh auto;
+
+  .modal {
+    position: relative;
+    height: 50vh;
+    width: 75%;
+    margin: 25vh auto;
     background: @color-light;
     vertical-align: middle;
-    overflow:auto;
-    padding:25px;
+    overflow: auto;
+    padding: 25px;
     border-radius: 2px;
     display: table;
 
-    .content{
-      display:table-cell;
+    .content {
+      display: table-cell;
       vertical-align: middle;
-    h1, 
-    h2,
-    h3,
-    h4,
-    p{
-      margin-top: 0;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin-top: 0;
+      }
+
     }
-   
   }
+
+  &.active {
+    display: block;
   }
-  &.active{
-    display:block;
+
+  &.narrow {
+    .modal {
+      width: 40%;
+      min-width: 250px;
+    }
   }
- &.narrow{
-  .modal{
-    width:40%;
-    min-width:250px;
-  }
- }
 }
-
-
 
 //TO DO: BREAK INTO OWN FILES 
 //Ranking Page
@@ -934,7 +977,7 @@ footer {
   }
 
   #collection-table,
-  #deck-table, 
+  #deck-table,
   #wishlist-table {
     .main-toggle {
       float: right;
@@ -947,8 +990,7 @@ footer {
     }
 
     .row {
-      p,
-       {
+      p {
         &:nth-of-type(2) {
           text-align: center;
         }
@@ -960,16 +1002,17 @@ footer {
 
         }
       }
-      .button-wrapper{
-        &:last-of-type{
+
+      .button-wrapper {
+        &:last-of-type {
           text-align: right;
-          .btn{
-            margin-right:0;
+
+          .btn {
+            margin-right: 0;
           }
         }
       }
-      
-      
+
     }
 
   }
@@ -1081,8 +1124,7 @@ footer {
     }
   }
 
-  #collection-table
- {
+  #collection-table {
     .row {
       .checkbox-container {
         @coll-table-check-width: 36px;
@@ -1145,7 +1187,6 @@ footer {
       }
     }
   }
-
 
 }
 //Log in
@@ -1620,6 +1661,12 @@ footer {
 
   .card-grid {
     grid-template-columns: repeat(2, 50%);
+    #legend{
+      right:-20px;
+      padding:2px;
+      opacity:.8;
+    
+    }
   }
 
 }
@@ -1731,4 +1778,3 @@ footer {
     opacity: 1;
   }
 }
-

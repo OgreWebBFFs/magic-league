@@ -229,10 +229,10 @@ footer.page-footer .container .copyright p {
   height: 46px;
 }
 .section .container .table .row a,
-.section .container .table .row input,
-.section .container .table .row p,
 .section .container .table .row button,
-.section .container .table .row div {
+.section .container .table .row div,
+.section .container .table .row input,
+.section .container .table .row p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -242,10 +242,10 @@ footer.page-footer .container .copyright p {
   padding: 5px 15px;
 }
 .section .container .table .row a.btn,
-.section .container .table .row input.btn,
-.section .container .table .row p.btn,
 .section .container .table .row button.btn,
-.section .container .table .row div.btn {
+.section .container .table .row div.btn,
+.section .container .table .row input.btn,
+.section .container .table .row p.btn {
   width: 100px;
 }
 .section .container .table .row button {
@@ -389,6 +389,36 @@ footer.page-footer .container .copyright p {
   display: inline-grid;
   grid-template-columns: repeat(4, 25%);
   width: 100%;
+}
+.card-grid #legend {
+  position: fixed;
+  z-index: 99;
+  bottom: 32px;
+  right: -15px;
+  padding: 5px;
+}
+.card-grid #legend ul {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+.card-grid #legend ul li {
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  width: 100px;
+  margin: 2px auto;
+  border-radius: 2px;
+  font-size: 8px;
+}
+.card-grid #legend ul li.mid-highlight {
+  background: #d1bfa7;
+}
+.card-grid #legend ul li.highlight {
+  background: #26a69a;
+}
+.card-grid #legend ul li.dark {
+  background: #49494b;
 }
 .card-grid .card-wrapper {
   width: 100%;
@@ -534,7 +564,7 @@ footer.page-footer .container .copyright p {
   background: #dacbb8;
 }
 .card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn:after {
-  content: "Make an Offer";
+  content: "Propose Trade";
 }
 .card-grid .card-wrapper.not-in-league .card-grid-item {
   opacity: .5;
@@ -1165,6 +1195,11 @@ footer.page-footer .container .copyright p {
   .card-grid {
     grid-template-columns: repeat(2, 50%);
   }
+  .card-grid #legend {
+    right: -20px;
+    padding: 2px;
+    opacity: .8;
+  }
 }
 @media only screen and (max-width: 400px) {
   .card-grid {
@@ -1241,4 +1276,3 @@ footer.page-footer .container .copyright p {
     opacity: 1;
   }
 }
-
