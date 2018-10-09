@@ -17,7 +17,7 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <nav role="navigation">
+      <nav id="nav" role="navigation">
         <div class="nav-wrapper container">
           <a href="/" id="logo-container" href="#" class="brand-logo">
             <%= image_tag "logo.svg" %>
@@ -27,16 +27,21 @@
               <a href="/">rankings</a>
             </li>
               <li>
-              <a href="/trade">trades</a>
-            </li>
-            <li>
               <a href="/dashboard">profile</a>
             </li>
-            <li><a class="drop-down-toggle" onclick="idedElementToggle('dd-menu')">League &#9660;</a> 
-             <ul id="dd-menu" class="dropdown-content">
-               <li>
+             <li><a class="drop-down-toggle" onclick="closeOtherDropDown(),idedElementToggle('dd-menu-cards')">Cards &#9660;</a> 
+              <ul id="dd-menu-cards" class="dropdown-content">
+                <li>
+                <a href="/trade">trades</a>
+                </li>
+                <li>
                 <a href="/collections">collections</a>
                 </li>
+              </ul>
+            </li>         
+            <li><a class="drop-down-toggle" onclick="closeOtherDropDown(), idedElementToggle('dd-menu-league')">League &#9660;</a> 
+             <ul id="dd-menu-league" class="dropdown-content">
+             
               <li>
                 <a href="/rules">Rules</a>
               </li>
@@ -157,6 +162,15 @@
         function idedElementToggle(elementId){
           var target = document.getElementById(elementId);
           target.classList.toggle("active");
+        }
+        //This is a hacky fix, need something better later
+        function closeOtherDropDown(){
+            var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");
+            console.log(dropDownMenus);
+            for (var i = 0; i < dropDownMenus.length; i++) {
+              console.log(dropDownMenus[i]);
+             dropDownMenus[i].classList.remove("active");
+             }
         }
 
         function setMatchDateAndTime(){
