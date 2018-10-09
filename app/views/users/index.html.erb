@@ -7,9 +7,7 @@
 <ul>
   <% @users.each do |user| %>
     <li>
-
-
-      <button class="user btn"><%= link_to user.name, user_path(user) %></button>
+     <%= link_to user.name, user_path(user), :class => "btn user" %>
     </li>
   <% end %>
 </ul>

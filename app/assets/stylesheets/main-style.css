@@ -948,8 +948,6 @@ footer.page-footer .container .copyright p {
   min-width: 250px;
 }
 #log-in-wrapper .container .btn input {
-  background: transparent;
-  color: white;
   text-transform: uppercase;
   vertical-align: middle;
   border: none;
@@ -958,7 +956,10 @@ footer.page-footer .container .copyright p {
 #log-in-wrapper .container .btn input:active {
   outline: none;
 }
+#log-in-wrapper .container input[type="submit"],
 #log-in-wrapper .container a {
+  outline: none;
+  border: none;
   width: 250px;
   margin: 10px 0;
   text-decoration: none;
@@ -979,8 +980,19 @@ footer.page-footer .container .copyright p {
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
 }
+#log-in-wrapper .container input[type="submit"]:hover,
 #log-in-wrapper .container a:hover {
   background: rgba(73, 73, 75, 0.6);
+}
+#log-in-wrapper .container input[type="submit"] {
+  background: #26a69a;
+  color: white;
+}
+#log-in-wrapper .container input[type="submit"]:active {
+  outline: none;
+}
+#log-in-wrapper .container input[type="submit"]:hover {
+  background-color: #30d0c1;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -1096,6 +1108,10 @@ footer.page-footer .container .copyright p {
   -webkit-filter: saturate(1);
   filter: saturate(1);
   opacity: 1;
+}
+#user-wrapper .btn,
+#collection-wrapper .btn {
+  color: white;
 }
 #user-wrapper .btn.user,
 #collection-wrapper .btn.user {

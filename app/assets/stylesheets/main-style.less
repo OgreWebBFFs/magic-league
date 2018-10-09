@@ -1232,8 +1232,7 @@ footer {
       min-width: 250px;
 
       input {
-        background: transparent;
-        color: @color-light;
+        
         text-transform: uppercase;
         vertical-align: middle;
         border: none;
@@ -1245,7 +1244,10 @@ footer {
       }
     }
     // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
+    input[type="submit"],
     a {
+      outline:none;
+      border:none;
       width: 250px;
       margin: 10px 0;
       text-decoration: none;
@@ -1270,7 +1272,18 @@ footer {
         background: fade(@color-dark, 60%);
       }
     }
-
+    input[type="submit"]{
+      background:@color-highlight-import;
+      color: @color-light;
+      &:active {
+        outline: none;
+      }
+      &:hover{
+        background-color: lighten(@color-highlight-import, 10%);
+      
+      
+      }
+    }
   }
 }
 //Card Search
@@ -1496,6 +1509,7 @@ footer {
 #user-wrapper,
 #collection-wrapper {
   .btn {
+    color:@color-light;
     &.user {
       margin: 5px 0;
       width: 200px;
