@@ -1,7 +1,7 @@
 <div id="trade-search-wrapper">
   <div class="container">
     <input id="card-search" type="text" placeholder="Begin typing to find a card..."/>
-    <div class="card-grid">      
+    <div class="card-grid">
         <div id="legend">
             <ul>
             <li class="highlight">Marked Tradable</li>
@@ -20,21 +20,9 @@
         <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
         </a>
 
-        <div class="trade-proposal-request">            
+        <div class="trade-proposal-request">
             <button type="button" onclick="idedElementToggle('trade-modal')" class="btn " data-id="102"></button>
         </div>
-        </div>
-          <div class="card-wrapper  not-in-league">
-            <div class="wishlist-checkbox">
-                <input id="checkbox-for-card-XYA" type="checkbox" >
-                <label for="checkbox-for-card-XYA"></label>
-            </div>
-            <a class="card-grid-item" href="/cards/102">
-            <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
-            </a>
-           <div class="trade-proposal-request">
-                <button type="button" class="btn" data-id="102"></button>
-            </div>
         </div>
           <div class="card-wrapper  not-for-trade">
             <div class="wishlist-checkbox">
@@ -61,7 +49,7 @@
     </button>
     <div class="content">
     <h4> Trade Proposal</h4>
-        <p>You are contacting:</p>  
+        <p>You are contacting:</p>
         <ul>
             <li>Person</li>
             <li>Person</li>
@@ -71,6 +59,65 @@
         <p>To talk about trading for CARD NAME</p>
           <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
     </div>
-  
+
     </div>
 </div>
+
+<script>
+
+  var cardTemplate = function(card) {
+    return `
+      <div class="card-wrapper ${leagueStatus(card)}">
+        <div class="wishlist-checkbox">
+            <input id="checkbox-for-card-XYA" type="checkbox" >
+            <label for="checkbox-for-card-XYA"></label>
+        </div>
+        <a class="card-grid-item" href="/cards/${card.attributes.id}">
+        <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
+        </a>
+       <div class="trade-proposal-request">
+            <button type="button" class="btn" data-id="${card.attributes.id}"></button>
+        </div>
+    </div>
+
+    `
+  }
+
+  var leagueStatus = function(card) {
+    console.log(card);
+    if (card.attributes.users.length > 0)
+      return 'for-trade'
+    else
+      return 'not-in-league'
+  }
+
+ $(function() {
+
+    var clearGrid = function() {
+      $('.card-grid').children('.card-wrapper').remove();
+    }
+
+    var populateGrid = function(res) {
+      clearGrid();
+      res.forEach(function(card) {
+        $('.card-grid').append(cardTemplate(card));
+      });
+    };
+
+    $('#card-search').keyup(debounce(function() {
+      query = $(this).val();
+      if (query.length > 0) {
+        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res.data) } )
+      } else {
+        clearGrid();
+      }
+    }, 300));
+
+   $(document).off('click', '.trade-proposal-request .btn');
+   $(document).on('click', '.trade-proposal-request .btn', function(){ 
+     
+     $('#trade-modal').addClass('active');
+   });
+ });
+
+</script>
