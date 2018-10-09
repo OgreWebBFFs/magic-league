@@ -30,16 +30,23 @@
               <a href="/trade">trades</a>
             </li>
             <li>
-              <a href="/dashboard">dashboard</a>
+              <a href="/dashboard">profile</a>
             </li>
-            <li>
-              <a href="/rules">Rules</a>
-            </li>
-            <li>
-              <a href="/users">Roster</a>
-            </li>
-            <li>
-              <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
+            <li><a class="drop-down-toggle" onclick="idedElementToggle('dd-menu')">League &#9660;</a> 
+             <ul id="dd-menu" class="dropdown-content">
+               <li>
+                <a href="/collections">collections</a>
+                </li>
+              <li>
+                <a href="/rules">Rules</a>
+              </li>
+              <li>
+                <a href="/users">Roster</a>
+              </li>
+              <li>
+                <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
+              </li>
+              </ul>
             </li>
             <li>
               <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
@@ -48,11 +55,11 @@
           </ul>
           <ul class="mobile-menu">
            <li>
-              <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu')">
+              <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu-mobile')">
                 <i class="material-icons">menu</i>
 
               </button>
-              <ul id="dd-menu" class="dropdown-content">
+              <ul id="dd-menu-mobile" class="dropdown-content">
                 <li>
                   <a href="/">rankings</a>
                 </li>
@@ -60,10 +67,13 @@
                   <a href="/trade">Trades</a>
                 </li>
                 <li>
-                  <a href="/dashboard">dashboard</a>
+                  <a href="/dashboard">profile</a>
                 </li>
                 <li>
                   <a href="/rules">Rules</a>
+                </li>
+                <li>
+                <a href="/collections">collections</a>
                 </li>
                 <li>
                   <a href="/users">Roster</a>

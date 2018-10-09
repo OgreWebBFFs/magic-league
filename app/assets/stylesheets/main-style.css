@@ -33,6 +33,7 @@ nav .nav-wrapper a {
 nav .nav-wrapper .menu li,
 nav .nav-wrapper .mobile-menu li {
   min-height: 0;
+  position: relative;
 }
 nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
@@ -61,7 +62,33 @@ nav .nav-wrapper .mobile-menu li button.btn i {
   margin-bottom: 3px;
   vertical-align: middle;
 }
+nav .nav-wrapper .menu .dropdown-content,
+nav .nav-wrapper .mobile-menu .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 64px;
+  transition: .25s;
+  opacity: 1;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  right: 0;
+  width: 150px;
+  z-index: 99;
+  -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+nav .nav-wrapper .menu .dropdown-content a,
+nav .nav-wrapper .mobile-menu .dropdown-content a {
+  padding: 15px 10px;
+}
+nav .nav-wrapper .menu .dropdown-content.active,
+nav .nav-wrapper .mobile-menu .dropdown-content.active {
+  display: block;
+  height: initial;
+}
 nav .nav-wrapper .menu {
+  text-align: center;
   float: right;
 }
 nav .nav-wrapper .mobile-menu {
@@ -78,27 +105,7 @@ nav .nav-wrapper .mobile-menu li button.drop-down-toggle {
   background-color: rgba(209, 191, 167, 0.5);
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 64px;
-  transition: .25s;
-  opacity: 1;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  right: 0;
-  width: 150px;
-  left: 70%;
-  z-index: 99;
-  -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-}
-nav .nav-wrapper .mobile-menu li .dropdown-content a {
-  padding: 15px 10px;
-}
-nav .nav-wrapper .mobile-menu li .dropdown-content.active {
-  display: block;
-  height: initial;
+  top: 59px;
 }
 footer {
   box-sizing: border-box;
@@ -193,22 +200,22 @@ footer.page-footer .container .copyright p {
   background: white;
   border-bottom: 4px solid #e6e6e6;
 }
-.section h1.color-blocked ~ .copy,
-.section h2.color-blocked ~ .copy,
-.section h3.color-blocked ~ .copy,
-.section h4.color-blocked ~ .copy,
-.section h5.color-blocked ~ .copy {
+.section h1.color-blocked ~ .content,
+.section h2.color-blocked ~ .content,
+.section h3.color-blocked ~ .content,
+.section h4.color-blocked ~ .content,
+.section h5.color-blocked ~ .content {
   margin-bottom: 25px;
   box-sizing: border-box;
   padding: 15px;
   background: white;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
-.section h1.color-blocked ~ .copy p:first-of-type,
-.section h2.color-blocked ~ .copy p:first-of-type,
-.section h3.color-blocked ~ .copy p:first-of-type,
-.section h4.color-blocked ~ .copy p:first-of-type,
-.section h5.color-blocked ~ .copy p:first-of-type {
+.section h1.color-blocked ~ .content p:first-of-type,
+.section h2.color-blocked ~ .content p:first-of-type,
+.section h3.color-blocked ~ .content p:first-of-type,
+.section h4.color-blocked ~ .content p:first-of-type,
+.section h5.color-blocked ~ .content p:first-of-type {
   margin-top: 0;
 }
 .section .container {
@@ -277,6 +284,9 @@ footer.page-footer .container .copyright p {
 .section .container .table.two-col .row p {
   width: 50%;
 }
+.section .container .content {
+  width: 100%;
+}
 .section .container ul.indented {
   padding-left: initial;
   margin-left: 16px;
@@ -289,6 +299,9 @@ footer.page-footer .container .copyright p {
 }
 .section .container ul.bulleted ul {
   padding-left: 15px;
+}
+.section .container .centered {
+  text-align: center;
 }
 .section.full-page {
   background: transparent;
@@ -1084,7 +1097,8 @@ footer.page-footer .container .copyright p {
   filter: saturate(1);
   opacity: 1;
 }
-#user-wrapper .btn.user {
+#user-wrapper .btn.user,
+#collection-wrapper .btn.user {
   margin: 5px 0;
   width: 200px;
   overflow: hidden;
