@@ -42,13 +42,13 @@
               <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="AppLayout.logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
           </ul>
           <ul class="mobile-menu">
            <li>
-              <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu')">
+              <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="AppLayout.idedElementToggle('dd-menu')">
                 <i class="material-icons">menu</i>
 
               </button>
@@ -75,7 +75,7 @@
 
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
+              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="AppLayout.logMatchOnClick()">
                 <i class="material-icons">note_add</i>Log a match
               </button>
             </li>
@@ -94,9 +94,9 @@
     </div>
 
     <div id="match-logger-container">
-      <div class="background-click-container" onclick="idedElementToggle('match-logger-container')"></div>
+      <div class="background-click-container" onclick="AppLayout.idedElementToggle('match-logger-container')"></div>
       <div class="section">
-        <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('match-logger-container')">
+        <button class="close-button" href="#" class="match-log-close" onclick="AppLayout.idedElementToggle('match-logger-container')">
           <i class="material-icons">cancel</i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
@@ -140,42 +140,8 @@
         </footer>
 
       <% end %>
-      <!-- Site Wide Scipts -->
-      <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
       <script>
-
-        function idedElementToggle(elementId){
-          var target = document.getElementById(elementId);
-          target.classList.toggle("active");
-        }
-
-        function setMatchDateAndTime(){
-          let date  = new Date();
-          let today = date.toISOString().substr(0, 10);
-          let hour = ('0' + date.getHours()).slice(-2);
-          let min= ('0' + date.getMinutes()).slice(-2);
-          let time = `${hour}:${min}`;
-          document.getElementById('match-date').value = today;
-          document.getElementById('match-time').value = time;
-        }
-
-        function logMatchOnClick() {
-          idedElementToggle('match-logger-container');
-          setMatchDateAndTime();
-        }
-
-        var addPlayerOption = function(name, id) {
-          return `
-                <option value="${id}">${name}</option>
-                `
-        }
-
-        $(function() {
-          $('.player-selector').on('change', function() {
-            $('.winner-selector').empty();
-            $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
-          });
-        });
+        $(document).on('turbolinks:load', AppLayout.setupListeners());
       </script>
   </body>
 </html>
