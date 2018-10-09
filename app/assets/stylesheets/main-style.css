@@ -46,21 +46,18 @@ nav .nav-wrapper .mobile-menu li a:hover {
   background-color: rgba(209, 191, 167, 0.25);
   transition: .5s;
 }
-nav .nav-wrapper .menu li button.btn,
-nav .nav-wrapper .mobile-menu li button.btn {
+nav .nav-wrapper .menu li .btn,
+nav .nav-wrapper .mobile-menu li .btn {
   margin-left: 5px;
-  color: white;
-  height: 40px;
-  margin-top: -5px;
-  background: #26a69a;
   padding: 0 5px;
   font-size: 12px;
+  background: #26a69a;
+  color: white;
+  text-transform: uppercase;
 }
-nav .nav-wrapper .menu li button.btn i,
-nav .nav-wrapper .mobile-menu li button.btn i {
-  margin-right: 3px;
-  margin-bottom: 3px;
-  vertical-align: middle;
+nav .nav-wrapper .menu li .btn:hover,
+nav .nav-wrapper .mobile-menu li .btn:hover {
+  background: #30d0c1;
 }
 nav .nav-wrapper .menu .dropdown-content,
 nav .nav-wrapper .mobile-menu .dropdown-content {
@@ -70,9 +67,8 @@ nav .nav-wrapper .mobile-menu .dropdown-content {
   transition: .25s;
   opacity: 1;
   background-color: #f9f9f9;
-  min-width: 160px;
-  right: 0;
-  width: 150px;
+  left: -50%;
+  width: 125px;
   z-index: 99;
   -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -80,6 +76,7 @@ nav .nav-wrapper .mobile-menu .dropdown-content {
 }
 nav .nav-wrapper .menu .dropdown-content a,
 nav .nav-wrapper .mobile-menu .dropdown-content a {
+  text-align: center;
   padding: 15px 10px;
 }
 nav .nav-wrapper .menu .dropdown-content.active,
@@ -97,12 +94,18 @@ nav .nav-wrapper .mobile-menu {
 nav .nav-wrapper .mobile-menu li {
   float: right;
 }
-nav .nav-wrapper .mobile-menu li button {
+nav .nav-wrapper .mobile-menu li .btn {
   margin-left: 5px;
-  background: #26a69a;
+  margin-right: 0;
 }
-nav .nav-wrapper .mobile-menu li button.drop-down-toggle {
+nav .nav-wrapper .mobile-menu li .btn.drop-down-toggle {
   background-color: rgba(209, 191, 167, 0.5);
+  font-size: 14px;
+  color: white;
+  padding: 0 10px;
+}
+nav .nav-wrapper .mobile-menu li .btn.drop-down-toggle:hover {
+  background: #dacbb8;
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content {
   top: 59px;

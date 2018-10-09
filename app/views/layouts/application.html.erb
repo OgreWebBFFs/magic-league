@@ -31,6 +31,7 @@
             </li>
              <li><a class="drop-down-toggle" onclick="closeOtherDropDown(),idedElementToggle('dd-menu-cards')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
+                <div class="">
                 <li>
                 <a href="/trade">trades</a>
                 </li>
@@ -54,16 +55,18 @@
               </ul>
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
-                <i class="material-icons">note_add</i>Log a match
-              </button>
+              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
+               Log a match
+              </a>
+              </li>
           </ul>
           <ul class="mobile-menu">
            <li>
-              <button class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu-mobile')">
-                <i class="material-icons">menu</i>
-
-              </button>
+              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu-mobile')">
+               
+               &#9660;
+              
+              </a>
               <ul id="dd-menu-mobile" class="dropdown-content">
                 <li>
                   <a href="/">rankings</a>
@@ -90,11 +93,11 @@
 
             </li>
             <li>
-              <button href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
-                <i class="material-icons">note_add</i>Log a match
-              </button>
+              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
+              Log a match
+              </a>
             </li>
-           
+          
 
            
 
@@ -163,16 +166,27 @@
           var target = document.getElementById(elementId);
           target.classList.toggle("active");
         }
-        //This is a hacky fix, need something better later
+        //Reminder to JOE, this and the function below are the ones I mentioned on our walk to day (Tues 10-9), that have to be added to the App-layout.js -PAT
         function closeOtherDropDown(){
-            var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");
-            console.log(dropDownMenus);
+            var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");            
             for (var i = 0; i < dropDownMenus.length; i++) {
-              console.log(dropDownMenus[i]);
-             dropDownMenus[i].classList.remove("active");
+              dropDownMenus[i].classList.remove("active");
              }
         }
+  
+        window.onclick = function(event) {
+          if (!event.target.matches('.drop-down-toggle')) {
 
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('active')) {
+                openDropdown.classList.remove('active');
+              }
+            }
+          }
+        }
         function setMatchDateAndTime(){
           let date  = new Date();
           let today = date.toISOString().substr(0, 10);
