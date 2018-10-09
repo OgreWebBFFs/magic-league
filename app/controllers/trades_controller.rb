@@ -17,5 +17,6 @@ class TradesController < ApplicationController
   def trades_params
     params.require(:trade).permit(:card_id)
   end
+
 end
 
