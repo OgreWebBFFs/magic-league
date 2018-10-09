@@ -11,17 +11,17 @@
       return `
         <div class="card-wrapper">
           <div class="wishlist-checkbox">
-                  <input class="toggle-wishlist" wish-list-id="${search('id', card.id, wishlist) === undefined ? -1 : search('id', card.id, wishlist).id}" data-id="${card.id}" id="checkbox-for-${card.id}" type="checkbox" ${search('id', card.id, wishlist) === undefined ? '' : 'checked' }>
-                  <label for="checkbox-for-${card.id}"></label>
+                  <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
+                  <label for="checkbox-for-${card.attributes.id}"></label>
               </div>
-        <a class="card-grid-item" href="/cards/${card.id}">
-          <img class="card" alt="${card.name}" title="${card.name}" src="${card.image_url}">
+        <a class="card-grid-item" href="/cards/${card.attributes.id}">
+          <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </a>
         <div class="card-count-component">
           <span>
-            <button type="button" class="remove-card btn" data-id="${card.id}"><i class="material-icons">indeterminate_check_box</i></button>
-            <input type="number" id="${card.id}-count" data-id="${card.id}" class="browser-default" value="${cardCount(card.id)}", min="0">
-            <button type="button" class="add-card btn" data-id="${card.id}"><i class="material-icons">add_box</i></button>
+            <button type="button" class="remove-card btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
+            <input type="number" id="${card.attributes.id}-count" data-id="${card.attributes.id}" class="browser-default" value="${card.attributes.count_in_collection}", min="0">
+            <button type="button" class="add-card btn" data-id="${card.attributes.id}"><i class="material-icons">add_box</i></button>
           </span>
         </div>
           `
@@ -29,7 +29,7 @@
 
 
   var wishlist = []
-  var current_user_cards = <%= @cards.to_json.html_safe %>
+  var current_user_cards = []
 
   var cardCount = function(id) {
     return current_user_cards[id] || 0;
@@ -52,13 +52,14 @@
     $('#card-search').keyup(debounce(function() {
       query = $(this).val();
       if (query.length > 0) {
-        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res) } )
+        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res.data) } )
       } else {
         clearGrid();
       }
     }, 300));
 
     xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
+    xhrRequest('/cards/' + <%= current_user.id %>, 'GET', function(res) { current_user_cards = res.data; });
 
     $(document).off('click', '.add-card');
     $(document).on('click', '.add-card', function() {
