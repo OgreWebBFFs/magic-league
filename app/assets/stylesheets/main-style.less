@@ -507,9 +507,8 @@ footer {
 
     ul {
       margin: 0;
-      padding:0;
+      padding: 0;
       background: transparent;
-      
 
       li {
         border: 1px solid @color-light;
@@ -519,7 +518,8 @@ footer {
         margin: 2px auto;
         border-radius: 2px;
         font-size: 8px;
-          &.mid-highlight {
+
+        &.mid-highlight {
           background: @color-highlight-mid-import;
         }
 
@@ -1494,19 +1494,53 @@ footer {
   }
 
 }
-#card-profile-wrapper{
-  .container{
+
+#card-profile-wrapper {
+  .container {
     white-space: nowrap;
-    img, 
-    #league-details{
-      white-space: normal;
-      display:inline-block;
-      box-sizing:border-box;
-      width:50%;
-      min-width:200px;
-      vertical-align: top;
+    @card-width-and-margin-for-calc: 233px;
+
+    h4 {
+      margin-bottom: 10px;
     }
-   
+
+    #league-details,
+    .card-wrapper{
+      white-space: normal;
+      display: inline-block;
+      box-sizing: border-box;
+      vertical-align: top;
+
+    }
+
+    .card-wrapper {
+      img {
+        width: 223px;
+        //Card size from mtg api
+        margin-right: 10px;
+      }
+      .btn {
+        display:block;
+        width:200px;
+        margin:10px auto 0;    
+      }
+    }
+
+    #league-details {
+      width: ~"calc(100% - @{card-width-and-margin-for-calc})";
+      .table{
+        .row{
+          p{
+           
+            &:last-of-type{
+              text-align: center;
+            }
+          }
+        }
+      }
+
+    }
+
   }
 }
 //Responsive Adjustments for whole site
@@ -1676,11 +1710,12 @@ footer {
 
   .card-grid {
     grid-template-columns: repeat(2, 50%);
-    #legend{
-      right:-20px;
-      padding:2px;
-      opacity:.8;
-    
+
+    #legend {
+      right: -20px;
+      padding: 2px;
+      opacity: .8;
+
     }
   }
 
