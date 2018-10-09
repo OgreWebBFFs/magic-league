@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :rules, only: [:index]
   resources :trade, only: [:index]
   resources :collections, only: [:index, :show, :edit, :update]
-  resources :cards, only: [:index]
+  resources :cards, only: [:index, :show]
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:show, :update]
+ 
 end

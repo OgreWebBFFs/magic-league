@@ -1090,6 +1090,17 @@ footer.page-footer .container .copyright p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#card-profile-wrapper .container {
+  white-space: nowrap;
+}
+#card-profile-wrapper .container img,
+#card-profile-wrapper .container #league-details {
+  white-space: normal;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  min-width: 200px;
+}
 @-moz-document url-prefix() {
   .card-grid .card-wrapper .card-count-component span input {
     line-height: 34px;
