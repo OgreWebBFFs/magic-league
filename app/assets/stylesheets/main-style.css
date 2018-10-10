@@ -1090,6 +1090,34 @@ footer.page-footer .container .copyright p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#card-profile-wrapper .container {
+  white-space: nowrap;
+}
+#card-profile-wrapper .container h4 {
+  margin-bottom: 10px;
+}
+#card-profile-wrapper .container #league-details,
+#card-profile-wrapper .container .card-wrapper {
+  white-space: normal;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+#card-profile-wrapper .container .card-wrapper img {
+  width: 223px;
+  margin-right: 10px;
+}
+#card-profile-wrapper .container .card-wrapper .btn {
+  display: block;
+  width: 200px;
+  margin: 10px auto 0;
+}
+#card-profile-wrapper .container #league-details {
+  width: calc(100% - 233px);
+}
+#card-profile-wrapper .container #league-details .table .row p:last-of-type {
+  text-align: center;
+}
 @-moz-document url-prefix() {
   .card-grid .card-wrapper .card-count-component span input {
     line-height: 34px;
