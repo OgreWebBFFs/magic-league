@@ -311,7 +311,7 @@ footer.page-footer .container .copyright p {
   min-height: calc(100vh - 64px - 32px);
 }
 #match-logger-container {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   min-height: 662px;
   padding-bottom: 2 rem;
@@ -594,7 +594,7 @@ footer.page-footer .container .copyright p {
 }
 .modal-wrapper {
   display: none;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
   background-color: rgba(73, 73, 75, 0.5);
