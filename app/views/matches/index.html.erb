@@ -37,11 +37,13 @@
         </div>
     </div> 
   </div>
+  
   <script>
       function currentMonthToTitle() {
-        var d = new Date();
-        var m = d.getMonth();
-        document.getElementById("month-title").innerHTML = m;
+        let monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"]
+        let d = new Date();
+        let m = d.getMonth();
+        document.getElementById("month-title").innerHTML = `${monthNames[m]}'s Matches`;
     }
      window.onload = currentMonthToTitle;
   </script>
