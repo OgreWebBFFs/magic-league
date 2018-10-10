@@ -1,7 +1,7 @@
 
   <div id="match-history-wrapper">
     <div class="container">
-        <h2 id="month-title"></h2>
+        <h2 id="month-title" onload="currentMonthToTitle()">Month's Matches</h2>
         <div id="match-history" class="alternating table">
           <div class="headings row">
             <p>Match</p>
@@ -39,13 +39,13 @@
   </div>
   
   <script>
-      function currentMonthToTitle() {
+    // THIS IS DUMB, lets do this on the back end
         let monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"]
         let d = new Date();
         let m = d.getMonth();
         document.getElementById("month-title").innerHTML = `${monthNames[m]}'s Matches`;
-    }
-     window.onload = currentMonthToTitle;
+    
+   
   </script>
 
 
