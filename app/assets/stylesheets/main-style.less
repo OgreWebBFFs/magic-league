@@ -899,10 +899,9 @@ footer {
       text-align: center;
 
       li {
-        width: 275px;
+        
         margin: 5px auto;
         padding: 5px;
-        background: #26a69a;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
         animation-duration: 1.6s;
@@ -911,18 +910,26 @@ footer {
         -webkit-animation-timing-function: ease-out;
         visibility: visible !important;
         position: relative;
+        a{
+          width: 275px;
+          color:@color-light;
+          font-size:13px;
+          padding:0 5px;
+        }
 
         &:first-of-type {
           ::before {
             content: "\2726";
             position: absolute;
-            left: 5px;
+            left: 25px;
+            color:lighten(@color-highlight-import, 10%);
           }
 
           ::after {
             content: "\2726";
             position: absolute;
-            right: 5px;
+            right: 25px;
+            color:lighten(@color-highlight-import, 10%);
           }
         }
 
