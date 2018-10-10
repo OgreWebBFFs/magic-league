@@ -42,35 +42,34 @@
 
 
 <div id="trade-modal" class="narrow modal-wrapper"  >
- <div class="background-click-container" onclick="idedElementToggle('trade-modal')"></div>
-    <div id="trade-proposal" class="modal">
+  <div class="background-click-container" onclick="idedElementToggle('trade-modal')"></div>
+  <div id="trade-proposal" class="modal">
     <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('trade-modal')">
-          <i class="material-icons">cancel</i>
+      <i class="material-icons">cancel</i>
     </button>
     <div class="content">
-    <h4> Trade Proposal</h4>
-        <p>You are contacting:</p>
-        <ul>
-            <li>Person</li>
-            <li>Person</li>
-            <li>Person</li>
+      <h4> Trade Proposal</h4>
+      <p>You are contacting:</p>
+      <ul class="trade-partners">
         <li>Person</li>
-        </ul>
-        <p>To talk about trading for CARD NAME</p>
-          <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
+        <li>Person</li>
+      </ul>
+      <p>To talk about trading for <span class="card-to-be-traded"></span></p>
+      <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
     </div>
 
-    </div>
+  </div>
 </div>
 
 <script>
+  var current_user_id = <%= current_user.id %>
 
   var cardTemplate = function(card) {
     return `
       <div class="card-wrapper ${leagueStatus(card)}">
         <div class="wishlist-checkbox">
-            <input id="checkbox-for-card-XYA" type="checkbox" >
-            <label for="checkbox-for-card-XYA"></label>
+            <input id="checkbox-for-card-${card.id}" type="checkbox" >
+            <label for="checkbox-for-card-${card.id}"></label>
         </div>
         <a class="card-grid-item" href="/cards/${card.attributes.id}">
         <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
@@ -83,41 +82,78 @@
     `
   }
 
-  var leagueStatus = function(card) {
-    console.log(card);
-    if (card.attributes.users.length > 0)
-      return 'for-trade'
-    else
-      return 'not-in-league'
+  var onlyUserOwningCardTemplate = function(card) {
+    return `
+      <h4> Trade Proposal</h4>
+      <p>You are the only user who owns this card. 😭</p>
+    `
   }
 
- $(function() {
+  var cardModalTemplate = function(card) {
+    return `
+      <h4> Trade Proposal</h4>
+      <p>You are contacting:</p>
+      ` +
+      card.attributes.users.data.filter(function(user){return user.id != current_user_id}).map(function(user) {
+        return `
+        <ul class="trade-partners">
+        ${user.attributes.name}
+        </ul>
+        `
+      }).join("\n")
+      +
+      `
+      <p>To talk about trading for <span class="card-to-be-traded">${card.attributes.name}</span></p>
+      <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
+    </div>
+    `
+  }
 
-    var clearGrid = function() {
-      $('.card-grid').children('.card-wrapper').remove();
-    }
+var leagueStatus = function(card) {
+  console.log(card);
+  if (card.attributes.users.data.length > 0)
+    return 'for-trade'
+  else
+    return 'not-in-league'
+}
 
-    var populateGrid = function(res) {
+var cards = []
+
+$(function() {
+
+  var clearGrid = function() {
+    $('.card-grid').children('.card-wrapper').remove();
+  }
+
+  var populateGrid = function(res) {
+    clearGrid();
+    res.forEach(function(card) {
+      $('.card-grid').append(cardTemplate(card));
+    });
+  };
+
+  $('#card-search').keyup(debounce(function() {
+    query = $(this).val();
+    if (query.length > 0) {
+      xhrRequest('/cards/?query=' + query, "GET", function(res) { cards = res.data; populateGrid(cards) } )
+    } else {
       clearGrid();
-      res.forEach(function(card) {
-        $('.card-grid').append(cardTemplate(card));
-      });
-    };
+    }
+  }, 300));
 
-    $('#card-search').keyup(debounce(function() {
-      query = $(this).val();
-      if (query.length > 0) {
-        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res.data) } )
-      } else {
-        clearGrid();
-      }
-    }, 300));
+  $(document).off('click', '.trade-proposal-request .btn');
+  $(document).on('click', '.trade-proposal-request .btn', function(){ 
+    $('.content').empty();
+    id = $(this).attr('data-id');
+    card = search('id', id, cards);
+    users = card.attributes.users.data;
+    if ((users.length > 1) || (users[0].id != current_user_id) )
+      $('.content').append(cardModalTemplate(card));
+    else
+      $('.content').append(onlyUserOwningCardTemplate);
 
-   $(document).off('click', '.trade-proposal-request .btn');
-   $(document).on('click', '.trade-proposal-request .btn', function(){ 
-     
-     $('#trade-modal').addClass('active');
-   });
- });
+    $('#trade-modal').addClass('active');
+  });
+});
 
 </script>
