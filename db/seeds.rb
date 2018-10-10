@@ -11,4 +11,26 @@ users << User.find_or_create_by(email: "dustin@gmail.com", name: "Dustin Perzano
 users << User.find_or_create_by(email: "ryan@gmail.com", name: "Ryan Branch")
 users << User.find_or_create_by(email: "perz13@gmail.com", name: "D#R", admin: true)
 
-users.each {|user| user.collection = Collection.new; user.password = "12345678"; user.save!}
+users.each do |user| 
+  unless user.id
+    user.collection = Collection.new 
+    user.password = "12345678" 
+    user.save
+  end
+end
+
+zack = User.find_by(name: "Zack Brown")
+pat = User.find_by(name: "Pat Roach")
+
+card1 = Card.find_or_create_by(name: "Blade Man", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452751&type=card")
+card2 = Card.find_or_create_by(name: "Bounty Person", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452752&type=card")
+card3 = Card.find_or_create_by(name: "Candlelight Thing", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452753&type=card")
+
+
+Ownership.find_or_create_by(card_id: card1.id, collection_id: zack.collection.id).save
+Ownership.find_or_create_by(card_id: card2.id, collection_id: zack.collection.id).save
+Ownership.find_or_create_by(card_id: card3.id, collection_id: zack.collection.id).save
+
+Ownership.find_or_create_by(card_id: card1.id, collection_id: pat.collection.id).save
+Ownership.find_or_create_by(card_id: card2.id, collection_id: pat.collection.id).save
+Ownership.find_or_create_by(card_id: card3.id, collection_id: pat.collection.id).save
