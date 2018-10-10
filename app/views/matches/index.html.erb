@@ -1,0 +1,49 @@
+
+  <div id="match-history-wrapper">
+    <div class="container">
+        <h2 id="month-title"></h2>
+        <div id="match-history" class="alternating table">
+          <div class="headings row">
+            <p>Match</p>
+            <p>Winner</p>
+            <p>Loser</p>
+            <P>Date</p>
+          </div>
+          <div class="row">
+            <p>1</p>
+            <p>Ryan Branch</p>
+            <p>Mike Stempler</p>
+            <p>Oct 1, 1974</p>
+          </div>
+          <div class="row">
+            <p>3</p>
+            <p>Ryan Branch</p>
+            <p>Mike Stempler</p>
+            <p>Oct 1, 1974</p>
+          </div>
+          <div class="row">
+            <p>3</p>
+            <p>Ryan Branch</p>
+            <p>Mike Stempler</p>
+            <p>Oct 1, 1974</p>
+          </div>
+          <div class="row">
+            <p>4</p>
+            <p>Ryan Branch</p>
+            <p>Mike Stempler</p>
+            <p>Oct 1, 1974</p>
+          </div>
+          
+        </div>
+    </div> 
+  </div>
+  <script>
+      function currentMonthToTitle() {
+        var d = new Date();
+        var m = d.getMonth();
+        document.getElementById("month-title").innerHTML = m;
+    }
+     window.onload = currentMonthToTitle;
+  </script>
+
+
