@@ -9,35 +9,8 @@
             <li class="dark">Not in League</li>
             </ul>
         </div>
-        <div class="card-wrapper for-trade">
-        <%# ZACK I have it set up on the collections page%>
-        <div class="wishlist-checkbox">
-            <input id="checkbox-for-card-XYZ" type="checkbox" >
-            <label for="checkbox-for-card-XYZ"></label>
-        </div>
-
-        <a class="card-grid-item" href="/cards/102">
-        <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
-        </a>
-
-        <div class="trade-proposal-request">
-            <button type="button" onclick="idedElementToggle('trade-modal')" class="btn " data-id="102"></button>
-        </div>
-        </div>
-          <div class="card-wrapper  not-for-trade">
-            <div class="wishlist-checkbox">
-                <input id="checkbox-for-card-XYb" type="checkbox" >
-                <label for="checkbox-for-card-XYb"></label>
-            </div>
-            <a class="card-grid-item" href="/cards/102">
-            <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
-            </a>
-           <div class="trade-proposal-request">
-                <button type="button" class="btn" data-id="102" onclick="idedElementToggle('trade-modal')"></button>
-            </div>
-        </div>
-    </div>
-    </div>
+     </div>
+  </div>
 </div>
 
 
@@ -60,7 +33,6 @@
 
   </div>
 </div>
-
 <script>
   var current_user_id = <%= current_user.id %>
 
@@ -104,7 +76,11 @@
       +
       `
       <p>To talk about trading for <span class="card-to-be-traded">${card.attributes.name}</span></p>
-      <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
+      <form action="/trades" method="post"> 
+        <input type="hidden" name="authenticity_token" value="${token}">
+        <input type="hidden" name="trade[card_id]" value="${card.id}"/>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
     </div>
     `
   }
