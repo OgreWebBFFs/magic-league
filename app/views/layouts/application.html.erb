@@ -27,7 +27,8 @@
               <a href="/">rankings</a>
             </li>
               <li>
-              <a href="/dashboard">profile</a>
+                <%= link_to "profile", user_path(current_user) %>
+                 
             </li>
              <li><a class="drop-down-toggle" onclick="closeOtherDropDown(),idedElementToggle('dd-menu-cards')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
