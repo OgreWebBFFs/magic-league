@@ -700,10 +700,8 @@ footer.page-footer .container .copyright p {
   text-align: center;
 }
 #ranking-wrapper #ranking-board ul li {
-  width: 275px;
   margin: 5px auto;
   padding: 5px;
-  background: #26a69a;
   animation-name: bigEntrance;
   -webkit-animation-name: bigEntrance;
   animation-duration: 1.6s;
@@ -713,15 +711,23 @@ footer.page-footer .container .copyright p {
   visibility: visible !important;
   position: relative;
 }
+#ranking-wrapper #ranking-board ul li a {
+  width: 275px;
+  color: white;
+  font-size: 13px;
+  padding: 0 5px;
+}
 #ranking-wrapper #ranking-board ul li:first-of-type ::before {
   content: "\2726";
   position: absolute;
-  left: 5px;
+  left: 25px;
+  color: #30d0c1;
 }
 #ranking-wrapper #ranking-board ul li:first-of-type ::after {
   content: "\2726";
   position: absolute;
-  right: 5px;
+  right: 25px;
+  color: #30d0c1;
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
