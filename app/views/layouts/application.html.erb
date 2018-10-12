@@ -107,9 +107,9 @@
 
     <% end %>
 
-    <div class="section full-page">
+    <div class="section full-page">     
       <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <div id="alert-container" class="active alert alert-<%= key %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
@@ -166,6 +166,7 @@
       <script>
 
         function idedElementToggle(elementId){
+          event.preventDefault();
           var target = document.getElementById(elementId);
           target.classList.toggle("active");
         }
