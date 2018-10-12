@@ -5,4 +5,6 @@ class CardsController < ApplicationController
       format.js { render json: @cards }
     end
   end
+  def show
+  end
 end
