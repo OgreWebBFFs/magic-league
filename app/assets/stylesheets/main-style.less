@@ -558,14 +558,15 @@ footer {
     margin: 30px auto;
     position: relative;
 
-    .wishlist-checkbox {
+    .upper-section-checkbox {
       width: 36px;
       height: 36px;
-      top: -25px;
       right: -10px;
       opacity: 1;
       position: absolute;
       z-index: 2;
+      display:table;
+  
 
       label {
         position: relative;
@@ -576,20 +577,48 @@ footer {
           content: "\2665";
           position: absolute;
           color: white;
-          font-size: 35px;
-          background-color: @color-highlight-mid-import;
+          font-size: 25px;
           padding: 6px;
           border-radius: 25px;
           line-height: 24px;
           -webkit-tap-highlight-color: transparent;
           transition: .25s;
+          display:table-cell;
+          vertical-align: middle;
+          width:36px;
+          text-align: center;
+
         }
 
       }
-
-      input[type="checkbox"]:checked + label::before {
-        opacity: 1;
+      &.wishlist{
+        top: -25px;    
+        label{
+          &:before {
+            
+            content: "\2665";
+            background-color: @color-highlight-mid-import;
+          }
+        }
+        input[type="checkbox"]:checked + label::before {
+          opacity: 1;
+        }
       }
+      &.for-trade{
+        top: 20px;    
+        label{
+          &:before {
+           padding:5px 0 7px 0;
+            content: "$";
+            background-color: @color-highlight-import;
+          }
+        }
+        input[type="checkbox"]:checked + label::before {
+          opacity: 1;
+        }
+      }
+
+     
 
     }
 
