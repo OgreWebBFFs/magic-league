@@ -6,6 +6,7 @@
 @Onyx: #49494b;
 @Light-Grey: #8d8d8d;
 @Turquoise: #26a69a;
+@Soft-Orange: #efab45;
 
 //Semantic Colors Names
 @color-light: white;
@@ -40,6 +41,7 @@ nav {
   height: @nav-height;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  z-index:2;
 
   .nav-wrapper {
     width: 80%;
@@ -80,24 +82,24 @@ nav {
 
         }
 
-      .btn {
+        .btn {
           margin-left: 5px;
           color: @color-light;
-         
-         
+
           padding: 0 5px;
           font-size: 12px;
           background: @color-highlight-import;
-          color:@color-light;
+          color: @color-light;
           text-transform: uppercase;
-          &:hover{
-            background:lighten(@color-highlight-import, 10%);
+
+          &:hover {
+            background: lighten(@color-highlight-import, 10%);
           }
-         
+
         }
       }
-      .dropdown-content{
-        
+
+      .dropdown-content {
         a {
           text-align: center;
           padding: 15px 10px;
@@ -120,17 +122,15 @@ nav {
           height: initial;
         }
 
-        
       }
     }
 
     .menu {
       text-align: center;
       float: right;
-    
-     
+
     }
-    
+
     .mobile-menu {
       display: none;
 
@@ -139,24 +139,22 @@ nav {
 
         .btn {
           margin-left: 5px;
-          margin-right:0;         
-         
+          margin-right: 0;
 
           &.drop-down-toggle {
             background-color: fade(@color-highlight-mid-import, 50%);
-            font-size:14px;
-            color:@color-light;
-            padding:0 10px;
+            font-size: 14px;
+            color: @color-light;
+            padding: 0 10px;
 
-           
-            &:hover{
-              background:lighten(@color-highlight-mid-import, 5%);
+            &:hover {
+              background: lighten(@color-highlight-mid-import, 5%);
             }
           }
         }
 
         .dropdown-content {
-        top:59px;
+          top: 59px;
         }
       }
     }
@@ -369,9 +367,11 @@ footer {
 
       }
     }
-    .content{
-      width:100%;
+
+    .content {
+      width: 100%;
     }
+
     ul {
       &.indented {
         padding-left: initial;
@@ -390,9 +390,10 @@ footer {
         }
       }
     }
-    .centered{
-      text-align:center;
-     
+
+    .centered {
+      text-align: center;
+
     }
   }
   //Section Types 
@@ -406,6 +407,7 @@ footer {
 //Repetitious Elements 
 #match-logger-container {
   position: fixed;
+  
   height: 100vh;
   min-height: 662px;
   padding-bottom: 2 rem;
@@ -470,7 +472,32 @@ footer {
   }
 
 }
+#alert-container {
+  width:120%;
+  left:-10%;
+  top:0;
+  position: absolute; 
+  color:@color-light;
+  background-color:lighten(@Soft-Orange, 5%);
+  text-align: center;
+  display:none;
+  padding:75px 0 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
+  
+  .close-button {
+    position: relative;
+    color: @color-light;
+    margin-left:10px; 
+    top:initial;
+    right:initial;
+    float:none;
+  }
+  &.active{
+    display:block;
+  
+  }
+}
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -558,15 +585,14 @@ footer {
     margin: 30px auto;
     position: relative;
 
-    .upper-section-checkbox {
+    .wishlist-checkbox {
       width: 36px;
       height: 36px;
+      top: -25px;
       right: -10px;
       opacity: 1;
       position: absolute;
       z-index: 2;
-      display:table;
-  
 
       label {
         position: relative;
@@ -577,48 +603,20 @@ footer {
           content: "\2665";
           position: absolute;
           color: white;
-          font-size: 25px;
+          font-size: 35px;
+          background-color: @color-highlight-mid-import;
           padding: 6px;
           border-radius: 25px;
           line-height: 24px;
           -webkit-tap-highlight-color: transparent;
           transition: .25s;
-          display:table-cell;
-          vertical-align: middle;
-          width:36px;
-          text-align: center;
-
         }
 
       }
-      &.wishlist{
-        top: -25px;    
-        label{
-          &:before {
-            
-            content: "\2665";
-            background-color: @color-highlight-mid-import;
-          }
-        }
-        input[type="checkbox"]:checked + label::before {
-          opacity: 1;
-        }
-      }
-      &.for-trade{
-        top: 20px;    
-        label{
-          &:before {
-           padding:5px 0 7px 0;
-            content: "$";
-            background-color: @color-highlight-import;
-          }
-        }
-        input[type="checkbox"]:checked + label::before {
-          opacity: 1;
-        }
-      }
 
-     
+      input[type="checkbox"]:checked + label::before {
+        opacity: 1;
+      }
 
     }
 
@@ -867,7 +865,7 @@ footer {
 
   h1 {
     font-size: 50px;
-    margin-top: 0;
+    margin-top: 15px;
     margin-bottom: 10px;
     line-height: 1;
     font-variant: small-caps;
@@ -928,9 +926,10 @@ footer {
       text-align: center;
 
       li {
-        
+        width: 275px;
         margin: 5px auto;
         padding: 5px;
+        background: #26a69a;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
         animation-duration: 1.6s;
@@ -939,26 +938,18 @@ footer {
         -webkit-animation-timing-function: ease-out;
         visibility: visible !important;
         position: relative;
-        a{
-          width: 275px;
-          color:@color-light;
-          font-size:13px;
-          padding:0 5px;
-        }
 
         &:first-of-type {
           ::before {
             content: "\2726";
             position: absolute;
-            left: 25px;
-            color:lighten(@color-highlight-import, 10%);
+            left: 5px;
           }
 
           ::after {
             content: "\2726";
             position: absolute;
-            right: 25px;
-            color:lighten(@color-highlight-import, 10%);
+            right: 5px;
           }
         }
 
@@ -1277,7 +1268,7 @@ footer {
       min-width: 250px;
 
       input {
-        
+
         text-transform: uppercase;
         vertical-align: middle;
         border: none;
@@ -1289,10 +1280,10 @@ footer {
       }
     }
     // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
-    input[type="submit"],
-    a {
-      outline:none;
-      border:none;
+    a,
+    input[type="submit"] {
+      outline: none;
+      border: none;
       width: 250px;
       margin: 10px 0;
       text-decoration: none;
@@ -1317,16 +1308,18 @@ footer {
         background: fade(@color-dark, 60%);
       }
     }
-    input[type="submit"]{
-      background:@color-highlight-import;
+
+    input[type="submit"] {
+      background: @color-highlight-import;
       color: @color-light;
+
       &:active {
         outline: none;
       }
-      &:hover{
+
+      &:hover {
         background-color: lighten(@color-highlight-import, 10%);
-      
-      
+
       }
     }
   }
@@ -1551,10 +1544,11 @@ footer {
 }
 
 //User list pages (users, collections etc...)  
-#user-wrapper,
-#collection-wrapper {
+#collection-wrapper,
+#user-wrapper {
   .btn {
-    color:@color-light;
+    color: @color-light;
+
     &.user {
       margin: 5px 0;
       width: 200px;
@@ -1575,7 +1569,7 @@ footer {
     }
 
     #league-details,
-    .card-wrapper{
+    .card-wrapper {
       white-space: normal;
       display: inline-block;
       box-sizing: border-box;
@@ -1589,20 +1583,21 @@ footer {
         //Card size from mtg api
         margin-right: 10px;
       }
+
       .btn {
-        display:block;
-        width:200px;
-        margin:10px auto 0;    
+        display: block;
+        width: 200px;
+        margin: 10px auto 0;
       }
     }
 
     #league-details {
       width: ~"calc(100% - @{card-width-and-margin-for-calc})";
-      .table{
-        .row{
-          p{
-           
-            &:last-of-type{
+
+      .table {
+        .row {
+          p {
+            &:last-of-type {
               text-align: center;
             }
           }
@@ -1748,6 +1743,7 @@ footer {
   .section {
     .container {
       width: 90%;
+      position: relative;
     }
   }
 
@@ -1806,6 +1802,10 @@ footer {
 }
 
 //Animations
+@keyframes slide-up-and-go{
+  0%, 99%{display:block}
+  90%{top:-100px;}
+}
 @keyframes growVert {
   0% {
 
@@ -1898,3 +1898,4 @@ footer {
     opacity: 1;
   }
 }
+

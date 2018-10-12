@@ -12,6 +12,7 @@ nav {
   height: 64px;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 nav .nav-wrapper {
   width: 80%;
@@ -364,6 +365,29 @@ footer.page-footer .container .copyright p {
   width: 100%;
   background-color: rgba(73, 73, 75, 0.5);
 }
+#alert-container {
+  width: 120%;
+  left: -10%;
+  top: 0;
+  position: absolute;
+  color: white;
+  background-color: #f1b65c;
+  text-align: center;
+  display: none;
+  padding: 75px 0 10px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+#alert-container .close-button {
+  position: relative;
+  color: white;
+  margin-left: 10px;
+  top: initial;
+  right: initial;
+  float: none;
+}
+#alert-container.active {
+  display: block;
+}
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -441,54 +465,33 @@ footer.page-footer .container .copyright p {
   margin: 30px auto;
   position: relative;
 }
-.card-grid .card-wrapper .upper-section-checkbox {
+.card-grid .card-wrapper .wishlist-checkbox {
   width: 36px;
   height: 36px;
+  top: -25px;
   right: -10px;
   opacity: 1;
   position: absolute;
   z-index: 2;
-  display: table;
 }
-.card-grid .card-wrapper .upper-section-checkbox label {
+.card-grid .card-wrapper .wishlist-checkbox label {
   position: relative;
 }
-.card-grid .card-wrapper .upper-section-checkbox label:before {
+.card-grid .card-wrapper .wishlist-checkbox label:before {
   cursor: pointer;
   opacity: .4;
   content: "\2665";
   position: absolute;
   color: white;
-  font-size: 25px;
+  font-size: 35px;
+  background-color: #d1bfa7;
   padding: 6px;
   border-radius: 25px;
   line-height: 24px;
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
-  display: table-cell;
-  vertical-align: middle;
-  width: 36px;
-  text-align: center;
 }
-.card-grid .card-wrapper .upper-section-checkbox.wishlist {
-  top: -25px;
-}
-.card-grid .card-wrapper .upper-section-checkbox.wishlist label:before {
-  content: "\2665";
-  background-color: #d1bfa7;
-}
-.card-grid .card-wrapper .upper-section-checkbox.wishlist input[type="checkbox"]:checked + label::before {
-  opacity: 1;
-}
-.card-grid .card-wrapper .upper-section-checkbox.for-trade {
-  top: 20px;
-}
-.card-grid .card-wrapper .upper-section-checkbox.for-trade label:before {
-  padding: 5px 0 7px 0;
-  content: "$";
-  background-color: #26a69a;
-}
-.card-grid .card-wrapper .upper-section-checkbox.for-trade input[type="checkbox"]:checked + label::before {
+.card-grid .card-wrapper .wishlist-checkbox input[type="checkbox"]:checked + label::before {
   opacity: 1;
 }
 .card-grid .card-wrapper .card-grid-item {
@@ -670,7 +673,7 @@ footer.page-footer .container .copyright p {
 }
 #ranking-wrapper h1 {
   font-size: 50px;
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 10px;
   line-height: 1;
   font-variant: small-caps;
@@ -721,8 +724,10 @@ footer.page-footer .container .copyright p {
   text-align: center;
 }
 #ranking-wrapper #ranking-board ul li {
+  width: 275px;
   margin: 5px auto;
   padding: 5px;
+  background: #26a69a;
   animation-name: bigEntrance;
   -webkit-animation-name: bigEntrance;
   animation-duration: 1.6s;
@@ -732,23 +737,15 @@ footer.page-footer .container .copyright p {
   visibility: visible !important;
   position: relative;
 }
-#ranking-wrapper #ranking-board ul li a {
-  width: 275px;
-  color: white;
-  font-size: 13px;
-  padding: 0 5px;
-}
 #ranking-wrapper #ranking-board ul li:first-of-type ::before {
   content: "\2726";
   position: absolute;
-  left: 25px;
-  color: #30d0c1;
+  left: 5px;
 }
 #ranking-wrapper #ranking-board ul li:first-of-type ::after {
   content: "\2726";
   position: absolute;
-  right: 25px;
-  color: #30d0c1;
+  right: 5px;
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
@@ -986,8 +983,8 @@ footer.page-footer .container .copyright p {
 #log-in-wrapper .container .btn input:active {
   outline: none;
 }
-#log-in-wrapper .container input[type="submit"],
-#log-in-wrapper .container a {
+#log-in-wrapper .container a,
+#log-in-wrapper .container input[type="submit"] {
   outline: none;
   border: none;
   width: 250px;
@@ -1010,8 +1007,8 @@ footer.page-footer .container .copyright p {
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
 }
-#log-in-wrapper .container input[type="submit"]:hover,
-#log-in-wrapper .container a:hover {
+#log-in-wrapper .container a:hover,
+#log-in-wrapper .container input[type="submit"]:hover {
   background: rgba(73, 73, 75, 0.6);
 }
 #log-in-wrapper .container input[type="submit"] {
@@ -1139,12 +1136,12 @@ footer.page-footer .container .copyright p {
   filter: saturate(1);
   opacity: 1;
 }
-#user-wrapper .btn,
-#collection-wrapper .btn {
+#collection-wrapper .btn,
+#user-wrapper .btn {
   color: white;
 }
-#user-wrapper .btn.user,
-#collection-wrapper .btn.user {
+#collection-wrapper .btn.user,
+#user-wrapper .btn.user {
   margin: 5px 0;
   width: 200px;
   overflow: hidden;
@@ -1258,6 +1255,7 @@ footer.page-footer .container .copyright p {
   }
   .section .container {
     width: 90%;
+    position: relative;
   }
   #log-in-wrapper {
     width: 95%;
@@ -1298,6 +1296,15 @@ footer.page-footer .container .copyright p {
   }
   .container {
     width: 100%;
+  }
+}
+@keyframes slide-up-and-go {
+  0%,
+  99% {
+    display: block;
+  }
+  90% {
+    top: -100px;
   }
 }
 @keyframes growVert {
@@ -1364,3 +1371,4 @@ footer.page-footer .container .copyright p {
     opacity: 1;
   }
 }
+
