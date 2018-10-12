@@ -46,18 +46,18 @@
 
   var cardTemplate = function(card) {
     return `
-      <div class="card-wrapper ${leagueStatus(card)}">
-        <div class="wishlist-checkbox">
-          <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
-          <label for="checkbox-for-${card.attributes.id}"></label>
-        </div>
-        <a class="card-grid-item" href="/cards/${card.attributes.id}">
+    <div class="card-wrapper ${leagueStatus(card)}">
+      <div class="wishlist upper-section-checkbox">
+        <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
+        <label for="wl-checkbox-for-${card.attributes.id}"></label>
+      </div>
+      <a class="card-grid-item" href="/cards/${card.attributes.id}">
         <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
-        </a>
-       <div class="trade-proposal-request">
-            <button type="button" class="btn" data-id="${card.attributes.id}"></button>
-        </div>
+      </a>
+     <div class="trade-proposal-request">
+       <button type="button" class="btn" data-id="${card.attributes.id}"></button>
     </div>
+  </div>
 
     `
   }
