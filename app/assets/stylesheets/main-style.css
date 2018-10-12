@@ -441,33 +441,54 @@ footer.page-footer .container .copyright p {
   margin: 30px auto;
   position: relative;
 }
-.card-grid .card-wrapper .wishlist-checkbox {
+.card-grid .card-wrapper .upper-section-checkbox {
   width: 36px;
   height: 36px;
-  top: -25px;
   right: -10px;
   opacity: 1;
   position: absolute;
   z-index: 2;
+  display: table;
 }
-.card-grid .card-wrapper .wishlist-checkbox label {
+.card-grid .card-wrapper .upper-section-checkbox label {
   position: relative;
 }
-.card-grid .card-wrapper .wishlist-checkbox label:before {
+.card-grid .card-wrapper .upper-section-checkbox label:before {
   cursor: pointer;
   opacity: .4;
   content: "\2665";
   position: absolute;
   color: white;
-  font-size: 35px;
-  background-color: #d1bfa7;
+  font-size: 25px;
   padding: 6px;
   border-radius: 25px;
   line-height: 24px;
   -webkit-tap-highlight-color: transparent;
   transition: .25s;
+  display: table-cell;
+  vertical-align: middle;
+  width: 36px;
+  text-align: center;
 }
-.card-grid .card-wrapper .wishlist-checkbox input[type="checkbox"]:checked + label::before {
+.card-grid .card-wrapper .upper-section-checkbox.wishlist {
+  top: -25px;
+}
+.card-grid .card-wrapper .upper-section-checkbox.wishlist label:before {
+  content: "\2665";
+  background-color: #d1bfa7;
+}
+.card-grid .card-wrapper .upper-section-checkbox.wishlist input[type="checkbox"]:checked + label::before {
+  opacity: 1;
+}
+.card-grid .card-wrapper .upper-section-checkbox.for-trade {
+  top: 20px;
+}
+.card-grid .card-wrapper .upper-section-checkbox.for-trade label:before {
+  padding: 5px 0 7px 0;
+  content: "$";
+  background-color: #26a69a;
+}
+.card-grid .card-wrapper .upper-section-checkbox.for-trade input[type="checkbox"]:checked + label::before {
   opacity: 1;
 }
 .card-grid .card-wrapper .card-grid-item {
