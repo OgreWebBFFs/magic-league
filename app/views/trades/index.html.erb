@@ -35,13 +35,21 @@
 </div>
 <script>
   var current_user_id = <%= current_user.id %>
+  var wishlist = []
+
+  xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
+  $(document).off('click', '.toggle-wishlist');
+  $(document).on('click', '.toggle-wishlist', function(){
+    card_id = $(this).attr('data-id');
+    xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
+  });
 
   var cardTemplate = function(card) {
     return `
       <div class="card-wrapper ${leagueStatus(card)}">
         <div class="wishlist-checkbox">
-            <input id="checkbox-for-card-${card.id}" type="checkbox" >
-            <label for="checkbox-for-card-${card.id}"></label>
+          <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
+          <label for="checkbox-for-${card.attributes.id}"></label>
         </div>
         <a class="card-grid-item" href="/cards/${card.attributes.id}">
         <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
