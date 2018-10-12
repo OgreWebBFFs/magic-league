@@ -21,7 +21,7 @@
         </a>
 
         <div class="trade-proposal-request">            
-            <button type="button" onclick="idedElementToggle('trade-modal')" class="btn " data-id="102"></button>
+            <button type="button" onclick="AppLayout.idedElementToggle('trade-modal')" class="btn " data-id="102"></button>
         </div>
         </div>
           <div class="card-wrapper  not-in-league">
@@ -45,7 +45,7 @@
             <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
             </a>
            <div class="trade-proposal-request">
-                <button type="button" class="btn" data-id="102" onclick="idedElementToggle('trade-modal')"></button>
+                <button type="button" class="btn" data-id="102" onclick="AppLayout.idedElementToggle('trade-modal')"></button>
             </div>
         </div>
     </div>
@@ -54,9 +54,9 @@
 
 
 <div id="trade-modal" class="narrow modal-wrapper"  >
- <div class="background-click-container" onclick="idedElementToggle('trade-modal')"></div>
+ <div class="background-click-container" onclick="AppLayout.idedElementToggle('trade-modal')"></div>
     <div id="trade-proposal" class="modal">
-    <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('trade-modal')">
+    <button class="close-button" href="#" class="match-log-close" onclick="AppLayout.idedElementToggle('trade-modal')">
           <i class="material-icons">cancel</i>
     </button>
     <div class="content">
@@ -69,7 +69,7 @@
         <li>Person</li>
         </ul>
         <p>To talk about trading for CARD NAME</p>
-          <button class="btn" onclick="idedElementToggle('trade-modal')">Send Message</button>
+          <button class="btn" onclick="AppLayout.idedElementToggle('trade-modal')">Send Message</button>
     </div>
   
     </div>

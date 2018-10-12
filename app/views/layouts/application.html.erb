@@ -56,14 +56,14 @@
               </ul>
             </li>
             <li>
-              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
+              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="AppLayout.logMatchOnClick()">
                Log a match
               </a>
               </li>
           </ul>
           <ul class="mobile-menu">
            <li>
-              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu-mobile')">
+              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="AppLayout.idedElementToggle('dd-menu-mobile')">
                
                &#9660;
               
@@ -94,7 +94,7 @@
 
             </li>
             <li>
-              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
+              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light golden" onclick="AppLayout.logMatchOnClick()">
               Log a match
               </a>
             </li>
@@ -113,9 +113,9 @@
     </div>
 
     <div id="match-logger-container">
-      <div class="background-click-container" onclick="idedElementToggle('match-logger-container')"></div>
+      <div class="background-click-container" onclick="AppLayout.idedElementToggle('match-logger-container')"></div>
       <div class="section">
-        <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('match-logger-container')">
+        <button class="close-button" href="#" class="match-log-close" onclick="AppLayout.idedElementToggle('match-logger-container')">
           <i class="material-icons">cancel</i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
@@ -159,14 +159,7 @@
         </footer>
 
       <% end %>
-      <!-- Site Wide Scipts -->
-      <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
       <script>
-
-        function idedElementToggle(elementId){
-          var target = document.getElementById(elementId);
-          target.classList.toggle("active");
-        }
         //Reminder to JOE, this and the function below are the ones I mentioned on our walk to day (Tues 10-9), that have to be added to the App-layout.js -PAT
         function closeOtherDropDown(){
             var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");            
@@ -188,34 +181,7 @@
             }
           }
         }
-        function setMatchDateAndTime(){
-          let date  = new Date();
-          let today = date.toISOString().substr(0, 10);
-          let hour = ('0' + date.getHours()).slice(-2);
-          let min= ('0' + date.getMinutes()).slice(-2);
-          let time = `${hour}:${min}`;
-          document.getElementById('match-date').value = today;
-          document.getElementById('match-time').value = time;
-        }
-
-        function logMatchOnClick() {
-          event.preventDefault();
-          idedElementToggle('match-logger-container');
-          setMatchDateAndTime();
-        }
-
-        var addPlayerOption = function(name, id) {
-          return `
-                <option value="${id}">${name}</option>
-                `
-        }
-
-        $(function() {
-          $('.player-selector').on('change', function() {
-            $('.winner-selector').empty();
-            $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
-          });
-        });
+      $(document).on('turbolinks:load', AppLayout.setupListeners());
       </script>
   </body>
 </html>
