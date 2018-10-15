@@ -713,20 +713,21 @@ footer.page-footer .container .copyright p {
   height: 100%;
   width: 100%;
 }
-#ranking-wrapper #ranking-board ul {
-  color: white;
+#ranking-wrapper #ranking-board #rankings {
   display: table-cell;
   vertical-align: middle;
   margin: 0 auto;
-  list-style: inside;
   min-width: 275px;
-  padding-right: 5px;
   text-align: center;
 }
-#ranking-wrapper #ranking-board ul li {
+#ranking-wrapper #ranking-board #rankings a {
+  color: white;
   width: 275px;
   margin: 5px auto;
   padding: 5px;
+  height: auto;
+  display: inline-block;
+  font-size: 12px;
   background: #26a69a;
   animation-name: bigEntrance;
   -webkit-animation-name: bigEntrance;
@@ -737,15 +738,18 @@ footer.page-footer .container .copyright p {
   visibility: visible !important;
   position: relative;
 }
-#ranking-wrapper #ranking-board ul li:first-of-type ::before {
+#ranking-wrapper #ranking-board #rankings a:first-of-type ::before {
   content: "\2726";
   position: absolute;
   left: 5px;
 }
-#ranking-wrapper #ranking-board ul li:first-of-type ::after {
+#ranking-wrapper #ranking-board #rankings a:first-of-type ::after {
   content: "\2726";
   position: absolute;
   right: 5px;
+}
+#ranking-wrapper #ranking-board #rankings a:hover {
+  background: #2bbbad;
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
@@ -1371,4 +1375,3 @@ footer.page-footer .container .copyright p {
     opacity: 1;
   }
 }
-

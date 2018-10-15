@@ -914,21 +914,21 @@ footer {
       }
     }
 
-    ul {
-      color: @color-light;
+    #rankings {      
       display: table-cell;
       vertical-align: middle;
       margin: 0 auto;
-      list-style: inside;
       min-width: 275px;
-
-      padding-right: 5px;
       text-align: center;
 
-      li {
+      a {
+        color: @color-light;
         width: 275px;
         margin: 5px auto;
         padding: 5px;
+        height:auto;
+        display:inline-block;
+        font-size:12px;
         background: #26a69a;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
@@ -951,6 +951,9 @@ footer {
             position: absolute;
             right: 5px;
           }
+        }
+        &:hover{
+          background: lighten(@color-highlight-import, 5%);
         }
 
       }
