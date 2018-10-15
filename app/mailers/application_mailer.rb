@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default bcc: 'ogretheleaguening@gmail.com'
+  default from: 'ogretheleaguening@gmail.com', bcc: 'ogretheleaguening@gmail.com'
   layout 'mailer'
 end
