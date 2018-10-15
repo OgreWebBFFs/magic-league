@@ -15,11 +15,11 @@
         <div class="vert-centerer">
           <ul id="rankings">
             <% @rankings.each do |user| %>
-              <li>
+            
              <%= link_to "#{user.name} (#{user.wins.count}-#{user.losses.count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
               
             
-              </li>
+           
             <% end %>
           </ul>
         </div>
