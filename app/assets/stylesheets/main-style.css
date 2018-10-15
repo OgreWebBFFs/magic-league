@@ -388,7 +388,7 @@ footer.page-footer .container .copyright p {
 #alert-container.active {
   display: block;
 }
-#alert-containerlogged-out {
+#alert-container.logged-out {
   top: 0;
 }
 #cycling-background-container {
