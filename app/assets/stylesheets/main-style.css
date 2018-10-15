@@ -368,7 +368,7 @@ footer.page-footer .container .copyright p {
 #alert-container {
   width: 120%;
   left: -10%;
-  top: 0;
+  top: 64px;
   position: absolute;
   color: white;
   background-color: #f1b65c;

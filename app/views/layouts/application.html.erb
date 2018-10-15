@@ -108,9 +108,10 @@
     <% end %>
 
     <div class="section full-page">
-      <% flash.each do |key, value| %>
-          <div id="alert-container" class="active alert alert-<%= key %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
-      <% end %>
+
+          <div id="alert-container" class="active logged-out alert">
+           <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
+   
       <%= yield %>
     </div>
 
