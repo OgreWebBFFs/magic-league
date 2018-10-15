@@ -13,7 +13,7 @@
       </div>
       <div class="scroll-catcher">
         <div class="vert-centerer">
-          <ul id="rankings">
+          <div id="rankings">
             <% @rankings.each do |user| %>
             
              <%= link_to "#{user.name} (#{user.wins.count}-#{user.losses.count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
@@ -38,7 +38,7 @@
 <!--List animation cue-->
 <script>
   var ul = document.getElementById("rankings");
-var items = ul.getElementsByTagName("li");
+var items = ul.getElementsByTagName("a");
 for (var i = 0; i < items.length; i++) {
 
   items[i].style.animationDuration = .2 + (i / 3) + "s";
