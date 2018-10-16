@@ -5,6 +5,6 @@ module UsersHelper
     image_path = "#{user&.gravatar_path}?s=#{size}"
     image_path = image_path + "&d=#{default_image}" unless Rails.env == 'development'
 
-    image_tag image_path, size: size
+    image_tag image_path, size: size, class: 'user-image'
   end
 end
