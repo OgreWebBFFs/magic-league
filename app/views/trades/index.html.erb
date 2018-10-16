@@ -47,7 +47,7 @@
   var cardTemplate = function(card) {
     return `
     <div class="card-wrapper ${leagueStatus(card)}">
-      <div class="wishlist upper-section-checkbox">
+      <div class="wishlist wishlist-checkbox">
         <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
         <label for="wl-checkbox-for-${card.attributes.id}"></label>
       </div>
