@@ -25,7 +25,7 @@
 
     $(function() {
 
-      xhrRequest('/wishlists/<%= current_user.id %>', 'GET', function(res){
+      xhrRequest('/wishlists/<%= @user.id %>', 'GET', function(res){
         $('.wishlist-item').remove()
         res.forEach(function(card) {
           $('.wishlist.alternating').append(cardRow(card));
@@ -37,7 +37,7 @@
         card_id = $(this).attr('data-id');
         that = this;
         $.ajax({
-          url: '/wishlists/<%= current_user.id %>',
+          url: '/wishlists/<%= @user.id %>',
           beforeSend: function (xhr) {
             xhr.setRequestHeader("X-CSRF-Token", token)
           },
