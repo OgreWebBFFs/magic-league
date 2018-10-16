@@ -23,10 +23,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form', '>= 4.0.1'
 gem 'fast_jsonapi'
 
-group :development do
-  gem 'rails_real_favicon'
-end
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
