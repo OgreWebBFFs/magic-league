@@ -43,6 +43,11 @@ class User < ApplicationRecord
     user
   end
 
+  def gravatar_path
+    hash = Digest::MD5.hexdigest(self.email.downcase) if self.email
+    image_src = "https://www.gravatar.com/avatar/#{hash}"
+  end
+
   private
 
   def add_collection

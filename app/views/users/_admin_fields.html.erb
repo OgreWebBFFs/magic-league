@@ -1,5 +1,28 @@
-<%= f.input :name %>
-<%= f.input :email %>
-<%= f.input :admin, :as => :switch %>
+<div class="row">
+  <div class="col m4">
+    <div>
+      <label>Gravatar</label>
+      <div id="user">
+        <%= gravatar(@user, 128) %>
+        <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/', class: 'btn small'  %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col m8">
+    <%= f.input :name %>
+    <%= f.input :email %>
+  </div>
+</div>
 
-<%= f.button :submit %>
+<div class="row">
+  <div class="col m12">
+    <%= f.input :admin, :as => :switch %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col m12">
+    <%= f.button :submit %>
+  </div>
+</div>
