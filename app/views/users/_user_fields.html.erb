@@ -3,8 +3,17 @@
     <div>
       <label>Gravatar</label>
       <div id="user">
-        <%= gravatar(@user, 128) %>
-        <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/', class: 'btn small'  %>
+        <div class="row">
+          <div class="col m12">
+            <%= gravatar(@user, 128) %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col md12">
+            <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/', class: 'btn small'  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
