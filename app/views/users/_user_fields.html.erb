@@ -1,4 +1,16 @@
-<%= f.input :name %>
-<%= f.input :email, disabled: true %>
+<div id="edit-details-wrapper">
+<div class="table">
+  <div class="flex-col" id="user">
+      <%= gravatar(@user, 128) %>
+      <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/',target: "_blank", class: 'btn small'  %>
+      <p>Gravatar may take a few mintues to update</p>          
+  </div> 
 
+  <div class="flex-col" id="detail-inputs">
+    <%= f.input :name %>
+    <%= f.input :email %>
+  </div>
+</div>
 <%= f.button :submit %>
+  
+</div>

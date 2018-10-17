@@ -91,6 +91,9 @@ nav {
           background: @color-highlight-import;
           color: @color-light;
           text-transform: uppercase;
+          &a{
+            color:@color-light;
+          }
 
           &:hover {
             background: lighten(@color-highlight-import, 10%);
@@ -281,7 +284,24 @@ footer {
   .container {
     width: 70%;
     margin: 0 auto;
+    ul {
+      &.indented {
+        padding-left: initial;
+        margin-left: 16px;
+      }
 
+      &.bulleted {
+        list-style-type: disc;
+
+        li {
+          list-style-type: disc;
+        }
+
+        ul {
+          padding-left: 15px;
+        }
+      }
+    }
     .table {
       display: table;
       table-layout: fixed;
@@ -371,25 +391,19 @@ footer {
     .content {
       width: 100%;
     }
-
-    ul {
-      &.indented {
-        padding-left: initial;
-        margin-left: 16px;
+    .table{
+      display:table;
+    .flex-col{
+      display:table-cell;
+      vertical-align: middle;
+      p{
+        font-size:8px;
       }
-
-      &.bulleted {
-        list-style-type: disc;
-
-        li {
-          list-style-type: disc;
-        }
-
-        ul {
-          padding-left: 15px;
-        }
-      }
+       
     }
+  }
+
+  
 
     .centered {
       text-align: center;
@@ -404,7 +418,7 @@ footer {
 
   }
 }
-//Repetitious Elements 
+//Repetitious Non Page Specific Elements 
 #match-logger-container {
   position: fixed;
   
@@ -861,6 +875,8 @@ footer {
 }
 
 //TO DO: BREAK INTO OWN FILES 
+
+//Specific Pages
 //Ranking Page
 
 #ranking-wrapper {
@@ -1242,7 +1258,7 @@ footer {
 
 }
 //Log in
-//TO DO GENERATE LOG IN WRAPPER
+
 #log-in-wrapper {
   display: table;
   width: 40%;
@@ -1553,23 +1569,7 @@ footer {
 
   }
 }
-
-//User list pages (users, collections etc...)  
-#collection-wrapper,
-#user-wrapper {
-  .btn {
-    color: @color-light;
-
-    &.user {
-      margin: 5px 0;
-      width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-}
-
+//Card Profile
 #card-profile-wrapper {
   .container {
     white-space: nowrap;
@@ -1619,6 +1619,62 @@ footer {
 
   }
 }
+//Edit Account 
+#edit-details-wrapper{
+  .table{
+    border:none;
+    box-shadow:none;
+  .flex-col{
+    
+    &#user{ 
+      //gravatar width
+      width:170px;
+      text-align:center;
+        label, img, a{
+        display:block;
+        margin:5px auto;        
+      }
+      img {
+        border:2px solid @color-dark;
+      }
+      a{
+        color:@color-light;
+      }
+
+    }
+    &#detail-inputs{
+      padding-left:25px;
+      
+    }
+  }
+  }
+  input[type="submit"], input[type="switch"]{
+    margin:25px auto 0;
+    display:block;
+  }
+}
+//Page Templates
+//User list pages (users, collections etc...)  
+#collection-wrapper,
+#user-wrapper {
+  .btn {
+    color: @color-light;
+
+    &.user {
+      margin: 5px 0;
+      width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  img.user-image {
+    background-color: @color-dark; 
+  }
+
+}
+
+
 //Responsive Adjustments for whole site
 
 //Cross browser fixes 
@@ -1782,6 +1838,25 @@ footer {
           margin: 2px auto;
         }
       }
+    }
+  }
+
+  #edit-details-wrapper{
+    .table{
+      display:block;
+    .flex-col{
+    display:block;
+    margin:25px auto;
+    
+      &#detail-inputs{
+        padding-left:0;
+        
+      }
+    }
+    }
+    input[type="submit"]{
+      margin:25px auto 0;
+      display:block;
     }
   }
 
