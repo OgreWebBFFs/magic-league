@@ -1,6 +1,8 @@
 <div id="edit-collections-wrapper">
   <div id="collections" class="container">
     <h3><%= "#{@collection.user.name}'s Collection" %> </h3>
+    <%= link_to 'Edit Collection', edit_collection_path(@collection.id), class: 'btn' if policy(@collection).edit? %>
+
     <div class="card-grid">
       <% @cards.each do |card| %>
         <div class="card-wrapper">
