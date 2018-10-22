@@ -1,8 +1,12 @@
-<div id="edit-collections-wrapper">
+<div id="collections-wrapper">
   <div id="collections" class="container">
+  <div class="card-view-nav">
     <h3><%= "#{@collection.user.name}'s Collection" %> </h3>
     <%= link_to 'Edit Collection', edit_collection_path(@collection.id), class: 'btn' if policy(@collection).edit? %>
-
+    <%= link_to 'Collection', collection_path(@collection.id), class: 'highlight-mid  btn' if !policy(@collection).edit? %>
+     <%= link_to 'Wishlist', collection_path(@collection.id), class: 'btn' if !policy(@collection).edit? %>
+      <%= link_to 'For Trade', collection_path(@collection.id), class: 'btn' if !policy(@collection).edit? %>
+    </div>
     <div class="card-grid">
       <% @cards.each do |card| %>
         <div class="card-wrapper">

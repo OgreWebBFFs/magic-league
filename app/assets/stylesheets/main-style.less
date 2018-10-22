@@ -227,6 +227,14 @@ footer {
     a {
       color: @color-light;
     }
+
+    &.highlight-mid {
+      background: lighten(@color-highlight-mid-import, 5%);
+
+      &:hover {
+        background: lighten(@color-highlight-mid-import, 10%);
+      }
+    }
   }
 
   h1,
@@ -817,6 +825,18 @@ footer {
     }
 
   }
+}
+
+.card-view-nav {
+  margin: 0 auto;
+  text-align: center;
+
+
+
+  a.btn {
+    color: @color-light;
+  }
+
 }
 
 .modal-wrapper {
@@ -1672,11 +1692,12 @@ footer {
 //View Individ. Collection{
 #edit-collections-wrapper {
   #collections {
-    text-align:center;
+    text-align: center;
+
     a {
       &.btn {
-        color:@color-light;
-        }
+        color: @color-light;
+      }
     }
   }
 }
@@ -1895,6 +1916,18 @@ footer {
       right: -20px;
       padding: 2px;
       opacity: .8;
+
+    }
+  }
+
+  .card-view-nav {
+    h3 {
+      font-size:1.92rem;
+  
+    }
+    a.btn {
+      padding: 0 5px;
+      font-size: 10px;
 
     }
   }

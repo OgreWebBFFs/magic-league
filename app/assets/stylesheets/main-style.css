@@ -165,6 +165,12 @@ footer.page-footer .container .copyright p {
 .section .btn a {
   color: white;
 }
+.section .btn.highlight-mid {
+  background: #dacbb8;
+}
+.section .btn.highlight-mid:hover {
+  background: #e3d7c8;
+}
 .section h1.color-blocked,
 .section h2.color-blocked,
 .section h3.color-blocked,
@@ -632,6 +638,13 @@ footer.page-footer .container .copyright p {
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn:after {
   content: "Not in League";
+}
+.card-view-nav {
+  margin: 0 auto;
+  text-align: center;
+}
+.card-view-nav a.btn {
+  color: white;
 }
 .modal-wrapper {
   display: none;
@@ -1363,6 +1376,13 @@ footer.page-footer .container .copyright p {
     right: -20px;
     padding: 2px;
     opacity: .8;
+  }
+  .card-view-nav h3 {
+    font-size: 1.92rem;
+  }
+  .card-view-nav a.btn {
+    padding: 0 5px;
+    font-size: 10px;
   }
 }
 @media only screen and (max-width: 400px) {
