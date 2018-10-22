@@ -1,0 +1,21 @@
+<div id="wishlist-wrapper">
+  <div id="wishlist" class="container">
+         <div class="card-view-nav">
+            <h3><%= "#{@user.name}'s Wishlist" %> </h3>
+            <%= link_to 'Collection', collection_path(@user.id), class: 'btn' if !policy(@collection).edit? %>
+            <%= link_to 'Wishlist', wishlists_path(@user.id), class: ' highlight-mid   tn' if !policy(@collection).edit? %>
+            <%= link_to 'For Trade', collection_path(@user.id), class: 'btn' if !policy(@collection).edit? %>
+    </div>
+    <div class="card-grid">
+      <% @user.wishlist.each do |card| %>
+        <div class="card-wrapper">           
+          <a class="card-grid-item">
+            <img class="card" alt="<%= card.name %>" title="${card.name}" src="<%= card.image_url %>">
+          </a>  
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
