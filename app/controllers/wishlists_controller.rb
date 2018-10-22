@@ -1,7 +1,10 @@
 class WishlistsController < ApplicationController
   before_action :set_user, only: [:show, :update]
   def show
-    render json: @user.wishlist, status: 200
+    respond_to do |format|
+      format.html
+      format.json {render json: @user.wishlist, status: 200}
+    end
   end
 
   def update
