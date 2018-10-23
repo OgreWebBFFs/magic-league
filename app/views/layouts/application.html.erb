@@ -15,7 +15,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body onload="setTimeout(function() {idedElementToggle('alert-container')}, 5000)">
     <% if user_signed_in? %>
       <nav id="nav" role="navigation">
         <div class="nav-wrapper container">
@@ -115,7 +115,7 @@
 
     <div class="section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert-container" class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
+        <div id="alert-container"  class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
@@ -172,7 +172,6 @@
     <script>
 
       function idedElementToggle(elementId){
-        event.preventDefault();
         var target = document.getElementById(elementId);
         target.classList.toggle("active");
       }

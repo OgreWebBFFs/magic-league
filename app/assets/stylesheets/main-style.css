@@ -411,6 +411,9 @@ footer.page-footer .container .copyright p {
 #alert-container.logged-out {
   top: 0;
 }
+#alert-container.urgent {
+  background-color: #DC143C;
+}
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -1376,6 +1379,7 @@ footer.page-footer .container .copyright p {
     right: -20px;
     padding: 2px;
     opacity: .8;
+
   }
   .card-view-nav h3 {
     font-size: 1.92rem;
@@ -1383,6 +1387,7 @@ footer.page-footer .container .copyright p {
   .card-view-nav a.btn {
     padding: 0 5px;
     font-size: 10px;
+
   }
 }
 @media only screen and (max-width: 400px) {
