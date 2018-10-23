@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_130318) do
+ActiveRecord::Schema.define(version: 2018_10_19_174302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2018_10_06_130318) do
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_ownerships_on_card_id"
     t.index ["collection_id"], name: "index_ownerships_on_collection_id"
+  end
+
+  create_table "tradables", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_tradables_on_card_id"
+    t.index ["user_id"], name: "index_tradables_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
