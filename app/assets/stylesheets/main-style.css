@@ -1360,7 +1360,7 @@ footer.page-footer .container .copyright p {
   #match-history-wrapper .container #match-history.table {
     display: block;
     height: auto;
-    overflow: auto;
+    overflow: hidden;
   }
   #match-history-wrapper .container #match-history.table .row {
     text-align: center;
