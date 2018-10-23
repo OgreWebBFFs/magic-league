@@ -1653,6 +1653,25 @@ footer {
     display:block;
   }
 }
+
+//Match History 
+#match-history-wrapper{
+  .container{
+    #match-history.table{
+      .row{
+        p{
+          &:first-child{
+            width:100px;
+            text-align:center;
+          }
+        }
+        .on-mobile{
+          display:none;
+        }
+      }
+    }
+  }
+}
 //Page Templates
 //User list pages (users, collections etc...)  
 #collection-wrapper,
@@ -1857,6 +1876,52 @@ footer {
     input[type="submit"]{
       margin:25px auto 0;
       display:block;
+    }
+  }
+  #match-history-wrapper{
+    .container{
+      #match-history.table{
+        display:block;
+     
+        height:auto;
+        overflow:auto;
+        .row{
+          text-align: center;
+          display:block;
+          height:auto;
+          padding:0 0 20px 0;
+          margin-bottom:0;
+          &.headings{
+            display:none;
+          }
+          p{
+            
+            display:inline-block;
+            width:100%;
+            white-space: normal;
+           
+            padding:0;
+            .on-mobile{
+              display:inline;
+              font-weight:bold;
+            }
+            &:first-of-type{
+              font-weight:bold;
+              margin-top:0;
+              background:@color-dark;
+              color:@color-light;
+              text-transform: uppercase;
+              display:block;
+              text-align:center;
+              width:101%;
+              margin:0 0 10px 0
+            }
+            &:last-of-type{
+              margin-bottom:0;
+            }
+         }
+        }
+      }
     }
   }
 

@@ -1,37 +1,24 @@
  <div id="match-history-wrapper">
     <div class="container">
-        <h2 id="month-title" onload="currentMonthToTitle()">Month's Matches</h2>
+        <h2 id="month-title">Month's Matches</h2>
         <div id="match-history" class="alternating table">
           <div class="headings row">
-            <p>Match</p>
-            <p>Winner</p>
-            <p>Loser</p>
-            <P>Date</p>
+            <p class="browser-cell" >Match</p>         
+            <p class="browser-cell">Winner</p>         
+            <p class="browser-cell">Loser</p>         
+            <P class="browser-cell">Date</p>
+                    
           </div>
-          <div class="row">
-            <p>1</p>
-            <p>Ryan Branch</p>
-            <p>Mike Stempler</p>
-            <p>Oct 1, 1974</p>
-          </div>
-          <div class="row">
-            <p>3</p>
-            <p>Ryan Branch</p>
-            <p>Mike Stempler</p>
-            <p>Oct 1, 1974</p>
-          </div>
-          <div class="row">
-            <p>3</p>
-            <p>Ryan Branch</p>
-            <p>Mike Stempler</p>
-            <p>Oct 1, 1974</p>
-          </div>
-          <div class="row">
-            <p>4</p>
-            <p>Ryan Branch</p>
-            <p>Mike Stempler</p>
-            <p>Oct 1, 1974</p>
-          </div>
+        <% @matches.each do |match| %>
+            <div class="row">
+                <p><span class="on-mobile">Match </span><%= match.id %></p>
+                <p><span class="on-mobile">Winner: </span><%= match.winner.name %></p>
+                <p><span class="on-mobile">Loser: </span><%= match.loser.name %></p>
+                <p><%= match.played_at.strftime("%I:%M%p %a %b #{match.played_at.day.ordinalize}")%></p>
+               
+            </div>
+        <% end %>
+
           
         </div>
     </div> 
@@ -43,6 +30,10 @@
         let d = new Date();
         let m = d.getMonth();
         document.getElementById("month-title").innerHTML = `${monthNames[m]}'s Matches`;
+
+        var march
+
+    
     
    
   </script>
