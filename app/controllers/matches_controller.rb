@@ -6,6 +6,12 @@ class MatchesController < ApplicationController
     redirect_to :root
   end
 
+  
+  def index
+    @matches = Match.all
+  
+  end
+
   private
 
   def match_params
