@@ -43,7 +43,7 @@ nav {
   height: @nav-height;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  z-index:2;
+  z-index: 2;
 
   .nav-wrapper {
     width: 80%;
@@ -93,8 +93,9 @@ nav {
           background: @color-highlight-import;
           color: @color-light;
           text-transform: uppercase;
-          &a{
-            color:@color-light;
+
+          &a {
+            color: @color-light;
           }
 
           &:hover {
@@ -228,6 +229,14 @@ footer {
     a {
       color: @color-light;
     }
+
+    &.highlight-mid {
+      background: lighten(@color-highlight-mid-import, 5%);
+
+      &:hover {
+        background: lighten(@color-highlight-mid-import, 10%);
+      }
+    }
   }
 
   h1,
@@ -286,6 +295,7 @@ footer {
   .container {
     width: 70%;
     margin: 0 auto;
+
     ul {
       &.indented {
         padding-left: initial;
@@ -304,6 +314,7 @@ footer {
         }
       }
     }
+
     .table {
       display: table;
       table-layout: fixed;
@@ -393,19 +404,20 @@ footer {
     .content {
       width: 100%;
     }
-    .table{
-      display:table;
-    .flex-col{
-      display:table-cell;
-      vertical-align: middle;
-      p{
-        font-size:8px;
-      }
-       
-    }
-  }
 
-  
+    .table {
+      display: table;
+
+      .flex-col {
+        display: table-cell;
+        vertical-align: middle;
+
+        p {
+          font-size: 8px;
+        }
+
+      }
+    }
 
     .centered {
       text-align: center;
@@ -423,7 +435,7 @@ footer {
 //Repetitious Non Page Specific Elements 
 #match-logger-container {
   position: fixed;
-  
+
   height: 100vh;
   min-height: 662px;
   padding-bottom: 2 rem;
@@ -488,39 +500,43 @@ footer {
   }
 
 }
+
 #alert-container {
-  width:120%;
-  left:-10%;
-  top:@nav-height;
-  position: absolute; 
-  color:@color-light;
-  background-color:lighten(@Soft-Orange, 5%);
+  width: 120%;
+  left: -10%;
+  top: @nav-height;
+  position: absolute;
+  color: @color-light;
+  background-color: lighten(@Soft-Orange, 5%);
   text-align: center;
-  display:none;
-  padding:10px;
+  display: none;
+  padding: 10px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-  
   .close-button {
     position: relative;
     color: @color-light;
-    margin-left:10px; 
-    top:initial;
-    right:initial;
-    float:none;
+    margin-left: 10px;
+    top: initial;
+    right: initial;
+    float: none;
   }
-  &.active{
-    display:block;
+
+  &.active {
+    display: block;
+
 
   }
-  &.logged-out{
-    top:0;
+
+  &.logged-out {
+    top: 0;
   }
   &.urgent{
     background-color: @color-highlight-urgent;
   
   }
 }
+
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -818,6 +834,18 @@ footer {
   }
 }
 
+.card-view-nav {
+  margin: 0 auto;
+  text-align: center;
+
+
+
+  a.btn {
+    color: @color-light;
+  }
+
+}
+
 .modal-wrapper {
   display: none;
   position: fixed;
@@ -939,7 +967,7 @@ footer {
       }
     }
 
-    #rankings {      
+    #rankings {
       display: table-cell;
       vertical-align: middle;
       margin: 0 auto;
@@ -951,9 +979,9 @@ footer {
         width: 275px;
         margin: 5px auto;
         padding: 5px;
-        height:auto;
-        display:inline-block;
-        font-size:12px;
+        height: auto;
+        display: inline-block;
+        font-size: 12px;
         background: #26a69a;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
@@ -977,7 +1005,8 @@ footer {
             right: 5px;
           }
         }
-        &:hover{
+
+        &:hover {
           background: lighten(@color-highlight-import, 5%);
         }
 
@@ -1626,37 +1655,57 @@ footer {
   }
 }
 //Edit Account 
-#edit-details-wrapper{
-  .table{
-    border:none;
-    box-shadow:none;
-  .flex-col{
-    
-    &#user{ 
-      //gravatar width
-      width:170px;
-      text-align:center;
-        label, img, a{
-        display:block;
-        margin:5px auto;        
-      }
-      img {
-        border:2px solid @color-dark;
-      }
-      a{
-        color:@color-light;
+#edit-details-wrapper {
+  .table {
+    border: none;
+    box-shadow: none;
+
+    .flex-col {
+      &#user {
+        //gravatar width
+        width: 170px;
+        text-align: center;
+
+        a,
+        img,
+        label {
+          display: block;
+          margin: 5px auto;
+        }
+
+        img {
+          border: 2px solid @color-dark;
+        }
+
+        a {
+          color: @color-light;
+        }
+
       }
 
-    }
-    &#detail-inputs{
-      padding-left:25px;
-      
+      &#detail-inputs {
+        padding-left: 25px;
+
+      }
     }
   }
+
+  input[type="submit"],
+  input[type="switch"] {
+    margin: 25px auto 0;
+    display: block;
   }
-  input[type="submit"], input[type="switch"]{
-    margin:25px auto 0;
-    display:block;
+}
+//View Individ. Collection{
+#edit-collections-wrapper {
+  #collections {
+    text-align: center;
+
+    a {
+      &.btn {
+        color: @color-light;
+      }
+    }
   }
 }
 //Page Templates
@@ -1675,11 +1724,10 @@ footer {
   }
 
   img.user-image {
-    background-color: @color-dark; 
+    background-color: @color-dark;
   }
 
 }
-
 
 //Responsive Adjustments for whole site
 
@@ -1847,22 +1895,24 @@ footer {
     }
   }
 
-  #edit-details-wrapper{
-    .table{
-      display:block;
-    .flex-col{
-    display:block;
-    margin:25px auto;
-    
-      &#detail-inputs{
-        padding-left:0;
-        
+  #edit-details-wrapper {
+    .table {
+      display: block;
+
+      .flex-col {
+        display: block;
+        margin: 25px auto;
+
+        &#detail-inputs {
+          padding-left: 0;
+
+        }
       }
     }
-    }
-    input[type="submit"]{
-      margin:25px auto 0;
-      display:block;
+
+    input[type="submit"] {
+      margin: 25px auto 0;
+      display: block;
     }
   }
 
@@ -1873,6 +1923,18 @@ footer {
       right: -20px;
       padding: 2px;
       opacity: .8;
+
+    }
+  }
+
+  .card-view-nav {
+    h3 {
+      font-size:1.92rem;
+  
+    }
+    a.btn {
+      padding: 0 5px;
+      font-size: 10px;
 
     }
   }
@@ -1894,9 +1956,15 @@ footer {
 }
 
 //Animations
-@keyframes slide-up-and-go{
-  0%, 99%{display:block}
-  90%{top:-100px;}
+@keyframes slide-up-and-go {
+  0%,
+  99% {
+    display: block;
+  }
+
+  90% {
+    top: -100px;
+  }
 }
 @keyframes growVert {
   0% {
@@ -1990,4 +2058,3 @@ footer {
     opacity: 1;
   }
 }
-

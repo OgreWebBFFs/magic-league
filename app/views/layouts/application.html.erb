@@ -38,6 +38,9 @@
                   <li>
                     <a href="/collections">collections</a>
                   </li>
+                  <li>
+                    <a href="/wishlists">wishlists</a>
+                  </li>                
               </ul>
             </li>         
             <li><a class="drop-down-toggle" onclick="closeOtherDropDown(), idedElementToggle('dd-menu-league')">League &#9660;</a> 
@@ -82,6 +85,9 @@
                 </li>
                 <li>
                   <a href="/collections">collections</a>
+                </li>
+                <li>
+                  <a href="/wishlists">wishlists</a>
                 </li>
                 <li>
                   <a href="/users">Roster</a>
@@ -204,17 +210,20 @@ function logMatchOnClick() {
   event.preventDefault();
   idedElementToggle('match-logger-container');
   setMatchDateAndTime();
+ 
 }
 
 var addPlayerOption = function(name, id) {
   return `
                 <option value="${id}">${name}</option>
                 `
+
 }
 
 $(function() {
-  $('.player-selector').on('change', function() {
+  $(document).ready(function() {
     $('.winner-selector').empty();
+    $('.player-selector').val('<%=current_user.id%>');
     $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
   });
 });
