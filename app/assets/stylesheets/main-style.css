@@ -1234,20 +1234,18 @@ footer.page-footer .container .copyright p {
   margin: 25px auto 0;
   display: block;
 }
-
+#edit-collections-wrapper #collections {
+  text-align: center;
+}
+#edit-collections-wrapper #collections a.btn {
+  color: white;
+}
 #match-history-wrapper .container #match-history.table .row p:first-child {
   width: 100px;
   text-align: center;
 }
 #match-history-wrapper .container #match-history.table .row .on-mobile {
   display: none;
-
-#edit-collections-wrapper #collections {
-  text-align: center;
-}
-#edit-collections-wrapper #collections a.btn {
-  color: white;
-
 }
 #collection-wrapper .btn,
 #user-wrapper .btn {
@@ -1429,7 +1427,6 @@ footer.page-footer .container .copyright p {
     right: -20px;
     padding: 2px;
     opacity: .8;
-
   }
   .card-view-nav h3 {
     font-size: 1.92rem;
@@ -1437,8 +1434,6 @@ footer.page-footer .container .copyright p {
   .card-view-nav a.btn {
     padding: 0 5px;
     font-size: 10px;
-
-
   }
 }
 @media only screen and (max-width: 400px) {
