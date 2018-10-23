@@ -15,7 +15,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body onload="setTimeout(function() {idedElementToggle('alert-container')}, 5000)">
     <% if user_signed_in? %>
       <nav id="nav" role="navigation">
         <div class="nav-wrapper container">
@@ -38,6 +38,9 @@
                   <li>
                     <a href="/collections">collections</a>
                   </li>
+                  <li>
+                    <a href="/wishlists">wishlists</a>
+                  </li>                
               </ul>
             </li>         
             <li><a class="drop-down-toggle" onclick="closeOtherDropDown(), idedElementToggle('dd-menu-league')">League &#9660;</a> 
@@ -89,6 +92,9 @@
                   <a href="/collections">collections</a>
                 </li>
                 <li>
+                  <a href="/wishlists">wishlists</a>
+                </li>
+                <li>
                   <a href="/users">Roster</a>
                 </li>
                 <li>
@@ -114,7 +120,7 @@
 
     <div class="section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert-container" class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
+        <div id="alert-container"  class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
@@ -171,7 +177,6 @@
     <script>
 
       function idedElementToggle(elementId){
-        event.preventDefault();
         var target = document.getElementById(elementId);
         target.classList.toggle("active");
       }
@@ -210,17 +215,20 @@ function logMatchOnClick() {
   event.preventDefault();
   idedElementToggle('match-logger-container');
   setMatchDateAndTime();
+ 
 }
 
 var addPlayerOption = function(name, id) {
   return `
                 <option value="${id}">${name}</option>
                 `
+
 }
 
 $(function() {
-  $('.player-selector').on('change', function() {
+  $(document).ready(function() {
     $('.winner-selector').empty();
+    $('.player-selector').val('<%=current_user.id%>');
     $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
   });
 });

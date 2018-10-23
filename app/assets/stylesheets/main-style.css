@@ -165,6 +165,12 @@ footer.page-footer .container .copyright p {
 .section .btn a {
   color: white;
 }
+.section .btn.highlight-mid {
+  background: #dacbb8;
+}
+.section .btn.highlight-mid:hover {
+  background: #e3d7c8;
+}
 .section h1.color-blocked,
 .section h2.color-blocked,
 .section h3.color-blocked,
@@ -405,6 +411,9 @@ footer.page-footer .container .copyright p {
 #alert-container.logged-out {
   top: 0;
 }
+#alert-container.urgent {
+  background-color: #DC143C;
+}
 #cycling-background-container {
   top: 0;
   left: 0;
@@ -632,6 +641,13 @@ footer.page-footer .container .copyright p {
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn:after {
   content: "Not in League";
+}
+.card-view-nav {
+  margin: 0 auto;
+  text-align: center;
+}
+.card-view-nav a.btn {
+  color: white;
 }
 .modal-wrapper {
   display: none;
@@ -1198,9 +1214,9 @@ footer.page-footer .container .copyright p {
   width: 170px;
   text-align: center;
 }
-#edit-details-wrapper .table .flex-col#user label,
+#edit-details-wrapper .table .flex-col#user a,
 #edit-details-wrapper .table .flex-col#user img,
-#edit-details-wrapper .table .flex-col#user a {
+#edit-details-wrapper .table .flex-col#user label {
   display: block;
   margin: 5px auto;
 }
@@ -1218,12 +1234,20 @@ footer.page-footer .container .copyright p {
   margin: 25px auto 0;
   display: block;
 }
+
 #match-history-wrapper .container #match-history.table .row p:first-child {
   width: 100px;
   text-align: center;
 }
 #match-history-wrapper .container #match-history.table .row .on-mobile {
   display: none;
+
+#edit-collections-wrapper #collections {
+  text-align: center;
+}
+#edit-collections-wrapper #collections a.btn {
+  color: white;
+
 }
 #collection-wrapper .btn,
 #user-wrapper .btn {
@@ -1405,6 +1429,16 @@ footer.page-footer .container .copyright p {
     right: -20px;
     padding: 2px;
     opacity: .8;
+
+  }
+  .card-view-nav h3 {
+    font-size: 1.92rem;
+  }
+  .card-view-nav a.btn {
+    padding: 0 5px;
+    font-size: 10px;
+
+
   }
 }
 @media only screen and (max-width: 400px) {
