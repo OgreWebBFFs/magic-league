@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :show]
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
- 
+  resources :tradables, only: [:create, :destroy]
 end

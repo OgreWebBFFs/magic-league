@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @cards = @user.cards.order(:name).group(:id)
     @count = @cards.count
+    @tradables = @user.tradables
   end
 
 

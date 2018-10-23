@@ -13,7 +13,7 @@
       <p><%= @cards.count[card.id] %></p>
       <div class="checkbox-container">
         <div class="checkbox">
-          <input type="checkbox" id="<%= "#{card.name}_#{card.id}" %>">
+          <input type="checkbox" <%= !@tradables.nil? && @tradables.where(card_id: card.id).count > 0 ? "checked='checked' data-tradable-id=#{@tradables.where(card_id: card.id).first.id}" : ''  %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
           <label for="<%= "#{card.name}_#{card.id}" %>"></label>
         </div>
       </div>
@@ -21,3 +21,40 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  var alertTemplate = function(key, value) {
+    return `
+    <div id="alert-container" class="active alert alert-${key}">
+    ${value}
+          <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a>
+    </div>
+    `
+  };
+  $(function() {
+    $('.checkbox input').on('click', function() {
+      console.log($(this));
+      id = $(this).attr('data-id');
+      that = this;
+      if ($(this).is(':checked')) {
+        xhrRequest('/tradables', 'POST', function(res) {
+          $(that).data('tradable-id', res.id)
+          console.log(res);
+        }, {card: {id: id}});
+      } else {
+        if ($(this).data('tradable-id') != undefined) {
+          xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
+            function(res){
+             console.log(res);
+            }, {},
+            function(res) {
+              $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
+              window.scrollTo(0,0);
+              console.log(res)
+          });
+        }
+      }
+    });
+  });
+
+</script>
