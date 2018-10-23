@@ -1383,7 +1383,6 @@ footer.page-footer .container .copyright p {
     font-weight: bold;
   }
   #match-history-wrapper .container #match-history.table .row p:first-of-type {
-    font-weight: bold;
     margin-top: 0;
     background: #49494b;
     color: white;
@@ -1392,6 +1391,9 @@ footer.page-footer .container .copyright p {
     text-align: center;
     width: 101%;
     margin: 0 0 10px 0;
+  }
+  #match-history-wrapper .container #match-history.table .row p:first-of-type span {
+    font-weight: normal;
   }
   #match-history-wrapper .container #match-history.table .row p:last-of-type {
     margin-bottom: 0;
