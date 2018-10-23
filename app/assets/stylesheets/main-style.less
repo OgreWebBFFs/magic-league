@@ -7,12 +7,14 @@
 @Light-Grey: #8d8d8d;
 @Turquoise: #26a69a;
 @Soft-Orange: #efab45;
+@Crimson: #DC143C;
 
 //Semantic Colors Names
 @color-light: white;
 @color-dark: @Onyx;
 @color-highlight-mid-import: @Soft-Gold;
 @color-highlight-import: @Turquoise;
+@color-highlight-urgent: @Crimson;
 @background-color: lighten(@Light-Grey, 44%);
 @ranking-border-color: @color-light;
 
@@ -509,10 +511,14 @@ footer {
   }
   &.active{
     display:block;
-  
+
   }
   &.logged-out{
     top:0;
+  }
+  &.urgent{
+    background-color: @color-highlight-urgent;
+  
   }
 }
 #cycling-background-container {
