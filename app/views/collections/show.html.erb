@@ -4,7 +4,7 @@
     <h3><%= "#{@collection.user.name}'s Collection" %> </h3>
     <%= link_to 'Edit Collection', edit_collection_path(@collection.id), class: 'btn' if policy(@collection).edit? %>
     <%= link_to 'Collection', collection_path(@collection.id), class: 'highlight-mid  btn' if !policy(@collection).edit? %>
-     <%= link_to 'Wishlist', wishlists_path(@collection.id), class: 'btn' if !policy(@collection).edit? %>
+     <%= link_to 'Wishlist', wishlist_path(@collection.id), class: 'btn' if !policy(@collection).edit? %>
       <%= link_to 'For Trade', collection_path(@collection.id), class: 'btn' if !policy(@collection).edit? %>
     </div>
     <div class="card-grid">
