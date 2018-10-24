@@ -13,7 +13,7 @@
       <p><%= @cards.count[card.id] %></p>
       <div class="checkbox-container">
         <div class="checkbox">
-          <input type="checkbox" <%= !@tradables.nil? && @tradables.where(card_id: card.id).count > 0 ? "checked='checked' data-tradable-id=#{@tradables.where(card_id: card.id).first.id}" : ''  %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
+          <input type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
           <label for="<%= "#{card.name}_#{card.id}" %>"></label>
         </div>
       </div>
