@@ -224,14 +224,16 @@ var addPlayerOption = function(name, id) {
                 `
 
 }
-
-$(function() {
-  $(document).ready(function() {
-    $('.winner-selector').empty();
-    $('.player-selector').val('<%=current_user.id%>');
-    $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
-  });
-});
-    </script>
+//On load Scripts that require sign in 
+    <% if user_signed_in? %>
+          $(function() {
+            $(document).ready(function() {
+              $('.winner-selector').empty();
+              $('.player-selector').val('<%=current_user.id%>');
+              $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
+            });
+          });
+              </script>
+    <% end %>
   </body>
 </html>
