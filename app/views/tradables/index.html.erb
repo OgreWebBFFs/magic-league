@@ -1,12 +1,12 @@
 
 <div id="user-wrapper" class="container">
-<h3 class="color-blocked dark centered">Users</h3>
+<h3 class="color-blocked dark centered">Tradables</h3>
 <div class="centered content">
 
 <ul>
   <% @users.each do |user| %>
     <li>
-     <%= link_to user.name, wishlist_path(user.id), :class => "btn user" %>
+     <%= link_to user.name, tradable_path(user.id), :class => "btn user" %>
     </li>
   <% end %>
 </ul>
