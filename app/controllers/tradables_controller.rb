@@ -1,5 +1,17 @@
 class TradablesController < JSONApplicationController
   before_action :set_tradable, only: [:destroy]
+  before_action :set_user, only: [:show, :update]
+  def index
+  
+  end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.json {render json: @user.tradable, status: 200}
+      end
+  end
+ 
   def create
     render json: Tradable.create(user_id: current_user.id, card_id: params[:card][:id])
   end
@@ -13,6 +25,10 @@ class TradablesController < JSONApplicationController
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 
   def set_tradable
     @tradable = Tradable.find(params[:id])
