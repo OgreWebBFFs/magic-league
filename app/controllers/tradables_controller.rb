@@ -6,7 +6,6 @@ class TradablesController < JSONApplicationController
   end
 
   def show
- 
     respond_to do |format|
       format.html
       format.json {render json: @user.tradable, status: 200}

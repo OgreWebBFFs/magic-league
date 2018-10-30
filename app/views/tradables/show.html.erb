@@ -1,5 +1,5 @@
-<div id="tradeable-wrapper">
-  <div id="tradeable" class="container">
+<div id="tradable-wrapper">
+  <div id="tradable" class="container">
          <div class="card-view-nav">
             <h3><%= "#{@user.name}'s Tradables" %> </h3>
             <%= link_to 'Collection', collection_path(@user.id), class: 'btn' %>
@@ -7,10 +7,11 @@
             <%= link_to 'Tradables', tradables_path(@user.id), class: 'highlight-mid btn'%>
     </div>
     <div class="card-grid">
-      <% @user.tradables.each do |card| %>
+      <% @user.tradable_cards.each do |card| %>
         <div class="card-wrapper">           
           <a class="card-grid-item">
-            <img class="card" alt="<%= card.id %>" title="${card.name}" src="<%= card.image_url %>">
+           <img class="card" alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
+           
           </a>  
         </div>
       <% end %>
