@@ -13,15 +13,24 @@
   <script>
 
     var cardRow = function(card) {
+      if (<%=current_user.id%>===<%= @user.id %>){
       return `
+        <div class="row wishlist-item">
+          <p>${card.name}</p>
+          <div class="button-wrapper">
+          <button data-id="${card.id}" class="remove-from-wishlist small btn" if policy(@user)?>Remove</button>
+          </div>
+        </div>
+      `
+      }
+      else{
+       return `
       <div class="row wishlist-item">
         <p>${card.name}</p>
-        <div class="button-wrapper">
-        <button data-id="${card.id}" class="remove-from-wishlist small btn">Remove</button>
-        </div>
-      </div>
-    `
-    }
+      <div class="button-wrapper"></div>
+      `
+      }
+    };
 
     $(function() {
 
