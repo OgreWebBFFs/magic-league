@@ -7,19 +7,41 @@
     <div class="alternating table two-col">
       <div class="headings row">
         <p>Trades</p>
-        <p>Remaining</p>
+        <p>Total Received</p>
+        <p>Total Allowed</p>
       </div>
-      <div class="row">
-        <p>Rare:</p>
-        <input type="number" value="1" name="rare" label="Rare">
-      </div>
-      <div class="row">
-       <p>Uncommon</p><input type="number" value="3" name="uncommon" label="Uncommon">
-      </div>
-      <div class="row">
-        <p>Common:</p>
-        <input type="number" value="11" name="rare" label="Common">
+      <% @user.trades_received_and_allowed_by_rarity.each do |trade| %>
+        <div class="row">
+          <p><%= trade[:rarity].capitalize %></p>
+          <input type="number" value="<%= trade[:num_received] %>" name="rarity-<%= trade[:rarity] %>" label="<%= trade[:rarity].capitalize %>" data-rarity="<%= trade[:rarity] %>" min="0" max="<%= trade[:num_allowed] %>"/>
+          <p><%= trade[:num_allowed] %></p>
         </div>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    if (<%= @user.id %> != <%= current_user.id %>) $('input[name^="rarity"]').prop('disabled', 'disabled');
+
+    $(document).off('change', 'input[name^="rarity"]');
+    $(document).on('change', 'input[name^="rarity"]', function() {
+      let $this = $(this);
+      let rarity = $this.attr('data-rarity');
+      let num_received = $this.val();
+      xhrRequest('/received_trades/', "POST",
+        function(response) {
+          if (response.success == 'false') {
+            $this.val(response.fallback_value);
+          }
+        },
+        {
+          user_id: <%= current_user.id %>,
+          rarity: rarity,
+          num_received: num_received
+        }
+      );
+    });
+  });
+</script>

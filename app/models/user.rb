@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :cards, through: :ownerships
   has_many :tradables
   has_many :tradable_cards, through: :tradables, source: :card
+  has_many :received_trades
   has_many :wishes
   has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
@@ -25,6 +26,17 @@ class User < ApplicationRecord
 
   def wishlist
     wishlist_items
+  end
+
+  def trades_received_and_allowed_by_rarity
+    trades = [];
+    ReceivedTrade::NUM_ALLOWED_BY_RARITY.keys.each do |rarity|
+      num_allowed = ReceivedTrade::NUM_ALLOWED_BY_RARITY[rarity]
+      received = received_trades.where(rarity: rarity).first
+      num_received = received ? received.num_received : 0
+      trades << {:rarity => rarity, :num_received => num_received, :num_allowed => num_allowed}
+    end
+    trades
   end
 
   def to_s
