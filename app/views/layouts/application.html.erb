@@ -226,20 +226,28 @@ function logMatchOnClick() {
 
 var addPlayerOption = function(name, id) {
   return `
-                <option value="${id}">${name}</option>
-                `
-
+    <option value="${id}">${name}</option>
+  `;
 }
+
+function setWinnerSelector() {
+  $('.winner-selector').empty();
+  $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))});
+}
+
 //On load Scripts that require sign in 
     <% if user_signed_in? %>
           $(function() {
+            $(document).off('change', '.player-selector');
+            $(document).on('change', '.player-selector', function() {
+              setWinnerSelector();
+            });
             $(document).ready(function() {
-              $('.winner-selector').empty();
               $('.player-selector').val('<%=current_user.id%>');
-              $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))})
+              setWinnerSelector();
             });
           });
-              </script>
     <% end %>
+  </script>
   </body>
 </html>
