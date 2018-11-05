@@ -435,15 +435,13 @@ footer {
 //Repetitious Non Page Specific Elements 
 #match-logger-container {
   position: fixed;
-
-  height: 100vh;
-  min-height: 662px;
+  bottom: 0%;
+  top: 0%;
+  left: 0;
   padding-bottom: 2 rem;
   width: 0;
   background-color: transparent;
   overflow: hidden;
-  top: 0;
-  left: 0;
   z-index: 99;
   display: block;
   transition-duration: .51s;
@@ -462,9 +460,11 @@ footer {
   .section {
     position: relative;
     z-index: 2;
-    height: 100%;
     max-width: 300px;
-    min-height: 662px;
+    min-height:0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
     width: 75%;
 
     h3 {
@@ -2020,7 +2020,18 @@ footer {
   .container {
     width: 100%;
   }
-
+  #match-logger-container{
+    .section{
+      #match-logger{
+        h3{
+          font-size:  1.5rem;
+        }
+        p{
+          margin:15px 0 5px;
+        }
+      }
+    }
+  }
 }
 
 //Animations

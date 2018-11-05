@@ -333,14 +333,13 @@ footer.page-footer .container .copyright p {
 }
 #match-logger-container {
   position: fixed;
-  height: 100vh;
-  min-height: 662px;
+  bottom: 0%;
+  top: 0%;
+  left: 0;
   padding-bottom: 2 rem;
   width: 0;
   background-color: transparent;
   overflow: hidden;
-  top: 0;
-  left: 0;
   z-index: 99;
   display: block;
   transition-duration: .51s;
@@ -357,9 +356,11 @@ footer.page-footer .container .copyright p {
 #match-logger-container .section {
   position: relative;
   z-index: 2;
-  height: 100%;
   max-width: 300px;
-  min-height: 662px;
+  min-height: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
   width: 75%;
 }
 #match-logger-container .section h3 {
@@ -1445,6 +1446,12 @@ footer.page-footer .container .copyright p {
   }
   .container {
     width: 100%;
+  }
+  #match-logger-container .section #match-logger h3 {
+    font-size: 1.5rem;
+  }
+  #match-logger-container .section #match-logger p {
+    margin: 15px 0 5px;
   }
 }
 @keyframes slide-up-and-go {
