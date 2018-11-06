@@ -216,9 +216,11 @@ function setMatchDateAndTime(){
   document.getElementById('match-date').value = today;
   document.getElementById('match-time').value = time;
 }
+document.querySelector("#match-log-toggle").addEventListener("click", function(event) { event.preventDefault();
+}, false);
 
 function logMatchOnClick() {
-  event.preventDefault();
+
   idedElementToggle('match-logger-container');
   setMatchDateAndTime();
  
