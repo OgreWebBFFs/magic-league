@@ -1,6 +1,3 @@
-
-
-
 <div id="cycling-background-container" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;"></div>
   <div id="ranking-wrapper" class="container">
     <h1>Rankings</h1>
@@ -15,11 +12,7 @@
         <div class="vert-centerer">
           <div id="rankings">
             <% @rankings.each do |user| %>
-            
-             <%= link_to "#{user.name} (#{user.wins.count}-#{user.losses.count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
-              
-            
-           
+             <%= link_to "#{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
             <% end %>
           </ul>
         </div>
@@ -27,11 +20,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <!--  Ranking Page Scripts-->
 <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
