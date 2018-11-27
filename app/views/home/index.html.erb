@@ -11,8 +11,8 @@
       <div class="scroll-catcher">
         <div class="vert-centerer">
           <div id="rankings">
-            <% @rankings.each do |user| %>
-             <%= link_to "#{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
+            <% @rankings.each.with_index do |user, i| %>
+              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user" %>
             <% end %>
           </ul>
         </div>
