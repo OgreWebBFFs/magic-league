@@ -15,21 +15,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body onload="setTimeout(function() {idedElementToggle('alert-container')}, 5000)">
+  <body onload="setTimeout(function() {Helpers.toggleElementById('alert-container')}, 5000)">
     <% if user_signed_in? %>
       <nav id="nav" role="navigation">
         <div class="nav-wrapper container">
-          <a href="/" id="logo-container" href="#" class="brand-logo">
+          <a href="/" id="logo-container" class="brand-logo" data-turbolinks="false">
             <%= image_tag "logo.svg" %>
           </a>
           <ul class="menu">
             <li>
-              <a href="/">rankings</a>
+              <a href="/" data-turbolinks="false">rankings</a>
             </li>
             <li>
               <%= link_to "profile", user_path(current_user) %>
             </li>
-            <li><a class="drop-down-toggle" onclick="closeOtherDropDown(),idedElementToggle('dd-menu-cards')">Cards &#9660;</a> 
+            <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-cards')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
                 <div class="">
                   <li>
@@ -46,7 +46,7 @@
                 </li>             
               </ul>
             </li>         
-            <li><a class="drop-down-toggle" onclick="closeOtherDropDown(), idedElementToggle('dd-menu-league')">League &#9660;</a> 
+            <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
                   <a href="/matches">Matches</a>
@@ -63,21 +63,21 @@
               </ul>
             </li>
             <li>
-              <a href="#" id="match-log-toggle" class="btn waves-effect waves-light" onclick="logMatchOnClick()">
+              <a href="#" class="btn waves-effect waves-light log-match-toggle">
                 Log a match
               </a>
             </li>
           </ul>
           <ul class="mobile-menu">
             <li>
-              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="idedElementToggle('dd-menu-mobile')">
+              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-mobile')">
 
                 &#9660;
 
               </a>
               <ul id="dd-menu-mobile" class="dropdown-content">
                 <li>
-                  <a href="/">rankings</a>
+                  <a href="/" data-turbolinks="false">rankings</a>
                 </li>
                 <li>
                   <a href="/trades">Trades</a>
@@ -110,7 +110,7 @@
 
             </li>
             <li>
-              <a href="#" id="match-log-toggle-mobile" class="btn waves-effect waves-light golden" onclick="logMatchOnClick()">
+              <a href="#" class="btn waves-effect waves-light golden log-match-toggle">
                 Log a match
               </a>
             </li>
@@ -126,15 +126,15 @@
 
     <div class="section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert-container"  class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a></div>
+        <div id="alert-container"  class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
 
     <div id="match-logger-container">
-      <div class="background-click-container" onclick="idedElementToggle('match-logger-container')"></div>
+      <div class="background-click-container" onclick="Helpers.toggleElementById('match-logger-container')"></div>
       <div class="section">
-        <button class="close-button" href="#" class="match-log-close" onclick="idedElementToggle('match-logger-container')">
+        <button class="close-button" href="#" class="match-log-close" onclick="Helpers.toggleElementById('match-logger-container')">
           <i class="material-icons">cancel</i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
@@ -179,80 +179,8 @@
 
     <% end %>
     <!-- Site Wide Scipts -->
-    <!-- TO DO: STRIP THESE OUT INTO SEP FILES -->
     <script>
-
-      function idedElementToggle(elementId){
-        var target = document.getElementById(elementId);
-        target.classList.toggle("active");
-      }
-//Reminder to JOE, this and the function below are the ones I mentioned on our walk to day (Tues 10-9), that have to be added to the App-layout.js -PAT
-function closeOtherDropDown(){
-  var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");            
-  for (var i = 0; i < dropDownMenus.length; i++) {
-    dropDownMenus[i].classList.remove("active");
-  }
-}
-
-window.onclick = function(event) {
-  if (!event.target.matches('.drop-down-toggle')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('active')) {
-        openDropdown.classList.remove('active');
-      }
-    }
-  }
-}
-function setMatchDateAndTime(){
-  let date  = new Date();
-  let today = date.toISOString().substr(0, 10);
-  let hour = ('0' + date.getHours()).slice(-2);
-  let min= ('0' + date.getMinutes()).slice(-2);
-  let time = `${hour}:${min}`;
-  document.getElementById('match-date').value = today;
-  document.getElementById('match-time').value = time;
-}
-document.querySelector("#match-log-toggle").addEventListener("click", function(event) { event.preventDefault();
-}, false);
-
-document.querySelector("#match-log-toggle-mobile").addEventListener("click", function(event) { event.preventDefault();
-}, false);
-
-function logMatchOnClick() {
-
-  idedElementToggle('match-logger-container');
-  setMatchDateAndTime();
- 
-}
-
-var addPlayerOption = function(name, id) {
-  return `
-    <option value="${id}">${name}</option>
-  `;
-}
-
-function setWinnerSelector() {
-  $('.winner-selector').empty();
-  $('.player-selector option:selected').each(function(i, value) { $('.winner-selector').append(addPlayerOption($(value).text(), $(value).val()))});
-}
-
-//On load Scripts that require sign in 
-    <% if user_signed_in? %>
-          $(function() {
-            $(document).off('change', '.player-selector');
-            $(document).on('change', '.player-selector', function() {
-              setWinnerSelector();
-            });
-            $(document).ready(function() {
-              $('.player-selector').val('<%=current_user.id%>');
-              setWinnerSelector();
-            });
-          });
-    <% end %>
+      $(document).on('turbolinks:load', AppLayout.initialize(<%= user_signed_in? %>, <%= current_user ? current_user.id : nil %>));
   </script>
   </body>
 </html>

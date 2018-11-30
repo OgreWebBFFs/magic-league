@@ -27,7 +27,7 @@
     return `
     <div id="alert-container" class="active alert alert-${key}">
     ${value}
-          <a class="close-button" href="#" onclick="idedElementToggle('alert-container')">&#9650;</a>
+          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a>
     </div>
     `
   };
