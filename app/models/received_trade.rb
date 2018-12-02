@@ -1,8 +1,8 @@
 class ReceivedTrade < ApplicationRecord
   NUM_ALLOWED_BY_RARITY = {
-    'rare' => 1,
-    'uncommon' => 3,
-    'common' => 11,
+    'rare' => 2,
+    'uncommon' => 6,
+    'common' => 22,
   }
 
   belongs_to :user
