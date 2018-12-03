@@ -28,6 +28,7 @@
     };
 
 
+  var current_user = <%= current_user.id %> 
   var wishlist = []
   var current_user_cards = []
 
@@ -49,17 +50,28 @@
       $('.card-grid').empty();
     }
 
+    var searchRequest = function(query) {
+      xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res.data) } )
+    };
+
+    var collectionRequest = function() {
+      xhrRequest('/collections/' + current_user, "GET", function(res) { populateGrid(res.data) } )
+    };
+
+    current_user_cards = collectionRequest();
+
     $('#card-search').keyup(debounce(function() {
       query = $(this).val();
       if (query.length > 0) {
-        xhrRequest('/cards/?query=' + query, "GET", function(res) { populateGrid(res.data) } )
+        searchRequest(query);
       } else {
         clearGrid();
+        collectionRequest();
       }
     }, 300));
 
-    xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
-    xhrRequest('/cards/' + <%= current_user.id %>, 'GET', function(res) { current_user_cards = res.data; });
+    xhrRequest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
+    xhrRequest('/cards/' + current_user, 'GET', function(res) { current_user_cards = res.data; });
 
     $(document).off('click', '.add-card');
     $(document).on('click', '.add-card', function() {
