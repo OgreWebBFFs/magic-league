@@ -6,6 +6,7 @@ class CardsController < ApplicationController
       format.js { render json: CardSerializer.new(cards, options).serialized_json }
     end
   end
+  
   def show
   end
 end
