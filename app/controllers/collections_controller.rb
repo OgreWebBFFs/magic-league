@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :update]
   after_action :verify_authorized, only: [:edit, :update]
 
   def index
@@ -35,6 +36,9 @@ class CollectionsController < ApplicationController
 
   def set_collection
     @collection = Collection.find(params[:id])
+  end
+  def set_user
+    @user = User.find(params[:id])
   end
 
   def collection_params
