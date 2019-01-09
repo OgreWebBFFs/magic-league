@@ -118,9 +118,9 @@ $(function() {
 
   $('#card-search').keyup(debounce(function() {
     query = $(this).val();
-    if (query.length > 0) {
+    if (query.length >= Constants.min_query_length) {
       xhrRequest('/cards/?query=' + query, "GET", function(res) { cards = res.data; populateGrid(cards) } )
-    } else {
+    } else if (query.length === 0) {
       clearGrid();
     }
   }, 300));

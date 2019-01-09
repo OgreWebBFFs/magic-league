@@ -62,9 +62,9 @@
 
     $('#card-search').keyup(debounce(function() {
       query = $(this).val();
-      if (query.length > 0) {
+      if (query.length >= Constants.min_query_length) {
         searchRequest(query);
-      } else {
+      } else if (query.length === 0) {
         clearGrid();
         collectionRequest();
       }
