@@ -1,6 +1,7 @@
 <div id="trade-search-wrapper">
   <div class="container">
-    <input id="card-search" type="text" placeholder="Begin typing to find a card..."/>
+    <input id="card-search" type="text" placeholder="" />
+    <div id="search-help"></div>
     <div class="card-grid">
         <div id="legend">
             <ul>
@@ -107,21 +108,30 @@ $(function() {
 
   var clearGrid = function() {
     $('.card-grid').children('.card-wrapper').remove();
+    $('#search-help').empty();
   }
 
   var populateGrid = function(res) {
     clearGrid();
-    res.forEach(function(card) {
-      $('.card-grid').append(cardTemplate(card));
-    });
+    if (res.length > 0) {
+      res.forEach(function(card) {
+        $('.card-grid').append(cardTemplate(card));
+      });
+    } else {
+      $('#search-help').text(Constants.card_search_no_results);
+    }
   };
 
+  document.getElementById("card-search").placeholder = Constants.card_search_placeholder;
   $('#card-search').keyup(debounce(function() {
+    $('#search-help').empty();
     query = $(this).val();
     if (query.length >= Constants.min_query_length) {
       xhrRequest('/cards/?query=' + query, "GET", function(res) { cards = res.data; populateGrid(cards) } )
     } else if (query.length === 0) {
       clearGrid();
+    } else {
+      $('#search-help').text(Constants.card_search_placeholder);
     }
   }, 300));
 
