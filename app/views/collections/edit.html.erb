@@ -1,6 +1,7 @@
 <div id="edit-collections-wrapper">
   <div id="collections" class="container">
-    <input id="card-search" type="text" placeholder="Begin typing to find a card..."/>
+    <input id="card-search" type="text" placeholder="" />
+    <div id="search-help"></div>
     <div class="card-grid">
     </div>
   </div>
@@ -41,13 +42,18 @@
 
     var populateGrid = function(res) {
       clearGrid();
-      res.forEach(function(card) {
-        $('.card-grid').append(cardTemplate(card));
-      });
+      if (res.length > 0) {
+        res.forEach(function(card) {
+          $('.card-grid').append(cardTemplate(card));
+        });
+      } else {
+        $('#search-help').text(Constants.card_search_no_results);
+      }
     };
 
     var clearGrid = function() {
       $('.card-grid').empty();
+      $('#search-help').empty();
     }
 
     var searchRequest = function(query) {
@@ -60,13 +66,17 @@
 
     current_user_cards = collectionRequest();
 
+    document.getElementById("card-search").placeholder = Constants.card_search_placeholder;
     $('#card-search').keyup(debounce(function() {
+      $('#search-help').empty();
       query = $(this).val();
-      if (query.length > 0) {
+      if (query.length >= Constants.min_query_length) {
         searchRequest(query);
-      } else {
+      } else if (query.length === 0) {
         clearGrid();
         collectionRequest();
+      } else {
+        $('#search-help').text(Constants.card_search_placeholder);
       }
     }, 300));
 
