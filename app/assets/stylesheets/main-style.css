@@ -311,6 +311,41 @@ footer.page-footer .container .copyright p {
 .section .container .table.two-col .row p {
   width: 50%;
 }
+.section .container .table.flex {
+  display: block;
+}
+.section .container .table.flex .row {
+  display: flex;
+}
+.section .container .table.flex .row p,
+.section .container .table.flex .row .cell {
+  text-align: center;
+  flex: 1 0 auto;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+.section .container .table.flex .row p.fixed-width,
+.section .container .table.flex .row .cell.fixed-width {
+  flex: 0 0 15%;
+}
+.section .container .table.flex .row p.fixed-width.fifth.one,
+.section .container .table.flex .row .cell.fixed-width.fifth.one,
+.section .container .table.flex .row p.fixed-width.fifths.one,
+.section .container .table.flex .row .cell.fixed-width.fifths.one {
+  flex: 1 0 20%;
+}
+.section .container .table.flex .row p.fixed-width.tenth.one,
+.section .container .table.flex .row .cell.fixed-width.tenth.one,
+.section .container .table.flex .row p.fixed-width.tenths.one,
+.section .container .table.flex .row .cell.fixed-width.tenths.one {
+  flex: 1 0 10%;
+}
+.section .container .table.flex .row p.fixed-width.tenth.three,
+.section .container .table.flex .row .cell.fixed-width.tenth.three,
+.section .container .table.flex .row p.fixed-width.tenths.three,
+.section .container .table.flex .row .cell.fixed-width.tenths.three {
+  flex: 1 0 30%;
+}
 .section .container .content {
   width: 100%;
 }

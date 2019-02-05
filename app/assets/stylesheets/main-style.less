@@ -399,6 +399,44 @@ footer {
         }
 
       }
+      &.flex {
+        display:block;
+        .row{
+          display:flex;
+          p,
+          .cell{
+            text-align:center;
+            flex: 1 0 auto;
+            margin:5px 0;
+            box-sizing: border-box;
+            &.fixed-width{
+             flex: 0 0 15%;
+             &.fifth,
+              &.fifths{
+                &.one{
+                flex: 1 0 20%;
+                }
+             }
+             &.tenth,
+             &.tenths{
+               &.one{
+                 flex:1 0 10%;
+               }
+               &.three{
+                flex:1 0 30%;
+
+              }
+              
+              
+              
+               
+             }
+            }
+          }
+
+        }
+
+      }
     }
 
     .content {

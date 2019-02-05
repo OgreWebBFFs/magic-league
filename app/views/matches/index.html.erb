@@ -1,21 +1,24 @@
  <div id="match-history-wrapper">
     <div class="container">
-        <h2 id="month-title">Month's Matches</h2>
-        <div id="match-history" class="alternating table">
+        <h2 id="month-title"> Matches</h2>
+        <div id="match-history" class="alternating flex table">
           <div class="headings row">
-            <p class="browser-cell" >Match</p>         
-            <p class="browser-cell">Winner</p>         
-            <p class="browser-cell">Loser</p>         
-            <P class="browser-cell">Date</p>
+          <p class="fixed-width fixed-width three tenths browser-cell">Date</p>
+          <p class="fixed-width one fifth browser-cell">Time</p>              
+          <p class="fixed-width one fifth browser-cell">Winner</p>         
+          <p class="fixed-width one fifth browser-cell ">Loser</p>         
+          <p class="fixed-width one tenth browser-cell" >ID</p>  
                     
           </div>
-        <% @matches.each do |match| %>
+      
+          <% @matches.each do |match| %>
             <div class="row">
-                <p><span class="on-mobile">Match </span><%= match.id %></p>
-                <p><span class="on-mobile">Winner: </span><%= match.winner.name %></p>
-                <p><span class="on-mobile">Loser: </span><%= match.loser.name %></p>
-                <p><%= match.played_at.strftime("%I:%M%p %a %b #{match.played_at.day.ordinalize}")%></p>
-               
+                <p class="fixed-width three tenths"><%= match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}")%></p>
+                <p class="fixed-width one fifth"><%= match.played_at.strftime("%I:%M%p")%></p>             
+                <p class="fixed-width one fifth"><span class="on-mobile">Winner: </span><%= match.winner.name %></p>
+                <p class="fixed-width one fifth"><span class="on-mobile">Loser: </span><%= match.loser.name %></p>
+                <p class="fixed-width one tenth"><span class="on-mobile">ID: </span><%= match.id %></p>
+       
             </div>
         <% end %>
 
@@ -24,16 +27,4 @@
     </div> 
   </div>
   
-  <script>
-    // THIS IS DUMB, lets do this on the back end
-        let monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"]
-        let d = new Date();
-        let m = d.getMonth();
-        document.getElementById("month-title").innerHTML = `${monthNames[m]}'s Matches`;
-
-        var march
-
-    
-    
-   
-  </script>
+ 
