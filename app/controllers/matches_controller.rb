@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
 
   
   def index
-    @matches = Match.all
+    @matches = Match.order('played_at DESC')
   
   end
 
