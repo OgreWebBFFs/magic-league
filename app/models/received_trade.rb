@@ -20,12 +20,12 @@ class ReceivedTrade < ApplicationRecord
   private
 
   def self.num_trade_sets
-    5
+    6
   end
 
   def self.extra_trade_sets(user_name)
     case user_name.downcase
-    when 'ryan ziegler', 'zack brown', 'dustin perzanowski', 'andrew bynum'
+    when 'ryan ziegler', 'zack brown', 'dustin perzanowski', 'andrew bynum', 'kevin solon', 'mike stempler'
       1
     when 'joe handzel'
       2
