@@ -1,17 +1,19 @@
-## How do I run it?
-
-1. Download the source
-2. Run `docker-compose up`
-3. Wait for "PostgreSQL init process complete; ready for start up."
-4. OSX & Ubuntu: Run `chmod +x ./lib/bin/setup_docker_db.sh`
-5. OSX & Ubuntu: Run `sh /lib/bin/setup_docker_db.sh`
-6. Windows: Run `./lib/bin/setup_docker_win.bat`
-7. Visit `localhost:3000`
+## Initial Setup
+1. Download the source, and npm i 
+2. Install Ruby ^2.5.1, we suggest using RVM 
+3. Install Rails 5.2.1, run 'gem install rails -v 5.2.1'
+4. Run 'bundle install', you will need Bundler
+5. Install Postgres using Homebrew, run 'brew install postgres'
+6. Start postgtress, run ' pg_ctl -D /usr/local/var/postgres start'
+6. Run rake db:create && rake db:migrate
 
 ## Using the Rails Console
 
-1. Run `docker exec -it magic-league_web_1 bash` to connect to the Docker container
-2. Run `rails c`
+1. Run `rails c`
+
+## Start Local
+
+1. Run 'rails s'
 
 ## How do I make myself an Admin from the console?
 1. Run `rails c`
