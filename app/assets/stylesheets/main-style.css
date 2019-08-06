@@ -23,10 +23,13 @@ nav .nav-wrapper #logo-container {
   position: absolute;
   left: 0;
 }
-nav .nav-wrapper #logo-container img {
+nav .nav-wrapper #logo-container svg {
   width: auto;
   height: 100%;
-  padding: 5px 0;
+  padding: 5px 0 0 25px;
+}
+nav .nav-wrapper #logo-container svg .logo-fill {
+  fill: #d1bfa7;
 }
 nav .nav-wrapper a {
   text-transform: capitalize;
