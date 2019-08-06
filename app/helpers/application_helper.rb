@@ -8,7 +8,9 @@ module ApplicationHelper
   "bg-Llanowar-Envoy-Dominaria-MtG-Art.jpg", "bg-Ancient-Hellkite-MtG-Art-1024x640.jpg", "bg-Slinn-Voda-the-Rising-Deep-Dominaria-MtG-Art.jpg", "bg-Traxos-Scourge-of-Kroog-Dominaria-MtG-Art.jpg", "bg-Mana-Charged-Dragon-MtG-Art.jpg"]
 
   def get_random_bg_image
-    image_path BGARR[rand(0..BGARR.length-1)]
+      image_path_prefix = "app/assets/images/"
+      background_files = Dir.glob("#{image_path_prefix}backgrounds/*").map{ |s| File.basename(s) }
+      image_path  'backgrounds/' + background_files[rand(0..background_files.length-1)]
   end
 
   def google_svg
