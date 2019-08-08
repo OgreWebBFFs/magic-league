@@ -4,11 +4,11 @@ html {
 }
 body {
   overflow-x: hidden;
-  background: #fdfdfd;
+  background: white;
 }
 nav {
   position: relative;
-  background: white;
+  background: #0B0C10;
   height: 64px;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -29,7 +29,7 @@ nav .nav-wrapper #logo-container svg {
   padding: 5px 0 0 25px;
 }
 nav .nav-wrapper #logo-container svg .logo-fill {
-  fill: #d1bfa7;
+  fill: #FF6F61;
 }
 nav .nav-wrapper a {
   text-transform: capitalize;
@@ -41,31 +41,31 @@ nav .nav-wrapper .mobile-menu li {
 }
 nav .nav-wrapper .menu li a,
 nav .nav-wrapper .mobile-menu li a {
-  color: #26a69a;
+  color: #FC4445;
   font-size: 13px;
   padding: 0 10px;
 }
 nav .nav-wrapper .menu li a:hover,
 nav .nav-wrapper .mobile-menu li a:hover {
-  background-color: rgba(209, 191, 167, 0.25);
+  background-color: rgba(255, 111, 97, 0.25);
   transition: .5s;
 }
 nav .nav-wrapper .menu li .btn,
 nav .nav-wrapper .mobile-menu li .btn {
   margin-left: 5px;
+  color: #0B0C10;
   padding: 0 5px;
   font-size: 12px;
-  background: #26a69a;
-  color: white;
+  background: #FC4445;
   text-transform: uppercase;
 }
 nav .nav-wrapper .menu li .btna,
 nav .nav-wrapper .mobile-menu li .btna {
-  color: white;
+  color: #0B0C10;
 }
 nav .nav-wrapper .menu li .btn:hover,
 nav .nav-wrapper .mobile-menu li .btn:hover {
-  background: #30d0c1;
+  background: #fd7677;
 }
 nav .nav-wrapper .menu .dropdown-content,
 nav .nav-wrapper .mobile-menu .dropdown-content {
@@ -107,13 +107,13 @@ nav .nav-wrapper .mobile-menu li .btn {
   margin-right: 0;
 }
 nav .nav-wrapper .mobile-menu li .btn.drop-down-toggle {
-  background-color: rgba(209, 191, 167, 0.5);
+  background-color: rgba(255, 111, 97, 0.5);
   font-size: 14px;
   color: white;
   padding: 0 10px;
 }
 nav .nav-wrapper .mobile-menu li .btn.drop-down-toggle:hover {
-  background: #dacbb8;
+  background: #ff867b;
 }
 nav .nav-wrapper .mobile-menu li .dropdown-content {
   top: 59px;
@@ -125,7 +125,7 @@ footer {
 footer.page-footer {
   padding: 0;
   width: 100%;
-  background: #e4e4e4;
+  background: #e6e6e6;
 }
 footer.page-footer .container {
   height: 32px;
@@ -154,25 +154,25 @@ footer.page-footer .container .copyright p {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  background: #fdfdfd;
+  background: white;
   padding: 25px;
   min-height: 600px;
-  color: #49494b;
+  color: #0B0C10;
 }
 .section a {
-  color: #219187;
+  color: #fc2b2c;
 }
 .section a:hover {
-  color: #1c7d74;
+  color: #fb1213;
 }
 .section .btn a {
   color: white;
 }
 .section .btn.highlight-mid {
-  background: #dacbb8;
+  background: #ff867b;
 }
 .section .btn.highlight-mid:hover {
-  background: #e3d7c8;
+  background: #ff9d94;
 }
 .section h1.color-blocked,
 .section h2.color-blocked,
@@ -189,16 +189,16 @@ footer.page-footer .container .copyright p {
 .section h4.color-blocked.highlight-main,
 .section h5.color-blocked.highlight-main {
   color: white;
-  background: #26a69a;
-  border-bottom: 4px solid #30d0c1;
+  background: #FC4445;
+  border-bottom: 4px solid #fd7677;
 }
 .section h1.color-blocked.highlight-mid,
 .section h2.color-blocked.highlight-mid,
 .section h3.color-blocked.highlight-mid,
 .section h4.color-blocked.highlight-mid,
 .section h5.color-blocked.highlight-mid {
-  background: #d1bfa7;
-  border-bottom: 4px solid #e3d7c8;
+  background: #FF6F61;
+  border-bottom: 4px solid #ff9d94;
 }
 .section h1.color-blocked.dark,
 .section h2.color-blocked.dark,
@@ -206,8 +206,8 @@ footer.page-footer .container .copyright p {
 .section h4.color-blocked.dark,
 .section h5.color-blocked.dark {
   color: white;
-  background: #49494b;
-  border-bottom: 4px solid #626265;
+  background: #0B0C10;
+  border-bottom: 4px solid #20232e;
 }
 .section h1.color-blocked.light,
 .section h2.color-blocked.light,
@@ -257,7 +257,7 @@ footer.page-footer .container .copyright p {
   table-layout: fixed;
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid #49494b;
+  border: 2px solid #0B0C10;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   background: white;
 }
@@ -291,8 +291,8 @@ footer.page-footer .container .copyright p {
 .section .container .table .row.headings {
   text-transform: uppercase;
   color: white;
-  background: #49494b;
-  border-bottom: 2px solid #26a69a;
+  background: #0B0C10;
+  border-bottom: 2px solid #FF6F61;
 }
 .section .container .table .row.headings p {
   padding-bottom: 2px;
@@ -301,7 +301,7 @@ footer.page-footer .container .copyright p {
   content: none;
 }
 .section .container .table.alternating .row:nth-child(even) {
-  background: rgba(73, 73, 75, 0.15);
+  background: rgba(11, 12, 16, 0.15);
 }
 .section .container .table.three-col .row a,
 .section .container .table.three-col .row p {
@@ -354,6 +354,7 @@ footer.page-footer .container .copyright p {
 }
 .section .container .table {
   display: table;
+  border-collapse: collapse;
 }
 .section .container .table .flex-col {
   display: table-cell;
@@ -381,7 +382,7 @@ footer.page-footer .container .copyright p {
   z-index: 99;
   display: block;
   transition-duration: .51s;
-  color: #49494b;
+  color: #0B0C10;
   text-align: center;
 }
 #match-logger-container .background-click-container {
@@ -410,7 +411,7 @@ footer.page-footer .container .copyright p {
 }
 #match-logger-container .section input[type="submit"] {
   margin-top: 25px;
-  background: #26a69a;
+  background: #FC4445;
   border: none;
   outline: none;
   box-shadow: none;
@@ -422,7 +423,7 @@ footer.page-footer .container .copyright p {
 }
 #match-logger-container.active {
   width: 100%;
-  background-color: rgba(73, 73, 75, 0.5);
+  background-color: rgba(11, 12, 16, 0.5);
 }
 #alert-container {
   width: 120%;
@@ -481,7 +482,7 @@ footer.page-footer .container .copyright p {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: #26a69a;
+  color: #FC4445;
   float: right;
   margin: 0;
   background: transparent;
@@ -517,13 +518,13 @@ footer.page-footer .container .copyright p {
   font-size: 8px;
 }
 .card-grid #legend ul li.mid-highlight {
-  background: #d1bfa7;
+  background: #FF6F61;
 }
 .card-grid #legend ul li.highlight {
-  background: #26a69a;
+  background: #FC4445;
 }
 .card-grid #legend ul li.dark {
-  background: #49494b;
+  background: #0B0C10;
 }
 .card-grid .card-wrapper {
   width: 100%;
@@ -549,7 +550,7 @@ footer.page-footer .container .copyright p {
   position: absolute;
   color: white;
   font-size: 35px;
-  background-color: #d1bfa7;
+  background-color: #FF6F61;
   padding: 6px;
   border-radius: 25px;
   line-height: 24px;
@@ -646,27 +647,27 @@ footer.page-footer .container .copyright p {
   border-left: none;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  background: #d1bfa7;
+  background: #FF6F61;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
 }
 .card-grid .card-wrapper.not-in-collection .card-count-component span .add-card.btn:hover {
-  background: #dacbb8;
+  background: #ff867b;
 }
 .card-grid .card-wrapper.for-trade .trade-proposal-request .btn {
-  background: #26a69a;
+  background: #FC4445;
 }
 .card-grid .card-wrapper.for-trade .trade-proposal-request .btn:hover {
-  background: #2bbbad;
+  background: #fc5d5e;
 }
 .card-grid .card-wrapper.for-trade .trade-proposal-request .btn:after {
   content: "Propose Trade";
 }
 .card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn {
-  background: #d1bfa7;
+  background: #FF6F61;
 }
 .card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn:hover {
-  background: #dacbb8;
+  background: #ff867b;
 }
 .card-grid .card-wrapper.not-for-trade .trade-proposal-request .btn:after {
   content: "Propose Trade";
@@ -675,7 +676,7 @@ footer.page-footer .container .copyright p {
   opacity: .5;
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn {
-  background: #49494b;
+  background: #0B0C10;
   cursor: auto;
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn:after {
@@ -693,14 +694,14 @@ footer.page-footer .container .copyright p {
   position: fixed;
   height: 100vh;
   width: 100%;
-  background-color: rgba(73, 73, 75, 0.5);
+  background-color: rgba(11, 12, 16, 0.5);
   overflow: hidden;
   top: 0;
   left: 0;
   z-index: 99;
   padding-bottom: 2 rem;
   transition-duration: .51s;
-  color: #49494b;
+  color: #0B0C10;
   text-align: center;
 }
 .modal-wrapper .background-click-container {
@@ -739,6 +740,16 @@ footer.page-footer .container .copyright p {
 .modal-wrapper.narrow .modal {
   width: 40%;
   min-width: 250px;
+}
+.btn,
+.btn-large,
+.btn-small {
+  background: #FC4445;
+}
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+  background: #fc5d5e;
 }
 #ranking-wrapper {
   text-align: center;
@@ -800,7 +811,7 @@ footer.page-footer .container .copyright p {
   height: auto;
   display: block;
   font-size: 12px;
-  background: #26a69a;
+  background: #FC4445;
   animation-name: bigEntrance;
   -webkit-animation-name: bigEntrance;
   animation-duration: 1.6s;
@@ -821,7 +832,7 @@ footer.page-footer .container .copyright p {
   right: 5px;
 }
 #ranking-wrapper #ranking-board #rankings a:hover {
-  background: #2bbbad;
+  background: #fc5d5e;
 }
 #ranking-wrapper #ranking-board #ranking-border {
   width: 100%;
@@ -923,7 +934,7 @@ footer.page-footer .container .copyright p {
 }
 #dashboard-wrapper #user-and-trades #user img {
   width: 100%;
-  background: #49494b;
+  background: #0B0C10;
   height: 207px;
   width: auto;
 }
@@ -1003,7 +1014,7 @@ footer.page-footer .container .copyright p {
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  background: #d8c9b4;
+  background: #ff8275;
   padding: 5px;
   border-radius: 2px;
   display: inline-block;
@@ -1016,10 +1027,10 @@ footer.page-footer .container .copyright p {
   transition: .25s;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:hover:before {
-  background: #dfd2c2;
+  background: #ff948a;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox input[type="checkbox"]:checked + label::before {
-  background-color: #26a69a;
+  background-color: #FC4445;
   content: "Yes";
 }
 #log-in-wrapper {
@@ -1071,7 +1082,7 @@ footer.page-footer .container .copyright p {
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  background: rgba(73, 73, 75, 0.5);
+  background: rgba(11, 12, 16, 0.5);
   padding: 5px;
   border-radius: 2px;
   display: inline-block;
@@ -1090,17 +1101,17 @@ footer.page-footer .container .copyright p {
 }
 #log-in-wrapper .container a:hover,
 #log-in-wrapper .container input[type="submit"]:hover {
-  background: rgba(73, 73, 75, 0.6);
+  background: rgba(11, 12, 16, 0.6);
 }
 #log-in-wrapper .container input[type="submit"] {
-  background: #26a69a;
+  background: #FC4445;
   color: white;
 }
 #log-in-wrapper .container input[type="submit"]:active {
   outline: none;
 }
 #log-in-wrapper .container input[type="submit"]:hover {
-  background-color: #30d0c1;
+  background-color: #fd7677;
 }
 #card-search-wrapper #search.container {
   white-space: nowrap;
@@ -1113,7 +1124,7 @@ footer.page-footer .container .copyright p {
   margin-left: 10px;
   border: none;
   color: white;
-  background-color: #26a69a;
+  background-color: #FC4445;
   box-sizing: border-box;
 }
 #card-search-wrapper #easy-filter-tabs.container {
@@ -1143,7 +1154,7 @@ footer.page-footer .container .copyright p {
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
-  background: rgba(209, 191, 167, 0.5);
+  background: rgba(255, 111, 97, 0.5);
   padding: 5px;
   border-radius: 2px;
   display: inline-block;
@@ -1165,7 +1176,7 @@ footer.page-footer .container .copyright p {
   content: "In League";
 }
 #card-search-wrapper #easy-filter-tabs.container .checkbox input[type="checkbox"]:checked + label::before {
-  background-color: #26a69a;
+  background-color: #FC4445;
 }
 #card-search-wrapper #easy-filter-tabs.container .checkbox.icon {
   width: 36px;
@@ -1260,7 +1271,7 @@ footer.page-footer .container .copyright p {
   margin: 5px auto;
 }
 #edit-details-wrapper .table .flex-col#user img {
-  border: 2px solid #49494b;
+  border: 2px solid #0B0C10;
 }
 #edit-details-wrapper .table .flex-col#user a {
   color: white;
@@ -1299,7 +1310,7 @@ footer.page-footer .container .copyright p {
 }
 #collection-wrapper img.user-image,
 #user-wrapper img.user-image {
-  background-color: #49494b;
+  background-color: #0B0C10;
 }
 @-moz-document url-prefix() {
   .card-grid .card-wrapper .card-count-component span input {
@@ -1445,7 +1456,7 @@ footer.page-footer .container .copyright p {
   }
   #match-history-wrapper .container #match-history.table .row p:first-of-type {
     margin-top: 0;
-    background: #49494b;
+    background: #0B0C10;
     color: white;
     text-transform: uppercase;
     display: block;
