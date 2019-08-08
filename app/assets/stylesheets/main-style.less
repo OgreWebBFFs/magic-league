@@ -78,6 +78,20 @@ nav {
         .logo-fill{
           fill: @color-highlight-mid-import;
         }
+        
+      }
+      &:hover{
+        svg{
+          .logo-fill{
+            transition:1s;
+            animation: mtgColorCycle;
+            animation-duration: 10s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse
+          }
+        
+        }
       }
     }
 
@@ -1846,6 +1860,7 @@ footer {
           margin-right: -10%;
         }
       }
+   
     }
   }
 }
@@ -1930,14 +1945,21 @@ footer {
           }
         }
       }
-
       #logo-container {
         display: block;
         left: 0;
         width: 30px;
         overflow: hidden;
         float: left;
-
+        svg{
+          padding-left:0;
+          .logo-fill{
+            display:none;
+            &.mtg-icon {
+             display:block;
+            }
+          }
+        }
       }
     }
   }
@@ -2198,4 +2220,22 @@ footer {
 
     opacity: 1;
   }
+}
+
+@keyframes mtgColorCycle {
+  16% { fill: @Caribbean-Green; }
+  32% { fill: @Fountain-Blue; }
+  48% { fill: #3D4849; }
+  64% { fill: whitesmoke; }
+  82% { fill: @Crimson; }
+  98% {fill: @color-highlight-mid-import;}
+  
+}
+@-webkit-keyframes mtgColorCycle {
+  16% { fill: @Caribbean-Green; }
+  32% { fill: @Fountain-Blue; }
+  48% { fill: #3D4849; }
+  64% { fill: whitesmoke; }
+  80% { fill: @Crimson; }
+  96% {fill: @color-highlight-mid-import;}
 }

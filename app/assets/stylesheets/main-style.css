@@ -31,6 +31,14 @@ nav .nav-wrapper #logo-container svg {
 nav .nav-wrapper #logo-container svg .logo-fill {
   fill: #FF6F61;
 }
+nav .nav-wrapper #logo-container:hover svg .logo-fill {
+  transition: 1s;
+  animation: mtgColorCycle;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
 nav .nav-wrapper a {
   text-transform: capitalize;
 }
@@ -1390,6 +1398,15 @@ footer.page-footer .container .copyright p {
     overflow: hidden;
     float: left;
   }
+  nav .nav-wrapper #logo-container svg {
+    padding-left: 0;
+  }
+  nav .nav-wrapper #logo-container svg .logo-fill {
+    display: none;
+  }
+  nav .nav-wrapper #logo-container svg .logo-fill.mtg-icon {
+    display: block;
+  }
   .section .container {
     width: 90%;
     position: relative;
@@ -1574,5 +1591,45 @@ footer.page-footer .container .copyright p {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes mtgColorCycle {
+  16% {
+    fill: #00d285;
+  }
+  32% {
+    fill: #55BCC9;
+  }
+  48% {
+    fill: #3D4849;
+  }
+  64% {
+    fill: whitesmoke;
+  }
+  82% {
+    fill: #DC143C;
+  }
+  98% {
+    fill: #FF6F61;
+  }
+}
+@-webkit-keyframes mtgColorCycle {
+  16% {
+    fill: #00d285;
+  }
+  32% {
+    fill: #55BCC9;
+  }
+  48% {
+    fill: #3D4849;
+  }
+  64% {
+    fill: whitesmoke;
+  }
+  80% {
+    fill: #DC143C;
+  }
+  96% {
+    fill: #FF6F61;
   }
 }
