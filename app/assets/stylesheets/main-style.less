@@ -8,15 +8,32 @@
 @Turquoise: #26a69a;
 @Soft-Orange: #efab45;
 @Crimson: #DC143C;
+@Living-Coral: #FF6F61;
+@Beluga: rgb(10, 8, 3);
+@Forest-Biome: #184A45;
+@Sunset-Orange: #FC4445;
+@Cornflower: #97CAEF;
+@Fountain-Blue:#55BCC9;
+@Goldenrod-Yellow: #fbaf08;
+@Lightning-Purple: #bf4aa8;
+@Lightning-Blue:#51d0de;
+@Wrinkle-White:#d9d9d9;
+@Woodsmoke: #0B0C10;
+@Caribbean-Green: #00d285;
+@Ebony-Clay:#1f2833;
+@Eucalytus: #27876F;
+@Biloba-Flower:#CBBAED;
 
 //Semantic Colors Names
-@color-light: white;
-@color-dark: @Onyx;
-@color-highlight-mid-import: @Soft-Gold;
-@color-highlight-import: @Turquoise;
+
+@color-light:white;
+@color-dark: @Woodsmoke;
+@color-highlight-mid-import: @Living-Coral;
+@color-highlight-import: @Sunset-Orange;
 @color-highlight-urgent: @Crimson;
-@background-color: lighten(@Light-Grey, 44%);
+@background-color: @color-light;
 @ranking-border-color: @color-light;
+
 
 //Static Reused Numbers
 @nav-height: 64px;
@@ -39,7 +56,7 @@ body {
 
 nav {
   position: relative;
-  background: @color-light;
+  background: @color-dark;
   height: @nav-height;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -54,10 +71,27 @@ nav {
       position: absolute;
       left: 0;
 
-      img {
+      svg {
         width: auto;
         height: 100%;
-        padding: 5px 0;
+        padding: 5px 0 0 25px;
+        .logo-fill{
+          fill: @color-highlight-mid-import;
+        }
+        
+      }
+      &:hover{
+        svg{
+          .logo-fill{
+            transition:1s;
+            animation: mtgColorCycle;
+            animation-duration: 10s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse
+          }
+        
+        }
       }
     }
 
@@ -86,16 +120,14 @@ nav {
 
         .btn {
           margin-left: 5px;
-          color: @color-light;
-
+          color: @color-dark;
           padding: 0 5px;
           font-size: 12px;
           background: @color-highlight-import;
-          color: @color-light;
           text-transform: uppercase;
 
           &a {
-            color: @color-light;
+            color: @color-dark;
           }
 
           &:hover {
@@ -356,7 +388,7 @@ footer {
           text-transform: uppercase;
           color: @color-light;
           background: @color-dark;
-          border-bottom: 2px solid @color-highlight-import;
+          border-bottom: 2px solid @color-highlight-mid-import;
 
           p {
             padding-bottom: 2px;
@@ -445,6 +477,7 @@ footer {
 
     .table {
       display: table;
+      border-collapse: collapse;
 
       .flex-col {
         display: table-cell;
@@ -945,7 +978,12 @@ footer {
     }
   }
 }
-
+.btn, .btn-large, .btn-small{
+  background: @color-highlight-import;
+  &:hover {
+    background: lighten(@color-highlight-import, 5%);
+  }
+}
 //TO DO: BREAK INTO OWN FILES 
 
 //Specific Pages
@@ -1020,7 +1058,7 @@ footer {
         height: auto;
         display: block;
         font-size: 12px;
-        background: #26a69a;
+        background:@color-highlight-import;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
         animation-duration: 1.6s;
@@ -1822,6 +1860,7 @@ footer {
           margin-right: -10%;
         }
       }
+   
     }
   }
 }
@@ -1906,14 +1945,21 @@ footer {
           }
         }
       }
-
       #logo-container {
         display: block;
         left: 0;
         width: 30px;
         overflow: hidden;
         float: left;
-
+        svg{
+          padding-left:0;
+          .logo-fill{
+            display:none;
+            &.mtg-icon {
+             display:block;
+            }
+          }
+        }
       }
     }
   }
@@ -2174,4 +2220,22 @@ footer {
 
     opacity: 1;
   }
+}
+
+@keyframes mtgColorCycle {
+  16% { fill: @Caribbean-Green; }
+  32% { fill: @Fountain-Blue; }
+  48% { fill: #3D4849; }
+  64% { fill: whitesmoke; }
+  82% { fill: @Crimson; }
+  98% {fill: @color-highlight-mid-import;}
+  
+}
+@-webkit-keyframes mtgColorCycle {
+  16% { fill: @Caribbean-Green; }
+  32% { fill: @Fountain-Blue; }
+  48% { fill: #3D4849; }
+  64% { fill: whitesmoke; }
+  80% { fill: @Crimson; }
+  96% {fill: @color-highlight-mid-import;}
 }
