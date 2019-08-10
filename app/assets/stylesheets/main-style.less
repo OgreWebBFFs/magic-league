@@ -980,6 +980,9 @@ footer {
       width: 100%;
       overflow-x: hidden;
       overflow-y: auto;
+      scroll-bar: thin;
+      padding-right: 5px;
+      padding-left: 5px;
 
       &::-webkit-scrollbar-track {
         -webkit-box-shadow: none;
@@ -988,12 +991,12 @@ footer {
       }
 
       &::-webkit-scrollbar {
-        width: 12px;
+        width: 5px;
         background-color: transparent;
       }
 
       &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
+        border-radius: 5px;
         background-color: @color-light;
       }
 
@@ -1006,21 +1009,24 @@ footer {
     }
 
     #rankings {
-      display: table-cell;
-      vertical-align: middle;
+      display: flex;
       margin: 0 auto;
       min-width: 275px;
       text-align: center;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
 
       a {
         color: @color-light;
-        width: 275px;
+        max-width: 275px;
+        min-width: 200px;
         margin: 5px auto;
         padding: 5px;
         height: auto;
         display: block;
         font-size: 12px;
-        background: #26a69a;
+        background: @color-highlight-import;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
         animation-duration: 1.6s;
@@ -1047,7 +1053,23 @@ footer {
         &:hover {
           background: lighten(@color-highlight-import, 5%);
         }
+        &.unranked{
+          background: @color-highlight-mid-import;
+          &:hover {
+            background: lighten(@color-highlight-mid-import, 5%);
+          }
 
+        }
+
+      }
+
+      .divider {
+        height: 2px;
+        border:none;
+        outline: none;
+        width:100%;
+        overflow: hidden;
+        background-color: @color-light;
       }
     }
 
