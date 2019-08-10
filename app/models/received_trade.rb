@@ -2,7 +2,6 @@ class ReceivedTrade < ApplicationRecord
   NUM_PER_PACK_BY_RARITY = {
     'rare' => 1,
     'uncommon' => 3,
-    'common' => 11,
   }
 
   belongs_to :user
@@ -20,17 +19,10 @@ class ReceivedTrade < ApplicationRecord
   private
 
   def self.num_trade_sets
-    9
+    2
   end
 
   def self.extra_trade_sets(user_name)
-    case user_name.downcase
-    when 'ryan ziegler', 'zack brown', 'dustin perzanowski', 'andrew bynum', 'kevin solon', 'mike stempler', 'chris guard'
-      1
-    when 'joe handzel', 'ryan branch'
-      2
-    else
-      0
-    end
+    0
   end
 end
