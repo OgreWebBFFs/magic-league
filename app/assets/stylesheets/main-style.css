@@ -849,10 +849,10 @@ footer.page-footer .container .copyright p {
   background: #fc5d5e;
 }
 #ranking-wrapper #ranking-board #rankings a.unranked {
-  background: #d1bfa7;
+  background: #FF6F61;
 }
 #ranking-wrapper #ranking-board #rankings a.unranked:hover {
-  background: #dacbb8;
+  background: #ff867b;
 }
 #ranking-wrapper #ranking-board #rankings .divider {
   height: 2px;
