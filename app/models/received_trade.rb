@@ -19,10 +19,15 @@ class ReceivedTrade < ApplicationRecord
   private
 
   def self.num_trade_sets
-    2
+    3
   end
 
   def self.extra_trade_sets(user_name)
-    0
+    case user_name.downcase
+    when 'ryan branch', 'joe handzel'
+      1
+    else
+      0
+    end
   end
 end
