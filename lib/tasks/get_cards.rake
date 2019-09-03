@@ -1,41 +1,9 @@
 namespace :cards do
-  desc "populate ravnica cards"
-  task ravnica: :environment do
-    #get all ravnica cards
-    MTG::Card.where(set: 'grn').all.each do |card|
-      resource = Card.find_or_create_by(name: card.name)
-      resource.description = card.text
-      resource.image_url = card.image_url
-      resource.set = card.set
-      resource.save!
-    end
-  end
-  desc "populate m19 cards"
-  task m19: :environment do
-    #get all core 2019 cards
-    MTG::Card.where(set: 'M19').all.each do |card|
-      resource = Card.find_or_create_by(name: card.name)
-      resource.description = card.text
-      resource.image_url = card.image_url
-      resource.set = card.set
-      resource.save!
-    end
-  end
-  desc "populate RNA cards"
-  task rna: :environment do
-    #get all core 2019 cards
-    MTG::Card.where(set: 'RNA').all.each do |card|
-      resource = Card.find_or_create_by(name: card.name)
-      resource.description = card.text
-      resource.image_url = card.image_url
-      resource.set = card.set
-      resource.save!
-    end
-  end
-  desc "populate WAR cards"
-  task war: :environment do
-    #get all core 2019 cards
-    MTG::Card.where(set: 'WAR').all.each do |card|
+  desc "populate cards of passed in set_code"
+  task :populate, [:set_code] => [:environment] do|task, args|
+    #get cards from passed in set_code
+    MTG::Card.where(set: args[:set_code]).all.each do |card|
+      puts "procesing card: #{card.name}"
       resource = Card.find_or_create_by(name: card.name)
       resource.description = card.text
       resource.image_url = card.image_url
