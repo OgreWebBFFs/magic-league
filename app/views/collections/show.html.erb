@@ -3,9 +3,9 @@
     <div class="card-view-nav">
       <h3><%= "#{@collection.user.name}'s Collection" %> </h3>
       <%= link_to 'Edit Collection', edit_collection_path(@collection.id), class: 'btn' if policy(@collection).edit? %>
-      <%= link_to 'Collection', collection_path(@user.id), class: 'highlight-mid  btn' if !policy(@collection).edit? %>
-        <%= link_to 'Wishlist', wishlist_path(@user.collection.id), class: 'btn' %>
-      <%= link_to 'Tradables', tradable_path(@user.collection.id), class: 'btn'%>
+      <%= link_to 'Collection', collection_path(@collection.id), class: 'highlight-mid  btn' if !policy(@collection).edit? %>
+        <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'btn' %>
+      <%= link_to 'Tradables', tradable_path(@user.id), class: 'btn'%>
     </div>
     <div class="card-grid">
       <% @cards.each do |card| %>
