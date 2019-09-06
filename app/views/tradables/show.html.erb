@@ -3,8 +3,8 @@
     <div class="card-view-nav">
       <h3><%= "#{@user.name}'s Tradables" %> </h3>
       <%= link_to 'Collection', collection_path(@user.id), class: 'btn' %>
-      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'btn' %>
-      <%= link_to 'Tradables', tradable_path(@user.id), class: 'highlight-mid btn'%>
+      <%= link_to 'Wishlist', wishlist_path(@user.collection.id), class: 'btn' %>
+      <%= link_to 'Tradables', tradable_path(@user.collection.id), class: 'highlight-mid btn'%>
     </div>
     <div class="card-grid">
       <% @user.tradable_cards.each do |card| %>
