@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :trackable,
-    :omniauthable, omniauth_providers: [:google_oauth2]
+    :lockable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   before_create :add_collection
 

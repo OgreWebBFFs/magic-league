@@ -1,0 +1,28 @@
+
+<div id="user-wrapper" class="container">
+  <h3 class="color-blocked dark centered">Users</h3>
+  <div class="centered content">
+
+    <table>
+      <thead>
+        <tr>
+          <td>Email</td>
+          <td></td>
+          <td>Locked at?</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.email, user_path(user) %></td>
+            <td>
+              <%= link_to 'Lock Account', admin_user_lock_path(user), { method: "patch", class: 'btn users'} if user.locked_at.nil? %>
+              <%= link_to 'Unlock Account', admin_user_unlock_path(user), { method: "patch", class: 'btn users'} if !user.locked_at.nil? %>
+            </td>
+            <td><%= user.locked_at %></td>
+          </tr>
+        <% end %> 
+      </tbody>
+    </table>
+  </div>
+</div>

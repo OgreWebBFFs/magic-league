@@ -12,4 +12,13 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:index, :show, :update]
   resources :tradables, only: [:index, :show, :create, :destroy]
   resources :received_trades, only: [:create]
+
+  namespace :admin do 
+    authenticated :user, ->(u) { u.admin? } do
+      resources :users do
+        patch :lock
+        patch :unlock
+      end
+    end
+  end
 end
