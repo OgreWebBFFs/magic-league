@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
 
+  scope :unlocked, -> { where(locked_at: nil) }
+
   def matches
     Match.where("winner_id = ? OR loser_id = ?", id, id)
   end
