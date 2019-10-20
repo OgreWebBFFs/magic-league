@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @matches = Match.played_during_month(DateTime.now)
 
     RankingEngine.new(@users, @matches).generate_rankings
-    @rankings = @users.all.unlocked.sort_by(&:ranking).reverse
+    @rankings = @users.sort_by(&:ranking).reverse.delete_if{|u| u.locked_at != nil}
     @ranked_players = @rankings.select { |user|
       user_wins = @matches.where(winner: user).count
       user_losses = @matches.where(loser: user).count
