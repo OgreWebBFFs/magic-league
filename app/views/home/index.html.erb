@@ -14,7 +14,7 @@
         <div id="rankings">
           <div id="ranked-players">
             <% @ranked_players.each.with_index do |user, i| %>
-              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking.round(2)}", user_path(user), :class => "btn user ranked" %>
+              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking&.round(2)}", user_path(user), :class => "btn user ranked" %>
             <% end %>
           </div>
           <hr class="divider"/>
