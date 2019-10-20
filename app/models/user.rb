@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :trackable,
-    :omniauthable, omniauth_providers: [:google_oauth2]
+    :lockable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   before_create :add_collection
 
@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
+
+  scope :unlocked, -> { where(locked_at: nil) }
 
   def matches
     Match.where("winner_id = ? OR loser_id = ?", id, id)
