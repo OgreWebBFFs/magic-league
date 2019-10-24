@@ -56,7 +56,7 @@ nav .nav-wrapper .mobile-menu li a {
 nav .nav-wrapper .menu li a:hover,
 nav .nav-wrapper .mobile-menu li a:hover {
   background-color: rgba(255, 111, 97, 0.25);
-  transition: .5s;
+  transition: 0.5s;
 }
 nav .nav-wrapper .menu li .btn,
 nav .nav-wrapper .mobile-menu li .btn {
@@ -80,7 +80,7 @@ nav .nav-wrapper .mobile-menu .dropdown-content {
   display: none;
   position: absolute;
   top: 64px;
-  transition: .25s;
+  transition: 0.25s;
   opacity: 1;
   background-color: #f9f9f9;
   right: 0;
@@ -389,7 +389,7 @@ footer.page-footer .container .copyright p {
   overflow: hidden;
   z-index: 99;
   display: block;
-  transition-duration: .51s;
+  transition-duration: 0.51s;
   color: #0B0C10;
   text-align: center;
 }
@@ -553,7 +553,7 @@ footer.page-footer .container .copyright p {
 }
 .card-grid .card-wrapper .wishlist-checkbox label:before {
   cursor: pointer;
-  opacity: .4;
+  opacity: 0.4;
   content: "\2665";
   position: absolute;
   color: white;
@@ -563,7 +563,7 @@ footer.page-footer .container .copyright p {
   border-radius: 25px;
   line-height: 24px;
   -webkit-tap-highlight-color: transparent;
-  transition: .25s;
+  transition: 0.25s;
 }
 .card-grid .card-wrapper .wishlist-checkbox input[type="checkbox"]:checked + label::before {
   opacity: 1;
@@ -681,7 +681,7 @@ footer.page-footer .container .copyright p {
   content: "Propose Trade";
 }
 .card-grid .card-wrapper.not-in-league .card-grid-item {
-  opacity: .5;
+  opacity: 0.5;
 }
 .card-grid .card-wrapper.not-in-league .trade-proposal-request .btn {
   background: #0B0C10;
@@ -708,7 +708,7 @@ footer.page-footer .container .copyright p {
   left: 0;
   z-index: 99;
   padding-bottom: 2 rem;
-  transition-duration: .51s;
+  transition-duration: 0.51s;
   color: #0B0C10;
   text-align: center;
 }
@@ -785,7 +785,7 @@ footer.page-footer .container .copyright p {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-bar: thin;
+  scrollbar-width: thin;
   padding-right: 5px;
   padding-left: 5px;
 }
@@ -1052,7 +1052,7 @@ footer.page-footer .container .copyright p {
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-  transition: .25s;
+  transition: 0.25s;
 }
 #dashboard-wrapper #collection-table .row .checkbox-container .checkbox label:hover:before {
   background: #ff948a;
@@ -1120,7 +1120,7 @@ footer.page-footer .container .copyright p {
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-  transition: .25s;
+  transition: 0.25s;
 }
 #log-in-wrapper .container a .google-icon,
 #log-in-wrapper .container input[type="submit"] .google-icon {
@@ -1178,7 +1178,7 @@ footer.page-footer .container .copyright p {
   text-decoration: none;
   color: white;
   text-align: center;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   -webkit-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
   cursor: pointer;
@@ -1192,7 +1192,7 @@ footer.page-footer .container .copyright p {
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-  transition: .25s;
+  transition: 0.25s;
 }
 #card-search-wrapper #easy-filter-tabs.container .checkbox:first-of-type {
   margin-left: 0;
@@ -1217,11 +1217,11 @@ footer.page-footer .container .copyright p {
   padding: 0;
   border-radius: none;
   -webkit-filter: saturate(0);
-  opacity: .5;
+  opacity: 0.5;
   filter: saturate(0);
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-  transition: .25s;
+  transition: 0.25s;
 }
 #card-search-wrapper #easy-filter-tabs.container .checkbox.icon#black label:before {
   background-image: url("../images/black.svg");
@@ -1513,7 +1513,7 @@ footer.page-footer .container .copyright p {
   .card-grid #legend {
     right: -20px;
     padding: 2px;
-    opacity: .8;
+    opacity: 0.8;
   }
   .card-view-nav h3 {
     font-size: 1.92rem;
@@ -1530,6 +1530,10 @@ footer.page-footer .container .copyright p {
   .card-grid .card-wrapper {
     margin-bottom: 25px;
   }
+  .section {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
   .container {
     width: 100%;
   }
@@ -1538,6 +1542,22 @@ footer.page-footer .container .copyright p {
   }
   #match-logger-container .section #match-logger p {
     margin: 15px 0 5px;
+  }
+  #dashboard-wrapper .container {
+    width: 100%;
+  }
+  #dashboard-wrapper .container .table .row p {
+    padding: 5px;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container {
+    padding-right: 0;
+    text-align: center;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container .checkbox {
+    width: 100%;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container input {
+    display: none;
   }
 }
 @keyframes slide-up-and-go {
@@ -1568,7 +1588,7 @@ footer.page-footer .container .copyright p {
 @keyframes bigEntrance {
   0% {
     transform: translateY(10px);
-    opacity: .2;
+    opacity: 0.2;
   }
   30% {
     opacity: 1;
@@ -1592,7 +1612,7 @@ footer.page-footer .container .copyright p {
 @-webkit-keyframes bigEntrance {
   0% {
     transform: translateY(10px);
-    opacity: .2;
+    opacity: 0.2;
   }
   30% {
     opacity: 1;
