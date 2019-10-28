@@ -2158,6 +2158,11 @@ footer {
     }
   }
 
+  .section{
+    padding-left: 1px;
+    padding-right:1px;
+  }
+
   .container {
     width: 100%;
   }
@@ -2173,7 +2178,35 @@ footer {
       }
     }
   }
-}
+  #dashboard-wrapper{
+    .container{
+      width:100%;
+      .table{
+        .row{
+          p{
+            padding:5px;
+          }
+        }
+      }
+      &#collection-table{
+          .checkbox-container{
+            padding-right:0;
+            text-align: center;
+
+            .checkbox{
+              width:100%;
+            }
+
+            input{
+              display:none;
+            }
+          }
+        }
+       }
+      }
+    
+} 
+
 
 //Animations
 @keyframes slide-up-and-go {
