@@ -1348,6 +1348,7 @@ footer.page-footer .container .copyright p {
 #admin-user-wrapper .table .row .button-wrapper {
   display: inline-flex;
   align-items: middle;
+  width: 100%;
 }
 #admin-user-wrapper .table .row .button-wrapper a {
   color: white;
@@ -1438,6 +1439,9 @@ footer.page-footer .container .copyright p {
   #admin-user-wrapper .table .row .button-wrapper {
     display: block;
     margin: 0px auto;
+  }
+  #admin-user-wrapper .table .row .button-wrapper {
+    width: 150px;
   }
 }
 @media only screen and (max-width: 650px) {
