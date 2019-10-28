@@ -6,20 +6,25 @@
 # Users 
 # ==================================================
 users = []
-users << User.find_or_create_by(email: "patrickwroach@gmail.com", name: "Pat Roach", admin: true, locked_at: nil)
-users << User.find_or_create_by(email: "zack.t.brown@gmail.com", name: "Zack Brown", locked_at: nil)
-users << User.find_or_create_by(email: "mike@gmail.com", name: "Mike Stempler", locked_at: nil)
-users << User.find_or_create_by(email: "joe@gmail.com", name: "Joe Handzel", admin: true, locked_at: nil)
-users << User.find_or_create_by(email: "dustin@gmail.com", name: "Dustin Perzanowski", locked_at: nil)
-users << User.find_or_create_by(email: "ryan@gmail.com", name: "Ryan Branch", locked_at: nil)
-users << User.find_or_create_by(email: "perz13@gmail.com", name: "D#R", admin: true, locked_at: nil)
+users << User.find_or_create_by(email: "patrickwroach@gmail.com", name: "Pat Roach", admin: true)
+users << User.find_or_create_by(email: "zack.t.brown@gmail.com", name: "Zack Brown")
+users << User.find_or_create_by(email: "mike@gmail.com", name: "Mike Stempler")
+users << User.find_or_create_by(email: "joe@gmail.com", name: "Joe Handzel", admin: true)
+users << User.find_or_create_by(email: "dustin@gmail.com", name: "Dustin Perzanowski")
+users << User.find_or_create_by(email: "ryan@gmail.com", name: "Ryan Branch")
+users << User.find_or_create_by(email: "perz13@gmail.com", name: "D#R", admin: true)
 
 users.each do |user| 
   unless user.id
     user.collection = Collection.new 
     user.password = "12345678" 
+    user.password_confirmation = "12345678" 
     user.save
   end
+end
+
+User.all.each do |user|
+  user.unlock_access!
 end
 
 # Card ownerships 
