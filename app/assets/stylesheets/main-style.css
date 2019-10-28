@@ -272,6 +272,7 @@ footer.page-footer .container .copyright p {
 .section .container .table .row {
   display: table-row;
   height: 46px;
+  margin: 0;
 }
 .section .container .table .row a,
 .section .container .table .row button,
@@ -291,7 +292,7 @@ footer.page-footer .container .copyright p {
 .section .container .table .row div.btn,
 .section .container .table .row input.btn,
 .section .container .table .row p.btn {
-  width: 100px;
+  width: 90%;
 }
 .section .container .table .row button {
   line-height: 26px;
@@ -329,32 +330,51 @@ footer.page-footer .container .copyright p {
   display: flex;
 }
 .section .container .table.flex .row p,
-.section .container .table.flex .row .cell {
+.section .container .table.flex .row .browser-cell {
   text-align: center;
   flex: 1 0 auto;
   margin: 5px 0;
   box-sizing: border-box;
 }
+.section .container .table.flex .row p.button-wrapper,
+.section .container .table.flex .row .browser-cell.button-wrapper {
+  padding: 0 5px;
+  text-align: center;
+}
+.section .container .table.flex .row p.button-wrapper a.btn,
+.section .container .table.flex .row .browser-cell.button-wrapper a.btn {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  display: block;
+  color: white;
+}
 .section .container .table.flex .row p.fixed-width,
-.section .container .table.flex .row .cell.fixed-width {
+.section .container .table.flex .row .browser-cell.fixed-width {
   flex: 0 0 15%;
 }
 .section .container .table.flex .row p.fixed-width.fifth.one,
-.section .container .table.flex .row .cell.fixed-width.fifth.one,
+.section .container .table.flex .row .browser-cell.fixed-width.fifth.one,
 .section .container .table.flex .row p.fixed-width.fifths.one,
-.section .container .table.flex .row .cell.fixed-width.fifths.one {
+.section .container .table.flex .row .browser-cell.fixed-width.fifths.one {
   flex: 1 0 20%;
 }
 .section .container .table.flex .row p.fixed-width.tenth.one,
-.section .container .table.flex .row .cell.fixed-width.tenth.one,
+.section .container .table.flex .row .browser-cell.fixed-width.tenth.one,
 .section .container .table.flex .row p.fixed-width.tenths.one,
-.section .container .table.flex .row .cell.fixed-width.tenths.one {
+.section .container .table.flex .row .browser-cell.fixed-width.tenths.one {
   flex: 1 0 10%;
 }
+.section .container .table.flex .row p.fixed-width.tenth.one a.btn,
+.section .container .table.flex .row .browser-cell.fixed-width.tenth.one a.btn,
+.section .container .table.flex .row p.fixed-width.tenths.one a.btn,
+.section .container .table.flex .row .browser-cell.fixed-width.tenths.one a.btn {
+  font-size: 0.75rem;
+}
 .section .container .table.flex .row p.fixed-width.tenth.three,
-.section .container .table.flex .row .cell.fixed-width.tenth.three,
+.section .container .table.flex .row .browser-cell.fixed-width.tenth.three,
 .section .container .table.flex .row p.fixed-width.tenths.three,
-.section .container .table.flex .row .cell.fixed-width.tenths.three {
+.section .container .table.flex .row .browser-cell.fixed-width.tenths.three {
   flex: 1 0 30%;
 }
 .section .container .content {
@@ -1527,6 +1547,10 @@ footer.page-footer .container .copyright p {
   }
   #match-history-wrapper .container #match-history.table .row p:last-of-type {
     margin-bottom: 0;
+  }
+  #match-history-wrapper .container #match-history.table .row .button-wrapper {
+    display: inline-block;
+    width: 100px;
   }
   .card-grid {
     grid-template-columns: repeat(2, 50%);

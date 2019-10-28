@@ -5,7 +5,7 @@
     <p class="fixed-width one fifth browser-cell"><span class="on-mobile">Winner: </span><%= match.winner.name %></p>
     <p class="fixed-width one fifth browser-cell"><span class="on-mobile">Loser: </span><%= match.loser.name %></p>
     <p class="fixed-width one tenth browser-cell"><span class="on-mobile">ID: </span><%= match.id %></p>
-    <p class="fixed-width one tenth browser-cell"><%= link_to 'Edit', edit_admin_match_path(match) %></p>
-    <p class="fixed-width one tenth browser-cell"><%= link_to 'Delete', admin_match_path(match), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <div class="fixed-width one tenth browser-cell button-wrapper"><%= link_to 'Edit', edit_admin_match_path(match),  :class => "btn"  %></div>
+    <div class="fixed-width one tenth browser-cell button-wrapper"><%= link_to 'Delete' ,admin_match_path(match), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %></div>
   </div>
 <% end %>
