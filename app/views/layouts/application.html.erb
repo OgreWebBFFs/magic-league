@@ -63,15 +63,14 @@
               </ul>
             </li>
             <% if current_user.admin? %>
-            <li>
-              <a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-admin')">Admin &#9660;</a>
-              <ul id="dd-menu-admin" class="dropdown-content">
-                 <li>
-                  <a href="/admin/users">Users</a>
-                </li>
-              </ul>
-            </li>
-            <% end %%>
+              <li>
+                <a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-admin')">Admin &#9660;</a>
+                <ul id="dd-menu-admin" class="dropdown-content">
+                  <li><a href="/admin/matches">Matches</a></li>
+                  <li><a href="/admin/users">Users</a></li>
+                </ul>
+              </li>
+            <% end %>
             <li>
               <a href="#" class="btn waves-effect waves-light log-match-toggle">
                 Log a match
@@ -113,6 +112,10 @@
                 <li>
                   <a href="/users">Roster</a>
                 </li>
+                <% if current_user.admin? %>
+                <li><a href="/admin/matches">Admin Matches</a></li>
+                <li><a href="/admin/users">Admin Users</a></li>
+                <% end %>
                 <li>
                   <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
                 </li>

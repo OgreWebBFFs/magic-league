@@ -1,0 +1,19 @@
+<div id="match-history-wrapper">
+  <div class="container">
+    <h2 id="month-title"> Matches</h2>
+    <div id="match-history" class="alternating flex table">
+      <div class="headings row">
+      <p class="fixed-width one fifth browser-cell">Date</p>
+      <p class="fixed-width one tenth browser-cell">Time</p>              
+      <p class="fixed-width one fifth browser-cell">Winner</p>         
+      <p class="fixed-width one fifth browser-cell ">Loser</p>         
+      <p class="fixed-width one tenth browser-cell" >ID</p>
+      <p class="fixed-width one tenth browser-cell"></p>
+      <p class="fixed-width one tenth browser-cell"></p>
+    </div>
+
+    <%= render 'matches', matches: @matches %>
+  </div>
+</div>
+  
+</div>

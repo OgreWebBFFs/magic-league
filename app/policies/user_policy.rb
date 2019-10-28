@@ -21,6 +21,7 @@ class UserPolicy < ApplicationPolicy
         :name,
         :email,
         :admin,
+        :locked_at
       ]
     else
       return [
