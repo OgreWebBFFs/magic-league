@@ -23,6 +23,8 @@ Rails.application.routes.draw do
         patch :lock
         patch :unlock
       end
+
+      resources :matches
     end
   end
 end

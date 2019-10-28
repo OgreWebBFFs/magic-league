@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:unlock]
-  after_action :verify_authorized, only: [:unlock]
+  before_action :set_user, only: [:lock, :unlock]
+  before_action :authorize_user, only: [:lock, :unlock]
+  before_action :verify_authorized, only: [:lock, :unlock]
 
   respond_to :html, :js, :json
 
@@ -10,7 +11,6 @@ class Admin::UsersController < ApplicationController
 
   def lock
     user = User.find_by_id(params[:user_id])
-    authorize user
     user.locked_at = Time.now
     user.save
 
@@ -19,7 +19,6 @@ class Admin::UsersController < ApplicationController
 
   def unlock
     user = User.find_by_id(params[:user_id])
-    authorize user
     user.locked_at = nil
     user.save
 
@@ -29,6 +28,10 @@ class Admin::UsersController < ApplicationController
   private
   def set_user
     @user = User.find_by_id(params[:id])
+  end
+
+  def authorize_user
+    authorize User
   end
 
   def user_params

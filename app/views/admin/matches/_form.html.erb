@@ -1,0 +1,8 @@
+<%= simple_form_for @match, url: admin_match_path(@match) do |f| %>
+  <%= f.input :winner_id, collection: User.all %>
+  <%= f.input :loser_id, collection: User.all %>
+  
+  <hr>
+
+  <%= f.submit class: 'btn btn-small' %>
+<% end %>

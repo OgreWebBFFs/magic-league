@@ -14,8 +14,8 @@
         <p><%= link_to user.name, user_path(user) %></p>
         <p><%= link_to user.email, user_path(user) %></p>
         <div class="button-wrapper">
-          <%= link_to 'locked', admin_user_lock_path(user), { method: "patch", class: 'btn users'} if user.locked_at.nil? %>
-          <%= link_to 'unlocked', admin_user_unlock_path(user), { method: "patch", class: 'btn users unlocked'} if !user.locked_at.nil? %>
+          <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'btn users'} if !user.locked_at.nil? %>
+          <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'btn users unlocked'} if user.locked_at.nil? %>
         </div>
         <p><%= user.locked_at %></p>
       </div>
