@@ -1,5 +1,6 @@
 class CreateSettings < ActiveRecord::Migration[5.2]
-  def change
+  def up
+    # Create table
     create_table :settings do |t|
       t.date :season_start_date, default: -> { 'CURRENT_TIMESTAMP' }, null: false
       t.integer :season_length, default: 365, null: false
@@ -8,5 +9,12 @@ class CreateSettings < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    # Initialize standard settings page
+    Setting.find_or_create_by(id: 1)
+  end
+
+  def down
+    drop_table :settings
   end
 end
