@@ -1551,6 +1551,10 @@ footer.page-footer .container .copyright p {
   .card-grid .card-wrapper {
     margin-bottom: 25px;
   }
+  .section {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
   .container {
     width: 100%;
   }
@@ -1559,6 +1563,22 @@ footer.page-footer .container .copyright p {
   }
   #match-logger-container .section #match-logger p {
     margin: 15px 0 5px;
+  }
+  #dashboard-wrapper .container {
+    width: 100%;
+  }
+  #dashboard-wrapper .container .table .row p {
+    padding: 5px;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container {
+    padding-right: 0;
+    text-align: center;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container .checkbox {
+    width: 100%;
+  }
+  #dashboard-wrapper .container#collection-table .checkbox-container input {
+    display: none;
   }
 }
 @keyframes slide-up-and-go {
