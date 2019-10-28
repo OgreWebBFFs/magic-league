@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'settings/edit'
-    get 'settings/update'
-  end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:index, :edit, :update, :show]
   root "home#index"
+
+  resources :users, only: [:index, :edit, :update, :show]
   resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
@@ -25,6 +22,11 @@ Rails.application.routes.draw do
       end
 
       resources :matches
+
+      resources :settings do
+        get :edit
+        post :update
+      end
     end
   end
 end
