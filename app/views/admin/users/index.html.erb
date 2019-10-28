@@ -1,28 +1,25 @@
 
-<div id="user-wrapper" class="container">
+<div id="admin-user-wrapper" class="container">
   <h3 class="color-blocked dark centered">Users</h3>
   <div class="centered content">
-
-    <table>
-      <thead>
-        <tr>
-          <td>Email</td>
-          <td></td>
-          <td>Locked at?</td>
-        </tr>
-      </thead>
-      <tbody>
-        <%- @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.email, user_path(user) %></td>
-            <td>
-              <%= link_to 'Lock Account', admin_user_lock_path(user), { method: "patch", class: 'btn users'} if user.locked_at.nil? %>
-              <%= link_to 'Unlock Account', admin_user_unlock_path(user), { method: "patch", class: 'btn users'} if !user.locked_at.nil? %>
-            </td>
-            <td><%= user.locked_at %></td>
-          </tr>
-        <% end %> 
-      </tbody>
-    </table>
+  <div  class="alternating four-col table">
+    <div class="row headings">
+      <p>Name</p>
+      <p>Email</p>
+      <p>Status</p>
+      <p>Locked at</p>
+    </div>
+    <% @users.each do |user| %>
+      <div class=row >
+        <p><%= link_to user.name, user_path(user) %></p>
+        <p><%= link_to user.email, user_path(user) %></p>
+        <div class="button-wrapper">
+          <%= link_to 'locked', admin_user_lock_path(user), { method: "patch", class: 'btn users'} if user.locked_at.nil? %>
+          <%= link_to 'unlocked', admin_user_unlock_path(user), { method: "patch", class: 'btn users unlocked'} if !user.locked_at.nil? %>
+        </div>
+        <p><%= user.locked_at %></p>
+      </div>
+    <% end %> 
+  
   </div>
 </div>
