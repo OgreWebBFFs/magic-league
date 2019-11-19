@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:index, :edit, :update, :show]
   root "home#index"
+
+  resources :users, only: [:index, :edit, :update, :show]
   resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
@@ -18,6 +19,13 @@ Rails.application.routes.draw do
       resources :users do
         patch :lock
         patch :unlock
+      end
+
+      resources :matches
+
+      resources :settings do
+        get :edit
+        post :update
       end
     end
   end
