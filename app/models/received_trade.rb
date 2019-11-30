@@ -19,7 +19,7 @@ class ReceivedTrade < ApplicationRecord
   private
 
   def self.num_trade_sets
-    2
+    Setting.first.trade_allowance_period # Only one setting currently.  Will need to update to get the correct settings if we implement multiple leagues
   end
 
   def self.extra_trade_sets(user_name)
