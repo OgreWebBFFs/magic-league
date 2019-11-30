@@ -33,7 +33,7 @@ class User < ApplicationRecord
   def trades_received_and_allowed_by_rarity
     trades = [];
     ReceivedTrade::NUM_PER_PACK_BY_RARITY.keys.each do |rarity|
-      num_allowed = ReceivedTrade.num_allowed(rarity, name)
+      num_allowed = ReceivedTrade.num_allowed(rarity, id)
       received = received_trades.where(rarity: rarity).first
       num_received = received ? received.num_received : 0
       trades << {:rarity => rarity, :num_received => num_received, :num_allowed => num_allowed}
