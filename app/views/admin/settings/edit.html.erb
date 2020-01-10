@@ -1,2 +1,6 @@
 <h3>League Settings</h3>
-<p>Find me in app/views/admin/settings/edit.html.erb</p>
+
+<%= simple_form_for @settings, url: admin_setting_update_path(@settings) do |f| %>
+  <%= f.input :trade_allowance_period %>
+  <%= f.button :submit %>
+<% end %>

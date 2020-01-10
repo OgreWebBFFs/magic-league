@@ -7,6 +7,11 @@ class Admin::SettingsController < ApplicationController
   end
 
   def update
+    if @settings.update(setting_params)
+      redirect_to admin_setting_edit_path(@settings) 
+    else
+      render :edit
+    end
   end
 
   private
@@ -18,5 +23,9 @@ class Admin::SettingsController < ApplicationController
 
   def authorize_settings
     authorize @settings
+  end
+
+  def setting_params
+    params.require(:setting).permit(:trade_allowance_period)
   end
 end
