@@ -1363,12 +1363,18 @@ footer.page-footer .container .copyright p {
   justify-content: center;
   align-items: center;
 }
-#admin-settings-wrapper .input .numeric {
-  text-align: center;
+#admin-settings-wrapper .input input {
+  margin-left: 25px;
   flex: 0 1 25%;
+}
+#admin-settings-wrapper .input input.numeric,
+#admin-settings-wrapper .input input .date {
+  text-align: center;
   max-width: 100px;
   min-width: 50px;
-  margin-left: 25px;
+}
+#admin-settings-wrapper input[type=submit] {
+  margin-top: 25px;
 }
 #collection-wrapper .btn,
 #user-wrapper .btn {
