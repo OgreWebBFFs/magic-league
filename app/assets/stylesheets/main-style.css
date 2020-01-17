@@ -1358,6 +1358,18 @@ footer.page-footer .container .copyright p {
 #admin-user-wrapper .table .row .button-wrapper a.unlocked {
   background: #FF6F61;
 }
+#admin-settings-wrapper .input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#admin-settings-wrapper .input .numeric {
+  text-align: center;
+  flex: 0 1 25%;
+  max-width: 100px;
+  min-width: 50px;
+  margin-left: 25px;
+}
 #collection-wrapper .btn,
 #user-wrapper .btn {
   color: white;
