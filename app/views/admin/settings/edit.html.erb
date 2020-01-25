@@ -2,7 +2,7 @@
   <h3 class="color-blocked dark centered">League Settings</h3>
   <div class="centered content">
     <%= simple_form_for @settings, url: admin_setting_update_path(@settings) do |f| %>
-      <%= f.input :trade_allowance_period %>
+      <%= f.input :base_trade_sets %>
       <%= f.button :submit %>
     <% end %>
   </div>

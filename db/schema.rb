@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_183522) do
+ActiveRecord::Schema.define(version: 2020_01_25_211454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_183522) do
   create_table "settings", force: :cascade do |t|
     t.date "season_start_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.integer "season_length", default: 365, null: false
-    t.integer "trade_allowance_period", default: 1, null: false
+    t.integer "base_trade_sets", default: 1, null: false
     t.integer "bonus_trade_users", default: [], null: false, array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

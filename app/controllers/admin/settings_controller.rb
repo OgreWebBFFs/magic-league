@@ -26,6 +26,6 @@ class Admin::SettingsController < ApplicationController
   end
 
   def setting_params
-    params.require(:setting).permit(:trade_allowance_period)
+    params.require(:setting).permit(:base_trade_sets)
   end
 end
