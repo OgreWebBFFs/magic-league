@@ -26,6 +26,6 @@ class Admin::SettingsController < ApplicationController
   end
 
   def setting_params
-    params.require(:setting).permit(:base_trade_sets)
+    params.require(:setting).permit(:season_start_date, :season_length, :base_trade_sets)
   end
 end
