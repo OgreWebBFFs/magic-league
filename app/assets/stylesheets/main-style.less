@@ -1862,6 +1862,30 @@ footer {
     }
   }
 }
+#admin-settings-wrapper{
+  //note for clarity: Hitting the simple forms class here, not the HTML element
+  .input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //note for clarity: Here we are hitting the html element
+    input{
+      margin-left:25px;
+      flex: 0 1 25%;
+      &.numeric, 
+      .date {
+        text-align: center;
+        max-width:100px;
+        min-width:50px;
+      }
+    }
+    
+  }
+  //note for clarity: Here we are hitting the html element
+  input[type=submit]{
+    margin-top:25px;
+  }   
+}
 //Page Templates
 //User list pages (users, collections etc...)  
 #collection-wrapper,

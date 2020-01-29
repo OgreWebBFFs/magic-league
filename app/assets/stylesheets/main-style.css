@@ -1358,6 +1358,24 @@ footer.page-footer .container .copyright p {
 #admin-user-wrapper .table .row .button-wrapper a.unlocked {
   background: #FF6F61;
 }
+#admin-settings-wrapper .input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#admin-settings-wrapper .input input {
+  margin-left: 25px;
+  flex: 0 1 25%;
+}
+#admin-settings-wrapper .input input.numeric,
+#admin-settings-wrapper .input input .date {
+  text-align: center;
+  max-width: 100px;
+  min-width: 50px;
+}
+#admin-settings-wrapper input[type=submit] {
+  margin-top: 25px;
+}
 #collection-wrapper .btn,
 #user-wrapper .btn {
   color: white;
