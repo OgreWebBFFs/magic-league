@@ -791,6 +791,15 @@ footer.page-footer .container .copyright p {
   font-weight: 700;
   color: white;
 }
+#ranking-wrapper #rankings-date-form {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+#ranking-wrapper #rankings-date-form select {
+  flex: 0 0 125px;
+  margin: 0 5px;
+}
 #ranking-wrapper #ranking-board {
   box-sizing: border-box;
   width: 35%;
@@ -1496,24 +1505,6 @@ footer.page-footer .container .copyright p {
   }
   #log-in-wrapper {
     width: 95%;
-  }
-  #ranking-wrapper {
-    width: 100%;
-    min-width: 100px;
-  }
-  #ranking-wrapper #ranking-board {
-    width: 100%;
-    min-width: 100px;
-  }
-  #ranking-wrapper #ranking-board ul {
-    width: 100%;
-    text-align: center;
-    min-width: 100px;
-  }
-  #ranking-wrapper #ranking-board ul li {
-    width: 95%;
-    padding: 5px 2px;
-    margin: 2px auto;
   }
   #edit-details-wrapper .table {
     display: block;

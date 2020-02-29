@@ -1018,6 +1018,17 @@ footer {
 
   }
 
+  #rankings-date-form {
+    display: flex; 
+    justify-content: center;
+    margin: 10px 0;
+    select {
+      // 125px is the width of the month input on the longest months
+      flex: 0 0 125px;
+      margin: 0 5px;
+    }
+  }
+
   #ranking-board {
     @ranking-board-heading: 60px;
     box-sizing: border-box;
@@ -2074,28 +2085,6 @@ footer {
   #log-in-wrapper {
     width: 95%;
 
-  }
-
-  #ranking-wrapper {
-    width: 100%;
-    min-width: 100px;
-
-    #ranking-board {
-      width: 100%;
-      min-width: 100px;
-
-      ul {
-        width: 100%;
-        text-align: center;
-        min-width: 100px;
-
-        li {
-          width: 95%;
-          padding: 5px 2px;
-          margin: 2px auto;
-        }
-      }
-    }
   }
 
   #edit-details-wrapper {
