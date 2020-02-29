@@ -1501,6 +1501,15 @@ footer.page-footer .container .copyright p {
     width: 100%;
     min-width: 100px;
   }
+  #ranking-wrapper #rankings-date-form {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  #ranking-wrapper #rankings-date-form input {
+    flex: 125px;
+    margin: 0 5px;
+  }
   #ranking-wrapper #ranking-board {
     width: 100%;
     min-width: 100px;
