@@ -2,6 +2,9 @@
 </div>
 <div id="ranking-wrapper" class="container">
   <h1>Rankings</h1>
+  <%= form_with(url: "/", id:"rankings-date-form", method: "get", local: true) do %>
+    <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
+  <% end %>
   <div id="ranking-board">
     <div id="ranking-border">
       <div class="vert left"></div>

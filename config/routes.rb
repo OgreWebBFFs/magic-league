@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users, only: [:index, :edit, :update, :show]
-  resources :matches, only: [:index, :create] do
-    get :past_rankings, on: :collection
-  end
+  resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
   resources :trades, only: [:index, :create]
