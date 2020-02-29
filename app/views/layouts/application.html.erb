@@ -163,12 +163,12 @@
           <h3>Log Match</h3>
           <p>Who played?</p>
           <select class="browser-default player-selector" name="match[playerA]">
-            <% @users.each do |user| %>
+            <% User.unlocked.each do |user| %>
               <option value="<%=user.id%>"><%=user.name%></option>
             <% end %>
           </select>
           <select class="browser-default player-selector" name="match[playerB]">
-            <% @users.each do |user| %>
+            <% User.unlocked.each do |user| %>
               <option value="<%=user.id%>"><%=user.name%></option>
             <% end %>
           </select>
