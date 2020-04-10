@@ -33,24 +33,22 @@ var AppLayout = (function() {
     setMatchDateAndTime();
   }
 
- /*  let handleWindowClick = function(event) {
+  let handleWindowClick = function(event) {
     if (!event.target.matches('.drop-down-toggle')) {
-      console.log("this is also happenieng")
-      var dropdowns = document.querySelectorAll([class$="_drop-down-content"]);
+      var dropdowns = document.querySelectorAll(".dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
-        console.log("this is also happenieng")
         if (openDropdown.classList.contains('active')) {
           openDropdown.classList.remove('active');
         }
       }
     }
-  } */
+  } 
 
   // Exposed functions start here
   let closeOtherDropDown = function() {
-    var dropDownMenus = document.getElementById("top-nav").querySelectorAll(".nav_menu_dropdown-content");            
+    var dropDownMenus = document.getElementById("top-nav").querySelectorAll(".dropdown-content");            
     for (var i = 0; i < dropDownMenus.length; i++) {
       dropDownMenus[i].classList.remove("active");
     }

@@ -5,6 +5,97 @@ $footer-height: 32px;
 $section-padding: 25px;
 $animation-delay: 2s;
 
+
+//Text Treatments
+
+a {
+  text-decoration: none;
+}
+
+html {
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+@media only screen and (min-width: 0) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit;
+}
+
+h1 {
+  font-size: 4.2rem;
+  line-height: 110%;
+  margin: 2.8rem 0 1.68rem 0;
+}
+
+h2 {
+  font-size: 3.56rem;
+  line-height: 110%;
+  margin: 2.3733333333rem 0 1.424rem 0;
+}
+
+h3 {
+  font-size: 2.92rem;
+  line-height: 110%;
+  margin: 1.9466666667rem 0 1.168rem 0;
+}
+
+h4 {
+  font-size: 2.28rem;
+  line-height: 110%;
+  margin: 1.52rem 0 0.912rem 0;
+}
+
+h5 {
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 1.0933333333rem 0 0.656rem 0;
+}
+
+h6 {
+  font-size: 1.15rem;
+  line-height: 110%;
+  margin: 0.7666666667rem 0 0.46rem 0;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 500;
+}
+
+small {
+  font-size: 75%;
+}
+
 //General Site Structure
 
 body,
@@ -75,19 +166,7 @@ footer {
     }
   }
 
-  .btn {
-    a {
-      color: $color-light;
-    }
 
-    &.highlight-mid {
-      background: lighten($color-highlight-mid-import, 5%);
-
-      &:hover {
-        background: lighten($color-highlight-mid-import, 10%);
-      }
-    }
-  }
 
   h1,
   h2,
@@ -223,7 +302,7 @@ footer {
       &.alternating {
         .row {
           &:nth-child(even) {
-            background: fade($color-dark, 15%);
+            background: rgba($color-dark, .15);
           }
         }
       }
@@ -336,6 +415,153 @@ footer {
 
   }
 }
+
+//Form and Input Elements
+select:focus {
+    outline: 1px solid $color-highlight-mid-import;
+  }
+  
+  button:focus {
+    outline: none;
+    background-color: $color-highlight-mid-import;;
+  }
+  
+  label {
+    font-size: 0.8rem;
+    color: $color-nuetral;
+  }
+
+select.browser-default {
+display: block;
+}
+
+select {
+background-color: rgba(255, 255, 255, 0.9);
+width: 100%;
+padding: 5px;
+border: 1px solid #f2f2f2;
+border-radius: 2px;
+height: 3rem;
+}
+//Buttons 
+.btn {
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  outline: 0;
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  a {
+    color: $color-light;
+  }
+
+  &.highlight-mid {
+    background: lighten($color-highlight-mid-import, 5%);
+
+    &:hover {
+      background: lighten($color-highlight-mid-import, 10%);
+    }
+  }
+}
+// Text Inputs + Textarea
+::-webkit-input-placeholder {
+    color: $color-nuetral;
+  }
+::-moz-placeholder {
+  color: $color-nuetral;
+}
+:-ms-input-placeholder {
+  color: $color-nuetral;
+}
+::placeholder {
+  color: $color-nuetral;
+}
+
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default){
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid $color-nuetral;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  padding: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: border .3s, -webkit-box-shadow .3s;
+  transition: border .3s, -webkit-box-shadow .3s;
+  transition: box-shadow .3s, border .3s;
+  transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid $color-highlight-mid-import;
+  -webkit-box-shadow: 0 1px 0 0 $color-highlight-mid-import;
+          box-shadow: 0 1px 0 0 $color-highlight-mid-import;
+}
+
+input:not([type]):disabled + label,
+input:not([type])[readonly="readonly"] + label,
+input[type=text]:not(.browser-default):disabled + label,
+input[type=text]:not(.browser-default)[readonly="readonly"] + label,
+input[type=password]:not(.browser-default):disabled + label,
+input[type=password]:not(.browser-default)[readonly="readonly"] + label,
+input[type=email]:not(.browser-default):disabled + label,
+input[type=email]:not(.browser-default)[readonly="readonly"] + label,
+input[type=url]:not(.browser-default):disabled + label,
+input[type=url]:not(.browser-default)[readonly="readonly"] + label,
+input[type=time]:not(.browser-default):disabled + label,
+input[type=time]:not(.browser-default)[readonly="readonly"] + label,
+input[type=date]:not(.browser-default):disabled + label,
+input[type=date]:not(.browser-default)[readonly="readonly"] + label,
+input[type=datetime]:not(.browser-default):disabled + label,
+input[type=datetime]:not(.browser-default)[readonly="readonly"] + label,
+input[type=datetime-local]:not(.browser-default):disabled + label,
+input[type=datetime-local]:not(.browser-default)[readonly="readonly"] + label,
+input[type=tel]:not(.browser-default):disabled + label,
+input[type=tel]:not(.browser-default)[readonly="readonly"] + label,
+input[type=number]:not(.browser-default):disabled + label,
+input[type=number]:not(.browser-default)[readonly="readonly"] + label,
+input[type=search]:not(.browser-default):disabled + label,
+input[type=search]:not(.browser-default)[readonly="readonly"] + label,
+textarea.materialize-textarea:disabled + label,
+textarea.materialize-textarea[readonly="readonly"] + label {
+  color: $color-nuetral;
+}
+
 //Repetitious Non Page Specific Elements 
 #match-logger-container {
   position: fixed;
@@ -399,8 +625,7 @@ footer {
 
   &.active {
     width: 100%;
-    background-color: fade($color-dark, 50%);
-
+    background-color: rgba($color-dark, .5);
   }
 
 }
@@ -755,7 +980,7 @@ footer {
   position: fixed;
   height: 100vh;
   width: 100%;
-  background-color: fade($color-dark, 50%);
+  background-color: rgba($color-dark, .5);
   overflow: hidden;
   top: 0;
   left: 0;
@@ -1291,7 +1516,7 @@ footer {
       -webkit-transition: background-color .2s ease-out;
       transition: background-color .2s ease-out;
       cursor: pointer;
-      background: fade($color-dark, 50%);
+      background: rgba($color-dark, .5);
       padding: 5px;
       border-radius: 2px;
       display: inline-block;
@@ -1309,7 +1534,7 @@ footer {
       }
 
       &:hover {
-        background: fade($color-dark, 60%);
+        background: rgba($color-dark, .6);
       }
     }
 
@@ -1382,7 +1607,7 @@ footer {
           -webkit-transition: background-color .2s ease-out;
           transition: background-color .2s ease-out;
           cursor: pointer;
-          background: fade($color-highlight-mid-import, 50%);
+          background: rgba($color-highlight-mid-import, .5);
           padding: 5px;
           border-radius: 2px;
           display: inline-block;
@@ -1970,6 +2195,7 @@ footer {
   .container {
     width: 100%;
   }
+
   #match-logger-container{
     .section{
       #match-logger{
@@ -1982,154 +2208,30 @@ footer {
       }
     }
   }
-  #dashboard-wrapper{
-    .container{
-      width:100%;
-      .table{
-        .row{
-          p{
-            padding:5px;
-          }
-        }
-      }
-      &#collection-table{
-          .checkbox-container{
-            padding-right:0;
-            text-align: center;
-
-            .checkbox{
-              width:100%;
+    #dashboard-wrapper{
+        .container{
+            width:100%;
+            .table{
+                .row{
+                    p{
+                        padding:5px;
+                    }
+                }
             }
+            &#collection-table{
+                .checkbox-container{
+                padding-right:0;
+                text-align: center;
 
-            input{
-              display:none;
+                .checkbox{
+                    width:100%;
+                }
+
+                input{
+                    display:none;
+                }
             }
-          }
+            }
         }
-       }
-      }
-    
+    }  
 } 
-
-
-//Animations
-@keyframes slide-up-and-go {
-  0%,
-  99% {
-    display: block;
-  }
-
-  90% {
-    top: -100px;
-  }
-}
-@keyframes growVert {
-  0% {
-
-    transform: scaleY(0);
-  }
-
-}
-@keyframes growHorz {
-  0% {
-
-    transform: scaleX(0);
-  }
-}
-@keyframes fadeInBGFilter {
-  0% {
-    -webkit-filter: saturate(.5);
-    filter: saturate(.5);
-  }
-
-}
-@keyframes bigEntrance {
-  0% {
-    transform: translateY(10px);
-    opacity: .2;
-  }
-
-  30% {
-
-    opacity: 1;
-  }
-
-  45% {
-
-    opacity: 1;
-  }
-
-  60% {
-
-    opacity: 1;
-  }
-
-  75% {
-
-    opacity: 1;
-  }
-
-  90% {
-
-    opacity: 1;
-  }
-
-  100% {
-
-    opacity: 1;
-  }
-}
-@-webkit-keyframes bigEntrance {
-  0% {
-    transform: translateY(10px);
-    opacity: .2;
-  }
-
-  30% {
-
-    opacity: 1;
-  }
-
-  45% {
-
-    opacity: 1;
-  }
-
-  60% {
-
-    opacity: 1;
-  }
-
-  75% {
-
-    opacity: 1;
-  }
-
-  90% {
-
-    opacity: 1;
-  }
-
-  100% {
-
-    opacity: 1;
-  }
-}
-
-@keyframes mtgColorCycle {
-  16% { fill: $Caribbean-Green; }
-  32% { fill: $Fountain-Blue; }
-  48% { fill: #3D4849; }
-  64% { fill: whitesmoke; }
-  82% { fill: $Crimson; }
-  98% {fill: $color-highlight-mid-import;}
-  
-}
-@-webkit-keyframes mtgColorCycle {
-  16% { fill: $Caribbean-Green; }
-  32% { fill: $Fountain-Blue; }
-  48% { fill: #3D4849; }
-  64% { fill: whitesmoke; }
-  80% { fill: $Crimson; }
-  96% {fill: $color-highlight-mid-import;}
-}
