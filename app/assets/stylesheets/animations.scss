@@ -1,0 +1,118 @@
+//Animations
+
+//Rankings Border Animations
+@keyframes growVert {
+    0% {
+  
+      transform: scaleY(0);
+    }
+  
+  }
+  @keyframes growHorz {
+    0% {
+  
+      transform: scaleX(0);
+    }
+  }
+  
+  //Background saturation animation
+  @keyframes fadeInBGFilter {
+    0% {
+      -webkit-filter: saturate(.5);
+      filter: saturate(.5);
+    }
+  
+  }
+  
+  //Rankings name entry animation 
+  @keyframes bigEntrance {
+    0% {
+      transform: translateY(10px);
+      opacity: .2;
+    }
+  
+    30% {
+  
+      opacity: 1;
+    }
+  
+    45% {
+  
+      opacity: 1;
+    }
+  
+    60% {
+  
+      opacity: 1;
+    }
+  
+    75% {
+  
+      opacity: 1;
+    }
+  
+    90% {
+  
+      opacity: 1;
+    }
+  
+    100% {
+  
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes bigEntrance {
+    0% {
+      transform: translateY(10px);
+      opacity: .2;
+    }
+  
+    30% {
+  
+      opacity: 1;
+    }
+  
+    45% {
+  
+      opacity: 1;
+    }
+  
+    60% {
+  
+      opacity: 1;
+    }
+  
+    75% {
+  
+      opacity: 1;
+    }
+  
+    90% {
+  
+      opacity: 1;
+    }
+  
+    100% {
+  
+      opacity: 1;
+    }
+  }
+  
+  //Logo Color Cylcle on hover
+  @keyframes mtgColorCycle {
+    16% { fill: $Caribbean-Green; }
+    32% { fill: $Fountain-Blue; }
+    48% { fill: #3D4849; }
+    64% { fill: whitesmoke; }
+    82% { fill: $Crimson; }
+    98% {fill: $color-highlight-mid-import;}
+    
+  }
+  @-webkit-keyframes mtgColorCycle {
+    16% { fill: $Caribbean-Green; }
+    32% { fill: $Fountain-Blue; }
+    48% { fill: #3D4849; }
+    64% { fill: whitesmoke; }
+    80% { fill: $Crimson; }
+    96% {fill: $color-highlight-mid-import;}
+  }
