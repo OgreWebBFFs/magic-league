@@ -1,0 +1,210 @@
+.nav {
+  position: relative;
+  background: $color-dark;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  color: $color-highlight-import;
+  background-color:$color-dark;
+  width: 100%;
+
+  ul {
+    margin: 0;
+    li {
+        -webkit-transition: background-color .3s;
+        transition: background-color .3s;
+        float: left;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        height: $nav-height;
+        a {
+            -webkit-transition: background-color .3s;
+            text-transform: capitalize;
+            transition: background-color .3s;
+            font-size: 1rem;
+            color: $color-highlight-import;
+            padding: 0 15px;
+            cursor: pointer;
+          }
+        &.active,
+        &:hover{ 
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+  }
+
+  &-wrapper {
+    width: 80%;
+  }
+  &_logo-container {
+      height: 100%;
+      width: auto;
+      position: absolute;
+      left: 0;
+      svg {
+        width: auto;
+        height: 100%;
+        padding: 5px 0 0 25px;
+        .logo-fill{
+          fill: $color-highlight-mid-import;
+        }
+        
+      }
+      &:hover{
+        svg{
+          .logo-fill{
+            transition:1s;
+            animation: mtgColorCycle;
+            animation-duration: 10s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse
+          }
+        
+        }
+      }
+    }
+
+    &_menu,
+    &_mobile-menu {
+      li {
+        min-height: 0;
+        position: relative;
+
+        a {
+          color: $color-highlight-import;
+          font-size: 13px;
+          padding: 0 10px;
+
+          &:hover {
+            background-color: fade($color-highlight-mid-import, 25%);
+            transition: .5s;
+
+          }
+
+        }
+
+        .btn {
+          margin-left: 5px;
+          color: $color-dark;
+          padding: 0 5px;
+          font-size: 12px;
+          background: $color-highlight-import;
+          text-transform: uppercase;
+
+          & a {
+            color: $color-dark;
+          }
+
+          &:hover {
+            background: lighten($color-highlight-import, 10%);
+          }
+
+        }
+      }
+
+      .dropdown-content {
+        li {height:100%;
+        }
+        a {
+          text-align: center;
+          padding: 15px 10px;
+        }
+        display: none;
+        position: absolute;
+        top: 64px;
+        transition: .25s;
+        opacity: 1;
+        background-color: #f9f9f9;
+        right: 0;
+        width: 125px;
+        z-index: 99;
+        -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+        &.active {
+          display: block;
+          height: initial;
+        }
+
+      }
+    }
+
+    &_menu {
+      text-align: center;
+      float: right;
+    }
+
+    &_mobile-menu {
+      display: none;
+
+      li {
+        float: right;
+
+            .btn {
+            margin-left: 5px;
+            margin-right: 0;
+
+            &.drop-down-toggle {
+                background-color: fade($color-highlight-mid-import, 50%);
+                font-size: 14px;
+                color: $color-light;
+                padding: 0 10px;
+
+                &:hover {
+                background: lighten($color-highlight-mid-import, 5%);
+                }
+            }
+            }
+        }
+
+        .dropdown-content {
+            top: 59px;
+        }
+      
+    }
+  @media only screen and (max-width: 993px) {
+      &_menu {
+          margin-right: -10%;
+      } 
+  }
+  @media only screen and (max-width: 850px) {
+  
+    &_menu {
+      display: none;
+    }
+
+    &_mobile-menu {
+      display: block;
+      float: right;
+      margin-top: 5px;
+
+      li {
+        button.btn {
+          &:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+    &_logo-container {
+      display: block;
+      left: 0;
+      width: 30px;
+      overflow: hidden;
+      float: left;
+      svg{
+          padding-left:0;
+          .logo-fill{
+              display:none;
+              &.mtg-icon {
+              display:block;
+              }
+          }
+      }
+    }
+  }
+}

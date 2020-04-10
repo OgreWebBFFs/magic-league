@@ -1,39 +1,3 @@
-//TODO: Break up Style Sheets
-//Color Library
-$Rose-Gold: #bd8c7d;
-$Soft-Gold: #d1bfa7;
-$Silver: #8e8e90;
-$Onyx: #49494b;
-$Light-Grey: #8d8d8d;
-$Turquoise: #26a69a;
-$Soft-Orange: #efab45;
-$Crimson: #DC143C;
-$Living-Coral: #FF6F61;
-$Beluga: rgb(10, 8, 3);
-$Forest-Biome: #184A45;
-$Sunset-Orange: #FC4445;
-$Cornflower: #97CAEF;
-$Fountain-Blue:#55BCC9;
-$Goldenrod-Yellow: #fbaf08;
-$Lightning-Purple: #bf4aa8;
-$Lightning-Blue:#51d0de;
-$Wrinkle-White:#d9d9d9;
-$Woodsmoke: #0B0C10;
-$Caribbean-Green: #00d285;
-$Ebony-Clay:#1f2833;
-$Eucalytus: #27876F;
-$Biloba-Flower:#CBBAED;
-
-//Semantic Colors Names
-
-$color-light:white;
-$color-dark: $Woodsmoke;
-$color-highlight-mid-import: $Living-Coral;
-$color-highlight-import: $Sunset-Orange;
-$color-highlight-urgent: $Crimson;
-$background-color: $color-light;
-$ranking-border-color: $color-light;
-
 
 //Static Reused Numbers
 $nav-height: 64px;
@@ -41,8 +5,8 @@ $footer-height: 32px;
 $section-padding: 25px;
 $animation-delay: 2s;
 
-//General Site Structure Re-writes
-//Top Nav
+//General Site Structure
+
 body,
 html {
   height: 100%;
@@ -52,152 +16,6 @@ html {
 body {
   overflow-x: hidden;
   background: $background-color;
-}
-
-nav {
-  position: relative;
-  background: $color-dark;
-  height: $nav-height;
-  box-sizing: border-box;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  z-index: 2;
-
-  .nav-wrapper {
-    width: 80%;
-
-    #logo-container {
-      height: 100%;
-      width: auto;
-      position: absolute;
-      left: 0;
-
-      svg {
-        width: auto;
-        height: 100%;
-        padding: 5px 0 0 25px;
-        .logo-fill{
-          fill: $color-highlight-mid-import;
-        }
-        
-      }
-      &:hover{
-        svg{
-          .logo-fill{
-            transition:1s;
-            animation: mtgColorCycle;
-            animation-duration: 10s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: alternate-reverse
-          }
-        
-        }
-      }
-    }
-
-    a {
-      text-transform: capitalize;
-    }
-
-    .menu,
-    .mobile-menu {
-      li {
-        min-height: 0;
-        position: relative;
-
-        a {
-          color: $color-highlight-import;
-          font-size: 13px;
-          padding: 0 10px;
-
-          &:hover {
-            background-color: fade($color-highlight-mid-import, 25%);
-            transition: .5s;
-
-          }
-
-        }
-
-        .btn {
-          margin-left: 5px;
-          color: $color-dark;
-          padding: 0 5px;
-          font-size: 12px;
-          background: $color-highlight-import;
-          text-transform: uppercase;
-
-          &a {
-            color: $color-dark;
-          }
-
-          &:hover {
-            background: lighten($color-highlight-import, 10%);
-          }
-
-        }
-      }
-
-      .dropdown-content {
-        a {
-          text-align: center;
-          padding: 15px 10px;
-        }
-        display: none;
-        position: absolute;
-        top: 64px;
-        transition: .25s;
-        opacity: 1;
-        background-color: #f9f9f9;
-        right: 0;
-        width: 125px;
-        z-index: 99;
-        -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-        -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-        box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-
-        &.active {
-          display: block;
-          height: initial;
-        }
-
-      }
-    }
-
-    .menu {
-      text-align: center;
-      float: right;
-
-    }
-
-    .mobile-menu {
-      display: none;
-
-      li {
-        float: right;
-
-        .btn {
-          margin-left: 5px;
-          margin-right: 0;
-
-          &.drop-down-toggle {
-            background-color: fade($color-highlight-mid-import, 50%);
-            font-size: 14px;
-            color: $color-light;
-            padding: 0 10px;
-
-            &:hover {
-              background: lighten($color-highlight-mid-import, 5%);
-            }
-          }
-        }
-
-        .dropdown-content {
-          top: 59px;
-        }
-      }
-    }
-  }
-
 }
 
 footer {
@@ -1946,18 +1764,6 @@ footer {
   }
 
 }
-@media only screen and (max-width: 993px) {
-  nav {
-    .nav-wrapper {
-      ul {
-        &.menu {
-          margin-right: -10%;
-        }
-      }
-   
-    }
-  }
-}
 @media only screen and (max-width: 800px) {
   .card-grid {
     grid-template-columns: repeat(3, 33.3%);
@@ -2036,44 +1842,6 @@ footer {
   }
 }
 @media only screen and (max-width: 650px) {
-  nav {
-    .nav-wrapper {
-      .menu {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: block;
-        float: right;
-        margin-top: 5px;
-
-        li {
-          button.btn {
-            &:last-child {
-              margin-right: 0;
-            }
-
-          }
-        }
-      }
-      #logo-container {
-        display: block;
-        left: 0;
-        width: 30px;
-        overflow: hidden;
-        float: left;
-        svg{
-          padding-left:0;
-          .logo-fill{
-            display:none;
-            &.mtg-icon {
-             display:block;
-            }
-          }
-        }
-      }
-    }
-  }
 
   .section {
     .container {

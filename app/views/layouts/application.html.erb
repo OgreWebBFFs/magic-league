@@ -17,12 +17,12 @@
   </head>
   <body onload="setTimeout(function() {Helpers.toggleElementById('alert-container')}, 5000)">
     <% if user_signed_in? %>
-      <nav id="nav" role="navigation">
+      <nav id="top-nav" class="nav" role="navigation">
         <div class="nav-wrapper container">
-          <a href="/" id="logo-container" class="brand-logo" data-turbolinks="false">
+          <a href="/" class="nav_logo-container" data-turbolinks="false">
           <%= show_svg('logo.svg') %>
           </a>
-          <ul class="menu">
+          <ul class="nav_menu">
             <li>
               <a href="/" data-turbolinks="false">rankings</a>
             </li>
@@ -49,7 +49,7 @@
             <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
-                  <a href="/matches">Matches</a>
+                  <a href="/matches">Matsdadches</a>
                 </li>
                 <li>
                   <a href="/rules">Rules</a>
@@ -78,7 +78,7 @@
               </a>
             </li>
           </ul>
-          <ul class="mobile-menu">
+          <ul class="nav_mobile-menu">
             <li>
               <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-mobile')">
 
