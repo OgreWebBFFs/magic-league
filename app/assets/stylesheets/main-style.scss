@@ -1,13 +1,10 @@
-
 //Static Reused Numbers
 $nav-height: 64px;
 $footer-height: 32px;
 $section-padding: 25px;
 $animation-delay: 2s;
 
-
 //Text Treatments
-
 a {
   text-decoration: none;
 }
@@ -36,8 +33,6 @@ html {
     font-size: 15px;
   }
 }
-
-
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
@@ -126,8 +121,6 @@ body {
       color: darken($color-highlight-import, 10%);
     }
   }
-
-
 
   h1,
   h2,
@@ -368,6 +361,7 @@ body {
 
     }
   }
+
   //Section Types 
   &.full-page {
     background: transparent;
@@ -380,15 +374,15 @@ select:focus {
     outline: 1px solid $color-highlight-mid-import;
   }
   
-  button:focus {
-    outline: none;
-    background-color: $color-highlight-mid-import;;
-  }
-  
-  label {
-    font-size: 0.8rem;
-    color: $color-nuetral;
-  }
+button:focus {
+  outline: none;
+  background-color: $color-highlight-mid-import;;
+}
+
+label {
+  font-size: 0.8rem;
+  color: $color-nuetral;
+}
 
 select.browser-default {
 display: block;
@@ -402,6 +396,7 @@ border: 1px solid #f2f2f2;
 border-radius: 2px;
 height: 3rem;
 }
+
 //Buttons 
 .btn {
   text-decoration: none;
@@ -660,6 +655,10 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   margin: 0;
   background: transparent;
   border: none;
+
+  &:focus{
+    background:none;
+  }
 
   .material-icons {
     font-size: 30px;
@@ -1004,201 +1003,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 //TO DO: BREAK INTO OWN FILES 
 
 //Specific Pages
-//Ranking Page
 
-#ranking-wrapper {
-  text-align: center;
-
-  h1 {
-    font-size: 50px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    line-height: 1;
-    font-variant: small-caps;
-    font-weight: 700;
-    color: $color-light;
-
-  }
-
-  #rankings-date-form {
-    display: flex; 
-    justify-content: center;
-    margin: 10px 0;
-    select {
-      // 125px is the width of the month input on the longest months
-      flex: 0 0 125px;
-      margin: 0 5px;
-    }
-  }
-
-  #ranking-board {
-    $ranking-board-heading: 60px;
-    $month-selector: 45px;    
-    box-sizing: border-box;
-    width: 35%;
-    padding: 5px;
-    margin: 0 auto;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (5*#{$section-padding}));
-    position: relative;
-    min-width: 300px;
-
-    .scroll-catcher {
-      height: 100%;
-      width: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      padding-right: 5px;
-      padding-left: 5px;
-
-      &::-webkit-scrollbar-track {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        background-color: transparent;
-      }
-
-      &::-webkit-scrollbar {
-        width: 5px;
-        background-color: transparent;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background-color: $color-light;
-      }
-
-      .vert-centerer {
-        display: table;
-        height: 100%;
-        width: 100%;
-
-      }
-    }
-
-    #rankings {
-      display: flex;
-      margin: 0 auto;
-      min-width: 275px;
-      text-align: center;
-      flex-direction: column;
-      justify-content: space-around;
-      height: 100%;
-
-      a {
-        color: $color-light;
-        max-width: 275px;
-        min-width: 200px;
-        margin: 5px auto;
-        padding: 5px;
-        height: auto;
-        display: block;
-        font-size: 12px;
-        background:$color-highlight-import;
-        animation-name: bigEntrance;
-        -webkit-animation-name: bigEntrance;
-        animation-duration: 1.6s;
-        -webkit-animation-duration: 1.6s;
-        animation-timing-function: ease-out;
-        -webkit-animation-timing-function: ease-out;
-        visibility: visible !important;
-        position: relative;
-
-        &:first-of-type {
-          ::before {
-            content: "\2726";
-            position: absolute;
-            left: 5px;
-          }
-
-          ::after {
-            content: "\2726";
-            position: absolute;
-            right: 5px;
-          }
-        }
-
-        &:hover {
-          background: lighten($color-highlight-import, 5%);
-        }
-        &.unranked{
-          background: $color-highlight-mid-import;
-          &:hover {
-            background: lighten($color-highlight-mid-import, 5%);
-          }
-
-        }
-
-      }
-
-      .divider {
-        height: 2px;
-        border:none;
-        outline: none;
-        width:100%;
-        overflow: hidden;
-        background-color: $color-light;
-      }
-    }
-
-    #ranking-border {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-
-      div {
-        height: 2px;
-        width: 2px;
-        background: $ranking-border-color;
-        position: absolute;
-        animation-duration: 1s;
-
-        &.vert {
-          animation-name: growVert;
-          height: 100%;
-          left: 0;
-          transform-origin: top;
-
-          &.right {
-            left: auto;
-            left: initial;
-            right: 0;
-            transform-origin: bottom;
-
-          }
-        }
-
-        &.horz {
-          animation-name: growHorz;
-          width: 100%;
-          top: 0;
-          transform-origin: right;
-
-          &.bottom {
-            top: auto;
-            top: initial;
-            bottom: 0;
-            transform-origin: left;
-          }
-        }
-      }
-
-    }
-
-    h2 {
-      margin-top: 0;
-
-    }
-
-    .row {
-      margin-bottom: 0;
-    }
-
-  }
-
-}
 //Dashboard Page 
 #dashboard-wrapper {
   .container {
