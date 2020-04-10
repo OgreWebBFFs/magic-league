@@ -1,45 +1,45 @@
 //TODO: Break up Style Sheets
 //Color Library
-@Rose-Gold: #bd8c7d;
-@Soft-Gold: #d1bfa7;
-@Silver: #8e8e90;
-@Onyx: #49494b;
-@Light-Grey: #8d8d8d;
-@Turquoise: #26a69a;
-@Soft-Orange: #efab45;
-@Crimson: #DC143C;
-@Living-Coral: #FF6F61;
-@Beluga: rgb(10, 8, 3);
-@Forest-Biome: #184A45;
-@Sunset-Orange: #FC4445;
-@Cornflower: #97CAEF;
-@Fountain-Blue:#55BCC9;
-@Goldenrod-Yellow: #fbaf08;
-@Lightning-Purple: #bf4aa8;
-@Lightning-Blue:#51d0de;
-@Wrinkle-White:#d9d9d9;
-@Woodsmoke: #0B0C10;
-@Caribbean-Green: #00d285;
-@Ebony-Clay:#1f2833;
-@Eucalytus: #27876F;
-@Biloba-Flower:#CBBAED;
+$Rose-Gold: #bd8c7d;
+$Soft-Gold: #d1bfa7;
+$Silver: #8e8e90;
+$Onyx: #49494b;
+$Light-Grey: #8d8d8d;
+$Turquoise: #26a69a;
+$Soft-Orange: #efab45;
+$Crimson: #DC143C;
+$Living-Coral: #FF6F61;
+$Beluga: rgb(10, 8, 3);
+$Forest-Biome: #184A45;
+$Sunset-Orange: #FC4445;
+$Cornflower: #97CAEF;
+$Fountain-Blue:#55BCC9;
+$Goldenrod-Yellow: #fbaf08;
+$Lightning-Purple: #bf4aa8;
+$Lightning-Blue:#51d0de;
+$Wrinkle-White:#d9d9d9;
+$Woodsmoke: #0B0C10;
+$Caribbean-Green: #00d285;
+$Ebony-Clay:#1f2833;
+$Eucalytus: #27876F;
+$Biloba-Flower:#CBBAED;
 
 //Semantic Colors Names
 
-@color-light:white;
-@color-dark: @Woodsmoke;
-@color-highlight-mid-import: @Living-Coral;
-@color-highlight-import: @Sunset-Orange;
-@color-highlight-urgent: @Crimson;
-@background-color: @color-light;
-@ranking-border-color: @color-light;
+$color-light:white;
+$color-dark: $Woodsmoke;
+$color-highlight-mid-import: $Living-Coral;
+$color-highlight-import: $Sunset-Orange;
+$color-highlight-urgent: $Crimson;
+$background-color: $color-light;
+$ranking-border-color: $color-light;
 
 
 //Static Reused Numbers
-@nav-height: 64px;
-@footer-height: 32px;
-@section-padding: 25px;
-@animation-delay: 2s;
+$nav-height: 64px;
+$footer-height: 32px;
+$section-padding: 25px;
+$animation-delay: 2s;
 
 //General Site Structure Re-writes
 //Top Nav
@@ -51,13 +51,13 @@ html {
 
 body {
   overflow-x: hidden;
-  background: @background-color;
+  background: $background-color;
 }
 
 nav {
   position: relative;
-  background: @color-dark;
-  height: @nav-height;
+  background: $color-dark;
+  height: $nav-height;
   box-sizing: border-box;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
@@ -76,7 +76,7 @@ nav {
         height: 100%;
         padding: 5px 0 0 25px;
         .logo-fill{
-          fill: @color-highlight-mid-import;
+          fill: $color-highlight-mid-import;
         }
         
       }
@@ -106,12 +106,12 @@ nav {
         position: relative;
 
         a {
-          color: @color-highlight-import;
+          color: $color-highlight-import;
           font-size: 13px;
           padding: 0 10px;
 
           &:hover {
-            background-color: fade(@color-highlight-mid-import, 25%);
+            background-color: fade($color-highlight-mid-import, 25%);
             transition: .5s;
 
           }
@@ -120,18 +120,18 @@ nav {
 
         .btn {
           margin-left: 5px;
-          color: @color-dark;
+          color: $color-dark;
           padding: 0 5px;
           font-size: 12px;
-          background: @color-highlight-import;
+          background: $color-highlight-import;
           text-transform: uppercase;
 
           &a {
-            color: @color-dark;
+            color: $color-dark;
           }
 
           &:hover {
-            background: lighten(@color-highlight-import, 10%);
+            background: lighten($color-highlight-import, 10%);
           }
 
         }
@@ -180,13 +180,13 @@ nav {
           margin-right: 0;
 
           &.drop-down-toggle {
-            background-color: fade(@color-highlight-mid-import, 50%);
+            background-color: fade($color-highlight-mid-import, 50%);
             font-size: 14px;
-            color: @color-light;
+            color: $color-light;
             padding: 0 10px;
 
             &:hover {
-              background: lighten(@color-highlight-mid-import, 5%);
+              background: lighten($color-highlight-mid-import, 5%);
             }
           }
         }
@@ -208,10 +208,10 @@ footer {
     padding: 0;
 
     width: 100%;
-    background: darken(@background-color, 10%);
+    background: darken($background-color, 10%);
 
     .container {
-      height: @footer-height;
+      height: $footer-height;
       width: 80%;
       margin: 0 auto;
       text-align: center;
@@ -244,29 +244,29 @@ footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  background: @background-color;
-  padding: @section-padding;
+  background: $background-color;
+  padding: $section-padding;
   min-height: 600px;
-  color: @color-dark;
+  color: $color-dark;
 
   a {
-    color: darken(@color-highlight-import, 5%);
+    color: darken($color-highlight-import, 5%);
 
     &:hover {
-      color: darken(@color-highlight-import, 10%);
+      color: darken($color-highlight-import, 10%);
     }
   }
 
   .btn {
     a {
-      color: @color-light;
+      color: $color-light;
     }
 
     &.highlight-mid {
-      background: lighten(@color-highlight-mid-import, 5%);
+      background: lighten($color-highlight-mid-import, 5%);
 
       &:hover {
-        background: lighten(@color-highlight-mid-import, 10%);
+        background: lighten($color-highlight-mid-import, 10%);
       }
     }
   }
@@ -283,28 +283,28 @@ footer {
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
       &.highlight-main {
-        color: @color-light;
-        background: @color-highlight-import;
-        border-bottom: 4px solid lighten(@color-highlight-import, 10%);
+        color: $color-light;
+        background: $color-highlight-import;
+        border-bottom: 4px solid lighten($color-highlight-import, 10%);
 
       }
 
       &.highlight-mid {
-        background: @color-highlight-mid-import;
-        border-bottom: 4px solid lighten(@color-highlight-mid-import, 10%);
+        background: $color-highlight-mid-import;
+        border-bottom: 4px solid lighten($color-highlight-mid-import, 10%);
 
       }
 
       &.dark {
-        color: @color-light;
-        background: @color-dark;
-        border-bottom: 4px solid lighten(@color-dark, 10%);
+        color: $color-light;
+        background: $color-dark;
+        border-bottom: 4px solid lighten($color-dark, 10%);
 
       }
 
       &.light {
-        background: @color-light;
-        border-bottom: 4px solid darken(@color-light, 10%);
+        background: $color-light;
+        border-bottom: 4px solid darken($color-light, 10%);
 
       }
 
@@ -312,7 +312,7 @@ footer {
         margin-bottom: 25px;
         box-sizing: border-box;
         padding: 15px;
-        background: @color-light;
+        background: $color-light;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
         p {
@@ -352,9 +352,9 @@ footer {
       table-layout: fixed;
       width: 100%;
       box-sizing: border-box;
-      border: 2px solid @color-dark;
+      border: 2px solid $color-dark;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      background: @color-light;
+      background: $color-light;
 
       .row {
         display: table-row;
@@ -387,9 +387,9 @@ footer {
 
         &.headings {
           text-transform: uppercase;
-          color: @color-light;
-          background: @color-dark;
-          border-bottom: 2px solid @color-highlight-mid-import;
+          color: $color-light;
+          background: $color-dark;
+          border-bottom: 2px solid $color-highlight-mid-import;
 
           p {
             padding-bottom: 2px;
@@ -405,7 +405,7 @@ footer {
       &.alternating {
         .row {
           &:nth-child(even) {
-            background: fade(@color-dark, 15%);
+            background: fade($color-dark, 15%);
           }
         }
       }
@@ -450,7 +450,7 @@ footer {
                   width:100%;
                   padding:0;
                   display:block;
-                  color:@color-light;
+                  color:$color-light;
               }
             }
             &.fixed-width{
@@ -514,7 +514,7 @@ footer {
   &.full-page {
     background: transparent;
 
-    min-height: ~"calc(100vh - @{nav-height} - @{footer-height})";
+    min-height: calc(100vh - #{$nav-height} - #{$footer-height});
 
   }
 }
@@ -531,7 +531,7 @@ footer {
   z-index: 99;
   display: block;
   transition-duration: .51s;
-  color: @color-dark;
+  color: $color-dark;
   text-align: center;
 
   .background-click-container {
@@ -565,12 +565,12 @@ footer {
     input {
       &[type="submit"] {
         margin-top: 25px;
-        background: @color-highlight-import;
+        background: $color-highlight-import;
         border: none;
         outline: none;
         box-shadow: none;
         padding: 10px;
-        color: @color-light;
+        color: $color-light;
         cursor: pointer;
         font-size: 25px;
         border-radius: 5px;
@@ -581,7 +581,7 @@ footer {
 
   &.active {
     width: 100%;
-    background-color: fade(@color-dark, 50%);
+    background-color: fade($color-dark, 50%);
 
   }
 
@@ -590,10 +590,10 @@ footer {
 #alert-container {
   width: 120%;
   left: -10%;
-  top: @nav-height;
+  top: $nav-height;
   position: absolute;
-  color: @color-light;
-  background-color: lighten(@Soft-Orange, 5%);
+  color: $color-light;
+  background-color: lighten($Soft-Orange, 5%);
   text-align: center;
   display: none;
   padding: 10px;
@@ -601,7 +601,7 @@ footer {
 
   .close-button {
     position: relative;
-    color: @color-light;
+    color: $color-light;
     margin-left: 10px;
     top: initial;
     right: initial;
@@ -618,7 +618,7 @@ footer {
     top: 0;
   }
   &.urgent{
-    background-color: @color-highlight-urgent;
+    background-color: $color-highlight-urgent;
   
   }
 }
@@ -653,7 +653,7 @@ footer {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: @color-highlight-import;
+  color: $color-highlight-import;
   float: right;
   margin: 0;
   background: transparent;
@@ -672,7 +672,7 @@ footer {
   #legend {
     position: fixed;
     z-index: 99;
-    bottom: @footer-height;
+    bottom: $footer-height;
     right: -15px;
     padding: 5px;
 
@@ -682,8 +682,8 @@ footer {
       background: transparent;
 
       li {
-        border: 1px solid @color-light;
-        color: @color-light;
+        border: 1px solid $color-light;
+        color: $color-light;
         padding: 5px;
         width: 100px;
         margin: 2px auto;
@@ -691,15 +691,15 @@ footer {
         font-size: 8px;
 
         &.mid-highlight {
-          background: @color-highlight-mid-import;
+          background: $color-highlight-mid-import;
         }
 
         &.highlight {
-          background: @color-highlight-import;
+          background: $color-highlight-import;
         }
 
         &.dark {
-          background: @color-dark;
+          background: $color-dark;
         }
       }
     }
@@ -729,7 +729,7 @@ footer {
           position: absolute;
           color: white;
           font-size: 35px;
-          background-color: @color-highlight-mid-import;
+          background-color: $color-highlight-mid-import;
           padding: 6px;
           border-radius: 25px;
           line-height: 24px;
@@ -778,7 +778,7 @@ footer {
         .btn {
           font-weight: bolder;
           width: 36px;
-          border-left: 2px solid @color-light;
+          border-left: 2px solid $color-light;
           padding: 0;
           float: right;
           border-top-left-radius: 0;
@@ -787,7 +787,7 @@ footer {
           &:first-of-type {
             float: left;
             border-left: none;
-            border-right: 2px solid @color-light;
+            border-right: 2px solid $color-light;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             border-top-left-radius: 2px;
@@ -810,8 +810,8 @@ footer {
           vertical-align: bottom;
           overflow: hidden;
 
-          &[type=number]::-webkit-inner-spin-button,
-          &[type=number]::-webkit-outer-spin-button {
+          &[type=number]::-webkit-inner-adjust-hue-button,
+          &[type=number]::-webkit-outer-adjust-hue-button {
             -webkit-appearance: none;
             margin: 0;
           }
@@ -852,12 +852,12 @@ footer {
             border-left: none;
             border-top-right-radius: 2px;
             border-bottom-right-radius: 2px;
-            background: @color-highlight-mid-import;
+            background: $color-highlight-mid-import;
             border-top-left-radius: 2px;
             border-bottom-left-radius: 2px;
 
             &:hover {
-              background: lighten(@color-highlight-mid-import, 5%);
+              background: lighten($color-highlight-mid-import, 5%);
             }
           }
 
@@ -868,10 +868,10 @@ footer {
     &.for-trade {
       .trade-proposal-request {
         .btn {
-          background: @color-highlight-import;
+          background: $color-highlight-import;
 
           &:hover {
-            background: lighten(@color-highlight-import, 5%);
+            background: lighten($color-highlight-import, 5%);
           }
 
           &:after {
@@ -885,10 +885,10 @@ footer {
     &.not-for-trade {
       .trade-proposal-request {
         .btn {
-          background: @color-highlight-mid-import;
+          background: $color-highlight-mid-import;
 
           &:hover {
-            background: lighten(@color-highlight-mid-import, 5%);
+            background: lighten($color-highlight-mid-import, 5%);
           }
 
           &:after {
@@ -906,7 +906,7 @@ footer {
 
       .trade-proposal-request {
         .btn {
-          background: @color-dark;
+          background: $color-dark;
           cursor: auto;
 
           &:after {
@@ -927,7 +927,7 @@ footer {
 
 
   a.btn {
-    color: @color-light;
+    color: $color-light;
   }
 
 }
@@ -937,14 +937,14 @@ footer {
   position: fixed;
   height: 100vh;
   width: 100%;
-  background-color: fade(@color-dark, 50%);
+  background-color: fade($color-dark, 50%);
   overflow: hidden;
   top: 0;
   left: 0;
   z-index: 99;
   padding-bottom: 2 rem;
   transition-duration: .51s;
-  color: @color-dark;
+  color: $color-dark;
   text-align: center;
 
   .background-click-container {
@@ -960,7 +960,7 @@ footer {
     height: 50vh;
     width: 75%;
     margin: 25vh auto;
-    background: @color-light;
+    background: $color-light;
     vertical-align: middle;
     overflow: auto;
     padding: 25px;
@@ -994,9 +994,9 @@ footer {
   }
 }
 .btn, .btn-large, .btn-small{
-  background: @color-highlight-import;
+  background: $color-highlight-import;
   &:hover {
-    background: lighten(@color-highlight-import, 5%);
+    background: lighten($color-highlight-import, 5%);
   }
 }
 //TO DO: BREAK INTO OWN FILES 
@@ -1014,7 +1014,7 @@ footer {
     line-height: 1;
     font-variant: small-caps;
     font-weight: 700;
-    color: @color-light;
+    color: $color-light;
 
   }
 
@@ -1030,12 +1030,13 @@ footer {
   }
 
   #ranking-board {
-    @ranking-board-heading: 60px;
+    $ranking-board-heading: 60px;
+    $month-selector: 45px;    
     box-sizing: border-box;
     width: 35%;
     padding: 5px;
     margin: 0 auto;
-    height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
+    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (5*#{$section-padding}));
     position: relative;
     min-width: 300px;
 
@@ -1061,7 +1062,7 @@ footer {
 
       &::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background-color: @color-light;
+        background-color: $color-light;
       }
 
       .vert-centerer {
@@ -1082,7 +1083,7 @@ footer {
       height: 100%;
 
       a {
-        color: @color-light;
+        color: $color-light;
         max-width: 275px;
         min-width: 200px;
         margin: 5px auto;
@@ -1090,7 +1091,7 @@ footer {
         height: auto;
         display: block;
         font-size: 12px;
-        background:@color-highlight-import;
+        background:$color-highlight-import;
         animation-name: bigEntrance;
         -webkit-animation-name: bigEntrance;
         animation-duration: 1.6s;
@@ -1115,12 +1116,12 @@ footer {
         }
 
         &:hover {
-          background: lighten(@color-highlight-import, 5%);
+          background: lighten($color-highlight-import, 5%);
         }
         &.unranked{
-          background: @color-highlight-mid-import;
+          background: $color-highlight-mid-import;
           &:hover {
-            background: lighten(@color-highlight-mid-import, 5%);
+            background: lighten($color-highlight-mid-import, 5%);
           }
 
         }
@@ -1133,13 +1134,12 @@ footer {
         outline: none;
         width:100%;
         overflow: hidden;
-        background-color: @color-light;
+        background-color: $color-light;
       }
     }
 
     #ranking-border {
       width: 100%;
-      height: ~"calc(100vh - @{nav-height} - @{footer-height} - @{ranking-board-heading} - (4*@{section-padding}))";
       height: 100%;
       position: absolute;
       top: 0;
@@ -1149,7 +1149,7 @@ footer {
       div {
         height: 2px;
         width: 2px;
-        background: @ranking-border-color;
+        background: $ranking-border-color;
         position: absolute;
         animation-duration: 1s;
 
@@ -1213,7 +1213,7 @@ footer {
     }
 
     .btn {
-      color: @color-light;
+      color: $color-light;
     }
 
     .row {
@@ -1268,7 +1268,7 @@ footer {
 
       img {
         width: 100%;
-        background: @color-dark;
+        background: $color-dark;
         height: 207px;
         width: auto;
 
@@ -1277,7 +1277,7 @@ footer {
       a.btn {
         width: 100%;
         margin: 0 auto;
-        color: @color-light;
+        color: $color-light;
         display: block;
       }
 
@@ -1300,8 +1300,8 @@ footer {
 
         }
 
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
+        input[type=number]::-webkit-inner-adjust-hue-button,
+        input[type=number]::-webkit-outer-adjust-hue-button {
           -webkit-appearance: auto;
           margin: 0;
         }
@@ -1319,7 +1319,7 @@ footer {
     }
 
     .btn {
-      color: @color-light;
+      color: $color-light;
     }
 
     .row {
@@ -1354,14 +1354,14 @@ footer {
   #collection-table {
     .row {
       .checkbox-container {
-        @coll-table-check-width: 36px;
+        $coll-table-check-width: 36px;
         display: table-cell;
         vertical-align: middle;
         text-align: right;
         padding-right: 29px;
 
         .checkbox {
-          width: @coll-table-check-width;
+          width: $coll-table-check-width;
           height: 36px;
           display: inline-block;
           position: relative;
@@ -1369,21 +1369,21 @@ footer {
 
           label {
             position: relative;
-            color: @color-light;
+            color: $color-light;
 
             &:before {
-              width: @coll-table-check-width;
+              width: $coll-table-check-width;
               position: absolute;
               left: 0;
               content: "No";
               display: inline-block;
               text-decoration: none;
-              color: @color-light;
+              color: $color-light;
               text-align: center;
               -webkit-transition: background-color .2s ease-out;
               transition: background-color .2s ease-out;
               cursor: pointer;
-              background: lighten(@color-highlight-mid-import, 4%);
+              background: lighten($color-highlight-mid-import, 4%);
               padding: 5px;
               border-radius: 2px;
               display: inline-block;
@@ -1399,13 +1399,13 @@ footer {
 
             &:hover {
               &:before {
-                background: lighten(@color-highlight-mid-import, 8%);
+                background: lighten($color-highlight-mid-import, 8%);
               }
             }
           }
 
           input[type="checkbox"]:checked + label::before {
-            background-color: @color-highlight-import;
+            background-color: $color-highlight-import;
             content: "Yes";
 
           }
@@ -1427,9 +1427,9 @@ footer {
     width: 100%;
     display: table-cell;
     vertical-align: middle;
-    background: @color-light;
-    height: ~"calc(100vh - (2*@{section-padding}))";
-    padding: @section-padding;
+    background: $color-light;
+    height: calc(100vh - (2*#{$section-padding}));
+    padding: $section-padding;
     text-align: center;
 
     .field {
@@ -1468,12 +1468,12 @@ footer {
       width: 250px;
       margin: 10px 0;
       text-decoration: none;
-      color: @color-light;
+      color: $color-light;
       text-align: center;
       -webkit-transition: background-color .2s ease-out;
       transition: background-color .2s ease-out;
       cursor: pointer;
-      background: fade(@color-dark, 50%);
+      background: fade($color-dark, 50%);
       padding: 5px;
       border-radius: 2px;
       display: inline-block;
@@ -1491,20 +1491,20 @@ footer {
       }
 
       &:hover {
-        background: fade(@color-dark, 60%);
+        background: fade($color-dark, 60%);
       }
     }
 
     input[type="submit"] {
-      background: @color-highlight-import;
-      color: @color-light;
+      background: $color-highlight-import;
+      color: $color-light;
 
       &:active {
         outline: none;
       }
 
       &:hover {
-        background-color: lighten(@color-highlight-import, 10%);
+        background-color: lighten($color-highlight-import, 10%);
 
       }
     }
@@ -1516,18 +1516,18 @@ footer {
     white-space: nowrap;
 
     input {
-      @fullWidthForCalcs: "100%";
+      $fullWidthForCalcs: "100%";
 
       &[type=text] {
-        width: ~"calc(@{fullWidthForCalcs} - 110px)";
+        width: calc(#{$fullWidthForCalcs} - 110px);
       }
 
       &[type=submit] {
         width: 100px;
         margin-left: 10px;
         border: none;
-        color: @color-light;
-        background-color: @color-highlight-import;
+        color: $color-light;
+        background-color: $color-highlight-import;
         box-sizing: border-box;
 
       }
@@ -1549,7 +1549,7 @@ footer {
 
       label {
         position: relative;
-        color: @color-light;
+        color: $color-light;
 
         &:before {
           width: 100px;
@@ -1558,13 +1558,13 @@ footer {
           content: "OWNED";
           display: inline-block;
           text-decoration: none;
-          color: @color-light;
+          color: $color-light;
           text-align: center;
           letter-spacing: .5px;
           -webkit-transition: background-color .2s ease-out;
           transition: background-color .2s ease-out;
           cursor: pointer;
-          background: fade(@color-highlight-mid-import, 50%);
+          background: fade($color-highlight-mid-import, 50%);
           padding: 5px;
           border-radius: 2px;
           display: inline-block;
@@ -1602,7 +1602,7 @@ footer {
       }
 
       input[type="checkbox"]:checked + label::before {
-        background-color: @color-highlight-import;
+        background-color: $color-highlight-import;
       }
 
       &.icon {
@@ -1732,7 +1732,7 @@ footer {
 #card-profile-wrapper {
   .container {
     white-space: nowrap;
-    @card-width-and-margin-for-calc: 233px;
+    $card-width-and-margin-for-calc: 233px;
 
     h4 {
       margin-bottom: 10px;
@@ -1762,7 +1762,7 @@ footer {
     }
 
     #league-details {
-      width: ~"calc(100% - @{card-width-and-margin-for-calc})";
+      width: calc(100% - #{$card-width-and-margin-for-calc});
 
       .table {
         .row {
@@ -1798,11 +1798,11 @@ footer {
         }
 
         img {
-          border: 2px solid @color-dark;
+          border: 2px solid $color-dark;
         }
 
         a {
-          color: @color-light;
+          color: $color-light;
         }
 
       }
@@ -1827,7 +1827,7 @@ footer {
 
     a {
       &.btn {
-        color: @color-light;
+        color: $color-light;
       }
     }
   }
@@ -1862,11 +1862,11 @@ footer {
         width:100%;         
 
         a{
-          color: @color-light;
+          color: $color-light;
           font-size:.75rem;
           padding:0;
           &.unlocked{
-            background: @color-highlight-mid-import;
+            background: $color-highlight-mid-import;
           }
         }
       }
@@ -1902,7 +1902,7 @@ footer {
 #collection-wrapper,
 #user-wrapper {
   .btn {
-    color: @color-light;
+    color: $color-light;
 
     &.user {
       margin: 5px 0;
@@ -1913,7 +1913,7 @@ footer {
   }
 
   img.user-image {
-    background-color: @color-dark;
+    background-color: $color-dark;
   }
 
 }
@@ -2140,8 +2140,8 @@ footer {
                
               }
               margin-top:0;
-              background:@color-dark;
-              color:@color-light;
+              background:$color-dark;
+              color:$color-light;
               text-transform: uppercase;
               display:block;
               text-align:center;
@@ -2349,19 +2349,19 @@ footer {
 }
 
 @keyframes mtgColorCycle {
-  16% { fill: @Caribbean-Green; }
-  32% { fill: @Fountain-Blue; }
+  16% { fill: $Caribbean-Green; }
+  32% { fill: $Fountain-Blue; }
   48% { fill: #3D4849; }
   64% { fill: whitesmoke; }
-  82% { fill: @Crimson; }
-  98% {fill: @color-highlight-mid-import;}
+  82% { fill: $Crimson; }
+  98% {fill: $color-highlight-mid-import;}
   
 }
 @-webkit-keyframes mtgColorCycle {
-  16% { fill: @Caribbean-Green; }
-  32% { fill: @Fountain-Blue; }
+  16% { fill: $Caribbean-Green; }
+  32% { fill: $Fountain-Blue; }
   48% { fill: #3D4849; }
   64% { fill: whitesmoke; }
-  80% { fill: @Crimson; }
-  96% {fill: @color-highlight-mid-import;}
+  80% { fill: $Crimson; }
+  96% {fill: $color-highlight-mid-import;}
 }
