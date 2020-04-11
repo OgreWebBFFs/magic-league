@@ -1,8 +1,11 @@
+//Global styles
 @import "normalize";
 @import "color-library";
 @import "animations";
 @import "main-style";
 
-@import "./navigation/top-nav";
+//Component Styles
+@import "./navigation/navigation";
+@import "./navigation/mobile-menu";
 @import "./footer/footer";
 @import "./rankings/rankings"

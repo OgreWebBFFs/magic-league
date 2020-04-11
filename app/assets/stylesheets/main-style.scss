@@ -34,12 +34,22 @@ html {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   line-height: 1.3;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
   font-weight: inherit;
 }
 
@@ -159,7 +169,7 @@ body {
 
       }
 
-      & ~ .content {
+      &~.content {
         margin-bottom: 25px;
         box-sizing: border-box;
         padding: 15px;
@@ -210,7 +220,7 @@ body {
       .row {
         display: table-row;
         height: 46px;
-        margin:0;
+        margin: 0;
 
         a,
         button,
@@ -226,7 +236,7 @@ body {
           padding: 5px 15px;
 
           &.btn {
-           width:90%;
+            width: 90%;
 
           }
 
@@ -263,6 +273,7 @@ body {
 
       &.three-col {
         .row {
+
           a,
           p {
             width: 33%;
@@ -276,6 +287,7 @@ body {
 
       &.two-col {
         .row {
+
           a,
           p {
             width: 50%;
@@ -283,52 +295,62 @@ body {
         }
 
       }
+
       &.flex {
-        display:block;
-        .row{
-          display:flex;
+        display: block;
+
+        .row {
+          display: flex;
+
           p,
-          .browser-cell{
-            text-align:center;
+          .browser-cell {
+            text-align: center;
             flex: 1 0 auto;
-            margin:5px 0;
+            margin: 5px 0;
             box-sizing: border-box;
-            &.button-wrapper{
-              padding:0 5px;
-              text-align:center;
-              a.btn{
-                  margin:0;
-                  width:100%;
-                  padding:0;
-                  display:block;
-                  color:$color-light;
+
+            &.button-wrapper {
+              padding: 0 5px;
+              text-align: center;
+
+              a.btn {
+                margin: 0;
+                width: 100%;
+                padding: 0;
+                display: block;
+                color: $color-light;
               }
             }
-            &.fixed-width{
-             flex: 0 0 15%;
-             &.fifth,
-              &.fifths{
-                &.one{
-                flex: 1 0 20%;
+
+            &.fixed-width {
+              flex: 0 0 15%;
+
+              &.fifth,
+              &.fifths {
+                &.one {
+                  flex: 1 0 20%;
                 }
-             }
-             &.tenth,
-             &.tenths{
-               &.one{
-                 flex:1 0 10%;
-                 a.btn{
-                   font-size:.75rem;
-                 }
-               }
-               &.three{
-                flex:1 0 30%;
+              }
+
+              &.tenth,
+              &.tenths {
+                &.one {
+                  flex: 1 0 10%;
+
+                  a.btn {
+                    font-size: .75rem;
+                  }
+                }
+
+                &.three {
+                  flex: 1 0 30%;
+
+                }
+
+
+
 
               }
-              
-              
-              
-               
-             }
             }
           }
 
@@ -371,12 +393,13 @@ body {
 
 //Form and Input Elements
 select:focus {
-    outline: 1px solid $color-highlight-mid-import;
-  }
-  
+  outline: 1px solid $color-highlight-mid-import;
+}
+
 button:focus {
   outline: none;
-  background-color: $color-highlight-mid-import;;
+  background-color: $color-highlight-mid-import;
+  ;
 }
 
 label {
@@ -385,16 +408,16 @@ label {
 }
 
 select.browser-default {
-display: block;
+  display: block;
 }
 
 select {
-background-color: rgba(255, 255, 255, 0.9);
-width: 100%;
-padding: 5px;
-border: 1px solid #f2f2f2;
-border-radius: 2px;
-height: 3rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
 }
 
 //Buttons 
@@ -411,6 +434,7 @@ height: 3rem;
   line-height: 36px;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
+
   a {
     color: $color-light;
   }
@@ -423,16 +447,20 @@ height: 3rem;
     }
   }
 }
+
 // Text Inputs + Textarea
 ::-webkit-input-placeholder {
-    color: $color-nuetral;
-  }
+  color: $color-nuetral;
+}
+
 ::-moz-placeholder {
   color: $color-nuetral;
 }
+
 :-ms-input-placeholder {
   color: $color-nuetral;
 }
+
 ::placeholder {
   color: $color-nuetral;
 }
@@ -448,7 +476,7 @@ input[type=datetime]:not(.browser-default),
 input[type=datetime-local]:not(.browser-default),
 input[type=tel]:not(.browser-default),
 input[type=number]:not(.browser-default),
-input[type=search]:not(.browser-default){
+input[type=search]:not(.browser-default) {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $color-nuetral;
@@ -460,9 +488,9 @@ input[type=search]:not(.browser-default){
   margin: 0 0 8px 0;
   padding: 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   -webkit-transition: border .3s, -webkit-box-shadow .3s;
   transition: border .3s, -webkit-box-shadow .3s;
   transition: box-shadow .3s, border .3s;
@@ -484,35 +512,35 @@ input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid $color-highlight-mid-import;
   -webkit-box-shadow: 0 1px 0 0 $color-highlight-mid-import;
-          box-shadow: 0 1px 0 0 $color-highlight-mid-import;
+  box-shadow: 0 1px 0 0 $color-highlight-mid-import;
 }
 
-input:not([type]):disabled + label,
-input:not([type])[readonly="readonly"] + label,
-input[type=text]:not(.browser-default):disabled + label,
-input[type=text]:not(.browser-default)[readonly="readonly"] + label,
-input[type=password]:not(.browser-default):disabled + label,
-input[type=password]:not(.browser-default)[readonly="readonly"] + label,
-input[type=email]:not(.browser-default):disabled + label,
-input[type=email]:not(.browser-default)[readonly="readonly"] + label,
-input[type=url]:not(.browser-default):disabled + label,
-input[type=url]:not(.browser-default)[readonly="readonly"] + label,
-input[type=time]:not(.browser-default):disabled + label,
-input[type=time]:not(.browser-default)[readonly="readonly"] + label,
-input[type=date]:not(.browser-default):disabled + label,
-input[type=date]:not(.browser-default)[readonly="readonly"] + label,
-input[type=datetime]:not(.browser-default):disabled + label,
-input[type=datetime]:not(.browser-default)[readonly="readonly"] + label,
-input[type=datetime-local]:not(.browser-default):disabled + label,
-input[type=datetime-local]:not(.browser-default)[readonly="readonly"] + label,
-input[type=tel]:not(.browser-default):disabled + label,
-input[type=tel]:not(.browser-default)[readonly="readonly"] + label,
-input[type=number]:not(.browser-default):disabled + label,
-input[type=number]:not(.browser-default)[readonly="readonly"] + label,
-input[type=search]:not(.browser-default):disabled + label,
-input[type=search]:not(.browser-default)[readonly="readonly"] + label,
-textarea.materialize-textarea:disabled + label,
-textarea.materialize-textarea[readonly="readonly"] + label {
+input:not([type]):disabled+label,
+input:not([type])[readonly="readonly"]+label,
+input[type=text]:not(.browser-default):disabled+label,
+input[type=text]:not(.browser-default)[readonly="readonly"]+label,
+input[type=password]:not(.browser-default):disabled+label,
+input[type=password]:not(.browser-default)[readonly="readonly"]+label,
+input[type=email]:not(.browser-default):disabled+label,
+input[type=email]:not(.browser-default)[readonly="readonly"]+label,
+input[type=url]:not(.browser-default):disabled+label,
+input[type=url]:not(.browser-default)[readonly="readonly"]+label,
+input[type=time]:not(.browser-default):disabled+label,
+input[type=time]:not(.browser-default)[readonly="readonly"]+label,
+input[type=date]:not(.browser-default):disabled+label,
+input[type=date]:not(.browser-default)[readonly="readonly"]+label,
+input[type=datetime]:not(.browser-default):disabled+label,
+input[type=datetime]:not(.browser-default)[readonly="readonly"]+label,
+input[type=datetime-local]:not(.browser-default):disabled+label,
+input[type=datetime-local]:not(.browser-default)[readonly="readonly"]+label,
+input[type=tel]:not(.browser-default):disabled+label,
+input[type=tel]:not(.browser-default)[readonly="readonly"]+label,
+input[type=number]:not(.browser-default):disabled+label,
+input[type=number]:not(.browser-default)[readonly="readonly"]+label,
+input[type=search]:not(.browser-default):disabled+label,
+input[type=search]:not(.browser-default)[readonly="readonly"]+label,
+textarea.materialize-textarea:disabled+label,
+textarea.materialize-textarea[readonly="readonly"]+label {
   color: $color-nuetral;
 }
 
@@ -545,7 +573,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     position: relative;
     z-index: 2;
     max-width: 300px;
-    min-height:0;
+    min-height: 0;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     height: 100%;
@@ -614,9 +642,10 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   &.logged-out {
     top: 0;
   }
-  &.urgent{
+
+  &.urgent {
     background-color: $color-highlight-urgent;
-  
+
   }
 }
 
@@ -656,8 +685,8 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   background: transparent;
   border: none;
 
-  &:focus{
-    background:none;
+  &:focus {
+    background: none;
   }
 
   .material-icons {
@@ -740,7 +769,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
       }
 
-      input[type="checkbox"]:checked + label::before {
+      input[type="checkbox"]:checked+label::before {
         opacity: 1;
       }
 
@@ -994,12 +1023,17 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     }
   }
 }
-.btn, .btn-large, .btn-small{
+
+.btn,
+.btn-large,
+.btn-small {
   background: $color-highlight-import;
+
   &:hover {
     background: lighten($color-highlight-import, 5%);
   }
 }
+
 //TO DO: BREAK INTO OWN FILES 
 
 //Specific Pages
@@ -1096,6 +1130,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
     #trades-table {
       .table {
+
         input,
         p:last-child {
           text-align: center;
@@ -1211,7 +1246,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
             }
           }
 
-          input[type="checkbox"]:checked + label::before {
+          input[type="checkbox"]:checked+label::before {
             background-color: $color-highlight-import;
             content: "Yes";
 
@@ -1223,6 +1258,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   }
 
 }
+
 //Log in
 
 #log-in-wrapper {
@@ -1267,6 +1303,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
         }
       }
     }
+
     // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
     a,
     input[type="submit"] {
@@ -1317,6 +1354,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     }
   }
 }
+
 //Card Search
 #card-search-wrapper {
   #search.container {
@@ -1408,7 +1446,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
       }
 
-      input[type="checkbox"]:checked + label::before {
+      input[type="checkbox"]:checked+label::before {
         background-color: $color-highlight-import;
       }
 
@@ -1522,7 +1560,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
         }
 
-        input[type="checkbox"]:checked + label::before {
+        input[type="checkbox"]:checked+label::before {
           background-color: transparent;
           -webkit-filter: saturate(1);
           filter: saturate(1);
@@ -1535,6 +1573,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
   }
 }
+
 //Card Profile
 #card-profile-wrapper {
   .container {
@@ -1585,6 +1624,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
   }
 }
+
 //Edit Account 
 #edit-details-wrapper {
   .table {
@@ -1627,6 +1667,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     display: block;
   }
 }
+
 //View Individ. Collection{
 #edit-collections-wrapper {
   #collections {
@@ -1641,18 +1682,19 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 }
 
 //Match History 
-#match-history-wrapper{
-  .container{
-    #match-history.table{
-      .row{
-        p{
-          &:first-child{
-            width:100px;
-            text-align:center;
+#match-history-wrapper {
+  .container {
+    #match-history.table {
+      .row {
+        p {
+          &:first-child {
+            width: 100px;
+            text-align: center;
           }
         }
-        .on-mobile{
-          display:none;
+
+        .on-mobile {
+          display: none;
         }
       }
     }
@@ -1660,19 +1702,20 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 }
 
 //Admin  Pages
-#admin-user-wrapper{
-  .table{
-    .row{
-      .button-wrapper{
-        display:inline-flex;
+#admin-user-wrapper {
+  .table {
+    .row {
+      .button-wrapper {
+        display: inline-flex;
         align-items: middle;
-        width:100%;         
+        width: 100%;
 
-        a{
+        a {
           color: $color-light;
-          font-size:.75rem;
-          padding:0;
-          &.unlocked{
+          font-size: .75rem;
+          padding: 0;
+
+          &.unlocked {
             background: $color-highlight-mid-import;
           }
         }
@@ -1680,30 +1723,36 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     }
   }
 }
-#admin-settings-wrapper{
+
+#admin-settings-wrapper {
+
   //note for clarity: Hitting the simple forms class here, not the HTML element
-  .input{
+  .input {
     display: flex;
     justify-content: center;
     align-items: center;
+
     //note for clarity: Here we are hitting the html element
-    input{
-      margin-left:25px;
+    input {
+      margin-left: 25px;
       flex: 0 1 25%;
-      &.numeric, 
+
+      &.numeric,
       .date {
         text-align: center;
-        max-width:100px;
-        min-width:50px;
+        max-width: 100px;
+        min-width: 50px;
       }
     }
-    
+
   }
+
   //note for clarity: Here we are hitting the html element
-  input[type=submit]{
-    margin-top:25px;
-  }   
+  input[type=submit] {
+    margin-top: 25px;
+  }
 }
+
 //Page Templates
 //User list pages (users, collections etc...)  
 #collection-wrapper,
@@ -1753,12 +1802,14 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   }
 
 }
+
 @media only screen and (max-width: 800px) {
   .card-grid {
     grid-template-columns: repeat(3, 33.3%);
   }
 
 }
+
 @media only screen and (max-width: 720px) {
   #dashboard-wrapper {
     h2 {
@@ -1811,25 +1862,29 @@ textarea.materialize-textarea[readonly="readonly"] + label {
       }
     }
   }
+
   #admin-user-wrapper {
     .table {
       .row {
-        &.headings{
-          display:none;
+        &.headings {
+          display: none;
         }
+
         p,
         a,
-        .button-wrapper{
-          display:block;
+        .button-wrapper {
+          display: block;
           margin: 0px auto;
         }
-        .button-wrapper{
-          width:150px;
+
+        .button-wrapper {
+          width: 150px;
         }
       }
     }
   }
 }
+
 @media only screen and (max-width: 650px) {
 
   .section {
@@ -1864,38 +1919,45 @@ textarea.materialize-textarea[readonly="readonly"] + label {
       display: block;
     }
   }
-  #match-history-wrapper{
-    .container{
-      #match-history.table{
-        display:block;
-     
-        height:auto;
-        overflow:hidden;
-        .row{
+
+  #match-history-wrapper {
+    .container {
+      #match-history.table {
+        display: block;
+
+        height: auto;
+        overflow: hidden;
+
+        .row {
           text-align: center;
-          display:block;
-          height:auto;
-          padding:0 0 20px 0;
-          margin-bottom:0;
-          &.headings{
-            display:none;
+          display: block;
+          height: auto;
+          padding: 0 0 20px 0;
+          margin-bottom: 0;
+
+          &.headings {
+            display: none;
           }
-          p{
-            
-            display:inline-block;
-            width:100%;
+
+          p {
+
+            display: inline-block;
+            width: 100%;
             white-space: normal;
-           
-            padding:0;
-            .on-mobile{
-              display:inline;
-              font-weight:bold;
+
+            padding: 0;
+
+            .on-mobile {
+              display: inline;
+              font-weight: bold;
             }
-            &:first-of-type{
-              span{
+
+            &:first-of-type {
+              span {
                 font-weight: normal;
-               
+
               }
+
               margin-top:0;
               background:$color-dark;
               color:$color-light;
@@ -1905,14 +1967,16 @@ textarea.materialize-textarea[readonly="readonly"] + label {
               width:101%;
               margin:0 0 10px 0
             }
-            &:last-of-type{
-              margin-bottom:0;
+
+            &:last-of-type {
+              margin-bottom: 0;
             }
-         }
-         .button-wrapper{
-           display:inline-block;
-           width:100px;
-         }
+          }
+
+          .button-wrapper {
+            display: inline-block;
+            width: 100px;
+          }
         }
       }
     }
@@ -1931,9 +1995,10 @@ textarea.materialize-textarea[readonly="readonly"] + label {
 
   .card-view-nav {
     h3 {
-      font-size:1.92rem;
-  
+      font-size: 1.92rem;
+
     }
+
     a.btn {
       padding: 0 5px;
       font-size: 10px;
@@ -1942,6 +2007,7 @@ textarea.materialize-textarea[readonly="readonly"] + label {
   }
 
 }
+
 @media only screen and (max-width: 400px) {
   .card-grid {
     display: block;
@@ -1951,51 +2017,55 @@ textarea.materialize-textarea[readonly="readonly"] + label {
     }
   }
 
-  .section{
+  .section {
     padding-left: 1px;
-    padding-right:1px;
+    padding-right: 1px;
   }
 
   .container {
     width: 100%;
   }
 
-  #match-logger-container{
-    .section{
-      #match-logger{
-        h3{
-          font-size:  1.5rem;
+  #match-logger-container {
+    .section {
+      #match-logger {
+        h3 {
+          font-size: 1.5rem;
         }
-        p{
-          margin:15px 0 5px;
+
+        p {
+          margin: 15px 0 5px;
         }
       }
     }
   }
-    #dashboard-wrapper{
-        .container{
-            width:100%;
-            .table{
-                .row{
-                    p{
-                        padding:5px;
-                    }
-                }
-            }
-            &#collection-table{
-                .checkbox-container{
-                padding-right:0;
-                text-align: center;
 
-                .checkbox{
-                    width:100%;
-                }
+  #dashboard-wrapper {
+    .container {
+      width: 100%;
 
-                input{
-                    display:none;
-                }
-            }
-            }
+      .table {
+        .row {
+          p {
+            padding: 5px;
+          }
         }
-    }  
-} 
+      }
+
+      &#collection-table {
+        .checkbox-container {
+          padding-right: 0;
+          text-align: center;
+
+          .checkbox {
+            width: 100%;
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
