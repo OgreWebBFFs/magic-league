@@ -115,7 +115,9 @@ body {
 }
 
 
-.section {
+[class*="-section"],
+.section
+{
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
@@ -421,6 +423,7 @@ select {
 }
 
 //Buttons 
+[class*="-btn"]
 .btn {
   text-decoration: none;
   text-align: center;
@@ -445,6 +448,26 @@ select {
     &:hover {
       background: lighten($color-highlight-mid-import, 10%);
     }
+  }
+}
+//TODO refactor close buttons to work with other button classes
+[class*="_close-button"] {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: $color-highlight-import;
+  float: right;
+  margin: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    background: none;
+  }
+
+  .material-icons {
+    font-size: 30px;
   }
 }
 
@@ -545,72 +568,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 }
 
 //Repetitious Non Page Specific Elements 
-#match-logger-container {
-  position: fixed;
-  bottom: 0%;
-  top: 0%;
-  left: 0;
-  padding-bottom: 2 rem;
-  width: 0;
-  background-color: transparent;
-  overflow: hidden;
-  z-index: 99;
-  display: block;
-  transition-duration: .51s;
-  color: $color-dark;
-  text-align: center;
 
-  .background-click-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-  }
-
-  .section {
-    position: relative;
-    z-index: 2;
-    max-width: 300px;
-    min-height: 0;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    width: 75%;
-
-    h3 {
-      margin-top: 0;
-    }
-
-    p {
-      margin: 25px 0;
-      line-height: 1.25;
-    }
-
-    input {
-      &[type="submit"] {
-        margin-top: 25px;
-        background: $color-highlight-import;
-        border: none;
-        outline: none;
-        box-shadow: none;
-        padding: 10px;
-        color: $color-light;
-        cursor: pointer;
-        font-size: 25px;
-        border-radius: 5px;
-      }
-    }
-
-  }
-
-  &.active {
-    width: 100%;
-    background-color: rgba($color-dark, .5);
-  }
-
-}
 
 #alert-container {
   width: 120%;
@@ -662,7 +620,6 @@ textarea.materialize-textarea[readonly="readonly"]+label {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background: url("./images/bg-Unbridled-Growth.jpg");
   position: fixed;
   z-index: -1;
   -webkit-filter: saturate(2);
@@ -672,27 +629,9 @@ textarea.materialize-textarea[readonly="readonly"]+label {
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   animation-iteration-count: infinite;
-
 }
 
-.close-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: $color-highlight-import;
-  float: right;
-  margin: 0;
-  background: transparent;
-  border: none;
 
-  &:focus {
-    background: none;
-  }
-
-  .material-icons {
-    font-size: 30px;
-  }
-}
 
 .card-grid {
   display: inline-grid;
@@ -1887,6 +1826,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 
 @media only screen and (max-width: 650px) {
 
+  [class*="-section"],
   .section {
     .container {
       width: 90%;
@@ -2017,7 +1957,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
     }
   }
 
-  .section {
+  [class*="-section"] {
     padding-left: 1px;
     padding-right: 1px;
   }
@@ -2026,9 +1966,8 @@ textarea.materialize-textarea[readonly="readonly"]+label {
     width: 100%;
   }
 
-  #match-logger-container {
-    .section {
-      #match-logger {
+  .match-logger {
+    &-section {
         h3 {
           font-size: 1.5rem;
         }
@@ -2036,7 +1975,6 @@ textarea.materialize-textarea[readonly="readonly"]+label {
         p {
           margin: 15px 0 5px;
         }
-      }
     }
   }
 

@@ -5,7 +5,8 @@
 @import "main-style";
 
 //Component Styles
+@import "./footer/footer";
 @import "./navigation/navigation";
 @import "./navigation/mobile-menu";
-@import "./footer/footer";
-@import "./rankings/rankings"
+@import "./match-logger/match-logger";
+@import "./rankings/rankings";

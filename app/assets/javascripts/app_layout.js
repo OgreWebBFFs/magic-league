@@ -29,7 +29,7 @@ var AppLayout = (function() {
 
   let logMatchOnClick = function(event) {
     event.preventDefault();
-    Helpers.toggleElementById('match-logger-container');
+    Helpers.toggleElementById('match-logger');
     setMatchDateAndTime();
   }
 
