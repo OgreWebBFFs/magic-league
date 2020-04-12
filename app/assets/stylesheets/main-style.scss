@@ -423,7 +423,7 @@ select {
 }
 
 //Buttons 
-[class*="-btn"]
+[class*="-btn"],
 .btn {
   text-decoration: none;
   text-align: center;
@@ -437,6 +437,11 @@ select {
   line-height: 36px;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
+  background: $color-highlight-import;
+
+  &:hover {
+    background: lighten($color-highlight-import, 5%);
+  }
 
   a {
     color: $color-light;
@@ -450,6 +455,7 @@ select {
     }
   }
 }
+
 //TODO refactor close buttons to work with other button classes
 [class*="_close-button"] {
   position: absolute;
@@ -963,15 +969,6 @@ textarea.materialize-textarea[readonly="readonly"]+label {
   }
 }
 
-.btn,
-.btn-large,
-.btn-small {
-  background: $color-highlight-import;
-
-  &:hover {
-    background: lighten($color-highlight-import, 5%);
-  }
-}
 
 //TO DO: BREAK INTO OWN FILES 
 
@@ -1241,56 +1238,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
           outline: none;
         }
       }
-    }
-
-    // TO DO strip this out and just add the .btn class to Dustins Oauth buttons
-    a,
-    input[type="submit"] {
-      outline: none;
-      border: none;
-      width: 250px;
-      margin: 10px 0;
-      text-decoration: none;
-      color: $color-light;
-      text-align: center;
-      -webkit-transition: background-color .2s ease-out;
-      transition: background-color .2s ease-out;
-      cursor: pointer;
-      background: rgba($color-dark, .5);
-      padding: 5px;
-      border-radius: 2px;
-      display: inline-block;
-      height: 36px;
-      line-height: 36px;
-      padding: 0 16px;
-      text-transform: uppercase;
-      vertical-align: middle;
-      -webkit-tap-highlight-color: transparent;
-      transition: .25s;
-
-      .google-icon {
-        position: relative;
-        top: 4px;
-      }
-
-      &:hover {
-        background: rgba($color-dark, .6);
-      }
-    }
-
-    input[type="submit"] {
-      background: $color-highlight-import;
-      color: $color-light;
-
-      &:active {
-        outline: none;
-      }
-
-      &:hover {
-        background-color: lighten($color-highlight-import, 10%);
-
-      }
-    }
+    } 
   }
 }
 

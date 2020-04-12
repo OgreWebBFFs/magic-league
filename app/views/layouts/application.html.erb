@@ -145,10 +145,10 @@
       <%= yield %>
     </div>
 
-    <div id="match-logger-container">
-      <div class="background-click-container" onclick="Helpers.toggleElementById('match-logger-container')"></div>
-      <div class="section">
-        <button class="close-button" href="#" class="match-log-close" onclick="Helpers.toggleElementById('match-logger-container')">
+    <div id="match-logger" class="match-logger">
+      <div class="match-logger_overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
+      <div class="match-logger-section">
+        <button href="#" class="match-logger_close-button" onclick="Helpers.toggleElementById('match-logger')">
           <i class="material-icons">cancel</i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
@@ -171,7 +171,7 @@
           <p>When?</p>
           <input id="match-date" type="date" name="match[date]"/>
           <input id="match-time" type="time" name="match[time]"/>
-          <input type="submit" />
+          <input type="submit" class="match-logger_submit-btn" />
         <% end %>
       </div>
     </div>

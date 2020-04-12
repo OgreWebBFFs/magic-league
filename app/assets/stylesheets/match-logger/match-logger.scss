@@ -45,6 +45,20 @@
     &_submit-btn {
         margin-top: 25px; 
         font-size: 25px;
+        outline: none;
+        border: none;
+        width: 250px;
+        margin: 10px 0;
+        padding: 0 16px;
+        display: inline-block;
+        height: 36px;
+        color: $color-light;
+        line-height: 36px;
+        -webkit-tap-highlight-color: transparent;
+
+        &:active {
+          outline: none;
+        }
     }
   
     &.active {
