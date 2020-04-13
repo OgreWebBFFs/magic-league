@@ -956,57 +956,6 @@ input[type=checkbox] {
   }
 }
 
-//Card Profile
-#card-profile-wrapper {
-  .container {
-    white-space: nowrap;
-    $card-width-and-margin-for-calc: 233px;
-
-    h4 {
-      margin-bottom: 10px;
-    }
-
-    #league-details,
-    .card-wrapper {
-      white-space: normal;
-      display: inline-block;
-      box-sizing: border-box;
-      vertical-align: top;
-
-    }
-
-    .card-wrapper {
-      img {
-        width: 223px;
-        //Card size from mtg api
-        margin-right: 10px;
-      }
-
-      .btn {
-        display: block;
-        width: 200px;
-        margin: 10px auto 0;
-      }
-    }
-
-    #league-details {
-      width: calc(100% - #{$card-width-and-margin-for-calc});
-
-      .table {
-        .row {
-          p {
-            &:last-of-type {
-              text-align: center;
-            }
-          }
-        }
-      }
-
-    }
-
-  }
-}
-
 //Edit Account 
 #edit-details-wrapper {
   .table {
@@ -1104,10 +1053,6 @@ input[type=checkbox] {
 }
 
 //Page Templates
-//User list pages (users, collections etc...)  
-
-
-//Responsive Adjustments
 
 @media only screen and (max-width: 720px) {
   #dashboard-wrapper {
