@@ -690,53 +690,6 @@ input[type=checkbox] {
 
 }
 
-//Log in
-
-#log-in-wrapper {
-  display: table;
-  width: 40%;
-  margin: 0 auto;
-
-  .container {
-    width: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    background: $color-light;
-    height: calc(100vh - (2*#{$section-padding}));
-    padding: $section-padding;
-    text-align: center;
-
-    .field {
-      margin: 5px 0;
-    }
-
-    input[type="checkbox"] {
-      position: relative;
-      opacity: 1;
-      pointer-events: fill;
-      margin: 5px 0;
-      vertical-align: middle;
-    }
-
-    .btn {
-      margin: 5px 0;
-      min-width: 250px;
-
-      input {
-
-        text-transform: uppercase;
-        vertical-align: middle;
-        border: none;
-        padding: 0;
-
-        &:active {
-          outline: none;
-        }
-      }
-    }
-  }
-}
-
 //Edit Account 
 #edit-details-wrapper {
   .table {
