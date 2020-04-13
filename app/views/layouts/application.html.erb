@@ -48,7 +48,7 @@
             <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
-                  <a href="/matches">Matsdadches</a>
+                  <a href="/matches">Matches</a>
                 </li>
                 <li>
                   <a href="/rules">Rules</a>
@@ -140,7 +140,10 @@
 
     <div class="section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert-container"  class="active alert alert-<%= key %> <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %> <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a></div>
+        <div id="alert-container"  class="active alert alert-<%= key %> 
+          <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
+          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a>
+        </div>
       <% end %>
       <%= yield %>
     </div>

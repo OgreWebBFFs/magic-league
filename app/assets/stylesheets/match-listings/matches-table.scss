@@ -24,8 +24,9 @@
 
     @media only screen and (max-width: 850px) {
         
-        &-labels-mobile{
+        &-label-mobile{
             display:inline;
+            font-weight: bold;
         }
 
         &-row {
@@ -34,15 +35,20 @@
                 display:none;
             }
         }
-
+    
         [class*="-cell"] {
             text-align:center;
-            
+        }
 
-            &:first-of-type {
+        &-cell{
+            &-date{
                 color: $color-light;
-                background-color: $color-dark;
+                background: $color-dark;
             }
+        }
+
+        [class*="-btn"]{
+         width: 100px;
         }
     }
 }
