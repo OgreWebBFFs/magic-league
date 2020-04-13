@@ -68,16 +68,18 @@
             align-items: center;
             text-align: center;
             padding: 5px;
+            position: relative;
 
             &:first-of-type {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
-                ;
+                left: 1px;
             }
 
             &:last-of-type {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                right: 1px;
             }
         }
 
@@ -91,8 +93,6 @@
                 height: 34px;
                 margin-bottom: 0;
                 -moz-appearance: textfield;
-                //This is to center the number 
-                padding-left: 15px;
             }
 
             &:-webkit-inner-spin-button,

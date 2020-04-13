@@ -7,24 +7,9 @@
   </div>
 </div>
 
-
-<div id="trade-modal" class="narrow modal-wrapper"  >
-  <div class="background-click-container" onclick="Helpers.toggleElementById('trade-modal')"></div>
-  <div id="trade-proposal" class="modal">
-    <button class="close-button" href="#" class="match-log-close" onclick="Helpers.toggleElementById('trade-modal')">
-      <i class="material-icons">cancel</i>
-    </button>
-    <div class="content">
-      <h4> Trade Proposal</h4>
-      <p>You are contacting:</p>
-      <ul class="trade-partners">
-        <li>Person</li>
-        <li>Person</li>
-      </ul>
-      <p>To talk about trading for <span class="card-to-be-traded"></span></p>
-      <button class="btn" onclick="Helpers.toggleElementById('trade-modal')">Send Message</button>
-    </div>
-
+<div id="trade-modal" class="modal"  >
+  <div class="modal_overlay" onclick="Helpers.toggleElementById('trade-modal')"></div>
+  <div class="modal_content">
   </div>
 </div>
 <script>
@@ -48,29 +33,34 @@
       <div class="card-grid_card">
         <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
       </div>
-     <div class="card-grid_trade-proposal">
+      <div class="card-grid_trade-proposal">
        <button type="button" class="card-grid_trade-proposal-btn ${leagueStatus(card)}" data-id="${card.attributes.id}"></button>
+      </div>
     </div>
-  </div>
-
-    `
+  `
   }
 
   var onlyUserOwningCardTemplate = function(card) {
     return `
-      <h4> Trade Proposal</h4>
+      <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
+        <i class="material-icons">cancel</i>
+      </button>
+      <h4 class="modal-title">Oh no!</h4>
       <p>You are the only user who owns this card. 😭</p>
     `
   }
 
   var cardModalTemplate = function(card) {
     return `
-      <h4> Trade Proposal</h4>
+      <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
+        <i class="material-icons">cancel</i>
+      </button>
+      <h4 class="modal-title" >Email Proposal</h4>
       <p>You are contacting:</p>
       ` +
       card.attributes.users.data.filter(function(user){return user.id != current_user_id}).map(function(user) {
         return `
-        <ul class="trade-partners">
+        <ul class="trade-modal_partner-list">
         ${user.attributes.name}
         </ul>
         `
@@ -130,14 +120,14 @@ $(function() {
 
   $(document).off('click', '.card-grid_trade-proposal-btn');
   $(document).on('click', '.card-grid_trade-proposal-btn', function(){ 
-    $('.content').empty();
+    $('.modal_content').empty();
     id = $(this).attr('data-id');
     card = search('id', id, cards);
     users = card.attributes.users.data;
     if ((users.length > 1) || (users[0].id != current_user_id) )
-      $('.content').append(cardModalTemplate(card));
+      $('.modal_content').append(cardModalTemplate(card));
     else
-      $('.content').append(onlyUserOwningCardTemplate);
+      $('.modal_content').append(onlyUserOwningCardTemplate);
 
     $('#trade-modal').addClass('active');
   });
