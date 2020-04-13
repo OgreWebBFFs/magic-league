@@ -1,17 +1,16 @@
-<div id="match-history-wrapper">
-  <div class="container">
-    <h2 id="month-title"> Matches</h2>
-    <div id="match-history" class="alternating flex table">
-      <div class="headings row">
-      <p class="fixed-width one fifth browser-cell">Date</p>
-      <p class="fixed-width one tenth browser-cell">Time</p>              
-      <p class="fixed-width one fifth browser-cell">Winner</p>         
-      <p class="fixed-width one fifth browser-cell ">Loser</p>         
-      <p class="fixed-width one tenth browser-cell" >ID</p>
-      <p class="fixed-width one tenth browser-cell"></p>
-      <p class="fixed-width one tenth browser-cell"></p>
+<div class="admin_matches">
+  <div class="admin_matche-container">
+    <h2>Matches</h2>
+    <div class="admin_matches-table">
+      <div class="admin_matches-row-headings">
+        <div class="admin_matches-cell-date">Date</div>
+        <div class="admin_matches-cell-time">Time</div>              
+        <div class="admin_matches-cell">Winner</div>         
+        <div class="admin_matches-cell">Loser</div>         
+        <div class="admin_matches-cell-id" >ID</div>
+        <div class="admin_matches-cell-edit"></div>
+        <div class="admin_matches-cell-delete"></div>
     </div>
-
     <%= render 'matches', matches: @matches %>
   </div>
 </div>
