@@ -1,14 +1,13 @@
 
-<div id="user-wrapper" class="container">
-<h3 class="color-blocked dark centered">Users</h3>
-<div class="centered content">
-
-<ul>
-  <% @users.each do |user| %>
-    <li>
-     <%= link_to user.name, wishlist_path(user.id), :class => "btn user" %>
-    </li>
-  <% end %>
-</ul>
+<div class="cycling-background" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;">
 </div>
+<div class="user-list">
+  <h3 class="user-list_title">Wishlists</h3>
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+      <%= link_to user.name, wishlist_path(user.id), :class => "user-list_user-btn" %>
+      </li>
+    <% end %>
+  </ul>
 </div>

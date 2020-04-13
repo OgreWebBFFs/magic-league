@@ -317,6 +317,8 @@ select {
   background: $color-highlight-import;
   color: $color-light;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     background: lighten($color-highlight-import, 5%);
@@ -1103,24 +1105,7 @@ input[type=checkbox] {
 
 //Page Templates
 //User list pages (users, collections etc...)  
-#collection-wrapper,
-#user-wrapper {
-  .btn {
-    color: $color-light;
 
-    &.user {
-      margin: 5px 0;
-      width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  img.user-image {
-    background-color: $color-dark;
-  }
-
-}
 
 //Responsive Adjustments
 
