@@ -10,8 +10,7 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -142,8 +141,7 @@
       <% flash.each do |key, value| %>
         <div id="alert-container"  class="active alert alert-<%= key %> 
           <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
-          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a>
-        </div>
+          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
