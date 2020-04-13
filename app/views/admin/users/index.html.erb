@@ -1,23 +1,25 @@
 
 <div class="admin_users">
-  <h3>Users</h3>
-  <div class="admin_users-table">
-    <div class="admin_users-row-headings">
-      <div class="admin_users-cell">Name</div>
-      <div class="admin_users-cell">Email</div>
-      <div class="admin_users-cell">Status</div>
-      <div class="admin_users-cell">Locked At</div>
-    </div>
-    <% @users.each do |user| %>
-      <div class="admin_users-row" >
-      <div class="admin_users-cell"><%= link_to user.name, user_path(user) %></div>
-        <div class="admin_users-cell"><%= link_to user.email, user_path(user) %></div>
-        <div class="admin_users-cell">
-            <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'admin_users_unlock-btn'} if !user.locked_at.nil? %>
-            <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'admin_users_lock-btn'} if user.locked_at.nil? %>
-        </div>
-        <div class="admin_users-cell"><%= user.locked_at %></div>
+  <div class= "admin_users-container">
+    <h3>Users</h3>
+    <div class="admin_users-table">
+      <div class="admin_users-row-headings">
+        <div class="admin_users-cell">Name</div>
+        <div class="admin_users-cell">Email</div>
+        <div class="admin_users-cell">Status</div>
+        <div class="admin_users-cell">Locked At</div>
       </div>
-    <% end %> 
+      <% @users.each do |user| %>
+        <div class="admin_users-row" >
+        <div class="admin_users-cell"><%= link_to user.name, user_path(user) %></div>
+          <div class="admin_users-cell"><%= link_to user.email, user_path(user) %></div>
+          <div class="admin_users-cell">
+              <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'admin_users_unlock-btn'} if !user.locked_at.nil? %>
+              <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'admin_users_lock-btn'} if user.locked_at.nil? %>
+          </div>
+          <div class="admin_users-cell"><%= user.locked_at %></div>
+        </div>
+      <% end %> 
+    </div>
   </div>
 </div>
