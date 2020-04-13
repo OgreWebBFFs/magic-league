@@ -149,58 +149,6 @@ body {
   min-height: 600px;
   color: $color-dark;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    &.color-blocked {
-
-      padding: 10px;
-      margin: 10px 0 0;
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-
-      &.highlight-main {
-        color: $color-light;
-        background: $color-highlight-import;
-        border-bottom: 4px solid lighten($color-highlight-import, 10%);
-
-      }
-
-      &.highlight-mid {
-        background: $color-highlight-mid-import;
-        border-bottom: 4px solid lighten($color-highlight-mid-import, 10%);
-
-      }
-
-      &.dark {
-        color: $color-light;
-        background: $color-dark;
-        border-bottom: 4px solid lighten($color-dark, 10%);
-
-      }
-
-      &.light {
-        background: $color-light;
-        border-bottom: 4px solid darken($color-light, 10%);
-
-      }
-
-      &~.content {
-        margin-bottom: 25px;
-        box-sizing: border-box;
-        padding: 15px;
-        background: $color-light;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-
-        p {
-          &:first-of-type {
-            margin-top: 0;
-          }
-        }
-      }
-    }
-  }
 
   //Section Types 
   &.full-page {
@@ -733,57 +681,6 @@ input[type=checkbox] {
   }
 }
 
-//Admin  Pages
-#admin-user-wrapper {
-  .table {
-    .row {
-      .button-wrapper {
-        display: inline-flex;
-        align-items: middle;
-        width: 100%;
-
-        a {
-          color: $color-light;
-          font-size: .75rem;
-          padding: 0;
-
-          &.unlocked {
-            background: $color-highlight-mid-import;
-          }
-        }
-      }
-    }
-  }
-}
-
-#admin-settings-wrapper {
-
-  //note for clarity: Hitting the simple forms class here, not the HTML element
-  .input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    //note for clarity: Here we are hitting the html element
-    input {
-      margin-left: 25px;
-      flex: 0 1 25%;
-
-      &.numeric,
-      .date {
-        text-align: center;
-        max-width: 100px;
-        min-width: 50px;
-      }
-    }
-
-  }
-
-  //note for clarity: Here we are hitting the html element
-  input[type=submit] {
-    margin-top: 25px;
-  }
-}
 
 //Page Templates
 
@@ -835,27 +732,6 @@ input[type=checkbox] {
               overflow: hidden;
             }
           }
-        }
-      }
-    }
-  }
-
-  #admin-user-wrapper {
-    .table {
-      .row {
-        &.headings {
-          display: none;
-        }
-
-        p,
-        a,
-        .button-wrapper {
-          display: block;
-          margin: 0px auto;
-        }
-
-        .button-wrapper {
-          width: 150px;
         }
       }
     }
