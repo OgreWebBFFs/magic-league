@@ -10,22 +10,17 @@
 
   var cardTemplate = function(card) {
       return `
-      <div class="card-wrapper">
-        <div class="wishlist wishlist-checkbox">
-          <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
-          <label for="wl-checkbox-for-${card.attributes.id}"></label>
+      <div class="card-grid_card-wrapper">
+        <div class="card-grid_card" href="/cards/${card.attributes.id}">
+          <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </div>
-        <a class="card-grid-item" href="/cards/${card.attributes.id}">
-          <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
-        </a>
-        <div class="card-count-component">
-          <span>
-            <button type="button" class="remove-card btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
-            <input type="number" id="${card.attributes.id}-count" data-id="${card.attributes.id}" class="browser-default" value="${card.attributes.count_in_collection}", min="0">
-            <button type="button" class="add-card btn" data-id="${card.attributes.id}"><i class="material-icons">add_box</i></button>
-          </span>
+        <div class="card-grid_counter">
+          <button type="button" class="card-grid_counter_decrement-btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
+          <input type="number" id="${card.attributes.id}-count" data-id="${card.attributes.id}" readonly="readonly"class="card-grid_counter_count" value="${card.attributes.count_in_collection}", min="0">
+          <button type="button" class="card-grid_counter_increment-btn" data-id="${card.attributes.id}"><i class="material-icons">add_box</i></button>
         </div>
-          `
+      </div>
+      `
     };
 
 
@@ -83,16 +78,16 @@
     xhrRequest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
     xhrRequest('/cards/' + current_user, 'GET', function(res) { current_user_cards = res.data; });
 
-    $(document).off('click', '.add-card');
-    $(document).on('click', '.add-card', function() {
+    $(document).off('click', '.card-grid_counter_increment-btn');
+    $(document).on('click', '.card-grid_counter_increment-btn', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
         return parseInt(val) + 1
       });
     });
 
-    $(document).off('click', '.remove-card');
-    $(document).on('click', '.remove-card', function() {
+    $(document).off('click', '.card-grid_counter_decrement-btn');
+    $(document).on('click', '.card-grid_counter_decrement-btn', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
         if (val > 0) {
@@ -103,18 +98,12 @@
       });
     });
 
-    $(document).off('click', '.add-card, .remove-card');
-    $(document).on('click', '.add-card, .remove-card', debounce(function(){
+    $(document).off('click', '.card-grid_counter_increment-btn, .card-grid_counter_decrement-btn');
+    $(document).on('click', '.card-grid_counter_increment-btn, .card-grid_counter_decrement-btn', debounce(function(){
       id = $(this).attr('data-id');
       count = $(`input[type=number][data-id=${id}]`).val()
       xhrRequest('/collections/<%=@collection.id %>', "PUT", function(res){ current_user_cards[id] = count }, { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}});
     }, 200));
-
-    $(document).off('click', '.toggle-wishlist');
-    $(document).on('click', '.toggle-wishlist', function(){
-      card_id = $(this).attr('data-id');
-      xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
-    });
   
  });
 </script>

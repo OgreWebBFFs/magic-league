@@ -319,6 +319,7 @@ select {
   -webkit-tap-highlight-color: transparent;
   background: $color-highlight-import;
   color: $color-light;
+  cursor: pointer;
 
   &:hover {
     background: lighten($color-highlight-import, 5%);
@@ -451,261 +452,11 @@ textarea.materialize-textarea[readonly="readonly"]+label {
   color: $color-nuetral;
 }
 
-.card-grid {
-  display: inline-grid;
-  grid-template-columns: repeat(4, 25%);
-  width: 100%;
-
-  #legend {
-    position: fixed;
-    z-index: 99;
-    bottom: $footer-height;
-    right: -15px;
-    padding: 5px;
-
-    ul {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-
-      li {
-        border: 1px solid $color-light;
-        color: $color-light;
-        padding: 5px;
-        width: 100px;
-        margin: 2px auto;
-        border-radius: 2px;
-        font-size: 8px;
-
-        &.mid-highlight {
-          background: $color-highlight-mid-import;
-        }
-
-        &.highlight {
-          background: $color-highlight-import;
-        }
-
-        &.dark {
-          background: $color-dark;
-        }
-      }
-    }
-  }
-
-  .card-wrapper {
-    width: 100%;
-    margin: 30px auto;
-    position: relative;
-
-    .wishlist-checkbox {
-      width: 36px;
-      height: 36px;
-      top: -25px;
-      right: -10px;
-      opacity: 1;
-      position: absolute;
-      z-index: 2;
-
-      label {
-        position: relative;
-
-        &:before {
-          cursor: pointer;
-          opacity: .4;
-          content: "\2665";
-          position: absolute;
-          color: white;
-          font-size: 35px;
-          background-color: $color-highlight-mid-import;
-          padding: 6px;
-          border-radius: 25px;
-          line-height: 24px;
-          -webkit-tap-highlight-color: transparent;
-          transition: .25s;
-        }
-
-      }
-
-      input[type="checkbox"]:checked+label::before {
-        opacity: 1;
-      }
-
-    }
-
-    .card-grid-item {
-      width: 100%;
-      text-align: center;
-      display: block;
-
-      img {
-        width: 90%;
-        margin: 0;
-      }
-    }
-
-    .card-count-component {
-
-      margin: 0 auto;
-      text-align: center;
-      width: 90%;
-
-      span {
-        display: table;
-        background: #26a69a;
-        height: 35px;
-        border-radius: 2px;
-
-        .btn,
-        input {
-          display: table-cell;
-          vertical-align: middle;
-          text-align: center;
-        }
-
-        .btn {
-          font-weight: bolder;
-          width: 36px;
-          border-left: 2px solid $color-light;
-          padding: 0;
-          float: right;
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-
-          &:first-of-type {
-            float: left;
-            border-left: none;
-            border-right: 2px solid $color-light;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            border-top-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-          }
-
-        }
-
-        input {
-          border-radius: 2px;
-          width: 30%;
-          color: white;
-          background-color: transparent;
-          border: none;
-          outline: none;
-          font-size: 26px;
-          line-height: 26px;
-          font-weight: bold;
-          text-overflow: ellipsis;
-          vertical-align: bottom;
-          overflow: hidden;
-
-          &[type=number]::-webkit-inner-adjust-hue-button,
-          &[type=number]::-webkit-outer-adjust-hue-button {
-            -webkit-appearance: none;
-            margin: 0;
-          }
-
-        }
-
-      }
-
-    }
-
-    .trade-proposal-request {
-      width: 90%;
-      margin: 0 auto;
-      text-align: center;
-
-      .btn {
-        width: 100%;
-
-        span {
-          display: none;
-        }
-      }
-    }
-
-    &.not-in-collection {
-      .card-count-component {
-        span {
-          display: block;
-          background: transparent;
-
-          .remove-card.btn,
-          input {
-            display: none;
-          }
-
-          .add-card.btn {
-            width: 100%;
-            border-left: none;
-            border-top-right-radius: 2px;
-            border-bottom-right-radius: 2px;
-            background: $color-highlight-mid-import;
-            border-top-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-
-            &:hover {
-              background: lighten($color-highlight-mid-import, 5%);
-            }
-          }
-
-        }
-      }
-    }
-
-    &.for-trade {
-      .trade-proposal-request {
-        .btn {
-          background: $color-highlight-import;
-
-          &:hover {
-            background: lighten($color-highlight-import, 5%);
-          }
-
-          &:after {
-            content: "Propose Trade";
-          }
-
-        }
-      }
-    }
-
-    &.not-for-trade {
-      .trade-proposal-request {
-        .btn {
-          background: $color-highlight-mid-import;
-
-          &:hover {
-            background: lighten($color-highlight-mid-import, 5%);
-          }
-
-          &:after {
-            content: "Propose Trade";
-            // content: "Make an Offer";
-          }
-        }
-      }
-    }
-
-    &.not-in-league {
-      .card-grid-item {
-        opacity: .5;
-      }
-
-      .trade-proposal-request {
-        .btn {
-          background: $color-dark;
-          cursor: auto;
-
-          &:after {
-            content: "Not in League";
-          }
-
-        }
-      }
-    }
-
-  }
+input[type=checkbox] {
+  display:none;
 }
+
+//Repetitious Non Page Specific Elements 
 
 .card-view-nav {
   margin: 0 auto;
@@ -1477,12 +1228,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 //Responsive Adjustments
 
 
-@media only screen and (max-width: 800px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 33.3%);
-  }
 
-}
 
 @media only screen and (max-width: 720px) {
   #dashboard-wrapper {
@@ -1595,16 +1341,6 @@ textarea.materialize-textarea[readonly="readonly"]+label {
     }
   }
 
-  .card-grid {
-    grid-template-columns: repeat(2, 50%);
-
-    #legend {
-      right: -20px;
-      padding: 2px;
-      opacity: .8;
-
-    }
-  }
 
   .card-view-nav {
     h3 {
@@ -1622,13 +1358,6 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 }
 
 @media only screen and (max-width: 400px) {
-  .card-grid {
-    display: block;
-
-    .card-wrapper {
-      margin-bottom: 25px;
-    }
-  }
 
   [class*="-section"] {
     padding-left: 1px;
