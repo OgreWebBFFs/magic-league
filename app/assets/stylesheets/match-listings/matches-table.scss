@@ -1,0 +1,41 @@
+.matches,
+.matches-admin {
+    &-cell {
+        flex: 1 1 20%;
+        &-date,
+        &-time {
+            flex: 0 0 150px;
+        }
+        &-id{
+            flex: 0 0 50px;
+        }
+    }
+    &-labels-mobile{
+        display:none;
+    }
+    @media only screen and (max-width: 850px) {
+        
+        &-labels-mobile{
+            display:inline;
+        }
+
+        &-row {
+            display:block; 
+            &-headings {
+                display:none;
+            }
+        }
+
+        [class*="-cell"] {
+            text-align:center;
+            
+
+            &:first-of-type {
+                color: $color-light;
+                background-color: $color-dark;
+            }
+        }
+    }
+}
+
+
