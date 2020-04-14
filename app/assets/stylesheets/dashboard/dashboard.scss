@@ -17,6 +17,7 @@
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
                 flex: 1 0 auto;
+                width: 154px;
             }
         }
 
@@ -28,6 +29,22 @@
                 input {
                     text-align: center;
                 }
+            }
+        }
+
+        @media only screen and (max-width: 850px) {
+           display:block;
+
+            &_user-details{
+                margin: 0 auto $section-margin; 
+                align-items: center; 
+                &_edit-btn {
+                    padding: 0 10px;
+                }
+            }
+
+            &_trades{
+                flex: 1 0 100%;
             }
         }
 

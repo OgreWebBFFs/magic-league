@@ -1,5 +1,6 @@
 .user-list {
-    width:50%;
+    min-width:210px;
+    max-width: 500px;
     margin:0 auto;
     text-align: center;
     background: rgba($color-light, .25);
