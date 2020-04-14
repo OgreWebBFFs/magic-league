@@ -1,10 +1,9 @@
 
-<div id="dashboard-wrapper">
-  <div class="container">
-    <h2><%= @user.name %></h2>
+<div id="dashboard">
+  <div class="dashboard-container">
+    <h2 class="dashboard-title"><%= @user.name %></h2>
+    <%= render 'dashboard/user_trades', user: @user %>
+    <%= render 'dashboard/user_wishlist', user: @user %>
+    <%= render 'dashboard/user_collections', user: @user %>
   </div>
-
-  <%= render 'dashboard/user_trades', user: @user %>
-  <%= render 'dashboard/user_wishlist', user: @user %>
-  <%= render 'dashboard/user_collections', user: @user %>
 </div>

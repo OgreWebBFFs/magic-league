@@ -2,6 +2,7 @@
 $nav-height: 64px;
 $footer-height: 32px;
 $section-padding: 25px;
+$section-margin: 25px;
 $animation-delay: 2s;
 
 //Text Treatments
@@ -260,13 +261,13 @@ select {
   border: none;
   border-radius: 2px;
   line-height: 36px;
-  vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
   background: $color-highlight-import;
   color: $color-light;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
+  display:block;
 
   &:hover {
     background: lighten($color-highlight-import, 5%);

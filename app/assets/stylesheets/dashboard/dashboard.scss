@@ -1,0 +1,74 @@
+.dashboard {
+    &_collection {
+        margin-top: $section-margin;
+        &_heading-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-title {
+                margin: 0
+            }
+
+            &_edit-btn {
+                justify-self: end;
+                padding: 0 10px;
+                font-size: 12px;
+            }
+        }
+
+        &-cell {
+            flex: 0 0 60px;
+            text-align: center;
+
+            &:first-of-type {
+                text-align: left;
+                flex: 1 1 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-wrap: nowrap;
+            }
+
+            &:last-of-type {
+                flex: 0 0 100px;
+            }
+
+        }
+
+        &_for-trade-toggle {
+            position: relative;
+            display: inline;
+
+            &:before {
+                content: "For Trade";
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                color: $color-light;
+                background-color: $color-highlight-import;
+                padding: 5px;
+                -webkit-tap-highlight-color: transparent;
+                transition: .25s;
+                height: 36px;
+                width: 85px;
+                font-size: 10px;
+                top: -18px;
+                text-transform: uppercase;
+                letter-spacing: .5px;
+            }
+        }
+    }
+    &_wishlist {
+        &-cell {
+            &:last-of-type {
+                flex: 0 0 100px;
+            }
+            .dashboard_wishlist_remove-btn {
+                width: 85px;
+                font-size: 10px;
+            }
+        }
+    }
+}
