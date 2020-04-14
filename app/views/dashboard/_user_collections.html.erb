@@ -14,7 +14,7 @@
       <div class="dashboard_collection-cell"><%= card.name %></div>
       <div class="dashboard_collection-cell"><%= @cards.count[card.id] %></div>
       <div class="dashboard_collection-cell">
-        <input type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
+        <input class="dashboard_collection_for-trade-toggle_checkbox" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
         <label class="dashboard_collection_for-trade-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
       </div>
     </div>
@@ -32,7 +32,7 @@
     `
   };
   $(function() {
-    $('.checkbox input').on('click', function() {
+    $('.dashboard_collection_for-trade-toggle_checkbox').on('click', function() {
       console.log($(this));
       id = $(this).attr('data-id');
       that = this;
