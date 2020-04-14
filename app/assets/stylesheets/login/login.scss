@@ -14,7 +14,7 @@
 
     &-content {
         width: 40%;
-        min-width: 275px;
+        min-width: 295px;
         background: rgba($color-light, .9);
         padding: $section-padding;
         text-align: center;
@@ -30,7 +30,7 @@
 
     [class*="-btn"] {
         margin: 5px auto;
-        width: 275px;
+        width: 250px;
         display: flex;
         align-items: center;
         justify-content: center;

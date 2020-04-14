@@ -14,21 +14,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body onload="setTimeout(function() {Helpers.toggleElementById('alert-container')}, 5000)">
+  <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
       <nav id="top-nav" class="nav" role="navigation">
-        <div class="nav-wrapper container">
-          <a href="/" class="nav_logo-container" data-turbolinks="false">
+        <div class="nav-container">
+          <a href="/" class="nav_logo" data-turbolinks="false">
           <%= show_svg('logo.svg') %>
           </a>
           <ul class="nav_menu">
-            <li>
+            <li class="nav_menu-link">
               <a href="/" data-turbolinks="false">rankings</a>
             </li>
-            <li>
+            <li class="nav_menu-link">
               <%= link_to "profile", user_path(current_user) %>
             </li>
-            <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-cards')">Cards &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-cards')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
                   <li>
                     <a href="/trades">trades</a>
@@ -44,7 +44,7 @@
                 </li>             
               </ul>
             </li>         
-            <li><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
                   <a href="/matches">Matches</a>
@@ -61,7 +61,7 @@
               </ul>
             </li>
             <% if current_user.admin? %>
-              <li>
+              <li class="nav_menu-list">
                 <a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-admin')">Admin &#9660;</a>
                 <ul id="dd-menu-admin" class="dropdown-content">
                   <li><a href="/admin/matches">Matches</a></li>
@@ -70,18 +70,9 @@
                 </ul>
               </li>
             <% end %>
-            <li>
-              <a href="#" class="btn waves-effect waves-light log-match-toggle">
-                Log a match
-              </a>
-            </li>
-          </ul>
-          <ul class="nav_mobile-menu">
-            <li>
-              <a class="btn waves-effect waves-light golden drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-mobile')">
-
+            <li class="nav_menu-mobile">
+              <a class="drop-down-toggle mobile-menu_dropdown-btn" onclick="Helpers.toggleElementById('dd-menu-mobile')">
                 &#9660;
-
               </a>
               <ul id="dd-menu-mobile" class="dropdown-content">
                 <li>
@@ -120,28 +111,22 @@
                   <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
                 </li>
               </ul>
-
             </li>
-            <li>
-              <a href="#" class="btn waves-effect waves-light golden log-match-toggle">
+            <li class="nav_menu-match-logger-toggle-wrapper">
+              <a href="#" class="nav_match-logger-btn">
                 Log a match
               </a>
             </li>
-
-
-
-
           </ul>
-                </div>
+        </div>
       </nav>
-
     <% end %>
 
     <div class="section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert-container"  class="active alert alert-<%= key %> 
+        <div id="alert"  class="active alert alert-<%= key %> 
           <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
-          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a></div>
+          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false">&#9650;</a></div>
       <% end %>
       <%= yield %>
     </div>
