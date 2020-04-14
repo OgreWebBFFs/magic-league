@@ -24,4 +24,10 @@
             background-color: $color-highlight-import;
         }
     }
+    @media only screen and (max-width: 450px) {
+        display: block;
+        &_link-btn {
+            margin: 5px auto;
+        }
+    }
 }
