@@ -1,18 +1,16 @@
-<div id="edit-details-wrapper">
-    <div class="table">
-    <div class="flex-col" id="user">
-        <%= gravatar(@user, 128) %>
-        <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/',target: "_blank", class: 'btn small'  %>
+<div class="dashboard_edit-user-details-form">
+    <div class="dashboard_edit-user-details_gravatar">
+        <%= gravatar(@user, 154) %>
+        <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/',target: "_blank", class:'dashboard_edit-user-details_gravatar-btn'  %>
         <p>Gravatar may take a few mintues to update</p>          
     </div> 
 
-    <div class="flex-col" id="detail-inputs">
+    <div class="dashboard_edit-user-details_fields">
         <%= f.input :name %>
         <%= f.input :email %>
+        <div class="dashboard_edit-user-details_actions">
+            <%= f.input :admin, :as => :switch, class: "dashboard_edit-user-details_actions-admin-switch"  %>
+            <%= f.button :submit,  class: "dashboard_edit-user-details_actions-submit-btn"%>
+        </div>
     </div>
-    </div>
-        <%= f.input :admin, :as => :switch %>
-        <%= f.button :submit %>
-    </div>
-
 </div>

@@ -2,7 +2,7 @@
 <div id="dashboard">
   <div class="dashboard-container">
     <h2 class="dashboard-title"><%= @user.name %></h2>
-    <%= render 'dashboard/user_trades', user: @user %>
+    <%= render 'dashboard/user_profile', user: @user %>
     <%= render 'dashboard/user_wishlist', user: @user %>
     <%= render 'dashboard/user_collections', user: @user %>
   </div>

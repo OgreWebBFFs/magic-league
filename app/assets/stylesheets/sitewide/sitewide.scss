@@ -402,6 +402,84 @@ input[type=checkbox] {
   display: none;
 }
 
+//switch 
+
+[class*="-switch"],
+.switch,
+.switch * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  label {
+    cursor: pointer;
+  }
+
+  label input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  label input[type=checkbox]:checked+.lever {
+    background-color: $color-highlight-mid-import;
+  }
+
+  label input[type=checkbox]:checked+.lever:before,
+  .switch label input[type=checkbox]:checked+.lever:after {
+    left: 18px;
+  }
+
+  label input[type=checkbox]:checked+.lever:after {
+    background-color: $color-highlight-import;
+  }
+
+  label .lever {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    height: 14px;
+    background-color: rgba($color-highlight-mid-import, .25);
+    border-radius: 15px;
+    margin-right: 10px;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+  }
+
+  label .lever:before,
+  .switch label .lever:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: 0;
+    top: -3px;
+    -webkit-transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
+    transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
+  }
+
+  label .lever:before {
+    background-color: rgba($color-highlight-mid-import, .25);
+  }
+
+  label .lever:after {
+    background-color: rgba($color-highlight-mid-import, .25);
+    -webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  }
+
+ 
+}
+
 //Overlays for modals and drawers
 [class*="_overlay"] {
   width: 100%;
@@ -412,156 +490,6 @@ input[type=checkbox] {
   background-color: rgba($color-dark, .5);
 }
 
-//TO DO: BREAK INTO OWN FILES 
-
-//Specific Pages
-
-//Dashboard Page 
-
-#user-and-trades {
-  display: table;
-
-  #trades-table,
-  #user {
-    display: table-cell;
-    box-sizing: border-box;
-    vertical-align: middle;
-    position: relative;
-  }
-
-  #user {
-    h3 {
-      margin: 0;
-    }
-
-  }
-
-  #user {
-    text-align: center;
-    padding-right: 10px;
-
-    img {
-      width: 100%;
-      background: $color-dark;
-      height: 207px;
-      width: auto;
-
-    }
-
-    a.btn {
-      width: 100%;
-      margin: 0 auto;
-      color: $color-light;
-      display: block;
-    }
-
-    a.btn,
-    img {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-    }
-  }
-}
-
-//Edit Account 
-#edit-details-wrapper {
-  .table {
-    border: none;
-    box-shadow: none;
-
-    .flex-col {
-      &#user {
-        //gravatar width
-        width: 170px;
-        text-align: center;
-
-        a,
-        img,
-        label {
-          display: block;
-          margin: 5px auto;
-        }
-
-        img {
-          border: 2px solid $color-dark;
-        }
-
-        a {
-          color: $color-light;
-        }
-
-      }
-
-      &#detail-inputs {
-        padding-left: 25px;
-
-      }
-    }
-  }
-
-  input[type="submit"],
-  input[type="switch"] {
-    margin: 25px auto 0;
-    display: block;
-  }
-}
-
-
-//Page Templates
-
-@media only screen and (max-width: 720px) {
-  #dashboard-wrapper {
-    h2 {
-      text-align: center;
-      margin: 0;
-      font-size: 2.1rem;
-    }
-
-    .container {
-      margin: 10px auto;
-
-      &:first-of-type {
-        margin-top: 0;
-      }
-
-      &#user-and-trades {
-
-        display: block;
-
-        #trades-table,
-        #user {
-          display: block;
-
-        }
-
-        #user {
-          margin-bottom: 20px;
-
-          .btn {
-            width: 207px;
-
-          }
-        }
-      }
-
-      &#collection-table,
-      &#deck-table,
-      &#wishlist-table {
-        h3 {
-          font-size: 2rem;
-
-          .btn {
-            &.main-toggle {
-              width: 100px;
-              margin-top: -1px;
-              overflow: hidden;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: 650px) {
 
   [class*="-container"] .container {
@@ -569,26 +497,6 @@ input[type=checkbox] {
     position: relative;
   }
 
-  #edit-details-wrapper {
-    .table {
-      display: block;
-
-      .flex-col {
-        display: block;
-        margin: 25px auto;
-
-        &#detail-inputs {
-          padding-left: 0;
-
-        }
-      }
-    }
-
-    input[type="submit"] {
-      margin: 25px auto 0;
-      display: block;
-    }
-  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -601,34 +509,5 @@ input[type=checkbox] {
   [class*="-container"],
   .container {
     width: 100%;
-  }
-
-  #dashboard-wrapper {
-    .container {
-      width: 100%;
-
-      .table {
-        .row {
-          p {
-            padding: 5px;
-          }
-        }
-      }
-
-      &#collection-table {
-        .checkbox-container {
-          padding-right: 0;
-          text-align: center;
-
-          .checkbox {
-            width: 100%;
-          }
-
-          input {
-            display: none;
-          }
-        }
-      }
-    }
   }
 }

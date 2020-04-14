@@ -1,6 +1,54 @@
 .dashboard {
     &_profile {
+        display: flex;
 
+        &_user-details {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 20%;
+            padding-right: $section-margin;
+            //Height of trades table 
+            height: 192px;
+
+            &_edit-btn {
+                margin-top:2px;
+                flex: 0 0 36px;
+            }
+            .user-image {
+                //gravatar image forces hard height/widths 154px is current
+                flex: 1 0 auto;
+            }
+        }
+
+        &_trades{
+            flex: 1 0 auto;
+        }
+
+    }
+
+    &_edit-user-details{
+        &-title {
+            width: 100%;
+            border-bottom: 1px solid $color-highlight-import;
+        }
+        &-form{
+            display:flex;
+        
+        }
+        &_gravatar {
+            flex: 0 0 154px;
+            margin-right: $section-margin;
+        }
+        &_fields {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+            justify-content: space-between; 
+        }
+        &_actions {
+            display: flex;
+            justify-content: space-between;       
+        }
     }
     
     &_collection {
