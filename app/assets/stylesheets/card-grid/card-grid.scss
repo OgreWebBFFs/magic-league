@@ -61,26 +61,13 @@
         align-items: center;
         text-align: center;
         width: 90%;
+        background-color: $color-highlight-import;
+        border-radius: 5px;
 
         [class*="-btn"] {
             font-weight: bolder;
             display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 5px;
-            position: relative;
-
-            &:first-of-type {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                left: 1px;
-            }
-
-            &:last-of-type {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-                right: 1px;
-            }
+            justify-content: center;
         }
 
         input[type=number]{
@@ -88,10 +75,11 @@
                 cursor: default;
                 text-align: center;
                 color: $color-light;
-                background-color: $color-highlight-import;
                 border-bottom: none;
                 height: 34px;
                 margin-bottom: 0;
+                //Dealing with the wheel space;
+                margin-right: -10px;
                 -moz-appearance: textfield;
             }
 
