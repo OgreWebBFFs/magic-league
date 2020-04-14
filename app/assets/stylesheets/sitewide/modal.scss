@@ -4,6 +4,7 @@
     height: 100vh;
     width: 100%;
     overflow: hidden;
+    border-radius: 2px;
     top: 0;
     left: 0;
     z-index: 99;
@@ -33,6 +34,13 @@
     &_close-button{
         right:-6px;
         top: 0px;
+    }
+
+    form {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     &.active {
