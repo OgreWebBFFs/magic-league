@@ -504,6 +504,9 @@ input[type=checkbox] {
   [class*="-section"] {
     padding-left: 1px;
     padding-right: 1px;
+    &.full-page {
+      padding: 5px;
+    }
   }
 
   [class*="-container"],

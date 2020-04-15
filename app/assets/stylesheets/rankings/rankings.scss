@@ -1,9 +1,12 @@
 .rankings {
   text-align: center;
 
-  h1 {
+  $ranking-board-heading: 60px;
+  $month-selector: 45px;
+ 
+  &-title {
     font-size: 50px;
-    margin-top: 15px;
+    margin-top: 0;
     margin-bottom: 10px;
     line-height: 1;
     font-variant: small-caps;
@@ -74,15 +77,14 @@
   }
 
   &-wrapper {
-    $ranking-board-heading: 60px;
-    $month-selector: 45px;
+   
     box-sizing: border-box;
     width: 35%;
     padding: 5px;
     margin: 0 auto;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (5*#{$section-padding}));
+    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (3*#{$section-padding}));
     position: relative;
-    min-width: 300px;
+    min-width: 270px;
 
     h2 {
       margin-top: 0;
@@ -96,7 +98,7 @@
   &-player-listing {
     display: flex;
     margin: 0 auto;
-    min-width: 275px;
+    min-width: 230px;
     text-align: center;
     flex-direction: column;
     justify-content: space-around;
@@ -190,6 +192,17 @@
     display: table;
     height: 100%;
     width: 100%;
+
+  }
+
+  @media only screen and (max-width: 400px) { 
+    &-title {
+      margin-top: 0px;
+      font-size: 40px;
+    }
+    &-wrapper {
+      height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - #{$section-padding});
+    }
 
   }
 }

@@ -1,7 +1,7 @@
 <div class="cycling-background" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;">
 </div>
 <div class="rankings container">
-  <h1>Rankings</h1>
+  <h1 class="rankings-title">Rankings</h1>
   <%= form_with(url: "/", :class =>"rankings-date_form", method: "get", local: true) do %>
     <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
   <% end %>

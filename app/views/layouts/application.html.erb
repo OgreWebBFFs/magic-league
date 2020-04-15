@@ -122,7 +122,7 @@
       </nav>
     <% end %>
 
-    <div class="section full-page">
+    <div class="app-section full-page">
       <% flash.each do |key, value| %>
         <div id="alert"  class="active alert alert-<%= key %> 
           <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
