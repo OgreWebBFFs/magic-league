@@ -1,6 +1,6 @@
 ## Initial Setup
 1. Download the source, and npm i 
-2. Install Ruby ^2.5.1, we suggest using RVM 
+2. Install Ruby ^2.5.3, we suggest using RVM 
 3. Install Rails 5.2.1, run 'gem install rails -v 5.2.1'
 4. Run 'bundle install', you will need Bundler
 5. Install Postgres using Homebrew, run 'brew install postgres'
