@@ -1,18 +1,17 @@
 <div id="tradable-wrapper">
   <div id="tradable" class="container">
-    <div class="card-view-nav">
-      <h3><%= "#{@user.name}'s Tradables" %> </h3>
-      <%= link_to 'Collection', collection_path(@user.id), class: 'btn' %>
-      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'btn' %>
-      <%= link_to 'Tradables', tradable_path(@user.id), class: 'highlight-mid btn'%>
+    <div class="sub-nav">
+      <h3 class="sub-nav_heading"><%= "#{@user.name}'s Tradables" %> </h3>
+      <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link-btn'%>
+      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link-btn' %>
+      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link-btn active'%>
     </div>
     <div class="card-grid">
       <% @user.tradable_cards.each do |card| %>
-        <div class="card-wrapper">           
-          <a class="card-grid-item">
-           <img class="card" alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
-           
-          </a>  
+        <div class="card-grid_card-wrapper">
+          <div class="card-grid_card">
+           <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
+          </div>  
         </div>
       <% end %>
     </div>

@@ -1,5 +1,8 @@
 {
   "name": "mtg-league",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "start-with-server": "pg_ctl -D /usr/local/var/postgres start && rails s"
+  }
 }

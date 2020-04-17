@@ -1,21 +1,21 @@
-<div id="collection-table" class="container">
-
-  <h3>Collection   <%= link_to 'Edit Collection', edit_collection_path(user.collection.id), class: 'main-toggle btn' if policy(user.collection).edit? %></h3>
-  <div  class="alternating three-col table">
-    <div class="row headings">
-      <p>Card</p>
-      <p>Amount</p>
-      <p>Tradable</p>
+<div class="dashboard_collection">
+  <div class="dashboard_collection_heading-bar">
+    <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
+    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).edit? %>
+  </div>
+  <div class="dashboard_collection-table">
+    <div class="dashboard_collection-row-headings">
+      <div class="dashboard_collection-cell">Card</div>
+      <div class="dashboard_collection-cell">Amount</div>
+      <div class="dashboard_collection-cell">Tradable</div> 
     </div>
     <% @cards.each do |card| %>
-    <div class="row">
-      <p><%= card.name %></p>
-      <p><%= @cards.count[card.id] %></p>
-      <div class="checkbox-container">
-        <div class="checkbox">
-          <input type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
-          <label for="<%= "#{card.name}_#{card.id}" %>"></label>
-        </div>
+    <div class="dashboard_collection-row">
+      <div class="dashboard_collection-cell"><%= card.name %></div>
+      <div class="dashboard_collection-cell"><%= @cards.count[card.id] %></div>
+      <div class="dashboard_collection-cell">
+        <input class="dashboard_collection_for-trade-toggle_checkbox" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
+        <label class="dashboard_collection_for-trade-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
       </div>
     </div>
     <% end %>
@@ -32,7 +32,7 @@
     `
   };
   $(function() {
-    $('.checkbox input').on('click', function() {
+    $('.dashboard_collection_for-trade-toggle_checkbox').on('click', function() {
       console.log($(this));
       id = $(this).attr('data-id');
       that = this;

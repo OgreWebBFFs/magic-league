@@ -1,30 +1,30 @@
-<div id="cycling-background-container" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;">
+<div class="cycling-background" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;">
 </div>
-<div id="ranking-wrapper" class="container">
-  <h1>Rankings</h1>
-  <%= form_with(url: "/", id:"rankings-date-form", method: "get", local: true) do %>
+<div class="rankings container">
+  <h1 class="rankings-title">Rankings</h1>
+  <%= form_with(url: "/", :class =>"rankings-date_form", method: "get", local: true) do %>
     <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
   <% end %>
-  <div id="ranking-board">
-    <div id="ranking-border">
-      <div class="vert left"></div>
-      <div class="vert right"></div>
-      <div class="horz top"></div>
-      <div class="horz bottom"></div>
+  <div class="rankings-wrapper">
+    <div class="rankings-border">
+      <div class="rankings-border_vert rankings-border_bar rankings-border_left"></div>
+      <div class="rankings-border_vert rankings-border_bar rankings-border_right"></div>
+      <div class="rankings-border_horz rankings-border_bar rankings-border_top"></div>
+      <div class="rankings-border_horz rankings-border_bar rankings-border_bottom"></div>
     </div>
-    <div class="scroll-catcher">
-      <div class="vert-centerer">
-        <div id="rankings">
+    <div class="rankings-scroll-catcher">
+      <div class="rankings-vert-centerer">
+        <div id="rankings" class="rankings-player-listing">
           <div id="ranked-players">
             <% @ranked_players.each.with_index do |user, i| %>
-              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking&.round(2)}", user_path(user), :class => "btn user ranked" %>
+              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking&.round(2)}", user_path(user), :class => "user-btn   ranked" %>
             <% end %>
           </div>
-          <hr class="divider"/>
+          <hr class="rankings-divider"/>
           <div id="unranked-players">
 
             <% @unranked_players.each.with_index do |user, i| %>
-              <%= link_to "#{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count})", user_path(user), :class => "btn user unranked" %>
+              <%= link_to "#{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count})", user_path(user), :class => "user-btn unranked" %>
             <% end %>
 
 
