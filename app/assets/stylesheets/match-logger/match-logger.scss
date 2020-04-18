@@ -1,0 +1,71 @@
+.match-logger {
+  position: fixed;
+  bottom: 0%;
+  top: 0%;
+  left: 0;
+  padding-bottom: 2 rem;
+  width: 0;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 100;
+  display: block;
+  transition-duration: .51s;
+  color: $color-dark;
+  text-align: center;
+
+  &-section {
+    position: relative;
+    z-index: 2;
+    max-width: 300px;
+    min-height: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+    width: 75%;
+    padding: 30px 10px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 25px 0;
+      line-height: 1.25;
+    }
+  }
+
+  &_submit-btn {
+    margin-top: 25px;
+    font-size: 25px;
+    outline: none;
+    border: none;
+    width: 150px;
+    margin: 10px 0;
+    padding: 0 16px;
+    display: inline-block;
+    height: 36px;
+    color: $color-light;
+    line-height: 36px;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  &.active {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 400px) {
+    &-section {
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin: 15px 0 5px;
+      }
+    }
+  }
+}

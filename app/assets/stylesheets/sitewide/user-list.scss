@@ -1,0 +1,14 @@
+.user-list {
+    min-width:210px;
+    max-width: 500px;
+    margin:0 auto;
+    text-align: center;
+    background: rgba($color-light, .25);
+    &_user-btn {
+        margin: 5px 0;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+}

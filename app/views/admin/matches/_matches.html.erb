@@ -1,11 +1,11 @@
 <% matches.each do |match|%>
-  <div class="row">
-    <p class="fixed-width one fifth browser-cell"><%= match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}")%></p>
-    <p class="fixed-width one tenth browser-cell"><%= match.played_at.strftime("%I:%M%p")%></p>             
-    <p class="fixed-width one fifth browser-cell"><span class="on-mobile">Winner: </span><%= match.winner.name %></p>
-    <p class="fixed-width one fifth browser-cell"><span class="on-mobile">Loser: </span><%= match.loser.name %></p>
-    <p class="fixed-width one tenth browser-cell"><span class="on-mobile">ID: </span><%= match.id %></p>
-    <div class="fixed-width one tenth browser-cell button-wrapper"><%= link_to 'Edit', edit_admin_match_path(match),  :class => "btn"  %></div>
-    <div class="fixed-width one tenth browser-cell button-wrapper"><%= link_to 'Delete' ,admin_match_path(match), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %></div>
+  <div class="admin_matches-row">
+    <div class="admin_matches-cell-date"><%= match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}")%></div>
+    <div class="admin_matches-cell-time"><%= match.played_at.strftime("%I:%M%p")%></div>             
+    <div class="admin_matches-cell"><span class="admin_matches-label-mobile">Winner: </span><%= match.winner.name %></div>
+    <div class="admin_matches-cell"><span class="admin_matches-label-mobile">Loser: </span><%= match.loser.name %></div>
+    <div class="admin_matches-cell-id"><span class="admin_matches-label-mobile">ID: </span><%= match.id %></div>
+    <div class="admin_matches-cell-edit"><%= link_to 'Edit', edit_admin_match_path(match),  :class => "admin_matches-cell_edit-btn"  %></div>
+    <div class="admin_matches-cell-delete"><%= link_to 'Delete' ,admin_match_path(match), method: :delete, data: { confirm: 'Are you sure?' }, :class => "admin_matches-cell_delete-btn" %></div>
   </div>
 <% end %>

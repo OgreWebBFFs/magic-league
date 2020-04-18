@@ -1,0 +1,56 @@
+.matches,
+.admin_matches {
+    &-cell {
+        flex: 1 1 20%;
+        &-date,
+        &-time {
+            flex: 0 0 150px;
+        }
+        &-id{
+            flex: 0 0 50px;
+        }
+        &-delete,
+        &-edit{
+            flex: 0 0 80px;
+        }
+    }
+    &-label-mobile{
+        display:none;
+    }
+
+    [class*="-btn"]{
+        line-height: 24px;
+    }
+
+    @media only screen and (max-width: 850px) {
+        
+        &-label-mobile{
+            display:inline;
+            font-weight: bold;
+        }
+
+        &-row {
+            display:block; 
+            &-headings {
+                display:none;
+            }
+        }
+    
+        [class*="-cell"] {
+            text-align:center;
+        }
+
+        &-cell{
+            &-date{
+                color: $color-light;
+                background: $color-dark;
+            }
+        }
+
+        [class*="-btn"]{
+         width: 100px;
+        }
+    }
+}
+
+

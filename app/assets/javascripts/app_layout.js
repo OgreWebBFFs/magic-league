@@ -29,13 +29,14 @@ var AppLayout = (function() {
 
   let logMatchOnClick = function(event) {
     event.preventDefault();
-    Helpers.toggleElementById('match-logger-container');
+    Helpers.toggleElementById('match-logger');
     setMatchDateAndTime();
   }
 
   let handleWindowClick = function(event) {
     if (!event.target.matches('.drop-down-toggle')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
+      console.log('handler filed');
+      var dropdowns = document.querySelectorAll(".dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
@@ -44,18 +45,19 @@ var AppLayout = (function() {
         }
       }
     }
-  }
+  }  
 
   // Exposed functions start here
   let closeOtherDropDown = function() {
-    var dropDownMenus = document.getElementById("nav").querySelectorAll(".dropdown-content");            
+    var dropDownMenus = document.getElementById("top-nav").querySelectorAll(".dropdown-content");           
     for (var i = 0; i < dropDownMenus.length; i++) {
       dropDownMenus[i].classList.remove("active");
     }
-  }
+  } 
+
 
   let initialize = function(user_signed_in = false, current_user_id = null) {
-    $('.log-match-toggle').on('click', logMatchOnClick);
+    $('.nav_match-logger-btn').on('click', logMatchOnClick);
 
     window.addEventListener('click', handleWindowClick);
      
@@ -66,9 +68,20 @@ var AppLayout = (function() {
     }
   }
 
+  let timedAlertClose = function() {
+    const alertID = "alert";
+    let alert = document.getElementById(alertID);
+    if (alert) {
+      alert.classList.toggle("active");
+    } 
+  }
+
+
+
   return {
     initialize: initialize,
     closeOtherDropDown: closeOtherDropDown,
+    timedAlertClose: timedAlertClose,
   }
 
 })();

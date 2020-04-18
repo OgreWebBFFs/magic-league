@@ -1,37 +1,15 @@
 <div id="trade-search-wrapper">
-  <div class="container">
+  <div class="trade-container">
     <input id="card-search" type="text" placeholder="" />
     <div id="search-help"></div>
     <div class="card-grid">
-        <div id="legend">
-            <ul>
-            <li class="highlight">Marked Tradable</li>
-            <li class="mid-highlight">Not Marked Tradable</li>
-            <li class="dark">Not in League</li>
-            </ul>
-        </div>
-     </div>
+    </div>
   </div>
 </div>
 
-
-<div id="trade-modal" class="narrow modal-wrapper"  >
-  <div class="background-click-container" onclick="Helpers.toggleElementById('trade-modal')"></div>
-  <div id="trade-proposal" class="modal">
-    <button class="close-button" href="#" class="match-log-close" onclick="Helpers.toggleElementById('trade-modal')">
-      <i class="material-icons">cancel</i>
-    </button>
-    <div class="content">
-      <h4> Trade Proposal</h4>
-      <p>You are contacting:</p>
-      <ul class="trade-partners">
-        <li>Person</li>
-        <li>Person</li>
-      </ul>
-      <p>To talk about trading for <span class="card-to-be-traded"></span></p>
-      <button class="btn" onclick="Helpers.toggleElementById('trade-modal')">Send Message</button>
-    </div>
-
+<div id="trade-modal" class="modal"  >
+  <div class="modal_overlay" onclick="Helpers.toggleElementById('trade-modal')"></div>
+  <div class="modal_content">
   </div>
 </div>
 <script>
@@ -39,45 +17,50 @@
   var wishlist = []
 
   xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
-  $(document).off('click', '.toggle-wishlist');
-  $(document).on('click', '.toggle-wishlist', function(){
+  $(document).off('click', '.card-grid_wishlist-toggle_checkbox');
+  $(document).on('click', '.card-grid_wishlist-toggle_checkbox', function(){
     card_id = $(this).attr('data-id');
     xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
   });
 
   var cardTemplate = function(card) {
     return `
-    <div class="card-wrapper ${leagueStatus(card)}">
-      <div class="wishlist wishlist-checkbox">
-        <input class="toggle-wishlist" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
+    <div class="card-grid_card-wrapper">
+      <div class="card-grid_wishlist-toggle">
+        <input class="card-grid_wishlist-toggle_checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
         <label for="wl-checkbox-for-${card.attributes.id}"></label>
       </div>
-      <a class="card-grid-item">
-        <img class="card" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
-      </a>
-     <div class="trade-proposal-request">
-       <button type="button" class="btn" data-id="${card.attributes.id}"></button>
+      <div class="card-grid_card">
+        <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
+      </div>
+      <div class="card-grid_trade-proposal">
+       <button type="button" class="card-grid_trade-proposal-btn ${leagueStatus(card)}" data-id="${card.attributes.id}"></button>
+      </div>
     </div>
-  </div>
-
-    `
+  `
   }
 
   var onlyUserOwningCardTemplate = function(card) {
     return `
-      <h4> Trade Proposal</h4>
+      <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
+        <i class="material-icons">cancel</i>
+      </button>
+      <h4 class="modal-title">Oh no!</h4>
       <p>You are the only user who owns this card. 😭</p>
     `
   }
 
   var cardModalTemplate = function(card) {
     return `
-      <h4> Trade Proposal</h4>
+      <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
+        <i class="material-icons">cancel</i>
+      </button>
+      <h4 class="modal-title" >Email Proposal</h4>
       <p>You are contacting:</p>
       ` +
       card.attributes.users.data.filter(function(user){return user.id != current_user_id}).map(function(user) {
         return `
-        <ul class="trade-partners">
+        <ul class="trade-modal_partner-list">
         ${user.attributes.name}
         </ul>
         `
@@ -88,7 +71,7 @@
       <form action="/trades" method="post"> 
         <input type="hidden" name="authenticity_token" value="${token}">
         <input type="hidden" name="trade[card_id]" value="${card.id}"/>
-        <button type="submit" class="btn">Send Message</button>
+        <button type="submit" class="trade-modal_send-btn">Send Message</button>
       </form>
     </div>
     `
@@ -107,7 +90,7 @@ var cards = []
 $(function() {
 
   var clearGrid = function() {
-    $('.card-grid').children('.card-wrapper').remove();
+    $('.card-grid').children('.card-grid_card-wrapper').remove();
     $('#search-help').empty();
   }
 
@@ -135,16 +118,16 @@ $(function() {
     }
   }, 300));
 
-  $(document).off('click', '.trade-proposal-request .btn');
-  $(document).on('click', '.trade-proposal-request .btn', function(){ 
-    $('.content').empty();
+  $(document).off('click', '.card-grid_trade-proposal-btn');
+  $(document).on('click', '.card-grid_trade-proposal-btn', function(){ 
+    $('.modal_content').empty();
     id = $(this).attr('data-id');
     card = search('id', id, cards);
     users = card.attributes.users.data;
     if ((users.length > 1) || (users[0].id != current_user_id) )
-      $('.content').append(cardModalTemplate(card));
+      $('.modal_content').append(cardModalTemplate(card));
     else
-      $('.content').append(onlyUserOwningCardTemplate);
+      $('.modal_content').append(onlyUserOwningCardTemplate);
 
     $('#trade-modal').addClass('active');
   });

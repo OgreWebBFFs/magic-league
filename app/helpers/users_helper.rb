@@ -1,11 +1,11 @@
 module UsersHelper
-  def gravatar(user = nil, size = 207)
+  def gravatar(user = nil, size = 154)
     default_image = URI.encode(image_url('user.png'))
 
     image_path = "#{user&.gravatar_path}?s=#{size}"
     image_path = image_path + "&d=#{default_image}" unless Rails.env == 'development'
 
-    image_tag image_path, size: size, class: 'user-image'
+    image_tag image_path, class: 'user-image'
   end
 
   def checked_if_tradable(tradables, card)
