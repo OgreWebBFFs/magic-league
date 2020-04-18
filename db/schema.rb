@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_211454) do
+ActiveRecord::Schema.define(version: 2020_04_18_132658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_211454) do
     t.string "description"
     t.string "set"
     t.string "image_url"
+    t.string "multiverse_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_211454) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.date "season_start_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.date "season_start_date", default: -> { "now()" }, null: false
     t.integer "season_length", default: 365, null: false
     t.integer "base_trade_sets", default: 1, null: false
     t.integer "bonus_trade_users", default: [], null: false, array: true
@@ -90,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_211454) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
     t.integer "failed_attempts", default: 0, null: false
-    t.datetime "locked_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "locked_at", default: -> { "now()" }
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
