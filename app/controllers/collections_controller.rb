@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update]
+  before_action :set_collection, only: [:show, :edit, :update, :bulk_edit, :bulk_update]
   before_action :set_user, only: [:show, :update]
   after_action :verify_authorized, only: [:edit, :update]
 
@@ -32,6 +32,28 @@ class CollectionsController < ApplicationController
     @cards = @collection.cards.group(:id).count
   end
 
+  def bulk_edit
+    authorize(@collection)
+
+    @card_list = @collection.to_s
+  end
+
+  def bulk_update
+    authorize(@collection)
+    
+    cards = @collection.cards
+    
+    @collection.cards.destroy_all
+    errors = CardImporter.new(collection_params).save_cards
+    byebug
+
+    if errors.blank?
+      render @collection
+    else
+      render :bulk_edit
+    end
+  end
+
   private
 
   def set_collection
@@ -42,7 +64,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.permit(:id, ownership: [ :count, :card_id, :collection_id ])
+    params.permit(:id, ownership: [ :count, :card_id, :collection_id ], collection: [:card_list])
   end
 
 end

@@ -1,0 +1,10 @@
+<div id="edit-collections-wrapper">
+  <div id="collections" class="collections-container bulk-edit">
+    <h3 class="adming_settings-title">Bulk Update Collection</h3> 
+    <%= simple_form_for @collection, url: bulk_update_collection_path(@collection) do |f| %>
+      <%= f.text_area :card_list, value: @card_list %>
+
+      <%= f.submit 'Save Collection', class: 'submit btn btn-small' %>
+    <% end %>
+  </div>
+</div>
