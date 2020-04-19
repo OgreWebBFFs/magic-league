@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "start-with-server": "pg_ctl -D /usr/local/var/postgres start && rails s"
+    "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",
+    "start-ubuntu": "sudo service postgresql start && rails s"
   }
 }
