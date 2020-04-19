@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
   resources :trades, only: [:index, :create]
+
   resources :collections, only: [:index, :show, :edit, :update]
+  get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
+  patch 'collections/:id/bulk_update', to: 'collections#bulk_update', as: 'bulk_update_collection'
+
   resources :cards, only: [:index, :show]
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]

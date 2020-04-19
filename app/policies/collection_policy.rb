@@ -5,4 +5,10 @@ class CollectionPolicy < ApplicationPolicy
   def update?
     edit?
   end
+  def bulk_edit? 
+    edit?
+  end
+  def bulk_update? 
+    edit?
+  end
 end

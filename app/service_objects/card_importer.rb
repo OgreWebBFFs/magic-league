@@ -1,14 +1,16 @@
 class CardImporter
+  REGEX = /^((?<count>\d+)?(x)?\s*)?(?<card>.*)?$/
+  COUNT = 0
+  CARD_NAME = 1
+
   def initialize(params)
-    @card_list = params[:card_list]
-    @collection = Collection.where(id: params[:collection_id])
+    @card_list = params[:collection][:card_list]
+    @collection = Collection.find(params[:id])
+    @errors = []
   end
 
   def save_cards
     cards_to_import = {}
-    CARD_REGEX = /^((?<count>\d+)?(x)?\s*)?(?<card>.*)?$/
-    COUNT = 0
-    CARD_NAME = 1
 
     # SAMPLE INPUT
     # 1x Acclaimed Contender
@@ -21,7 +23,7 @@ class CardImporter
     scanned_cards = @card_list.scan(REGEX)
 
     scanned_cards.each do |match|
-      card_name = match[CARD_NAME]
+      card_name = match[CARD_NAME].strip
       card_count = match[COUNT].nil? ? 1 : match[COUNT].to_i
 
       if cards_to_import[card_name]
@@ -37,15 +39,24 @@ class CardImporter
     # if card exists, add it to cards_to_import hash and update count
     # if card does not exist, push card name to errors array
 
+    # preprocess cards for errors
     cards_to_import.each do |name, count|
       card = Card.find_by_name(name)
       if card.nil?
-        flash.alert << "#{name} not found"
-      else
+        @errors << "#{name} not found"
+      end
+    end
+
+    # import cards if all cards found
+    if @errors.empty?
+      cards_to_import.each do |name, count|
+        card = Card.find_by_name(name)
         (1..count).each do 
-          @collection << card
+          @collection.cards << card
         end
       end
     end
+
+    return @errors
   end
 end
