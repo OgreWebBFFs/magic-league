@@ -47,7 +47,7 @@ class CollectionsController < ApplicationController
     if errors.blank?
       redirect_to @collection.user
     else
-      redirect_to bulk_edit_collection_path(@collection, params: collection_params, messages: {alert: errors})
+      redirect_to bulk_edit_collection_path(@collection, params: collection_params, alerts: errors)
     end
   end
 
