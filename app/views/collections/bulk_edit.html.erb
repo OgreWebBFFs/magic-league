@@ -1,5 +1,5 @@
 <div id="edit-collections-wrapper">
-  <% if params['alerts'].count > 0  %>
+  <% if params['alerts']&.count > 0  %>
     <div class="errors" role="alert" style="display: block;">
       <ul class="text-danger">
         <% params['alerts'].each do |error| %>
