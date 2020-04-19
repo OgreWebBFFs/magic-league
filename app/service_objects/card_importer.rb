@@ -49,6 +49,7 @@ class CardImporter
 
     # import cards if all cards found
     if @errors.empty?
+      @collection.cards.destroy_all
       cards_to_import.each do |name, count|
         card = Card.find_by_name(name)
         (1..count).each do 

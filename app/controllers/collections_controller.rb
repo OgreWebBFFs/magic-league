@@ -42,15 +42,12 @@ class CollectionsController < ApplicationController
     authorize(@collection)
     
     cards = @collection.cards
-    
-    @collection.cards.destroy_all
     errors = CardImporter.new(collection_params).save_cards
-    byebug
 
     if errors.blank?
-      render @collection
+      redirect_to @collection.user
     else
-      render :bulk_edit
+      redirect_to bulk_edit_collection_path(@collection, params: collection_params, messages: {alert: errors})
     end
   end
 
@@ -59,6 +56,7 @@ class CollectionsController < ApplicationController
   def set_collection
     @collection = Collection.find(params[:id])
   end
+
   def set_user
     @user = User.find(params[:id])
   end

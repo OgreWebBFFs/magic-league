@@ -2,6 +2,7 @@
   <div id="collections" class="collections-container">
     <div class="sub-nav">
       <h3 class="sub-nav_heading"><%= "#{@collection.user.name}'s Collection" %></h3>
+      <%= link_to 'Bulk Edit', bulk_edit_collection_path(@collection.id), class: 'sub-nav_link-btn' if policy(@collection).bulk_edit? %>
       <%= link_to 'Edit', edit_collection_path(@collection.id), class: 'sub-nav_link-btn' if policy(@collection).edit? %>
       <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link-btn active' if !policy(@collection).edit? %>
       <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link-btn' %>

@@ -1,6 +1,7 @@
 <div class="dashboard_collection">
   <div class="dashboard_collection_heading-bar">
     <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
+    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).bulk_edit? %>
     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).edit? %>
   </div>
   <div class="dashboard_collection-table">
