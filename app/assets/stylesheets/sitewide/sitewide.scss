@@ -4,7 +4,14 @@ $footer-height: 32px;
 $section-padding: 25px;
 $section-margin: 25px;
 $animation-delay: 2s;
+<<<<<<< HEAD
 $checkbox-size: 25px;
+=======
+$title-height: 50px;
+@media only screen and (max-width: 850px) { 
+  $title-height: 25px;
+}
+>>>>>>> Form and Profile page style edits
 
 //Text Treatments
 a {
@@ -63,37 +70,37 @@ h6 a {
 h1 {
   font-size: 4.2rem;
   line-height: 110%;
-  margin: 2.8rem 0 1.68rem 0;
+  margin: 0 0 1.68rem 0;
 }
 
 h2 {
   font-size: 3.56rem;
   line-height: 110%;
-  margin: 2.3733333333rem 0 1.424rem 0;
+  margin: 0 0 1.424rem 0;
 }
 
 h3 {
   font-size: 2.92rem;
   line-height: 110%;
-  margin: 1.9466666667rem 0 1.168rem 0;
+  margin: 0 0 1.168rem 0;
 }
 
 h4 {
   font-size: 2.28rem;
   line-height: 110%;
-  margin: 1.52rem 0 0.912rem 0;
+  margin: 0 0 0.912rem 0;
 }
 
 h5 {
   font-size: 1.64rem;
   line-height: 110%;
-  margin: 1.0933333333rem 0 0.656rem 0;
+  margin: 0 0 0.656rem 0;
 }
 
 h6 {
   font-size: 1.15rem;
   line-height: 110%;
-  margin: 0.7666666667rem 0 0.46rem 0;
+  margin: 0 0 0.46rem 0;
 }
 
 em {

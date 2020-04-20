@@ -1,19 +1,16 @@
-<div id="edit-collections-wrapper">
-  <div class="bulk-edit-container">
-    <h3 class="adming_settings-title">Bulk Update Collection</h3>
-    <% if !params['alerts'].blank?  %>
-      <div class="bulk-edit_errors-alert" role="alert" style="display: block;">
-        <ul class="bulk-edit_errors-list">
-          <% params['alerts'].each do |error| %>
-            <li class="bulk-edit_error"><%= error %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <%= simple_form_for @collection, url: bulk_update_collection_path(@collection) do |f| %>
-      <%= f.text_area :card_list, value: @card_list, class: 'bulk-edit_text-area'%>
-
-      <%= f.submit 'Save Collection', class: 'bulk-edit_submit-btn' %>
-    <% end %>
-  </div>
+<div class="bulk-edit-container">
+  <h3 class="bulk-edit-title">Bulk Update Collection</h3>
+  <% if !params['alerts'].blank?  %>
+    <div class="bulk-edit_errors-alert" role="alert" style="display: block;">
+      <ul class="bulk-edit_errors-list">
+        <% params['alerts'].each do |error| %>
+          <li class="bulk-edit_error-item"><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= simple_form_for @collection,  html: { class: "bulk-edit_form"}, url: bulk_update_collection_path(@collection) do |f| %>
+    <%= f.text_area :card_list, value: @card_list, class: 'bulk-edit_text-area'%>
+    <%= f.submit 'Save Collection', class: 'bulk-edit_submit-btn' %>
+  <% end %>
 </div>
