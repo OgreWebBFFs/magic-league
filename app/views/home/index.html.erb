@@ -14,19 +14,48 @@
     </div>
     <div class="rankings-scroll-catcher">
       <div class="rankings-vert-centerer">
-        <div id="rankings" class="rankings-player-listing">
-          <div id="ranked-players">
+        <div class="rankings-player-listing">
+          <div id="ranked-players" class="rankings-player-bucket">
             <% @ranked_players.each.with_index do |user, i| %>
-              <%= link_to "#{i+1}. #{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count}) - #{user.ranking&.round(2)}", user_path(user), :class => "user-btn   ranked" %>
+              <%= link_to user_path(user), :class => "rankings_user-btn   ranked" do %>
+                <div class="rankings-player-position">
+                <%= i+1 %>
+                </div>
+                <div class="rankings-player">
+                    <div class="rankings-player-name">
+                      <%= user.name%>
+                    </div>
+                    <div class="rankings-player-stats">
+                      <div class="rankings-player-elo">
+                      <%= user.ranking&.round(2)%>
+                      </div>
+                      <div class="rankings-player-record">
+                        <%= "#{@matches.where(winner: user).count} - #{@matches.where(loser: user).count}"%>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
           <hr class="rankings-divider"/>
-          <div id="unranked-players">
-
+          <div id="unranked-players" class="rankings-player-bucket">
             <% @unranked_players.each.with_index do |user, i| %>
-              <%= link_to "#{user.name} (#{@matches.where(winner: user).count}-#{@matches.where(loser: user).count})", user_path(user), :class => "user-btn unranked" %>
+              <%= link_to user_path(user), :class => "rankings_user-btn   unranked" do %>
+                <div class="rankings-player-position">
+                  *
+                </div>
+                <div class="rankings-player">
+                  <div class="rankings-player-name">
+                    <%= user.name%>
+                  </div>
+                  <div class="rankings-player-stats">
+                    <div class="rankings-player-record">
+                      <%= "#{@matches.where(winner: user).count} - #{@matches.where(loser: user).count}"%>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
-
 
           </div>
         </div>
