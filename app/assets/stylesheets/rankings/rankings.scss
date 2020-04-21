@@ -93,6 +93,8 @@
     .row {
       margin-bottom: 0;
     }
+
+  
   }
 
   &-player-listing {
@@ -136,6 +138,7 @@
     &.unranked {
       background: $color-highlight-mid-import;
 
+
       &:hover {
         background: lighten($color-highlight-mid-import, 5%);
       }
@@ -173,6 +176,9 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis
+      }
+      &.unranked {
+        text-align: center;;
       }
     }
 
@@ -233,12 +239,20 @@
   @media only screen and (max-width: 400px) {
     &-title {
       margin-top: 0px;
-      font-size: 40px;
+      font-size: 30px;
     }
 
     &-wrapper {
       height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - #{$section-padding});
     }
 
+  }
+
+  @media only screen and (max-height: 600px) {
+    &-wrapper {
+     height: 100%;
+     width: 100%;
+    }
+ 
   }
 }

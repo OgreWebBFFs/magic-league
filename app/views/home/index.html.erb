@@ -41,11 +41,8 @@
           <div id="unranked-players" class="rankings-player-bucket">
             <% @unranked_players.each.with_index do |user, i| %>
               <%= link_to user_path(user), :class => "rankings_user-btn   unranked" do %>
-                <div class="rankings-player-position">
-                  *
-                </div>
                 <div class="rankings-player">
-                  <div class="rankings-player-name">
+                  <div class="rankings-player-name unranked">
                     <%= user.name%>
                   </div>
                   <div class="rankings-player-stats">
