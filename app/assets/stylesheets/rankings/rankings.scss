@@ -243,6 +243,7 @@
     }
 
     &-wrapper {
+      width: 100%;
       height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - #{$section-padding});
     }
 
@@ -251,7 +252,6 @@
   @media only screen and (max-height: 600px) {
     &-wrapper {
      height: 100%;
-     width: 100%;
     }
  
   }
