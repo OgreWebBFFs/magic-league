@@ -3,7 +3,7 @@
 
   $ranking-board-heading: 60px;
   $month-selector: 45px;
- 
+
   &-title {
     font-size: 50px;
     margin-top: 0;
@@ -77,7 +77,7 @@
   }
 
   &-wrapper {
-   
+
     box-sizing: border-box;
     width: 35%;
     padding: 5px;
@@ -93,63 +93,104 @@
     .row {
       margin-bottom: 0;
     }
+
+  
   }
 
   &-player-listing {
     display: flex;
     margin: 0 auto;
     min-width: 230px;
-    text-align: center;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+  }
 
-    a {
-      color: $color-light;
-      max-width: 275px;
-      min-width: 200px;
-      margin: 5px auto;
-      padding: 5px;
-      height: auto;
-      display: block;
-      font-size: 12px;
-      background: $color-highlight-import;
-      animation-name: bigEntrance;
-      -webkit-animation-name: bigEntrance;
-      animation-duration: 1.6s;
-      -webkit-animation-duration: 1.6s;
-      animation-timing-function: ease-out;
-      -webkit-animation-timing-function: ease-out;
-      visibility: visible !important;
-      position: relative;
+  &-player-bucket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-      &:first-of-type {
-        ::before {
-          content: "\2726";
-          position: absolute;
-          left: 5px;
-        }
 
-        ::after {
-          content: "\2726";
-          position: absolute;
-          right: 5px;
-        }
-      }
+  &_user-btn {
+    width: 90%;
+    max-width: 300px;
+    min-width: 190px;
+    margin: 5px 0;
+    padding: 5px 10px 5px 5px;
+    height: auto;
+    display: flex;
+    font-size: 12px;
+    animation-name: bigEntrance;
+    -webkit-animation-name: bigEntrance;
+    animation-duration: 1.6s;
+    -webkit-animation-duration: 1.6s;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+    visibility: visible !important;
+
+    &:hover {
+      background: lighten($color-highlight-import, 5%);
+    }
+
+    &.unranked {
+      background: $color-highlight-mid-import;
+
 
       &:hover {
-        background: lighten($color-highlight-import, 5%);
+        background: lighten($color-highlight-mid-import, 5%);
       }
 
+    }
+
+  }
+
+  &-player {
+    line-height: 14px;
+    text-align:left;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    min-width: 0;
+    align-items: center;
+
+    &-position {
+      color: $color-light;
+      font-weight: bolder;
+      font-size: 20px;
+      align-self: center;
+      flex:0 0 35px;
+      text-align: center;
+    }
+
+    &-name {
+      flex: 1 1 100%;
+      min-width: 0; 
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &_overflow-boundary {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+      }
       &.unranked {
-        background: $color-highlight-mid-import;
-
-        &:hover {
-          background: lighten($color-highlight-mid-import, 5%);
-        }
-
+        text-align: center;;
       }
+    }
 
+    &-stats {
+      display:flex;
+      justify-content: space-between;
+      width:100%;
+    }
+  
+    &-record {
+      flex: 1 1 auto;
+      text-align: right;
     }
   }
 
@@ -195,14 +236,23 @@
 
   }
 
-  @media only screen and (max-width: 400px) { 
+  @media only screen and (max-width: 400px) {
     &-title {
       margin-top: 0px;
-      font-size: 40px;
+      font-size: 30px;
     }
+
     &-wrapper {
+      width: 100%;
       height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - #{$section-padding});
     }
 
+  }
+
+  @media only screen and (max-height: 600px) {
+    &-wrapper {
+     height: 100%;
+    }
+ 
   }
 }
