@@ -2,7 +2,6 @@ var Helpers = (function () {
 
   let toggleElementById = (elementId, siblingsToClose) => {
     if (siblingsToClose) {
-      console.log('sib to close yes')
       unToggleSiblingElements(siblingsToClose);
     }
     let target = document.getElementById(elementId);

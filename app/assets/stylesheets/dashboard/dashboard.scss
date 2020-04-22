@@ -105,6 +105,12 @@
         }
     }
 
+    &_card-view {
+        display:none;
+        &.active {
+            display:block;
+        }
+    }
     &_collection {
         margin-top: $section-margin;
 

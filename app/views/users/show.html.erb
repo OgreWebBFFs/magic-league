@@ -3,7 +3,17 @@
   <div class="dashboard-container">
     <h2 class="dashboard-title"><%= @user.name %></h2>
     <%= render 'dashboard/user_profile', user: @user %>
+    <div class="dashboard_card-interface">
+    <div>
+      <div class="dashboard_card-interface-toggle-btn" onclick="Helpers.toggleElementById('collection', 'dashboard_card-view')">
+      Collection
+      </div>
+      <div class="dashboard_card-interface-toggle-btn" onclick="Helpers.toggleElementById('wishlist', 'dashboard_card-view')">
+      Wishlist
+      </div>
+    </div>
     <%= render 'dashboard/user_wishlist', user: @user %>
     <%= render 'dashboard/user_collections', user: @user %>
+    </div>
   </div>
 </div>

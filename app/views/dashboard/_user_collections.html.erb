@@ -1,4 +1,4 @@
-<div class="dashboard_collection">
+<div id="collection"class="dashboard_collection dashboard_card-view">
   <div class="dashboard_collection_heading-bar">
     <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).edit? %>
