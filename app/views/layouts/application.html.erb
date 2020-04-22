@@ -28,7 +28,7 @@
             <li class="nav_menu-link">
               <%= link_to "profile", user_path(current_user) %>
             </li>
-            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-cards')">Cards &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-cards', 'dropdown-content')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
                   <li>
                     <a href="/trades">trades</a>
@@ -44,7 +44,7 @@
                 </li>             
               </ul>
             </li>         
-            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-league')">League &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-league', 'dropdown-content')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
                   <a href="/matches">Matches</a>
@@ -62,7 +62,7 @@
             </li>
             <% if current_user.admin? %>
               <li class="nav_menu-list">
-                <a class="drop-down-toggle" onclick="AppLayout.closeOtherDropDown(), Helpers.toggleElementById('dd-menu-admin')">Admin &#9660;</a>
+                <a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-admin', 'dropdown-content')">Admin &#9660;</a>
                 <ul id="dd-menu-admin" class="dropdown-content">
                   <li><a href="/admin/matches">Matches</a></li>
                   <li><a href="/admin/users">Users</a></li>
