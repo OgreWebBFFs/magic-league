@@ -85,6 +85,7 @@
     height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (3*#{$section-padding}));
     position: relative;
     min-width: 270px;
+    max-width:350px;
 
     h2 {
       margin-top: 0;
