@@ -25,7 +25,7 @@
                 &:before {
                     width:$box-size;
                     height:$box-size;
-                    line-height: $box-size;
+                    line-height: calc(#{$box-size}*.8);
                     font-size: calc(#{$box-size}*.8);
                     border-radius: $box-size;
                     cursor: pointer;

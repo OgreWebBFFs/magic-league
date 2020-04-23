@@ -444,7 +444,7 @@ input[type=checkbox] {
     content: '\2713';
     position: absolute;
     left: 0px;
-    top: -1px;
+    top: 0px;
     font-size: $box-size;
     display: flex;
     line-height: $box-size;
