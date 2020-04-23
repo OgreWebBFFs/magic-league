@@ -26,13 +26,16 @@
                     width:$box-size;
                     height:$box-size;
                     line-height: $box-size;
-                    font-size: $box-size;
+                    font-size: calc(#{$box-size}*.8);
                     border-radius: $box-size;
                     cursor: pointer;
                     opacity: .4;
                     content: "\2665";
                     position: absolute;
-                    color: white;
+                    color: $color-light;
+                    //fix for mobile color issues;
+                    color: transparent;  
+                    text-shadow: 0 0 0 $color-light;
                     background-color: $color-highlight-mid-import;
                 }
             }
@@ -142,7 +145,7 @@
             grid-template-columns: repeat(2, 50%);
         }
 
-        @media only screen and (max-width: 400px) {
+        @media only screen and (max-width: 500px) {
             display: block;
 
             &_card-wrapper {
