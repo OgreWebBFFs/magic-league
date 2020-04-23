@@ -28,6 +28,7 @@
                     line-height: calc(#{$box-size}*.8);
                     font-size: calc(#{$box-size}*.8);
                     border-radius: $box-size;
+                    padding:2px;
                     cursor: pointer;
                     opacity: .4;
                     content: "\2665";
@@ -37,6 +38,9 @@
                     color: transparent;  
                     text-shadow: 0 0 0 $color-light;
                     background-color: $color-highlight-mid-import;
+                    @media only screen and (max-width: 500px) {
+                        top: 0;
+                    }
                 }
             }
 
