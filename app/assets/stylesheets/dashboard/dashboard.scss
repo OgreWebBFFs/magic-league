@@ -105,7 +105,7 @@
         }
     }
 
-    &_card-interface{
+    &_card-interface {
         background: $color-nuetral;
 
         &-wrapper {
@@ -113,26 +113,30 @@
         }
 
         &_tab-wrapper {
-            display:flex;
-            background:$color-light;
+            display: flex;
+            background: $color-light;
         }
 
         &_tab-btn {
             background: rgba($color-dark, .65);
-            margin-right:5px;
-            width:150px;
+            margin-right: 5px;
+            width: 150px;
             border: 2px solid $color-dark;
-            border-bottom: 1px solid rgba($color-dark, .15);;
+            border-bottom: 1px solid rgba($color-dark, .15);
+            ;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+
             &:hover {
                 background: rgba($color-dark, .8);
             }
+
             &.active {
-               background: $color-dark;  
-              &:hover {
-                background: $color-dark;  
-              }
+                background: $color-dark;
+
+                &:hover {
+                    background: $color-dark;
+                }
             }
         }
 
@@ -140,45 +144,25 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            background-color: $color-dark;     
+            background-color: $color-dark;
         }
+
         &_action-btn {
             padding: 0 10px;
             font-size: 12px;
-            margin:5px;
+            margin: 5px;
         }
-        
-        &_cell {
-                &:first-of-type {
-                    text-align: left;
-                    flex: 1 1 auto;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    flex-wrap: nowrap;
-                }
-                &:last-of-type {
-                    flex: 0 0 100px;
-                }
-                
-            }
 
-        
     }
 
     &_card-view {
-        display:none;
-        &.active {
-            display:block;
-        }
-    }
-
-
-
-    &_collection {
+        display: none;
        
-        &_cell {
-            flex: 0 0 100px;
-            text-align: center;
+        &-cell {
+            &:last-of-type {
+                flex: 0 0 100px;
+                text-align: center;
+            }
 
             &:first-of-type {
                 text-align: left;
@@ -187,55 +171,21 @@
                 text-overflow: ellipsis;
                 flex-wrap: nowrap;
             }
-            &:last-of-type {
-                flex: 0 0 100px;
-            }
-
         }
 
-        &_for-trade-toggle {
-            position: relative;
-            display: inline;
-
-            &:before {
-                background: $color-nuetral;
-                content: "No way!";
-
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                color: $color-light;
-
-                padding: 5px;
-                -webkit-tap-highlight-color: transparent;
-                transition: .25s;
-                height: 36px;
-                width: 85px;
-                font-size: 10px;
-                top: -18px;
-                text-transform: uppercase;
-                letter-spacing: .5px;
-            }
-
-            &_checkbox:checked+label::before {
-                content: "For Trade";
-                background-color: $color-highlight-import;
-            }
+        &.active {
+            display: block;
         }
     }
+}
 
-    &_wishlist {
-        &-cell {
-            &:last-of-type {
-                flex: 0 0 100px;
-            }
-
-            .dashboard_wishlist_remove-btn {
-                width: 85px;
-                font-size: 10px;
-            }
+#wishlist {
+    .dashboard_card-view-cell {
+        .dashboard_wishlist-toggle {
+            &:checked + label:after {
+                content: '\00d7';
+              }
+            
         }
     }
 }
