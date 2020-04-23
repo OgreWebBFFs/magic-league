@@ -157,12 +157,11 @@
 
     &_card-view {
         display: none;
-       
+
         &-cell {
-            &:last-of-type {
-                flex: 0 0 100px;
-                text-align: center;
-            }
+            justify-self: flex-end;
+            flex: 0 0 100px;
+            text-align: center;
 
             &:first-of-type {
                 text-align: left;
@@ -170,6 +169,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 flex-wrap: nowrap;
+                justify-self: flex-start;
             }
         }
 
@@ -182,10 +182,9 @@
 #wishlist {
     .dashboard_card-view-cell {
         .dashboard_wishlist-toggle {
-            &:checked + label:after {
+            &:checked+label:after {
                 content: '\00d7';
-              }
-            
+            }
         }
     }
 }

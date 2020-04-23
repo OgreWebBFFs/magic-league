@@ -401,6 +401,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 input[type=checkbox] {
   position: absolute; // take it out of document flow
   opacity: 0; // hide it
+  $box-size: 20px;
 
   &+label {
     position: relative;
@@ -411,11 +412,16 @@ input[type=checkbox] {
   // Box.
   &+label:before {
     content: '';
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     vertical-align: text-top;
-    width: 20px;
-    height: 20px;
-    background: rgba($color-highlight-mid-import, .75);
+    width: $box-size;
+    height: $box-size;
+    line-height: $box-size;
+    background: rgba(255, 111, 97, 0.50);
+    -webkit-tap-highlight-color: transparent;
+    transition: .25s;
   }
 
   // Box hover
@@ -439,14 +445,14 @@ input[type=checkbox] {
     position: absolute;
     left: 0px;
     top: -1px;
-    font-size: 20px;
+    font-size: $box-size;
     display: flex;
-    line-height: 20px;
-    width: 20px;
-    height: 20px;
+    line-height: $box-size;
+    width: $box-size;
+    height: $box-size;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: $color-light;
   }
    // Disabled box.
    &:disabled+label:before {

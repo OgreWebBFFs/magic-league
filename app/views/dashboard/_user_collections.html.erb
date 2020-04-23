@@ -5,11 +5,13 @@
   <div class="dashboard_card-interface-table">
     <div class="dashboard_card-view-row-headings">
       <div class="dashboard_card-view-cell">Card</div>
+      <div class="dashboard_card-view-cell">Count</div>
       <div class="dashboard_card-view-cell">Tradable</div> 
     </div>
     <% @cards.each do |card| %>
     <div class="dashboard_card-view-row">
       <div class="dashboard_card-view-cell"><%= card.name %></div>
+      <div class="dashboard_card-view-cell"><%= @cards.count[card.id] %></div>
       <div class="dashboard_card-view-cell">
         <input class="dashboard_tradable-toggle" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
         <label class="dashboard_tradable-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
