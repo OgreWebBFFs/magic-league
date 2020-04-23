@@ -1,8 +1,12 @@
 <div id="wishlist" class="dashboard_wishlist dashboard_card-view">
-  <h3>Wishlist</h3>
+<div class="dashboard_card-interface_action-bar">
+<%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
+</div>
    <div  class="dashboard_wishlist-table">
     <div class="dashboard_wishlist-row-headings">
       <div class="dashboard_wishlist-cell">Card</div>
+      <div class="dashboard_wishlist-cell">Card</div>
+
       <script>
         var cardRow = function(card) {
         if (<%=current_user.id%>===<%= @user.id %>){

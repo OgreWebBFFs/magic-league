@@ -1,7 +1,6 @@
-<div id="collection"class="dashboard_collection dashboard_card-view">
-  <div class="dashboard_collection_heading-bar">
-    <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
-    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).edit? %>
+<div id="collection"class="dashboard_collection dashboard_card-view active">
+  <div class="dashboard_card-interface_action-bar">
+    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
   </div>
   <div class="dashboard_collection-table">
     <div class="dashboard_collection-row-headings">

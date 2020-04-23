@@ -105,35 +105,80 @@
         }
     }
 
+    &_card-interface{
+        background: $color-nuetral;
+
+        &-wrapper {
+            margin: $section-margin 0;
+        }
+
+        &_tab-wrapper {
+            display:flex;
+            background:$color-light;
+        }
+
+        &_tab-btn {
+            background: rgba($color-dark, .65);
+            margin-right:5px;
+            width:150px;
+            border: 2px solid $color-dark;
+            border-bottom: 1px solid rgba($color-dark, .15);;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            &:hover {
+                background: rgba($color-dark, .8);
+            }
+            &.active {
+               background: $color-dark;  
+              &:hover {
+                background: $color-dark;  
+              }
+            }
+        }
+
+        &_action-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: $color-dark;     
+        }
+        &_action-btn {
+            padding: 0 10px;
+            font-size: 12px;
+            margin:5px;
+        }
+        
+        &_cell {
+                &:first-of-type {
+                    text-align: left;
+                    flex: 1 1 auto;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    flex-wrap: nowrap;
+                }
+                &:last-of-type {
+                    flex: 0 0 100px;
+                }
+                
+            }
+
+        
+    }
+
     &_card-view {
         display:none;
         &.active {
             display:block;
         }
     }
+
+
+
     &_collection {
-        margin-top: $section-margin;
-
-        &_heading-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            &-title {
-                margin: 0
-            }
-
-            &_edit-btn {
-                justify-self: end;
-                padding: 0 10px;
-                font-size: 12px;
-            }
-        }
-
-        &-cell {
-            flex: 0 0 60px;
+       
+        &_cell {
+            flex: 0 0 100px;
             text-align: center;
-
 
             &:first-of-type {
                 text-align: left;
@@ -142,7 +187,6 @@
                 text-overflow: ellipsis;
                 flex-wrap: nowrap;
             }
-
             &:last-of-type {
                 flex: 0 0 100px;
             }
