@@ -433,7 +433,8 @@ input[type=checkbox] {
     align-items: center;
     width: $checkbox-size;
     height: $checkbox-size;
-    background: rgba(255, 111, 97, 0.50);
+    background: transparent;
+    border: 2px solid rgba(255, 111, 97, 0.75);
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
   }
@@ -472,6 +473,7 @@ input[type=checkbox] {
    // Disabled box.
    &:disabled+label:before {
     box-shadow: none;
+    border: 2px solid rgba(255, 111, 97, 0.25);
     background: rgba($color-nuetral, .25);
   }
 
