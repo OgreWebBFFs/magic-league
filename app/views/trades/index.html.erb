@@ -44,7 +44,7 @@
   var onlyUserOwningCardTemplate = function(card) {
     return `
       <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
-        <i class="material-icons">cancel</i>
+      <i class="fas fa-times"></i>
       </button>
       <h4 class="modal-title">Oh no!</h4>
       <p>You are the only user who owns this card. 😭</p>
@@ -54,7 +54,7 @@
   var cardModalTemplate = function(card) {
     return `
       <button class="modal_close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
-        <i class="material-icons">cancel</i>
+      <i class="fas fa-times"></i>
       </button>
       <h4 class="modal-title" >Email Proposal</h4>
       <p>You are contacting:</p>

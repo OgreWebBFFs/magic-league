@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <script src="https://kit.fontawesome.com/bf38c6b1c9.js" crossorigin="anonymous"></script>
     <title>Ogre the Leaguening</title>
 
     <!-- CSS  -->
@@ -126,7 +127,7 @@
       <% flash.each do |key, value| %>
         <div id="alert"  class="active alert alert-<%= key %> 
           <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
-          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false">&#9650;</a></div>
+          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
       <% end %>
       <%= yield %>
     </div>
@@ -135,7 +136,7 @@
       <div class="match-logger_overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
       <div class="match-logger-section">
         <button href="#" class="match-logger_close-button" onclick="Helpers.toggleElementById('match-logger')">
-          <i class="material-icons">cancel</i>
+        <i class="fas fa-times"></i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
         

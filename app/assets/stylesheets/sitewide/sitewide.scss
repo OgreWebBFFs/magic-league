@@ -4,6 +4,7 @@ $footer-height: 32px;
 $section-padding: 25px;
 $section-margin: 25px;
 $animation-delay: 2s;
+$checkbox-size: 25px;
 
 //Text Treatments
 a {
@@ -124,6 +125,16 @@ ul {
       padding-left: 15px;
     }
   }
+}
+
+//Font awesome icon set up 
+
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 //General Site Structure
@@ -284,12 +295,17 @@ select {
 //TODO refactor close buttons to work with other button classes
 [class*="_close-button"] {
   position: absolute;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   top: 5px;
   right: 5px;
-  color: $color-highlight-import;
+  width:30px;
+  height:30px;
+  background: $color-highlight-import;
+  color: $color-light;
   float: right;
   margin: 0;
-  background: transparent;
   border: none;
   cursor: pointer;
 
@@ -401,7 +417,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 input[type=checkbox] {
   position: absolute; // take it out of document flow
   opacity: 0; // hide it
-  $box-size: 20px;
+
 
   &+label {
     position: relative;
@@ -415,10 +431,8 @@ input[type=checkbox] {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    vertical-align: text-top;
-    width: $box-size;
-    height: $box-size;
-    line-height: $box-size;
+    width: $checkbox-size;
+    height: $checkbox-size;
     background: rgba(255, 111, 97, 0.50);
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
@@ -441,15 +455,16 @@ input[type=checkbox] {
   }
 
   &:checked+label:after {
-    content: '\2713';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
     position: absolute;
     left: 0px;
-    top: -1px;
-    font-size: $box-size;
+    top: 0px;
+    font-size: calc#{$checkbox-size*.8};
     display: flex;
-    line-height: $box-size;
-    width: $box-size;
-    height: $box-size;
+    width: $checkbox-size;
+    height: $checkbox-size;
     align-items: center;
     justify-content: center;
     color: $color-light;

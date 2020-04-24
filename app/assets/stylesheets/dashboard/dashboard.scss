@@ -183,7 +183,8 @@
     .dashboard_card-view-cell {
         .dashboard_wishlist-toggle {
             &:checked+label:after {
-                content: '\00d7';
+                font-size: calc(#{$checkbox-size}*.7);
+                content: '\f00d';
             }
         }
     }

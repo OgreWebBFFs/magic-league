@@ -20,18 +20,19 @@
         
 
         input[type=checkbox] {
-            $box-size:35px;
             + label {
                 &:before {
-                    width:$box-size;
-                    height:$box-size;
-                    line-height: calc(#{$box-size}*.8);
-                    font-size: calc(#{$box-size}*.8);
-                    border-radius: $box-size;
+                    $checkbox-size:35px;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight:400;
+                    content: "\f004";
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    font-size: calc(#{$checkbox-size}*.7);
+                    border-radius:  $checkbox-size;
                     padding:2px;
                     cursor: pointer;
                     opacity: .4;
-                    content: "\2665";
                     position: absolute;
                     color: $color-light;
                     //fix for mobile color issues;
