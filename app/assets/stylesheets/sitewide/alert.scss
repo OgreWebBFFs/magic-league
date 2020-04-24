@@ -1,6 +1,8 @@
 .alert{
     width: 120%;
     left: -10%;
+    align-items: center;
+    justify-content: center;
     top: $nav-height;
     position: absolute;
     color: $color-light;
@@ -9,9 +11,10 @@
     display: none;
     padding: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  
+
     &_close-button {
       position: relative;
+      background: transparent;
       color: $color-light;
       margin-left: 10px;
       top: initial;
@@ -20,7 +23,7 @@
     }
   
     &.active {
-      display: block;
+      display: flex;
     }
   
     &.logged-out {
@@ -29,5 +32,9 @@
   
     &.urgent {
       background-color: $color-highlight-urgent;
+    }
+    @media only screen and (max-width: 650px) {
+      width:100%;
+      left:0;
     }
   }

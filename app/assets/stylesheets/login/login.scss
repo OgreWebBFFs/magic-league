@@ -16,6 +16,7 @@
     &-content {
         width: 40%;
         min-width: 295px;
+        max-width: 400px;
         background: rgba($color-light, .9);
         padding: $section-padding;
         text-align: center;
