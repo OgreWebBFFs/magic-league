@@ -105,29 +105,63 @@
         }
     }
 
-    &_collection {
-        margin-top: $section-margin;
+    &_card-interface {
+        background: $color-nuetral;
 
-        &_heading-bar {
+        &-wrapper {
+            margin: $section-margin 0;
+        }
+
+        &_tab-wrapper {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: $color-light;
+        }
 
-            &-title {
-                margin: 0
+        &_tab-btn {
+            background: rgba($color-dark, .65);
+            margin-right: 5px;
+            width: 150px;
+            border: 2px solid $color-dark;
+            border-bottom: 1px solid rgba($color-dark, .15);
+            ;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:hover {
+                background: rgba($color-dark, .8);
             }
 
-            &_edit-btn {
-                justify-self: end;
-                padding: 0 10px;
-                font-size: 12px;
+            &.active {
+                background: $color-dark;
+
+                &:hover {
+                    background: $color-dark;
+                }
             }
         }
 
-        &-cell {
-            flex: 0 0 60px;
-            text-align: center;
+        &_action-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: $color-dark;
+        }
 
+        &_action-btn {
+            padding: 0 10px;
+            font-size: 12px;
+            margin: 5px;
+        }
+
+    }
+
+    &_card-view {
+        display: none;
+
+        &-cell {
+            justify-self: flex-end;
+            flex: 0 0 100px;
+            text-align: center;
 
             &:first-of-type {
                 text-align: left;
@@ -135,56 +169,22 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 flex-wrap: nowrap;
+                justify-self: flex-start;
             }
-
-            &:last-of-type {
-                flex: 0 0 100px;
-            }
-
         }
 
-        &_for-trade-toggle {
-            position: relative;
-            display: inline;
-
-            &:before {
-                background: $color-nuetral;
-                content: "No way!";
-
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: absolute;
-                color: $color-light;
-
-                padding: 5px;
-                -webkit-tap-highlight-color: transparent;
-                transition: .25s;
-                height: 36px;
-                width: 85px;
-                font-size: 10px;
-                top: -18px;
-                text-transform: uppercase;
-                letter-spacing: .5px;
-            }
-
-            &_checkbox:checked+label::before {
-                content: "For Trade";
-                background-color: $color-highlight-import;
-            }
+        &.active {
+            display: block;
         }
     }
+}
 
-    &_wishlist {
-        &-cell {
-            &:last-of-type {
-                flex: 0 0 100px;
-            }
-
-            .dashboard_wishlist_remove-btn {
-                width: 85px;
-                font-size: 10px;
+#wishlist {
+    .dashboard_card-view-cell {
+        .dashboard_wishlist-toggle {
+            &:checked+label:after {
+                font-size: calc(#{$checkbox-size}*.7);
+                content: '\f00d';
             }
         }
     }

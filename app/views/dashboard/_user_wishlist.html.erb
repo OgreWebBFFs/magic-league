@@ -1,27 +1,30 @@
-<div class="dashboard_wishlist">
-  <h3>Wishlist</h3>
-   <div  class="dashboard_wishlist-table">
-    <div class="dashboard_wishlist-row-headings">
-      <div class="dashboard_wishlist-cell">Card</div>
-      <script>
+<div id="wishlist" class="dashboard_card-view">
+<div class="dashboard_card-interface_action-bar">
+<%= link_to 'Add', trades_path, class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
+</div>
+   <div id="wishlist-table" class="dashboard_card-view-table">
+    <div class="dashboard_card-view-row-headings">
+      <div class="dashboard_card-view-cell">Card</div>
+       <script>
         var cardRow = function(card) {
         if (<%=current_user.id%>===<%= @user.id %>){
         return `
-          <div class="dashboard_wishlist-row wishlist-item">
-            <div class="dashboard_wishlist-cell">
+          <div class="dashboard_card-view-row wishlist-item">
+            <div class="dashboard_card-view-cell">
               ${card.name}
             </div>
-            <div class="dashboard_wishlist-cell">
-               <button data-id="${card.id}" class="dashboard_wishlist_remove-btn" if policy(@user)?>Remove</button>
+            <div class="dashboard_card-view-cell">
+            <input class="dashboard_wishlist-toggle" type="checkbox" checked <%= disabled_if_not_current_user(user) %> data-id="${card.id}" id="${card.name}_${card.id}">
+            <label class="dashboard_wishlist-toggle" for="${card.name}_${card.id}"></label>
             </div>
           </div>
          `
         }
        else{
        return `
-          <div class="dashboard_wishlist-row wishlist-item">
-            <div class="dashboard_wishlist-cell">${card.name}</div>
-            <div class="dashboard_wishlist-cell"></div>
+          <div class="dashboard_card-view-row wishlist-item">
+            <div class="dashboard_card-view-cell">${card.name}</div>
+            <div class="dashboard_card-view-cell"></div>
           </div>
         `
         }
@@ -32,12 +35,12 @@
           xhrRequest('/wishlists/<%= @user.id %>', 'GET', function(res){
             $('.wishlist-item').remove()
             res.forEach(function(card) {
-              $('.dashboard_wishlist-table').append(cardRow(card));
+              $('#wishlist-table').append(cardRow(card));
             });
           });
 
-          $(document).off('click', '.dashboard_wishlist_remove-btn');
-          $(document).on('click', '.dashboard_wishlist_remove-btn', function(){
+          $(document).off('click', '.dashboard_wishlist-toggle');
+          $(document).on('click', '.dashboard_wishlist-toggle', function(){
             card_id = $(this).attr('data-id');
             that = this;
             $.ajax({
@@ -49,7 +52,7 @@
               data: { card_id: card_id },
               dataType: 'json',
               success: function(res) {
-                $(that).closest('.dashboard_wishlist-row').remove();
+                $(that).closest('.dashboard_card-view-row').remove();
               },
               error: function(res) {
               }
