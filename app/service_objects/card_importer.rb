@@ -40,10 +40,14 @@ class CardImporter
     # if card does not exist, push card name to errors array
 
     # preprocess cards for errors
-    cards_to_import.each do |name, count|
-      card = Card.find_by('lower(name) = ?', name.downcase)
-      if card.nil?
-        @errors << "#{name} not found"
+    if @card_list.empty?
+      @errors << "You cannot delete your entire collection in this way!"
+    else
+      cards_to_import.each do |name, count|
+        card = Card.find_by('lower(name) = ?', name.downcase)
+        if card.nil?
+          @errors << "#{name} not found"
+        end
       end
     end
 
