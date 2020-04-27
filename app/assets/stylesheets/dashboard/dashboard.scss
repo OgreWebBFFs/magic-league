@@ -1,5 +1,5 @@
 .dashboard {
-    &-title {
+    &__title {
         margin-top: 0;
     }
 
@@ -13,10 +13,11 @@
             padding-right: $section-margin;
             //Height of trades table 
             height: 192px;
+            align-items: center;
 
             &_edit__btn {
                 margin-top: 2px;
-                flex: 0 0 36px;
+                width: 154px;
             }
 
             .user-image {
@@ -147,10 +148,8 @@
             }
 
             @media only screen and (max-width: 850px) {
-                flex-direction: column;
-                margin-bottom: 10px;
 
-                &-title {
+                &__title {
                     align-self: start;
                 }
 

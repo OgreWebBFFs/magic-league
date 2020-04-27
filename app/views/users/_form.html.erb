@@ -1,7 +1,7 @@
 <%= simple_form_for user do |f| %>
   <% if current_user.admin? %>
-    <%= render 'admin__fields', f: f %>
+    <%= render 'admin_fields', f: f %>
   <% else %>
-    <%= render 'user__fields', f: f %>
+    <%= render 'user_fields', f: f %>
   <% end %>
 <% end %>
