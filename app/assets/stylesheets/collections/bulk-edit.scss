@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$title-height}); 
+    height: calc(100vh - #{$nav-height} - #{$footer-height}); 
     min-height: 200px;
     @media only screen and (max-width: 850px) {
       width: 90%;
