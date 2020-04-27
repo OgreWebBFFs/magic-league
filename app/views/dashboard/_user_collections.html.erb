@@ -1,7 +1,7 @@
 <div id="collection" class="dashboard_card-view active">
   <div class="dashboard_card-interface_action-bar">
-    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
-    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).bulk_edit? %>
+    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
+    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).bulk_edit? %>
   </div>
   <div class="dashboard_card-interface__table">
     <div class="dashboard_card-view__row-headings">
