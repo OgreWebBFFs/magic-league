@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<div class="dashboard_collection">
-  <div class="dashboard_collection_heading-bar">
-    <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
-     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).edit? %>
-     <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_collection_heading-bar_edit-btn' if policy(user.collection).bulk_edit? %>
-    </div>
-  <div class="dashboard_collection-table">
-    <div class="dashboard_collection-row-headings">
-      <div class="dashboard_collection-cell">Card</div>
-      <div class="dashboard_collection-cell">Amount</div>
-      <div class="dashboard_collection-cell">Tradable</div> 
-=======
 <div id="collection" class="dashboard_card-view active">
   <div class="dashboard_card-interface_action-bar">
     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
@@ -21,7 +8,6 @@
       <div class="dashboard_card-view-cell">Card</div>
       <div class="dashboard_card-view-cell">Count</div>
       <div class="dashboard_card-view-cell">Tradable</div> 
->>>>>>> bf07cc8ca3fff89f136a611762e62563be1a5331
     </div>
     <% @cards.each do |card| %>
     <div class="dashboard_card-view-row">
