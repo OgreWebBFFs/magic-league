@@ -4,10 +4,14 @@ $footer-height: 32px;
 $section-padding: 25px;
 $section-margin: 25px;
 $animation-delay: 2s;
+<<<<<<< HEAD
 $title-height: 50px;
 @media only screen and (max-width: 850px) { 
   $title-height: 25px;
 }
+=======
+$checkbox-size: 25px;
+>>>>>>> bf07cc8ca3fff89f136a611762e62563be1a5331
 
 //Text Treatments
 a {
@@ -128,6 +132,16 @@ ul {
       padding-left: 15px;
     }
   }
+}
+
+//Font awesome icon set up 
+
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 //General Site Structure
@@ -288,12 +302,17 @@ select {
 //TODO refactor close buttons to work with other button classes
 [class*="_close-button"] {
   position: absolute;
+  display:flex;
+  align-items: center;
+  justify-content: center;
   top: 5px;
   right: 5px;
-  color: $color-highlight-import;
+  width:30px;
+  height:30px;
+  background: $color-highlight-import;
+  color: $color-light;
   float: right;
   margin: 0;
-  background: transparent;
   border: none;
   cursor: pointer;
 
@@ -403,7 +422,73 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 }
 
 input[type=checkbox] {
-  display: none;
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+
+  &+label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  // Box.
+  &+label:before {
+    content: '';
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    background: transparent;
+    border: 2px solid rgba(255, 111, 97, 0.75);
+    -webkit-tap-highlight-color: transparent;
+    transition: .25s;
+  }
+
+  // Box hover
+  &:hover+label:before {
+    background: $color-highlight-mid-import;
+  }
+
+  // Box checked
+  &:checked+label:before {
+    background: $color-highlight-import;
+  }
+
+  // Disabled state label.
+  &:disabled+label {
+    color: $color-nuetral;
+    cursor: auto;
+  }
+
+  &:checked+label:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-size: calc#{$checkbox-size*.8};
+    display: flex;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    align-items: center;
+    justify-content: center;
+    color: $color-light;
+  }
+   // Disabled box.
+   &:disabled+label:before {
+    box-shadow: none;
+    border: 2px solid rgba(255, 111, 97, 0.25);
+    background: rgba($color-nuetral, .25);
+  }
+
+  &:disabled+label:after {
+    box-shadow: none;
+    color: $color-dark
+  }
+
 }
 
 //switch 
@@ -481,7 +566,7 @@ input[type=checkbox] {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
- 
+
 }
 
 //Overlays for modals and drawers
@@ -508,6 +593,7 @@ input[type=checkbox] {
   [class*="-section"] {
     padding-left: 1px;
     padding-right: 1px;
+
     &.full-page {
       padding: 5px;
     }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="dashboard_collection">
   <div class="dashboard_collection_heading-bar">
     <h3 class="dashboard_collection_heading-bar-title">Collection</h3>
@@ -9,14 +10,26 @@
       <div class="dashboard_collection-cell">Card</div>
       <div class="dashboard_collection-cell">Amount</div>
       <div class="dashboard_collection-cell">Tradable</div> 
+=======
+<div id="collection" class="dashboard_card-view active">
+  <div class="dashboard_card-interface_action-bar">
+    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
+    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).bulk_edit? %>
+  </div>
+  <div class="dashboard_card-interface-table">
+    <div class="dashboard_card-view-row-headings">
+      <div class="dashboard_card-view-cell">Card</div>
+      <div class="dashboard_card-view-cell">Count</div>
+      <div class="dashboard_card-view-cell">Tradable</div> 
+>>>>>>> bf07cc8ca3fff89f136a611762e62563be1a5331
     </div>
     <% @cards.each do |card| %>
-    <div class="dashboard_collection-row">
-      <div class="dashboard_collection-cell"><%= card.name %></div>
-      <div class="dashboard_collection-cell"><%= @cards.count[card.id] %></div>
-      <div class="dashboard_collection-cell">
-        <input class="dashboard_collection_for-trade-toggle_checkbox" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
-        <label class="dashboard_collection_for-trade-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
+    <div class="dashboard_card-view-row">
+      <div class="dashboard_card-view-cell"><%= card.name %></div>
+      <div class="dashboard_card-view-cell"><%= @cards.count[card.id] %></div>
+      <div class="dashboard_card-view-cell">
+        <input class="dashboard_tradable-toggle" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
+        <label class="dashboard_tradable-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
       </div>
     </div>
     <% end %>
@@ -28,12 +41,12 @@
     return `
     <div id="alert-container" class="active alert alert-${key}">
     ${value}
-          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false">&#9650;</a>
+          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false"><i class="fas fa-times"></i></a>
     </div>
     `
   };
   $(function() {
-    $('.dashboard_collection_for-trade-toggle_checkbox').on('click', function() {
+    $('.dashboard_tradable-toggle').on('click', function() {
       console.log($(this));
       id = $(this).attr('data-id');
       that = this;

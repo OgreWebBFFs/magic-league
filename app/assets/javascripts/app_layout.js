@@ -35,7 +35,6 @@ var AppLayout = (function() {
 
   let handleWindowClick = function(event) {
     if (!event.target.matches('.drop-down-toggle')) {
-      console.log('handler filed');
       var dropdowns = document.querySelectorAll(".dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -48,13 +47,6 @@ var AppLayout = (function() {
   }  
 
   // Exposed functions start here
-  let closeOtherDropDown = function() {
-    var dropDownMenus = document.getElementById("top-nav").querySelectorAll(".dropdown-content");           
-    for (var i = 0; i < dropDownMenus.length; i++) {
-      dropDownMenus[i].classList.remove("active");
-    }
-  } 
-
 
   let initialize = function(user_signed_in = false, current_user_id = null) {
     $('.nav_match-logger-btn').on('click', logMatchOnClick);
@@ -80,7 +72,6 @@ var AppLayout = (function() {
 
   return {
     initialize: initialize,
-    closeOtherDropDown: closeOtherDropDown,
     timedAlertClose: timedAlertClose,
   }
 

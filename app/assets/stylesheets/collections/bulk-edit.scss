@@ -4,7 +4,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
+<<<<<<< HEAD
     height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$title-height}); 
+=======
+    height: calc(100vh - #{$nav-height} - #{$footer-height}); 
+>>>>>>> bf07cc8ca3fff89f136a611762e62563be1a5331
     min-height: 200px;
     @media only screen and (max-width: 850px) {
       width: 90%;

@@ -1,8 +1,11 @@
 {
   "name": "mtg-league",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0"
+  },
   "scripts": {
-    "start-with-server": "pg_ctl -D /usr/local/var/postgres start && rails s"
+    "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",
+    "start-ubuntu": "sudo service postgresql start && rails s"
   }
 }
