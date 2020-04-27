@@ -1,5 +1,5 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update]
+  before_action :set_collection, only: [:show, :edit, :update, :bulk_edit, :bulk_update]
   before_action :set_user, only: [:show, :update]
   after_action :verify_authorized, only: [:edit, :update]
 
@@ -32,17 +32,41 @@ class CollectionsController < ApplicationController
     @cards = @collection.cards.group(:id).count
   end
 
+  def bulk_edit
+    authorize(@collection)
+
+    if !params['alerts'].blank?
+      @card_list = params['collection']['card_list']
+    else
+      @card_list = @collection.to_s
+    end
+  end
+
+  def bulk_update
+    authorize(@collection)
+    
+    cards = @collection.cards
+    errors = CardImporter.new(collection_params).save_cards
+
+    if errors.blank?
+      redirect_to @collection.user
+    else
+      redirect_to bulk_edit_collection_path(@collection, params: collection_params, alerts: errors)
+    end
+  end
+
   private
 
   def set_collection
     @collection = Collection.find(params[:id])
   end
+
   def set_user
     @user = User.find(params[:id])
   end
 
   def collection_params
-    params.permit(:id, ownership: [ :count, :card_id, :collection_id ])
+    params.permit(:id, :alerts, ownership: [ :count, :card_id, :collection_id ], collection: [:card_list])
   end
 
 end
