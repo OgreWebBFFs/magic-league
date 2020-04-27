@@ -11,6 +11,13 @@
   <% end %>
   <%= simple_form_for @collection,  html: { class: "bulk-edit_form"}, url: bulk_update_collection_path(@collection) do |f| %>
     <%= f.text_area :card_list, value: @card_list, class: 'bulk-edit_text-area'%>
+    <p class="help-text">
+      Enter your cards one line at a time with a number at the beginning specifying how many cards you have. Some valid samples are provided below:
+
+      1x Acclaimed Contender
+      All That Glitters
+      2 Archon of Absolution
+    </p>
     <%= f.submit 'Save Collection', class: 'bulk-edit_submit-btn' %>
   <% end %>
 </div>
