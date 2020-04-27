@@ -176,6 +176,7 @@ body {
 [class*="-container"] {
   width: 70%;
   margin: 0 auto;
+  max-width: 1024px;
 
   .content {
     width: 100%;
