@@ -35,7 +35,11 @@ class CollectionsController < ApplicationController
   def bulk_edit
     authorize(@collection)
 
-    @card_list = @collection.to_s
+    if !params['alerts'].blank?
+      @card_list = params['collection']['card_list']
+    else
+      @card_list = @collection.to_s
+    end
   end
 
   def bulk_update
@@ -62,7 +66,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.permit(:id, ownership: [ :count, :card_id, :collection_id ], collection: [:card_list])
+    params.permit(:id, :alerts, ownership: [ :count, :card_id, :collection_id ], collection: [:card_list])
   end
 
 end
