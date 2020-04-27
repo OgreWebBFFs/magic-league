@@ -1,15 +1,15 @@
 .admin_users{
-    &-cell{
+    &__cell{
         flex:0 0 25%;
         overflow:hidden;
         text-overflow: ellipsis;
 
-        [class*="-btn"] {
+        [class*="__btn"] {
             width:150px;
          }
     }
 
-    &_lock-btn {
+    &_lock__btn {
         background: $color-nuetral;
         width:400px;
         &:hover {
@@ -18,25 +18,25 @@
     } 
     @media only screen and (max-width: 850px) {
 
-        &-row {
+        &__row {
             display:block; 
             &-headings {
                 display:none;
             }
         }
     
-        [class*="-cell"] {
+        [class*="__cell"] {
             text-align:center;
         }
 
-        &-cell{
+        &__cell{
             &-date{
                 color: $color-light;
                 background: $color-dark;
             }
         }
 
-        [class*="-btn"]{
+        [class*="__btn"]{
          width: 100px;
         }
     }

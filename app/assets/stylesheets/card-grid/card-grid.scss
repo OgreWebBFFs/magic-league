@@ -3,7 +3,7 @@
     grid-template-columns: repeat(4, 25%);
     width: 100%;
 
-    &_card-wrapper {
+    &_card__wrapper {
         width: 100%;
         margin: 30px auto;
         display:flex;
@@ -11,7 +11,7 @@
         align-items: center;
     }
 
-    &_wishlist-toggle {
+    &_wishlist__toggle {
         top: -25px;
         right: 20px;
         opacity: 1;
@@ -82,7 +82,7 @@
             background-color: $color-highlight-import;
             border-radius: 5px;
 
-            [class*="-btn"] {
+            [class*="__btn"] {
                 font-weight: bolder;
                 display: flex;
                 justify-content: center;
@@ -118,7 +118,7 @@
             margin: 0 auto;
             text-align: center;
 
-            &-btn {
+            &__btn {
                 width: 100%;
 
                 span {
@@ -153,7 +153,7 @@
         @media only screen and (max-width: 500px) {
             display: block;
 
-            &_card-wrapper {
+            &_card__wrapper {
                 margin-bottom: 25px;
             }
         }

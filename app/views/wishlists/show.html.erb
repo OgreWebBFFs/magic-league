@@ -1,14 +1,14 @@
-<div id="wishlist-wrapper">
+<div id="wishlist__wrapper">
   <div id="wishlist" class="container">
     <div class="sub-nav">
       <h3 class="sub-nav_heading"><%= "#{@user.name}'s Wishlist" %> </h3>
-      <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link-btn'%>
-      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link-btn  active'%>
-      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link-btn'%>
+      <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link__btn'%>
+      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link__btn  active'%>
+      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link__btn'%>
     </div>
     <div class="card-grid">
       <% @user.wishlist.each do |card| %>
-        <div class="card-grid_card-wrapper">
+        <div class="card-grid_card__wrapper">
           <div class="card-grid_card">
             <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
           </div>  

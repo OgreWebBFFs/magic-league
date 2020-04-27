@@ -1,16 +1,15 @@
-<div id="collections-wrapper">
-  <div id="collections" class="collections-container">
+<div id="collections__wrapper">
+  <div id="collections" class="collections__container">
     <div class="sub-nav">
       <h3 class="sub-nav_heading"><%= "#{@collection.user.name}'s Collection" %></h3>
-      <%= link_to 'Bulk Edit', bulk_edit_collection_path(@collection.id), class: 'sub-nav_link-btn' if policy(@collection).bulk_edit? %>
-      <%= link_to 'Edit', edit_collection_path(@collection.id), class: 'sub-nav_link-btn' if policy(@collection).edit? %>
-      <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link-btn active' if !policy(@collection).edit? %>
-      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link-btn' %>
-      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link-btn'%>
+      <%= link_to 'Edit', edit_collection_path(@collection.id), class: 'sub-nav_link__btn' if policy(@collection).edit? %>
+      <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link__btn active' if !policy(@collection).edit? %>
+      <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link__btn' %>
+      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link__btn'%>
     </div>
     <div class="card-grid">
       <% @cards.each do |card| %>
-        <div class="card-grid_card-wrapper">
+        <div class="card-grid_card__wrapper">
           <div class="card-grid_card">
             <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
           </div>  

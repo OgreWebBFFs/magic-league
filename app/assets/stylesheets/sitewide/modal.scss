@@ -16,7 +16,7 @@
     align-items: center;
  
 
-    &_content {
+    &__content {
         position: relative;
         background: $color-light;
         vertical-align: middle;
@@ -27,11 +27,11 @@
         z-index: 1px;
     }
     
-    &-title {
+    &__title {
         margin-top: 0;
     }
 
-    &_close-button{
+    &__close-button{
         right:-5px;
         top: -5px;
     }

@@ -6,7 +6,7 @@
   <ul>
     <% @users.each do |user| %>
       <li>
-      <%= link_to user.name, wishlist_path(user.id), :class => "user-list_user-btn" %>
+      <%= link_to user.name, wishlist_path(user.id), :class => "user-list_user__btn" %>
       </li>
     <% end %>
   </ul>

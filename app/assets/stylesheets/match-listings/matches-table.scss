@@ -1,6 +1,6 @@
 .matches,
 .admin_matches {
-    &-cell {
+    &__cell {
         flex: 1 1 20%;
         &-date,
         &-time {
@@ -18,7 +18,7 @@
         display:none;
     }
 
-    [class*="-btn"]{
+    [class*="__btn"]{
         line-height: 24px;
     }
 
@@ -29,25 +29,25 @@
             font-weight: bold;
         }
 
-        &-row {
+        &__row {
             display:block; 
             &-headings {
                 display:none;
             }
         }
     
-        [class*="-cell"] {
+        [class*="__cell"] {
             text-align:center;
         }
 
-        &-cell{
+        &__cell{
             &-date{
                 color: $color-light;
                 background: $color-dark;
             }
         }
 
-        [class*="-btn"]{
+        [class*="__btn"]{
          width: 100px;
         }
     }

@@ -13,7 +13,7 @@
   color: $color-dark;
   text-align: center;
 
-  &-section {
+  &__section {
     position: relative;
     z-index: 2;
     max-width: 300px;
@@ -34,7 +34,7 @@
     }
   }
 
-  &_submit-btn {
+  &_submit__btn {
     margin-top: 25px;
     font-size: 25px;
     outline: none;
@@ -58,7 +58,7 @@
   }
 
   @media only screen and (max-width: 400px) {
-    &-section {
+    &__section {
       h3 {
         font-size: 1.5rem;
       }

@@ -6,7 +6,7 @@
   <ul>
     <% @collections.each do |collection| %>
       <li>
-        <%= link_to collection.user.name, collection_path(collection.id), :class => "user-list_user-btn" %> 
+        <%= link_to collection.user.name, collection_path(collection.id), :class => "user-list_user__btn" %> 
       </li>
     <% end %>
   </ul>
