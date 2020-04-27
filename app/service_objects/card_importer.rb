@@ -41,7 +41,7 @@ class CardImporter
 
     # preprocess cards for errors
     cards_to_import.each do |name, count|
-      card = Card.find_by_name(name)
+      card = Card.find_by('lower(name) = ?', name.downcase)
       if card.nil?
         @errors << "#{name} not found"
       end
@@ -51,7 +51,7 @@ class CardImporter
     if @errors.empty?
       @collection.cards.destroy_all
       cards_to_import.each do |name, count|
-        card = Card.find_by_name(name)
+        card = Card.find_by('lower(name) = ?', name.downcase)
         (1..count).each do 
           @collection.cards << card
         end
