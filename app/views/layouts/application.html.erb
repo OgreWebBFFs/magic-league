@@ -18,7 +18,7 @@
   <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
       <nav id="top-nav" class="nav" role="navigation">
-        <div class="nav-container">
+        <div class="nav__container">
           <a href="/" class="nav_logo" data-turbolinks="false">
           <%= show_svg('logo.svg') %>
           </a>
@@ -29,7 +29,7 @@
             <li class="nav_menu-link">
               <%= link_to "profile", user_path(current_user) %>
             </li>
-            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-cards', 'dropdown-content')">Cards &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-cards', 'dropdown-content')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
                   <li>
                     <a href="/trades">trades</a>
@@ -45,7 +45,7 @@
                 </li>             
               </ul>
             </li>         
-            <li class="nav_menu-list"><a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-league', 'dropdown-content')">League &#9660;</a> 
+            <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-league', 'dropdown-content')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
                   <a href="/matches">Matches</a>
@@ -63,7 +63,7 @@
             </li>
             <% if current_user.admin? %>
               <li class="nav_menu-list">
-                <a class="drop-down-toggle" onclick="Helpers.toggleElementById('dd-menu-admin', 'dropdown-content')">Admin &#9660;</a>
+                <a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-admin', 'dropdown-content')">Admin &#9660;</a>
                 <ul id="dd-menu-admin" class="dropdown-content">
                   <li><a href="/admin/matches">Matches</a></li>
                   <li><a href="/admin/users">Users</a></li>
@@ -72,7 +72,7 @@
               </li>
             <% end %>
             <li class="nav_menu-mobile">
-              <a class="drop-down-toggle mobile-menu_dropdown-btn" onclick="Helpers.toggleElementById('dd-menu-mobile')">
+              <a class="drop-down__toggle mobile-menu_dropdown__btn" onclick="Helpers.toggleElementById('dd-menu-mobile')">
                 &#9660;
               </a>
               <ul id="dd-menu-mobile" class="dropdown-content">
@@ -113,8 +113,8 @@
                 </li>
               </ul>
             </li>
-            <li class="nav_menu-match-logger-toggle-wrapper">
-              <a href="#" class="nav_match-logger-btn">
+            <li class="nav_menu-match-logger__toggle-wrapper">
+              <a href="#" class="nav_match-logger__btn">
                 Log a match
               </a>
             </li>
@@ -123,19 +123,19 @@
       </nav>
     <% end %>
 
-    <div class="app-section full-page">
+    <div class="app__section full-page">
       <% flash.each do |key, value| %>
         <div id="alert"  class="active alert alert-<%= key %> 
           <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
-          <a class="alert_close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
+          <a class="alert__close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
       <% end %>
       <%= yield %>
     </div>
 
     <div id="match-logger" class="match-logger">
-      <div class="match-logger_overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
-      <div class="match-logger-section">
-        <button href="#" class="match-logger_close-button" onclick="Helpers.toggleElementById('match-logger')">
+      <div class="match-logger__overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
+      <div class="match-logger__section">
+        <button href="#" class="match-logger__close-button" onclick="Helpers.toggleElementById('match-logger')">
          <i class="fas fa-times"></i>
         </button>
         <%= form_tag "/matches", method: "post", id: "match-logger" do %>
@@ -158,7 +158,7 @@
           <p>When?</p>
           <input id="match-date" type="date" name="match[date]"/>
           <input id="match-time" type="time" name="match[time]"/>
-          <input type="submit" class="match-logger_submit-btn" />
+          <input type="submit" class="match-logger_submit__btn" />
         <% end %>
       </div>
     </div>

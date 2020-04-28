@@ -1,22 +1,22 @@
 <div class="dashboard_profile">
   <div class="dashboard_profile_user-details">
     <%= gravatar(user) %>
-    <%= link_to 'Edit Account', [:edit, @user], class: 'dashboard_profile_user-details_edit-btn' if policy(@user).edit? %>
+    <%= link_to 'Edit Account', [:edit, @user], class: 'dashboard_profile_user-details_edit__btn' if policy(@user).edit? %>
   </div>
   <div class="dashboard_profile_trades">
-    <div class="dashboard_profile_trades-table">
-      <div class="dashboard_profile_trades-row-headings">
-        <div class="dashboard_profile_trades-cell">Trades</div>
-        <div class="dashboard_profile_trades-cell">Received</div>
-        <div class="dashboard_profile_trades-cell">Allowed</div>
+    <div class="dashboard_profile_trades__table">
+      <div class="dashboard_profile_trades__row-headings">
+        <div class="dashboard_profile_trades__cell">Trades</div>
+        <div class="dashboard_profile_trades__cell">Received</div>
+        <div class="dashboard_profile_trades__cell">Allowed</div>
       </div>
       <% @user.trades_received_and_allowed_by_rarity.each do |trade| %>
-        <div class="dashboard_profile_trades-row">
-         <div class="dashboard_profile_trades-cell"><%= trade[:rarity].capitalize %></div>
-         <div class="dashboard_profile_trades-cell">
+        <div class="dashboard_profile_trades__row">
+         <div class="dashboard_profile_trades__cell"><%= trade[:rarity].capitalize %></div>
+         <div class="dashboard_profile_trades__cell">
           <input type="number" value="<%= trade[:num_received] %>" name="rarity-<%= trade[:rarity] %>" label="<%= trade[:rarity].capitalize %>" data-rarity="<%= trade[:rarity] %>" min="0" max="<%= trade[:num_allowed] %>"/>
          </div>
-         <div class="dashboard_profile_trades-cell"><%= trade[:num_allowed] %></div>
+         <div class="dashboard_profile_trades__cell"><%= trade[:num_allowed] %></div>
         </div>
       <% end %>
     </div>

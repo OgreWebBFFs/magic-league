@@ -1,5 +1,5 @@
 .dashboard {
-    &-title {
+    &__title {
         margin-top: 0;
     }
 
@@ -13,10 +13,11 @@
             padding-right: $section-margin;
             //Height of trades table 
             height: 192px;
+            align-items: center;
 
-            &_edit-btn {
+            &_edit__btn {
                 margin-top: 2px;
-                flex: 0 0 36px;
+                width: 154px;
             }
 
             .user-image {
@@ -30,7 +31,7 @@
         &_trades {
             flex: 1 0 auto;
 
-            &-cell {
+            &__cell {
                 flex: 1 1 30%;
                 text-align: center;
 
@@ -48,7 +49,7 @@
                 align-items: center;
                 padding-right: 0;
 
-                &_edit-btn {
+                &_edit__btn {
                     padding: 0 10px;
                     width: 200px;
                 }
@@ -63,17 +64,17 @@
     }
 
     &_edit-user-details {
-        &-title {
+        &__title {
             width: 100%;
             border-bottom: 1px solid $color-highlight-import;
         }
 
-        &-form {
+        &__form {
             display: flex;
 
         }
 
-        &_gravatar {
+        &__gravatar {
             flex: 0 0 154px;
             margin-right: $section-margin;
 
@@ -83,7 +84,7 @@
             }
         }
 
-        &_fields {
+        &__fields {
             display: flex;
             flex-direction: column;
             flex: 1 1 auto;
@@ -95,8 +96,8 @@
             justify-content: space-between;
         }
 
-        @media only screen and (max-width: 850px) {
-            &_gravatar {
+        @media only screen and (max-width: 650px) {
+            &__gravatar {
                 flex: 0 0 122px;
                 margin-right: 10px;
             }
@@ -105,7 +106,7 @@
                 flex-direction: column;
                 align-items: center;
 
-                &-submit-btn {
+                &-submit__btn {
                     margin-top: 5px;
                 }
             }
@@ -115,16 +116,16 @@
     &_card-interface {
         background: $color-nuetral;
 
-        &-wrapper {
+        &__wrapper {
             margin: $section-margin 0;
         }
 
-        &_tab-wrapper {
+        &_tab__wrapper {
             display: flex;
             background: $color-light;
         }
 
-        &_tab-btn {
+        &_tab__btn {
             background: rgba($color-dark, .65);
             margin-right: 5px;
             width: 150px;
@@ -147,14 +148,12 @@
             }
 
             @media only screen and (max-width: 850px) {
-                flex-direction: column;
-                margin-bottom: 10px;
 
-                &-title {
+                &__title {
                     align-self: start;
                 }
 
-                &_edit-btn {
+                &_edit__btn {
                     margin-left: 0;
                     margin-top: 10px;
                     width: 200px;
@@ -170,7 +169,7 @@
             background-color: $color-dark;
         }
 
-        &_action-btn {
+        &_action__btn {
             padding: 0 10px;
             font-size: 12px;
             margin: 5px;
@@ -181,7 +180,7 @@
     &_card-view {
         display: none;
 
-        &-cell {
+        &__cell {
             justify-self: flex-end;
             flex: 0 0 100px;
             text-align: center;
@@ -203,8 +202,8 @@
 }
 
 #wishlist {
-    .dashboard_card-view-cell {
-        .dashboard_wishlist-toggle {
+    .dashboard_card-view__cell {
+        .dashboard_wishlist__toggle {
             &:checked+label:after {
                 font-size: calc(#{$checkbox-size}*.7);
                 content: '\f00d';

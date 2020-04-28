@@ -1,21 +1,21 @@
 <div id="collection" class="dashboard_card-view active">
   <div class="dashboard_card-interface_action-bar">
-    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).edit? %>
-    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action-btn' if policy(user.collection).bulk_edit? %>
+    <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
+    <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).bulk_edit? %>
   </div>
-  <div class="dashboard_card-interface-table">
-    <div class="dashboard_card-view-row-headings">
-      <div class="dashboard_card-view-cell">Card</div>
-      <div class="dashboard_card-view-cell">Count</div>
-      <div class="dashboard_card-view-cell">Tradable</div> 
+  <div class="dashboard_card-interface__table">
+    <div class="dashboard_card-view__row-headings">
+      <div class="dashboard_card-view__cell">Card</div>
+      <div class="dashboard_card-view__cell">Count</div>
+      <div class="dashboard_card-view__cell">Tradable</div> 
     </div>
     <% @cards.each do |card| %>
-    <div class="dashboard_card-view-row">
-      <div class="dashboard_card-view-cell"><%= card.name %></div>
-      <div class="dashboard_card-view-cell"><%= @cards.count[card.id] %></div>
-      <div class="dashboard_card-view-cell">
-        <input class="dashboard_tradable-toggle" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
-        <label class="dashboard_tradable-toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
+    <div class="dashboard_card-view__row">
+      <div class="dashboard_card-view__cell"><%= card.name %></div>
+      <div class="dashboard_card-view__cell"><%= @cards.count[card.id] %></div>
+      <div class="dashboard_card-view__cell">
+        <input class="dashboard_tradable__toggle" type="checkbox" <%= checked_if_tradable(@tradables, card) %> <%= disabled_if_not_current_user(user) %> data-id="<%= card.id %>" id="<%= "#{card.name}_#{card.id}" %>">
+        <label class="dashboard_tradable__toggle" for="<%= "#{card.name}_#{card.id}" %>"></label>
       </div>
     </div>
     <% end %>
@@ -25,14 +25,14 @@
 <script>
   var alertTemplate = function(key, value) {
     return `
-    <div id="alert-container" class="active alert alert-${key}">
+    <div id="alert__container" class="active alert alert-${key}">
     ${value}
-          <a class="close-button" href="#" onclick="Helpers.toggleElementById('alert-container')" data-turbolinks="false"><i class="fas fa-times"></i></a>
+          <a class="close__button" href="#" onclick="Helpers.toggleElementById('alert__container')" data-turbolinks="false"><i class="fas fa-times"></i></a>
     </div>
     `
   };
   $(function() {
-    $('.dashboard_tradable-toggle').on('click', function() {
+    $('.dashboard_tradable__toggle').on('click', function() {
       console.log($(this));
       id = $(this).attr('data-id');
       that = this;

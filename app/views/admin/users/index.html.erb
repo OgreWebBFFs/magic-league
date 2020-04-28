@@ -1,23 +1,23 @@
 
 <div class="admin_users">
-  <div class= "admin_users-container">
+  <div class= "admin_users__container">
     <h3>Users</h3>
-    <div class="admin_users-table">
-      <div class="admin_users-row-headings">
-        <div class="admin_users-cell">Name</div>
-        <div class="admin_users-cell">Email</div>
-        <div class="admin_users-cell">Status</div>
-        <div class="admin_users-cell">Locked At</div>
+    <div class="admin_users__table">
+      <div class="admin_users__row-headings">
+        <div class="admin_users__cell">Name</div>
+        <div class="admin_users__cell">Email</div>
+        <div class="admin_users__cell">Status</div>
+        <div class="admin_users__cell">Locked At</div>
       </div>
       <% @users.each do |user| %>
-        <div class="admin_users-row" >
-        <div class="admin_users-cell"><%= link_to user.name, user_path(user) %></div>
-          <div class="admin_users-cell"><%= link_to user.email, user_path(user) %></div>
-          <div class="admin_users-cell">
-              <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'admin_users_unlock-btn'} if !user.locked_at.nil? %>
-              <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'admin_users_lock-btn'} if user.locked_at.nil? %>
+        <div class="admin_users__row" >
+        <div class="admin_users__cell"><%= link_to user.name, user_path(user) %></div>
+          <div class="admin_users__cell"><%= link_to user.email, user_path(user) %></div>
+          <div class="admin_users__cell">
+              <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'admin_users_unlock__btn'} if !user.locked_at.nil? %>
+              <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'admin_users_lock__btn'} if user.locked_at.nil? %>
           </div>
-          <div class="admin_users-cell"><%= user.locked_at %></div>
+          <div class="admin_users__cell"><%= user.locked_at %></div>
         </div>
       <% end %> 
     </div>

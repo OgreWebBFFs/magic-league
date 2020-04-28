@@ -1,14 +1,14 @@
 
 <div id="dashboard" class="dashboard">
-  <div class="dashboard-container">
-    <h2 class="dashboard-title"><%= @user.name %></h2>
+  <div class="dashboard__container">
+    <h2 class="dashboard__title"><%= @user.name %></h2>
     <%= render 'dashboard/user_profile', user: @user %>
-    <div class="dashboard_card-interface-wrapper">
-      <div class="dashboard_card-interface_tab-wrapper">
-        <div id="collection-tab" class="dashboard_card-interface_tab-btn active" onclick="Helpers.toggleElementById('collection', 'dashboard_card-view'), Helpers.toggleElementById('collection-tab', 'dashboard_card-interface_tab-btn')">
+    <div class="dashboard_card-interface__wrapper">
+      <div class="dashboard_card-interface_tab__wrapper">
+        <div id="collection-tab" class="dashboard_card-interface_tab__btn active" onclick="Helpers.toggleElementById('collection', 'dashboard_card-view'), Helpers.toggleElementById('collection-tab', 'dashboard_card-interface_tab__btn')">
           Collection
         </div>
-        <div id="wishlist-tab" class="dashboard_card-interface_tab-btn" onclick="Helpers.toggleElementById('wishlist', 'dashboard_card-view'), Helpers.toggleElementById('wishlist-tab', 'dashboard_card-interface_tab-btn')">
+        <div id="wishlist-tab" class="dashboard_card-interface_tab__btn" onclick="Helpers.toggleElementById('wishlist', 'dashboard_card-view'), Helpers.toggleElementById('wishlist-tab', 'dashboard_card-interface_tab__btn')">
           Wishlist
         </div>
       </div>

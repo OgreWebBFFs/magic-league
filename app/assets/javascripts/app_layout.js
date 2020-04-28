@@ -34,7 +34,7 @@ var AppLayout = (function() {
   }
 
   let handleWindowClick = function(event) {
-    if (!event.target.matches('.drop-down-toggle')) {
+    if (!event.target.matches('.drop-down__toggle')) {
       var dropdowns = document.querySelectorAll(".dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -49,7 +49,7 @@ var AppLayout = (function() {
   // Exposed functions start here
 
   let initialize = function(user_signed_in = false, current_user_id = null) {
-    $('.nav_match-logger-btn').on('click', logMatchOnClick);
+    $('.nav_match-logger__btn').on('click', logMatchOnClick);
 
     window.addEventListener('click', handleWindowClick);
      

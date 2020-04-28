@@ -1,6 +1,6 @@
 <div class="admin_settings">
-  <div class= "admin_settings-container">
-    <h3 class="adming_settings-title">League Settings</h3> 
+  <div class= "admin_settings__container">
+    <h3 class="adming_settings__title">League Settings</h3> 
     <%= simple_form_for @settings, url: admin_setting_update_path(@settings) do |f| %>
       <%= f.input :season_start_date, as: :date, html5: true %>
       <%= f.input :season_length %>

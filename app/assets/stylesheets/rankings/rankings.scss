@@ -4,7 +4,7 @@
   $ranking-board-heading: 60px;
   $month-selector: 45px;
 
-  &-title {
+  &__title {
     font-size: 50px;
     margin-top: 0;
     margin-bottom: 10px;
@@ -76,7 +76,7 @@
 
   }
 
-  &-wrapper {
+  &__wrapper {
 
     box-sizing: border-box;
     width: 35%;
@@ -115,7 +115,7 @@
   }
 
 
-  &_user-btn {
+  &_user__btn {
     width: 90%;
     max-width: 300px;
     min-width: 190px;
@@ -238,12 +238,12 @@
   }
 
   @media only screen and (max-width: 400px) {
-    &-title {
+    &__title {
       margin-top: 0px;
       font-size: 30px;
     }
 
-    &-wrapper {
+    &__wrapper {
       width: 100%;
       height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - #{$section-padding});
     }
@@ -251,7 +251,7 @@
   }
 
   @media only screen and (max-height: 600px) {
-    &-wrapper {
+    &__wrapper {
      height: 100%;
     }
  

@@ -9,7 +9,7 @@
   width: 100%;
   height: $nav-height;
 
-  &-container {
+  &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,7 +59,7 @@
     &-link,
     &-list,
     &-mobile, 
-    &-match-logger-toggle-wrapper {
+    &-match-logger__toggle-wrapper {
       min-height: 0;
       position: relative;
       -webkit-transition: background-color .3s;
@@ -74,7 +74,7 @@
     }
 
     &-mobile,
-    &-match-logger-toggle-wrapper {
+    &-match-logger__toggle-wrapper {
 
       color: $color-dark;
 
@@ -82,7 +82,7 @@
         color: $color-dark;
       }
 
-      [class*="-btn"] {
+      [class*="__btn"] {
         padding: 0 10px;
         font-size: 12px;
       }

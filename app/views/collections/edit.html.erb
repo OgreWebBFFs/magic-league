@@ -1,5 +1,5 @@
-<div id="edit-collections-wrapper">
-  <div id="collections" class="collections-container">
+<div id="edit-collections__wrapper">
+  <div id="collections" class="collections__container">
     <input id="card-search" type="text" placeholder="" />
     <div id="search-help"></div>
     <div class="card-grid">
@@ -10,14 +10,14 @@
 
   var cardTemplate = function(card) {
       return `
-      <div class="card-grid_card-wrapper">
+      <div class="card-grid_card__wrapper">
         <div class="card-grid_card" href="/cards/${card.attributes.id}">
           <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </div>
         <div class="card-grid_counter">
-          <button type="button" class="card-grid_counter_decrement-btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
+          <button type="button" class="card-grid_counter_decrement__btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
           <input type="number" id="${card.attributes.id}-count" data-id="${card.attributes.id}" readonly="readonly"class="card-grid_counter_count" value="${card.attributes.count_in_collection}", min="0">
-          <button type="button" class="card-grid_counter_increment-btn" data-id="${card.attributes.id}"><i class="material-icons">add_box</i></button>
+          <button type="button" class="card-grid_counter_increment__btn" data-id="${card.attributes.id}"><i class="material-icons">add_box</i></button>
         </div>
       </div>
       `
@@ -78,16 +78,16 @@
     xhrRequest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
     xhrRequest('/cards/' + current_user, 'GET', function(res) { current_user_cards = res.data; });
 
-    $(document).off('click', '.card-grid_counter_increment-btn');
-    $(document).on('click', '.card-grid_counter_increment-btn', function() {
+    $(document).off('click', '.card-grid_counter_increment__btn');
+    $(document).on('click', '.card-grid_counter_increment__btn', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
         return parseInt(val) + 1
       });
     });
 
-    $(document).off('click', '.card-grid_counter_decrement-btn');
-    $(document).on('click', '.card-grid_counter_decrement-btn', function() {
+    $(document).off('click', '.card-grid_counter_decrement__btn');
+    $(document).on('click', '.card-grid_counter_decrement__btn', function() {
       id = $(this).attr('data-id');
       $(`input[type=number][data-id=${id}]`).val(function(i, val) {
         if (val > 0) {
@@ -98,8 +98,8 @@
       });
     });
 
-    $(document).off('click', '.card-grid_counter_increment-btn, .card-grid_counter_decrement-btn');
-    $(document).on('click', '.card-grid_counter_increment-btn, .card-grid_counter_decrement-btn', debounce(function(){
+    $(document).off('click', '.card-grid_counter_increment__btn, .card-grid_counter_decrement__btn');
+    $(document).on('click', '.card-grid_counter_increment__btn, .card-grid_counter_decrement__btn', debounce(function(){
       id = $(this).attr('data-id');
       count = $(`input[type=number][data-id=${id}]`).val()
       xhrRequest('/collections/<%=@collection.id %>', "PUT", function(res){ current_user_cards[id] = count }, { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}});

@@ -1,14 +1,14 @@
-<div class="dashboard_edit-user-details-form">
-  <div class="dashboard_edit-user-details_gravatar">
+<div class="dashboard_edit-user-details__form">
+  <div class="dashboard_edit-user-details__gravatar">
     <%= gravatar(@user, 154) %>
-    <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/',target: "_blank", class:'dashboard_edit-user-details_gravatar-btn'  %>
+    <%= link_to 'Edit Gravatar', 'https://en.gravatar.com/emails/',target: "_blank", class:'dashboard_edit-user-details__gravatar__btn'  %>
     <p>Gravatar may take a few mintues to update</p>          
   </div> 
 
-  <div class="dashboard_edit-user-details_fields">
+  <div class="dashboard_edit-user-details__fields">
     <%= f.input :name %>
     <%= f.input :email %>
-    <div class="dashboard_edit-user-details_buttons">
+    <div>
         <%= f.button :submit %>
     </div>
   </div>
