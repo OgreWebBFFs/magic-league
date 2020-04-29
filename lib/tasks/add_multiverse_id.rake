@@ -3,9 +3,13 @@ namespace :cards do
   task :multiverse_id => [:environment] do|task, args|
     Card.all.each do |card|
       puts "procesing card: #{card.name}"
-      multi_id = card.image_url[/=(.*?)&/m,1] 
-      card.multiverse_id = multi_id
-      card.save!
+      begin
+        multi_id = card.image_url[/=(.*?)&/m,1] 
+        card.multiverse_id = multi_id
+        card.save!
+      rescue StandardError => e
+        puts e
+      end
     end
   end
 
