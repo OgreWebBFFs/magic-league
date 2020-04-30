@@ -21,10 +21,11 @@ class UsersController < ApplicationController
 
 
   def show
-    @cards = @user.cards.order(:name).group(:id)
+    @cards = @user.cards.order(:name)
     @count = @cards.count
     @tradables = @user.tradables
     @wishlist = @user.wishlist
+    @current_user_wishlist = current_user.wishlist
   end
 
 
