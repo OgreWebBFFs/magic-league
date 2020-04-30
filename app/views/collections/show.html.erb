@@ -7,7 +7,15 @@
       <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link__btn' %>
       <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link__btn'%>
     </div>
-    CardGrid. 
+    <div class="card-grid">
+      <% @cards.each do |card| %>
+        <div class="card-grid_card__wrapper">
+          <div class="card-grid_card">
+            <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
+          </div>  
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

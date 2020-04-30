@@ -25,10 +25,8 @@
 
 
   var current_user = <%= current_user.id %> 
-  var viewed_user = <%= collection.id %> 
   var wishlist = []
   var current_user_cards = []
-  
 
   var cardCount = function(id) {
     return current_user_cards[id] || 0;
@@ -77,7 +75,7 @@
       }
     }, 300));
 
-    xhrRequest('/wishlists/' + viewed_user, 'GET', function(res) { wishlist = res; });
+    xhrRequest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
     xhrRequest('/cards/' + current_user, 'GET', function(res) { current_user_cards = res.data; });
 
     $(document).off('click', '.card-grid_counter_increment__btn');
