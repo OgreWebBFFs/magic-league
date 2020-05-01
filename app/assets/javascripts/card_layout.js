@@ -1,13 +1,13 @@
 var CardLayout = (function () {
 
-//TODO: 
+  //TODO: 
   //'live' updates of wishlist and tradables or some spoof
   // Tradable toggles request broken
   // Need to make these populate functiions context agnostic
   // Update styles and refactor 
 
 
-// Grid Card Templates
+  // Grid Card Templates
   let cardGridTemplateWithWish = (card, wishListIds) => {
     let isOnWishList = isOnlist(card, wishListIds) === true ? 'active' : null;
     return `
@@ -37,6 +37,16 @@ var CardLayout = (function () {
     `
   }
 
+  //Alert Templates 
+  let alertTemplate = (key, value) => {
+    return `
+            <div id="alert__container" class="active alert alert-${key}">
+            ${value}
+                  <a class="close__button" href="#" onclick="Helpers.toggleElementById('alert__container')" data-turbolinks="false"><i class="fas fa-times"></i></a>
+            </div>
+          `
+  };
+
   let populateGrid = (cards, currentUserWishlist) => {
     for (i = 0; i < cards.length; i++) {
       $('.card-grid').append(cardGridTemplateWithWish(cards[i], currentUserWishlist))
@@ -54,13 +64,12 @@ var CardLayout = (function () {
   let isOnlist = function (card, list, tradables) {
     let listIds
     if (tradables) {
-    listIds = list.map(item => item.card_id);
-    console.log(listIds);
+      listIds = list.map(item => item.card_id);
     } else {
-     listIds = list.map(item => item.id);
+      listIds = list.map(item => item.id);
     }
 
-    
+
     if (listIds.find(item => item === card.id) != undefined) {
       return true;
     } else {
@@ -83,32 +92,34 @@ var CardLayout = (function () {
   }
 
   let startTradableRequestClickHandler = (currentUserId, isViewingOwnProfile) => {
-    if (isViewingOwnProfile) {
-      $(document).on('click', '.dashboard_tradable__toggle', function () {
-        card_id = $(this).attr('data-id');
-        console.log (card_id)
-        id = $(this).attr('data-id');
-        that = this;
-        if ($(this).is(':checked')) {
-          xhrRequest('/tradables', 'POST', function (res) {
-            $(that).data('tradable-id', res.id)
-          }, {
-            card: {
-              id: id
-            }
-          });
-        } else {
-          if ($(this).data('tradable-id') != undefined) {
-            xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
-              function (res) {}, {},
-              function (res) {
-                $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
-                window.scrollTo(0, 0);
-              });
+    $('.dashboard_tradable__toggle').on('click', function () {
+      console.log($(this));
+      id = $(this).attr('data-id');
+      that = this;
+      if ($(this).is(':checked')) {
+        xhrRequest('/tradables', 'POST', function (res) {
+          $(that).data('tradable-id', res.id)
+          console.log(res);
+        }, {
+          card: {
+            id: id
           }
+        });
+      } else {
+        if ($(this).data('tradable-id') != undefined) {
+          xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
+            function (res) {
+              console.log(res);
+            }, {},
+            function (res) {
+              $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
+              window.scrollTo(0, 0);
+              console.log(res)
+            });
         }
-      });
-    }
+      }
+    });
+
   }
 
   // Exposed functions start here
@@ -120,6 +131,7 @@ var CardLayout = (function () {
     startWishListRequestClickHandler(currentUserId);
     populateGrid(cards, currentUserWishlist);
     populateTable(cards, tradableCards, isViewingOwnProfile);
+    console.log(tradableCards);
   };
 
 
