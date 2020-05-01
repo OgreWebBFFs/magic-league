@@ -134,12 +134,8 @@ var CardLayout = (function () {
     console.log(tradableCards);
   };
 
-
-
-
   return {
     populateCards: populateCards
   }
-
 
 })();
