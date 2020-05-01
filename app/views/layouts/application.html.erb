@@ -27,7 +27,7 @@
               <a href="/" data-turbolinks="false">rankings</a>
             </li>
             <li class="nav_menu-link">
-              <%= link_to "profile", user_path(current_user) %>
+              <a data-turbolinks="false" href="/users/<%=current_user.id%>">Profile</a>
             </li>
             <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-cards', 'dropdown-content')">Cards &#9660;</a> 
               <ul id="dd-menu-cards" class="dropdown-content">
@@ -83,7 +83,7 @@
                   <a href="/trades">Trades</a>
                 </li>
                 <li>
-                  <%= link_to "profile", user_path(current_user) %>
+                  <a data-turbolinks="false" href="/users/<%=current_user.id%>">Profile</a>
                 </li>
                 <li>
                   <a href="/rules">Rules</a>

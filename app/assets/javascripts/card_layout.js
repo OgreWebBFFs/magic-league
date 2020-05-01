@@ -86,6 +86,7 @@ var CardLayout = (function () {
     if (isViewingOwnProfile) {
       $(document).on('click', '.dashboard_tradable__toggle', function () {
         card_id = $(this).attr('data-id');
+        console.log (card_id)
         id = $(this).attr('data-id');
         that = this;
         if ($(this).is(':checked')) {
