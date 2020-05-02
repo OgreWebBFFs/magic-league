@@ -1,10 +1,16 @@
 <div id="collection" class="dashboard_card-view active">
   <div class="dashboard_card-interface_action-bar">
-    <div class= "dashboard_card-interface_action__btn" onclick="Helpers.toggleElementById('collection-grid', 'togglable__view')">Temp Gal Button</div>
-    <div class= "dashboard_card-interface_action__btn" onclick="Helpers.toggleElementById('collection-table', 'togglable__view')">Temp List Button</div>
+    <div class="dashboard_card-interface_view-toggles">
+      <div class= "dashboard_card-interface_toggle-view__btn" onclick="Helpers.toggleElementById('collection-grid', 'togglable__view')">
+        <i class="fas fa-th-large"></i>
+      </div>
+      <div class= "dashboard_card-interface_toggle-view__btn" onclick="Helpers.toggleElementById('collection-table', 'togglable__view')">
+        <i class="fas fa-list"></i>
+      </div>
+    </div>
     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
     <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).bulk_edit? %>
- </div>
+  </div>
   <div id="collection-table" class="dashboard_card-interface__table active togglable__view">
     <div class="dashboard_card-view__row-headings">
       <div class="dashboard_card-view__cell">Card</div>
