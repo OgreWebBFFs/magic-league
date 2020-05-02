@@ -1,6 +1,6 @@
 .card-grid {
     display: inline-grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(3, 33%);
     width: 100%;
 
     &_card__wrapper {
@@ -13,6 +13,7 @@
 
     &_wishlist__toggle {
         $toggle-size: 35px;
+        width:$toggle-size;
         top: -25px;
         right: -10px;
         opacity: 1;
@@ -20,11 +21,8 @@
         z-index: 1;
         font-family: "Font Awesome 5 Free";
         font-weight: 400;
-        width: $toggle-size;
-        height: $toggle-size;
-        font-size: calc(#{$toggle-size}*.7);
+        font-size: 24px;
         border-radius: $toggle-size;
-        padding: 2px;
         cursor: pointer;
         opacity: .4;
         position: absolute;
@@ -126,10 +124,6 @@
     }
 
     @media only screen and (max-width: 800px) {
-        grid-template-columns: repeat(3, 33.3%);
-    }
-
-    @media only screen and (max-width: 650px) {
         grid-template-columns: repeat(2, 50%);
     }
 

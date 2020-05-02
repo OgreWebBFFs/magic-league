@@ -194,7 +194,7 @@
 
         &__cell {
             justify-self: flex-end;
-            flex: 0 0 100px;
+            flex: 0 0 50px;
             text-align: center;
 
             &:first-of-type {
@@ -206,6 +206,11 @@
                 justify-self: flex-start;
             }
         }
+        &_remove-from-wishlist__btn{
+           width:25px;
+           height:25px;
+           line-height: 25px;
+        }
 
         &.active {
             display: block;
@@ -213,21 +218,12 @@
     }
 }
 
-#wishlist {
-    .dashboard_card-view__cell {
-        .dashboard_wishlist__toggle {
-            &:checked+label:after {
-                font-size: calc(#{$checkbox-size}*.7);
-                content: '\f00d';
-            }
-        }
-    }
-}
-//Fix these
+
 #collection-table,
-#collection-grid {
-    display:none;
-    &.active {
-        display:block;
+#collection-grid,
+#wishlist-table,
+#wishlist-grid {
+    &:not(.active) {
+        display:none;
     }
 }
