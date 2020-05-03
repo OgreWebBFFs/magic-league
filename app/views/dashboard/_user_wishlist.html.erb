@@ -1,11 +1,11 @@
 <div id="wishlist" class="dashboard_card-view">
   <div class="dashboard_card-interface_action-bar">
     <div class="dashboard_card-interface_view-toggles">
-      <div class= "dashboard_card-interface_toggle-view__btn" onclick="Helpers.toggleElementById('wishlist-grid', 'wishlist__togglable-view')">
-        <i class="fas fa-th-large"></i>
-      </div>
-      <div class= "dashboard_card-interface_toggle-view__btn" onclick="Helpers.toggleElementById('wishlist-table', 'wishlist__togglable-view')">
+      <div id="wishlist-table-toggle" class= "dashboard_card-interface_toggle-view__btn wishlist_toggle-card-view__btn active" onclick="Helpers.toggleElementById('wishlist-table', 'wishlist__togglable-view'), Helpers.toggleElementById('wishlist-table-toggle', 'wishlist_toggle-card-view__btn')">
         <i class="fas fa-list"></i>
+      </div>
+      <div id="wishlist-grid-toggle" class= "dashboard_card-interface_toggle-view__btn wishlist_toggle-card-view__btn" onclick="Helpers.toggleElementById('wishlist-grid', 'wishlist__togglable-view'), Helpers.toggleElementById('wishlist-grid-toggle', 'wishlist_toggle-card-view__btn')">
+        <i class="fas fa-th-large"></i>
       </div>
     </div>
     <%= link_to 'Add', trades_path, class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>

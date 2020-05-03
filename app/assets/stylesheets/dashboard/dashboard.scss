@@ -184,7 +184,12 @@
          width: 35px;
          margin: 5px;
          background: darken($color-nuetral, 35%);
-
+            &.active{
+                background: $color-highlight-import
+            }
+            &:hover{
+                background: $color-highlight-mid-import;
+            }
         }
 
     }
