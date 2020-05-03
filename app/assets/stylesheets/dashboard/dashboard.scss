@@ -180,7 +180,8 @@
             margin-right: auto;
         }
 
-        &_toggle-view__btn {
+        &_collection_toggle-card-view__btn,
+        &_wishlist_toggle-card-view__btn {
          width: 35px;
          margin: 5px;
          background: darken($color-nuetral, 35%);
