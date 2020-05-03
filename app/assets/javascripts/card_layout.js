@@ -4,10 +4,14 @@ var CardLayout = (function () {
   // Seperate out templates and helper functions
   // Tradable toggles request broken
   // add some sort of Proptypes document
-  // Set up a NO Cards in view state
   // create a standard props object??
   // fix wishlist toggle on trades (card browse page)
   // set up navigation to match Jame's notes
+  // tooltip to wishlist button
+  // user profile on other page stretching
+  // set up listeners for tabs onclicks
+  // document off function read about 
+  // auto update EMPTY STATE
 
 
   //TEMPLATES
@@ -17,6 +21,9 @@ var CardLayout = (function () {
   if(props.isViewingOwnProfile) {
     return `
     <div class="empty-card-view">
+      <p class="empty-card-view__message">
+        Hey, LISTEN! It look's like you haven't added any cards here yet.
+      </p>
       <a class="empty-card-view__btn" href="${props.link}">
         ${props.ctaText}
       </a>
@@ -163,9 +170,7 @@ var CardLayout = (function () {
 
   let addCardToGrid = (props) => {
     let gridCell;
-    console.log(props);
     switch (props.cardViewContext) {
-
       case 'collection':
         gridCell = cardWithWishListToggle({
           card: props.card,
@@ -213,7 +218,7 @@ var CardLayout = (function () {
   }
 
   let populateGrid = (props) => {
-    if (props.cards < 1) {
+    if (props.cards.length < 1) {
       $('#' + props.cardViewContext + '-grid').append(
         addEmptyState({
           userId: props.userId,
@@ -236,7 +241,7 @@ var CardLayout = (function () {
   };
 
   let populateTable = (props) => {
-    if (props.cards < 1) {
+    if (props.cards.length  < 1) {
       $('#' + props.cardViewContext + '-table').append(
         addEmptyState({
           userId: props.userId,
@@ -277,11 +282,8 @@ var CardLayout = (function () {
       listIds = props.list.map(item => item.id);
     }
 
-    if (listIds.find(item => item === props.card.id) != undefined) {
-      return true;
-    } else {
-      return false;
-    }
+    return (listIds.find(item => item === props.card.id) != undefined);
+   
   }
 
   let getCardFromId = (targetId, allCardsInList) => {
@@ -294,8 +296,8 @@ var CardLayout = (function () {
 //REQUESTS
 
   let wishlistGridToggleClickHandler = (props) => {
-    $(document).off('click', '.card-grid_wishlist__toggle'),
-      function () {};
+    $(document).off('click', '.card-grid_wishlist__toggle',
+      function() {});
     $(document).on('click', '.card-grid_wishlist__toggle', function () {
       //Retrieve the classlist of the clicked toggle & make it an array
       let targetToggleClassList = $(this).attr("class").split(" ");
@@ -310,15 +312,14 @@ var CardLayout = (function () {
       //Check if card was is on the wishlist, or being is added 
       let wasOnWishlist = targetToggleClassList.includes('active');
       //Toggle all Wishlist Toggles for this card  
-      $("." + targetToggleClassList[0]).toggleClass("active")
+      $("." + targetToggleClassList[0]).toggleClass("active");
       if (props.isViewingOwnProfile) {
         if (wasOnWishlist) {
-        removeCardFromWishListUIElements({
-          cardId: card_id,
-          targetToggleClassList: targetToggleClassList,
-        })
-          } else {
-         
+          removeCardFromWishListUIElements({
+            cardId: card_id,
+            targetToggleClassList: targetToggleClassList,
+          });
+        }else {
           $('#wishlist-table').append(addCardRow({
               cardViewContext: 'wishlist',
               card: targetCard,
@@ -333,7 +334,7 @@ var CardLayout = (function () {
           })
           )
         }
-      }
+      };
       xhrRequest('/wishlists/' + props.currentUserId, "PUT", function (res) {
         wishlist = res;
       }, {
@@ -353,7 +354,7 @@ var CardLayout = (function () {
         removeCardFromWishListUIElements({
           cardId: card_id,
           targetToggleClassList: targetToggleClassList,
-      })
+      });
       xhrRequest('/wishlists/' + props.currentUserId, "PUT", function (res) {
         wishlist = res;
       }, {
@@ -397,7 +398,7 @@ var CardLayout = (function () {
   // Exposed functions start here
 
 
-  let populateCards = (props) => {
+  let manageCardView = (props) => {
     const isViewingOwnProfile = (props.currentUserId === props.userId);
     
     startTradableRequestClickHandler(props.currentUserId, props.isViewingOwnProfile);
@@ -448,7 +449,7 @@ var CardLayout = (function () {
   };
 
   return {
-    populateCards: populateCards
+    manageCardView: manageCardView
   }
 
 })();

@@ -29,6 +29,6 @@ let propsToPass = {
   collectionCards: <%= raw @cards.to_json %>,
   tradables: <%= raw @tradables.to_json %>,
   wishlist: <%= raw @wishlist.to_json%>
-}
-CardLayout.populateCards(propsToPass)
+};
+CardLayout.manageCardView(propsToPass);
 </script>
