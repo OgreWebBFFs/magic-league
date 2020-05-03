@@ -212,6 +212,18 @@
            line-height: 25px;
         }
 
+        .empty-card-view{
+            grid-column: 1 / span 3;
+            text-align: center;
+            &__btn{
+                width:200px; 
+                margin:5px auto;
+            }
+            &__message {
+                font-size: 20px;
+            }
+        }
+
         &.active {
             display: block;
         }

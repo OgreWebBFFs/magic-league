@@ -3,12 +3,37 @@ var CardLayout = (function () {
   //TODO: 
   // Seperate out templates and helper functions
   // Tradable toggles request broken
-  // add some sort of Prop types document
+  // add some sort of Proptypes document
   // Set up a NO Cards in view state
+  // create a standard props object??
+  // fix wishlist toggle on trades (card browse page)
+  // set up navigation to match Jame's notes
 
 
   //TEMPLATES
   // Grid Card Templates
+
+ let emptyStateTemplate = (props) => {
+  if(props.isViewingOwnProfile) {
+    return `
+    <div class="empty-card-view">
+      <a class="empty-card-view__btn" href="${props.link}">
+        ${props.ctaText}
+      </a>
+    </div>
+   `
+  }else {
+    console.log(props)
+    return `
+      <div class="empty-card-view">
+        <p class="empty-card-view__message">
+          Drat! It look's like ${props.userName} hasn't added any cards here yet. 
+        </p>
+      </div>
+    `
+  }
+ };
+
   let cardWithWishListToggle = (props) => {
     let card = props.card;
     let isOnWishList = isOnlist({
@@ -118,7 +143,7 @@ var CardLayout = (function () {
 
   let addCardRow = (props) => {
     let row
-    switch (props.tableType) {
+    switch (props.cardViewContext) {
       case 'collection':
         row = collectionRow({
           card: props.card,
@@ -139,7 +164,7 @@ var CardLayout = (function () {
   let addCardToGrid = (props) => {
     let gridCell;
     console.log(props);
-    switch (props.gridType) {
+    switch (props.cardViewContext) {
 
       case 'collection':
         gridCell = cardWithWishListToggle({
@@ -163,11 +188,45 @@ var CardLayout = (function () {
     return gridCell;
   }
 
+  let addEmptyState = (props)=> {
+    let emptyState
+    console.log(props.userId)
+    switch (props.cardViewContext) {
+      case 'collection':
+        emptyState =  emptyStateTemplate({
+          ctaText: "Build your Collection",
+          link: "/collections/"+props.userId+"/edit",
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          userName: props.userName
+        })
+        break;
+      case 'wishlist':
+        emptyState =  emptyStateTemplate({
+          ctaText: "Make some wishes ;)",
+          link: "/trades",
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          userName: props.userName
+        })
+        break;
+    }
+    return emptyState;
+  }
+
   let populateGrid = (props) => {
+    if (props.cards < 1) {
+      $('#' + props.cardViewContext + '-grid').append(
+        addEmptyState({
+          userId: props.userId,
+          userName: props.userName,
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          cardViewContext: props.cardViewContext
+        })
+      )
+    }else
     for (i = 0; i < props.cards.length; i++) {
-      $('#' + props.gridType + '-grid').append(
+      $('#' + props.cardViewContext + '-grid').append(
           addCardToGrid({
-          gridType: props.gridType,
+          cardViewContext: props.cardViewContext,
           card: props.cards[i], 
           listToCheckAgainst: props.currentUserWishList,
           isViewingOwnProfile: props.isViewingOwnProfile
@@ -177,10 +236,21 @@ var CardLayout = (function () {
   };
 
   let populateTable = (props) => {
+    if (props.cards < 1) {
+      $('#' + props.cardViewContext + '-table').append(
+        addEmptyState({
+          userId: props.userId,
+          userName: props.userName,
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          cardViewContext: props.cardViewContext
+
+        })
+      )
+    }else
     for (i = 0; i < props.cards.length; i++) {
-      $('#' + props.tableType + '-table').append(
+      $('#' + props.cardViewContext + '-table').append(
         addCardRow({
-          tableType: props.tableType,
+          cardViewContext: props.cardViewContext,
           card: props.cards[i],
           isViewingOwnProfile: props.isViewingOwnProfile,
           listToCheckAgainst: props.tradableCards
@@ -250,13 +320,13 @@ var CardLayout = (function () {
           } else {
          
           $('#wishlist-table').append(addCardRow({
-              tableType: 'wishlist',
+              cardViewContext: 'wishlist',
               card: targetCard,
               isViewingOwnProfile: props.isViewingOwnProfile,
             })
           )
           $('#wishlist-grid').append(addCardToGrid({
-            gridType: 'wishlist',
+            cardViewContext: 'wishlist',
             card: targetCard,
             isViewingOwnProfile: props.isViewingOwnProfile,
             listToCheckAgainst: props.wishlist
@@ -329,6 +399,7 @@ var CardLayout = (function () {
 
   let populateCards = (props) => {
     const isViewingOwnProfile = (props.currentUserId === props.userId);
+    
     startTradableRequestClickHandler(props.currentUserId, props.isViewingOwnProfile);
     wishlistGridToggleClickHandler({
       currentUserId: props.currentUserId, 
@@ -342,28 +413,37 @@ var CardLayout = (function () {
       wishlist: props.wishlist 
     })
     populateGrid({
-      gridType: 'collection',
+      cardViewContext: 'collection',
       cards:props.collectionCards, 
       currentUserWishList: props.currentUserWishlist,
-      isViewingOwnProfile: isViewingOwnProfile
+      isViewingOwnProfile: isViewingOwnProfile,
+      userName: props.userName,
+      userId: props.userId
+
     });
     populateGrid({
-      gridType: 'wishlist',
+      cardViewContext: 'wishlist',
       cards:props.wishlist, 
       currentUserWishList: props.currentUserWishlist,
-      isViewingOwnProfile: isViewingOwnProfile
+      isViewingOwnProfile: isViewingOwnProfile,
+      userName: props.userName,
+      userId: props.userId
     });
     populateTable({
       cards: props.collectionCards,
-      tableType: 'collection',
+      cardViewContext: 'collection',
       isViewingOwnProfile: isViewingOwnProfile,
-      tradableCards: props.tradables
+      tradableCards: props.tradables,
+      userName: props.userName,
+      userId: props.userId
     });
     populateTable({
       cards: props.wishlist,
-      tableType: 'wishlist',
+      cardViewContext: 'wishlist',
       isViewingOwnProfile: isViewingOwnProfile,
-      tradableCards: props.tradables
+      tradableCards: props.tradables,
+      userName: props.userName,
+      userId: props.userId
     });
   };
 
