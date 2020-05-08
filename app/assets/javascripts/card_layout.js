@@ -2,9 +2,7 @@ var CardLayout = (function () {
 
   //TODO: 
   // create a standard props object??
-  // set up navigation to match Jame's notes
-  // tooltip to wishlist button
-  // user profile on other page stretching
+  // tooltip for wishlist button and tradables
   // set up listeners for tabs onclicks
   // document off function read about 
 

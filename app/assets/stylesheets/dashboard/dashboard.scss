@@ -22,7 +22,7 @@
 
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
-                flex: 1 0 auto;
+                height: 154px;
                 width: 154px;
                 background: $color-dark;
             }
