@@ -2,7 +2,6 @@ var CardLayout = (function () {
 
   //TODO: 
   // Seperate out templates and helper functions
-  // Tradable toggles request broken
   // add some sort of Proptypes document
   // create a standard props object??
   // fix wishlist toggle on trades (card browse page)
@@ -203,6 +202,7 @@ var CardLayout = (function () {
   }
 
   let addEmptyState = (props) => {
+    
     let emptyState
     switch (props.cardViewContext) {
       case 'collection':
@@ -269,12 +269,41 @@ var CardLayout = (function () {
           }))
       }
   }
+  let removeEmptyState = (isViewingOwnProfile) => {
+    let isWishListEmpty = $('.wishlist-item').length;
+    if(!isWishListEmpty && isViewingOwnProfile) {
+      $(".empty-card-view").remove();
 
-  removeCardFromWishListUIElements = (props) => {
+    }
+  } 
+  let removeCardFromWishListUIElements = (props) => {
     let rowToRemove = document.getElementById(props.cardId + '-wishlist-row');
     let gridCardToRemove = document.getElementById(props.cardId + '__wishlist-removal-target');
     rowToRemove ? rowToRemove.parentNode.removeChild(rowToRemove) : null;
     gridCardToRemove ? gridCardToRemove.parentNode.removeChild(gridCardToRemove) : null;
+    //check dom to see if there is a wishlist anymore
+    let isWishListEmpty = $('.wishlist-item').length;
+    if(!isWishListEmpty){
+      $('#wishlist-grid').append(
+        addEmptyState({
+          userId: props.userId,
+          userName: props.userName,
+          userId: props.userId,
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          cardViewContext: 'wishlist'
+        })
+      );
+      $('#wishlist-table').append(
+        addEmptyState({
+          userId: props.userId,
+          userName: props.userName,
+          isViewingOwnProfile: props.isViewingOwnProfile,
+          cardViewContext: 'wishlist'
+        })
+      )
+
+
+    }
   }
 
   // Helpers
@@ -325,8 +354,13 @@ var CardLayout = (function () {
           removeCardFromWishListUIElements({
             cardId: card_id,
             targetToggleClassList: targetToggleClassList,
+            isViewingOwnProfile: props.isViewingOwnProfile,
+            userName: props.userName,
+            userName: props.userId
+            
           });
         } else {
+          removeEmptyState(props.isViewingOwnProfile);
           $('#wishlist-table').append(addCardRow({
             cardViewContext: 'wishlist',
             card: targetCard,
@@ -358,6 +392,10 @@ var CardLayout = (function () {
       removeCardFromWishListUIElements({
         cardId: card_id,
         targetToggleClassList: targetToggleClassList,
+        isViewingOwnProfile: props.isViewingOwnProfile,
+        userName: props.userName,
+        userName: props.userId
+        
       });
       xhrRequest('/wishlists/' + props.currentUserId, "PUT", function (res) {
         wishlist = res;
@@ -416,11 +454,15 @@ var CardLayout = (function () {
       collectionCards: props.collectionCards,
       isViewingOwnProfile: isViewingOwnProfile,
       currentUserId: props.currentUserId,
-      wishlist: props.wishlist
+      wishlist: props.wishlist,
+      userName: props.userName,
     });
     wishlistRowToggleClickHandler({
       currentUserId: props.currentUserId,
-      wishlist: props.wishlist
+      userId: props.userId,
+      userName: props.userName,
+      wishlist: props.wishlist,
+      isViewingOwnProfile: isViewingOwnProfile
     })
     populateGrid({
       cardViewContext: 'collection',
