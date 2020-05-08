@@ -30,7 +30,6 @@ var CardLayout = (function () {
     </div>
    `
     } else {
-      console.log(props)
       return `
       <div class="empty-card-view">
         <p class="empty-card-view__message">
@@ -93,6 +92,15 @@ var CardLayout = (function () {
   //Table Row Templates
   let collectionRow = (props) => {
     let card = props.card;
+    let tradableList = props.listToCheckAgainst;
+    //To make getCardFromId key pair agnostic so we can use it here
+    let filterByCardId = (tradableCard) => {
+      if (tradableCard.card_id === card.id) {
+        return true
+      }
+      return false;
+    }
+    let tradableCard = tradableList.filter(filterByCardId)[0] || {};
     let enableCheckBox = props.isViewingOwnProfile ? '' : 'disabled';
     let isOnTradeablesList = isOnlist({
       card: card,
@@ -100,12 +108,13 @@ var CardLayout = (function () {
       checkingAgainstTradables: true
     })
     let toggleStatus = isOnTradeablesList ? 'checked' : '';
+ 
     return `
       <div class="dashboard_card-view__row">
       <div class="dashboard_card-view__cell">${card.name}</div>
       <div class="dashboard_card-view__cell">
-        <input class="dashboard_tradable__toggle" type="checkbox" ${enableCheckBox}  ${toggleStatus} data-id=${card.id} id="${card.name}_${card.id}">
-        <label class="dashboard_tradable__label" for="${card.name}_${card.id}"></label>
+        <input class="dashboard_tradable__toggle tradable-toggle-${card.id}" type="checkbox" ${enableCheckBox}  ${toggleStatus} data-tradable-id="${tradableCard.id}" data-id="${card.id}" id= "${card.name}_${tradableCard.id}" >
+        <label class="dashboard_tradable__label" for="${card.name}_${tradableCard.id}"></label>
       </div>
     </div>
     `
@@ -195,7 +204,6 @@ var CardLayout = (function () {
 
   let addEmptyState = (props) => {
     let emptyState
-    console.log(props.userId)
     switch (props.cardViewContext) {
       case 'collection':
         emptyState = emptyStateTemplate({
@@ -344,7 +352,6 @@ var CardLayout = (function () {
       function () {};
     $(document).on('click', '.dashboard_card-view_remove-from-wishlist__btn', function () {
       let targetToggleClassList = $(this).attr("class").split(" ");
-      console.log(targetToggleClassList)
       let card_id = $(this).attr('data-id');
       let targetCard = getCardFromId(card_id, props.wishlist);
       $("." + targetToggleClassList[0]).removeClass("active")
@@ -362,18 +369,16 @@ var CardLayout = (function () {
   }
 
   let tradableToggleClickHandler = (props) => {
-    console.log('Tradables on page load: ',  props.tradableCards)
-    $(document).off('click', '.dashboard_tradable__toggle',
-      function () {});
-    $(document).on('click', '.dashboard_tradable__toggle', function() {
+    $(function () {
+      $('.dashboard_tradable__toggle').on('click', function () {
         id = $(this).attr('data-id');
         that = this;
+        let tradableId = $(this).attr('data-tradable-id');
+        $(".tradable-toggle-"+id).prop("checked", this.checked);
         if ($(this).is(':checked')) {
-          console.log("Card selected", $(that));
-          console.log("Firing remove" );
-          xhrRequest('/tradables', 'POST', function (res) {
+         
+           xhrRequest('/tradables', 'POST', function (res) {
             $(that).data('tradable-id', res.id)
-            console.log(res);
           }, {
             card: {
               id: id
@@ -383,108 +388,76 @@ var CardLayout = (function () {
           if ($(this).data('tradable-id') != undefined) {
             xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
               function (res) {
-                console.log(res);
               }, {},
               function (res) {
                 $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
                 window.scrollTo(0, 0);
-                console.log(res)
               });
           }
         }
-        console.log('Tradables after request: ',  props.tradableCards)
       });
+    });
+
   };
-  /*  $(document).on('click', '.dashboard_tradable__toggle', function() {
-     id = $(this).attr('data-id');
-     that = this;
-     if ($(this).is(':checked')) {
-       console.log("Card selected", $(that));
-       console.log("Firing remove" );
-       xhrRequest('/tradables', 'POST', function (res) {
-         $(that).data('tradable-id', res.id)
-         console.log(res);
-       }, {
-         card: {
-           id: id
-         }
-       });
-     } else {
-       if ($(this).data('tradable-id') != undefined) {
-         xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
-           function (res) {
-             console.log(res);
-           }, {},
-           function (res) {
-             $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
-             window.scrollTo(0, 0);
-             console.log(res)
-           });
-       }
-     }
-   }); */
+
+  // Exposed functions start here
 
 
+  let manageCardView = (props) => {
+    const isViewingOwnProfile = (props.currentUserId === props.userId);
 
-// Exposed functions start here
+    tradableToggleClickHandler({
+      currentUserId: props.currentUserId,
+      isViewingOwnProfile: isViewingOwnProfile,
+      tradableCards: props.tradables,
+    });
+    wishlistGridToggleClickHandler({
+      currentUserId: props.currentUserId,
+      collectionCards: props.collectionCards,
+      isViewingOwnProfile: isViewingOwnProfile,
+      currentUserId: props.currentUserId,
+      wishlist: props.wishlist
+    });
+    wishlistRowToggleClickHandler({
+      currentUserId: props.currentUserId,
+      wishlist: props.wishlist
+    })
+    populateGrid({
+      cardViewContext: 'collection',
+      cards: props.collectionCards,
+      currentUserWishList: props.currentUserWishlist,
+      isViewingOwnProfile: isViewingOwnProfile,
+      userName: props.userName,
+      userId: props.userId
 
+    });
+    populateGrid({
+      cardViewContext: 'wishlist',
+      cards: props.wishlist,
+      currentUserWishList: props.currentUserWishlist,
+      isViewingOwnProfile: isViewingOwnProfile,
+      userName: props.userName,
+      userId: props.userId
+    });
+    populateTable({
+      cards: props.collectionCards,
+      cardViewContext: 'collection',
+      isViewingOwnProfile: isViewingOwnProfile,
+      tradableCards: props.tradables,
+      userName: props.userName,
+      userId: props.userId
+    });
+    populateTable({
+      cards: props.wishlist,
+      cardViewContext: 'wishlist',
+      isViewingOwnProfile: isViewingOwnProfile,
+      userName: props.userName,
+      userId: props.userId
+    });
+  };
 
-let manageCardView = (props) => {
-  const isViewingOwnProfile = (props.currentUserId === props.userId);
-
-  tradableToggleClickHandler({
-    currentUserId: props.currentUserId,
-    isViewingOwnProfile: isViewingOwnProfile,
-    tradableCards: props.tradables,
-  });
-  wishlistGridToggleClickHandler({
-    currentUserId: props.currentUserId,
-    collectionCards: props.collectionCards,
-    isViewingOwnProfile: isViewingOwnProfile,
-    currentUserId: props.currentUserId,
-    wishlist: props.wishlist
-  });
-  wishlistRowToggleClickHandler({
-    currentUserId: props.currentUserId,
-    wishlist: props.wishlist
-  })
-  populateGrid({
-    cardViewContext: 'collection',
-    cards: props.collectionCards,
-    currentUserWishList: props.currentUserWishlist,
-    isViewingOwnProfile: isViewingOwnProfile,
-    userName: props.userName,
-    userId: props.userId
-
-  });
-  populateGrid({
-    cardViewContext: 'wishlist',
-    cards: props.wishlist,
-    currentUserWishList: props.currentUserWishlist,
-    isViewingOwnProfile: isViewingOwnProfile,
-    userName: props.userName,
-    userId: props.userId
-  });
-  populateTable({
-    cards: props.collectionCards,
-    cardViewContext: 'collection',
-    isViewingOwnProfile: isViewingOwnProfile,
-    tradableCards: props.tradables,
-    userName: props.userName,
-    userId: props.userId
-  });
-  populateTable({
-    cards: props.wishlist,
-    cardViewContext: 'wishlist',
-    isViewingOwnProfile: isViewingOwnProfile,
-    tradableCards: props.tradables,
-    userName: props.userName,
-    userId: props.userId
-  });
-};
-
-return {
-  manageCardView: manageCardView
-}
+  return {
+    manageCardView: manageCardView
+  }
 
 })();
