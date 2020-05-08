@@ -38,6 +38,56 @@
         }
 
     }
+    //Temporary until we refactor the Browse Cards page
+    &_browse-wishlist__toggle {
+        top: -25px;
+        right: 20px;
+        opacity: 1;
+        position: absolute;
+        z-index: 2;
+        
+
+        input[type=checkbox] {
+            + label {
+                &:before {
+                    $checkbox-size:35px;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight:400;
+                    content: "\f004";
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    font-size: calc(#{$checkbox-size}*.7);
+                    border-radius:  $checkbox-size;
+                    padding:2px;
+                    cursor: pointer;
+                    opacity: .4;
+                    position: absolute;
+                    color: $color-light;
+                    //fix for mobile color issues;
+                    color: transparent;  
+                    text-shadow: 0 0 0 $color-light;
+                    background-color: $color-highlight-mid-import;
+                    @media only screen and (max-width: 500px) {
+                        top: 0;
+                    }
+                }
+            }
+
+                &:checked+label::before {
+                    opacity: 1;
+                }
+                
+                &:checked+label::after {
+                    content: "";
+                    
+                }
+
+
+            }
+
+
+
+        }
 
 
 

@@ -1,158 +1,17 @@
 var CardLayout = (function () {
 
   //TODO: 
-  // Seperate out templates and helper functions
-  // add some sort of Proptypes document
   // create a standard props object??
-  // fix wishlist toggle on trades (card browse page)
   // set up navigation to match Jame's notes
   // tooltip to wishlist button
   // user profile on other page stretching
   // set up listeners for tabs onclicks
   // document off function read about 
-  // auto update EMPTY STATE
+
 
 
   //TEMPLATES
-  // Grid Card Templates
 
-  let emptyStateTemplate = (props) => {
-    if (props.isViewingOwnProfile) {
-      return `
-    <div class="empty-card-view">
-      <p class="empty-card-view__message">
-        Hey, LISTEN! It look's like you haven't added any cards here yet.
-      </p>
-      <a class="empty-card-view__btn" href="${props.link}">
-        ${props.ctaText}
-      </a>
-    </div>
-   `
-    } else {
-      return `
-      <div class="empty-card-view">
-        <p class="empty-card-view__message">
-          Drat! It look's like ${props.userName} hasn't added any cards here yet. 
-        </p>
-      </div>
-    `
-    }
-  };
-
-  let cardWithWishListToggle = (props) => {
-    let card = props.card;
-    let isOnWishList = isOnlist({
-      card: card,
-      list: props.listToCheckAgainst
-    })
-    let toggleStatus = isOnWishList ? 'active' : '';
-    return `
-      <div class="card-grid_card__wrapper">
-        <div class="card-grid_card">
-          <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle ${toggleStatus}" data-id="${card.id}">
-            <i class="far fa-heart"></i>
-          </div>
-          <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-        </div>
-      </div>
-      `
-  };
-
-  let cardWithRemoveFromWishListToggle = (props) => {
-    let card = props.card;
-    let isOnWishList = isOnlist({
-      card: card,
-      list: props.listToCheckAgainst
-    })
-    let toggleStatus = isOnWishList ? 'active' : '';
-    return `
-      <div class="card-grid_card__wrapper" id="${card.id}__wishlist-removal-target">
-        <div class="card-grid_card">
-          <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle active" data-id="${card.id}">
-            <i class="fas fa-times"></i>
-          </div>
-          <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-        </div>
-      </div>
-      `
-  };
-
-  let cardWithNoToggles = (props) => {
-    let card = props.card;
-    return `
-      <div class="card-grid_card__wrapper">
-        <div class="card-grid_card">
-          <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-        </div>
-      </div>
-      `
-  };
-
-  //Table Row Templates
-  let collectionRow = (props) => {
-    let card = props.card;
-    let tradableList = props.listToCheckAgainst;
-    //To make getCardFromId key pair agnostic so we can use it here
-    let filterByCardId = (tradableCard) => {
-      if (tradableCard.card_id === card.id) {
-        return true
-      }
-      return false;
-    }
-    let tradableCard = tradableList.filter(filterByCardId)[0] || {};
-    let enableCheckBox = props.isViewingOwnProfile ? '' : 'disabled';
-    let isOnTradeablesList = isOnlist({
-      card: card,
-      list: props.listToCheckAgainst,
-      checkingAgainstTradables: true
-    })
-    let toggleStatus = isOnTradeablesList ? 'checked' : '';
- 
-    return `
-      <div class="dashboard_card-view__row">
-      <div class="dashboard_card-view__cell">${card.name}</div>
-      <div class="dashboard_card-view__cell">
-        <input class="dashboard_tradable__toggle tradable-toggle-${card.id}" type="checkbox" ${enableCheckBox}  ${toggleStatus} data-tradable-id="${tradableCard.id}" data-id="${card.id}" id= "${card.name}_${tradableCard.id}" >
-        <label class="dashboard_tradable__label" for="${card.name}_${tradableCard.id}"></label>
-      </div>
-    </div>
-    `
-  }
-
-  let wishlistRow = (props) => {
-    let card = props.card;
-    if (props.isViewingOwnProfile) {
-      return `
-        <div id="${card.id}-wishlist-row" class="dashboard_card-view__row wishlist-item">
-          <div class="dashboard_card-view__cell">
-            ${card.name}
-          </div>
-          <div class="dashboard_card-view__cell">
-            <div class="wishlist-${card.id}__toggle dashboard_card-view_remove-from-wishlist__btn" data-id="${card.id}">
-              <i class="fas fa-times"></i>
-            </div>
-          </div>
-        </div>
-       `
-    } else {
-      return `
-        <div class="dashboard_card-view__row wishlist-item">
-          <div class="dashboard_card-view__cell">${card.name}</div>
-          <div class="dashboard_card-view__cell"></div>
-        </div>
-      `
-    }
-  }
-
-  //Alert Templates 
-  let alertTemplate = (key, value) => {
-    return `
-            <div id="alert__container" class="active alert alert-${key}">
-            ${value}
-                  <a class="close__button" href="#" onclick="Helpers.toggleElementById('alert__container')" data-turbolinks="false"><i class="fas fa-times"></i></a>
-            </div>
-          `
-  };
 
   // CONTRUCTORS & DESTRUCTICONS
 
@@ -160,14 +19,14 @@ var CardLayout = (function () {
     let row
     switch (props.cardViewContext) {
       case 'collection':
-        row = collectionRow({
+        row = Templates.collectionRow({
           card: props.card,
           listToCheckAgainst: props.listToCheckAgainst,
           isViewingOwnProfile: props.isViewingOwnProfile
         })
         break;
       case 'wishlist':
-        row = wishlistRow({
+        row = Templates.wishlistRow({
           card: props.card,
           isViewingOwnProfile: props.isViewingOwnProfile
         })
@@ -180,19 +39,19 @@ var CardLayout = (function () {
     let gridCell;
     switch (props.cardViewContext) {
       case 'collection':
-        gridCell = cardWithWishListToggle({
+        gridCell = Templates.cardWithWishListToggle({
           card: props.card,
           listToCheckAgainst: props.listToCheckAgainst,
         })
         break;
       case 'wishlist':
         if (props.isViewingOwnProfile) {
-          gridCell = cardWithRemoveFromWishListToggle({
+          gridCell = Templates.cardWithRemoveFromWishListToggle({
             card: props.card,
             listToCheckAgainst: props.listToCheckAgainst,
           })
         } else {
-          gridCell = cardWithNoToggles({
+          gridCell = Templates.cardWithNoToggles({
             card: props.card
           })
         }
@@ -206,7 +65,7 @@ var CardLayout = (function () {
     let emptyState
     switch (props.cardViewContext) {
       case 'collection':
-        emptyState = emptyStateTemplate({
+        emptyState = Templates.emptyStateTemplate({
           ctaText: "Build your Collection",
           link: "/collections/" + props.userId + "/edit",
           isViewingOwnProfile: props.isViewingOwnProfile,
@@ -214,7 +73,7 @@ var CardLayout = (function () {
         })
         break;
       case 'wishlist':
-        emptyState = emptyStateTemplate({
+        emptyState = Templates.emptyStateTemplate({
           ctaText: "Make some wishes ;)",
           link: "/trades",
           isViewingOwnProfile: props.isViewingOwnProfile,
@@ -238,7 +97,7 @@ var CardLayout = (function () {
     } else
       for (i = 0; i < props.cards.length; i++) {
         $('#' + props.cardViewContext + '-grid').append(
-          addCardToGrid({
+         addCardToGrid({
             cardViewContext: props.cardViewContext,
             card: props.cards[i],
             listToCheckAgainst: props.currentUserWishList,
@@ -250,7 +109,7 @@ var CardLayout = (function () {
   let populateTable = (props) => {
     if (props.cards.length < 1) {
       $('#' + props.cardViewContext + '-table').append(
-        addEmptyState({
+       addEmptyState({
           userId: props.userId,
           userName: props.userName,
           isViewingOwnProfile: props.isViewingOwnProfile,
@@ -308,19 +167,7 @@ var CardLayout = (function () {
 
   // Helpers
 
-  let isOnlist = (props) => {
-    let listIds
-    //The tradables data is structured a little different from 
-    //other card lists, this adapts the card ids for this function
-    if (props.checkingAgainstTradables) {
-      listIds = props.list.map(item => item.card_id);
-    } else {
-      listIds = props.list.map(item => item.id);
-    }
 
-    return (listIds.find(item => item === props.card.id) != undefined);
-
-  }
 
   let getCardFromId = (targetId, allCardsInList) => {
     let targetCard = allCardsInList.filter(function (card) {
@@ -428,7 +275,7 @@ var CardLayout = (function () {
               function (res) {
               }, {},
               function (res) {
-                $('.section.full-page').prepend(alertTemplate('danger', res.responseText))
+                $('.section.full-page').prepend(Templates.alertTemplate('danger', res.responseText))
                 window.scrollTo(0, 0);
               });
           }
@@ -499,7 +346,7 @@ var CardLayout = (function () {
   };
 
   return {
-    manageCardView: manageCardView
+    manageCardView: manageCardView,
   }
 
 })();
