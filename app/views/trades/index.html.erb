@@ -26,9 +26,8 @@
   var cardTemplate = function(card) {
     return `
     <div class="card-grid_card__wrapper">
-    
       <div class="card-grid_card">
-        <div class="card-grid_wishlist__toggle">
+          <div class="card-grid_browse-wishlist__toggle">
           <input class="card-grid_wishlist__toggle-checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
           <label class="card-grid_wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
         </div>
@@ -79,7 +78,6 @@
   }
 
 var leagueStatus = function(card) {
-  console.log(card);
   if (card.attributes.users.data.length > 0)
     return 'for-trade'
   else

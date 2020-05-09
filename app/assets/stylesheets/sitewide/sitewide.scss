@@ -446,7 +446,7 @@ input[type=checkbox] {
 
   // Box hover
   &:hover+label:before {
-    background: $color-highlight-mid-import;
+    background: rgba($color-highlight-mid-import, 0.25);
   }
 
   // Box checked

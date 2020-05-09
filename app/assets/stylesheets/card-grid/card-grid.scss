@@ -1,17 +1,45 @@
 .card-grid {
     display: inline-grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(3, 33%);
     width: 100%;
 
     &_card__wrapper {
         width: 100%;
         margin: 30px auto;
-        display:flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     &_wishlist__toggle {
+        $toggle-size: 35px;
+        width:$toggle-size;
+        top: -25px;
+        right: -10px;
+        opacity: 1;
+        position: absolute;
+        z-index: 1;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 400;
+        font-size: 24px;
+        border-radius: $toggle-size;
+        cursor: pointer;
+        opacity: .4;
+        position: absolute;
+        color: $color-light;
+        background-color: $color-highlight-mid-import;
+
+        @media only screen and (max-width: 500px) {
+            top: 0;
+        }
+
+        &.active {
+            opacity: 1;
+        }
+
+    }
+    //Temporary until we refactor the Browse Cards page
+    &_browse-wishlist__toggle {
         top: -25px;
         right: 20px;
         opacity: 1;
@@ -61,100 +89,99 @@
 
         }
 
-        &_card {
-            width: 90%;
-            text-align: center;
-            position: relative;
 
-            img {
-                width: 100%;
-                margin: 0;
-            }
-        }
 
-        &_counter {
-            display: flex;
-            margin: 0 auto;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            width: 90%;
-            background-color: $color-highlight-import;
-            border-radius: 5px;
 
-            [class*="__btn"] {
-                font-weight: bolder;
-                display: flex;
-                justify-content: center;
-            }
+    &_card {
+        width: 90%;
+        text-align: center;
+        position: relative;
 
-            input[type=number] {
-                &:not(.browser-default) {
-                    cursor: default;
-                    text-align: center;
-                    color: $color-light;
-                    border-bottom: none;
-                    height: 34px;
-                    margin-bottom: 0;
-                    //Dealing with the wheel space;
-                    margin-right: -10px;
-                    -moz-appearance: textfield;
-                }
-
-                &:-webkit-inner-spin-button,
-                &:-webkit-outer-spin-button,
-                &:-webkit-inner-adjust-hue-button,
-                &:-webkit-outer-adjust-hue-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-
-            }
-
-        }
-
-        &_trade-proposal {
-            width: 90%;
-            margin: 0 auto;
-            text-align: center;
-
-            &__btn {
-                width: 100%;
-
-                span {
-                    display: none;
-                }
-
-                &:after {
-                    content: "Propose Trade";
-                    font-size: 12px;
-                }
-
-                &.not-in-league {
-                    background: $color-dark;
-                    cursor: default;
-
-                    &:after {
-                        content: "Not in League";
-                    }
-                }
-
-            }
-        }
-
-        @media only screen and (max-width: 800px) {
-            grid-template-columns: repeat(3, 33.3%);
-        }
-
-        @media only screen and (max-width: 650px) {
-            grid-template-columns: repeat(2, 50%);
-        }
-
-        @media only screen and (max-width: 500px) {
-            display: block;
-
-            &_card__wrapper {
-                margin-bottom: 25px;
-            }
+        img {
+            width: 100%;
+            margin: 0;
         }
     }
+
+    &_counter {
+        display: flex;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        width: 90%;
+        background-color: $color-highlight-import;
+        border-radius: 5px;
+
+        [class*="__btn"] {
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type=number] {
+            &:not(.browser-default) {
+                cursor: default;
+                text-align: center;
+                color: $color-light;
+                border-bottom: none;
+                height: 34px;
+                margin-bottom: 0;
+                //Dealing with the wheel space;
+                margin-right: -10px;
+                -moz-appearance: textfield;
+            }
+
+            &:-webkit-inner-spin-button,
+            &:-webkit-outer-spin-button,
+            &:-webkit-inner-adjust-hue-button,
+            &:-webkit-outer-adjust-hue-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        }
+
+    }
+
+    &_trade-proposal {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+
+        &__btn {
+            width: 100%;
+
+            span {
+                display: none;
+            }
+
+            &:after {
+                content: "Propose Trade";
+                font-size: 12px;
+            }
+
+            &.not-in-league {
+                background: $color-dark;
+                cursor: default;
+
+                &:after {
+                    content: "Not in League";
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    @media only screen and (max-width: 500px) {
+        display: block;
+
+        &_card__wrapper {
+            margin-bottom: 25px;
+        }
+    }
+}

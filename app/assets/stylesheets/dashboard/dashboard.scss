@@ -22,7 +22,7 @@
 
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
-                flex: 1 0 auto;
+                height: 154px;
                 width: 154px;
                 background: $color-dark;
             }
@@ -114,7 +114,7 @@
     }
 
     &_card-interface {
-        background: $color-nuetral;
+        border: 2px solid $color-dark;
 
         &__wrapper {
             margin: $section-margin 0;
@@ -126,7 +126,7 @@
         }
 
         &_tab__btn {
-            background: rgba($color-dark, .65);
+            background: darken($color-nuetral, 35%);
             margin-right: 5px;
             width: 150px;
             border: 2px solid $color-dark;
@@ -164,15 +164,33 @@
 
         &_action-bar {
             display: flex;
-            justify-content: flex-end;
             align-items: center;
             background-color: $color-dark;
+            justify-content: flex-end;
         }
 
         &_action__btn {
             padding: 0 10px;
             font-size: 12px;
-            margin: 5px;
+            margin: 5px;  
+        }
+
+        &_view-toggles {
+            display: flex;
+            margin-right: auto;
+        }
+
+        &_collection_toggle-card-view__btn,
+        &_wishlist_toggle-card-view__btn {
+         width: 35px;
+         margin: 5px;
+         background: darken($color-nuetral, 35%);
+            &.active{
+                background: $color-highlight-import
+            }
+            &:hover{
+                background: $color-highlight-mid-import;
+            }
         }
 
     }
@@ -182,7 +200,7 @@
 
         &__cell {
             justify-self: flex-end;
-            flex: 0 0 100px;
+            flex: 0 0 50px;
             text-align: center;
 
             &:first-of-type {
@@ -194,6 +212,23 @@
                 justify-self: flex-start;
             }
         }
+        &_remove-from-wishlist__btn{
+           width:25px;
+           height:25px;
+           line-height: 25px;
+        }
+
+        .empty-card-view{
+            grid-column: 1 / span 3;
+            text-align: center;
+            &__btn{
+                width:200px; 
+                margin:5px auto;
+            }
+            &__message {
+                font-size: 20px;
+            }
+        }
 
         &.active {
             display: block;
@@ -201,13 +236,12 @@
     }
 }
 
-#wishlist {
-    .dashboard_card-view__cell {
-        .dashboard_wishlist__toggle {
-            &:checked+label:after {
-                font-size: calc(#{$checkbox-size}*.7);
-                content: '\f00d';
-            }
-        }
+
+#collection-table,
+#collection-grid,
+#wishlist-table,
+#wishlist-grid {
+    &:not(.active) {
+        display:none;
     }
 }

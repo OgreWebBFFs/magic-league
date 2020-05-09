@@ -23,28 +23,16 @@
           <%= show_svg('logo.svg') %>
           </a>
           <ul class="nav_menu">
+        
             <li class="nav_menu-link">
-              <a href="/" data-turbolinks="false">rankings</a>
+            <a data-turbolinks="false" href="/users/<%=current_user.id%>">My Profile</a>
             </li>
             <li class="nav_menu-link">
-              <%= link_to "profile", user_path(current_user) %>
+            <a data-turbolinks="false" href="/users">Profiles</a>
             </li>
-            <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-cards', 'dropdown-content')">Cards &#9660;</a> 
-              <ul id="dd-menu-cards" class="dropdown-content">
-                  <li>
-                    <a href="/trades">trades</a>
-                  </li>
-                  <li>
-                    <a href="/collections">collections</a>
-                  </li>
-                  <li>
-                    <a href="/wishlists">wishlists</a>
-                  </li>
-                      <li>
-                  <a href="/tradables">tradables</a>
-                </li>             
-              </ul>
-            </li>         
+            <li class="nav_menu-link">
+            <a href="/trades" data-turbolinks="false">Browse Cards</a>
+            </li>       
             <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-league', 'dropdown-content')">League &#9660;</a> 
               <ul id="dd-menu-league" class="dropdown-content">
                  <li>
@@ -76,32 +64,21 @@
                 &#9660;
               </a>
               <ul id="dd-menu-mobile" class="dropdown-content">
-                <li>
-                  <a href="/" data-turbolinks="false">rankings</a>
-                </li>
-                <li>
-                  <a href="/trades">Trades</a>
-                </li>
-                <li>
-                  <%= link_to "profile", user_path(current_user) %>
-                </li>
-                <li>
+              <li>
+              <a data-turbolinks="false" href="/users/<%=current_user.id%>">My Profile</a>
+              </li>
+              <li>
+              <a data-turbolinks="false" href="/users">Profiles</a>
+              </li>
+              <li>
+                  <a href="/trades">Browse Cards</a>
+              </li>
+              
+              <li>
                   <a href="/rules">Rules</a>
                 </li>
                   <li>
                   <a href="/matches">Matches</a>
-                </li>
-                <li>
-                  <a href="/collections">collections</a>
-                </li>
-                <li>
-                  <a href="/wishlists">wishlists</a>
-                </li>
-                  <li>
-                  <a href="/tradables">tradables</a>
-                </li>
-                <li>
-                  <a href="/users">Roster</a>
                 </li>
                 <% if current_user.admin? %>
                 <li><a href="/admin/matches">Admin Matches</a></li>

@@ -13,9 +13,22 @@
         </div>
       </div>
       <div class="dashboard_card-interface">
-        <%= render 'dashboard/user_wishlist', user: @user %>
         <%= render 'dashboard/user_collections', user: @user %>
+        <%= render 'dashboard/user_wishlist', user: @user %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+let propsToPass = {
+  currentUserId: <%= current_user.id %>,
+  userId: <%= @user.id %>,
+  userName: "<%= @user.name %>",
+  currentUserWishlist:  <%= raw @current_user_wishlist.to_json %>,
+  collectionCards: <%= raw @cards.to_json %>,
+  tradables: <%= raw @tradables.to_json %>,
+  wishlist: <%= raw @wishlist.to_json%>
+};
+CardLayout.manageCardView(propsToPass);
+</script>

@@ -1,65 +1,20 @@
 <div id="wishlist" class="dashboard_card-view">
-<div class="dashboard_card-interface_action-bar">
-<%= link_to 'Add', trades_path, class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
-</div>
-   <div id="wishlist__table" class="dashboard_card-view__table">
+  <div class="dashboard_card-interface_action-bar">
+    <div class="dashboard_card-interface_view-toggles">
+      <div id="wishlist-table-toggle" class= "dashboard_card-interface_wishlist_toggle-card-view__btn active" onclick="Helpers.toggleElementById('wishlist-table', 'wishlist__togglable-view'), Helpers.toggleElementById('wishlist-table-toggle', 'dashboard_card-interface_wishlist_toggle-card-view__btn')">
+        <i class="fas fa-list"></i>
+      </div>
+      <div id="wishlist-grid-toggle" class= "dashboard_card-interface_wishlist_toggle-card-view__btn" onclick="Helpers.toggleElementById('wishlist-grid', 'wishlist__togglable-view'), Helpers.toggleElementById('wishlist-grid-toggle', 'dashboard_card-interface_wishlist_toggle-card-view__btn')">
+        <i class="fas fa-th-large"></i>
+      </div>
+    </div>
+    <%= link_to 'Add', trades_path, class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
+  </div>
+  <div id="wishlist-table" class="dashboard_card-view__table wishlist__togglable-view active">
     <div class="dashboard_card-view__row-headings">
       <div class="dashboard_card-view__cell">Card</div>
-       <script>
-        var cardRow = function(card) {
-        if (<%=current_user.id%>===<%= @user.id %>){
-        return `
-          <div class="dashboard_card-view__row wishlist-item">
-            <div class="dashboard_card-view__cell">
-              ${card.name}
-            </div>
-            <div class="dashboard_card-view__cell">
-            <input class="dashboard_wishlist__toggle" type="checkbox" checked <%= disabled_if_not_current_user(user) %> data-id="${card.id}" id="${card.name}_${card.id}">
-            <label class="dashboard_wishlist__toggle" for="${card.name}_${card.id}"></label>
-            </div>
-          </div>
-         `
-        }
-       else{
-       return `
-          <div class="dashboard_card-view__row wishlist-item">
-            <div class="dashboard_card-view__cell">${card.name}</div>
-            <div class="dashboard_card-view__cell"></div>
-          </div>
-        `
-        }
-     };
-
-        $(function() {
-
-          xhrRequest('/wishlists/<%= @user.id %>', 'GET', function(res){
-            $('.wishlist-item').remove()
-            res.forEach(function(card) {
-              $('#wishlist__table').append(cardRow(card));
-            });
-          });
-
-          $(document).off('click', '.dashboard_wishlist__toggle');
-          $(document).on('click', '.dashboard_wishlist__toggle', function(){
-            card_id = $(this).attr('data-id');
-            that = this;
-            $.ajax({
-              url: '/wishlists/<%= @user.id %>',
-              beforeSend: function (xhr) {
-                xhr.setRequestHeader("X-CSRF-Token", token)
-              },
-              type: "PUT",
-              data: { card_id: card_id },
-              dataType: 'json',
-              success: function(res) {
-                $(that).closest('.dashboard_card-view__row').remove();
-              },
-              error: function(res) {
-              }
-            });
-          });
-        });
-      </script>
     </div>
+  </div>
+  <div id="wishlist-grid" class="card-grid togglable__view wishlist__togglable-view">
   </div>
 </div>
