@@ -116,6 +116,7 @@
 
 
   &_user__btn {
+    color: $color-dark;
     width: 90%;
     max-width: 300px;
     min-width: 190px;
@@ -134,6 +135,7 @@
 
     &:hover {
       background: lighten($color-highlight-import, 5%);
+      color: $color-dark;
     }
 
     &.unranked {
@@ -142,6 +144,7 @@
 
       &:hover {
         background: lighten($color-highlight-mid-import, 5%);
+        color: $color-dark;
       }
 
     }
