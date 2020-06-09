@@ -1,44 +1,24 @@
 <div id="card-profile__wrapper">
     <div class="container">
         <div class="card__wrapper">
-        <img class="card" alt="Goblin Banneret" title="Goblin Banneret" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452852&amp;type=card">
-         <button class="btn small">Propose a Trade</button>  
+            <img class="card" alt="<%= @card.name %>" title="<%= @card.name %>" src="<%= @card.image_url %>">
+            <button class="btn small">Propose a Trade</button>  
             <button class="btn small">Add to Wishlist</button>
         </div>
         <div id="league-details">      
-             <h4>Total In League Copies: <span>666</span></h4>
+             <h4>Total In League Copies: <span><%= @total_count %></span></h4>
              <div class="alternating table two-col">
                 <div class="headings row">
                 <p>Owner</p>
                 <p>Amount</p>
                 </div>
-                <div class="row">
-                    <p>Ryan Branch</p>
-                    <p>4</p>
-                </div>
-                <div class="row">
-                    <p>Joe the Turtle Just kidding, Joe the human whose name should probs turn into ellipses.</p>
-                    <p>1</p>
-                </div>
-                <div class="row">
-                    <p>A. Brownbar</p>
-                    <p>478</p>
-                </div>
-                  <div class="row">
-                    <p>Ryan Zieg</p>
-                    <p>4</p>
-                </div>
-                <div class="row">
-                    <p>Stormper</p>
-                    <p>1</p>
-                </div>
-                <div class="row">
-                    <p>Zack Brownbar</p>
-                    <p>178</p>
-                </div>
+                <% @owner_details.each do |id, details| %>
+                    <div class="row">
+                        <p><a href="/users/<%= id %>"><%= details[:name] %></a></p>
+                        <p><%= details[:count] %></p>
+                    </div>
+                <% end %>
             </div>
-            
-            
         </div>
     </div>
 </div>
