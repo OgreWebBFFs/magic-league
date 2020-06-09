@@ -1,24 +1,30 @@
-<div id="card-profile__wrapper">
-    <div class="container">
-        <div class="card__wrapper">
-            <img class="card" alt="<%= @card.name %>" title="<%= @card.name %>" src="<%= @card.image_url %>">
-            <button class="btn small">Propose a Trade</button>  
-            <button class="btn small">Add to Wishlist</button>
+<div class="card-profile__container">
+    <h3 class="card-profile__title">
+      <%= @card.name %>
+    </h3>
+    <div class="card-profile__card">
+        <img alt="<%= @card.name %>" title="<%= @card.name %>" src="<%= @card.image_url %>">
+    </div>
+    <div class="card-profile__details">
+        <div class="card-profile__action-bar">
+            <button class="card-profile__btn-action"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
+            <button class="card-profile__btn-action"> <i class="far fa-heart"></i> Add to Wishlist</button>
         </div>
-        <div id="league-details">      
-             <h4>Total In League Copies: <span><%= @total_count %></span></h4>
-             <div class="alternating table two-col">
-                <div class="headings row">
-                <p>Owner</p>
-                <p>Amount</p>
-                </div>
-                <% @owner_details.each do |id, details| %>
-                    <div class="row">
-                        <p><a href="/users/<%= id %>"><%= details[:name] %></a></p>
-                        <p><%= details[:count] %></p>
-                    </div>
-                <% end %>
+       
+        <div class="card-profile__table">
+            <div class="card-profile__row-headings">
+                <div class="card-profile__cell-name">Owner</div>
+                <div class="card-profile__cell-amount">Amount</div>
+                <div class="card-profile__cell-trade"></div>
             </div>
+            <% @owner_details.each do |id, details| %>
+            <div class="card-profile__row">
+                 <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
+                 <div class="card-profile__cell-amount"><%= details[:count] %></div>
+                 <div class="card-profile__cell-trade"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            </div>
+            <% end %>
         </div>
+        <p>*total copies in league: <span><%= @total_count %></span></p>
     </div>
 </div>

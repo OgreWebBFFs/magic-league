@@ -1,0 +1,66 @@
+.card-profile {
+    &__container {
+        display: flex;
+        align-items: top;
+        flex-wrap: wrap;
+        @media only screen and (max-width: 900px) {
+            flex-direction: column; 
+            justify-content: center; 
+            flex-wrap: nowrap;
+        }
+    }
+    &__card {
+        text-align: center;
+         @media only screen and (max-width: 400px) {
+             margin: 5px 0;
+             order:2;   
+         }
+    }
+    &__title {
+        flex: 1 0 100%;
+        @media only screen and (max-width: 900px) {
+           text-align: center;  
+        }
+    }
+    &__details{
+        flex: 1 1 auto;
+        padding-left: 25px;
+        @media only screen and (max-width: 900px) { 
+            padding-left: 0;
+        }
+    }
+    &__action-bar {
+        text-align: right;
+        @media only screen and (max-width: 900px) {
+            text-align: center;  
+            margin: 10px 0 0 0;
+         }
+         @media only screen and (max-width: 550px) {
+             margin: 0;
+         }
+    }
+    &__btn-action {
+        display:inline-block;
+        margin: 0 5px 5px;
+        @media only screen and (max-width: 550px) {
+            margin: 0 0 10px 0; 
+            width: 100%;
+        }
+    }
+    &__cell {
+        &-name {
+            flex: 1 1 100%;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &-amount {
+            flex: 0 0 75px;
+            text-align: center;
+        }
+        &-trade {
+            flex: 0 0 50px;
+        }
+    }
+}
