@@ -20,5 +20,10 @@ class CardsController < ApplicationController
       user = o.collection.user
       @owner_details[user.id] = {id: user.id, name: user.name, count: counts_by_id[user.id] }
     end
+    @wishlisters_details = Hash.new
+    @card.wishes.each do |w|
+      user = w.user
+      @wishlisters_details[user.id] = { id: user.id, name: user.name }
+    end
   end
 end
