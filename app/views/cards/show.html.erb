@@ -8,7 +8,16 @@
     <div class="card-profile__details">
         <div class="card-profile__action-bar">
             <button class="card-profile__btn-action"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
-            <button class="card-profile__btn-action"> <i class="far fa-heart"></i> Add to Wishlist</button>
+            
+            <button class="card-profile__btn-action card-profile_wishlist__toggle-btn"> 
+                <% if (@wishlisters_details.key?(current_user.id)) %>
+                    <i class="far fa-heart" style="font-weight: bold;"></i>
+                    Remove from Wishlist
+                <% else %>
+                    <i class="far fa-heart"></i>
+                    Add to Wishlist
+                <% end %>
+            </button>
         </div>
        
         <div class="card-profile__table">
@@ -28,3 +37,32 @@
         <p>*total copies in league: <span><%= @total_count %></span></p>
     </div>
 </div>
+
+<script>
+    let removeFromWishlistHtml = `
+        <i class="far fa-heart" style="font-weight: bold;"></i>
+        Remove From Wishlist
+    `;
+    let addToWishlistHtml = `
+        <i class="far fa-heart"></i>
+        Add to Wishlist
+    `;
+    function setWishlistButtonState(wishlist) {
+        let isOnWishlist = false;
+        wishlist.forEach(function(element) {
+            if (element.id == <%= @card.id %>) {
+                isOnWishlist = true;
+            };
+        });
+        $('.card-profile_wishlist__toggle-btn').html((isOnWishlist ? removeFromWishlistHtml : addToWishlistHtml));
+    }
+    $(document).off('click', '.card-profile_wishlist__toggle-btn');
+    $(document).on('click', '.card-profile_wishlist__toggle-btn', function(){
+        card_id = <%= @card.id %>;
+        xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {setWishlistButtonState(res)}, {card_id: card_id});
+    });
+    
+    // Need to implement Propose trase (general, to all players that own)
+
+    // Need to implement Propose trade (to single player, for envelope icon in the players table)
+</script>
