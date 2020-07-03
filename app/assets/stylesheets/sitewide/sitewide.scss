@@ -13,7 +13,7 @@ $checkbox-size: 25px;
 //Text Treatments
 a {
   text-decoration: none;
-  color: darken($color-highlight-import, 5%);
+  color: $color-highlight-mid-import;
 
   &:hover {
     color: darken($color-highlight-import, 10%);
@@ -212,7 +212,7 @@ body {
   &[class*="-headings"] {
     background: $color-dark;
     color: $color-light;
-    border-bottom: 2px solid $color-highlight-mid-import;
+    border-bottom: 3px solid $color-accent;
   }
 }
 
@@ -277,7 +277,7 @@ select {
   line-height: 36px;
   -webkit-tap-highlight-color: transparent;
   background: $color-highlight-import;
-  color: $color-light;
+  color: $color-dark;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -285,7 +285,7 @@ select {
 
   &:hover {
     background: lighten($color-highlight-import, 5%);
-    color: $color-light;
+    color: rgba($color-dark, .75);
   }
 
   &.highlight-mid {
@@ -439,7 +439,7 @@ input[type=checkbox] {
     width: $checkbox-size;
     height: $checkbox-size;
     background: transparent;
-    border: 2px solid rgba(255, 111, 97, 0.75);
+    border: 2px solid $color-highlight-mid-import;
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
   }
@@ -473,12 +473,12 @@ input[type=checkbox] {
     height: $checkbox-size;
     align-items: center;
     justify-content: center;
-    color: $color-light;
+    color: $color-dark;
   }
    // Disabled box.
    &:disabled+label:before {
     box-shadow: none;
-    border: 2px solid rgba(255, 111, 97, 0.25);
+    border: 2px solid $color-dark;
     background: rgba($color-nuetral, .25);
   }
 
@@ -574,7 +574,7 @@ input[type=checkbox] {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba($color-dark, .5);
+  background-color: rgba($color-dark, .2);
 }
 
 @media only screen and (max-width: 650px) {

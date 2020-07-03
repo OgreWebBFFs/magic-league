@@ -126,6 +126,7 @@
         }
 
         &_tab__btn {
+            color: $color-light;
             background: darken($color-nuetral, 35%);
             margin-right: 5px;
             width: 150px;
@@ -137,14 +138,12 @@
 
             &:hover {
                 background: rgba($color-dark, .8);
+                color: $color-light;
             }
 
             &.active {
                 background: $color-dark;
 
-                &:hover {
-                    background: $color-dark;
-                }
             }
 
             @media only screen and (max-width: 850px) {
@@ -184,7 +183,7 @@
         &_wishlist_toggle-card-view__btn {
          width: 35px;
          margin: 5px;
-         background: darken($color-nuetral, 35%);
+         background: darken($color-nuetral, 15%);
             &.active{
                 background: $color-highlight-import
             }

@@ -5,8 +5,8 @@
     justify-content: center;
     top: $nav-height;
     position: absolute;
-    color: $color-light;
-    background-color: lighten($Soft-Orange, 5%);
+    color: $color-dark;
+    background-color: $color-accent;
     text-align: center;
     display: none;
     padding: 10px;
@@ -15,7 +15,7 @@
     &__close-button {
       position: relative;
       background: transparent;
-      color: $color-light;
+      color: $color-dark;
       margin-left: 10px;
       top: initial;
       right: initial;
