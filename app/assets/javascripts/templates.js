@@ -58,7 +58,9 @@ var Templates = (function () {
           <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle active" data-id="${card.id}">
             <i class="fas fa-times"></i>
           </div>
-          <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
+          <a href="/cards/${card.id}">
+            <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
+          </a>
         </div>
       </div>
       `
@@ -69,7 +71,9 @@ var Templates = (function () {
     return `
       <div class="card-grid_card__wrapper">
         <div class="card-grid_card">
-          <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
+          <a href="/cards/${card.id}">
+            <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
+          </a>
         </div>
       </div>
       `
@@ -112,7 +116,7 @@ var Templates = (function () {
       return `
         <div id="${card.id}-wishlist-row" class="dashboard_card-view__row wishlist-item">
           <div class="dashboard_card-view__cell">
-            ${card.name}
+            <a href="/cards/${card.id}">${card.name}</a>
           </div>
           <div class="dashboard_card-view__cell">
             <div class="wishlist-${card.id}__toggle dashboard_card-view_remove-from-wishlist__btn" data-id="${card.id}">
@@ -124,7 +128,7 @@ var Templates = (function () {
     } else {
       return `
         <div class="dashboard_card-view__row wishlist-item">
-          <div class="dashboard_card-view__cell">${card.name}</div>
+          <div class="dashboard_card-view__cell"><a href="/cards/${card.id}">${card.name}</a></div>
           <div class="dashboard_card-view__cell"></div>
         </div>
       `

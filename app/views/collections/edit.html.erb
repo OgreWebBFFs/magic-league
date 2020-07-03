@@ -12,7 +12,9 @@
       return `
       <div class="card-grid_card__wrapper">
         <div class="card-grid_card" href="/cards/${card.attributes.id}">
-          <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
+          <a href="/cards/${card.id}">
+            <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
+          </a>
         </div>
         <div class="card-grid_counter">
           <button type="button" class="card-grid_counter_decrement__btn" data-id="${card.attributes.id}"><i class="material-icons">indeterminate_check_box</i></button>
