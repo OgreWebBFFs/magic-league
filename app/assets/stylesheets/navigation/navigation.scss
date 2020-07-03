@@ -28,7 +28,7 @@
       height: 100%;
 
       .logo-fill {
-        fill: $color-highlight-mid-import;
+        fill: $color-accent;
       }
 
     }
@@ -122,7 +122,7 @@
         font-size: 12px;
         width: 150px;
         cursor: pointer;
-        color: $color-highlight-import;
+        color: $color-dark;
         font-size: 14px;
        
         &:hover {

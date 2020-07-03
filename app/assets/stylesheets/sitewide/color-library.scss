@@ -22,14 +22,21 @@ $Caribbean-Green: #00d285;
 $Ebony-Clay:#1f2833;
 $Eucalytus: #27876F;
 $Biloba-Flower:#CBBAED;
+$Mulien-Teal:#91e5da;
+$Mulien-White:#e5f1ef;
+$Mulien-Black: #1a1b1d;
+$Mulien-Purple:hsl(276, 17%, 11%);
+$Mulien-Green: #42988c;
+
 
 //Semantic Colors Names
 
-$color-light:white;
-$color-dark: $Woodsmoke;
+$color-light: white;
+$color-dark: $Mulien-Purple;
 $color-nuetral: $Light-Grey;
-$color-highlight-mid-import: $Living-Coral;
-$color-highlight-import: $Sunset-Orange;
+$color-highlight-mid-import: $Mulien-Green;
+$color-highlight-import: $Mulien-Teal;
+$color-accent: $Biloba-Flower;
 $color-highlight-urgent: $Crimson;
 $background-color: $color-light;
 $ranking-border-color: $color-light;
