@@ -166,6 +166,7 @@
 
             &.not-in-league {
                 background: $color-dark;
+                color: $color-light;    
                 cursor: default;
 
                 &:after {
