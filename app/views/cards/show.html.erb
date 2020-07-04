@@ -7,7 +7,7 @@
     </div>
     <div class="card-profile__details">
         <div class="card-profile__action-bar">
-            <button class="card-profile__btn-action"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
+            <button class="card-profile__btn-action card-profile_trade-proposal__btn"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
             
             <button class="card-profile__btn-action card-profile_wishlist__toggle-btn"> 
                 <% if (@wishlisters_details.key?(current_user.id)) %>
@@ -37,6 +37,11 @@
         <p>*total copies in league: <span><%= @total_count %></span></p>
     </div>
 </div>
+<div id="trade-modal" class="modal"  >
+  <div class="modal__overlay" onclick="Helpers.toggleElementById('trade-modal')"></div>
+  <div class="modal__content">
+  </div>
+</div>
 
 <script>
     let removeFromWishlistHtml = `
@@ -63,6 +68,20 @@
     });
     
     // Need to implement Propose trase (general, to all players that own)
+    $(document).off('click', '.card-profile_trade-proposal__btn');
+    $(document).on('click', '.card-profile_trade-proposal__btn', function(){ 
+        $('.modal__content').empty();
+        let id = <%= @card.id %>;
+        let cards = [];
+        xhrRequest('/cards/?query=' + '<%= @card.name %>', "GET", function(res) {
+            cards = res.data;
+            console.log(`cards: ${cards}`);
+            let card = search('id', id, cards);
+            let users = card.attributes.users.data;
+            $('.modal__content').append(Trades.tradeModal(card, users, <%= current_user.id %>));
+            $('#trade-modal').addClass('active');
+        });
+    });
 
     // Need to implement Propose trade (to single player, for envelope icon in the players table)
 </script>

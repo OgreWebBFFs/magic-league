@@ -8,8 +8,8 @@ class TradesController < ApplicationController
     card.users.select{|a| a.id != current_user.id }.map{|a| a.id}.each do |id|
       UserMailer.trade_proposal_email(current_user.id, id, card.id).deliver_later
     end
-    flash[:success] = "Trade emails successfully sent!"
-    redirect_to trades_path
+    flash[:success] = "Trade email(s) successfully sent!"
+    redirect_to request.referer
   end
 
   private
