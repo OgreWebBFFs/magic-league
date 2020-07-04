@@ -12,8 +12,9 @@
     }
 
     &_wishlist__toggle {
-        $toggle-size: 35px;
+        $toggle-size: 36px;
         width:$toggle-size;
+        padding: calc(36px*.125);
         top: -25px;
         right: -10px;
         opacity: 1;
@@ -21,7 +22,7 @@
         z-index: 1;
         font-family: "Font Awesome 5 Free";
         font-weight: 400;
-        font-size: 24px;
+        font-size: calc(#{$toggle-size}*.5);
         border-radius: $toggle-size;
         cursor: pointer;
         opacity: .6;
@@ -53,13 +54,14 @@
         input[type=checkbox] {
             + label {
                 &:before {
-                    $checkbox-size:35px;
+                    $checkbox-size:36px;
+                    border: none;
                     font-family: "Font Awesome 5 Free";
                     font-weight:400;
                     content: "\f004";
                     width: $checkbox-size;
                     height: $checkbox-size;
-                    font-size: calc(#{$checkbox-size}*.7);
+                    font-size: calc(#{$checkbox-size}*.5);
                     border-radius:  $checkbox-size;
                     padding:2px;
                     cursor: pointer;
