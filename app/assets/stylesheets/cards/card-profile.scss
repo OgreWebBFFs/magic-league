@@ -15,9 +15,9 @@
              margin: 5px 0;
              order:2;   
          }
-         img {
-             max-width: 225px;
-         }
+    }
+    &__image {
+        max-width: 220px;
     }
     &__title {
         flex: 1 0 100%;
@@ -27,7 +27,7 @@
     }
     &__details{
         flex: 1 1 auto;
-        padding-left: 25px;
+        padding-left: 10px;
         @media only screen and (max-width: 900px) { 
             padding-left: 0;
         }
@@ -44,7 +44,10 @@
     }
     &__btn-action {
         display:inline-block;
-        margin: 0 5px 5px;
+        margin: 0 5px 5px 0px;
+        min-width: 170px;
+        font-size: 0.8rem;
+
         @media only screen and (max-width: 550px) {
             margin: 0 0 10px 0; 
             width: 100%;

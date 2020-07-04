@@ -24,10 +24,10 @@
         font-size: 24px;
         border-radius: $toggle-size;
         cursor: pointer;
-        opacity: .4;
+        opacity: .6;
         position: absolute;
         color: $color-light;
-        background-color: $color-highlight-mid-import;
+        background-color: $color-accent;
 
         @media only screen and (max-width: 500px) {
             top: 0;
@@ -35,6 +35,9 @@
 
         &.active {
             opacity: 1;
+            i {
+                font-weight: bold; 
+            }
         }
 
     }
@@ -60,13 +63,13 @@
                     border-radius:  $checkbox-size;
                     padding:2px;
                     cursor: pointer;
-                    opacity: .4;
+                    opacity: .6;
                     position: absolute;
                     color: $color-light;
                     //fix for mobile color issues;
                     color: transparent;  
                     text-shadow: 0 0 0 $color-light;
-                    background-color: $color-highlight-mid-import;
+                    background-color: $color-accent;
                     @media only screen and (max-width: 500px) {
                         top: 0;
                     }
@@ -75,6 +78,7 @@
 
                 &:checked+label::before {
                     opacity: 1;
+                    font-weight: bold;
                 }
                 
                 &:checked+label::after {
