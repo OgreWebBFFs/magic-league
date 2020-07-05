@@ -28,9 +28,15 @@
             </div>
             <% @owner_details.each do |id, details| %>
             <div class="card-profile__row">
-                 <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
-                 <div class="card-profile__cell-amount"><%= details[:count] %></div>
-                 <div class="card-profile__cell-trade"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
+                <div class="card-profile__cell-amount"><%= details[:count] %></div>
+                <div class="card-profile__cell-trade">
+                    <% if id != current_user.id %>
+                        <button class="card-profile_envelope__btn" data-user-id="<%= id %>">
+                            <i class="fa fa-envelope" aria-hidden="true" ></i>
+                        </button>
+                    <% end %>
+                </div>
             </div>
             <% end %>
         </div>
@@ -61,27 +67,39 @@
         });
         $('.card-profile_wishlist__toggle-btn').html((isOnWishlist ? removeFromWishlistHtml : addToWishlistHtml));
     }
+
     $(document).off('click', '.card-profile_wishlist__toggle-btn');
     $(document).on('click', '.card-profile_wishlist__toggle-btn', function(){
         card_id = <%= @card.id %>;
         xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {setWishlistButtonState(res)}, {card_id: card_id});
     });
-    
-    // Need to implement Propose trase (general, to all players that own)
-    $(document).off('click', '.card-profile_trade-proposal__btn');
-    $(document).on('click', '.card-profile_trade-proposal__btn', function(){ 
+
+    function displayTradeModal(user_id = null) {
         $('.modal__content').empty();
         let id = <%= @card.id %>;
         let cards = [];
         xhrRequest('/cards/?query=' + '<%= @card.name %>', "GET", function(res) {
             cards = res.data;
-            console.log(`cards: ${cards}`);
             let card = search('id', id, cards);
             let users = card.attributes.users.data;
+            if (user_id) {
+                users = users.filter(user => user.id == user_id);
+            }
             $('.modal__content').append(Trades.tradeModal(card, users, <%= current_user.id %>));
             $('#trade-modal').addClass('active');
         });
+    }
+    
+    // Need to implement Propose trase (general, to all players that own)
+    $(document).off('click', '.card-profile_trade-proposal__btn');
+    $(document).on('click', '.card-profile_trade-proposal__btn', function(){ 
+        displayTradeModal();
     });
 
     // Need to implement Propose trade (to single player, for envelope icon in the players table)
+    $(document).off('click', '.card-profile_envelope__btn');
+    $(document).on('click', '.card-profile_envelope__btn', function(){
+        let user_id = $(this).attr('data-user-id');
+        displayTradeModal(user_id);
+    });
 </script>
