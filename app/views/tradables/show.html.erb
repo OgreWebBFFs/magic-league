@@ -10,7 +10,9 @@
       <% @user.tradable_cards.each do |card| %>
         <div class="card-grid_card__wrapper">
           <div class="card-grid_card">
-           <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
+            <a href="/cards/<%= card.id %>">
+              <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
+            </a
           </div>  
         </div>
       <% end %>
