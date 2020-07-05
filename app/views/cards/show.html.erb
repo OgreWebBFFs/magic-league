@@ -7,7 +7,9 @@
     </div>
     <div class="card-profile__details">
         <div class="card-profile__action-bar">
-            <button class="card-profile__btn-action card-profile_trade-proposal__btn"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
+            <% if (@total_count > 0) %>
+                <button class="card-profile__btn-action card-profile_trade-proposal__btn"> <i class="fa fa-envelope" aria-hidden="true"></i></i> Propose a Trade</button>
+            <% end %>
             
             <button class="card-profile__btn-action card-profile_wishlist__toggle-btn"> 
                 <% if (@wishlisters_details.key?(current_user.id)) %>
@@ -26,18 +28,26 @@
                 <div class="card-profile__cell-amount">Amount</div>
                 <div class="card-profile__cell-trade"></div>
             </div>
-            <% @owner_details.each do |id, details| %>
-            <div class="card-profile__row">
-                <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
-                <div class="card-profile__cell-amount"><%= details[:count] %></div>
-                <div class="card-profile__cell-trade">
-                    <% if id != current_user.id %>
-                        <button class="card-profile_envelope__btn" data-user-id="<%= id %>">
-                            <i class="fa fa-envelope" aria-hidden="true" ></i>
-                        </button>
-                    <% end %>
+            <% if (@total_count > 0) %>
+                <% @owner_details.each do |id, details| %>
+                    <div class="card-profile__row">
+                        <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
+                        <div class="card-profile__cell-amount"><%= details[:count] %></div>
+                        <div class="card-profile__cell-trade">
+                            <% if id != current_user.id %>
+                                <button class="card-profile_envelope__btn" data-user-id="<%= id %>">
+                                    <i class="fa fa-envelope" aria-hidden="true" ></i>
+                                </button>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="card-profile__row">
+                    <div class="card-profile__cell-name">No one owns this card yet</div>
+                    <div class="card-profile__cell-amount"></div>
+                    <div class="card-profile__cell-trade"></div>
                 </div>
-            </div>
             <% end %>
         </div>
         <p>*total copies in league: <span><%= @total_count %></span></p>
