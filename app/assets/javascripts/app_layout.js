@@ -1,7 +1,10 @@
 var AppLayout = (function() {
   let setMatchDateAndTime = function() {
     let date  = new Date();
-    let today = date.toISOString().substr(0, 10);
+    let day = ('0' + date.getDate()).slice(-2); // Want to make sure 0 is included for values < 10
+    let month = ('0' + (date.getMonth() + 1)).slice(-2); // adding one since getMonth is zero-based (Jan is 0)
+    let year = date.getFullYear();
+    let today = `${year}-${month}-${day}`;
     let hour = ('0' + date.getHours()).slice(-2);
     let min= ('0' + date.getMinutes()).slice(-2);
     let time = `${hour}:${min}`;
