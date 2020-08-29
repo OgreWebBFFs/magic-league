@@ -12,6 +12,12 @@ namespace :cards do
         resource.image_url = card['image_uris']['png'] 
         resource.multiverse_id = card['multiverse_ids'].first
         resource.set = args[:set_code]
+        resource.oracle_text = card['oracle_text']
+        resource.type_line = card['type_line']
+        resource.mana_cost = card['mana_cost']
+        resource.cmc = card['cmc']
+        resource.colors = card['colors']
+        resource.rarity = card['rarity']
         resource.save!
       end
     end
