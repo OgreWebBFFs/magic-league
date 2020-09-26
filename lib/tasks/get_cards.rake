@@ -9,7 +9,7 @@ namespace :cards do
         puts "Processing #{card['name']}"
         resource = Card.find_or_create_by(name: card['name'])
         resource.description = card['text']
-        resource.image_url = card['image_uris']['png'] 
+        resource.image_url = card['card_faces'] ? card['card_faces'][0]['image_uris']['png'] : card['image_uris']['png']
         resource.multiverse_id = card['multiverse_ids'].first
         resource.set = args[:set_code]
         resource.oracle_text = card['oracle_text']
