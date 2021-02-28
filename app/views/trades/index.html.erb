@@ -17,33 +17,31 @@
   var wishlist = []
 
   xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
-  $(document).off('click', '.card-grid_wishlist__toggle-checkbox');
-  $(document).on('click', '.card-grid_wishlist__toggle-checkbox', function(){
+  $(document).off('click', '.card-grid__wishlist__toggle-checkbox');
+  $(document).on('click', '.card-grid__wishlist__toggle-checkbox', function(){
     card_id = $(this).attr('data-id');
     xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
   });
 
   var cardTemplate = function(card) {
-    console.log(card.attributes)
     return `
     <div class="card-grid__card__wrapper">
       <div class="card-grid__card">
-          <div class="card-grid_browse-wishlist__toggle">
-          <input class="card-grid_wishlist__toggle-checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
-          <label class="card-grid_wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
+          <div class="card-grid__browse-wishlist__toggle">
+          <input class="card-grid__wishlist__toggle-checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
+          <label class="card-grid__wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
         </div>
         <a class="card-grid__card--link" href="/cards/${card.id}">
           <div class="card-grid__card--placeholder">
               <p class="card-grid__card--attribute">${card.attributes.name}</p>
-              <p class="card-grid__card--attribute">CMC: ${card.attributes.cmc}</p>
-              <p class="card-grid__card--attribute">Colors:${card.attributes.colors}</p>
+              <p class="card-grid__card--attribute">CMC: ${card.attributes.mana_cost}</p>
               <p class="card-grid__card--attribute">${card.attributes.type_line}</p>
           </div>
           <img class="card-grid__card--image" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </a>
       </div>
-      <div class="card-grid_trade-proposal">
-       <button type="button" class="card-grid_trade-proposal__btn ${leagueStatus(card)}" data-id="${card.attributes.id}"></button>
+      <div class="card-grid__trade-proposal">
+       <button type="button" class="card-grid__trade-proposal__btn ${leagueStatus(card)}" data-id="${card.attributes.id}"></button>
       </div>
     </div>
   `
@@ -126,8 +124,8 @@ $(function() {
     }
   }, 300));
 
-  $(document).off('click', '.card-grid_trade-proposal__btn');
-  $(document).on('click', '.card-grid_trade-proposal__btn', function(){ 
+  $(document).off('click', '.card-grid__trade-proposal__btn');
+  $(document).on('click', '.card-grid__trade-proposal__btn', function(){ 
     $('.modal__content').empty();
     id = $(this).attr('data-id');
     card = search('id', id, cards);
