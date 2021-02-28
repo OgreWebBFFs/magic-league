@@ -24,6 +24,7 @@
   });
 
   var cardTemplate = function(card) {
+    console.log(card.attributes)
     return `
     <div class="card-grid__card__wrapper">
       <div class="card-grid__card">
@@ -32,7 +33,8 @@
           <label class="card-grid_wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
         </div>
         <a href="/cards/${card.id}">
-          <div class="card
+          <div class="card-grid__card__placeholder">
+          </div>
           <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </a>
       </div>
