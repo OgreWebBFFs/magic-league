@@ -32,10 +32,14 @@
           <input class="card-grid_wishlist__toggle-checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
           <label class="card-grid_wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
         </div>
-        <a href="/cards/${card.id}">
-          <div class="card-grid__card__placeholder">
+        <a class="card-grid__card--link" href="/cards/${card.id}">
+          <div class="card-grid__card--placeholder">
+              <p class="card-grid__card--attribute">${card.attributes.name}</p>
+              <p class="card-grid__card--attribute">CMC: ${card.attributes.cmc}</p>
+              <p class="card-grid__card--attribute">Colors:${card.attributes.colors}</p>
+              <p class="card-grid__card--attribute">${card.attributes.type_line}</p>
           </div>
-          <img alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
+          <img class="card-grid__card--image" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
         </a>
       </div>
       <div class="card-grid_trade-proposal">
