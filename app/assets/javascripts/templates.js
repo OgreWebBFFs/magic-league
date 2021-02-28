@@ -32,8 +32,8 @@ var Templates = (function () {
     })
     let toggleStatus = isOnWishList ? 'active' : '';
     return `
-      <div class="card-grid_card__wrapper">
-        <div class="card-grid_card">
+      <div class="card-grid__card__wrapper">
+        <div class="card-grid__card">
           <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle ${toggleStatus}" data-id="${card.id}">
             <i class="far fa-heart"></i>
           </div>
@@ -53,8 +53,8 @@ var Templates = (function () {
     })
     let toggleStatus = isOnWishList ? 'active' : '';
     return `
-      <div class="card-grid_card__wrapper" id="${card.id}__wishlist-removal-target">
-        <div class="card-grid_card">
+      <div class="card-grid__card__wrapper" id="${card.id}__wishlist-removal-target">
+        <div class="card-grid__card">
           <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle active" data-id="${card.id}">
             <i class="fas fa-times"></i>
           </div>
@@ -69,8 +69,8 @@ var Templates = (function () {
   let cardWithNoToggles = (props) => {
     let card = props.card;
     return `
-      <div class="card-grid_card__wrapper">
-        <div class="card-grid_card">
+      <div class="card-grid__card__wrapper">
+        <div class="card-grid__card">
           <a href="/cards/${card.id}">
             <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
           </a>

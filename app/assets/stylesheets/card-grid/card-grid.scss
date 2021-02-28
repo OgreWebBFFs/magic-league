@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3, 33%);
     width: 100%;
 
-    &_card__wrapper {
+    &__card__wrapper {
         width: 100%;
         margin: 30px auto;
         display: flex;
@@ -98,7 +98,7 @@
 
 
 
-    &_card {
+    &__card {
         width: 90%;
         text-align: center;
         position: relative;
