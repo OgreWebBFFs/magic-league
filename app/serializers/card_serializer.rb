@@ -1,7 +1,7 @@
 class CardSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :name, :id, :image_url
+  attributes :name, :colors, :cmc, :id, :image_url, :oracle_text, :mana_cost,:rarity, :set, :type_line
 
   attribute :users do |object|
     UserSerializer.new(object.users).serializable_hash

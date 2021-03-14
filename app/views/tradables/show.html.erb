@@ -8,8 +8,8 @@
     </div>
     <div class="card-grid">
       <% @user.tradable_cards.each do |card| %>
-        <div class="card-grid_card__wrapper">
-          <div class="card-grid_card">
+        <div class="card-grid__card__wrapper">
+          <div class="card-grid__card">
             <a href="/cards/<%= card.id %>">
               <img alt="<%= card.name %>" title="<%= card.name %>" src="<%= card.image_url %>">
             </a
