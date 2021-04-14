@@ -1,6 +1,20 @@
 var Templates = (function () {
  // Grid Card Templates
 
+  const cardLinkWithImageAndPlaceHolder = (card) => {
+    return `
+    <a class="card-grid__card--link" href="/cards/${card.id}">
+      <div class="card-grid__card--placeholder">
+        <p class="card-grid__card--attribute">${card.name}</p>
+        <p class="card-grid__card--attribute">CMC: ${card.mana_cost}</p>
+        <p class="card-grid__card--attribute">${card.type_line}</p>
+      </div>
+      <img  class="card-grid__card--image"  alt="${card.name}" title="${card.name}" src="${card.image_url}">
+    </a>
+   `
+  }
+
+
   let emptyStateTemplate = (props) => {
     if (props.isViewingOwnProfile) {
       return `
@@ -34,12 +48,10 @@ var Templates = (function () {
     return `
       <div class="card-grid__card__wrapper">
         <div class="card-grid__card">
-          <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle ${toggleStatus}" data-id="${card.id}">
+          <div class="wishlist-${card.id}__toggle card-grid__wishlist__toggle ${toggleStatus}" data-id="${card.id}">
             <i class="far fa-heart"></i>
           </div>
-          <a href="/cards/${card.id}">
-            <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-          </a>
+          ${cardLinkWithImageAndPlaceHolder(card)}
         </div>
       </div>
       `
@@ -55,12 +67,10 @@ var Templates = (function () {
     return `
       <div class="card-grid__card__wrapper" id="${card.id}__wishlist-removal-target">
         <div class="card-grid__card">
-          <div class="wishlist-${card.id}__toggle card-grid_wishlist__toggle active" data-id="${card.id}">
+          <div class="wishlist-${card.id}__toggle card-grid__wishlist__toggle active" data-id="${card.id}">
             <i class="fas fa-times"></i>
           </div>
-          <a href="/cards/${card.id}">
-            <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-          </a>
+          ${cardLinkWithImageAndPlaceHolder(card)}
         </div>
       </div>
       `
@@ -71,9 +81,7 @@ var Templates = (function () {
     return `
       <div class="card-grid__card__wrapper">
         <div class="card-grid__card">
-          <a href="/cards/${card.id}">
-            <img alt="${card.name}" title="${card.name}" src="${card.image_url}">
-          </a>
+            ${cardLinkWithImageAndPlaceHolder(card)}
         </div>
       </div>
       `
@@ -153,6 +161,7 @@ var Templates = (function () {
     emptyStateTemplate : emptyStateTemplate,
     wishlistRow: wishlistRow,
     collectionRow: collectionRow,
+    cardLinkWithImageAndPlaceHolde:cardLinkWithImageAndPlaceHolde,
     alertTemplate
   }
 })();
