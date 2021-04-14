@@ -161,7 +161,7 @@ var Templates = (function () {
     emptyStateTemplate : emptyStateTemplate,
     wishlistRow: wishlistRow,
     collectionRow: collectionRow,
-    cardLinkWithImageAndPlaceHolde:cardLinkWithImageAndPlaceHolde,
+    cardLinkWithImageAndPlaceHolder:cardLinkWithImageAndPlaceHolder,
     alertTemplate
   }
 })();
