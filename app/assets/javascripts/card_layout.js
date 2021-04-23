@@ -177,9 +177,9 @@ var CardLayout = (function () {
   //REQUESTS
 
   let wishlistGridToggleClickHandler = (props) => {
-    $(document).off('click', '.card-grid_wishlist__toggle',
+    $(document).off('click', '.card-grid__wishlist__toggle',
       function () {});
-    $(document).on('click', '.card-grid_wishlist__toggle', function () {
+    $(document).on('click', '.card-grid__wishlist__toggle', function () {
       //Retrieve the classlist of the clicked toggle & make it an array
       let targetToggleClassList = $(this).attr("class").split(" ");
       //Grab the cardId from the data-id tag on the html
