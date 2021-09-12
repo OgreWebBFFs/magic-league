@@ -105,8 +105,8 @@
       });
     });
 
-    $(document).off('click', '.card-grid__counter_increment__btn, .card-grid_counter_decrement__btn');
-    $(document).on('click', '.card-grid__counter_increment__btn, .card-grid_counter_decrement__btn', debounce(function(){
+    $(document).off('click', '.card-grid__counter_increment__btn, .card-grid__counter_decrement__btn');
+    $(document).on('click', '.card-grid__counter_increment__btn, .card-grid__counter_decrement__btn', debounce(function(){
       id = $(this).attr('data-id');
       count = $(`input[type=number][data-id=${id}]`).val()
       xhrRequest('/collections/<%=@collection.id %>', "PUT", function(res){ current_user_cards[id] = count }, { id: <%= @collection.id %>, ownership: {count: count, card_id: id, collection_id: <%= @collection.id %>}});
