@@ -3,15 +3,12 @@
 //Rankings Border Animations
 @keyframes growVert {
   0% {
-
     transform: scaleY(0);
   }
-
 }
 
 @keyframes growHorz {
   0% {
-
     transform: scaleX(0);
   }
 }
@@ -19,46 +16,39 @@
 //Background saturation animation
 @keyframes fadeInBGFilter {
   0% {
-    -webkit-filter: saturate(.5);
-    filter: saturate(.5);
+    -webkit-filter: saturate(0.5);
+    filter: saturate(0.5);
   }
-
 }
 
-//Rankings name entry animation 
+//Rankings name entry animation
 @keyframes bigEntrance {
   0% {
     transform: translateY(10px);
-    opacity: .2;
+    opacity: 0.2;
   }
 
   30% {
-
     opacity: 1;
   }
 
   45% {
-
     opacity: 1;
   }
 
   60% {
-
     opacity: 1;
   }
 
   75% {
-
     opacity: 1;
   }
 
   90% {
-
     opacity: 1;
   }
 
   100% {
-
     opacity: 1;
   }
 }
@@ -66,36 +56,30 @@
 @-webkit-keyframes bigEntrance {
   0% {
     transform: translateY(10px);
-    opacity: .2;
+    opacity: 0.2;
   }
 
   30% {
-
     opacity: 1;
   }
 
   45% {
-
     opacity: 1;
   }
 
   60% {
-
     opacity: 1;
   }
 
   75% {
-
     opacity: 1;
   }
 
   90% {
-
     opacity: 1;
   }
 
   100% {
-
     opacity: 1;
   }
 }
@@ -111,11 +95,11 @@
   }
 
   48% {
-    fill: #3D4849;
+    fill: $Eerie-Black;
   }
 
   64% {
-    fill: whitesmoke;
+    fill: $Mellow-Apricot;
   }
 
   82% {
@@ -125,7 +109,6 @@
   98% {
     fill: $color-highlight-mid-import;
   }
-
 }
 
 @-webkit-keyframes mtgColorCycle {
@@ -138,11 +121,11 @@
   }
 
   48% {
-    fill: #3D4849;
+    fill: $Eerie-Black;
   }
 
   64% {
-    fill: whitesmoke;
+    fill: $Mellow-Apricot;
   }
 
   80% {

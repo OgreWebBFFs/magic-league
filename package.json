@@ -2,7 +2,8 @@
   "name": "mtg-league",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0"
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bundler": "^0.8.0"
   },
   "scripts": {
     "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",

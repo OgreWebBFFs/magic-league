@@ -1,10 +1,11 @@
 .nav {
   position: relative;
   box-sizing: border-box;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
   color: $color-highlight-import;
-  background-color: $color-dark;
+  background-color: $color-light;
   width: 100%;
   height: $nav-height;
 
@@ -27,9 +28,8 @@
       height: 100%;
 
       .logo-fill {
-        fill: $color-light; 
+        fill: $color-highlight-import;
       }
-
     }
 
     &:hover {
@@ -40,9 +40,8 @@
           animation-duration: 10s;
           animation-timing-function: ease-in-out;
           animation-iteration-count: infinite;
-          animation-direction: alternate-reverse
+          animation-direction: alternate-reverse;
         }
-
       }
     }
   }
@@ -54,15 +53,14 @@
     height: 100%;
     text-align: center;
 
-
     &-link,
     &-list,
-    &-mobile, 
+    &-mobile,
     &-match-logger__toggle-wrapper {
       min-height: 0;
       position: relative;
-      -webkit-transition: background-color .3s;
-      transition: background-color .3s;
+      -webkit-transition: background-color 0.3s;
+      transition: background-color 0.3s;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -74,7 +72,6 @@
 
     &-mobile,
     &-match-logger__toggle-wrapper {
-
       color: $color-dark;
 
       & a {
@@ -99,18 +96,21 @@
       position: absolute;
       top: $nav-height;
       z-index: 99;
-      -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      transition: .25s;
-      max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/2));
+      -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.25s;
+      max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
 
       li {
         width: 100%;
         clear: both;
 
         &:hover {
-          background-color: rgba($color-nuetral, .25);
+          background-color: rgba($color-nuetral, 0.25);
         }
       }
 
@@ -123,7 +123,7 @@
         cursor: pointer;
         color: $color-dark;
         font-size: 14px;
-       
+
         &:hover {
           background: none;
         }
@@ -133,14 +133,11 @@
         display: block;
         height: initial;
       }
-
     }
   }
 
-
   @media only screen and (max-width: 850px) {
     &_menu {
-      
       &-link,
       &-list {
         display: none;
@@ -152,7 +149,7 @@
         align-items: center;
         .dropdown-content {
           li {
-            a{ 
+            a {
               padding: 8px 10px;
             }
           }
