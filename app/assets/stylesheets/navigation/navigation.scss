@@ -6,7 +6,7 @@
   z-index: 2;
   color: $color-highlight-import;
   background-color: $color-dark;
-background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $color-dark 10%, $color-dark 90%, darken($color-highlight-import, 45%));
+  background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $color-dark 10%, $color-dark 90%, darken($color-highlight-import, 45%))  ;
   width: 100%;
   height: $nav-height;
 
@@ -90,7 +90,8 @@ background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $co
     }
 
     .dropdown-content {
-      background-color: rgba($color-dark, 0.9);
+      background-color: lighten($color-dark, 10%);
+      background: linear-gradient(120deg, lighten($color-dark, 10%) 80%, darken($color-highlight-import, 45%))  ;
       margin: 0;
       display: none;
       overflow-y: auto;
