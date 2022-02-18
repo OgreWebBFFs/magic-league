@@ -20,6 +20,7 @@ gem 'font-awesome-sass', '~> 5.0.6'
 gem 'jquery-rails'
 gem "pundit"
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'dry-types', '~> 1.5.0'
 
 gem 'simple_form', '>= 4.0.1'
 gem 'fast_jsonapi'
