@@ -5,7 +5,7 @@
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
   color: $color-highlight-import;
-  background-color: $color-light;
+  background-color: $color-dark;
   width: 100%;
   height: $nav-height;
 
@@ -89,7 +89,7 @@
     }
 
     .dropdown-content {
-      background-color: $color-light;
+      background-color: rgba($color-dark, 0.9);
       margin: 0;
       display: none;
       overflow-y: auto;
@@ -121,7 +121,6 @@
         font-size: 12px;
         width: 150px;
         cursor: pointer;
-        color: $color-dark;
         font-size: 14px;
 
         &:hover {
