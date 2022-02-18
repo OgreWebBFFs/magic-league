@@ -6,7 +6,7 @@
   z-index: 2;
   color: $color-highlight-import;
   background-color: $color-dark;
-background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $color-dark 10%, $color-dark 90%, darken($color-highlight-mid-import, 35%));
+background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $color-dark 10%, $color-dark 90%, darken($color-highlight-import, 45%));
   width: 100%;
   height: $nav-height;
 
