@@ -14,9 +14,10 @@ $checkbox-size: 25px;
 a {
   text-decoration: none;
   color: $color-highlight-mid-import;
+  transition: color 0.3s;
 
   &:hover {
-    color: darken($color-highlight-import, 10%);
+    color: $color-highlight-import;
   }
 }
 
@@ -282,6 +283,9 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: .3s;
 
   &:hover {
     background: lighten($color-highlight-import, 15%);
