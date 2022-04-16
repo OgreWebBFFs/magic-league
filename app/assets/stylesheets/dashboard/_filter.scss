@@ -1,0 +1,55 @@
+&_filters-toggle {
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+&_drawer {
+    background-color: lighten($color-dark, 10%);
+    background: linear-gradient(120deg, lighten($color-dark, 10%) 80%, darken($color-highlight-import, 45%))  ;
+    margin: 0;
+    display: block;
+    overflow-y: auto;
+    transform-origin: top;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    transition: max-height 0.5s ease-in;
+
+    li {
+      width: 100%;
+      clear: both;
+
+      &:hover {
+        background-color: rgba($color-nuetral, 0.25);
+      }
+    }
+
+    a {
+      text-align: center;
+      padding: 15px 10px;
+      display: block;
+      font-size: 12px;
+      width: 150px;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+      transform: scaleY(1);
+      pointer-events: all;
+      max-height: 500px;
+    }
+  }
+
+  

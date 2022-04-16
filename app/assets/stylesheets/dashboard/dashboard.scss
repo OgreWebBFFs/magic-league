@@ -161,10 +161,12 @@
             }
         }
 
+        @import 'filter';
+        
         &_action-bar {
             display: flex;
-            align-items: center;
             background-color: $color-dark;
+            align-items: center;
             justify-content: flex-end;
         }
 
@@ -177,6 +179,7 @@
         &_view-toggles {
             display: flex;
             margin-right: auto;
+            flex-grow: 1;
         }
 
         &_collection_toggle-card-view__btn,

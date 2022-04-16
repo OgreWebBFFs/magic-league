@@ -1,5 +1,5 @@
 <div id="collection" class="dashboard_card-view active">
-  <div class="dashboard_card-interface_action-bar">
+  <div class="dashboard_card-interface_action-bar">    
     <div class="dashboard_card-interface_view-toggles">
       <div id="collection-table-toggle" class= "dashboard_card-interface_collection_toggle-card-view__btn active" onclick="Helpers.toggleElementById('collection-table', 'collection__togglable-view'), Helpers.toggleElementById('collection-table-toggle', 'dashboard_card-interface_collection_toggle-card-view__btn')">
         <i class="fas fa-list"></i>
@@ -8,8 +8,15 @@
         <i class="fas fa-th-large"></i>
       </div>
     </div>
+    <a class="dashboard_card-interface_filters-toggle drop-down__toggle" onclick="Helpers.toggleElementById('filters-drawer', 'dropdown-content')">Filters &#9660;</a>
     <%= link_to 'Edit', edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).edit? %>
     <%= link_to 'Bulk Edit', bulk_edit_collection_path(user.collection.id), class: 'dashboard_card-interface_action__btn' if policy(user.collection).bulk_edit? %>
+  </div>
+  <div id="filters-drawer" class="dashboard_card-interface_drawer">
+    <ul>
+      <li>Rarity</li>
+      <li>Color</li>
+    </ul>
   </div>
   <div id="collection-table" class="dashboard_card-interface__table active collection__togglable-view">
     <div class="dashboard_card-view__row-headings">
