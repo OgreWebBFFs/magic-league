@@ -25,7 +25,8 @@ gem 'dry-types', '~> 1.5.0'
 gem 'simple_form', '>= 4.0.1'
 gem 'fast_jsonapi'
 
-gem 'react_on_rails', '~> 6'
+gem "react_on_rails", "12.0.0"
+gem "webpacker", "~> 5"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
