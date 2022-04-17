@@ -7,6 +7,11 @@ var CardLayout = (function () {
   // document off function read about 
 
 
+  // STATE
+  let activeFilters = {
+
+  };
+  let collectionCards = {};
 
   //TEMPLATES
 
@@ -83,6 +88,7 @@ var CardLayout = (function () {
   }
 
   let populateGrid = (props) => {
+    collectionCards = props.collectionCards;
     if (props.cards.length < 1) {
       $('#' + props.cardViewContext + '-grid').append(
         addEmptyState({
@@ -287,8 +293,7 @@ var CardLayout = (function () {
 
 
   let manageCardView = (props) => {
-    const isViewingOwnProfile = (props.currentUserId === props.userId);
-
+    const isViewingOwnProfile = (props.currentUserId === props.userId);    
     tradableToggleClickHandler({
       currentUserId: props.currentUserId,
       isViewingOwnProfile: isViewingOwnProfile,
@@ -343,8 +348,13 @@ var CardLayout = (function () {
     });
   };
 
+  let updateCardView = (props) => {
+    console.log(props.checked);
+  }
+
   return {
     manageCardView: manageCardView,
+    updateCardView: updateCardView,
   }
 
 })();

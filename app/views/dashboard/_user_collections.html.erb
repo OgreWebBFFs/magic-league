@@ -14,7 +14,10 @@
   </div>
   <div id="filters-drawer" class="dashboard_card-interface_drawer">
     <ul>
-      <li>Rarity</li>
+      <li>Rarity:
+      <input type="checkbox" name="filter_rarity-rare" id="rarity-rare" value="rare" onclick="CardLayout.updateCardView(this)">
+      <label for="rarity-rare">Rare</label>
+      </li>
       <li>Color</li>
     </ul>
   </div>

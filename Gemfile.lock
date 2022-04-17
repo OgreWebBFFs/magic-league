@@ -72,6 +72,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     crass (1.0.6)
     declarative (0.0.20)
     descendants_tracker (0.0.4)
@@ -218,10 +219,18 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (2.2.2)
+      rake
     rake (13.0.6)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    react_on_rails (6.10.1)
+      addressable
+      connection_pool
+      execjs (~> 2.5)
+      rails (>= 3.2)
+      rainbow (~> 2.1)
     regexp_parser (2.2.1)
     representable (3.1.1)
       declarative (< 0.1.0)
@@ -343,6 +352,7 @@ DEPENDENCIES
   puma (~> 3.12)
   pundit
   rails (~> 5.2.1)
+  react_on_rails (~> 6)
   rest-client
   rspec-rails (~> 3.6)
   rspec_junit_formatter
@@ -360,4 +370,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   2.2.28
+   2.3.11
