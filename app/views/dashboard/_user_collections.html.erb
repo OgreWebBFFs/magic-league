@@ -1,5 +1,5 @@
 <div id="collection" class="dashboard_card-view active">
-  <%= react_component("Dashboard", props: {
+  <%= react_component("Dashboard", {
     currentUserId: current_user.id,
     userId: @user.id,
     userName: @user.name,
@@ -7,7 +7,7 @@
     collectionCards: @cards,
     tradables: @tradables,
     wishlist: @wishlist
-  }, prerender: false) %>
+  }) %>
   <!-- <div class="dashboard_card-interface_action-bar">    
     <div class="dashboard_card-interface_view-toggles">
       <div id="collection-table-toggle" class= "dashboard_card-interface_collection_toggle-card-view__btn active" onclick="Helpers.toggleElementById('collection-table', 'collection__togglable-view'), Helpers.toggleElementById('collection-table-toggle', 'dashboard_card-interface_collection_toggle-card-view__btn')">
