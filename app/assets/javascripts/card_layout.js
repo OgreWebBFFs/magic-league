@@ -259,32 +259,32 @@ var CardLayout = (function () {
 
   let tradableToggleClickHandler = (props) => {
     $(function () {
-      $('.dashboard_tradable__toggle').on('click', function () {
-        id = $(this).attr('data-id');
-        that = this;
-        let tradableId = $(this).attr('data-tradable-id');
-        $(".tradable-toggle-"+id).prop("checked", this.checked);
-        if ($(this).is(':checked')) {
+      // $('.dashboard_tradable__toggle').on('click', function () {
+      //   id = $(this).attr('data-id');
+      //   that = this;
+      //   let tradableId = $(this).attr('data-tradable-id');
+      //   $(".tradable-toggle-"+id).prop("checked", this.checked);
+      //   if ($(this).is(':checked')) {
          
-           xhrRequest('/tradables', 'POST', function (res) {
-            $(that).data('tradable-id', res.id)
-          }, {
-            card: {
-              id: id
-            }
-          });
-        } else {
-          if ($(this).data('tradable-id') != undefined) {
-            xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
-              function (res) {
-              }, {},
-              function (res) {
-                $('.section.full-page').prepend(Templates.alertTemplate('danger', res.responseText))
-                window.scrollTo(0, 0);
-              });
-          }
-        }
-      });
+      //      xhrRequest('/tradables', 'POST', function (res) {
+      //       $(that).data('tradable-id', res.id)
+      //     }, {
+      //       card: {
+      //         id: id
+      //       }
+      //     });
+      //   } else {
+      //     if ($(this).data('tradable-id') != undefined) {
+      //       xhrRequest(`/tradables/${$(this).data('tradable-id')}`, 'DELETE',
+      //         function (res) {
+      //         }, {},
+      //         function (res) {
+      //           $('.section.full-page').prepend(Templates.alertTemplate('danger', res.responseText))
+      //           window.scrollTo(0, 0);
+      //         });
+      //     }
+      //   }
+      // });
     });
 
   };
@@ -331,14 +331,14 @@ var CardLayout = (function () {
       userName: props.userName,
       userId: props.userId
     });
-    populateTable({
-      cards: props.collectionCards,
-      cardViewContext: 'collection',
-      isViewingOwnProfile: isViewingOwnProfile,
-      tradableCards: props.tradables,
-      userName: props.userName,
-      userId: props.userId
-    });
+    // populateTable({
+    //   cards: props.collectionCards,
+    //   cardViewContext: 'collection',
+    //   isViewingOwnProfile: isViewingOwnProfile,
+    //   tradableCards: props.tradables,
+    //   userName: props.userName,
+    //   userId: props.userId
+    // });
     populateTable({
       cards: props.wishlist,
       cardViewContext: 'wishlist',
