@@ -1,5 +1,14 @@
 <div id="collection" class="dashboard_card-view active">
-  <div class="dashboard_card-interface_action-bar">    
+  <%= react_component("Dashboard", props: {
+    currentUserId: current_user.id,
+    userId: @user.id,
+    userName: @user.name,
+    currentUserWishlist: @current_user_wishlist,
+    collectionCards: @cards,
+    tradables: @tradables,
+    wishlist: @wishlist
+  }, prerender: false) %>
+  <!-- <div class="dashboard_card-interface_action-bar">    
     <div class="dashboard_card-interface_view-toggles">
       <div id="collection-table-toggle" class= "dashboard_card-interface_collection_toggle-card-view__btn active" onclick="Helpers.toggleElementById('collection-table', 'collection__togglable-view'), Helpers.toggleElementById('collection-table-toggle', 'dashboard_card-interface_collection_toggle-card-view__btn')">
         <i class="fas fa-list"></i>
@@ -28,7 +37,7 @@
     </div>
   </div>
   <div id="collection-grid" class="card-grid collection__togglable-view">
-  </div>
+  </div> -->
 </div>
 
 
