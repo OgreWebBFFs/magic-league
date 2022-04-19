@@ -1,7 +1,7 @@
 import React from 'react';
-import tradablesApi from './tradables-api';
+import xhrRequest from '../../../../helpers/xhr-request';
 
-const addTradable = async (tradableCard) => tradablesApi({
+const addTradable = async (tradableCard) => xhrRequest({
   url: '/tradables',
   options: {
     method: 'POST',
@@ -9,7 +9,7 @@ const addTradable = async (tradableCard) => tradablesApi({
   }
 });
 
-const removeTradable = async (tradableCard) => tradablesApi({
+const removeTradable = async (tradableCard) => xhrRequest({
   url: `/tradables/${tradableCard.id}`, 
   options: {
     method: 'DELETE',

@@ -1,4 +1,4 @@
-const tradablesApi = async ({ url, options }) => {
+const xhrRequest = async ({ url, options }) => {
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
@@ -9,4 +9,4 @@ const tradablesApi = async ({ url, options }) => {
   return response.ok ? await response.json() : console.log(response); 
 }
 
-export default tradablesApi;
+export default xhrRequest;
