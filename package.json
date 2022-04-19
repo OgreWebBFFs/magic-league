@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
+    "@babel/runtime": "^7.17.9",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@rails/webpacker": "5.4.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
@@ -15,8 +16,7 @@
   },
   "scripts": {
     "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",
-    "start-ubuntu": "sudo service postgresql start && rails s",
-    "client-build": "sh -c 'rm -rf public/packs/* || true && bin/webpack -w'"
+    "start-ubuntu": "sudo service postgresql start && rails s"
   },
   "devDependencies": {
     "webpack-dev-server": "^4.8.1"

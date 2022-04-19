@@ -198,8 +198,6 @@
     }
 
     &_card-view {
-        display: none;
-
         &__cell {
             justify-self: flex-end;
             flex: 0 0 50px;
@@ -231,16 +229,9 @@
                 font-size: 20px;
             }
         }
-
-        &.active {
-            display: block;
-        }
     }
 }
 
-
-#collection-table,
-#collection-grid,
 #wishlist-table,
 #wishlist-grid {
     &:not(.active) {
