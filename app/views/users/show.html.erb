@@ -1,26 +1,22 @@
-
 <div id="dashboard" class="dashboard">
   <div class="dashboard__container">
     <h2 class="dashboard__title"><%= @user.name %></h2>
     <%= render 'dashboard/user_profile', user: @user %>
-    <div class="dashboard_card-interface__wrapper">
-      <div class="dashboard_card-interface_tab__wrapper">
-        <div id="collection-tab" class="dashboard_card-interface_tab__btn active" onclick="Helpers.toggleElementById('collection', 'dashboard_card-view'), Helpers.toggleElementById('collection-tab', 'dashboard_card-interface_tab__btn')">
-          Collection
-        </div>
-        <div id="wishlist-tab" class="dashboard_card-interface_tab__btn" onclick="Helpers.toggleElementById('wishlist', 'dashboard_card-view'), Helpers.toggleElementById('wishlist-tab', 'dashboard_card-interface_tab__btn')">
-          Wishlist
-        </div>
-      </div>
-      <div class="dashboard_card-interface">
-        <%= render 'dashboard/user_collections', user: @user %>
-        <%= render 'dashboard/user_wishlist', user: @user %>
-      </div>
-    </div>
+    <%= react_component("Dashboard", {
+      currentUserId: current_user.id,
+      user: @user,
+      edit: policy(@user.collection).edit?,
+      currentUserWishlist: @current_user_wishlist,
+      collectionCards: @cards,
+      tradables: @tradables,
+      wishlist: @wishlist
+    }) %>
+</div>
+
   </div>
 </div>
 
-<script>
+<!-- <script>
   $(function() {
     let propsToPass = {
       currentUserId: <%= current_user.id %>,
@@ -33,4 +29,4 @@
     };
     CardLayout.manageCardView(propsToPass);
   });
-</script>
+</script> -->

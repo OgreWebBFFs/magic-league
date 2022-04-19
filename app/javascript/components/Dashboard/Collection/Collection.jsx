@@ -13,8 +13,6 @@ import EmptyState from '../EmptyState';
 
 const Collection = (props) => {
   const [isListView, setIsListView] = useState(true);
-  const [tradables, setTradables] = useState(props.tradables);
-  const [wishlist, setWishlist] = useState(props.wishlist);
   const isEmpty = props.collectionCards.length < 1;
   const isOwner = props.currentUserId === props.user.id 
   return  (
@@ -47,8 +45,6 @@ const Collection = (props) => {
               <a href={`/cards/${card.id}`}>{card.name}</a>
               <TradableToggle 
                 isOwner={isOwner}
-                tradables={tradables}
-                setTradables={setTradables}
                 card={card}
                 row={row} />
             </CollectionRow>
@@ -58,7 +54,7 @@ const Collection = (props) => {
         <CardGrid>
           {props.collectionCards.map((card) => (
             <>
-              <WishlistToggle user={props.user} card={card} wishlist={wishlist} setWishlist={setWishlist} />
+              <WishlistToggle user={props.user} card={card} />
               <CardImage {...card} />
             </>
           ))}

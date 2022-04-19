@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import WishlistContext from '../../../contexts/WishlistContext';
 import {
   CardList,
   CollectionRow,
-  TradableToggle
 } from '../CardList';
 import {
   CardGrid,
@@ -13,7 +13,7 @@ import RemoveWish from './RemoveWish';
 
 const Wishlist = (props) => {
   const [isListView, setIsListView] = useState(true);
-  const [wishlist, setWishlist] = useState(props.wishlist);
+  const {wishlist} = useContext(WishlistContext);
   const isEmpty = wishlist.length < 1;
   const isOwner = props.currentUserId === props.user.id 
   return  (
@@ -46,7 +46,6 @@ const Wishlist = (props) => {
               <RemoveWish
                 user={props.user}
                 card={card}
-                wishlist={wishlist}setWishlist={setWishlist}
                 classes={'dashboard_card-view_remove-from-wishlist__btn'}
               />
             </CollectionRow>
@@ -59,7 +58,6 @@ const Wishlist = (props) => {
               <RemoveWish
                 user={props.user}
                 card={card}
-                wishlist={wishlist}setWishlist={setWishlist}
                 classes={'card-grid__wishlist__toggle active'}
               />
               <CardImage {...card} />

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import WishlistContext from '../../../contexts/WishlistContext';
 import xhrRequest from '../../../helpers/xhr-request';
 
 const putToWishlist = async (user, card) => await xhrRequest({
@@ -9,7 +10,8 @@ const putToWishlist = async (user, card) => await xhrRequest({
   }
 });
 
-const WishlistToggle = ({ card, user, wishlist, setWishlist}) => {
+const WishlistToggle = ({ card, user }) => {
+  const {wishlist, setWishlist} = useContext(WishlistContext);
   const isWishlisted = wishlist.some(wishlistCard => wishlistCard.id === card.id);
   const toggleWishlist = async () => {
     const updatedWishlist = await putToWishlist(user, card);

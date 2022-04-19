@@ -1,65 +1,38 @@
 import React, {useState} from 'react';
-import {
-  CardList,
-  CollectionRow,
-  TradableToggle
-} from './CardList';
-import {
-  CardGrid,
-  CardImage,
-  WishlistToggle
-} from './CardGrid';
-import EmptyState from './Collection/EmptyState';
+import Collection from './Collection';
+import Wishlist from './Wishlist';
+import WishlistContext from '../../contexts/WishlistContext';
+import TradablesContext from '../../contexts/TradablesContext';
+
+const InterfaceTab = ({ activeTab, setActiveTab, title }) => (
+  <div className={`dashboard_card-interface_tab__btn ${activeTab === title ? 'active' : ''}`} onClick={() => setActiveTab(title)}>
+    {title}
+  </div>
+);
+
+const Tabs = {
+  Collection: (props) => <Collection {...props} />,
+  Wishlist: (props) => <Wishlist {...props} />,
+};
 
 const Dashboard = (props) => {
-  const [isListView, setIsListView] = useState(true);
+  const [activeTab, setActiveTab] = useState("Collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
-  const isEmpty = props.collectionCards.length < 1;
-  const isOwner = props.currentUserId === props.user.id 
-  return  (
-    <>
-      <div className="dashboard_card-interface_action-bar">    
-        <div className="dashboard_card-interface_view-toggles">
-          <div id="collection-table-toggle" className={`dashboard_card-interface_collection_toggle-card-view__btn ${isListView ? 'active' : ''}`} onClick={() => setIsListView(true)}>
-            <i className="fas fa-list"></i>
-          </div>
-          <div id="collection-grid-toggle" className={`dashboard_card-interface_collection_toggle-card-view__btn ${!isListView ? 'active' : ''}`} onClick={() => setIsListView(false)}>
-            <i className="fas fa-th-large"></i>
-          </div>
-        </div>
-        {props.edit && (
-          <>
-            <a className="dashboard_card-interface_action__btn" href={`/collections/${props.user.id}/edit`}>Edit</a>
-            <a className="dashboard_card-interface_action__btn" href={`/collections/${props.user.id}/bulk_edit`}>Bulk Edit</a>
-          </>
-        )}
-      </div>
-      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} /> : null }
-      {isListView && !isEmpty ? (
-        <CardList> 
-          {props.collectionCards.map((card, row) => (
-            <CollectionRow>
-              <a href={`/cards/${card.id}`}>{card.name}</a>
-              <TradableToggle 
-                isOwner={isOwner}
-                tradables={tradables}
-                setTradables={setTradables}
-                card={card}
-                row={row} />
-            </CollectionRow>
-          ))}
-        </CardList>): null }
-      {!isListView && !isEmpty ? (
-        <CardGrid>
-          {props.collectionCards.map((card) => (
-            <>
-              <WishlistToggle user={props.user} card={card} wishlist={wishlist} setWishlist={setWishlist} />
-              <CardImage {...card} />
-            </>
-          ))}
-        </CardGrid>) : null }
-    </>
-  );
+  return (
+   <div className="dashboard_card-interface__wrapper">
+    <div className="dashboard_card-interface_tab__wrapper">
+      {Object.keys(Tabs).map(tabName => (
+        <InterfaceTab activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}/>
+      ))}
+    </div>
+    <div className="dashboard_card-interface dashboard_card-view">
+      <TradablesContext.Provider value={{ tradables, setTradables }}>
+        <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+          {Tabs[activeTab](props)}
+        </WishlistContext.Provider>
+      </TradablesContext.Provider>
+    </div>
+ </div>)
 }
 export default Dashboard;

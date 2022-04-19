@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import TradablesContext from '../../../../contexts/TradablesContext';
 import xhrRequest from '../../../../helpers/xhr-request';
 
 const addTradable = async (tradableCard) => xhrRequest({
@@ -16,7 +17,8 @@ const removeTradable = async (tradableCard) => xhrRequest({
   }
 });
 
-const TradableToggle = ({card, tradables, setTradables, isOwner, row}) => {
+const TradableToggle = ({card, isOwner, row}) => {
+  const {tradables, setTradables} = useContext(TradablesContext);
   const tradableCard = tradables.find(tradableCard => tradableCard.card_id === card.id) || {};
   const handleChange = async ({ target }) => {
     const updatedTradables = target.checked ? 
