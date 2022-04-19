@@ -3,19 +3,18 @@ import {
   CardList,
   CollectionRow,
   TradableToggle
-} from './CardList';
+} from '../CardList';
 import {
   CardGrid,
   CardImage,
-  WishlistToggle
-} from './CardGrid';
-import EmptyState from './Collection/EmptyState';
+} from '../CardGrid';
+import EmptyState from '../EmptyState';
+import RemoveWish from './RemoveWish';
 
-const Dashboard = (props) => {
+const Wishlist = (props) => {
   const [isListView, setIsListView] = useState(true);
-  const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
-  const isEmpty = props.collectionCards.length < 1;
+  const isEmpty = wishlist.length < 1;
   const isOwner = props.currentUserId === props.user.id 
   return  (
     <>
@@ -30,31 +29,39 @@ const Dashboard = (props) => {
         </div>
         {props.edit && (
           <>
-            <a className="dashboard_card-interface_action__btn" href={`/collections/${props.user.id}/edit`}>Edit</a>
-            <a className="dashboard_card-interface_action__btn" href={`/collections/${props.user.id}/bulk_edit`}>Bulk Edit</a>
+            <a class="dashboard_card-interface_action__btn" href="/trades">Add</a>
           </>
         )}
       </div>
-      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} /> : null }
+      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
+        <a class="empty-card-view__btn" href="/trades">
+          Make some wishes ;)
+        </a>
+      )}/> : null }
       {isListView && !isEmpty ? (
         <CardList> 
-          {props.collectionCards.map((card, row) => (
+          {wishlist.map((card, row) => (
             <CollectionRow>
               <a href={`/cards/${card.id}`}>{card.name}</a>
-              <TradableToggle 
-                isOwner={isOwner}
-                tradables={tradables}
-                setTradables={setTradables}
+              <RemoveWish
+                user={props.user}
                 card={card}
-                row={row} />
+                wishlist={wishlist}setWishlist={setWishlist}
+                classes={'dashboard_card-view_remove-from-wishlist__btn'}
+              />
             </CollectionRow>
           ))}
         </CardList>): null }
       {!isListView && !isEmpty ? (
         <CardGrid>
-          {props.collectionCards.map((card) => (
+          {wishlist.map((card) => (
             <>
-              <WishlistToggle user={props.user} card={card} wishlist={wishlist} setWishlist={setWishlist} />
+              <RemoveWish
+                user={props.user}
+                card={card}
+                wishlist={wishlist}setWishlist={setWishlist}
+                classes={'card-grid__wishlist__toggle active'}
+              />
               <CardImage {...card} />
             </>
           ))}
@@ -62,4 +69,4 @@ const Dashboard = (props) => {
     </>
   );
 }
-export default Dashboard;
+export default Wishlist;

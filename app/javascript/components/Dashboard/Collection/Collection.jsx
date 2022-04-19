@@ -3,15 +3,15 @@ import {
   CardList,
   CollectionRow,
   TradableToggle
-} from './CardList';
+} from '../CardList';
 import {
   CardGrid,
   CardImage,
   WishlistToggle
-} from './CardGrid';
-import EmptyState from './Collection/EmptyState';
+} from '../CardGrid';
+import EmptyState from '../EmptyState';
 
-const Dashboard = (props) => {
+const Collection = (props) => {
   const [isListView, setIsListView] = useState(true);
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
@@ -35,7 +35,11 @@ const Dashboard = (props) => {
           </>
         )}
       </div>
-      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} /> : null }
+      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
+        <a class="empty-card-view__btn" href={`/collections/${props.user.id}/edit`}>
+          Build Your Collection
+        </a>
+      )} /> : null }
       {isListView && !isEmpty ? (
         <CardList> 
           {props.collectionCards.map((card, row) => (
@@ -62,4 +66,4 @@ const Dashboard = (props) => {
     </>
   );
 }
-export default Dashboard;
+export default Collection;

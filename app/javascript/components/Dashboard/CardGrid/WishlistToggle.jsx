@@ -12,8 +12,8 @@ const putToWishlist = async (user, card) => await xhrRequest({
 const WishlistToggle = ({ card, user, wishlist, setWishlist}) => {
   const isWishlisted = wishlist.some(wishlistCard => wishlistCard.id === card.id);
   const toggleWishlist = async () => {
-    const wishlistCard = (await putToWishlist(user, card))[0];
-    setWishlist(wishlist.filter(toKeep => toKeep.id !== card.id).concat(wishlistCard || []));
+    const updatedWishlist = await putToWishlist(user, card);
+    setWishlist(updatedWishlist);
   } 
   return (
     <div className={`wishlist-${card.id}__toggle card-grid__wishlist__toggle ${isWishlisted ? 'active' : ''}`} onClick={toggleWishlist}>
