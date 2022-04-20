@@ -49,3 +49,40 @@ $color-accent: $Veri-Peri;
 $color-highlight-urgent: $Crimson;
 $background-color: $color-light;
 $ranking-border-color: $color-light;
+// 
+
+
+
+:root {
+    --lightning-blue-hue-sat: 186, 68%;
+    --lightening-blue-lightness: 59%;
+
+    --white-hue-sat:  0, 0%;
+    --white-lightness: 100%;
+
+    --eerie-black-hue-sat: 0, 0%;
+    --eerie-black-lightness: 10%;
+
+
+
+    //Needed for various css calcs 
+
+    --color-highlight-primary-hue-sat: var(--lightning-blue-hue-sat);
+    --color-highlight-primary-lightness : var(--lightening-blue-lightness);
+
+    --color-dark-hue-sat: var(--eerie-black-hue-sat);
+    --color-dark-lightness : var(--eerie-black-lightness);
+
+    --color-light-hue-sat: var(--white-hue-sat);
+    --color-light-lightness : var(--white-lightness); 
+
+
+    --color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
+
+    --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
+
+    --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
+
+
+
+}
