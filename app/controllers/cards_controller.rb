@@ -1,9 +1,11 @@
 class CardsController < ApplicationController
+  protect_from_forgery with: :null_session
+
   def index
     cards = Card.query_all_text(params[:query]).order(:name)
+    puts cards
     options = {params: {current_user: current_user}}
-    respond_to do |format|
-      format.js { render json: CardSerializer.new(cards, options).serialized_json }
+    render json: CardSerializer.new(cards, options).serialized_json, status: ok
     end
   end
   

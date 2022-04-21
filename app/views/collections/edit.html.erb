@@ -1,9 +1,10 @@
 <div id="edit-collections__wrapper">
   <div id="collections" class="collections__container">
-    <input id="card-search" type="text" placeholder="" />
+    <%= react_component("SimpleEdit") %>
+    <%# <input id="card-search" type="text" placeholder="" />
     <div id="search-help"></div>
     <div class="card-grid">
-    </div>
+    </div> %>
   </div>
 </div>
 <script>
@@ -68,21 +69,21 @@
 
     current_user_cards = collectionRequest();
 
-    document.getElementById("card-search").placeholder = Constants.card_search_placeholder;
-    $('#card-search').keyup(debounce(function() {
-      $('#search-help').empty();
-      query = $(this).val();
-      if (query.length >= Constants.min_query_length) {
-        searchRequest(query);
-      } else if (query.length === 0) {
-        clearGrid();
-        collectionRequest();
-      } else {
-        $('#search-help').text(Constants.card_search_placeholder);
-      }
-    }, 300));
+    // document.getElementById("card-search").placeholder = Constants.card_search_placeholder;
+    // $('#card-search').keyup(debounce(function() {
+    //   $('#search-help').empty();
+    //   query = $(this).val();
+    //   if (query.length >= Constants.min_query_length) {
+    //     searchRequest(query);
+    //   } else if (query.length === 0) {
+    //     clearGrid();
+    //     collectionRequest();
+    //   } else {
+    //     $('#search-help').text(Constants.card_search_placeholder);
+    //   }
+    // }, 300));
 
-    xhrRequest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
+    quest('/wishlists/' + current_user, 'GET', function(res) { wishlist = res; });
     xhrRequest('/cards/' + current_user, 'GET', function(res) { current_user_cards = res.data; });
 
     $(document).off('click', '.card-grid__counter_increment__btn');
