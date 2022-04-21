@@ -83,7 +83,6 @@
     <% end %>
     <!-- Site Wide Scipts -->
     <script>
-    console.log("in app", current_user)
       $(document).on('turbolinks:load', AppLayout.initialize(<%= user_signed_in? %>, <%= current_user ? current_user.id : nil %>));
   </script>
   </body>

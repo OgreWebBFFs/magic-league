@@ -4,7 +4,7 @@ const DesktopNav = ({links}) => {
     const renderDesktopNavLinks = (linksArr) => linksArr.map((link, i)=>{
         if(link.dropdownItems){
            return (
-               <li className="nav__dropdown-wrapper">
+               <li key={`${link.displayName}-${i}`} className="nav__dropdown-wrapper">
                     <button className="nav__dropdown-toggle" 
                         aria-expanded="false"
                         aria-controls={`${link.displayName}-dropdown`}>{link.displayName} ▼</button>
@@ -13,7 +13,7 @@ const DesktopNav = ({links}) => {
            )
         } else {
             return (
-                <li className="nav__link-wrapper" key={`${link.displayName}-${i}`}>
+                <li key={`${link.displayName}-${i}`} className="nav__link-wrapper" key={`${link.displayName}-${i}`}>
                     <a data-turbolinks="false" className="nav__link" href={`/${link.href}`}>{link.displayName}</a> 
                 </li>
             )
@@ -22,7 +22,7 @@ const DesktopNav = ({links}) => {
     )
 
     return (
-        <ul class="nav__desktop">
+        <ul className="nav__desktop">
             {renderDesktopNavLinks(links)}
         </ul>
     )
