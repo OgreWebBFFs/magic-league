@@ -5,12 +5,24 @@ import Logo from '../Logo';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav'; 
 
+import Button from '../Button';
+
+
+//TODO: Componentize some sort of app wrapper that can manage the 
+//state of the match logger and things like modals,  and handle the toggling there
+//rather than add/remove classes
+
+const toggleMatchLogger = ()=>{
+  const matchLogger = document.getElementById("match-logger");
+  matchLogger.classList.toggle("active");
+}
+
 const Navigation = ({isAdmin, currentUserId}) => {
   const {width} = useWindowSize();
   const[isMobile, setIsMobile] = useState(false);
   useEffect(
     ()=>{
-      setIsMobile(width<850)
+      setIsMobile(width<900)
     },[width]
   )
 
@@ -61,11 +73,11 @@ const Navigation = ({isAdmin, currentUserId}) => {
             },
             {
               displayName:"Admin Users",
-              href: 'admin/Users'
+              href: 'admin/users'
             },
             {
               displayName:"Admin Setting",
-              href: '<%= edit_admin_setting_path(1) %>'
+              href: 'admin/settings/1/edit'
             }
           ]
         }
@@ -73,24 +85,22 @@ const Navigation = ({isAdmin, currentUserId}) => {
       ]
     }
 
-
     return (
-      <nav id="top-nav" class="nav" role="navigation">
-        <div class="nav__container">
-          <a href="/" class="nav_logo" data-turbolinks="false">
-              <Logo/>
-          </a>
-          {isMobile  ? 
-            <MobileNav links={links}/>
-          :
-            <DesktopNav links={links} />
-          }
-          <li class="nav_menu-match-logger__toggle-wrapper">
-                <a href="#" class="nav_match-logger__btn">
-                Log a match
-                </a>
-          </li>
-        </div>
+      <nav id="top-nav"  className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
+        <a href="/"   className='nav__logo' data-turbolinks="false">
+          <Logo/>
+        </a>
+        {isMobile  ? 
+          <MobileNav links={links}/>
+        :
+          <DesktopNav links={links} />
+        }
+        <Button
+          className="nav__match-logger-button"
+          onClick={toggleMatchLogger}
+          >
+          Log a match
+        </Button>
       </nav>
     )
 } 

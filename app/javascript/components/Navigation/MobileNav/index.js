@@ -1,16 +1,14 @@
 import React from 'react';
 
-
-
+import Button from '../../Button';
 
 const MobileNav = ({links}) => {
-
     const renderMobileNavLinks = (linksArr) => linksArr.map((link, i)=>{
             if(link.dropdownItems){
                return  renderMobileNavLinks(link.dropdownItems) 
             } else {
-                return  <li key={`${link.displayName}-${i}`}>
-                    <a data-turbolinks="false" href={`/${link.href}`}>{link.displayName}</a> 
+                return  <li className="nav__link-wrapper" key={`${link.displayName}-${i}`}>
+                    <a className="nav__link" data-turbolinks="false" href={`/${link.href}`}>{link.displayName}</a> 
                 </li>
             }
             }
@@ -18,15 +16,12 @@ const MobileNav = ({links}) => {
 
 
     return (
-        <li class="nav_mobile">
-            <a class="drop-down__toggle nav__dropdown-toggle" onclick="Helpers.toggleElementById('dd-menu-mobile')">
-            &#9660;
-            </a>
-            <ul id="dd-menu-mobile" class="dropdown__content">
-                {renderMobileNavLinks(links)}
-            </ul>
-             
-        </li>
+        <div class="nav__mobile">
+            <div className="nav__dropdown-wrapper">
+                <Button className="nav__mobile-menu-toggle">▼</Button>
+                <ul className='nav__dropdown'>{renderMobileNavLinks(links)}</ul>
+            </div>
+        </div>
     )
 }
 export default MobileNav
