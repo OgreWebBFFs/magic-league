@@ -5,11 +5,14 @@ import xhrRequest from '../../../helpers/xhr-request';
 const storeQuantity = ({ collectionId, cardId, quantity, }) => xhrRequest({
   url: `/collections/${collectionId}`,
   options: {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({
-      count: quantity,
-      card_id: cardId,
-      collection_id: collectionId
+      id: collectionId,
+      ownership: {
+        count: quantity,
+        card_id: cardId,
+        collection_id: collectionId
+      }
     })
   }
 });
