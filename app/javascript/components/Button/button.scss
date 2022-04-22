@@ -3,9 +3,12 @@
     --background-color-lightness: var(--color-highlight-primary-lightness);
     --background-color: var(--color-highlight-primary);
     --text-color: var(--color-dark);
-
+    display:flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     margin: 1rem;
+    padding: 10px;
     text-decoration: none;
     text-align: center;
     letter-spacing: .5px;
@@ -13,14 +16,12 @@
     outline: 0;
     border: none;
     border-radius: 2px;
-    line-height: 36px;
     -webkit-tap-highlight-color: transparent;
     background-color: var(--background-color);
     color: var(--text-color);
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
     transition-property: all;
     transition-timing-function: ease-in-out;
     transition-duration: .3s;

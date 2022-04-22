@@ -577,13 +577,14 @@ input[type=checkbox] {
 }
 
 //Overlays for modals and drawers
-[class*="__overlay"] {
+.overlay {
   width: 100%;
   height: 100%;
   position: absolute;
+  backdrop-filter: blur(5px);
   top: 0;
   left: 0;
-  background-color: rgba($color-dark, .2);
+  background-color: rgba($color-dark, .3);
 }
 
 @media only screen and (max-width: 650px) {

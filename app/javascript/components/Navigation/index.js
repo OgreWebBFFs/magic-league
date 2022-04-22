@@ -4,7 +4,7 @@ import { useWindowSize } from 'react-use';
 import Logo from '../Logo';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav'; 
-
+import MatchLogger from './MatchLogger';
 import Button from '../Button';
 
 
@@ -17,7 +17,10 @@ const toggleMatchLogger = ()=>{
   matchLogger.classList.toggle("active");
 }
 
-const Navigation = ({isAdmin, currentUserId}) => {
+const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
+
+  const [matchLoggerOpenState, setMatchLoggerOpenState] = useState(false);
+
   const {width} = useWindowSize();
   const[isMobile, setIsMobile] = useState(false);
   useEffect(
@@ -90,17 +93,20 @@ const Navigation = ({isAdmin, currentUserId}) => {
         <a href="/"   className='nav__logo' data-turbolinks="false">
           <Logo/>
         </a>
-        {isMobile  ? 
-          <MobileNav links={links}/>
-        :
-          <DesktopNav links={links} />
-        }
+        <ul className='nav__links'>
+          {isMobile  ? 
+            <MobileNav links={links}/>
+          :
+            <DesktopNav links={links} />
+          }
+        </ul>
         <Button
           className="nav__match-logger-button"
-          onClick={toggleMatchLogger}
+          onClick={()=>{setMatchLoggerOpenState(true)}}
           >
           Log a match
         </Button>
+        <MatchLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setMatchLoggerOpenState(false)} isOpen={matchLoggerOpenState}/>
       </nav>
     )
 } 

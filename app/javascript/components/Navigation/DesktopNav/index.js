@@ -21,10 +21,7 @@ const DesktopNav = ({links}) => {
         }
     )
 
-    return (
-        <ul className="nav__desktop">
-            {renderDesktopNavLinks(links)}
-        </ul>
-    )
+    return (<>{renderDesktopNavLinks(links)}</>)
+
 }
 export default DesktopNav

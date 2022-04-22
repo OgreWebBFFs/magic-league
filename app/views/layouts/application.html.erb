@@ -18,10 +18,11 @@
   </head>
   <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
-   
+      <% unlockedUsers = User.unlocked %>
       <%= react_component("Navigation", {
         currentUserId: current_user.id,
-        isAdmin:  current_user.admin
+        isAdmin:  current_user.admin,
+        unlockedUsers: unlockedUsers
       }) %>
     <% end %>
 
@@ -32,37 +33,6 @@
           <a class="alert__close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
       <% end %>
       <%= yield %>
-    </div>
-
-    <div id="match-logger" class="match-logger">
-      <div class="match-logger__overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
-      <div class="match-logger__section">
-        <button href="#" class="match-logger__close-button" onclick="Helpers.toggleElementById('match-logger')">
-         <i class="fas fa-times"></i>
-        </button>
-        <%= form_tag "/matches", method: "post", id: "match-logger" do %>
-        
-          <h3>Log Match</h3>
-          <p>Who played?</p>
-          <select class="browser-default player-selector" name="match[playerA]">
-            <% User.unlocked.each do |user| %>
-              <option value="<%=user.id%>"><%=user.name%></option>
-            <% end %>
-          </select>
-          <select class="browser-default player-selector" name="match[playerB]">
-            <% User.unlocked.each do |user| %>
-              <option value="<%=user.id%>"><%=user.name%></option>
-            <% end %>
-          </select>
-          <p>Who won?</p>
-          <select class="browser-default winner-selector" name="match[winner]">
-          </select>
-          <p>When?</p>
-          <input id="match-date" type="date" name="match[date]"/>
-          <input id="match-time" type="time" name="match[time]"/>
-          <input type="submit" class="match-logger_submit__btn" />
-        <% end %>
-      </div>
     </div>
 
     <% if user_signed_in? %>

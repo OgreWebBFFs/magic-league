@@ -1,3 +1,5 @@
+@import "./MatchLogger/match-logger.scss";
+
 @mixin openDropdown {
   opacity: 1;
   transform: scaleY(1) translateX(-50%);
@@ -52,8 +54,7 @@
 
   }
   
-  &__desktop,
-  &__mobile {
+  &__links {
     margin: 0;
     display: flex;
     align-items: center;
@@ -62,33 +63,6 @@
     list-style-type: none;
   }
 
-  &__desktop {
-    &-mobile,
-    &-match-logger__toggle-wrapper {
-      color: $color-dark;
-
-      [class*="__btn"] {
-        padding: 0 10px;
-        font-size: 12px;
-      }
-    }
-
-  
-  }
-
-  &__mobile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .dropdown-
-    .dropdown-content {
-      li {
-        a {
-          padding: 8px 10px;
-        }
-      }
-    }
-  }
 
   &__mobile-menu-toggle {
     margin:0;
@@ -191,7 +165,6 @@
     .nav__logo {
       width: 32px;
       overflow: hidden;
-      height:$nav-height;
       svg {
         padding-left: 0;
       }
