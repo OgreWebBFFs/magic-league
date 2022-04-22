@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import WishlistContext from '../../../contexts/WishlistContext';
-import xhrRequest from '../../../helpers/xhr-request';
+import WishlistContext from '../../contexts/WishlistContext';
+import xhrRequest from '../../helpers/xhr-request';
 
 const putToWishlist = async (user, card) => await xhrRequest({
   url: `/wishlists/${user.id}`,
