@@ -18,87 +18,12 @@
   </head>
   <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
-      <nav id="top-nav" class="nav" role="navigation">
-        <div class="nav__container">
-          <a href="/" class="nav_logo" data-turbolinks="false">
-          <%= show_svg('logo.svg') %>
-          </a>
-          <ul class="nav_menu">
-        
-            <li class="nav_menu-link">
-            <a data-turbolinks="false" href="/users/<%=current_user.id%>">My Profile</a>
-            </li>
-            <li class="nav_menu-link">
-            <a data-turbolinks="false" href="/users">Profiles</a>
-            </li>
-            <li class="nav_menu-link">
-            <a href="/trades" data-turbolinks="false">Browse Cards</a>
-            </li>       
-            <li class="nav_menu-list"><a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-league', 'dropdown-content')">League &#9660;</a> 
-              <ul id="dd-menu-league" class="dropdown-content">
-                 <li>
-                  <a href="/matches">Matches</a>
-                </li>
-                <li>
-                  <a href="/rules">Rules</a>
-                </li>
-                <li>
-                  <a href="/users">Roster</a>
-                </li>
-                <li>
-                  <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
-                </li>
-              </ul>
-            </li>
-            <% if current_user.admin? %>
-              <li class="nav_menu-list">
-                <a class="drop-down__toggle" onclick="Helpers.toggleElementById('dd-menu-admin', 'dropdown-content')">Admin &#9660;</a>
-                <ul id="dd-menu-admin" class="dropdown-content">
-                  <li><a href="/admin/matches">Matches</a></li>
-                  <li><a href="/admin/users">Users</a></li>
-                  <li><a href="<%= edit_admin_setting_path(1) %>">Settings</a></li>
-                </ul>
-              </li>
-            <% end %>
-            <li class="nav_menu-mobile">
-              <a class="drop-down__toggle mobile-menu_dropdown__btn" onclick="Helpers.toggleElementById('dd-menu-mobile')">
-                &#9660;
-              </a>
-              <ul id="dd-menu-mobile" class="dropdown-content">
-              <li>
-              <a data-turbolinks="false" href="/users/<%=current_user.id%>">My Profile</a>
-              </li>
-              <li>
-              <a data-turbolinks="false" href="/users">Profiles</a>
-              </li>
-              <li>
-                  <a href="/trades">Browse Cards</a>
-              </li>
-              
-              <li>
-                  <a href="/rules">Rules</a>
-                </li>
-                  <li>
-                  <a href="/matches">Matches</a>
-                </li>
-                <% if current_user.admin? %>
-                <li><a href="/admin/matches">Admin Matches</a></li>
-                <li><a href="/admin/users">Admin Users</a></li>
-                <li><a href="<%= edit_admin_setting_path(1) %>">Admin Settings</a></li>
-                <% end %>
-                <li>
-                  <a href="mailto:ogretheleaguening@gmail.com?subject=From the Web App">Contact</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav_menu-match-logger__toggle-wrapper">
-              <a href="#" class="nav_match-logger__btn">
-                Log a match
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <% unlockedUsers = User.unlocked %>
+      <%= react_component("Navigation", {
+        currentUserId: current_user.id,
+        isAdmin:  current_user.admin,
+        unlockedUsers: unlockedUsers
+      }) %>
     <% end %>
 
     <div class="app__section full-page">
@@ -108,37 +33,6 @@
           <a class="alert__close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
       <% end %>
       <%= yield %>
-    </div>
-
-    <div id="match-logger" class="match-logger">
-      <div class="match-logger__overlay" onclick="Helpers.toggleElementById('match-logger')"></div>
-      <div class="match-logger__section">
-        <button href="#" class="match-logger__close-button" onclick="Helpers.toggleElementById('match-logger')">
-         <i class="fas fa-times"></i>
-        </button>
-        <%= form_tag "/matches", method: "post", id: "match-logger" do %>
-        
-          <h3>Log Match</h3>
-          <p>Who played?</p>
-          <select class="browser-default player-selector" name="match[playerA]">
-            <% User.unlocked.each do |user| %>
-              <option value="<%=user.id%>"><%=user.name%></option>
-            <% end %>
-          </select>
-          <select class="browser-default player-selector" name="match[playerB]">
-            <% User.unlocked.each do |user| %>
-              <option value="<%=user.id%>"><%=user.name%></option>
-            <% end %>
-          </select>
-          <p>Who won?</p>
-          <select class="browser-default winner-selector" name="match[winner]">
-          </select>
-          <p>When?</p>
-          <input id="match-date" type="date" name="match[date]"/>
-          <input id="match-time" type="time" name="match[time]"/>
-          <input type="submit" class="match-logger_submit__btn" />
-        <% end %>
-      </div>
     </div>
 
     <% if user_signed_in? %>

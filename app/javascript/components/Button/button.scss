@@ -1,0 +1,39 @@
+.button {
+    --background-color-hue-sat: var(--color-highlight-primary-hue-sat);
+    --background-color-lightness: var(--color-highlight-primary-lightness);
+    --background-color: var(--color-highlight-primary);
+    --text-color: var(--color-dark);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 1rem;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    &:hover,
+    &:focus {
+        --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
+        background-color:hsl(var(--background-color-hue-sat),var(--adjusted-lightness));
+    }
+    &--inverse {
+        --background-color-hue-sat: var(--color-dark-hue-sat);
+        --background-color-lightness: var(--color-dark-lightness);
+        --background-color: var(--color-dark);
+        --text-color: var(--color-light);
+    }
+}

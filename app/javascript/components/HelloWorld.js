@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 const HelloWorld = (props) => {
-  console.log(props);
   const [name, setName] = useState(props.name);
 
   return (

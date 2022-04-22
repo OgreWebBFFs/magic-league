@@ -6,14 +6,13 @@
 
 //Component Styles
 @import "./admin/users";
+@import "../../javascript/components/Button/button.scss";
 @import "./cards/card-profile";
 @import "./card-grid/card-grid";
 @import "./dashboard/dashboard";
 @import "./footer/footer";
 @import "./login/login";
-@import "./navigation/navigation";
-@import "./navigation/sub-navigation";
-@import "./match-logger/match-logger";
+@import "../../javascript/components/Navigation/navigation.scss";
 @import "./match-listings/matches-table";
 @import "./rankings/rankings";
 @import "./rules/rules";
