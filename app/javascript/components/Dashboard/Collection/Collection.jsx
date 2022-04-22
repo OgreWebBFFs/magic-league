@@ -8,7 +8,7 @@ import {
   CardGrid,
   CardImage,
   WishlistToggle
-} from '../CardGrid';
+} from '../../CardGrid';
 import EmptyState from '../EmptyState';
 
 const Collection = (props) => {
