@@ -7,7 +7,7 @@ import {
 import {
   CardGrid,
   CardImage,
-} from '../CardGrid';
+} from '../../CardGrid';
 import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
 

@@ -11,10 +11,7 @@ class CollectionsController < ApplicationController
     @cards = @collection.cards.order(:name)
 
     options = {params: {current_user: current_user}}
-    respond_to do |format|
-      format.html
-      format.js { render json: CardSerializer.new(@cards.uniq, options).serialized_json }
-    end
+    render json: CardSerializer.new(@cards.uniq, options).serialized_json
   end
 
   def update
