@@ -1,9 +1,12 @@
 <div id="trade-search__wrapper">
   <div class="trade__container">
-    <input id="card-search" type="text" placeholder="" />
+    <%= react_component("CardBrowser", {
+      current_user_id: current_user.id
+    }) %>
+    <%# <input id="card-search" type="text" placeholder="" />
     <div id="search-help"></div>
     <div class="card-grid">
-    </div>
+    </div> %>
   </div>
 </div>
 
@@ -25,25 +28,6 @@
 
   var cardTemplate = function(card) {
     return `
-    <div class="card-grid__card__wrapper">
-      <div class="card-grid__card">
-          <div class="card-grid__browse-wishlist__toggle">
-          <input class="card-grid__wishlist__toggle-checkbox" wish-list-id="${search('id', card.attributes.id, wishlist) === undefined ? -1 : search('id', card.attributes.id, wishlist).id}" data-id="${card.attributes.id}" id="wl-checkbox-for-${card.attributes.id}" type="checkbox" ${search('id', card.attributes.id, wishlist) === undefined ? '' : 'checked' }>
-          <label class="card-grid__wishlist__toggle-label" for="wl-checkbox-for-${card.attributes.id}"></label>
-        </div>
-        <a class="card-grid__card--link" href="/cards/${card.id}">
-          <div class="card-grid__card--placeholder">
-              <p class="card-grid__card--attribute">${card.attributes.name}</p>
-              <p class="card-grid__card--attribute">CMC: ${card.attributes.mana_cost}</p>
-              <p class="card-grid__card--attribute">${card.attributes.type_line}</p>
-          </div>
-          <img class="card-grid__card--image" alt="${card.attributes.name}" title="${card.attributes.name}" src="${card.attributes.image_url}">
-        </a>
-      </div>
-      <div class="card-grid__trade-proposal">
-       <button type="button" class="card-grid__trade-proposal__btn ${leagueStatus(card)}" data-id="${card.attributes.id}"></button>
-      </div>
-    </div>
   `
   }
 
@@ -84,59 +68,20 @@
     `
   }
 
-var leagueStatus = function(card) {
-  if (card.attributes.users.data.length > 0)
-    return 'for-trade'
-  else
-    return 'not-in-league'
-}
+// $(function() {
+//   $(document).off('click', '.card-grid__trade-proposal__btn');
+//   $(document).on('click', '.card-grid__trade-proposal__btn', function(){ 
+//     $('.modal__content').empty();
+//     id = $(this).attr('data-id');
+//     card = search('id', id, cards);
+//     users = card.attributes.users.data;
+//     if ((users.length > 1) || (users[0].id != current_user_id) )
+//       $('.modal__content').append(cardModalTemplate(card));
+//     else
+//       $('.modal__content').append(onlyUserOwningCardTemplate);
 
-var cards = []
-
-$(function() {
-
-  var clearGrid = function() {
-    $('.card-grid').children('.card-grid__card__wrapper').remove();
-    $('#search-help').empty();
-  }
-
-  var populateGrid = function(res) {
-    clearGrid();
-    if (res.length > 0) {
-      res.forEach(function(card) {
-        $('.card-grid').append(cardTemplate(card));
-      });
-    } else {
-      $('#search-help').text(Constants.card_search_no_results);
-    }
-  };
-
-  document.getElementById("card-search").placeholder = Constants.card_search_placeholder;
-  $('#card-search').keyup(debounce(function() {
-    $('#search-help').empty();
-    query = $(this).val();
-    if (query.length >= Constants.min_query_length) {
-      xhrRequest('/cards/?query=' + query, "GET", function(res) { cards = res.data; populateGrid(cards) } )
-    } else if (query.length === 0) {
-      clearGrid();
-    } else {
-      $('#search-help').text(Constants.card_search_placeholder);
-    }
-  }, 300));
-
-  $(document).off('click', '.card-grid__trade-proposal__btn');
-  $(document).on('click', '.card-grid__trade-proposal__btn', function(){ 
-    $('.modal__content').empty();
-    id = $(this).attr('data-id');
-    card = search('id', id, cards);
-    users = card.attributes.users.data;
-    if ((users.length > 1) || (users[0].id != current_user_id) )
-      $('.modal__content').append(cardModalTemplate(card));
-    else
-      $('.modal__content').append(onlyUserOwningCardTemplate);
-
-    $('#trade-modal').addClass('active');
-  });
-});
+//     $('#trade-modal').addClass('active');
+//   });
+// });
 
 </script>

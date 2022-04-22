@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchInput from './SearchInput';
+import SearchInput from '../SearchInput';
 import { CardGrid, CardImage, QuantityControl } from '../CardGrid';
 import xhrRequest from '../../helpers/xhr-request';
 

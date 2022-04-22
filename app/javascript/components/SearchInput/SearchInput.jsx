@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDebounce } from 'react-use';
-import xhrRequest from '../../../helpers/xhr-request';
+import xhrRequest from '../../helpers/xhr-request';
 
 const MIN_QUERY_LENGTH = 3
 const MINIMUM_QUERY_MSG = `Input at least ${MIN_QUERY_LENGTH} characters to search`;
