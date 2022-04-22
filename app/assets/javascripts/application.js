@@ -37,18 +37,18 @@
     });
   }
 
-  // var xhrRequest = function(url, type, success = function(){}, data = {}, error = function(){}) {
-  //   $.ajax({
-  //     url: url,
-  //     beforeSend: function (xhr) {
-  //       xhr.setRequestHeader("X-CSRF-Token", token)
-  //     },
-  //     data: data,
-  //     type: type,
-  //     dataType: "json",
-  //     error: error,
-  //     success: success
-  //   });
-  // };
+  var xhrRequest = function(url, type, success = function(){}, data = {}, error = function(){}) {
+    $.ajax({
+      url: url,
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("X-CSRF-Token", token)
+      },
+      data: data,
+      type: type,
+      dataType: "json",
+      error: error,
+      success: success
+    });
+  };
   
 
