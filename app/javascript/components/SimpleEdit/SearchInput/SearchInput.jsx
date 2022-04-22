@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDebounce, useFirstMountState } from 'react-use';
+import { useDebounce } from 'react-use';
 import xhrRequest from '../../../helpers/xhr-request';
 
 const MIN_QUERY_LENGTH = 3
@@ -19,7 +19,6 @@ const searchCards = async (query) => (await xhrRequest({
 const SearchInput = (props) => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState('');
-  const isInitial = useFirstMountState();
 
   const handleErrorMessaging = (results) => {
     if (query.length > 0 && query.length < MIN_QUERY_LENGTH) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDebounce, useFirstMountState } from 'react-use';
-import xhrRequest from '../../../helpers/xhr-request';
+import xhrRequest from '../../helpers/xhr-request';
 
 const storeQuantity = ({ collectionId, cardId, quantity, }) => xhrRequest({
   url: `/collections/${collectionId}`,

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchInput from './SearchInput';
-import { CardGrid, CardImage } from '../Dashboard/CardGrid';
+import { CardGrid, CardImage, QuantityControl } from '../CardGrid';
 import xhrRequest from '../../helpers/xhr-request';
-import QuantityControl from '../Dashboard/CardGrid/QuantityControl';
 
 const fetchCollection = async (userId) => (await xhrRequest({
   url: `/collections/${userId}`,
@@ -12,8 +11,8 @@ const fetchCollection = async (userId) => (await xhrRequest({
 
 const SimpleEdit = (props) => {
   const [cards, setCards] = useState([]);
-  
-  const resetToCollection = async (cards) => setCards(await fetchCollection(props.user_id));
+
+  const resetToCollection = async () => setCards(await fetchCollection(props.user_id));
   
   return (
     <>
