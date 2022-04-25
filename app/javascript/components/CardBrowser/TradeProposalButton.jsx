@@ -6,8 +6,9 @@ const TradeProposalButton = ({ isAvailable, onClick }) => {
     <div class="card-grid__trade-proposal">
       <button
         type="button"
+        disabled={!isAvailable}
         className={`card-grid__trade-proposal__btn ${availabilityClass}`}
-        onClick={isAvailable ? onClick : ()=>{}}/>
+        onClick={onClick}/>
     </div>
   );
 }
