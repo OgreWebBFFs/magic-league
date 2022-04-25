@@ -1,87 +1,8 @@
 <div id="trade-search__wrapper">
   <div class="trade__container">
     <%= react_component("CardBrowser", {
-      current_user_id: current_user.id
+      current_user_id: current_user.id,
+      wishlist: current_user.wishlist
     }) %>
-    <%# <input id="card-search" type="text" placeholder="" />
-    <div id="search-help"></div>
-    <div class="card-grid">
-    </div> %>
   </div>
 </div>
-
-<div id="trade-modal" class="modal"  >
-  <div class="modal__overlay overlay" onclick="Helpers.toggleElementById('trade-modal')"></div>
-  <div class="modal__content">
-  </div>
-</div>
-<script>
-  var current_user_id = <%= current_user.id %>
-  var wishlist = []
-
-  xhrRequest('/wishlists/' + <%= current_user.id %>, 'GET', function(res) { wishlist = res; });
-  $(document).off('click', '.card-grid__wishlist__toggle-checkbox');
-  $(document).on('click', '.card-grid__wishlist__toggle-checkbox', function(){
-    card_id = $(this).attr('data-id');
-    xhrRequest('/wishlists/<%= current_user.id %>', "PUT", function(res) {wishlist=res;}, {card_id: card_id});
-  });
-
-  var cardTemplate = function(card) {
-    return `
-  `
-  }
-
-  var onlyUserOwningCardTemplate = function(card) {
-    return `
-      <button class="modal__close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
-      <i class="fas fa-times"></i>
-      </button>
-      <h4 class="modal__title">Oh no!</h4>
-      <p>You are the only user who owns this card. 😭</p>
-    `
-  }
-
-  var cardModalTemplate = function(card) {
-    return `
-      <button class="modal__close-button" href="#" onclick="Helpers.toggleElementById('trade-modal')">
-      <i class="fas fa-times"></i>
-      </button>
-      <h4 class="modal__title" >Email Proposal</h4>
-      <p>You are contacting:</p>
-      ` +
-      card.attributes.users.data.filter(function(user){return user.id != current_user_id}).map(function(user) {
-        return `
-        <ul class="trade-modal_partner-list">
-        ${user.attributes.name}
-        </ul>
-        `
-      }).join("\n")
-      +
-      `
-      <p>To talk about trading for <span class="card-to-be-traded">${card.attributes.name}</span></p>
-      <form action="/trades" method="post"> 
-        <input type="hidden" name="authenticity_token" value="${token}">
-        <input type="hidden" name="trade[card_id]" value="${card.id}"/>
-        <button type="submit" class="trade-modal_send__btn">Send Message</button>
-      </form>
-    </div>
-    `
-  }
-
-// $(function() {
-//   $(document).off('click', '.card-grid__trade-proposal__btn');
-//   $(document).on('click', '.card-grid__trade-proposal__btn', function(){ 
-//     $('.modal__content').empty();
-//     id = $(this).attr('data-id');
-//     card = search('id', id, cards);
-//     users = card.attributes.users.data;
-//     if ((users.length > 1) || (users[0].id != current_user_id) )
-//       $('.modal__content').append(cardModalTemplate(card));
-//     else
-//       $('.modal__content').append(onlyUserOwningCardTemplate);
-
-//     $('#trade-modal').addClass('active');
-//   });
-// });
-
-</script>
