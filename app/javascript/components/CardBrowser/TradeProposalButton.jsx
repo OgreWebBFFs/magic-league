@@ -1,14 +1,17 @@
 import React from 'react';
+import Button from '../Button';
+import classNames from 'classnames'
 
 const TradeProposalButton = ({ isAvailable, onClick }) => {
-  const availabilityClass = isAvailable ? 'for-trade' : 'not-in-league';
   return (
     <div class="card-grid__trade-proposal">
-      <button
+      <Button
         type="button"
         disabled={!isAvailable}
-        className={`card-grid__trade-proposal__btn ${availabilityClass}`}
-        onClick={onClick}/>
+        className={classNames("card-grid__trade-proposal-button", {"button--inverse": !isAvailable})}
+        onClick={onClick}>
+          {isAvailable ? "Propose Trade" : "Not in League"}
+      </Button>
     </div>
   );
 }

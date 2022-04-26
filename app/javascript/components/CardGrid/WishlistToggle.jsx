@@ -1,6 +1,10 @@
 import React, {useContext} from 'react';
+import classNames from 'classnames';
+
 import WishlistContext from '../../contexts/WishlistContext';
 import xhrRequest from '../../helpers/xhr-request';
+
+import Button from "../Button"
 
 const putToWishlist = async (userId, cardId) => await xhrRequest({
   url: `/wishlists/${userId}`,
@@ -18,9 +22,9 @@ const WishlistToggle = ({ cardId, userId }) => {
     setWishlist(updatedWishlist);
   } 
   return (
-    <div className={`wishlist-${cardId}__toggle card-grid__wishlist__toggle ${isWishlisted ? 'active' : ''}`} onClick={toggleWishlist}>
+    <Button className={classNames(`wishlist-${cardId}__toggle`,  "card-grid__wishlist__toggle", "button--accent", {'active': isWishlisted})} onClick={toggleWishlist}>
       <i className="far fa-heart"></i>
-    </div>
+    </Button>
   )
 }
 

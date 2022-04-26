@@ -63,12 +63,18 @@ $ranking-border-color: $color-light;
     --eerie-black-hue-sat: 0, 0%;
     --eerie-black-lightness: 10%;
 
+    --veri-peri-hue-sat: 239, 29%;
+    --veri-peri-lightness: 54%;
+
 
 
     //Needed for various css calcs 
 
     --color-highlight-primary-hue-sat: var(--lightning-blue-hue-sat);
     --color-highlight-primary-lightness : var(--lightening-blue-lightness);
+
+    --color-accent-hue-sat: var(--veri-peri-hue-sat);
+    --color-accent-lightness: var(--veri-peri-lightness);
 
     --color-dark-hue-sat: var(--eerie-black-hue-sat);
     --color-dark-lightness : var(--eerie-black-lightness);
@@ -78,6 +84,8 @@ $ranking-border-color: $color-light;
 
 
     --color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
+
+    --color-accent: hsl(var(--color-accent-hue-sat),var(--color-accent-lightness));
 
     --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
 

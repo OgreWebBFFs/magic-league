@@ -32,8 +32,9 @@
     }
 
     &__close-button{
-        right:-5px;
-        top: -5px;
+        position: absolute;
+        right:-25px;
+        top: -25px;
     }
 
     form {

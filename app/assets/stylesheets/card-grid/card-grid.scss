@@ -12,26 +12,24 @@
     }
 
     &__wishlist__toggle {
-        $toggle-size: 36px;
-        width:$toggle-size;
-        padding: calc(36px*.125);
-        top: -25px;
+        --toggle-size: 36px;
+        margin:0;
+        top: calc(var(--toggle-size)/-1.5);
         right: -10px;
         opacity: 1;
         position: absolute;
         z-index: 1;
         font-family: "Font Awesome 5 Free";
         font-weight: 400;
-        font-size: calc(#{$toggle-size}*.5);
-        border-radius: $toggle-size;
+        font-size: calc(var(--toggle-size)/2);
+        border-radius: var(--toggle-size);
         cursor: pointer;
         opacity: .6;
         position: absolute;
         color: $color-light;
-        background-color: $color-accent;
-
+    
         @media only screen and (max-width: 500px) {
-            top: 0;
+            top: calc(var(--toggle-size)/-2);
         }
 
         &.active {
@@ -137,7 +135,7 @@
         }
     }
 
-    &__counter {
+    &__quantity-control {
         display: flex;
         margin: 10px auto 0;
         justify-content: space-between;
@@ -145,64 +143,37 @@
         text-align: center;
         width: 90%;
         background-color: $color-highlight-import;
-        border-radius: 5px;
-
-        [class*="__btn"] {
-            font-weight: bolder;
-            display: flex;
-            justify-content: center;
+        border-radius: .5rem;
+        height: 2rem;
+        padding: 0 .5rem;
+        input[type=number]:not(.browser-default) {
+            cursor: default;
+            text-align: center;
+            border-bottom: 0px;
+            margin-bottom: 0;
+            -moz-appearance: textfield;
+            height:auto;
         }
 
-        input[type=number] {
-            &:not(.browser-default) {
-                cursor: default;
-                text-align: center;
-                border-bottom: none;
-                height: 34px;
-                margin-bottom: 0;
-                //Dealing with the wheel space;
-                margin-right: -10px;
-                -moz-appearance: textfield;
-            }
+    }
 
-            &:-webkit-inner-spin-button,
-            &:-webkit-outer-spin-button,
-            &:-webkit-inner-adjust-hue-button,
-            &:-webkit-outer-adjust-hue-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
+    &__quantity {
+       &:-webkit-inner-spin-button,
+        &:-webkit-outer-spin-button,
+        &:-webkit-inner-adjust-hue-button,
+        &:-webkit-outer-adjust-hue-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
-
     }
 
     &__trade-proposal {
         margin: 10px auto 0;
         text-align: center;
 
-        &__btn {
+        &-button {
             width: 100%;
-
-            span {
-                display: none;
-            }
-
-            &:after {
-                content: "Propose Trade";
-                font-size: 12px;
-            }
-
-            &.not-in-league {
-                background: $color-dark;
-                color: $color-light;    
-                cursor: default;
-
-                &:after {
-                    content: "Not in League";
-                }
-            }
-
+            margin: 1rem 0;
         }
     }
 

@@ -3,6 +3,8 @@
     --background-color-lightness: var(--color-highlight-primary-lightness);
     --background-color: var(--color-highlight-primary);
     --text-color: var(--color-dark);
+    --text-color-hue-sat: var(--color-dark-hue-sat);
+    --text-color-lightness: var(--color-dark-lightness);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -30,10 +32,31 @@
         --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
         background-color:hsl(var(--background-color-hue-sat),var(--adjusted-lightness));
     }
+
     &--inverse {
         --background-color-hue-sat: var(--color-dark-hue-sat);
         --background-color-lightness: var(--color-dark-lightness);
         --background-color: var(--color-dark);
         --text-color: var(--color-light);
     }
+
+    &--accent {
+        --background-color-hue-sat: var(--color-accent-hue-sat);
+        --background-color-lightness: var(--color-accent-lightness);
+        --background-color: var(--color-accent);
+        --text-color: var(--color-dark);
+    }
+
+    &--ghost {
+        --background-color: transparent;
+        padding:0;
+        margin:0;
+        &:hover,
+        &:focus {
+            background-color:var(--background-color);
+            --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
+            color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
+     
+        }
+    }   
 }

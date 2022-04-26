@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button'
 
 const OnlyYouOwnMsg = () => (
   <>
@@ -19,7 +20,7 @@ const TradeProposalRequest = ({ users, card }) => (
     <form action="/trades" method="post"> 
       <input type="hidden" name="authenticity_token" value={document.querySelector('meta[name="csrf-token"]').content}/>
       <input type="hidden" name="trade[card_id]" value={card.id}/>
-      <button type="submit" className="trade-modal_send__btn">Send Message</button>
+      <button type="submit" className="trade-modal_send__button button">Send Message</button>
     </form>
   </>
 )
@@ -30,9 +31,9 @@ const TradeProposalModal = ({ closeModal, card, currentUserId }) => {
     <div id="trade-modal" className="modal active"  >
       <div className="modal__overlay overlay" onClick={closeModal}></div>
       <div className="modal__content">
-        <button className="modal__close-button" href="#" onClick={closeModal}>
+        <Button className="modal__close-button" href="#" onClick={closeModal}>
           <i className="fas fa-times"></i>
-        </button>
+        </Button>
         {otherUsersWithCard.length > 0 ?
           <TradeProposalRequest users={otherUsersWithCard} card={card} />
           : <OnlyYouOwnMsg />}
