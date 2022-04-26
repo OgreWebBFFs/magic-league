@@ -1,13 +1,12 @@
 import React from 'react';
+import Button from '../../Button';
 
 const DesktopNav = ({links}) => {
     const renderDesktopNavLinks = (linksArr) => linksArr.map((link, i)=>{
         if(link.dropdownItems){
            return (
                <li key={`${link.displayName}-${i}`} className="nav__dropdown-wrapper">
-                    <button className="nav__dropdown-toggle" 
-                        aria-expanded="false"
-                        aria-controls={`${link.displayName}-dropdown`}>{link.displayName} ▼</button>
+                    <Button className="nav__dropdown-toggle">{link.displayName} ▼</Button>
                     <ul className='nav__dropdown'>{renderDesktopNavLinks(link.dropdownItems)}</ul>
                 </li>
            )

@@ -113,91 +113,85 @@
         }
     }
 
-    &_card-interface {
+    &__tab-wrapper {
+        display: flex;
+        background: $color-light;
+    }
+
+    &__tab {
+        color: $color-light;
+        background: darken($color-nuetral, 35%);
+        margin-right: 5px;
+        margin-bottom:0;
+        margin-left:0;
+        width: 150px;
+        border: 2px solid $color-dark;
+        border-bottom: 1px solid rgba($color-dark, .15);
+        ;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &:hover {
+            background: rgba($color-dark, .8);
+            color: $color-light;
+        }
+
+        &.active {
+            background: $color-dark;
+
+        }
+
+        @media only screen and (max-width: 850px) {
+
+            &__title {
+                align-self: start;
+            }
+
+            &_edit__btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 200px;
+                flex: 0 0 auto;
+            }
+        }
+    }
+
+    &__card-interface {
         border: 2px solid $color-dark;
 
-        &__wrapper {
+        &-wrapper {
             margin: $section-margin 0;
         }
 
-        &_tab__wrapper {
-            display: flex;
-            background: $color-light;
-        }
-
-        &_tab__btn {
-            color: $color-light;
-            background: darken($color-nuetral, 35%);
-            margin-right: 5px;
-            width: 150px;
-            border: 2px solid $color-dark;
-            border-bottom: 1px solid rgba($color-dark, .15);
-            ;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-
-            &:hover {
-                background: rgba($color-dark, .8);
-                color: $color-light;
-            }
-
-            &.active {
-                background: $color-dark;
-
-            }
-
-            @media only screen and (max-width: 850px) {
-
-                &__title {
-                    align-self: start;
-                }
-
-                &_edit__btn {
-                    margin-left: 0;
-                    margin-top: 10px;
-                    width: 200px;
-                    flex: 0 0 auto;
-                }
-            }
-        }
-
         @import 'filter';
-        
-        &_action-bar {
-            display: flex;
-            background-color: $color-dark;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        &_action__btn {
-            padding: 0 10px;
-            font-size: 12px;
-            margin: 5px;  
-        }
-
-        &_view-toggles {
-            display: flex;
-            margin-right: auto;
-            flex-grow: 1;
-        }
-
-        &_collection_toggle-card-view__btn,
-        &_wishlist_toggle-card-view__btn {
-         width: 35px;
-         margin: 5px;
-         background: darken($color-nuetral, 15%);
-            &.active{
-                background: $color-highlight-import
-            }
-            &:hover{
-                background: $color-highlight-mid-import;
-            }
-        }
-
     }
 
-    &_card-view {
+    &__action-bar {
+        display: flex;
+        background-color: $color-dark;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    &__cards-action {
+        margin: 5px; 
+    }
+
+    &__card-view-toggles {
+        display: flex;
+        margin-right: auto;
+        flex-grow: 1;
+    }
+
+    &__card-view-toggle {
+        margin: 5px;
+        &.active{ 
+            --adjusted-lightness:calc(var(--background-color-lightness) + 25%);
+        }
+    }
+
+
+    &_card-view {   
         &__cell {
             justify-self: flex-end;
             flex: 0 0 50px;
@@ -230,11 +224,10 @@
             }
         }
     }
+
+    &__card-grid-wrapper {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
+    }
+
 }
 
-#wishlist-table,
-#wishlist-grid {
-    &:not(.active) {
-        display:none;
-    }
-}

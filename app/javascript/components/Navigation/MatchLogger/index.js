@@ -77,7 +77,7 @@ const MatchLogger = ({unlockedUsers, currentUserId, close, isOpen}) => {
             <p>When?</p>
             <input id="match-date" defaultValue={selectedDate || now.date} onChange={(e)=>{setSelectedDate(e.target.value)}} type="date" name="match[date]"/>
             <input id="match-time" defaultValue={selectedTime || now.time} onChange={(e)=>{setSelectedTime(e.target.value)}} type="time" name="match[time]"/>
-            <input type="submit" onClick={handleClose} className="match-logger_submit__button button" />
+            <Button type="submit" onClick={handleClose} className="match-logger_submit__button">Submit</Button>
             </form>
         </div>
         </>
