@@ -54,7 +54,7 @@ const Collection = (props) => {
         <CardGrid>
           {props.collectionCards.map((card) => (
             <>
-              <WishlistToggle user={props.user} card={card} />
+              <WishlistToggle userId={props.currentUserId} cardId={card.id} />
               <CardImage {...card} />
             </>
           ))}

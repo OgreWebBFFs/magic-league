@@ -2,23 +2,23 @@ import React, {useContext} from 'react';
 import WishlistContext from '../../contexts/WishlistContext';
 import xhrRequest from '../../helpers/xhr-request';
 
-const putToWishlist = async (user, card) => await xhrRequest({
-  url: `/wishlists/${user.id}`,
+const putToWishlist = async (userId, cardId) => await xhrRequest({
+  url: `/wishlists/${userId}`,
   options: {
     method: 'PUT',
-    body: JSON.stringify({ card_id: card.id })
+    body: JSON.stringify({ card_id: cardId })
   }
 });
 
-const WishlistToggle = ({ card, user }) => {
+const WishlistToggle = ({ cardId, userId }) => {
   const {wishlist, setWishlist} = useContext(WishlistContext);
-  const isWishlisted = wishlist.some(wishlistCard => wishlistCard.id === card.id);
+  const isWishlisted = wishlist.some(wishlistCard => wishlistCard.id === cardId);
   const toggleWishlist = async () => {
-    const updatedWishlist = await putToWishlist(user, card);
+    const updatedWishlist = await putToWishlist(userId, cardId);
     setWishlist(updatedWishlist);
   } 
   return (
-    <div className={`wishlist-${card.id}__toggle card-grid__wishlist__toggle ${isWishlisted ? 'active' : ''}`} onClick={toggleWishlist}>
+    <div className={`wishlist-${cardId}__toggle card-grid__wishlist__toggle ${isWishlisted ? 'active' : ''}`} onClick={toggleWishlist}>
       <i className="far fa-heart"></i>
     </div>
   )
