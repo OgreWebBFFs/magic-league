@@ -12,44 +12,43 @@ import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
 
 const Wishlist = (props) => {
-  const {wishlist} = useContext(WishlistContext);
+  const {wishlist, currentUserWishlist} = useContext(WishlistContext);
+  const isOwner = props.currentUserId === props.user.id;
   const isEmpty = wishlist.length < 1;
-  const isOwner = props.currentUserId === props.user.id 
+  const wishlistToRender = isOwner ? currentUserWishlist : wishlist;
   return  (
     <>
-      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
+      {isEmpty && <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
         <a class="empty-card-view__btn" href="/trades">
           Make some wishes ;)
         </a>
-      )}/> : null }
-      {props.isListView && !isEmpty ? (
+      )}/>}
+      {(props.isListView && !isEmpty) && (
         <CardList> 
-          {wishlist.map((card, row) => (
+          {wishlistToRender.map((card, row) => (
             <CollectionRow>
               <a href={`/cards/${card.id}`}>{card.name}</a>
-              <RemoveWish
+              {isOwner && <RemoveWish
                 user={props.user}
                 card={card}
                 classes={'dashboard_card-view_remove-from-wishlist__btn'}
-              />
+              />}
             </CollectionRow>
           ))}
-        </CardList>): null }
-      {!props.isListView && !isEmpty ? (
-       <div className="dashboard__card-grid-wrapper">
-          <CardGrid>
-            {wishlist.map((card) => (
-              <>
-                <RemoveWish
-                  user={props.user}
-                  card={card}
-                  classes={'card-grid__wishlist__toggle active'}
-                />
-                <CardImage {...card} />
-              </>
-            ))}
-          </CardGrid>
-        </div>) : null }
+        </CardList>)}
+      {(!props.isListView && !isEmpty) && (
+        <CardGrid>
+          {wishlistToRender.map((card) => (
+            <>
+              {isOwner && <RemoveWish
+                user={props.user}
+                card={card}
+                classes={'button button--accent card-grid__wishlist__toggle active'}
+              />}
+              <CardImage {...card} />
+            </>
+          ))}
+        </CardGrid>)}
     </>
   );
 }

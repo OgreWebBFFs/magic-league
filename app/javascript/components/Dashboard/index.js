@@ -19,6 +19,7 @@ const Dashboard = (props) => {
   const [activeTab, setActiveTab] = useState("Collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
+  const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
   const [isListView, setIsListView] = useState(true);
 
   const Tabs = {
@@ -26,6 +27,7 @@ const Dashboard = (props) => {
     Wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
   };
 
+  
   return (
    <div className="dashboard__card-interface-wrapper">
     <div className="dashboard__tab-wrapper">
@@ -51,7 +53,14 @@ const Dashboard = (props) => {
       </div>
     <div className="dashboard__card-view">
       <TradablesContext.Provider value={{ tradables, setTradables }}>
-        <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+        <WishlistContext.Provider 
+          value={{ 
+            wishlist,
+            setWishlist,
+            currentUserWishlist,
+            setCurrentUserWishlist
+          }}
+        >
           {Tabs[activeTab](props)}
         </WishlistContext.Provider>
       </TradablesContext.Provider>

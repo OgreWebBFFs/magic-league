@@ -20,13 +20,12 @@ const Collection = (props) => {
   const isOwner = props.currentUserId === props.user.id 
   return  (
     <>
-
-      {isEmpty ? <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
+      {isEmpty && <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
         <a class="empty-card-view__btn" href={`/collections/${props.user.id}/edit`}>
           Build Your Collection
         </a>
-      )} /> : null }
-      {props.isListView && !isEmpty ? (
+      )} />}
+      {(props.isListView && !isEmpty) && (
         <CardList> 
           {props.collectionCards.map((card, row) => (
             <CollectionRow>
@@ -37,19 +36,21 @@ const Collection = (props) => {
                 row={row} />
             </CollectionRow>
           ))}
-        </CardList>): null }
-      {!props.isListView && !isEmpty ? (
+        </CardList>)}
+      {(!props.isListView && !isEmpty) && (
         <div className="dashboard__card-grid-wrapper">
-          <CardGrid>
-            {props.collectionCards.map((card) => (
-              <>
-                <WishlistToggle userId={props.currentUserId} cardId={card.id} />
-                <CardImage {...card} />
-              </>
-            ))}
-          </CardGrid>
-        </div>
-        ) : null }
+        <CardGrid>
+          {props.collectionCards.map((card) => (
+            <>
+              <WishlistToggle
+                userId={props.user.id}
+                cardId={card.id}
+              />
+              <CardImage {...card} />
+            </>
+          ))}
+        </CardGrid>
+        </div>)}
     </>
   );
 }
