@@ -27,8 +27,8 @@ const Collection = (props) => {
       )} />}
       {(props.isListView && !isEmpty) && (
         <CardList> 
-          {props.collectionCards.map((card, row) => (
-            <CollectionRow>
+          {props.collectionCards.map((card, row, i) => (
+            <CollectionRow key={`${row}-${i}`}>
               <a href={`/cards/${card.id}`}>{card.name}</a>
               <TradableToggle 
                 isOwner={isOwner}
@@ -40,14 +40,14 @@ const Collection = (props) => {
       {(!props.isListView && !isEmpty) && (
         <div className="dashboard__card-grid-wrapper">
         <CardGrid>
-          {props.collectionCards.map((card) => (
-            <>
+          {props.collectionCards.map((card, i) => (
+            <div key={`${card.id}-${i}`}>
               <WishlistToggle
                 userId={props.user.id}
                 cardId={card.id}
               />
               <CardImage {...card} />
-            </>
+            </div>
           ))}
         </CardGrid>
         </div>)}

@@ -32,7 +32,7 @@ const Dashboard = (props) => {
    <div className="dashboard__card-interface-wrapper">
     <div className="dashboard__tab-wrapper">
       {Object.keys(Tabs).map(tabName => (
-        <InterfaceTab activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}/>
+        <InterfaceTab key={tabName} activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}/>
       ))}
     </div>
     <div className="dashboard__action-bar">    
