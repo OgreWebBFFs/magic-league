@@ -241,12 +241,6 @@ select:focus {
   outline: 1px solid $color-highlight-mid-import;
 }
 
-button:focus {
-  outline: none;
-  background-color: $color-highlight-mid-import;
-  ;
-}
-
 label {
   font-size: 0.8rem;
   color: $color-nuetral;

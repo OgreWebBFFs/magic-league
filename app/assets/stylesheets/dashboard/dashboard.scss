@@ -185,9 +185,6 @@
 
     &__card-view-toggle {
         margin: 5px;
-        &.active{ 
-            --adjusted-lightness:calc(var(--background-color-lightness) + 25%);
-        }
     }
 
 
@@ -205,11 +202,6 @@
                 flex-wrap: nowrap;
                 justify-self: flex-start;
             }
-        }
-        &_remove-from-wishlist__btn{
-           width:25px;
-           height:25px;
-           line-height: 25px;
         }
 
         .empty-card-view{

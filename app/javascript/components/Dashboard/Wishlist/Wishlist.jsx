@@ -31,7 +31,7 @@ const Wishlist = (props) => {
               {isOwner && <RemoveWish
                 user={props.user}
                 card={card}
-                classes={'dashboard_card-view_remove-from-wishlist__btn'}
+                classes={''}
               />}
             </CollectionRow>
           ))}

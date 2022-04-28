@@ -12,10 +12,10 @@ const putToWishlist = async (user, card) => await xhrRequest({
 });
 
 const RemoveWish = ({ card, user, classes}) => {
-  const { setCurrentUserWishlist } = useContext(WishlistContext);
+  const { setWishlist } = useContext(WishlistContext);
   const removeWish = async () => {
     const updatedWishlist = await putToWishlist(user, card);
-    setCurrentUserWishlist(updatedWishlist);
+    setWishlist(updatedWishlist);
   } 
   return (
     <Button className={classes} onClick={removeWish}>

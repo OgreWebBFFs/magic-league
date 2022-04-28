@@ -37,10 +37,10 @@ const Dashboard = (props) => {
     </div>
     <div className="dashboard__action-bar">    
         <div className="dashboard__card-view-toggles">
-          <Button id="collection-table-toggle" className={classNames('dashboard__card-view-toggle', {"active": isListView})} onClick={() => setIsListView(true)}>
+          <Button id="collection-table-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": !isListView})} onClick={() => setIsListView(true)}>
             <i className="fas fa-list"></i>
           </Button>
-          <Button id="collection-grid-toggle" className={classNames('dashboard__card-view-toggle', {"active": !isListView})} onClick={() => setIsListView(false)}>
+          <Button id="collection-grid-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": isListView})} onClick={() => setIsListView(false)}>
             <i className="fas fa-th-large"></i>
           </Button>
         </div>
