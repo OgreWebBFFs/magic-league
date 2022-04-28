@@ -19,6 +19,7 @@ const Dashboard = (props) => {
   const [activeTab, setActiveTab] = useState("Collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
+  const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
   const [isListView, setIsListView] = useState(true);
 
   const Tabs = {
@@ -26,6 +27,7 @@ const Dashboard = (props) => {
     Wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
   };
 
+  
   return (
    <div className="dashboard__card-interface-wrapper">
     <div className="dashboard__tab-wrapper">
@@ -35,10 +37,10 @@ const Dashboard = (props) => {
     </div>
     <div className="dashboard__action-bar">    
         <div className="dashboard__card-view-toggles">
-          <Button id="collection-table-toggle" className={classNames('dashboard__card-view-toggle', {"active": isListView})} onClick={() => setIsListView(true)}>
+          <Button id="collection-table-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": !isListView})} onClick={() => setIsListView(true)}>
             <i className="fas fa-list"></i>
           </Button>
-          <Button id="collection-grid-toggle" className={classNames('dashboard__card-view-toggle', {"active": !isListView})} onClick={() => setIsListView(false)}>
+          <Button id="collection-grid-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": isListView})} onClick={() => setIsListView(false)}>
             <i className="fas fa-th-large"></i>
           </Button>
         </div>
@@ -51,7 +53,14 @@ const Dashboard = (props) => {
       </div>
     <div className="dashboard__card-view">
       <TradablesContext.Provider value={{ tradables, setTradables }}>
-        <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+        <WishlistContext.Provider 
+          value={{ 
+            wishlist,
+            setWishlist,
+            currentUserWishlist,
+            setCurrentUserWishlist
+          }}
+        >
           {Tabs[activeTab](props)}
         </WishlistContext.Provider>
       </TradablesContext.Provider>

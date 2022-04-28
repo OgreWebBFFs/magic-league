@@ -13,6 +13,8 @@
 
     &__wishlist__toggle {
         --toggle-size: 36px;
+        height: var(--toggle-size);
+        width: var(--toggle-size);
         margin:0;
         top: calc(var(--toggle-size)/-1.5);
         right: -10px;

@@ -28,9 +28,8 @@
     transition-property: all;
     transition-timing-function: ease-in-out;
     transition-duration: .3s;
-    &:hover,
-    &:focus {
-        --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
+    &:hover {
+        --adjusted-lightness:calc(var(--background-color-lightness) - 15%);
         background-color:hsl(var(--background-color-hue-sat),var(--adjusted-lightness));
     }
 
@@ -59,5 +58,9 @@
             color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
      
         }
-    }   
+    }
+    
+    &--inactive {
+        --background-color-hue-sat: var(--desaturated-hue-sat);
+    }
 }

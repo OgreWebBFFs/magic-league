@@ -15,11 +15,14 @@ const putToWishlist = async (userId, cardId) => await xhrRequest({
 });
 
 const WishlistToggle = ({ cardId, userId }) => {
-  const {wishlist, setWishlist} = useContext(WishlistContext);
-  const isWishlisted = wishlist.some(wishlistCard => wishlistCard.id === cardId);
+  const {
+    currentUserWishlist,
+    setCurrentUserWishlist
+  } = useContext(WishlistContext);
+  const isWishlisted = currentUserWishlist.some(wishlistCard => wishlistCard.id === cardId);
   const toggleWishlist = async () => {
     const updatedWishlist = await putToWishlist(userId, cardId);
-    setWishlist(updatedWishlist);
+    setCurrentUserWishlist(updatedWishlist);
   } 
   return (
     <Button className={classNames(`wishlist-${cardId}__toggle`,  "card-grid__wishlist__toggle", "button--accent", {'active': isWishlisted})} onClick={toggleWishlist}>

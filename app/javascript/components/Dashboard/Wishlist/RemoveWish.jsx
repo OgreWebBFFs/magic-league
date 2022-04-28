@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import Button from '../../Button';
 import WishlistContext from '../../../contexts/WishlistContext';
 import xhrRequest from '../../../helpers/xhr-request';
 
@@ -17,9 +18,9 @@ const RemoveWish = ({ card, user, classes}) => {
     setWishlist(updatedWishlist);
   } 
   return (
-    <div className={classes} onClick={removeWish}>
+    <Button className={classes} onClick={removeWish}>
       <i className="fas fa-times"></i>
-    </div>
+    </Button>
   );
 }
 
