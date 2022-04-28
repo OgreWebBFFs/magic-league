@@ -3,27 +3,39 @@
   text-align: center;
   $ranking-board-heading: 60px;
   $month-selector: 45px;
+  
+  transition-property: opacity;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in-out;
 
   &__title {
-    font-size: 50px;
-    margin-top: 0;
-    margin-bottom: 10px;
-    line-height: 1;
+    font-size: 40px;
+    margin: 0 auto 10px;
     font-variant: small-caps;
     font-weight: 700;
     color: $color-light;
-
+    &:hover,
+    &:focus {
+      color:$color-light;
+    }
   }
 
   &__date_form {
     display: flex;
     justify-content: center;
     margin: 10px 0;
+    transition-property: opacity;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
 
     select {
       // 125px is the width of the month input on the longest months
       flex: 0 0 125px;
       margin: 0 5px;
+    }
+
+    &--hidden {
+      opacity: 0;
     }
   }
 
@@ -34,6 +46,7 @@
     transform: translateX(-50%);
     left:50%;
     --border-circumference: 400%;
+    z-index: -1;
     &-shape1
     {
       height: 100%;
@@ -51,26 +64,7 @@
       animation: strokeAnimation  4s linear;
     }
 
-    &:hover .rankings__border {
-      &-shape1 {
-        stroke-dashoffset:var(--border-circumference);
-        stroke-dasharray:var(--border-circumference);
-      }
-    }
-    @-webkit-keyframes strokeAnimation {
-      0% {
-        stroke-dashoffset:var(--border-circumference);
-        stroke-dasharray:var(--border-circumference);
-      }
-    
-    }
-    
-    @keyframes strokeAnimation {
-      0% {
-        stroke-dashoffset:var(--border-circumference);
-        stroke-dasharray:var(--border-circumference);
-      }
-    }
+  
     
   }
 
@@ -85,6 +79,7 @@
     min-width: 270px;
     max-width:350px;
 
+
     h2 {
       margin-top: 0;
     }
@@ -92,8 +87,6 @@
     .row {
       margin-bottom: 0;
     }
-
-  
   }
 
   &__player-listing {
@@ -237,6 +230,7 @@
 
   }
 
+
   @media only screen and (max-width: 400px) {
     &__title {
       margin-top: 0px;
@@ -256,4 +250,16 @@
     }
  
   }
+  &__toggle-visbility-button {
+    position: fixed;
+    bottom: 5%;
+    right:5%;
+    animation:  mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite; 
+
+  }
+
+  &--hidden {
+    opacity: 0;
+  }
+
 }
