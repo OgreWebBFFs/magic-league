@@ -123,3 +123,73 @@
     fill: $color-highlight-mid-import;
   }
 }
+
+
+@keyframes mtgBackgroundColorCycle {
+  16% {
+    background-color: $Caribbean-Green;
+  }
+
+  32% {
+    background-color: $Fountain-Blue;
+  }
+
+  48% {
+    background-color: $Eerie-Black;
+  }
+
+  64% {
+    background-color: $Mellow-Apricot;
+  }
+
+  82% {
+    background-color: $Crimson;
+  }
+
+  98% {
+    background-color: $color-highlight-mid-import;
+  }
+}
+
+@-webkit-keyframes mtgColorCycle {
+  16% {
+    background-color: $Caribbean-Green;
+  }
+
+  32% {
+    background-color: $Fountain-Blue;
+  }
+
+  48% {
+    background-color: $Eerie-Black;
+  }
+
+  64% {
+    background-color: $Mellow-Apricot;
+  }
+
+  80% {
+    background-color: $Crimson;
+  }
+
+  96% {
+    background-color: $color-highlight-mid-import;
+  }
+}
+
+
+  
+@-webkit-keyframes strokeAnimation {
+  0% {
+    stroke-dashoffset:var(--border-circumference);
+    stroke-dasharray:var(--border-circumference);
+  }
+
+}
+
+@keyframes strokeAnimation {
+  0% {
+    stroke-dashoffset:var(--border-circumference);
+    stroke-dasharray:var(--border-circumference);
+  }
+}

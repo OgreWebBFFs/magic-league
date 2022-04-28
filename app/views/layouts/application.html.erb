@@ -53,7 +53,7 @@
     <% end %>
     <!-- Site Wide Scipts -->
     <script>
-      $(document).on('turbolinks:load', AppLayout.initialize(<%= user_signed_in? %>, <%= current_user ? current_user.id : nil %>));
+      $(document).on('turbolinks:load');
   </script>
   </body>
 </html>
