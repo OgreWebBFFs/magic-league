@@ -10,7 +10,7 @@ const CardBrowser = (props) => {
   const [cards, setCards] = useState([]);
   const [modalOn, setModalOn] = useState(false);
   const [cardSelected, setCardSelected] = useState({});
-  const [wishlist, setWishlist] = useState(props.wishlist);
+  const [currentUserWishlist, setCurrentUserWishlist] = useState(props.current_user_wishlist);
 
   return (
     <>
@@ -18,7 +18,7 @@ const CardBrowser = (props) => {
         onResults={setCards}
         onReset={() => setCards([])}
       />
-      <WishlistContext.Provider value={{ wishlist, setWishlist }}>
+      <WishlistContext.Provider value={{ currentUserWishlist, setCurrentUserWishlist }}>
         <CardGrid>
           {cards.map(card => (
             <>
