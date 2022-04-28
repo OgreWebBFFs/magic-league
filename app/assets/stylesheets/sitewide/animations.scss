@@ -1,23 +1,10 @@
 //Animations
 
-//Rankings Border Animations
-@keyframes growVert {
-  0% {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes growHorz {
-  0% {
-    transform: scaleX(0);
-  }
-}
-
 //Background saturation animation
 @keyframes fadeInBGFilter {
   0% {
-    -webkit-filter: saturate(0.5);
-    filter: saturate(0.5);
+    -webkit-filter: saturate(0.25);
+    filter: saturate(0.25);
   }
 }
 
