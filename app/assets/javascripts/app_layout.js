@@ -11,7 +11,6 @@ var AppLayout = (function() {
   }
 
   return {
-    initialize: initialize,
     timedAlertClose: timedAlertClose,
   }
 

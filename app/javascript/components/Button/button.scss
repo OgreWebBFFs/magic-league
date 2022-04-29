@@ -1,11 +1,14 @@
 .button {
     --background-color-hue-sat: var(--color-highlight-primary-hue-sat);
     --background-color-lightness: var(--color-highlight-primary-lightness);
-    --background-color: var(--color-highlight-primary);
+    --background-color-opacity: 1;
+    --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
+
     --adjusted-lightness: var(--background-color-lightness);
     --text-color: var(--color-dark);
     --text-color-hue-sat: var(--color-dark-hue-sat);
     --text-color-lightness: var(--color-dark-lightness);
+  
     display:flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +23,7 @@
     border: none;
     border-radius: 2px;
     -webkit-tap-highlight-color: transparent;
-    background-color:hsl(var(--background-color-hue-sat),var(--adjusted-lightness));
+    background-color:var(--background-color);
     color: var(--text-color);
     cursor: pointer;
     overflow: hidden;
@@ -30,7 +33,7 @@
     transition-duration: .3s;
     &:hover {
         --adjusted-lightness:calc(var(--background-color-lightness) - 15%);
-        background-color:hsl(var(--background-color-hue-sat),var(--adjusted-lightness));
+        background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
     }
 
     &--inverse {
@@ -48,15 +51,14 @@
     }
 
     &--ghost {
-        --background-color: transparent;
+        --background-color-opacity: 0;
         padding:0;
         margin:0;
         &:hover,
         &:focus {
-            background-color:var(--background-color);
+            --background-color-opacity: 0;
             --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
             color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
-     
         }
     }
     

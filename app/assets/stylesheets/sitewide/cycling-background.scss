@@ -9,19 +9,16 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
     position: fixed;
     z-index: -1;
-    -webkit-filter: saturate(2);
-    filter: saturate(2);
+    -webkit-filter: saturate(2.5);
+    filter: saturate(2.5);
     animation: fadeInBGFilter;
     animation-duration: 10s;
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
     animation-iteration-count: infinite;
 
-    @media only screen and (orientation : portrait) {
-        background-size: contain;
-    }
 }
