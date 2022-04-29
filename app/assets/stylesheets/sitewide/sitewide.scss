@@ -243,6 +243,10 @@ body {
     width: 100%;
     display: inline-block;
   }
+
+  & input {
+    text-align: center;
+  }
 }
 
 
