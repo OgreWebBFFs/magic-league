@@ -2,7 +2,6 @@ import React, {useState, useContext} from 'react';
 import WishlistContext from '../../../contexts/WishlistContext';
 import {
   CardList,
-  CollectionRow,
 } from '../CardList';
 import {
   CardGrid,
@@ -10,6 +9,7 @@ import {
 } from '../../CardGrid';
 import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
+import { Cell, Row } from '../../Table';
 
 const Wishlist = (props) => {
   const {wishlist, currentUserWishlist} = useContext(WishlistContext);
@@ -26,29 +26,34 @@ const Wishlist = (props) => {
       {(props.isListView && !isEmpty) && (
         <CardList> 
           {wishlistToRender.map((card, row) => (
-            <CollectionRow>
-              <a href={`/cards/${card.id}`}>{card.name}</a>
-              {isOwner && <RemoveWish
-                user={props.user}
-                card={card}
-                classes={''}
-              />}
-            </CollectionRow>
+            <Row>
+              <Cell isPriority={true}>
+                <a href={`/cards/${card.id}`}>{card.name}</a>
+              </Cell>
+              <Cell>
+                {isOwner && <RemoveWish
+                  user={props.user}
+                  card={card}
+                  classes={''}/>}
+              </Cell>
+            </Row>
           ))}
         </CardList>)}
       {(!props.isListView && !isEmpty) && (
-        <CardGrid>
-          {wishlistToRender.map((card) => (
-            <>
-              {isOwner && <RemoveWish
-                user={props.user}
-                card={card}
-                classes={'button button--accent card-grid__wishlist__toggle active'}
-              />}
-              <CardImage {...card} />
-            </>
-          ))}
-        </CardGrid>)}
+        <div className="dashboard__card-grid-wrapper">
+          <CardGrid>
+            {wishlistToRender.map((card) => (
+              <>
+                {isOwner && <RemoveWish
+                  user={props.user}
+                  card={card}
+                  classes={'button button--accent card-grid__wishlist__toggle active'}
+                />}
+                <CardImage {...card} />
+              </>
+            ))}
+          </CardGrid>
+        </div>)}
     </>
   );
 }

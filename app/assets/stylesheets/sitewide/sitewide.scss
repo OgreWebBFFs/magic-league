@@ -217,10 +217,19 @@ body {
 }
 
 [class*="__cell"] {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   height: 100%;
-  text-align: left;
+  text-align: center;
   padding: 10px;
+
+  &[class*="-priority"] {
+    text-align: left;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-wrap: nowrap;
+    justify-self: flex-start;
+  }
 
   &:last-of-type {
     justify-self: end;
@@ -235,6 +244,8 @@ body {
     display: inline-block;
   }
 }
+
+
 
 //Form and Input Elements
 select:focus {

@@ -1,14 +1,14 @@
 import React from 'react';
-
+import { Table, Row, Cell } from '../../Table';
 
 const CardList = ({ children }) => (
-  <div id="collection-table" className="dashboard_card-interface__table collection__togglable-view">
-    <div className="dashboard_card-view__row-headings">
-      <div className="dashboard_card-view__cell">Card</div>
-      <div className="dashboard_card-view__cell">Highlights</div> 
-    </div>
+  <Table className="collection__togglable-view">
+    <Row isHeading={true}>
+      <Cell isPriority={true}>Card</Cell>
+      <Cell>Highlights</Cell> 
+    </Row>
     {children}
-  </div>
+  </Table>
 );
 
 export default CardList;
