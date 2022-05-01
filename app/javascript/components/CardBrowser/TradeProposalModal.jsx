@@ -26,10 +26,10 @@ const TradeProposalRequest = ({ users, card }) => (
   </>
 )
 
-const TradeProposalModal = ({ active, closeModal, card, currentUserId }) => {
+const TradeProposalModal = ({ closeModal, card, currentUserId }) => {
   const otherUsersWithCard =  card.attributes?.users.data.filter(user => user.attributes.id !== currentUserId) || [];
   return (
-    <Modal onClose={closeModal} active={active}>
+    <Modal onClose={closeModal}>
         {otherUsersWithCard.length > 0 ?
           <TradeProposalRequest users={otherUsersWithCard} card={card} />
           : <OnlyYouOwnMsg />}
