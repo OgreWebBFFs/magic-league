@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
-import classNames from 'classnames';
-
-import Button from '../../Button';
-
+import React from 'react';
+import {
+  Row,
+  Cell
+} from '../../Table';
 import {
   CardList,
-  CollectionRow,
-  TradableToggle
 } from '../CardList';
 import {
   CardGrid,
@@ -14,6 +12,7 @@ import {
   WishlistToggle
 } from '../../CardGrid';
 import EmptyState from '../EmptyState';
+import TradableToggle from './TradableToggle';
 
 const Collection = (props) => {
   const isEmpty = props.collectionCards.length < 1;
@@ -27,29 +26,33 @@ const Collection = (props) => {
       )} />}
       {(props.isListView && !isEmpty) && (
         <CardList> 
-          {props.collectionCards.map((card, row, i) => (
-            <CollectionRow key={`${row}-${i}`}>
-              <a href={`/cards/${card.id}`}>{card.name}</a>
-              <TradableToggle 
-                isOwner={isOwner}
-                card={card}
-                row={row} />
-            </CollectionRow>
+          {props.collectionCards.map((card, row) => (
+            <Row>
+              <Cell isPriority={true}>
+                <a href={`/cards/${card.id}`}>{card.name}</a>
+              </Cell>
+              <Cell>
+                <TradableToggle 
+                  isOwner={isOwner}
+                  card={card}
+                  row={row} />
+              </Cell>
+            </Row>
           ))}
         </CardList>)}
       {(!props.isListView && !isEmpty) && (
         <div className="dashboard__card-grid-wrapper">
-        <CardGrid>
-          {props.collectionCards.map((card, i) => (
-            <div key={`${card.id}-${i}`}>
-              <WishlistToggle
-                userId={props.user.id}
-                cardId={card.id}
-              />
-              <CardImage {...card} />
-            </div>
-          ))}
-        </CardGrid>
+          <CardGrid>
+            {props.collectionCards.map((card, i) => (
+              <div key={`${card.id}-${i}`}>
+                <WishlistToggle
+                  userId={props.user.id}
+                  cardId={card.id}
+                />
+                <CardImage {...card} />
+              </div>
+            ))}
+          </CardGrid>
         </div>)}
     </>
   );
