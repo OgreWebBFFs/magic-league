@@ -27,7 +27,7 @@ const TradeProposalRequest = ({ users, card }) => (
 )
 
 const TradeProposalModal = ({ closeModal, card, currentUserId }) => {
-  const otherUsersWithCard =  card.attributes?.users.data.filter(user => user.attributes.id !== currentUserId) || [];
+  const otherUsersWithCard =  card.attributes.users.data.filter(user => user.attributes.id !== currentUserId);
   return (
     <Modal onClose={closeModal}>
         {otherUsersWithCard.length > 0 ?
