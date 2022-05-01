@@ -21,8 +21,15 @@
                 <% end %>
             </button>
         </div>
-       
-        <div class="card-profile__table">
+        <%= react_component("CardOwnership", {
+            card: @card,
+            wishlist: @wishlisters_details,
+            total_count: @total_count,
+            owner_details: @owner_details.collect { |key, value| value },
+            current_user_id: current_user.id
+        }) %>
+        </div>
+        <!-- <div class="card-profile__table">
             <div class="card-profile__row-headings">
                 <div class="card-profile__cell-name">Owner</div>
                 <div class="card-profile__cell-amount">Amount</div>
@@ -51,7 +58,7 @@
             <% end %>
         </div>
         <p>*total copies in league: <span><%= @total_count %></span></p>
-    </div>
+    </div> -->
 </div>
 <div id="trade-modal" class="modal"  >
   <div class="modal__overlay overlay" onclick="Helpers.toggleElementById('trade-modal')"></div>
