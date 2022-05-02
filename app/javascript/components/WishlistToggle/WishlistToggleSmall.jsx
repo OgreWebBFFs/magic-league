@@ -1,16 +1,8 @@
 import React, {useContext} from 'react';
 import classNames from 'classnames';
 import WishlistContext from '../../contexts/WishlistContext';
-import xhrRequest from '../../helpers/xhr-request';
-import Button from "../Button"
-
-const putToWishlist = async (userId, cardId) => await xhrRequest({
-  url: `/wishlists/${userId}`,
-  options: {
-    method: 'PUT',
-    body: JSON.stringify({ card_id: cardId })
-  }
-});
+import Button from "../Button";
+import putToWishlist from './put-to-wishlist';
 
 const WishlistToggleSmall = ({ cardId, userId }) => {
   const {
