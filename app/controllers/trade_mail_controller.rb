@@ -1,4 +1,4 @@
-class TradesController < ApplicationController
+class TradeMailController < ApplicationController
   def index
 
   end

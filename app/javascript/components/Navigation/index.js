@@ -40,7 +40,7 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
       }, 
       {
         displayName:"Browse Cards",
-        href: 'trades'
+        href: 'browse'
       },
       {
         displayName:"League",

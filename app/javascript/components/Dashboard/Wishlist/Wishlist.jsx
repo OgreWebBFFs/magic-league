@@ -19,7 +19,7 @@ const Wishlist = (props) => {
   return  (
     <>
       {isEmpty && <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
-        <a class="empty-card-view__btn" href="/trades">
+        <a class="empty-card-view__btn" href="/browse">
           Make some wishes ;)
         </a>
       )}/>}

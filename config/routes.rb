@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
-  resources :trades, only: [:index, :create]
+  resources :browse, only: [:index]
+  resources :trade_mail, only: [:index, :create]
 
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
