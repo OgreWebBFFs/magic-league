@@ -1,7 +1,7 @@
-<div class="dashboard_profile">
-  <div class="dashboard_profile_user-details">
+<div class="dashboard-profile">
+  <div class="dashboard-profile__user-details">
     <%= gravatar(user) %>
-    <%= link_to 'Edit Account', [:edit, @user], class: 'dashboard_profile_user-details_edit__btn' if policy(@user).edit? %>
+    <%= link_to 'Edit Account', [:edit, @user], class: 'dashboard-profile__edit-button button' if policy(@user).edit? %>
   </div>
   <%= react_component("TradeTracker", {
     user_id: @user.id,

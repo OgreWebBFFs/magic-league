@@ -31,6 +31,8 @@
     transition-property: all;
     transition-timing-function: ease-in-out;
     transition-duration: .3s;
+
+
     &:hover {
         --adjusted-lightness:calc(var(--background-color-lightness) - 15%);
         background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));

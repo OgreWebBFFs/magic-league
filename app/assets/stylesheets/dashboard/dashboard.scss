@@ -3,10 +3,10 @@
         margin-top: 0;
     }
 
-    &_profile {
+    &-profile {
         display: flex;
 
-        &_user-details {
+        &__user-details {
             display: flex;
             flex-direction: column;
             flex: 0 0 20%;
@@ -28,17 +28,19 @@
             }
         }
 
-        &_trades {
-            flex: 1 0 auto;
-
-            &__cell {
-                flex: 1 1 30%;
-                text-align: center;
-
-                input {
+        &__trades {
+                .cell {
+                    flex: 1 1 33%;
                     text-align: center;
+    
+                    input {
+                        text-align: center;
+                    }
                 }
-            }
+        }
+        &__edit-button {
+                margin:0; 
+                margin-top: 5px;
         }
 
         @media only screen and (max-width: 850px) {
@@ -55,62 +57,12 @@
                 }
             }
 
-            &_trades {
+            &__trades {
                 flex: 1 0 100%;
             }
 
         }
 
-    }
-
-    &_edit-user-details {
-        &__title {
-            width: 100%;
-            border-bottom: 1px solid $color-highlight-import;
-        }
-
-        &__form {
-            display: flex;
-
-        }
-
-        &__gravatar {
-            flex: 0 0 154px;
-            margin-right: $section-margin;
-
-            img {
-                background: $color-dark;
-                width: 100%;
-            }
-        }
-
-        &__fields {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-            justify-content: space-between;
-        }
-
-        &_actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @media only screen and (max-width: 650px) {
-            &__gravatar {
-                flex: 0 0 122px;
-                margin-right: 10px;
-            }
-
-            &_actions {
-                flex-direction: column;
-                align-items: center;
-
-                &-submit__btn {
-                    margin-top: 5px;
-                }
-            }
-        }
     }
 
     &__tab-wrapper {
