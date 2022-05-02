@@ -59,14 +59,15 @@
                 margin-right: .2rem;
                 font-size: 1rem;
             }
-         }
-
-         button:nth-child(2) {
+            &:nth-child(2) {
             @media only screen and (max-width: 550px) {
                 margin-left: 0;
             }
              margin-left: 10px;
          }
+         }
+
+
     }
     &__btn-action {
         display:inline-block;
