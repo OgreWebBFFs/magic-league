@@ -5,7 +5,7 @@ import TradeProposalModal from './TradeProposalModal';
 
 const ProposeTrade = () => (
   <>
-    <i style={{fontSize: '1.2rem', marginRight: '.25rem'}} class="fa fa-envelope" aria-hidden="true"></i>
+    <i class="fa fa-envelope" aria-hidden="true"></i>
     Propose Trade
   </>
 )

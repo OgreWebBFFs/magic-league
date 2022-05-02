@@ -4,14 +4,14 @@ import xhrRequest from '../../helpers/xhr-request';
 
 const RemoveFromWishlist = () => (
   <>
-    <i className="far fa-heart" style={{fontWeight: "bold", fontSize: '1.2rem', marginRight: '.25rem'}}></i>
+    <i className="far fa-heart" style={{fontWeight: "bold"}}></i>
     Remove from Wishlist
   </>
 );
 
 const AddToWishlist = () => (
   <>
-    <i className="far fa-heart" style={{fontSize: '1.2rem', marginRight: '.25rem'}}></i>
+    <i className="far fa-heart"></i>
     Add to Wishlist
   </>
 )
