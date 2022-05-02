@@ -6,7 +6,7 @@ const TradeProposalButtonSmall = ({ card, currentUserId }) => {
   const [modalOn, setModalOn] = useState(false);
   return (
     <>
-      <Button style={{margin: 0}} onClick={() => setModalOn(true)}>
+      <Button className={"trade-proposal-btn__small"} onClick={() => setModalOn(true)}>
         <i class="fa fa-envelope" aria-hidden="true" ></i>
       </Button>
       {modalOn && <TradeProposalModal

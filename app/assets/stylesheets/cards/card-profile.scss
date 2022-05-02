@@ -31,6 +31,10 @@
         @media only screen and (max-width: 900px) { 
             padding-left: 0;
         }
+        & .trade-proposal-btn__small {
+            width: auto;
+            margin: 0;
+        }
     }
     &__action-bar {
         text-align: right;
