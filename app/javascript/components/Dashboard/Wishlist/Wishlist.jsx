@@ -5,7 +5,7 @@ import {
 } from '../CardList';
 import {
   CardGrid,
-  CardImage,
+  CardImageLink,
 } from '../../CardGrid';
 import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
@@ -49,7 +49,7 @@ const Wishlist = (props) => {
                   card={card}
                   classes={'button button--accent card-grid__wishlist__toggle active'}
                 />}
-                <CardImage {...card} />
+                <CardImageLink {...card} />
               </>
             ))}
           </CardGrid>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button'
+import Modal from '../Modal';
 
 const OnlyYouOwnMsg = () => (
   <>
@@ -25,20 +25,14 @@ const TradeProposalRequest = ({ users, card }) => (
   </>
 )
 
-const TradeProposalModal = ({ closeModal, card, currentUserId }) => {
+const TradeProposalModal = ({ onClose, card, currentUserId }) => {
   const otherUsersWithCard =  card.attributes.users.data.filter(user => user.attributes.id !== currentUserId);
   return (
-    <div id="trade-modal" className="modal active"  >
-      <div className="modal__overlay overlay" onClick={closeModal}></div>
-      <div className="modal__content">
-        <Button className="modal__close-button" href="#" onClick={closeModal}>
-          <i className="fas fa-times"></i>
-        </Button>
+    <Modal onClose={onClose}>
         {otherUsersWithCard.length > 0 ?
           <TradeProposalRequest users={otherUsersWithCard} card={card} />
           : <OnlyYouOwnMsg />}
-      </div>
-    </div>
+    </Modal>
   )
 }
 
