@@ -1,4 +1,4 @@
-.matches,
+.matches__container,
 .admin_matches {
     &__cell {
         flex: 1 1 20%;
@@ -14,7 +14,7 @@
             flex: 0 0 80px;
         }
     }
-    &-label-mobile{
+    & .label-mobile{
         display:none;
     }
 
@@ -24,14 +24,14 @@
 
     @media only screen and (max-width: 850px) {
         
-        &-label-mobile{
+        & .label-mobile{
             display:inline;
             font-weight: bold;
         }
 
-        &__row {
+        & .__row {
             display:block; 
-            &-headings {
+            &.-headings {
                 display:none;
             }
         }
@@ -40,11 +40,9 @@
             text-align:center;
         }
 
-        &__cell{
-            &-date{
-                color: $color-light;
-                background: $color-dark;
-            }
+        & .__cell:first-child{
+            color: $color-light;
+            background: $color-dark;
         }
 
         [class*="__btn"]{
@@ -52,5 +50,4 @@
         }
     }
 }
-
 

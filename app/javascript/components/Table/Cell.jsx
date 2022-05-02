@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 const applySize = size => (size ? {
-  flex: `0 0 ${size}`,
+  flexBasis: `${size}`,
 } : {});
 
 const Cell = ({ children, isPriority, size }) => (
