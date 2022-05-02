@@ -1,9 +1,7 @@
 import React, {useContext} from 'react';
 import classNames from 'classnames';
-
 import WishlistContext from '../../contexts/WishlistContext';
 import xhrRequest from '../../helpers/xhr-request';
-
 import Button from "../Button"
 
 const putToWishlist = async (userId, cardId) => await xhrRequest({
@@ -14,7 +12,7 @@ const putToWishlist = async (userId, cardId) => await xhrRequest({
   }
 });
 
-const WishlistToggle = ({ cardId, userId }) => {
+const WishlistToggleSmall = ({ cardId, userId }) => {
   const {
     currentUserWishlist,
     setCurrentUserWishlist
@@ -31,4 +29,4 @@ const WishlistToggle = ({ cardId, userId }) => {
   )
 }
 
-export default WishlistToggle;
+export default WishlistToggleSmall;

@@ -8,9 +8,9 @@ import {
 } from '../CardList';
 import {
   CardGrid,
-  CardImage,
-  WishlistToggle
+  CardImageLink,
 } from '../../CardGrid';
+import { WishlistToggleSmall } from '../../WishlistToggle';
 import EmptyState from '../EmptyState';
 import TradableToggle from './TradableToggle';
 
@@ -45,11 +45,11 @@ const Collection = (props) => {
           <CardGrid>
             {props.collectionCards.map((card, i) => (
               <div key={`${card.id}-${i}`}>
-                <WishlistToggle
+                <WishlistToggleSmall
                   userId={props.user.id}
                   cardId={card.id}
                 />
-                <CardImage {...card} />
+                <CardImageLink {...card} />
               </div>
             ))}
           </CardGrid>

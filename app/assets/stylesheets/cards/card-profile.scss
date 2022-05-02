@@ -41,6 +41,23 @@
          @media only screen and (max-width: 550px) {
              margin: 0;
          }
+
+         button {
+            font-size: .8rem;
+            display: inline-block;
+            @media only screen and (max-width: 550px) {
+                min-width: 100%;
+            }
+            min-width: 170px;
+            margin: 10px 0;
+         }
+
+         button:nth-child(2) {
+            @media only screen and (max-width: 550px) {
+                margin-left: 0;
+            }
+             margin-left: 10px;
+         }
     }
     &__btn-action {
         display:inline-block;

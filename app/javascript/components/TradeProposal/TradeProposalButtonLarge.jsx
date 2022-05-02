@@ -3,6 +3,13 @@ import Button from '../Button';
 import classNames from 'classnames'
 import TradeProposalModal from './TradeProposalModal';
 
+const ProposeTrade = () => (
+  <>
+    <i style={{fontSize: '1.2rem', marginRight: '.25rem'}} class="fa fa-envelope" aria-hidden="true"></i>
+    Propose Trade
+  </>
+)
+
 const TradeProposalButtonLarge = ({ isAvailable, card, currentUserId }) => {
   const [modalOn, setModalOn] = useState(false);
   return (
@@ -10,10 +17,9 @@ const TradeProposalButtonLarge = ({ isAvailable, card, currentUserId }) => {
       <Button
         type="button"
         disabled={!isAvailable}
-        style={{width: "100%", margin: "10px 0"}}
-        className={classNames({"button--inverse": !isAvailable})}
+        className={classNames("trade-proposal-button", {"button--inverse": !isAvailable})}
         onClick={() => setModalOn(true)}>
-          {isAvailable ? "Propose Trade" : "Not in League"}
+          {isAvailable ? <ProposeTrade /> : "Not in League"}
       </Button>
       {modalOn && <TradeProposalModal
         card={card}
