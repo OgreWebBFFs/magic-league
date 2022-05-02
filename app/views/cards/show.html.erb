@@ -22,18 +22,18 @@
             </button>
         </div>
        
-        <div class="card-profile__table">
-            <div class="card-profile__row-headings">
-                <div class="card-profile__cell-name">Owner</div>
-                <div class="card-profile__cell-amount">Amount</div>
-                <div class="card-profile__cell-trade"></div>
+        <div class="card-profile__table table">
+            <div class="card-profile__row row row--headings">
+                <div class="card-profile__cell-name cell">Owner</div>
+                <div class="card-profile__cell-amount cell">Amount</div>
+                <div class="card-profile__cell-trade cell"></div>
             </div>
             <% if (@total_count > 0) %>
                 <% @owner_details.each do |id, details| %>
-                    <div class="card-profile__row">
-                        <div class="card-profile__cell-name"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
-                        <div class="card-profile__cell-amount"><%= details[:count] %></div>
-                        <div class="card-profile__cell-trade">
+                    <div class="card-profile__row row">
+                        <div class="card-profile__cell-name cell"><a href="/users/<%= id %>"><%= details[:name] %></a></div>
+                        <div class="card-profile__cell-amount cell"><%= details[:count] %></div>
+                        <div class="card-profile__cell-trade cell">
                             <% if id != current_user.id %>
                                 <button class="card-profile_envelope__btn" data-user-id="<%= id %>">
                                     <i class="fa fa-envelope" aria-hidden="true" ></i>
@@ -43,10 +43,10 @@
                     </div>
                 <% end %>
             <% else %>
-                <div class="card-profile__row">
-                    <div class="card-profile__cell-name">No one owns this card yet</div>
-                    <div class="card-profile__cell-amount"></div>
-                    <div class="card-profile__cell-trade"></div>
+                <div class="card-profile__row row">
+                    <div class="card-profile__cell-name cell">No one owns this card yet</div>
+                    <div class="card-profile__cell-amount cell"></div>
+                    <div class="card-profile__cell-trade cell"></div>
                 </div>
             <% end %>
         </div>

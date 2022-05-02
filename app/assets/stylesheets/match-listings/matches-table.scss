@@ -18,34 +18,31 @@
         display:none;
     }
 
-    [class*="__btn"]{
-        line-height: 24px;
-    }
 
     @media only screen and (max-width: 850px) {
         
-        & .label-mobile{
+        .label-mobile{
             display:inline;
             font-weight: bold;
         }
 
-        & .__row {
+        .row {
             display:block; 
-            &.-headings {
+            &--headings {
                 display:none;
             }
         }
     
-        [class*="__cell"] {
+       .cell {
             text-align:center;
         }
 
-        & .__cell:first-child{
+        .cell:first-child{
             color: $color-light;
             background: $color-dark;
         }
 
-        [class*="__btn"]{
+        .button{
          width: 100px;
         }
     }

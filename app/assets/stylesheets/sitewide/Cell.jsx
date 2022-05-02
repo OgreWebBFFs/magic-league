@@ -7,7 +7,8 @@ const applySize = size => (size ? {
 
 const Cell = ({ children, isPriority, size }) => (
   <div 
-    className={classNames('cell', {'cell--priority': isPriority})}
+    className={classNames('cell', {'--__row ity': isPriority})}
+    style={applySize(size)}
   >
     {children}
   </div>
