@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20220502151831_create_trades.rb

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_225446) do
+ActiveRecord::Schema.define(version: 2022_05_02_154833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(version: 2020_08_02_225446) do
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_tradables_on_card_id"
     t.index ["user_id"], name: "index_tradables_on_user_id"
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer "from_user"
+    t.integer "to_user"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -58,3 +58,9 @@ Match.find_or_create_by(winner: pat, loser: dustin, played_at: Time.now)
 Match.find_or_create_by(winner: zack, loser: dustin, played_at: Time.now)
 Match.find_or_create_by(winner: zack, loser: pat, played_at: Time.now)
 Match.find_or_create_by(winner: zack, loser: dustin, played_at: Time.now)
+
+# Trades
+# ===================================================
+Trade.find_or_create_by(from_user: 1, to_user: 2)
+Trade.find_or_create_by(from_user: 2, to_user: 3)
+Trade.find_or_create_by(from_user: 3, to_user: 1, status: 'approved')
