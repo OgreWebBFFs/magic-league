@@ -69,19 +69,8 @@
 
 
     }
-    &__btn-action {
-        display:inline-block;
-        margin: 0 0 5px 5px;
-        min-width: 170px;
-        font-size: 0.8rem;
-
-        @media only screen and (max-width: 550px) {
-            margin: 0 0 10px 0; 
-            width: 100%;
-        }
-    }
     &__cell {
-        &-name {
+        &--name {
             flex: 1 1 100%;
             min-width: 0;
             white-space: nowrap;
@@ -89,12 +78,29 @@
             text-overflow: ellipsis;
             text-align: left;
         }
-        &-amount {
+        &--amount {
             flex: 0 0 75px;
-            text-align: center;
+            display:flex;
+            text-align: left;
+            align-items: center;
+
+            .button {
+                margin:0;
+                margin-left: auto;
+                width: 38px;
+                justify-self: flex-end;
+            }
+       
+        
         }
-        &-trade {
+        &--trade {
             flex: 0 0 50px;
         }
+    }
+    &__row--headings {
+        .card-profile__cell--amount {
+                flex-basis: 100px;
+        }
+
     }
 }
