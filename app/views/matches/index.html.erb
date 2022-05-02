@@ -1,26 +1,3 @@
- <div class="matches">
-    <div class="matches__container">
-        <h2>Matches</h2>
-        <div id="match-history" class="matches__table">
-          <div class="matches__row-headings">
-          <div class="matches__cell-date">Date</div>
-          <div class="matches__cell-time">Time</div>              
-          <div class="matches__cell">Winner</div>         
-          <div class="matches__cell">Loser</div>         
-          <div class="matches__cell-id" >ID</div>           
-        </div>
-      
-        <% @matches.each do |match| %>
-        <div class="matches__row">
-            <div class="matches__cell-date"><%= match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}")%></div>
-            <div class="matches__cell-time"><%= match.played_at.strftime("%I:%M%p")%></div>             
-            <div class="matches__cell"><span class="matches-label-mobile">Winner: </span><%= match.winner.name %></div>
-            <div class="matches__cell"><span class="matches-label-mobile">Loser: </span><%= match.loser.name %></div>
-            <div class="matches__cell-id"><span class="matches-label-mobile">Match ID: </span><%= match.id %></div>
-        </div>
-        <% end %>  
-        </div>
-    </div> 
-  </div>
+<%= react_component("Matches", { matches: @matches}, :class => "matches__container") %>
   
  
