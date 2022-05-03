@@ -1,10 +1,7 @@
 class TradesController < ApplicationController
   def index
     trades = Trade.all
-    render json: trades.to_json(
-      :include => {
-        :from => {only: [:name, :id]},
-        :to => {only: [:name, :id]}
-      })
+    test = TradeSerializer.new(trades)
+    render json: test.to_json()
   end
 end

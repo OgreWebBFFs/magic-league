@@ -49,6 +49,9 @@ Ownership.find_or_create_by(card_id: card1.id, collection_id: pat.collection.id)
 Ownership.find_or_create_by(card_id: card2.id, collection_id: pat.collection.id).save
 Ownership.find_or_create_by(card_id: card3.id, collection_id: pat.collection.id).save
 
+Ownership.find_or_create_by(card_id: card1.id, collection_id: dustin.collection.id).save
+Ownership.find_or_create_by(card_id: card1.id, collection_id: dustin.collection.id).save
+
 # Matches 
 # ==================================================
 Match.find_or_create_by(winner: pat, loser: zack, played_at: Time.now)
@@ -61,6 +64,14 @@ Match.find_or_create_by(winner: zack, loser: dustin, played_at: Time.now)
 
 # Trades
 # ===================================================
-Trade.find_or_create_by(from_user: 1, to_user: 2)
-Trade.find_or_create_by(from_user: 2, to_user: 3)
-Trade.find_or_create_by(from_user: 3, to_user: 1, status: 'approved')
+pat_zack_trade = Trade.find_or_create_by(from_user: pat.id, to_user: zack.id)
+pat_dustin_trade = Trade.find_or_create_by(from_user: pat.id, to_user: dustin.id)
+dustin_zack_trade = Trade.find_or_create_by(from_user: dustin.id, to_user: zack.id, status: 'approved')
+ 
+Exchange.find_or_create_by(card_id: card1.id, collection_id: pat.collection.id, trade_id: pat_zack_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, collection_id: zack.collection.id, trade_id: pat_zack_trade.id)
+Exchange.find_or_create_by(card_id: card3.id, collection_id: dustin.collection.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, collection_id: dustin.collection.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, collection_id: pat.collection.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card1.id, collection_id: dustin.collection.id, trade_id: dustin_zack_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, collection_id: zack.collection.id, trade_id: dustin_zack_trade.id)
