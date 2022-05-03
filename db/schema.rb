@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_154833) do
+ActiveRecord::Schema.define(version: 2022_05_02_185418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2022_05_02_154833) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "collection_id"
+    t.bigint "trade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_exchanges_on_card_id"
+    t.index ["collection_id"], name: "index_exchanges_on_collection_id"
+    t.index ["trade_id"], name: "index_exchanges_on_trade_id"
   end
 
   create_table "matches", force: :cascade do |t|
