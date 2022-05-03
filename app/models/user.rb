@@ -26,6 +26,10 @@ class User < ApplicationRecord
     Match.where("winner_id = ? OR loser_id = ?", id, id)
   end
 
+  def trades
+    Trade.where("from_user = ? OR to_user = ?", id, id)
+  end
+
   def wishlist
     wishlist_items
   end
