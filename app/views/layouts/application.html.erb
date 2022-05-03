@@ -18,7 +18,7 @@
   </head>
   <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
-      <% unlockedUsers = User.unlocked %>
+      <% unlockedUsers = User.includes(collection: :collection).unlocked %>
       <%= react_component("Navigation", {
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,

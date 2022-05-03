@@ -5,6 +5,7 @@ import Logo from '../Logo';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav'; 
 import MatchLogger from './MatchLogger';
+import TradeLogger from './TradeLogger';
 import Button from '../Button';
 
 
@@ -20,6 +21,7 @@ const toggleMatchLogger = ()=>{
 const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
   const [matchLoggerOpenState, setMatchLoggerOpenState] = useState(false);
+  const [tradeLoggerOpenState, setTradeLoggerOpenState] = useState(false);
 
   const {width} = useWindowSize();
   const[isMobile, setIsMobile] = useState(false);
@@ -106,7 +108,14 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
           >
           Log a match
         </Button>
+        <Button
+          className="nav__trade-logger-buton"
+          onClick={()=>{setTradeLoggerOpenState(true)}}
+        >
+          Make a Trade
+        </Button>
         <MatchLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setMatchLoggerOpenState(false)} isOpen={matchLoggerOpenState}/>
+        <TradeLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setTradeLoggerOpenState(false)} isOpen={tradeLoggerOpenState}/>
       </nav>
     )
 } 
