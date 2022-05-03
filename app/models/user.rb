@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def trades
-    Trade.where("from_user = ? OR to_user = ?", id, id)
+    Trade.where("from_user = ? OR to_user = ?", id, id).order('created_at DESC')
   end
 
   def wishlist

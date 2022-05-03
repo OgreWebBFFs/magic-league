@@ -1,6 +1,10 @@
 class TradeSerializer
   include FastJsonapi::ObjectSerializer
   attributes :status, :created_at, :updated_at
+
+  attribute :offer_date do |trade|
+    trade.created_at.strftime("%b #{trade.created_at.day.ordinalize}")
+  end
   
   attribute :from do |trade|
     {

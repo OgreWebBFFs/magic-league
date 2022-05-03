@@ -1,9 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Cell = ({ className, children, isPriority}) => (
+const applySize = size => (size ? {
+  flexBasis: `${size}`,
+} : {});
+
+const Cell = ({ children, isPriority, size }) => (
   <div 
-    className={classNames('cell', {'cell--priority': isPriority}, className)}
+    className={classNames('cell', {'cell--priority': isPriority})}
+    style={applySize(size)}
   >
     {children}
   </div>

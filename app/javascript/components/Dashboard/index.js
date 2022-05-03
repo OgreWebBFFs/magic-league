@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import Button from '../Button';
 import Collection from './Collection';
 import Wishlist from './Wishlist';
+import Trades from './Trades';
+
 import WishlistContext from '../../contexts/WishlistContext';
 import TradablesContext from '../../contexts/TradablesContext';
 
@@ -25,6 +27,7 @@ const Dashboard = (props) => {
   const Tabs = {
     Collection: (props) => <Collection {...props} isListView={isListView}/>,
     Wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
+    Trades: (props) => <Trades {...props} isListView={isListView} />,
   };
 
   
