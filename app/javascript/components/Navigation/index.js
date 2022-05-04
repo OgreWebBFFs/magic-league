@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useWindowSize } from 'react-use';
 
 import Logo from '../Logo';
+import Drawer from '../Drawer';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav'; 
 import MatchLogger from './MatchLogger';
@@ -13,15 +14,17 @@ import Button from '../Button';
 //state of the match logger and things like modals,  and handle the toggling there
 //rather than add/remove classes
 
-const toggleMatchLogger = ()=>{
-  const matchLogger = document.getElementById("match-logger");
-  matchLogger.classList.toggle("active");
-}
 
 const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
-  const [matchLoggerOpenState, setMatchLoggerOpenState] = useState(false);
-  const [tradeLoggerOpenState, setTradeLoggerOpenState] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContetSelector, setDrawerContentSelector] = useState("match-logger");
+
+  const DrawerContents = {
+    "match-logger": (props) => <MatchLogger {...props}/>,
+    "trade-logger": (props) => <TradeLogger {...props}/>
+  }
+
 
   const {width} = useWindowSize();
   const[isMobile, setIsMobile] = useState(false);
@@ -104,18 +107,27 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
         </ul>
         <Button
           className="nav__match-logger-button"
-          onClick={()=>{setMatchLoggerOpenState(true)}}
-          >
+          onClick={()=>{
+            setDrawerContentSelector("match-logger");
+            setIsDrawerOpen(true);
+          }}>
           Log a match
         </Button>
         <Button
           className="nav__trade-logger-buton"
-          onClick={()=>{setTradeLoggerOpenState(true)}}
-        >
+          onClick={()=>{
+            setDrawerContentSelector("trade-logger")
+            setIsDrawerOpen(true);
+          }}>
           Make a Trade
         </Button>
-        <MatchLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setMatchLoggerOpenState(false)} isOpen={matchLoggerOpenState}/>
-        <TradeLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setTradeLoggerOpenState(false)} isOpen={tradeLoggerOpenState}/>
+        <Drawer isOpen={isDrawerOpen} close={() => setIsDrawerOpen(false)}>
+          {isDrawerOpen && DrawerContents[drawerContetSelector]({
+            currentUserId,
+            unlockedUsers,
+            close: () => setIsDrawerOpen(false)
+          })}
+        </Drawer>
       </nav>
     )
 } 

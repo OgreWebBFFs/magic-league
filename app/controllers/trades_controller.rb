@@ -12,14 +12,14 @@ class TradesController < ApplicationController
       if (invalid_trade_targets.length > 0)
         render json: {status: 'error', invalid_trade_targets: invalid_trade_targets }, :status => 400
       else
-        # new_trade = Trade.create(from_user: params[:from][:id], to_user: params[:to][:id])
-        # params[:from][:cards].each { |card_id| 
-        #   Exchange.create(card_id: card_id, user_id: params[:from][:id], trade_id: new_trade.id)
-        # }
-        # params[:to][:cards].each { |card_id| 
+        new_trade = Trade.create(from_user: params[:from][:id], to_user: params[:to][:id])
+        params[:from][:cards].each { |card_id| 
+          Exchange.create(card_id: card_id, user_id: params[:from][:id], trade_id: new_trade.id)
+        }
+        params[:to][:cards].each { |card_id| 
 
-        #   Exchange.create(card_id: card_id, user_id: params[:to][:id], trade_id: new_trade.id)
-        # }
+          Exchange.create(card_id: card_id, user_id: params[:to][:id], trade_id: new_trade.id)
+        }
         render json: {status: 'success'}
       end
   end
