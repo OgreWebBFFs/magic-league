@@ -18,11 +18,12 @@
   </head>
   <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
     <% if user_signed_in? %>
-      <% unlockedUsers = User.includes(collection: :collection).unlocked %>
+      <% unlockedUsers = User.unlocked %>
       <%= react_component("Navigation", {
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
-        unlockedUsers: unlockedUsers
+        unlockedUsers: unlockedUsers,
+        collections: unlockedUsers.map { |user| user.collection }
       }) %>
     <% end %>
 

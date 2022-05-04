@@ -1,3 +1,14 @@
+const XhrRequestError = async (response) => {
+  const error = new Error(`Request Failed: ${response.status} - ${response.statusText}`)
+  error.status = response.status
+  error.data = await response.json()
+  return error
+}
+
+const throwException = async (response) => {
+  throw await new XhrRequestError(response)
+}
+
 const xhrRequest = async ({ url, options }) => {
   const response = await fetch(url, {
     headers: {
@@ -6,7 +17,7 @@ const xhrRequest = async ({ url, options }) => {
     },
     ...options,
   });
-  return response.ok ? await response.json() : console.log(response); 
+  return response.ok ? await response.json() : throwException(response); 
 }
 
 export default xhrRequest;
