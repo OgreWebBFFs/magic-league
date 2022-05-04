@@ -1,5 +1,5 @@
 class Exchange < ApplicationRecord
-  belongs_to :collection
+  belongs_to :user
   belongs_to :card
   belongs_to :trade
   

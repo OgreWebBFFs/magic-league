@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 2022_05_02_185418) do
 
   create_table "exchanges", force: :cascade do |t|
     t.bigint "card_id"
-    t.bigint "collection_id"
+    t.bigint "user_id"
     t.bigint "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_exchanges_on_card_id"
-    t.index ["collection_id"], name: "index_exchanges_on_collection_id"
     t.index ["trade_id"], name: "index_exchanges_on_trade_id"
+    t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
