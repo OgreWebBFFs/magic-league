@@ -10,3 +10,5 @@ const buildTradeData = (toId, toCards, fromId, fromCards) => ({
     cards: fromCards.map(getCardId)
   }
 });
+
+export default buildTradeData;
