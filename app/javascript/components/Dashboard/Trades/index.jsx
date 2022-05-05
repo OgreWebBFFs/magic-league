@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Row, Cell } from '../../Table';
+import StatusAction from './StatusAction';
 
 const EmptyState = () => (
   <div class="empty-card-view">
@@ -14,7 +15,7 @@ const CardListCell = ({children}) => <Cell size={"25%"} isPriority={true}>{child
 const NameCell = ({children}) => <Cell size={"20%"} isPriority={true}>{children}</Cell>
 const StatusCell = ({children}) => <Cell size={"15%"}>{children}</Cell>
 
-const Trades = ({ trades, user }) => {
+const Trades = ({ trades, user, currentUserId }) => {
   const isEmpty = trades.length === 0;
   return (
     <>
@@ -38,7 +39,7 @@ const Trades = ({ trades, user }) => {
                 <NameCell>{them.name}</NameCell>
                 <CardListCell><ul>{me.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
                 <CardListCell><ul>{them.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
-                <StatusCell>{info.status}</StatusCell>
+                <StatusCell><StatusAction trade={info} currentUserId={currentUserId} /></StatusCell>
               </Row>
             )
           }
