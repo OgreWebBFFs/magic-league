@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import Button from "../../Button"
 import PlayerSelect from "../PlayerSelect"
 
-const MatchLogger = ({unlockedUsers, currentUserId, close}) => {
+const MatchLogger = ({unlockedUsers, currentUserId}) => {
    const currentUserObject =  unlockedUsers.find(user => user.id === currentUserId)
    const sortedUsers = unlockedUsers.sort((a, b)  => a.name.localeCompare(b.name)); 
    

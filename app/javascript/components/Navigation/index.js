@@ -125,7 +125,6 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
           {isDrawerOpen && DrawerContents[drawerContetSelector]({
             currentUserId,
             unlockedUsers,
-            close: () => setIsDrawerOpen(false)
           })}
         </Drawer>
       </nav>
