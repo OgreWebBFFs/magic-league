@@ -16,7 +16,7 @@ gem 'devise'
 gem 'omniauth', '~>1.9'
 gem 'omniauth-google-oauth2'
 gem 'mtg_sdk'
-gem 'font-awesome-sass', '~> 5.0.6'
+gem 'font-awesome-sass', '~> 6.1.1'
 gem 'jquery-rails'
 gem "pundit"
 gem 'bootsnap', '>= 1.1.0', require: false

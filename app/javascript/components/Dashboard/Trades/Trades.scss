@@ -1,0 +1,21 @@
+p {
+  text-transform: uppercase;
+}
+
+.review-button {
+  margin: 0;
+}
+
+.trade-review-modal__action-button{
+  flex: 1 1 50%;
+  margin: 1rem .5rem;
+  font-weight: 700;
+
+  &.reject {
+    background-color: $color-highlight-urgent;
+  }
+
+  &.approve {
+    background-color: $color-highlight-mid-import;
+  }
+}
