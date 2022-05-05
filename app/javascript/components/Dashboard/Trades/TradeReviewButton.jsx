@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import Button from '../../Button';
 import Modal from '../../Modal';
+import xhrRequest from '../../../helpers/xhr-request';
+
+const updateTrade = (trade, status) => xhrRequest({
+  url: `/trades/${trade.id}`,
+  options: {
+    method: "PUT",
+    body: JSON.stringify({ status }),
+  }
+});
 
 const TradeReviewButton = ({ trade }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,8 +34,8 @@ const TradeReviewButton = ({ trade }) => {
         </div>
       </div>
       <div style={{display: "flex"}}>
-        <Button className="trade-review-modal__action-button approve">Approve</Button>
-        <Button className="trade-review-modal__action-button reject">Reject</Button>
+        <Button onClick={() => updateTrade(trade, "approved")} className="trade-review-modal__action-button approve">Approve</Button>
+        <Button onClick={() => updateTrade(trade, "rejected")} className="trade-review-modal__action-button reject">Reject</Button>
       </div>
     </Modal>}
   </>)
