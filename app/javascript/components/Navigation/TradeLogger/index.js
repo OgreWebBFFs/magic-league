@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import xhrRequest from "../../../helpers/xhr-request"
 import Button from "../../Button"
 import PlayerSelect from '../PlayerSelect';
 import CardSelect from "./CardSelect"
+import ResponseStatusMessage from "./ResponseStatusMessage";
 import buildTradeData from './build-trade-data';
 
 const createTrade = async (tradeData) => await xhrRequest({
@@ -20,19 +21,16 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
    const [tradePartner, setTradePartner] = useState(otherUsers[0])
    const [receiveCards, setReceiveCards] = useState([]);
    const [giveCards, setGiveCards] = useState([]);
+   const [xhrResponse, setXhrResponse] = useState();
 
    const handleSubmit = async (e) => {
       e.preventDefault();
       const postBody = buildTradeData(tradePartner.id, receiveCards, currentUserId, giveCards);
       try{
          const response = await createTrade(postBody);
-         console.log("success")
-         setSuccess(true);
-         setError();
+         setXhrResponse(response);
       } catch (error) {
-         console.log("failure");
-         setSuccess(false);
-         setError(error)
+         setXhrResponse(error.data);
       }
    }
     return (
@@ -43,7 +41,7 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
             <PlayerSelect
                player={tradePartner}
                players={otherUsers}
-               setPlayerSelect={setTradePartner}
+               setSelectedPlayer={setTradePartner}
             />
             <p>What would you like to trade for</p>
             <CardSelect onUpdate={setReceiveCards} />
@@ -51,18 +49,7 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
             <CardSelect onUpdate={setGiveCards} />
             <Button type="submit" className="drawer_submit__button">Submit</Button>
          </form>
-         {error && (<div>
-         <p>There was an issue with the following cards in your trade request:</p>
-         <ul>
-            {error.data.invalid_trade_targets.map(card => <li>{card}</li>)}
-         </ul>
-         <p>Please ensure all cards are available within that player's collection before proposing a trade.</p>
-         </div>)}
-         {success && (
-            <div>
-               <p>Success! Your trade proposal has been processed</p>
-            </div>
-         )}
+         <ResponseStatusMessage {...xhrResponse} />
       </>
     )
 }
