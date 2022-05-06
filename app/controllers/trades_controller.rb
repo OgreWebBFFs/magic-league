@@ -17,6 +17,7 @@ class TradesController < ApplicationController
         params[:to][:cards].each { |card_id| 
           Exchange.create(card_id: card_id, user_id: params[:to][:id], trade_id: new_trade.id)
         }
+        flash[:success] = "Your trade request was sent successfully!"
         render json: {status: 'success'}
       end
   end

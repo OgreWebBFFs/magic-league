@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button';
@@ -15,21 +15,26 @@ const InterfaceTab = ({ activeTab, setActiveTab, title }) => (
   </Button>
 );
 
-
+const getCurrentTabFromUrlHash = () => (
+  window.location.hash.substring(1) 
+)
 
 const Dashboard = (props) => {
-  const [activeTab, setActiveTab] = useState("Collection");
+  const [activeTab, setActiveTab] = useState(getCurrentTabFromUrlHash() || "collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
   const [isListView, setIsListView] = useState(true);
 
   const Tabs = {
-    Collection: (props) => <Collection {...props} isListView={isListView}/>,
-    Wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
-    Trades: (props) => <Trades {...props} isListView={isListView} />,
+    collection: (props) => <Collection {...props} isListView={isListView}/>,
+    wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
+    trades: (props) => <Trades {...props} isListView={isListView} />,
   };
 
+  useEffect(() => {
+    window.location.hash = activeTab
+  }, [activeTab])
   
   return (
    <div className="dashboard__card-interface-wrapper">

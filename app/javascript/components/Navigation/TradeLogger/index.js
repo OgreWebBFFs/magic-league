@@ -29,6 +29,7 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
       try{
          const response = await createTrade(postBody);
          setXhrResponse(response);
+         window.location.reload();
       } catch (error) {
          setXhrResponse(error.data);
       }
