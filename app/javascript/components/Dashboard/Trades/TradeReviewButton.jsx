@@ -3,13 +3,21 @@ import Button from '../../Button';
 import Modal from '../../Modal';
 import xhrRequest from '../../../helpers/xhr-request';
 
-const updateTrade = (trade, status) => xhrRequest({
-  url: `/trades/${trade.id}`,
-  options: {
-    method: "PUT",
-    body: JSON.stringify({ status }),
+const updateTrade = async (trade, status) => {
+  try {
+    await xhrRequest({
+      url: `/trades/${trade.id}`,
+      options: {
+        method: "PUT",
+        body: JSON.stringify({ status }),
+      }
+    });
+    console.log('GOT HERE!!');
+    window.location.reload();
+  } catch(e) {
+    //Implement error handling for failed trade update
   }
-});
+};
 
 const TradeReviewButton = ({ trade }) => {
   const [modalOpen, setModalOpen] = useState(false);

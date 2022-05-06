@@ -40,6 +40,7 @@ class TradesController < ApplicationController
         from_user = User.find_by_id(trade.from_user)
         give_cards(from_card_ids, to_user, from_user)
         give_cards(to_card_ids, from_user, to_user);
+        flash[:success] = "You've successfully accepted a trade!"
         render json: {status: 'success'}
       end
     end

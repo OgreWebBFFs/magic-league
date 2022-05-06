@@ -1,10 +1,27 @@
-p {
-  text-transform: uppercase;
+.trades-table {
+  &-cell {
+    &__date-status {
+      flex-basis: 15%;
+    }
+
+    &__card-list {
+      flex-basis: 25%;
+    }
+
+    &__name {
+      flex-basis: 20%;
+    }
+  }
+
+  p {
+    text-transform: uppercase;
+  }
+
+  .review-button {
+    margin: 0;
+  }
 }
 
-.review-button {
-  margin: 0;
-}
 
 .trade-review-modal__action-button{
   flex: 1 1 50%;

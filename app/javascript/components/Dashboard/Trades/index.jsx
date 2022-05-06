@@ -10,10 +10,9 @@ const EmptyState = () => (
 </div>
 )
 
-const DateCell = ({children}) => <Cell size={"15%"}>{children}</Cell>
-const CardListCell = ({children}) => <Cell size={"25%"} isPriority={true}>{children}</Cell>
-const NameCell = ({children}) => <Cell size={"20%"} isPriority={true}>{children}</Cell>
-const StatusCell = ({children}) => <Cell size={"15%"}>{children}</Cell>
+const DateStatusCell = ({children}) => <Cell className={"trades-table-cell__date-status"}>{children}</Cell>
+const CardListCell = ({children}) => <Cell className={"trades-table-cell__card-list"} isPriority={true}>{children}</Cell>
+const NameCell = ({children}) => <Cell className={"trades-table-cell__name"} isPriority={true}>{children}</Cell>
 
 const Trades = ({ trades, user, currentUserId }) => {
   const isEmpty = trades.length === 0;
@@ -21,13 +20,13 @@ const Trades = ({ trades, user, currentUserId }) => {
     <>
       {isEmpty && <EmptyState />}
       {!isEmpty && (
-        <Table>
+        <Table className="trades-table">
           <Row isHeading={true}>
-            <DateCell>Date</DateCell>
+            <DateStatusCell>Date</DateStatusCell>
             <NameCell>With</NameCell>
             <CardListCell>Giving</CardListCell>
             <CardListCell>Receiving</CardListCell>
-            <StatusCell>Status</StatusCell>
+            <DateStatusCell>Status</DateStatusCell>
           </Row>
           {trades.map(trade => {
             const info = trade.data.attributes;
@@ -35,11 +34,11 @@ const Trades = ({ trades, user, currentUserId }) => {
             const them = info.from.id === user.id ? info.to : info.from;
             return (
               <Row>
-                <DateCell>{info.offer_date}</DateCell>
+                <DateStatusCell>{info.offer_date}</DateStatusCell>
                 <NameCell>{them.name}</NameCell>
                 <CardListCell><ul>{me.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
                 <CardListCell><ul>{them.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
-                <StatusCell><StatusAction trade={info} currentUserId={currentUserId} /></StatusCell>
+                <DateStatusCell><StatusAction trade={info} currentUserId={currentUserId} /></DateStatusCell>
               </Row>
             )
           }
