@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 const SuccessMessage = () => <p>Success! Your trade proposal has been processed</p>;
 
-const ErrorMessage = ({ cards }) => (
+const ErrorMessage = ({ issues }) => (
   <>
     <p>There was an issue with the following cards in your trade request:</p>
     <ul>
-      {cards.map(card => <li>{card}</li>)}
+      {issues.map(issue => <li>
+        <p style={{margin: 0}}>{issue.card}</p>
+        <p style={{fontSize: '.5rem', color: "lightgrey"}}>{issue.player} has {issue.reason}</p>
+        </li>)}
     </ul>
     <p>Please ensure all cards are available within that player's collection before proposing a trade.</p>
   </>
@@ -24,7 +27,7 @@ const ResponseStatusMessage = ({ status, invalid_trade_targets }) => {
 
   return (<>
     {visibility && (
-      status === 'success' ? <SuccessMessage /> : <ErrorMessage cards={invalid_trade_targets} />
+      status === 'success' ? <SuccessMessage /> : <ErrorMessage issues={invalid_trade_targets} />
     )}
   </>)
 }

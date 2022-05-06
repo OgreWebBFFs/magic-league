@@ -6,5 +6,5 @@ class Trade < ApplicationRecord
   has_many :cards, through: :exchanges
 
   validates :from, :to, presence: true
-  validates :status, acceptance: { accept: ['pending', 'approved', 'rejected']}
+  validates :status, acceptance: { accept: ['pending', 'approved', 'rejected', 'error']}
 end

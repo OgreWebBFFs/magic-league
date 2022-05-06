@@ -34,6 +34,14 @@ class User < ApplicationRecord
     wishlist_items
   end
 
+  def add_card(card_id)
+    Ownership.new(card_id: card_id, collection_id: collection_id).save
+  end
+
+  def remove_card(card_id)
+    Ownership.where(card_id: card_id, collection_id: collection_id).first.destroy
+  end
+
   def trades_received_and_allowed_by_rarity
     trades = [];
     ReceivedTrade::NUM_PER_PACK_BY_RARITY.keys.each do |rarity|
@@ -43,6 +51,12 @@ class User < ApplicationRecord
       trades << {:rarity => rarity, :num_received => num_received, :num_allowed => num_allowed}
     end
     trades
+  end
+
+  def available_trades_for_rarity(rarity)
+    received = received_trades.where(rarity: rarity).first
+    num_received = received ? received.num_received : 0
+    ReceivedTrade.num_allowed(rarity, id) - num_received
   end
 
   def to_s
