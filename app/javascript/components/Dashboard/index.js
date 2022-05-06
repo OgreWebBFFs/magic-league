@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import { useUpdateEffect } from 'react-use';
 import classNames from 'classnames';
 
 import Button from '../Button';
@@ -32,8 +33,8 @@ const Dashboard = (props) => {
     trades: (props) => <Trades {...props} isListView={isListView} />,
   };
 
-  useEffect(() => {
-    window.location.hash = activeTab
+  useUpdateEffect(() => {
+    history.replaceState(undefined, undefined ,`#${activeTab}`);
   }, [activeTab])
   
   return (
