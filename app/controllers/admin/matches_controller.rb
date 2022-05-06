@@ -3,8 +3,18 @@ class Admin::MatchesController < ApplicationController
   before_action :authorize_match, only: [:edit, :update, :destroy]
   after_action :verify_authorized, only: [:edit, :update, :destroy]
 
+  
   def index
-    @matches = Match.order('played_at DESC')
+    @matches = Match.order('played_at DESC').map { |match| 
+      OpenStruct.new({
+        winner: match.winner.name,
+        loser: match.loser.name,
+        date: match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}"),
+        time: match.played_at.strftime("%I:%M%p"),
+        id: match.id
+      })
+    }
+  
   end
 
   def edit
@@ -36,4 +46,6 @@ class Admin::MatchesController < ApplicationController
   def match_params
     params.require(:match).permit(:winner_id, :loser_id, :played_at) 
   end
+
+  
 end

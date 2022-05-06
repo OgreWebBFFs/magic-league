@@ -15,11 +15,6 @@
             height: 192px;
             align-items: center;
 
-            &_edit__btn {
-                margin-top: 2px;
-                width: 154px;
-            }
-
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
                 height: 154px;
@@ -39,8 +34,7 @@
                 }
         }
         &__edit-button {
-                margin:0; 
-                margin-top: 5px;
+                margin:0.25rem 0; 
         }
 
         @media only screen and (max-width: 850px) {

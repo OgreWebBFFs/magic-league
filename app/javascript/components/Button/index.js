@@ -1,19 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Button = ({children, className, onClick, type="button", href }) => {
-
-    const LinkAsButton = ()=> (<a className={classNames('button', className)} type="link" href={href}>{children}</a>) 
-
-    const Element = 
-        href ? 
-        <LinkAsButton/> 
-        : 
-        <button type={type} className={classNames('button', className)} onClick={()=>{onClick()}}>
+const Button = ({children, className, onClick, type="button", href, ...unspecifiedProps }) => {
+    const LinkAsButton = ()=> (<a className={classNames('button', className)} type="link" >{children}</a>) 
+    const Element = href ? "a" : "button";
+    
+    return (
+        <Element type={type} className={classNames('button', className)} onClick={()=>{onClick()}} href={href} {...unspecifiedProps}>
             {children}
-        </button>;
+        </Element>
+    )
 
-    return Element
     }
 
 export default Button

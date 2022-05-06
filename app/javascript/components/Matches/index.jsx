@@ -1,29 +1,47 @@
-import React from 'react';
-import {Table, Row, Cell} from '../Table';
+import React, {useState, useEffect} from 'react';
+import { useWindowSize } from 'react-use';
 
-const DateTimeCell = ({children}) => <Cell size={"150px"}>{children}</Cell>
-const WinnerLoserCell = ({children}) => <Cell isPriority={true} size={'20%'}>{children}</Cell>
-const IdCell = ({children}) => <Cell size={"50px"}>{children}</Cell>
-const MobileLabel = ({children}) => <span className="label-mobile">{children}</span>
-const Matches = ({ matches }) => {
+import {Table, Row, Cell} from '../Table';
+import Button from '../Button';
+
+const MobileLabel = ({children}) => <span className="matches__cell-label">{children}</span>
+const Matches = ({ matches, isAdmin=false }) => {
+  const [isMobile, setIsMobile] = useState(true);
+  
+  const {width} = useWindowSize();
+  
+  useEffect(()=>{
+    setIsMobile(width<=850)
+  }, [width])
+
+  console.log(matches)
+
+
   return (
       <>
           <h2>Matches</h2>
           <Table>
-            <Row isHeading={true}>
-              <DateTimeCell>Date</DateTimeCell>
-              <DateTimeCell>Time</DateTimeCell>
-              <WinnerLoserCell>Winner</WinnerLoserCell>
-              <WinnerLoserCell>Loser</WinnerLoserCell>
-              <IdCell>ID</IdCell>
-            </Row>
+           { !isMobile && <Row isHeading={true}>
+              <Cell className=">matches__cell matches__cell--date">Date</Cell>
+              <Cell className=">matches__cell matches__cell--time">Time</Cell>
+              <Cell className=">matches__cell matches__cell--player">Winner</Cell>
+              <Cell className=">matches__cell matches__cell--player">Loser</Cell>
+              <Cell className=">matches__cell matches__cell--id">ID</Cell>
+              {isAdmin && <Cell className=">matches__cell matches__cell--admin-actions">Admin</Cell>}
+            </Row>}
             {matches.map(({table: {winner, loser, id, date, time}}) => (
               <Row>
-                <DateTimeCell>{date}</DateTimeCell>
-                <DateTimeCell>{time}</DateTimeCell>
-                <WinnerLoserCell><MobileLabel>Winner: </MobileLabel>{winner}</WinnerLoserCell>
-                <WinnerLoserCell><MobileLabel>Loser: </MobileLabel>{loser}</WinnerLoserCell>
-                <IdCell><MobileLabel>Match ID: </MobileLabel>{id}</IdCell>
+                <Cell className=">matches__cell matches__cell--date">{date}</Cell>
+                <Cell className=">matches__cell matches__cell--time">{time}</Cell>
+                <Cell className=">matches__cell matches__cell--player">{isMobile && <MobileLabel>Winner: </MobileLabel>}{winner}</Cell>
+                <Cell className=">matches__cell matches__cell--player">{isMobile &&<MobileLabel>Loser: </MobileLabel>}{loser}</Cell>
+                <Cell className=">matches__cell matches__cell--id">{isMobile && <MobileLabel>Match ID: </MobileLabel>}{id}</Cell>
+                {isAdmin &&     
+                  <Cell className=">matches__cell matches__cell--admin-actions"> 
+                    <Button href={`/admin/matches/${id}/edit`}><i class="fas fa-cog"></i></Button>
+                    <Button data-confirm="Are you sure?" rel="nofollow" data-method="delete"  href={`/admin/matches/${id}`}><i className="fas fa-times"></i></Button>
+                  </Cell>
+                }
               </Row>
             ))}
           </Table>
