@@ -17,7 +17,9 @@ const MobileNav = ({links}) => {
 
     return (
         <li className="nav__dropdown-wrapper">
-            <Button className="nav__mobile-menu-toggle">▼</Button>
+            <Button className="nav__mobile-menu-toggle">
+                <i className="fas fa-caret-down"></i>
+            </Button>
             <ul className='nav__dropdown'>{renderMobileNavLinks(links)}</ul>
         </li>
     )

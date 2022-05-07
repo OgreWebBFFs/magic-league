@@ -40,10 +40,6 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
         href: `users/${currentUserId}`
       },
       {
-        displayName:"Profiles",
-        href: 'users'
-      }, 
-      {
         displayName:"Browse Cards",
         href: 'browse'
       },
@@ -111,15 +107,15 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
             setDrawerContentSelector("match-logger");
             setIsDrawerOpen(true);
           }}>
-          Log a match
+          <i className="fas fa-magic"></i>
         </Button>
         <Button
-          className="nav__trade-logger-buton"
+          className="nav__trade-logger-button"
           onClick={()=>{
             setDrawerContentSelector("trade-logger")
             setIsDrawerOpen(true);
           }}>
-          Make a Trade
+          <i className="fas fa-exchange-alt"></i>
         </Button>
         <Drawer isOpen={isDrawerOpen} close={() => setIsDrawerOpen(false)}>
           {isDrawerOpen && DrawerContents[drawerContetSelector]({
