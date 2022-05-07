@@ -7,6 +7,8 @@ import Collection from './Collection';
 import Wishlist from './Wishlist';
 import Trades from './Trades';
 
+import { ActionBar, EditAction, ViewToggle } from './ActionBar';
+
 import WishlistContext from '../../contexts/WishlistContext';
 import TradablesContext from '../../contexts/TradablesContext';
 
@@ -20,18 +22,27 @@ const getCurrentTabFromUrlHash = () => (
   window.location.hash.substring(1) 
 )
 
+const Tabs = {
+  collection: {
+    view: (props) => <Collection {...props} />,
+    actions: ['view-toggle', 'edit'],
+  },
+  wishlist: {
+    view: (props) => <Wishlist {...props} />,
+    actions: ['view-toggle'],
+  },
+  trades: {
+    view: (props) => <Trades {...props} />,
+    actions: []
+  }
+};
+
 const Dashboard = (props) => {
   const [activeTab, setActiveTab] = useState(getCurrentTabFromUrlHash() || "collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
   const [isListView, setIsListView] = useState(true);
-
-  const Tabs = {
-    collection: (props) => <Collection {...props} isListView={isListView}/>,
-    wishlist: (props) => <Wishlist {...props}  isListView={isListView}/>,
-    trades: (props) => <Trades {...props} isListView={isListView} />,
-  };
 
   useUpdateEffect(() => {
     history.replaceState(undefined, undefined ,`#${activeTab}`);
@@ -44,22 +55,10 @@ const Dashboard = (props) => {
         <InterfaceTab key={tabName} activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}/>
       ))}
     </div>
-    <div className="dashboard__action-bar">    
-        <div className="dashboard__card-view-toggles">
-          <Button id="collection-table-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": !isListView})} onClick={() => setIsListView(true)}>
-            <i className="fas fa-list"></i>
-          </Button>
-          <Button id="collection-grid-toggle" className={classNames('dashboard__card-view-toggle', {"button--inactive": isListView})} onClick={() => setIsListView(false)}>
-            <i className="fas fa-th-large"></i>
-          </Button>
-        </div>
-        {props.edit && (
-          <>
-            <Button className="dashboard__cards-action" href={`/collections/${props.user.id}/edit`}>Edit</Button>
-            <Button className="dashboard__cards-action" href={`/collections/${props.user.id}/bulk_edit`}>Bulk Edit</Button>
-          </>
-        )}
-      </div>
+    <ActionBar actions={Tabs[activeTab].actions}>
+      <ViewToggle key={"view-toggle"} isListView={isListView} setIsListView={setIsListView} />
+      <EditAction key={"edit"} canEdit={props.edit} userId={props.user.id} />
+    </ActionBar>
     <div className="dashboard__card-view">
       <TradablesContext.Provider value={{ tradables, setTradables }}>
         <WishlistContext.Provider 
@@ -70,7 +69,7 @@ const Dashboard = (props) => {
             setCurrentUserWishlist
           }}
         >
-          {Tabs[activeTab](props)}
+          {Tabs[activeTab].view({ ...props, isListView})}
         </WishlistContext.Provider>
       </TradablesContext.Provider>
     </div>

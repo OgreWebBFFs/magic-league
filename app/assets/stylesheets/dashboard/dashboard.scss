@@ -77,6 +77,10 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
+        &:last-child {
+            margin-right: 0;
+        }
+
         &:hover {
             background: rgba($color-dark, .8);
             color: $color-light;
@@ -117,6 +121,7 @@
         background-color: $color-dark;
         align-items: center;
         justify-content: flex-end;
+        height: 55px;
     }
 
     &__cards-action {
