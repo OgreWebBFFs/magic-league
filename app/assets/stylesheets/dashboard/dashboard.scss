@@ -62,6 +62,19 @@
     &__tab-wrapper {
         display: flex;
         background: $color-light;
+
+        .notification {
+            color: #fe466e;
+            position: relative;
+            left: 0.25rem;
+            font-size: 1.2rem;
+        }
+
+        .active {
+            .notification {
+                color: $color-highlight-urgent;
+            }
+        }
     }
 
     &__tab {

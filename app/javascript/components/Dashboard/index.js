@@ -12,23 +12,30 @@ import { ActionBar, EditAction, ViewToggle } from './ActionBar';
 import WishlistContext from '../../contexts/WishlistContext';
 import TradablesContext from '../../contexts/TradablesContext';
 
-const InterfaceTab = ({ activeTab, setActiveTab, title }) => (
+const InterfaceTab = ({ children, activeTab, setActiveTab, title }) => (
   <Button className={classNames('dashboard__tab', 'button--inverse', {'active':activeTab === title})} onClick={() => setActiveTab(title)}>
     {title}
+    {children}
   </Button>
 );
 
 const Tabs = {
   collection: {
     view: (props) => <Collection {...props} />,
+    notification: () => false,
     actions: ['view-toggle', 'edit'],
   },
   wishlist: {
     view: (props) => <Wishlist {...props} />,
+    notification: () => false,
     actions: ['view-toggle'],
   },
   trades: {
     view: (props) => <Trades {...props} />,
+    notification: ({ trades, currentUserId }) => trades.some(({ data: { attributes }}) => {
+      console.log(attributes);
+      return attributes.to.id === currentUserId && attributes.status === 'pending'
+    }),
     actions: []
   }
 };
@@ -49,7 +56,9 @@ const Dashboard = (props) => {
    <div className="dashboard__card-interface-wrapper">
     <div className="dashboard__tab-wrapper">
       {Object.keys(Tabs).map(tabName => (
-        <InterfaceTab key={tabName} activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}/>
+          <InterfaceTab key={tabName} activeTab={activeTab} setActiveTab={setActiveTab} title={tabName}>
+            {Tabs[tabName].notification(props) && (<i class="fas fa-exclamation-circle notification"></i>)}
+          </InterfaceTab>
       ))}
     </div>
     <ActionBar actions={Tabs[activeTab].actions}>
