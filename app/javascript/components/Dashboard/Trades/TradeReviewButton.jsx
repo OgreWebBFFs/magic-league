@@ -12,7 +12,6 @@ const updateTrade = async (trade, status) => {
         body: JSON.stringify({ status }),
       }
     });
-    console.log('GOT HERE!!');
     window.location.reload();
   } catch(e) {
     //Implement error handling for failed trade update
@@ -22,7 +21,7 @@ const updateTrade = async (trade, status) => {
 const TradeReviewButton = ({ trade }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (<>
-    <Button onClick={() => setModalOpen(true)} className="review-button">Review</Button>
+    <Button onClick={() => setModalOpen(true)} className="review-button"><i className="fas fa-reply"></i></Button>
     {modalOpen && <Modal onClose={() => setModalOpen(false)}>
       <p>Reviewing Trade off From:</p>
       <p>{trade.from.name}</p>

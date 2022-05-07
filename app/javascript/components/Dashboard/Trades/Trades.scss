@@ -2,6 +2,21 @@
   &-cell {
     &__date-status {
       flex-basis: 15%;
+
+      i {
+        font-size: 1.5rem;
+        
+        &.approved {
+          color: $color-accept;
+        }
+        &.rejected {
+          color: $color-highlight-urgent;
+        }
+        &.waiting {
+          color: $color-nuetral;
+        }
+      }
+
     }
 
     &__card-list {

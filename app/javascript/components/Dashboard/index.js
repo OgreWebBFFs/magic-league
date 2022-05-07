@@ -18,10 +18,6 @@ const InterfaceTab = ({ activeTab, setActiveTab, title }) => (
   </Button>
 );
 
-const getCurrentTabFromUrlHash = () => (
-  window.location.hash.substring(1) 
-)
-
 const Tabs = {
   collection: {
     view: (props) => <Collection {...props} />,
@@ -38,16 +34,16 @@ const Tabs = {
 };
 
 const Dashboard = (props) => {
-  const [activeTab, setActiveTab] = useState(getCurrentTabFromUrlHash() || "collection");
+  const [activeTab, setActiveTab] = useState(history.state.currentTab || "collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
-  const [isListView, setIsListView] = useState(true);
+  const [isListView, setIsListView] = useState(history.state.currentView === undefined || history.state.currentView);
 
   useUpdateEffect(() => {
     const url = `${window.location.pathname}#${activeTab}`;
-    history.replaceState({turbolinks: true, url}, '', url);
-  }, [activeTab])
+    history.replaceState({turbolinks: true, url, currentTab: activeTab, currentView: isListView}, '', url);
+  }, [activeTab, isListView])
   
   return (
    <div className="dashboard__card-interface-wrapper">
