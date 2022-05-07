@@ -3,7 +3,7 @@ import xhrRequest from "../../../helpers/xhr-request"
 import Button from "../../Button"
 import PlayerSelect from '../PlayerSelect';
 import CardSelect from "./CardSelect"
-import ResponseStatusMessage from "./ResponseStatusMessage";
+import StatusMessage from "./StatusMessage";
 import buildTradeData from './build-trade-data';
 
 const createTrade = async (tradeData) => await xhrRequest({
@@ -25,8 +25,8 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      const postBody = buildTradeData(tradePartner.id, receiveCards, currentUserId, giveCards);
       try{
+         const postBody = buildTradeData(tradePartner.id, receiveCards, currentUserId, giveCards);
          const response = await createTrade(postBody);
          setXhrResponse(response);
          window.location.reload();
@@ -35,7 +35,7 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
       }
    }
     return (
-      <>
+      <div className={"trade-logger"}>
          <form id="trade-form" onSubmit={handleSubmit}>
             <h3>Make a Trade</h3>
             <p>Who would you like to trade with</p>
@@ -50,8 +50,8 @@ const TradeLogger = ({unlockedUsers, currentUserId}) => {
             <CardSelect onUpdate={setGiveCards} />
             <Button type="submit" className="drawer_submit__button">Submit</Button>
          </form>
-         <ResponseStatusMessage {...xhrResponse} />
-      </>
+         {xhrResponse && <StatusMessage {...xhrResponse} onDisappear={() => setXhrResponse()} />}
+      </div>
     )
 }
 

@@ -1,5 +1,5 @@
 const XhrRequestError = async (response) => {
-  const error = new Error(`Request Failed: ${response.status} - ${response.statusText}`)
+  const error = new Error(`[ERROR] Request Failed: ${response.status} - ${response.statusText}`)
   error.status = response.status
   error.data = await response.json()
   return error

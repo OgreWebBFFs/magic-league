@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Button = ({children, className, onClick, type="button", href, ...unspecifiedProps }) => {
+const Button = ({children, className, onClick=() => {}, type="button", href, ...unspecifiedProps }) => {
     const Element = href ? "a" : "button";
     
     return (

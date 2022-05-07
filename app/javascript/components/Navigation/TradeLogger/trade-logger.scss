@@ -1,3 +1,31 @@
 #trade-form .trade-logger__card-select input {
   height: auto;
 }
+
+.trade-logger {
+  &__status {
+    margin: 1rem 0;
+
+    p {
+      margin: 0;
+    }
+
+    &-title.error {
+      margin-bottom: 1rem;
+      color: $color-highlight-urgent;
+    }
+
+    &-issue {
+      margin-bottom: 1rem;
+      &-name {
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      &-reason {
+        color: $color-nuetral;
+        font-size: .8rem;
+      }
+    }  
+  }
+}

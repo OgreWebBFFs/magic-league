@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import { useDebounce } from 'react-use';
 import Select from 'react-select';
-import xhrRequest from '../../../helpers/xhr-request';
+import fetchCardOptions from './fetch-card-options';
+
+const MINIMUM_CHAR_MSG = 'Enter 3 Characters to Search';
+const LOADING_MSG = 'Loading...';
+const NO_OPTIONS_MSG = 'No Results';
 
 const searchCards = async (query) => (await xhrRequest({
   url: `/cards?query=${query}`,
@@ -13,27 +17,23 @@ const searchCards = async (query) => (await xhrRequest({
 const CardSelect = ({ onUpdate }) => {
   const [cardOptions, setCardOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [uniqify, setUniqify] = useState(0);
+  const [loadingMsg, setLoadingMsg] = useState(MINIMUM_CHAR_MSG);
   
   const handleInputChange = (value) => {
-    if (value.length < 3){
-      setCardOptions([]);
-    }
+    setLoadingMsg(value.length < 3 ? MINIMUM_CHAR_MSG : LOADING_MSG);
+    setCardOptions([]);
     setInputValue(value);
   }
 
   const handleSelectChange = (options) => {
-    setUniqify(uniqify + 1);
     onUpdate(options);
   }
 
   useDebounce(async () => {
-    if(inputValue.length > 2)
-      setCardOptions((await searchCards(inputValue)).map(card => ({
-        value: `${card.id}#${uniqify}`,
-        label: card.attributes.name,
-        card
-      })));
+    if(inputValue.length > 2) {
+      setCardOptions(await fetchCardOptions(inputValue));
+      setLoadingMsg(NO_OPTIONS_MSG);
+    }
   }, 800, [inputValue]);
 
   return (
@@ -44,6 +44,7 @@ const CardSelect = ({ onUpdate }) => {
       onInputChange={handleInputChange}
       className={"trade-logger__card-select"}
       form={"trade-form"}
+      noOptionsMessage={() => loadingMsg}
     />
   )
 }
