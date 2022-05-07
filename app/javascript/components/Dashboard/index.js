@@ -45,7 +45,8 @@ const Dashboard = (props) => {
   const [isListView, setIsListView] = useState(true);
 
   useUpdateEffect(() => {
-    history.replaceState(undefined, undefined ,`#${activeTab}`);
+    const url = `${window.location.pathname}#${activeTab}`;
+    history.replaceState({turbolinks: true, url}, '', url);
   }, [activeTab])
   
   return (
