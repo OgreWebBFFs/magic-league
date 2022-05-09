@@ -20,7 +20,7 @@ const TradeReview = ({ trade }) => {
           arrow={<i className="fas fa-arrow-left"></i>} />
         <CardReviewTable
           cards={trade.to.cards}
-          header={`${trade.to.name} Receives`}
+          header={`${trade.from.name} Receives`}
           arrow={<i className="fas fa-arrow-right"></i>} />
       </div>
       <div className="trade-review-modal__actions">
