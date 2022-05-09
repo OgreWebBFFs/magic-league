@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Row, Cell } from '../../Table';
+import { Table, Row, Cell, MobileLabel } from '../../Table';
 import StatusAction from './StatusAction';
 
 const EmptyState = () => (
@@ -35,10 +35,23 @@ const Trades = ({ trades, user, currentUserId }) => {
             return (
               <Row>
                 <DateStatusCell>{info.offer_date}</DateStatusCell>
-                <NameCell>{them.name}</NameCell>
-                <CardListCell><ul>{me.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
-                <CardListCell><ul>{them.cards.map(card => <li>{card.name}</li>)}</ul></CardListCell>
-                <DateStatusCell><StatusAction trade={info} currentUserId={currentUserId} /></DateStatusCell>
+                <NameCell><MobileLabel>With: </MobileLabel>{them.name}</NameCell>
+                <CardListCell>
+                  <MobileLabel>Giving: </MobileLabel>
+                  <ul>
+                    {me.cards.map(card => <li>{card.name}</li>)}
+                  </ul>
+                </CardListCell>
+                <CardListCell>
+                  <MobileLabel>Receiving: </MobileLabel>
+                  <ul>
+                    {them.cards.map(card => <li>{card.name}</li>)}
+                  </ul>
+                </CardListCell>
+                <DateStatusCell>
+                  <MobileLabel>Status: </MobileLabel>
+                  <StatusAction trade={info} currentUserId={currentUserId} />
+                </DateStatusCell>
               </Row>
             )
           }

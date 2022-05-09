@@ -1,7 +1,36 @@
 .trades-table {
+
+  .row {
+    @media only screen and (max-width: 850px) {
+      display: block;
+    }
+    &--headings {
+      display: none;
+    }
+    .cell:first-child {
+      @media only screen and (max-width: 850px) {
+        color: $color-light;
+        background: $color-dark
+      }
+    }
+  }
+
+  .cell {
+    @media only screen and (max-width: 850px) {
+      text-align: center;
+
+      .fa-times {
+        position: relative;
+        top: 3px;
+      }
+    }
+  }
+
   &-cell {
+
     &__date-status {
       flex-basis: 15%;
+      
 
       i {
         font-size: 1.5rem;
@@ -34,20 +63,105 @@
 
   .review-button {
     margin: 0;
+    max-width: 50px;
+    @media only screen and (max-width: 850px) {
+      max-width: 100%;
+    }
   }
 }
 
 
-.trade-review-modal__action-button{
-  flex: 1 1 50%;
-  margin: 1rem .5rem;
-  font-weight: 700;
+.trade-review-modal {
 
-  &.reject {
-    background-color: $color-highlight-urgent;
+  &__contents {
+    display: flex;
+    gap: .5rem;
+    align-content: space-between;
+    width: 75vw;
+    @media only screen and (max-width: 900px) {
+      flex-direction: column;
+    }
   }
 
-  &.approve {
-    background-color: $color-highlight-mid-import;
+  &__table {
+    flex: 0 0 50%;
+    min-width: 0;
+    height: fit-content;
+  }
+
+  &__cell {
+    flex-grow: 1;
+    flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &-rarity {
+      font-weight: 900;
+      &.mythic {
+        color: #f5661b;
+      }
+      &.rare {
+        color: #d4af37;
+      }
+      &.uncommon {
+        color: #637981;
+      }
+      &.common {
+        color: $color-dark;
+      }
+    }
+
+    &.receive{
+      text-align: left;
+      @media only screen and (max-width: 900px) {
+        text-align: center;
+      }
+    }
+
+    &.give {
+      text-align: right;
+      @media only screen and (max-width: 900px) {
+        text-align: center;
+      }
+    }
+    
+    .fa-arrow-left {
+      margin-right: .25rem;
+    }
+    .fa-arrow-right {
+      margin-left: .25rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__action-button{
+    flex: 1 1 50%;
+    margin: 1rem .5rem;
+    font-weight: 700;
+    max-width: 250px;
+
+    &.reject {
+      background-color: $color-highlight-urgent;
+    }
+
+    &.approve {
+      background-color: $color-accept;
+    }
+  }
+
+  &__warning {
+    font-size: .75rem;
+    color: $color-nuetral;
+    margin: 0;
+    width: 0;
+    min-width: 100%;
+    .warning {
+      color: $color-highlight-urgent;
+    }
   }
 }

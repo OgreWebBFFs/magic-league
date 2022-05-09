@@ -41,11 +41,11 @@ const Tabs = {
 };
 
 const Dashboard = (props) => {
-  const [activeTab, setActiveTab] = useState(history.state.currentTab || "collection");
+  const [activeTab, setActiveTab] = useState(history.state?.currentTab || "collection");
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);
-  const [isListView, setIsListView] = useState(history.state.currentView === undefined || history.state.currentView);
+  const [isListView, setIsListView] = useState(history.state?.currentView === undefined || history.state?.currentView);
 
   useUpdateEffect(() => {
     const url = `${window.location.pathname}#${activeTab}`;
