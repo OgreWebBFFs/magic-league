@@ -87,16 +87,49 @@
     flex: 0 0 50%;
     min-width: 0;
     height: fit-content;
-  }
 
-  &__cell {
-    flex-grow: 1;
-    flex-shrink: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    &:first-of-type {
+      & .cell--card {
+        text-align: left;
+          @media only screen and (max-width: 900px) {
+            text-align: center;
+          }
+      }
+      & .cell--rarity {
+        order: 3;
+      }
+      & .cell--arrow {
+        margin-right: .25rem;
+        order: 1;
+      }
+    }
 
-    &-rarity {
+    &:last-of-type {
+      & .cell--card {
+        text-align: right;
+          @media only screen and (max-width: 900px) {
+            text-align: center;
+          }
+      }
+      & .cell--rarity {
+        order: 1;
+      }
+      & .cell--arrow {
+        margin-left: .25rem;
+        order: 3;
+      }
+    }
+
+    .cell--card {
+      flex-grow: 1;
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      order: 2;
+    }
+  
+    .cell--rarity {
       font-weight: 900;
       &.mythic {
         color: #f5661b;
@@ -110,27 +143,6 @@
       &.common {
         color: $color-dark;
       }
-    }
-
-    &.receive{
-      text-align: left;
-      @media only screen and (max-width: 900px) {
-        text-align: center;
-      }
-    }
-
-    &.give {
-      text-align: right;
-      @media only screen and (max-width: 900px) {
-        text-align: center;
-      }
-    }
-    
-    .fa-arrow-left {
-      margin-right: .25rem;
-    }
-    .fa-arrow-right {
-      margin-left: .25rem;
     }
   }
 
