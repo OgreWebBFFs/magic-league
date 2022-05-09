@@ -1,13 +1,8 @@
 import React from "react";
-import classNames from "classnames";
 import Button from "../../../Button";
-import { Row, Table, Cell } from "../../../Table";
 import postTradeReview from "./post-trade-review";
 import CardReviewTable from "./CardReviewTable";
 
-const ReceiveCell = ({ children }) => <Cell className="trade-review-modal__cell card-cell">{children}</Cell>
-const GiveCell = ({ children }) => <Cell className="trade-review-modal__cell card-cell">{children}</Cell>
-const RarityCell = ({ rarity }) => <Cell className={classNames("trade-review-modal__cell-rarity", rarity)}>{rarity.substr(0,1).toUpperCase()}</Cell>
 const TradeReview = ({ trade }) => {
   return (
     <>
