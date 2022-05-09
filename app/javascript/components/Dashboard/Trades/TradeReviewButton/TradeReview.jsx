@@ -27,7 +27,7 @@ const TradeReview = ({ trade }) => {
         <Button onClick={() => postTradeReview(trade, "approved")} className="trade-review-modal__action-button approve">Accept</Button>
         <Button onClick={() => postTradeReview(trade, "rejected")} className="trade-review-modal__action-button reject">Decline</Button>
       </div>
-      <p className="trade-review-modal__warning"><span className="warning">**WARNING**</span>: Selecting accept will automatically updated your alloted trades and collection! Choose wisely...</p>
+      <p className="trade-review-modal__warning"><span className="warning">**WARNING**</span>: Selecting Accept will automatically update your allotted trades and collection! Choose wisely...</p>
     </>
   )
 }
