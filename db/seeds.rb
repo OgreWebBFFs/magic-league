@@ -36,9 +36,9 @@ zack = User.find_by(name: "Zack Brown")
 pat = User.find_by(name: "Pat Roach")
 dustin = User.find_by(name: "Dustin Perzanowski")
 
-card1 = Card.find_or_create_by(name: "Blade Man", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452751&type=card")
-card2 = Card.find_or_create_by(name: "Bounty Person", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452752&type=card")
-card3 = Card.find_or_create_by(name: "Candlelight Thing", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452753&type=card")
+card1 = Card.find_or_create_by(name: "Blade Man", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452751&type=card", rarity: "common")
+card2 = Card.find_or_create_by(name: "Bounty Person", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452752&type=card", rarity: "rare")
+card3 = Card.find_or_create_by(name: "Candlelight Thing", image_url: "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=452753&type=card", rarity: "common")
 
 
 Ownership.find_or_create_by(card_id: card1.id, collection_id: zack.collection.id).save

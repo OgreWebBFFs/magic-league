@@ -76,9 +76,9 @@
   &__contents {
     display: flex;
     gap: .5rem;
-    align-content: space-between;
+    justify-content: center;
     width: 75vw;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 850px) {
       flex-direction: column;
     }
   }
@@ -91,7 +91,7 @@
     &:first-of-type {
       & .cell--card {
         text-align: left;
-          @media only screen and (max-width: 900px) {
+          @media only screen and (max-width: 850px) {
             text-align: center;
           }
       }
@@ -107,7 +107,7 @@
     &:last-of-type {
       & .cell--card {
         text-align: right;
-          @media only screen and (max-width: 900px) {
+          @media only screen and (max-width: 850px) {
             text-align: center;
           }
       }
@@ -130,7 +130,7 @@
     }
   
     .cell--rarity {
-      font-weight: 900;
+      font-weight: 850;
       &.mythic {
         color: #f5661b;
       }
