@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { useWindowSize } from 'react-use';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 const MobileLabel = ({children, className}) => {
-  const [isMobile, setIsMobile] = useState(true);
-  
-  const {width} = useWindowSize();
-  
-  useEffect(()=>{
-    setIsMobile(width<=850)
-  }, [width])
+  const isMobile = useIsMobile();
 
   return isMobile ? <span className={classNames("cell-label", className)}>{children}</span> : null;
 }

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { useWindowSize } from 'react-use';
+import React, {useState} from 'react';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Logo from '../Logo';
 import Drawer from '../Drawer';
@@ -19,20 +19,12 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContetSelector, setDrawerContentSelector] = useState("match-logger");
+  const isMobile = useIsMobile();
 
   const DrawerContents = {
     "match-logger": (props) => <MatchLogger {...props}/>,
     "trade-logger": (props) => <TradeLogger {...props}/>
   }
-
-
-  const {width} = useWindowSize();
-  const[isMobile, setIsMobile] = useState(false);
-  useEffect(
-    ()=>{
-      setIsMobile(width<900)
-    },[width]
-  )
 
    let links = [
       {

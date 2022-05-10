@@ -1,8 +1,10 @@
 import React from 'react';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 import {Table, Row, Cell, MobileLabel} from '../Table';
 import Button from '../Button';
 
 const Matches = ({ matches, isAdmin=false }) => {
+  const isMobile = useIsMobile();
   return (
       <>
           <h2>Matches</h2>
