@@ -1,4 +1,5 @@
-@import "./TradeLogger/trade-logger.scss";
+@import "./drawer";
+@import "./trade-logger";
 
 @mixin openDropdown {
   opacity: 1;
