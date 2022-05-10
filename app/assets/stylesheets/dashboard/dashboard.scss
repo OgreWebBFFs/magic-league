@@ -42,7 +42,7 @@
         @media only screen and (max-width: 850px) {
             display: block;
 
-            &_user-details {
+            &__user-details {
                 margin: 0 auto $section-margin;
                 align-items: center;
                 padding-right: 0;
@@ -107,6 +107,7 @@
         }
 
         @media only screen and (max-width: 850px) {
+            flex-basis: 33%;
 
             &__title {
                 align-self: start;
