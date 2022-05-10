@@ -83,7 +83,7 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
     return (
       <nav id="top-nav"  className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
-        <a href="/"   className='nav__logo' data-turbolinks="false">
+        <a href="/"   className='nav__logo'>
           <Logo/>
         </a>
         <ul className='nav__links'>
