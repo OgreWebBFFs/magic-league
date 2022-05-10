@@ -32,10 +32,9 @@ const Tabs = {
   },
   trades: {
     view: (props) => <Trades {...props} />,
-    notification: ({ trades, currentUserId }) => trades.some(({ data: { attributes }}) => {
-      console.log(attributes);
-      return attributes.to.id === currentUserId && attributes.status === 'pending'
-    }),
+    notification: ({ trades, currentUserId }) => trades.some(({ data: { attributes }}) => (
+      attributes.to.id === currentUserId && attributes.status === 'pending'
+    )),
     actions: []
   }
 };
