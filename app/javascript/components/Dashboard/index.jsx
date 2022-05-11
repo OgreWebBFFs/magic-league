@@ -40,7 +40,8 @@ const Tabs = {
 };
 
 const Dashboard = (props) => {
-  const [activeTab, setActiveTab] = useState(history.state?.currentTab || "collection");
+  const startingTab = history.state?.currentTab || window.location.hash.substring(1) || "collection";
+  const [activeTab, setActiveTab] = useState(startingTab);
   const [tradables, setTradables] = useState(props.tradables);
   const [wishlist, setWishlist] = useState(props.wishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(props.currentUserWishlist);

@@ -11,7 +11,7 @@ const postTradeReview = async (trade, status) => {
     });
     window.location.reload();
   } catch(e) {
-    //Implement error handling for failed trade update
+   console.log("ERROR", e);
   }
 };
 

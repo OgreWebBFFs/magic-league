@@ -24,7 +24,10 @@ class TradesController < ApplicationController
 
   def update
     trade = Trade.find(params[:id])
-    if params[:status] == 'approved' && trade.status != 'approved'
+    if params[:status] == 'rejected'
+      flash[:notice] = "You've successfully declined a trade"
+      render json: {status: params[:status]}
+    elsif params[:status] == 'approved' && trade.status != 'approved'
       to_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.to_user).pluck(:card_id)
       from_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.from_user).pluck(:card_id)
 
