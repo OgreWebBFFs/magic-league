@@ -16,7 +16,7 @@
     align-items: center;
  
 
-    &__content {
+    &__area {
         position: relative;
         background: $color-light;
         vertical-align: middle;
@@ -24,7 +24,13 @@
         padding: 30px;
         border-radius: 2px;
         display: table;
-        z-index: 1px;
+        z-index: 1;
+    }
+
+    &__content {
+        max-height: 80vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
     
     &__title {
