@@ -14,12 +14,12 @@ import { Cell, Row } from '../../Table';
 const Wishlist = (props) => {
   const {wishlist, currentUserWishlist} = useContext(WishlistContext);
   const isOwner = props.currentUserId === props.user.id;
-  const isEmpty = wishlist.length < 1;
   const wishlistToRender = isOwner ? currentUserWishlist : wishlist;
+  const isEmpty = wishlistToRender.length < 1;
   return  (
     <>
       {isEmpty && <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
-        <a class="empty-card-view__btn" href="/trades">
+        <a class="empty-card-view__btn" href="/browse">
           Make some wishes ;)
         </a>
       )}/>}

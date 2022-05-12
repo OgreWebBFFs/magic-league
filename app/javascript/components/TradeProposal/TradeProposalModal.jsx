@@ -17,7 +17,7 @@ const TradeProposalRequest = ({ users, card }) => (
       </ul>
     ))}
     <p>To talk about trading for <span className="card-to-be-traded">{card.attributes.name}</span></p>
-    <form action="/trades" method="post"> 
+    <form action="/trade_mail" method="post"> 
       <input type="hidden" name="authenticity_token" value={document.querySelector('meta[name="csrf-token"]').content}/>
       <input type="hidden" name="trade[card_id]" value={card.id}/>
       <button type="submit" className="trade-modal_send__button button">Send Message</button>

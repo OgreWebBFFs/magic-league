@@ -12,8 +12,8 @@ const DesktopNav = ({links}) => {
            )
         } else {
             return (
-                <li key={`${link.displayName}-${i}`} className="nav__link-wrapper" key={`${link.displayName}-${i}`}>
-                    <a data-turbolinks="false" className="nav__link" href={`/${link.href}`}>{link.displayName}</a> 
+                <li key={`${link.displayName}-${i}`} className="nav__link-wrapper">
+                    <a className="nav__link" href={`/${link.href}`}>{link.displayName}</a> 
                 </li>
             )
         }

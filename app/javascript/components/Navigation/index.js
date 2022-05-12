@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import { useWindowSize } from 'react-use';
+import React, {useState} from 'react';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Logo from '../Logo';
+import Drawer from '../Drawer';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav'; 
 import MatchLogger from './MatchLogger';
+import TradeLogger from './TradeLogger';
 import Button from '../Button';
 
 
@@ -12,22 +14,17 @@ import Button from '../Button';
 //state of the match logger and things like modals,  and handle the toggling there
 //rather than add/remove classes
 
-const toggleMatchLogger = ()=>{
-  const matchLogger = document.getElementById("match-logger");
-  matchLogger.classList.toggle("active");
-}
 
 const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
-  const [matchLoggerOpenState, setMatchLoggerOpenState] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContetSelector, setDrawerContentSelector] = useState("match-logger");
+  const isMobile = useIsMobile();
 
-  const {width} = useWindowSize();
-  const[isMobile, setIsMobile] = useState(false);
-  useEffect(
-    ()=>{
-      setIsMobile(width<900)
-    },[width]
-  )
+  const DrawerContents = {
+    "match-logger": (props) => <MatchLogger {...props}/>,
+    "trade-logger": (props) => <TradeLogger {...props}/>
+  }
 
    let links = [
       {
@@ -35,12 +32,8 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
         href: `users/${currentUserId}`
       },
       {
-        displayName:"Profiles",
-        href: 'users'
-      }, 
-      {
         displayName:"Browse Cards",
-        href: 'trades'
+        href: 'browse'
       },
       {
         displayName:"League",
@@ -90,7 +83,7 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
 
     return (
       <nav id="top-nav"  className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
-        <a href="/"   className='nav__logo' data-turbolinks="false">
+        <a href="/"   className='nav__logo'>
           <Logo/>
         </a>
         <ul className='nav__links'>
@@ -102,11 +95,26 @@ const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
         </ul>
         <Button
           className="nav__match-logger-button"
-          onClick={()=>{setMatchLoggerOpenState(true)}}
-          >
-          Log a match
+          onClick={()=>{
+            setDrawerContentSelector("match-logger");
+            setIsDrawerOpen(true);
+          }}>
+          <i className="fas fa-magic"></i>
         </Button>
-        <MatchLogger currentUserId={currentUserId}  unlockedUsers={unlockedUsers} close={()=>setMatchLoggerOpenState(false)} isOpen={matchLoggerOpenState}/>
+        <Button
+          className="nav__trade-logger-button"
+          onClick={()=>{
+            setDrawerContentSelector("trade-logger")
+            setIsDrawerOpen(true);
+          }}>
+          <i className="fas fa-exchange-alt"></i>
+        </Button>
+        <Drawer isOpen={isDrawerOpen} close={() => setIsDrawerOpen(false)}>
+          {isDrawerOpen && DrawerContents[drawerContetSelector]({
+            currentUserId,
+            unlockedUsers,
+          })}
+        </Drawer>
       </nav>
     )
 } 

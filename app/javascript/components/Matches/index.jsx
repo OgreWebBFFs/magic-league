@@ -1,22 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import { useWindowSize } from 'react-use';
-
-import {Table, Row, Cell} from '../Table';
+import React from 'react';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
+import {Table, Row, Cell, MobileLabel} from '../Table';
 import Button from '../Button';
 
-const MobileLabel = ({children}) => <span className="matches__cell-label">{children}</span>
 const Matches = ({ matches, isAdmin=false }) => {
-  const [isMobile, setIsMobile] = useState(true);
-  
-  const {width} = useWindowSize();
-  
-  useEffect(()=>{
-    setIsMobile(width<=850)
-  }, [width])
-
-  console.log(matches)
-
-
+  const isMobile = useIsMobile();
   return (
       <>
           <h2>Matches</h2>
@@ -33,9 +21,9 @@ const Matches = ({ matches, isAdmin=false }) => {
               <Row>
                 <Cell className=">matches__cell matches__cell--date">{date}</Cell>
                 <Cell className=">matches__cell matches__cell--time">{time}</Cell>
-                <Cell className=">matches__cell matches__cell--player">{isMobile && <MobileLabel>Winner: </MobileLabel>}{winner}</Cell>
-                <Cell className=">matches__cell matches__cell--player">{isMobile &&<MobileLabel>Loser: </MobileLabel>}{loser}</Cell>
-                <Cell className=">matches__cell matches__cell--id">{isMobile && <MobileLabel>Match ID: </MobileLabel>}{id}</Cell>
+                <Cell className=">matches__cell matches__cell--player"><MobileLabel>Winner: </MobileLabel>{winner}</Cell>
+                <Cell className=">matches__cell matches__cell--player"><MobileLabel>Loser: </MobileLabel>{loser}</Cell>
+                <Cell className=">matches__cell matches__cell--id"><MobileLabel>Match ID: </MobileLabel>{id}</Cell>
                 {isAdmin &&     
                   <Cell className=">matches__cell matches__cell--admin-actions"> 
                     <Button href={`/admin/matches/${id}/edit`}><i class="fas fa-cog"></i></Button>

@@ -1,4 +1,5 @@
-@import "./MatchLogger/match-logger.scss";
+@import "./drawer";
+@import "./trade-logger";
 
 @mixin openDropdown {
   opacity: 1;
@@ -61,13 +62,6 @@
     height: 100%;
     text-align: center;
     list-style-type: none;
-  }
-
-
-  &__mobile-menu-toggle {
-    margin:0;
-    padding-left: 10px; 
-    padding-right: 10px;
   }
 
   &__link,
@@ -144,7 +138,6 @@
   &__link-wrapper,
   &__dropdown-wrapper {
     position: relative;
-    margin: 0 7px;
     height:100%;
     display: flex;
     align-items: center;
@@ -154,12 +147,25 @@
         @include openDropdown();
       }
     }
+    @media only screen and (max-width: 900px) {
+      margin: 0;      
+    }
+    margin: 0 0.5rem;
   }
 
-  &__match-logger-button {
-    margin-right:0;
-    padding-right: 10px;
-    padding-left: 10px;
+  &__mobile-menu-toggle {
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    margin: 0 0.5rem;
+  }
+
+  &__match-logger,
+  &__trade-logger {
+    &-button {
+      padding: 0.5rem;
+      font-size: 1.8rem;
+      margin: 0 0.5rem;
+    }
   }
 
   &--mobile {

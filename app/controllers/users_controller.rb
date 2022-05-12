@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @tradables = @user.tradables
     @wishlist = @user.wishlist
     @current_user_wishlist = current_user.wishlist
+    @trades = @user.trades
   end
 
 

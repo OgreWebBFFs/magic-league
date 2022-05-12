@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_225446) do
+ActiveRecord::Schema.define(version: 2022_05_02_185418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2020_08_02_225446) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.bigint "card_id"
+    t.bigint "user_id"
+    t.bigint "trade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_exchanges_on_card_id"
+    t.index ["trade_id"], name: "index_exchanges_on_trade_id"
+    t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -79,6 +90,14 @@ ActiveRecord::Schema.define(version: 2020_08_02_225446) do
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_tradables_on_card_id"
     t.index ["user_id"], name: "index_tradables_on_user_id"
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer "from_user"
+    t.integer "to_user"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

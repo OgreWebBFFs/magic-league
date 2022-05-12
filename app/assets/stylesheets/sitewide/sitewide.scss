@@ -247,6 +247,10 @@ body {
   & input {
     text-align: center;
   }
+
+  .cell-label {
+    font-weight: bold;
+  }
 }
 
 
@@ -604,7 +608,7 @@ input[type=checkbox] {
 
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
 
   [class*="__section"] {
     padding-left: 1px;

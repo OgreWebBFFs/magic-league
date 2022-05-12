@@ -8,4 +8,8 @@ class Card < ApplicationRecord
   scope :query_oracle_text, ->(string) { where(arel_table[:oracle_text].matches("%#{sanitize_sql_like string}%")) }
   scope :query_type_line, ->(string) { where(arel_table[:type_line].matches("%#{sanitize_sql_like string}%")) }
   scope :query_all_text, ->(string) { query_name(string).or(query_oracle_text(string)).or(query_type_line(string)) }
+
+  def received_trades_to_update
+    rarity == 'mythic' ? 'rare' : rarity
+  end
 end

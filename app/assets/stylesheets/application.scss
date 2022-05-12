@@ -1,18 +1,14 @@
-//Global styles
-@import "./sitewide/normalize";
-@import "./sitewide/color-library";
-@import "./sitewide/animations";
-@import "./sitewide/sitewide";
+@import "./global";
 
 //Component Styles
 @import "./admin/users";
-@import "../../javascript/components/Button/button.scss";
+@import "./sitewide/button";
 @import "./cards/card-profile";
 @import "./card-grid/card-grid";
 @import "./dashboard/dashboard";
 @import "./footer/footer";
 @import "./login/login";
-@import "../../javascript/components/Navigation/navigation.scss";
+@import "./navigation/navigation.scss";
 @import "./match-listings/matches-table";
 @import "./rankings/rankings";
 @import "./rules/rules";
@@ -21,4 +17,3 @@
 @import "./sitewide/modal";
 @import "./sitewide/user-list";
 @import "./collections/bulk-edit";
-

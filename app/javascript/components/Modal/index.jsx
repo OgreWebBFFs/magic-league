@@ -6,11 +6,13 @@ const Modal = ({ onClose, children }) => {
   return createPortal(
     <div className="modal active">
       <div className="modal__overlay overlay" onClick={onClose}></div>
-      <div className="modal__content">
+      <div className="modal__area">
           <Button className="modal__close-button" onClick={onClose}>
             <i className="fas fa-times"></i>
           </Button>
-        {children}
+          <div className="modal__content">
+            {children}
+          </div>
       </div>
     </div>, document.body)
 }

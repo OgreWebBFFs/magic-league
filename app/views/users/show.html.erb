@@ -9,7 +9,10 @@
       currentUserWishlist: @current_user_wishlist,
       collectionCards: @cards,
       tradables: @tradables,
-      wishlist: @wishlist
+      wishlist: @wishlist,
+      trades: @trades.select{ |trade|
+        (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
+      }.map{ |trade| TradeSerializer.new(trade)}
     }) %>
   </div>
 </div>
