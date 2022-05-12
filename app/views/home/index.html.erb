@@ -1,62 +1,8 @@
-<div class="cycling-background" style="background: url('<%= get_random_bg_image %>') 50% 0% / cover no-repeat;">
-</div>
-<div class="rankings container">
-  <h1 class="rankings__title">Rankings</h1>
-  <%= form_with(url: "/", :class =>"rankings-date_form", method: "get", local: true) do %>
-    <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
-  <% end %>
-  <div class="rankings__wrapper">
-    <div class="rankings-border">
-      <div class="rankings-border_vert rankings-border_bar rankings-border_left"></div>
-      <div class="rankings-border_vert rankings-border_bar rankings-border_right"></div>
-      <div class="rankings-border_horz rankings-border_bar rankings-border_top"></div>
-      <div class="rankings-border_horz rankings-border_bar rankings-border_bottom"></div>
-    </div>
-    <div class="rankings-scroll-catcher">
-      <div class="rankings-vert-centerer">
-        <div class="rankings-player-listing">
-          <div id="ranked-players" class="rankings-player-bucket">
-            <% @ranked_players.each.with_index do |user, i| %>
-              <%= link_to user_path(user), :class => "rankings_user__btn   ranked" do %>
-                <div class="rankings-player-position">
-                <%= i+1 %>
-                </div>
-                <div class="rankings-player">
-                    <div class="rankings-player-name">
-                      <%= user.name%>
-                    </div>
-                    <div class="rankings-player-stats">
-                      <div class="rankings-player-elo">
-                      <%= user.ranking&.round(2)%>
-                      </div>
-                      <div class="rankings-player-record">
-                        <%= "#{@matches.where(winner: user).count} - #{@matches.where(loser: user).count}"%>
-                      </div>
-                    </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-          <hr class="rankings-divider"/>
-          <div id="unranked-players" class="rankings-player-bucket">
-            <% @unranked_players.each.with_index do |user, i| %>
-              <%= link_to user_path(user), :class => "rankings_user__btn   unranked" do %>
-                <div class="rankings-player">
-                  <div class="rankings-player-name unranked">
-                    <%= user.name%>
-                  </div>
-                  <div class="rankings-player-stats">
-                    <div class="rankings-player-record">
-                      <%= "#{@matches.where(winner: user).count} - #{@matches.where(loser: user).count}"%>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= react_component("CyclingBackground", {bgPath:get_random_bg_image}) %>
+<%= form_with(url: "/", :class =>"rankings__date_form", method: "get", local: true) do %>
+  <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
+<% end %>
+<%= react_component("Rankings", {
+   rankedPlayers: @ranked_players,
+   unrankedPlayers: @unranked_players,
+}) %>

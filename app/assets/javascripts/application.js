@@ -16,7 +16,6 @@
 //= require jquery3
 //= require helpers
 //= require app_layout
-//= require card_layout
 //= require_tree .
   var token = $("meta[name='csrf-token']").attr("content");
 

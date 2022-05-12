@@ -1,0 +1,122 @@
+import React, {useState} from 'react';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
+
+import Logo from '../Logo';
+import Drawer from '../Drawer';
+import DesktopNav from './DesktopNav';
+import MobileNav from './MobileNav'; 
+import MatchLogger from './MatchLogger';
+import TradeLogger from './TradeLogger';
+import Button from '../Button';
+
+
+//TODO: Componentize some sort of app wrapper that can manage the 
+//state of the match logger and things like modals,  and handle the toggling there
+//rather than add/remove classes
+
+
+const Navigation = ({isAdmin, currentUserId, unlockedUsers}) => {
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerContetSelector, setDrawerContentSelector] = useState("match-logger");
+  const isMobile = useIsMobile();
+
+  const DrawerContents = {
+    "match-logger": (props) => <MatchLogger {...props}/>,
+    "trade-logger": (props) => <TradeLogger {...props}/>
+  }
+
+   let links = [
+      {
+        displayName:"My Profile",
+        href: `users/${currentUserId}`
+      },
+      {
+        displayName:"Browse Cards",
+        href: 'browse'
+      },
+      {
+        displayName:"League",
+        dropdownItems: [
+          {
+            displayName:"Rules",
+            href: 'rules'
+          },
+          {
+            displayName:"Matches",
+            href: 'matches'
+          },
+    
+          {
+            displayName: "Contact",
+            href: 'mailto:ogretheleaguening@gmail.com?subject=From the Web App'
+          }
+        ]
+      }
+     
+
+    ]
+
+    if(isAdmin){
+      links = [
+        ...links,
+        {
+          displayName: "Admin",
+          dropdownItems:[
+            {
+              displayName:"Admin Matches",
+              href: 'admin/matches'
+            },
+            {
+              displayName:"Admin Users",
+              href: 'admin/users'
+            },
+            {
+              displayName:"Admin Setting",
+              href: 'admin/settings/1/edit'
+            }
+          ]
+        }
+        
+      ]
+    }
+
+    return (
+      <nav id="top-nav"  className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
+        <a href="/"   className='nav__logo'>
+          <Logo/>
+        </a>
+        <ul className='nav__links'>
+          {isMobile  ? 
+            <MobileNav links={links}/>
+          :
+            <DesktopNav links={links} />
+          }
+        </ul>
+        <Button
+          className="nav__match-logger-button"
+          onClick={()=>{
+            setDrawerContentSelector("match-logger");
+            setIsDrawerOpen(true);
+          }}>
+          <i className="fas fa-magic"></i>
+        </Button>
+        <Button
+          className="nav__trade-logger-button"
+          onClick={()=>{
+            setDrawerContentSelector("trade-logger")
+            setIsDrawerOpen(true);
+          }}>
+          <i className="fas fa-exchange-alt"></i>
+        </Button>
+        <Drawer isOpen={isDrawerOpen} close={() => setIsDrawerOpen(false)}>
+          {isDrawerOpen && DrawerContents[drawerContetSelector]({
+            currentUserId,
+            unlockedUsers,
+          })}
+        </Drawer>
+      </nav>
+    )
+} 
+
+export default Navigation

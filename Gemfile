@@ -16,7 +16,7 @@ gem 'devise'
 gem 'omniauth', '~>1.9'
 gem 'omniauth-google-oauth2'
 gem 'mtg_sdk'
-gem 'font-awesome-sass', '~> 5.0.6'
+gem 'font-awesome-sass', '~> 6.1.1'
 gem 'jquery-rails'
 gem "pundit"
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -24,6 +24,9 @@ gem 'dry-types', '~> 1.5.0'
 
 gem 'simple_form', '>= 4.0.1'
 gem 'fast_jsonapi'
+
+gem "react-rails", "2.6.2"
+gem "webpacker", "~> 4"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -45,3 +48,5 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby

@@ -31,6 +31,10 @@
         @media only screen and (max-width: 900px) { 
             padding-left: 0;
         }
+        & .trade-proposal-button--small {
+            width: auto;
+            margin: 0;
+        }
     }
     &__action-bar {
         text-align: right;
@@ -41,32 +45,62 @@
          @media only screen and (max-width: 550px) {
              margin: 0;
          }
-    }
-    &__btn-action {
-        display:inline-block;
-        margin: 0 0 5px 5px;
-        min-width: 170px;
-        font-size: 0.8rem;
 
-        @media only screen and (max-width: 550px) {
-            margin: 0 0 10px 0; 
-            width: 100%;
-        }
+         .button {
+            font-size: .8rem;
+            display: inline-block;
+            @media only screen and (max-width: 550px) {
+                min-width: 100%;
+            }
+            min-width: 170px;
+            margin: 10px 0;
+
+            .fa {
+                margin-right: .2rem;
+                font-size: 1rem;
+            }
+            &:nth-child(2) {
+            @media only screen and (max-width: 550px) {
+                margin-left: 0;
+            }
+             margin-left: 10px;
+         }
+         }
+
+
     }
     &__cell {
-        &-name {
+        &--name {
             flex: 1 1 100%;
             min-width: 0;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-align: left;
         }
-        &-amount {
+        &--amount {
             flex: 0 0 75px;
-            text-align: center;
+            display:flex;
+            text-align: left;
+            align-items: center;
+
+            .button {
+                margin:0;
+                margin-left: auto;
+                width: 38px;
+                justify-self: flex-end;
+            }
+       
+        
         }
-        &-trade {
+        &--trade {
             flex: 0 0 50px;
         }
+    }
+    &__row--headings {
+        .card-profile__cell--amount {
+                flex-basis: 100px;
+        }
+
     }
 }

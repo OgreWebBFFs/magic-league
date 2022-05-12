@@ -1,0 +1,60 @@
+import React from 'react';
+import {
+  Row,
+  Cell
+} from '../../Table';
+import {
+  CardList,
+} from '../CardList';
+import {
+  CardGrid,
+  CardImageLink,
+} from '../../CardGrid';
+import { WishlistToggleSmall } from '../../WishlistToggle';
+import EmptyState from '../EmptyState';
+import TradableToggle from './TradableToggle';
+
+const Collection = (props) => {
+  const isEmpty = props.collectionCards.length < 1;
+  const isOwner = props.currentUserId === props.user.id 
+  return  (
+    <>
+      {isEmpty && <EmptyState isOwner={isOwner} user={props.user} CtaComponent={() => (
+        <a class="empty-card-view__btn" href={`/collections/${props.user.id}/edit`}>
+          Build Your Collection
+        </a>
+      )} />}
+      {(props.isListView && !isEmpty) && (
+        <CardList> 
+          {props.collectionCards.map((card, row) => (
+            <Row>
+              <Cell isPriority={true}>
+                <a href={`/cards/${card.id}`}>{card.name}</a>
+              </Cell>
+              <Cell>
+                <TradableToggle 
+                  isOwner={isOwner}
+                  card={card}
+                  row={row} />
+              </Cell>
+            </Row>
+          ))}
+        </CardList>)}
+      {(!props.isListView && !isEmpty) && (
+        <div className="dashboard__card-grid-wrapper">
+          <CardGrid>
+            {props.collectionCards.map((card, i) => (
+              <div key={`${card.id}-${i}`}>
+                <WishlistToggleSmall
+                  userId={props.user.id}
+                  cardId={card.id}
+                />
+                <CardImageLink {...card} />
+              </div>
+            ))}
+          </CardGrid>
+        </div>)}
+    </>
+  );
+}
+export default Collection;

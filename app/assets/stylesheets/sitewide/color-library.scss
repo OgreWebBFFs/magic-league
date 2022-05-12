@@ -37,6 +37,7 @@ $Very-Very-Light-Orange: #fffaf5;
 $Very-Very-Light-Purple: #f9f5fc;
 $Persimon: #ec5800;
 $Veri-Peri:#6667AB;
+$Olivine: #85BE79;
 
 //Semantic Colors Names
 
@@ -47,5 +48,53 @@ $color-highlight-mid-import: $Veri-Peri;
 $color-highlight-import: $Lightning-Blue;
 $color-accent: $Veri-Peri;
 $color-highlight-urgent: $Crimson;
+$color-accept: $Olivine;
 $background-color: $color-light;
 $ranking-border-color: $color-light;
+// 
+
+
+
+:root {
+    --lightning-blue-hue-sat: 186, 68%;
+    --lightening-blue-lightness: 59%;
+
+    --white-hue-sat:  0, 0%;
+    --white-lightness: 100%;
+
+    --eerie-black-hue-sat: 0, 0%;
+    --eerie-black-lightness: 10%;
+
+    --veri-peri-hue-sat: 239, 29%;
+    --veri-peri-lightness: 54%;
+
+    --desaturated-hue-sat: 0, 0%;
+
+
+
+    //Needed for various css calcs 
+
+    --color-highlight-primary-hue-sat: var(--lightning-blue-hue-sat);
+    --color-highlight-primary-lightness : var(--lightening-blue-lightness);
+
+    --color-accent-hue-sat: var(--veri-peri-hue-sat);
+    --color-accent-lightness: var(--veri-peri-lightness);
+
+    --color-dark-hue-sat: var(--eerie-black-hue-sat);
+    --color-dark-lightness : var(--eerie-black-lightness);
+
+    --color-light-hue-sat: var(--white-hue-sat);
+    --color-light-lightness : var(--white-lightness); 
+
+
+    --color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
+
+    --color-accent: hsl(var(--color-accent-hue-sat),var(--color-accent-lightness));
+
+    --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
+
+    --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
+
+
+
+}

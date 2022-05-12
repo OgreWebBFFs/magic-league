@@ -1,18 +1,1 @@
-<div class="admin_matches">
-  <div class="admin_matche__container">
-    <h2>Matches</h2>
-    <div class="admin_matches__table">
-      <div class="admin_matches__row-headings">
-        <div class="admin_matches__cell-date">Date</div>
-        <div class="admin_matches__cell-time">Time</div>              
-        <div class="admin_matches__cell">Winner</div>         
-        <div class="admin_matches__cell">Loser</div>         
-        <div class="admin_matches__cell-id" >ID</div>
-        <div class="admin_matches__cell-edit"></div>
-        <div class="admin_matches__cell-delete"></div>
-    </div>
-    <%= render 'matches', matches: @matches %>
-  </div>
-</div>
-  
-</div>
+<%= react_component("Matches", { matches: @matches, isAdmin: true}, :class => "matches__container") %>

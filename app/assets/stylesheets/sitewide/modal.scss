@@ -16,7 +16,7 @@
     align-items: center;
  
 
-    &__content {
+    &__area {
         position: relative;
         background: $color-light;
         vertical-align: middle;
@@ -24,7 +24,13 @@
         padding: 30px;
         border-radius: 2px;
         display: table;
-        z-index: 1px;
+        z-index: 1;
+    }
+
+    &__content {
+        max-height: 80vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
     
     &__title {
@@ -32,8 +38,9 @@
     }
 
     &__close-button{
-        right:-5px;
-        top: -5px;
+        position: absolute;
+        right:-25px;
+        top: -25px;
     }
 
     form {
@@ -45,5 +52,11 @@
 
     &.active {
         display: flex;
+    }
+
+    h3 {
+        @media only screen and (max-width: 400px) {
+            font-size: 1.5rem;
+        }
     }
 }

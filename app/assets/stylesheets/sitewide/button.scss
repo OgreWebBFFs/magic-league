@@ -1,0 +1,70 @@
+.button {
+    --background-color-hue-sat: var(--color-highlight-primary-hue-sat);
+    --background-color-lightness: var(--color-highlight-primary-lightness);
+    --background-color-opacity: 1;
+    --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
+
+    --adjusted-lightness: var(--background-color-lightness);
+    --text-color: var(--color-dark);
+    --text-color-hue-sat: var(--color-dark-hue-sat);
+    --text-color-lightness: var(--color-dark-lightness);
+  
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 1rem;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    outline: 0;
+    border: none;
+    border-radius: 2px;
+    -webkit-tap-highlight-color: transparent;
+    background-color:var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+
+
+    &:hover {
+        --adjusted-lightness:calc(var(--background-color-lightness) - 15%);
+        background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
+    }
+
+    &--inverse {
+        --background-color-hue-sat: var(--color-dark-hue-sat);
+        --background-color-lightness: var(--color-dark-lightness);
+        --background-color: var(--color-dark);
+        --text-color: var(--color-light);
+    }
+
+    &--accent {
+        --background-color-hue-sat: var(--color-accent-hue-sat);
+        --background-color-lightness: var(--color-accent-lightness);
+        --background-color: var(--color-accent);
+        --text-color: var(--color-dark);
+    }
+
+    &--ghost {
+        --background-color-opacity: 0;
+        padding:0;
+        margin:0;
+        &:hover,
+        &:focus {
+            --background-color-opacity: 0;
+            --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
+            color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
+        }
+    }
+    
+    &--inactive {
+        --background-color-hue-sat: var(--desaturated-hue-sat);
+    }
+}

@@ -1,3 +1,15 @@
+@import "./drawer";
+@import "./trade-logger";
+
+@mixin openDropdown {
+  opacity: 1;
+  transform: scaleY(1) translateX(-50%);
+  pointer-events: all;
+  &-toggle {
+    color: $color-highlight-import;
+  }
+}
+
 .nav {
   position: relative;
   box-sizing: border-box;
@@ -9,21 +21,16 @@
   background: linear-gradient(45deg, darken($color-highlight-mid-import, 35%), $color-dark 10%, $color-dark 90%, darken($color-highlight-import, 45%))  ;
   width: 100%;
   height: $nav-height;
+  padding: 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-  &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
+  &__logo {
     height: 100%;
-  }
-
-  &_logo {
-    height: 100%;
-    width: auto;
-    left: 0;
-    justify-content: start;
-
+    margin-right: auto;
+    padding: 2px 0;
+  
     svg {
       width: auto;
       height: 100%;
@@ -45,127 +52,131 @@
         }
       }
     }
-  }
 
-  &_menu {
+  }
+  
+  &__links {
     margin: 0;
     display: flex;
     align-items: center;
     height: 100%;
     text-align: center;
+    list-style-type: none;
+  }
 
-    &-link,
-    &-list,
-    &-mobile,
-    &-match-logger__toggle-wrapper {
-      min-height: 0;
-      position: relative;
-      -webkit-transition: background-color 0.3s;
-      transition: background-color 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      height: 100%;
-      text-transform: capitalize;
-      cursor: default;
-      margin-left: 15px;
-    }
-
-    &-mobile,
-    &-match-logger__toggle-wrapper {
-      color: $color-dark;
-
-      [class*="__btn"] {
-        padding: 0 10px;
-        font-size: 12px;
-      }
-    }
-
-    &-mobile {
-      display: none;
-    }
-
-    .dropdown-content {
-      background-color: lighten($color-dark, 10%);
-      background: linear-gradient(120deg, lighten($color-dark, 10%) 80%, darken($color-highlight-import, 45%))  ;
-      margin: 0;
-      display: block;
-      overflow-y: auto;
-      position: absolute;
-      transform: scaleY(0);
-      transform-origin: top;
-      top: $nav-height;
-      opacity: 0;
-      z-index: 99;
-      pointer-events: none;
-      -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-      transition: 0.2s;
-      max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
-
-      li {
-        width: 100%;
-        clear: both;
-
-        &:hover {
-          background-color: rgba($color-nuetral, 0.25);
-        }
-      }
-
-      a {
-        text-align: center;
-        padding: 15px 10px;
-        display: block;
-        font-size: 12px;
-        width: 150px;
-        cursor: pointer;
-        font-size: 14px;
-
-        &:hover {
-          background: none;
-        }
-      }
-
-      &.active {
-        opacity: 1;
-        transform: scaleY(1);
-        pointer-events: all;
-      }
+  &__link,
+  &__dropdown-toggle {
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    text-transform: capitalize;
+    margin: 0;
+    padding:0;
+    cursor: pointer;
+    color: $color-highlight-mid-import;
+    &:hover,
+    &:focus {
+      color: $color-highlight-import;
     }
   }
 
-  @media only screen and (max-width: 850px) {
-    &_menu {
-      &-link,
-      &-list {
-        display: none;
-      }
+  &__dropdown-toggle {
+    background: transparent;
+    border: none;
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+  }
 
-      &-mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .dropdown-content {
-          li {
-            a {
-              padding: 8px 10px;
-            }
-          }
-        }
+  &__dropdown {
+    position: absolute;
+    width: 150px;
+    background-color: lighten($color-dark, 10%);
+    background: linear-gradient(120deg, lighten($color-dark, 10%) 80%, darken($color-highlight-import, 45%))  ;
+    margin: 0;
+    left: 50%;
+    display: block;
+    overflow-y: auto;
+    position: absolute;
+    transform: scaleY(0) translateX(-50%);
+    transform-origin: top;    
+    transition-delay: 200ms;
+    top: $nav-height;
+    opacity: 0;
+    z-index: 99;
+    pointer-events: none;
+    -moz-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+    max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
+   
+    .nav__link-wrapper {
+      margin: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .nav__link {
+      text-align: center;
+      width: 100%;
+      padding: 8px 0;
+      &:hover {
+        background-color: fade-out($color-light, .8)
       }
     }
 
-    &_logo {
+    &:hover,
+    &:focus-within {
+      @include openDropdown();
+    }
+  }
+  
+  &__link-wrapper,
+  &__dropdown-wrapper {
+    position: relative;
+    height:100%;
+    display: flex;
+    align-items: center;
+    &:hover,
+    &:focus-within {
+      & > .nav__dropdown {
+        @include openDropdown();
+      }
+    }
+    @media only screen and (max-width: 900px) {
+      margin: 0;      
+    }
+    margin: 0 0.5rem;
+  }
+
+  &__mobile-menu-toggle {
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    margin: 0 0.5rem;
+  }
+
+  &__match-logger,
+  &__trade-logger {
+    &-button {
+      padding: 0.5rem;
+      font-size: 1.8rem;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &--mobile {
+    padding: 0 5%;
+    .nav__logo {
       width: 32px;
       overflow: hidden;
-
       svg {
         padding-left: 0;
       }
     }
+
   }
 }

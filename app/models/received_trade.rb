@@ -16,6 +16,11 @@ class ReceivedTrade < ApplicationRecord
     NUM_PER_PACK_BY_RARITY[rarity] * (num_trade_sets + extra_trade_sets(user_id))
   end
 
+  def increment
+    amount = num_received ? num_received + 1 : 1
+    self.update(num_received: amount)
+  end
+
   private
 
   def self.num_trade_sets

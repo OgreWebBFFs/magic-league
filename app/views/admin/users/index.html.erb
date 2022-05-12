@@ -1,23 +1,23 @@
 
-<div class="admin_users">
-  <div class= "admin_users__container">
+<div class="admin-users">
+  <div class= "admin-users__container">
     <h3>Users</h3>
-    <div class="admin_users__table">
-      <div class="admin_users__row-headings">
-        <div class="admin_users__cell">Name</div>
-        <div class="admin_users__cell">Email</div>
-        <div class="admin_users__cell">Status</div>
-        <div class="admin_users__cell">Locked At</div>
+    <div class="admin-users__table table">
+      <div class="admin-users__row-headings row row--headings">
+        <div class="admin-users__cell cell">Name</div>
+        <div class="admin-users__cell cell">Email</div>
+        <div class="admin-users__cell cell">Status</div>
+        <div class="admin-users__cell cell">Locked At</div>
       </div>
       <% @users.each do |user| %>
-        <div class="admin_users__row" >
-        <div class="admin_users__cell"><%= link_to user.name, user_path(user) %></div>
-          <div class="admin_users__cell"><%= link_to user.email, user_path(user) %></div>
-          <div class="admin_users__cell">
-              <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'admin_users_unlock__btn'} if !user.locked_at.nil? %>
-              <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'admin_users_lock__btn'} if user.locked_at.nil? %>
+        <div class="admin-users__row row" >
+        <div class="admin-users__cell cell"><%= link_to user.name, user_path(user) %></div>
+          <div class="admin-users__cell cell"><%= link_to user.email, user_path(user) %></div>
+          <div class="admin-users__cell cell">
+              <%= link_to 'locked', admin_user_unlock_path(user), { method: "patch", class: 'button'} if !user.locked_at.nil? %>
+              <%= link_to 'unlocked', admin_user_lock_path(user), { method: "patch", class: 'button button--inverse'} if user.locked_at.nil? %>
           </div>
-          <div class="admin_users__cell"><%= user.locked_at %></div>
+          <div class="admin-users__cell cell"><%= user.locked_at %></div>
         </div>
       <% end %> 
     </div>

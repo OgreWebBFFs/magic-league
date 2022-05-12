@@ -1,23 +1,10 @@
 //Animations
 
-//Rankings Border Animations
-@keyframes growVert {
-  0% {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes growHorz {
-  0% {
-    transform: scaleX(0);
-  }
-}
-
 //Background saturation animation
 @keyframes fadeInBGFilter {
   0% {
-    -webkit-filter: saturate(0.5);
-    filter: saturate(0.5);
+    -webkit-filter: saturate(0.25);
+    filter: saturate(0.25);
   }
 }
 
@@ -134,5 +121,75 @@
 
   96% {
     fill: $color-highlight-mid-import;
+  }
+}
+
+
+@keyframes mtgBackgroundColorCycle {
+  16% {
+    background-color: $Caribbean-Green;
+  }
+
+  32% {
+    background-color: $Fountain-Blue;
+  }
+
+  48% {
+    background-color: $Eerie-Black;
+  }
+
+  64% {
+    background-color: $Mellow-Apricot;
+  }
+
+  82% {
+    background-color: $Crimson;
+  }
+
+  98% {
+    background-color: $color-highlight-mid-import;
+  }
+}
+
+@-webkit-keyframes mtgColorCycle {
+  16% {
+    background-color: $Caribbean-Green;
+  }
+
+  32% {
+    background-color: $Fountain-Blue;
+  }
+
+  48% {
+    background-color: $Eerie-Black;
+  }
+
+  64% {
+    background-color: $Mellow-Apricot;
+  }
+
+  80% {
+    background-color: $Crimson;
+  }
+
+  96% {
+    background-color: $color-highlight-mid-import;
+  }
+}
+
+
+  
+@-webkit-keyframes strokeAnimation {
+  0% {
+    stroke-dashoffset:var(--border-circumference);
+    stroke-dasharray:var(--border-circumference);
+  }
+
+}
+
+@keyframes strokeAnimation {
+  0% {
+    stroke-dashoffset:var(--border-circumference);
+    stroke-dasharray:var(--border-circumference);
   }
 }

@@ -1,12 +1,14 @@
+@import "./trades";
+
 .dashboard {
     &__title {
         margin-top: 0;
     }
 
-    &_profile {
+    &-profile {
         display: flex;
 
-        &_user-details {
+        &__user-details {
             display: flex;
             flex-direction: column;
             flex: 0 0 20%;
@@ -14,11 +16,6 @@
             //Height of trades table 
             height: 192px;
             align-items: center;
-
-            &_edit__btn {
-                margin-top: 2px;
-                width: 154px;
-            }
 
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
@@ -28,23 +25,24 @@
             }
         }
 
-        &_trades {
-            flex: 1 0 auto;
-
-            &__cell {
-                flex: 1 1 30%;
-                text-align: center;
-
-                input {
+        &__trades {
+                .cell {
+                    flex: 1 1 33%;
                     text-align: center;
+    
+                    input {
+                        text-align: center;
+                    }
                 }
-            }
+        }
+        &__edit-button {
+                margin:0.25rem 0; 
         }
 
         @media only screen and (max-width: 850px) {
             display: block;
 
-            &_user-details {
+            &__user-details {
                 margin: 0 auto $section-margin;
                 align-items: center;
                 padding-right: 0;
@@ -55,7 +53,7 @@
                 }
             }
 
-            &_trades {
+            &__trades {
                 flex: 1 0 100%;
             }
 
@@ -63,140 +61,101 @@
 
     }
 
-    &_edit-user-details {
-        &__title {
-            width: 100%;
-            border-bottom: 1px solid $color-highlight-import;
+    &__tab-wrapper {
+        display: flex;
+        background: $color-light;
+
+        .notification {
+            color: #fe466e;
+            position: relative;
+            left: 0.25rem;
+            font-size: 1.2rem;
         }
 
-        &__form {
-            display: flex;
-
-        }
-
-        &__gravatar {
-            flex: 0 0 154px;
-            margin-right: $section-margin;
-
-            img {
-                background: $color-dark;
-                width: 100%;
-            }
-        }
-
-        &__fields {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;
-            justify-content: space-between;
-        }
-
-        &_actions {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @media only screen and (max-width: 650px) {
-            &__gravatar {
-                flex: 0 0 122px;
-                margin-right: 10px;
-            }
-
-            &_actions {
-                flex-direction: column;
-                align-items: center;
-
-                &-submit__btn {
-                    margin-top: 5px;
-                }
+        .active {
+            .notification {
+                color: $color-highlight-urgent;
             }
         }
     }
 
-    &_card-interface {
+    &__tab {
+        color: $color-light;
+        background: darken($color-nuetral, 35%);
+        margin-right: 5px;
+        margin-bottom:0;
+        margin-left:0;
+        width: 150px;
+        border: 2px solid $color-dark;
+        border-bottom: 1px solid rgba($color-dark, .15);
+        ;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            background: rgba($color-dark, .8);
+            color: $color-light;
+        }
+
+        &.active {
+            background: $color-dark;
+
+        }
+
+        @media only screen and (max-width: 850px) {
+            flex-basis: 33%;
+
+            &__title {
+                align-self: start;
+            }
+
+            &_edit__btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 200px;
+                flex: 0 0 auto;
+            }
+        }
+    }
+
+    &__card-interface {
         border: 2px solid $color-dark;
 
-        &__wrapper {
+        &-wrapper {
             margin: $section-margin 0;
         }
 
-        &_tab__wrapper {
-            display: flex;
-            background: $color-light;
-        }
-
-        &_tab__btn {
-            color: $color-light;
-            background: darken($color-nuetral, 35%);
-            margin-right: 5px;
-            width: 150px;
-            border: 2px solid $color-dark;
-            border-bottom: 1px solid rgba($color-dark, .15);
-            ;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-
-            &:hover {
-                background: rgba($color-dark, .8);
-                color: $color-light;
-            }
-
-            &.active {
-                background: $color-dark;
-
-            }
-
-            @media only screen and (max-width: 850px) {
-
-                &__title {
-                    align-self: start;
-                }
-
-                &_edit__btn {
-                    margin-left: 0;
-                    margin-top: 10px;
-                    width: 200px;
-                    flex: 0 0 auto;
-                }
-            }
-        }
-
-        &_action-bar {
-            display: flex;
-            align-items: center;
-            background-color: $color-dark;
-            justify-content: flex-end;
-        }
-
-        &_action__btn {
-            padding: 0 10px;
-            font-size: 12px;
-            margin: 5px;  
-        }
-
-        &_view-toggles {
-            display: flex;
-            margin-right: auto;
-        }
-
-        &_collection_toggle-card-view__btn,
-        &_wishlist_toggle-card-view__btn {
-         width: 35px;
-         margin: 5px;
-         background: darken($color-nuetral, 15%);
-            &.active{
-                background: $color-highlight-import
-            }
-            &:hover{
-                background: $color-highlight-mid-import;
-            }
-        }
-
+        @import 'filter';
     }
 
-    &_card-view {
-        display: none;
+    &__action-bar {
+        display: flex;
+        background-color: $color-dark;
+        align-items: center;
+        justify-content: flex-end;
+        height: 55px;
+    }
 
+    &__cards-action {
+        margin: 5px; 
+    }
+
+    &__card-view-toggles {
+        display: flex;
+        margin-right: auto;
+        flex-grow: 1;
+    }
+
+    &__card-view-toggle {
+        margin: 5px;
+    }
+
+
+    &_card-view {   
         &__cell {
             justify-self: flex-end;
             flex: 0 0 50px;
@@ -211,11 +170,6 @@
                 justify-self: flex-start;
             }
         }
-        &_remove-from-wishlist__btn{
-           width:25px;
-           height:25px;
-           line-height: 25px;
-        }
 
         .empty-card-view{
             grid-column: 1 / span 3;
@@ -228,19 +182,11 @@
                 font-size: 20px;
             }
         }
-
-        &.active {
-            display: block;
-        }
     }
+
+    &__card-grid-wrapper {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
+    }
+
 }
 
-
-#collection-table,
-#collection-grid,
-#wishlist-table,
-#wishlist-grid {
-    &:not(.active) {
-        display:none;
-    }
-}

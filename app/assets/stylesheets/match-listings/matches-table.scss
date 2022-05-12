@@ -1,5 +1,5 @@
-.matches,
-.admin_matches {
+.matches__container,
+.admin-matches {
     &__cell {
         flex: 1 1 20%;
         &-date,
@@ -14,43 +14,52 @@
             flex: 0 0 80px;
         }
     }
-    &-label-mobile{
-        display:none;
-    }
 
-    [class*="__btn"]{
-        line-height: 24px;
-    }
 
-    @media only screen and (max-width: 850px) {
-        
-        &-label-mobile{
-            display:inline;
-            font-weight: bold;
+    .matches__cell {
+        &--date,
+        &--time {
+            flex: 0 0 150px;
         }
-
-        &__row {
-            display:block; 
-            &-headings {
-                display:none;
+        &--player {
+            flex: 1 1 auto;
+        }
+        &--id {
+            flex: 0 0 50px;
+        }
+        &--admin-actions {
+            display: flex;
+            flex: 0 0 150px;
+            .button {
+                margin-left:0;
             }
         }
     
-        [class*="__cell"] {
-            text-align:center;
-        }
+    }
 
-        &__cell{
-            &-date{
+    @media only screen and (max-width: 850px) {
+        .row {
+            display:block; 
+        }     
+    
+        .matches__cell { 
+            text-align:center;
+            justify-items: center;
+            &--admin-actions{
+                .button {
+                    margin: 1rem;
+                }
+            }
+            &--date{
                 color: $color-light;
                 background: $color-dark;
             }
+            &-label {
+                font-weight: bold;
+            }
         }
-
-        [class*="__btn"]{
-         width: 100px;
-        }
+     
+        
     }
 }
-
 
