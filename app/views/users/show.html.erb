@@ -8,6 +8,7 @@
       edit: policy(@user.collection).edit?,
       currentUserWishlist: @current_user_wishlist,
       collectionCards: @cards,
+      collectionId: @user.collection.id,
       tradables: @tradables,
       wishlist: @wishlist,
       trades: @trades.select{ |trade|
