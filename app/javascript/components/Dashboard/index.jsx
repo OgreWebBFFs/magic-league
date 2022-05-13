@@ -63,7 +63,7 @@ const Dashboard = (props) => {
     </div>
     <ActionBar actions={Tabs[activeTab].actions}>
       <ViewToggle key={"view-toggle"} isListView={isListView} setIsListView={setIsListView} />
-      <EditAction key={"edit"} canEdit={props.edit} userId={props.user.id} />
+      <EditAction key={"edit"} canEdit={props.edit} collectionId={props.collectionId} />
     </ActionBar>
     <div className="dashboard__card-view">
       <TradablesContext.Provider value={{ tradables, setTradables }}>
