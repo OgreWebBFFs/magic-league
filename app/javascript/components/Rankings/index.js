@@ -1,14 +1,11 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import classNames from "classnames";
 
 import Button from "../Button";
 
 
 const Rankings = ({rankedPlayers, unrankedPlayers}) => {
-    const [showRankings, setShowRankings] = useState(true)
-
-    const rankingsRef= useRef(null);
-    const rankingsBorderRef =  useRef(null);
+    const [showRankings, setShowRankings] = useState(true);
 
     const getPlayers = (playerArr, isRanked=true) => playerArr.map((user, i)=>{
        const  {name, id, ranking, wins=0, losses=0} = user.table   
@@ -41,38 +38,39 @@ const Rankings = ({rankedPlayers, unrankedPlayers}) => {
         dateForm.classList.toggle("rankings__date_form--hidden");
         setShowRankings(!showRankings)
     }
-
+    
     return (
     <>
-   <div ref={rankingsRef} className={classNames("rankings", "container", {"rankings--hidden":!showRankings})}>      
+   <div  className={classNames("rankings", {"rankings--hidden":!showRankings})}>      
         <Button className={"button--ghost rankings__title"} onClick={()=>{toggleRankingsVisible()}} >
             Rankings
         </Button>
     
         <div className={"rankings__wrapper"}>
-       
-            <svg ref={rankingsBorderRef} className="rankings__border" xmlns="http://www.w3.org/2000/svg">
-                <rect className="rankings__border-shape1"/>
-            </svg>
-          
-            
             <div className="rankings__scroll-catcher">
-            <div className="rankings__vert-centerer">
                 <div className="rankings__player-listing">
                 <div id="ranked-players" className="rankings__player-bucket">
                     {getPlayers(rankedPlayers)}
                 </div>
-                <hr className="rankings__divider"/>
-                <div id="unranked-players" className="rankings__player-bucket">
-                    {getPlayers(unrankedPlayers, false)}
-                </div>
+                { unrankedPlayers.length > 0 && 
+                    <>
+                        <hr className="rankings__divider"/>
+                        <div id="unranked-players" className="rankings__player-bucket">
+                            {getPlayers(unrankedPlayers, false)}
+                        </div>
+                    </>
+                }
                 </div>
             </div>
+            <div className="rankings__border-wrapper">
+                <div className="rankings__border rankings__border--left"/>
+                <div className="rankings__border rankings__border--top"/>
+                <div className="rankings__border rankings__border--right"/>
+                <div className="rankings__border rankings__border--bottom"/>
             </div>
-
         </div>
-     
-    </div> 
+ 
+    </div>
     { !showRankings &&
     <Button className={classNames("rankings__toggle-visbility-button", "button--inverse")} onClick={()=>{toggleRankingsVisible()}}> <i className="fas fa-list"></i></Button>}
     </>
