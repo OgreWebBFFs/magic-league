@@ -1,7 +1,7 @@
 <%= react_component("CardOwnership", {
         card: @card,
         wishlist: @wishlisters_details,
-        total_count: @total_count,
-        owner_details: @owner_details.collect { |key, value| value },
-        current_user_id: current_user.id
+        totalCount: @total_count,
+        ownerDetails: @owner_details.collect { |key, value| value },
+        currentUserId: current_user.id
     }, {:class => "card-profile__container"}) %>

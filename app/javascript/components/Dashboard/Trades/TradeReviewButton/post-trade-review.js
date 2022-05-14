@@ -5,13 +5,13 @@ const postTradeReview = async (trade, status) => {
     await xhrRequest({
       url: `/trades/${trade.id}`,
       options: {
-        method: "PUT",
+        method: 'PUT',
         body: JSON.stringify({ status }),
-      }
+      },
     });
     window.location.reload();
-  } catch(e) {
-   console.log("ERROR", e);
+  } catch (e) {
+    // Handle trade review update errors
   }
 };
 

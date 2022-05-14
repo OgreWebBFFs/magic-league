@@ -5,15 +5,14 @@ import xhrRequest from '../../helpers/xhr-request';
 
 const fetchCollection = async (userId) => (await xhrRequest({
   url: `/collections/${userId}`,
-  options: { method: 'GET' }
-})).data
+  options: { method: 'GET' },
+})).data;
 
-
-const SimpleEdit = (props) => {
+const SimpleEdit = ({ userId, collectionId }) => {
   const [cards, setCards] = useState([]);
 
-  const resetToCollection = async () => setCards(await fetchCollection(props.user_id));
-  
+  const resetToCollection = async () => setCards(await fetchCollection(userId));
+
   return (
     <>
       <SearchInput
@@ -21,12 +20,12 @@ const SimpleEdit = (props) => {
         onReset={resetToCollection}
       />
       <CardGrid>
-        {cards.map(card => (
+        {cards.map((card) => (
           <>
-            <CardImageLink key={`${card.attributes.name} image`} {...card.attributes} />
+            <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
             <QuantityControl
               key={`${card.attributes.name} quantity`}
-              collectionId={props.collection_id}
+              collectionId={collectionId}
               cardId={card.attributes.id}
               value={card.attributes.count_in_collection}
             />
@@ -34,7 +33,7 @@ const SimpleEdit = (props) => {
         ))}
       </CardGrid>
     </>
-  )
+  );
 };
 
 export default SimpleEdit;
