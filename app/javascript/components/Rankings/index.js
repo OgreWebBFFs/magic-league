@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import useIsMobile from '../../helpers/hooks/use-is-mobile';
 import classNames from "classnames";
 
 import Button from "../Button";
@@ -7,8 +6,6 @@ import Button from "../Button";
 
 const Rankings = ({rankedPlayers, unrankedPlayers}) => {
     const [showRankings, setShowRankings] = useState(true);
-    const isMobile = useIsMobile();
-    const rankingsRef= useRef(null);
 
     const getPlayers = (playerArr, isRanked=true) => playerArr.map((user, i)=>{
        const  {name, id, ranking, wins=0, losses=0} = user.table   
@@ -44,7 +41,7 @@ const Rankings = ({rankedPlayers, unrankedPlayers}) => {
     
     return (
     <>
-   <div ref={rankingsRef} className={classNames("rankings", "container", {"rankings--hidden":!showRankings, "rankings--mobile":isMobile})}>      
+   <div  className={classNames("rankings", {"rankings--hidden":!showRankings})}>      
         <Button className={"button--ghost rankings__title"} onClick={()=>{toggleRankingsVisible()}} >
             Rankings
         </Button>
