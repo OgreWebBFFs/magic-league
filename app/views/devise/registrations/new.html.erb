@@ -1,8 +1,6 @@
-
-<div class="cycling-background" style="background: url('<%= get_random_bg_image %>') 0% 0% / cover no-repeat;">
-</div>
+<%= react_component("CyclingBackground", {bgPath:get_random_bg_image}) %>
 <div class="login">
-  <div class="login-content">
+  <div class="login__content">
   <h2 class="login__title">Sign Up</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
@@ -13,7 +11,7 @@
 
     <div class="login_form-field">
       <%= f.label :name %>
-      <%= f.email_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
 
     <div class="login_form-field">
@@ -29,9 +27,10 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <%= f.submit "Sign up", class: "login_submit__btn"  %>
-  
-  <% end %>
+    <%= f.submit "Sign up", class: "button login__submit-button"  %>
 
-  <%= render "devise/shared/links" %>
+    <%= link_to "Back to Login", new_registration_path(resource_name), class:"login__button button button--ghost" %>
+
+    <% end %>
+  </div>
 </div>
