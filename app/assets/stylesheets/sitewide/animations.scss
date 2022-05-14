@@ -178,18 +178,19 @@
 }
 
 
+
+@keyframes growVert {
+ 0%{ transform: scaleY(0)}
+}
   
-@-webkit-keyframes strokeAnimation {
-  0% {
-    stroke-dashoffset:var(--border-circumference);
-    stroke-dasharray:var(--border-circumference);
-  }
+@-webkit-keyframes growVert {
+  0%{ transform: scaleY(0)}
+ }
 
-}
-
-@keyframes strokeAnimation {
-  0% {
-    stroke-dashoffset:var(--border-circumference);
-    stroke-dasharray:var(--border-circumference);
+ @keyframes growHorz {
+  0%{ transform: scaleX(0)}
+ }
+   
+ @-webkit-keyframes growHorz {
+   0%{ transform: scaleX(0)}
   }
-}
