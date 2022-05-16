@@ -10,7 +10,7 @@ const Alert = ({ userSignedIn, key, value }) => {
 
   return show
     && (
-    <div id="alert" className={classNames('active', 'alert', `alert-${key}`, { 'logged-out': userSignedIn })}>
+    <div id="alert" className={classNames('active', 'alert', `alert-${key}`, { 'logged-out': !userSignedIn })}>
       {value}
       <button type="button" className="alert__close-button" onClick={() => setShow(false)}>
         <i className="fas fa-times" />

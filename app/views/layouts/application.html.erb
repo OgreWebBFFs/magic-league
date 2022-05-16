@@ -16,7 +16,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
+  <body>
     <% if user_signed_in? %>
       <% unlockedUsers = User.unlocked %>
       <%= react_component("Navigation", {
@@ -29,10 +29,10 @@
 
     <div class="app__section full-page">
       <% flash.each do |key, value| %>
-        <% react_component("Alert", {
+        <%= react_component("Alert", {
           key: key,
           value: value,
-          userSignedIn: user_signed_in}) %>
+          userSignedIn: user_signed_in? }) %>
       <% end %>
       <%= yield %>
     </div>
