@@ -28,8 +28,9 @@ const TradableToggle = ({ card, isOwner, row }) => {
       ));
     setTradables(await updatedTradables);
   };
+  const inputId = `${card.name}_${tradableCard.id}_${row}`;
   return (
-    <label className="dashboard_tradable__label" htmlFor={`${card.name}_${tradableCard.id}_${row}`}>
+    <>
       <input
         className={`dashboard_tradable__toggle tradable-toggle-${card.id}`}
         type="checkbox"
@@ -37,10 +38,11 @@ const TradableToggle = ({ card, isOwner, row }) => {
         checked={tradableCard.id !== undefined}
         data-tradable-id={tradableCard.id}
         data-id={card.id}
-        id={`${card.name}_${tradableCard.id}_${row}`}
+        id={inputId}
         onChange={handleChange}
       />
-    </label>
+      <label className="dashboard_tradable__label" htmlFor={inputId} />
+    </>
   );
 };
 

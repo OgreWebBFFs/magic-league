@@ -1,9 +1,9 @@
 module ApplicationHelper
 
   def get_random_bg_image
-      image_path_prefix = "app/assets/images/"
+      image_path_prefix = "app/javascript/images/"
       background_files = Dir.glob("#{image_path_prefix}backgrounds/*").map{ |s| File.basename(s) }
-      image_path  'backgrounds/' + background_files[rand(0..background_files.length-1)]
+      asset_pack_path 'media/images/backgrounds/' + background_files[rand(0..background_files.length-1)]
   end
 
   def google_svg
@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def show_svg(path)
-    File.open("app/assets/images/#{path}", "rb") do |file|
+    File.open("app/javascript/images/#{path}", "rb") do |file|
       raw file.read
     end
   end

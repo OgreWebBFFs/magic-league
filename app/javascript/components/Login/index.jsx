@@ -6,16 +6,12 @@ const Login = () => (
       <h2 className="login__title">Log in</h2>
       <form className="new_user" id="new_user" action="/users/sign_in" acceptCharset="UTF-8" method="post">
         <div className="login_form-field">
-          <label htmlFor="user_email">
-            <input autoComplete="email" type="email" name="user[email]" id="user_email" />
-            Email
-          </label>
+          <label htmlFor="user_email">Email</label>
+          <input autoComplete="email" type="email" name="user[email]" id="user_email" />
         </div>
         <div className="login_form-field">
-          <label htmlFor="user_password">
-            <input autoComplete="current-password" type="password" name="user[password]" id="user_password" />
-            Password
-          </label>
+          <label htmlFor="user_password">Password</label>
+          <input autoComplete="current-password" type="password" name="user[password]" id="user_password" />
         </div>
         <input type="submit" name="commit" value="Log in" className="button" data-disable-with="Log in" />
         <a className="button" href="/users/auth/google_oauth2">

@@ -14,8 +14,20 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import Rails from '@rails/ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from '@rails/activestorage';
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
+
 // Support component names relative to this directory:
 const componentRequireContext = require.context('components', true);
 const ReactRailsUJS = require('react_ujs');
 
 ReactRailsUJS.useContext(componentRequireContext);
+
+// Include images from static asset directory
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)

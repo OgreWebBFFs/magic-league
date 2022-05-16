@@ -43,7 +43,7 @@ const Tabs = {
 };
 
 const Dashboard = ({
-  tradeables: initialTradables,
+  tradables: initialTradables,
   wishlist: initialWishlist,
   currentUserWishlist: initialCurrentUserWishlist,
   edit,
