@@ -4,7 +4,7 @@
   "scripts": {
     "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",
     "start-ubuntu": "sudo service postgresql start && rails s",
-    "lint": "./node_modules/.bin/eslint ./app/javascript/**/** --ext jsx --ext js"
+    "lint": "./node_modules/.bin/eslint ./app/javascript/** --no-error-on-unmatched-pattern --ext jsx --ext js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.16.7",

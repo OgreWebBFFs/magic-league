@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from 'react';
 import TradablesContext from '../../../contexts/TradablesContext';
 import xhrRequest from '../../../helpers/xhr-request';
@@ -31,6 +32,7 @@ const TradableToggle = ({ card, isOwner, row }) => {
   const inputId = `${card.name}_${tradableCard.id}_${row}`;
   return (
     <>
+      <label className="dashboard_tradable__label" htmlFor={inputId} />
       <input
         className={`dashboard_tradable__toggle tradable-toggle-${card.id}`}
         type="checkbox"
@@ -41,7 +43,6 @@ const TradableToggle = ({ card, isOwner, row }) => {
         id={inputId}
         onChange={handleChange}
       />
-      <label className="dashboard_tradable__label" htmlFor={inputId} />
     </>
   );
 };
