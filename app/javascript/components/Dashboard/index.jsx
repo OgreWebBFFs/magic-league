@@ -77,7 +77,7 @@ const Dashboard = ({
   }, [activeTab, isListView]);
 
   return (
-    <div className="dashboard__card-interface-wrapper">
+    <div className="dashboard__card-interface-wrapper" data-preserve-scroll="true">
       <div className="dashboard__tab-wrapper">
         {Object.keys(Tabs).map((tabName) => (
           <InterfaceTab
