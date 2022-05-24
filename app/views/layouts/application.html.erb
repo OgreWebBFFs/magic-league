@@ -13,11 +13,10 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body onload="setTimeout(AppLayout.timedAlertClose, 5000)">
+  <body>
     <% if user_signed_in? %>
       <% unlockedUsers = User.unlocked %>
       <%= react_component("Navigation", {
@@ -30,9 +29,10 @@
 
     <div class="app__section full-page">
       <% flash.each do |key, value| %>
-        <div id="alert"  class="active alert alert-<%= key %> 
-          <%= user_signed_in? ? '' : 'logged-out' %>"><%= value %>
-          <a class="alert__close-button" href="#" onclick="Helpers.toggleElementById('alert')" data-turbolinks="false"><i class="fas fa-times"></i></a></div>
+        <%= react_component("Alert", {
+          key: key,
+          value: value,
+          userSignedIn: user_signed_in? }) %>
       <% end %>
       <%= yield %>
     </div>
@@ -53,9 +53,5 @@
       </footer>
 
     <% end %>
-    <!-- Site Wide Scipts -->
-    <script>
-      $(document).on('turbolinks:load');
-  </script>
   </body>
 </html>

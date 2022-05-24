@@ -1,24 +1,24 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import WishlistContext from '../../contexts/WishlistContext';
-import Button from "../Button";
+import Button from '../Button';
 import putToWishlist from './put-to-wishlist';
 
 const WishlistToggleSmall = ({ cardId, userId }) => {
   const {
     currentUserWishlist,
-    setCurrentUserWishlist
+    setCurrentUserWishlist,
   } = useContext(WishlistContext);
-  const isWishlisted = currentUserWishlist.some(wishlistCard => wishlistCard.id === cardId);
+  const isWishlisted = currentUserWishlist.some((wishlistCard) => wishlistCard.id === cardId);
   const toggleWishlist = async () => {
     const updatedWishlist = await putToWishlist(userId, cardId);
     setCurrentUserWishlist(updatedWishlist);
-  } 
+  };
   return (
-    <Button className={classNames(`wishlist-${cardId}__toggle`,  "card-grid__wishlist__toggle", "button--accent", {'active': isWishlisted})} onClick={toggleWishlist}>
-      <i className="far fa-heart"></i>
+    <Button className={classNames(`wishlist-${cardId}__toggle`, 'card-grid__wishlist__toggle', 'button--accent', { active: isWishlisted })} onClick={toggleWishlist}>
+      <i className="far fa-heart" />
     </Button>
-  )
-}
+  );
+};
 
 export default WishlistToggleSmall;

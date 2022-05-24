@@ -1,37 +1,42 @@
 import React from 'react';
-import { Table, Row, Cell} from '../Table';
+import { Table, Row, Cell } from '../Table';
 import {
   TradeProposalButtonSmall,
 } from '../TradeProposal';
 import formatCard from './format-card';
 
-const AmountCell = ({children}) => <Cell className="card-profile__cell--amount">{children}</Cell>;
+const AmountCell = ({ children }) => <Cell className="card-profile__cell--amount">{children}</Cell>;
 
-const NoOwnersMessage = () => <Cell isPriority={true}>No one owns this card yet</Cell>;
+const NoOwnersMessage = () => <Cell isPriority>No one owns this card yet</Cell>;
 
-const OwnershipTable = ({ card, current_user_id, total_count, owner_details }) => {
-  return (
+const OwnershipTable = ({
+  card, currentUserId, totalCount, ownerDetails,
+}) => (
   <>
     <Table>
-      <Row className="card-profile__row--headings" isHeading={true}>
-        <Cell isPriority={true}>Owner</Cell>
+      <Row className="card-profile__row--headings" isHeading>
+        <Cell isPriority>Owner</Cell>
         <AmountCell>Amount</AmountCell>
       </Row>
-      {total_count <= 0 ? <NoOwnersMessage /> : (
-        owner_details.map(({count, id, name}) => (
+      {totalCount <= 0 ? <NoOwnersMessage /> : (
+        ownerDetails.map(({ count, id, name }) => (
           <Row>
-            <Cell isPriority={true}>{name}</Cell>
-            <AmountCell>{count} 
-            {id !== current_user_id && <TradeProposalButtonSmall
-                card={formatCard(card, [{id, name}])}
-                currentUserId/>}
-              </AmountCell>
+            <Cell isPriority>{name}</Cell>
+            <AmountCell>
+              {count}
+              {id !== currentUserId && (
+              <TradeProposalButtonSmall
+                card={formatCard(card, [{ id, name }])}
+                currentUserId
+              />
+              )}
+            </AmountCell>
           </Row>
         ))
       )}
     </Table>
-    <p>{`*total copies in league: ${total_count}`}</p>
-  </>)
-}
+    <p>{`*total copies in league: ${totalCount}`}</p>
+  </>
+);
 
 export default OwnershipTable;
