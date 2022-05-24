@@ -13,7 +13,7 @@
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@rails/activestorage": "^6.0.5",
     "@rails/ujs": "^6.0.5",
-    "@rails/webpacker": "5.4.0",
+    "@rails/webpacker": "5.4.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "classnames": "^2.3.1",
     "postcss": "^8.2.10",
