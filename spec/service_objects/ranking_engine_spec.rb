@@ -1,46 +1,20 @@
-require 'rails_helper'
+require 'rspec_helper'
 
 describe 'RankingEngine' do
   it 'generates Elo for two users and one match' do
-    zack = User.create(name: 'Zack Brown', email: 'zacktbrown@gmail.com', password: '12345678')
-    pat = User.create(name: 'Pat Roach', email: 'pat@gmail.com', password: '12345678')
+    users = [double(id: 1), double(id: 2)]
+    matches = [double(winner_id: 1, loser_id: 2)]
+    rankings = RankingEngine.new(users, matches).generate_rankings
 
-    Match.create(winner: zack, loser: pat, played_at: Time.now)
-
-    users = User.all
-    RankingEngine.new(users, Match.all).generate_rankings
-
-    expect(users.first.ranking).to eq(1216)
-    expect(users.last.ranking).to eq(1184)
+    expect(rankings.find{|ranking| ranking.user.id == 1}.elo).to be > 1200
+    expect(rankings.find{|ranking| ranking.user.id == 2}.elo).to be < 1200
   end
-  it 'generates Elo for two users and three matches where one match is added in between two existing matches' do 
-    zack = User.create(name: 'Zack Brown', email: 'zacktbrown@gmail.com', password: '12345678')
-    pat = User.create(name: 'Pat Roach', email: 'pat@gmail.com', password: '12345678')
+  it 'generates Elo for two users and two matches' do
+    users = [double(id: 1), double(id: 2)]
+    matches = [double(winner_id: 1, loser_id: 2), double(winner_id: 2, loser_id: 1)]
+    rankings = RankingEngine.new(users, matches).generate_rankings
 
-    Match.create(winner: zack, loser: pat, played_at: 2.days.ago)
-    Match.create(winner: pat, loser: zack, played_at: 2.days.from_now)
-
-    users = User.all
-    RankingEngine.new(users, Match.all).generate_rankings
-
-    expect(users.first.ranking.floor).to eq(1198)
-    expect(users.last.ranking.floor).to eq(1201)
-
-    Match.create(winner: zack, loser: pat, played_at: Time.now)
-
-    RankingEngine.new(users, Match.all).generate_rankings
-
-    expect(users.first.ranking.floor).to eq(1214)
-    expect(users.last.ranking.floor).to eq(1185)
-  end
-  context 'perf test' do 
-    it "is performant on small sets" do 
-      users = 12.times.map {|x| User.create(name: "User #{x}", email: "user#{x}@gmail.com", password: "12345679") }
-      1000.times { users.shuffle!; Match.create(winner: users.first, loser: users.last, played_at: Time.now)}
-
-      time = Benchmark.measure { RankingEngine.new(users, Match.all).generate_rankings }
-
-      expect(time.real).to be < 0.1
-    end
+    expect(rankings.find{|ranking| ranking.user.id == 1}.elo).to be < 1205 
+    expect(rankings.find{|ranking| ranking.user.id == 2}.elo).to be > 1195
   end
 end
