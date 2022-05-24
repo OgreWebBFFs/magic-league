@@ -9,7 +9,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const [playerA, setPlayerA] = useState(currentUserObject);
   const [playerB, setPlayerB] = useState(currentUserObject);
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('en-CA'));
-  const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false }));
+  const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
 
   return (
     <form id="match-logger" action="/matches" acceptCharset="UTF-8" method="post">
