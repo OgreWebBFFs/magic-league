@@ -1,9 +1,10 @@
 class Match < ApplicationRecord
   scope :played_during_month, ->(date) { where(played_at: date.beginning_of_month..date.end_of_month) }
 
-  belongs_to :winner, class_name: 'User', foreign_key: 'winner_id'
-  belongs_to :loser, class_name: 'User', foreign_key: 'loser_id'
+  has_many :records
+  has_many :users, through: :records
 
-  validates :winner, :loser, :played_at, presence: true
+  validates :participants, numericality: { greater_than_or_equal_to: 2 }, presence: true
+  validates :played_at, presence: true
 
 end
