@@ -1,7 +1,7 @@
 class Result < ApplicationRecord
   
   belongs_to :match, class_name: 'Match', foreign_key: 'match_id'
-  has_one :user
+  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
 
   validates :place, numericality: { 
     greater_than: 0,
