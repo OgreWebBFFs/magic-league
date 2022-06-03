@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToggleSwitch = ({ name, value, onChange }) => (
+const ToggleSwitch = ({ name, value, onChange, optionA, optionB }) => (
   <div className="toggle-switch">
     <input
       type="checkbox"
@@ -11,7 +11,7 @@ const ToggleSwitch = ({ name, value, onChange }) => (
       id={name}
     />
     <label className="toggle-switch-label" htmlFor={name}>
-      <span className="toggle-switch-inner" data-a="H2H" data-b="Multi" />
+      <span className="toggle-switch-inner" data-a={optionA} data-b={optionB} />
       <span className="toggle-switch-switch" />
     </label>
   </div>
