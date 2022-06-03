@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ToggleSwitch from '../../ToggleSwitch';
 import HeadToHeadLogger from './HeadToHeadLogger';
+import MultiplayerMatchLogger from './MultiplayerLogger';
 
 const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const [shouldShowH2H, setShouldShowH2H] = useState(true);
@@ -15,7 +16,9 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
         optionA="Season"
         optionB="Event"
       />
-      {shouldShowH2H ? <HeadToHeadLogger unlockedUsers={unlockedUsers} currentUserId={currentUserId} /> : 'Multi Form'}
+      {shouldShowH2H
+        ? <HeadToHeadLogger unlockedUsers={unlockedUsers} currentUserId={currentUserId} />
+        : <MultiplayerMatchLogger unlockedUsers={unlockedUsers} currentUserId={currentUserId} />}
     </form>
   );
 }

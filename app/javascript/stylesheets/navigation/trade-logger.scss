@@ -1,5 +1,8 @@
-#trade-form .trade-logger__card-select input {
-  height: auto;
+#trade-form .trade-logger__card-select,
+#match-logger .match-logger__participant-select {
+  & input {
+    height: auto;
+  }
 }
 
 .trade-logger {
