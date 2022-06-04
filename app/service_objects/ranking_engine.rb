@@ -18,8 +18,8 @@ class RankingEngine
   private 
 
   def generate_elo_for_match(match, rankings)
-    winner = rankings.find{|ranking| ranking.user.id == match.winner_id }
-    loser = rankings.find{|ranking| ranking.user.id == match.loser_id }
+    winner = rankings.find{|ranking| ranking.user.id == match.get_user_in_place(1).id }
+    loser = rankings.find{|ranking| ranking.user.id == match.get_user_in_place(2).id }
     r1 = 10**(winner.elo / 400.0)
     r2 = 10**(loser.elo / 400.0)
     e1 = r1 / (r1 + r2)
