@@ -17,7 +17,7 @@ class PlayerRanker
   private
 
   def has_played_any_matches?(user)
-    users_in_match = @matches.select{ |m|m.users_in_match.any? { |u| u.id == user.id }}.any?
+    users_in_match = @matches.select{ |m| m.users_in_match.any? { |u| u.id == user.id }}.any?
   end
 
   def serialize(ranking)

@@ -258,6 +258,7 @@ body {
 //Form and Input Elements
 select:focus {
   outline: 1px solid $color-highlight-mid-import;
+  z-index: 1;
 }
 
 label {

@@ -21,6 +21,6 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
         : <MultiplayerMatchLogger unlockedUsers={unlockedUsers} currentUserId={currentUserId} />}
     </form>
   );
-}
+};
 
 export default MatchLogger;

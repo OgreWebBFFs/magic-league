@@ -1,10 +1,15 @@
 class MatchesController < ApplicationController
   def create
+    match_params = params[:match]
     date_time = DateTime.strptime(match_params[:date]+ " " + match_params[:time], "%Y-%m-%d %H:%M")
-    loser = ([match_params[:playerA], match_params[:playerB]] - [match_params[:winner]]).first
-    match = Match.create(played_at: date_time, participants: 2)
-    Result.create(match_id: match.id, user_id: match_params[:winner], place: 1)
-    Result.create(match_id: match.id, user_id: loser, place: 2)
+    match = Match.create(played_at: date_time, participants: match_params[:participants].to_i, event_id: match_params[:event])
+    
+    place = 1
+    while params[:match][place.to_s] != nil do
+      Result.create(match_id: match.id, user_id: match_params[place.to_s], place: place)
+      place += 1
+    end
+    
     redirect_to :root
   end
 
@@ -22,11 +27,5 @@ class MatchesController < ApplicationController
       })
     }
   
-  end
-
-  private
-
-  def match_params
-    params.require(:match).permit(:playerA, :playerB, :winner, :date, :time) 
   end
 end
