@@ -54,13 +54,29 @@ Ownership.find_or_create_by(card_id: card1.id, collection_id: dustin.collection.
 
 # Matches 
 # ==================================================
-Match.find_or_create_by(winner: pat, loser: zack, played_at: Time.now)
-Match.find_or_create_by(winner: pat, loser: dustin, played_at: Time.now)
-Match.find_or_create_by(winner: dustin, loser: zack, played_at: Time.now)
-Match.find_or_create_by(winner: pat, loser: dustin, played_at: Time.now)
-Match.find_or_create_by(winner: zack, loser: dustin, played_at: Time.now)
-Match.find_or_create_by(winner: zack, loser: pat, played_at: Time.now)
-Match.find_or_create_by(winner: zack, loser: dustin, played_at: Time.now)
+match1 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match1, user: pat, place: 1)
+Result.find_or_create_by(match: match1, user: zack, place:2)
+
+match2 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match2, user: dustin, place: 1)
+Result.find_or_create_by(match: match2, user: zack, place:2)
+
+match3 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match3, user: pat, place: 1)
+Result.find_or_create_by(match: match3, user: dustin, place:2)
+
+match4 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match4, user: zack, place: 1)
+Result.find_or_create_by(match: match4, user: dustin, place: 2)
+
+match5 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match5, user: zack, place: 1)
+Result.find_or_create_by(match: match5, user: pat, place: 2)
+
+match6 = Match.find_or_create_by(played_at: Time.now, participants: 2)
+Result.find_or_create_by(match: match6, user: zack, place: 1)
+Result.find_or_create_by(match: match6, user: dustin, place: 2)
 
 # Trades
 # ===================================================
