@@ -1,0 +1,26 @@
+#match-form .match-logger__participant-select {
+  & input {
+    height: auto;
+  }
+}
+
+.match-logger {
+  &__placement-selector {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+
+    &--place {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: bold,
+    }
+
+    &--participant {
+      text-align: center;
+    }
+  }
+
+}

@@ -7,7 +7,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const [shouldShowH2H, setShouldShowH2H] = useState(true);
 
   return (
-    <form id="match-logger" action="/matches" acceptCharset="UTF-8" method="post">
+    <form id="match-form" action="/matches" acceptCharset="UTF-8" method="post">
       <h3>Log Match</h3>
       <ToggleSwitch
         name="match-type"
