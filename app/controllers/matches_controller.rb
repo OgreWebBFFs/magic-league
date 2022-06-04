@@ -15,7 +15,7 @@ class MatchesController < ApplicationController
 
   
   def index
-    @matches = Match.order('played_at DESC').map { |match|
+    @matches = Match.where(event_id: nil).order('played_at DESC').map { |match|
       winner = match.get_user_in_place(1)
       loser = match.get_user_in_place(2)
       OpenStruct.new({
