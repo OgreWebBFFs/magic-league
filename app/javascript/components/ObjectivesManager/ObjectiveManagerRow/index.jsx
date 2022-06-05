@@ -51,21 +51,11 @@ const ObjectiveManagerRow = ({ id, description: initDescription, value: initValu
   return (
     <>
       <IntCell>{id}</IntCell>
-      {isEditing ? (
-        <>
-          <DescriptionCell>
-            <input type="text" defaultValue={description} onChange={(e) => setDescription(e.target.value)}/>
-          </DescriptionCell>
-          <IntCell>
-            <input type="number" min="1" defaultValue={value} onChange={(e) => setValue(e.target.value)} />
-          </IntCell>
-        </>
-      ) : (
-        <>
-          <DescriptionCell>{description}</DescriptionCell>
-          <IntCell>{value}</IntCell>
-        </>
-      )}
+      <DescriptionCell>
+        {isEditing
+          ? <input type="text" defaultValue={description} onChange={(e) => setDescription(e.target.value)}/>
+          : description }
+      </DescriptionCell>
       <ControlsCell>
         <Button
           className={classNames({
@@ -77,7 +67,7 @@ const ObjectiveManagerRow = ({ id, description: initDescription, value: initValu
           <i className={classNames('fa', { 'fa-pencil': !isEditing, 'fa-check': isEditing })} />
         </Button>
         <Button className="objectives-manager__controls-cell--destroy" onClick={() => (isEditing ? cancelEdit() : destroyObjective())}>
-          <i className="fas fa-times" />
+          <i className={classNames('fa', { 'fa-ban': !isEditing, 'fa-times': isEditing })} />
         </Button>
       </ControlsCell>
     </>
