@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :browse, only: [:index]
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
+  resources :objectives, only: [:create, :index, :update, :destroy]
 
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
