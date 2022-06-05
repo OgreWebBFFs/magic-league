@@ -1,4 +1,6 @@
-class ObjectivesController < ApplicationController
+class Admin::ObjectivesController < ApplicationController
+  after_action :verify_authorized, only: [:create, :update, :destroy]
+
   def create
     Objective.create(description: params[:description], value: params[:value])
   end
