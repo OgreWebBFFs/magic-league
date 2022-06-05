@@ -7,8 +7,8 @@ class Admin::MatchesController < ApplicationController
   def index
     @matches = Match.order('played_at DESC').map { |match| 
       OpenStruct.new({
-        winner: match.winner.name,
-        loser: match.loser.name,
+        winner: match.get_user_in_place(1).name,
+        loser: match.get_user_in_place(2).name,
         date: match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}"),
         time: match.played_at.strftime("%I:%M%p"),
         id: match.id

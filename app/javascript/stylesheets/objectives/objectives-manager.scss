@@ -1,0 +1,43 @@
+.objectives-manager {
+  &__int-cell {
+    flex: 1 1 10%;
+
+    & input[type=number] {
+      font-size: 1rem;
+    }
+  }
+
+  &__description-cell {
+    flex: 1 1 60%;
+    text-align: left;
+
+    & input[type=text] {
+      font-size: 1rem;
+      text-align: left;
+    }
+  }
+
+  &__controls-cell {
+    display: flex;
+    flex: 1 1 20%;
+    justify-content: space-evenly;
+    gap: .5rem;
+
+    &--edit, &--destroy, &--submit {
+      margin: 0;
+      flex: 1 1 50%;
+      max-width: 50px;
+      :hover {
+        background-color: inherit;        
+      }
+    }
+
+    &--destroy {
+      background-color: $color-highlight-urgent;
+    }
+
+    &--submit {
+      background-color: $color-accept;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 class Admin::ObjectivesController < ApplicationController
+  before_action :authorize_objective, only: [:create, :update, :destroy]
   after_action :verify_authorized, only: [:create, :update, :destroy]
 
   def create
@@ -8,15 +9,22 @@ class Admin::ObjectivesController < ApplicationController
   def update
     objective = Objective.find(params[:id])
     objective.update(description: params[:description], value: params[:value])
+    render json: {status: 'success'}
   end
 
   def destroy
     objective = Objective.find(params[:id])
     objective.destroy
+    render json: {status: 'success'}
   end
 
   def index
-    objective = Objective.all
-    render json: objective.to_json()
+    @objectives = Objective.all
   end
+
+  private 
+  def authorize_objective
+    authorize Objective
+  end
+
 end
