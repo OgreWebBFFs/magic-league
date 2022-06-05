@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_013714) do
+ActiveRecord::Schema.define(version: 2022_06_05_215205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,15 @@ ActiveRecord::Schema.define(version: 2022_06_05_013714) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_objectives", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "objective_id"
+    t.datetime "assigned_at"
+    t.datetime "completed_at"
+    t.index ["objective_id"], name: "index_user_objectives_on_objective_id"
+    t.index ["user_id"], name: "index_user_objectives_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
@@ -147,4 +156,6 @@ ActiveRecord::Schema.define(version: 2022_06_05_013714) do
   end
 
   add_foreign_key "received_trades", "users"
+  add_foreign_key "user_objectives", "objectives"
+  add_foreign_key "user_objectives", "users"
 end

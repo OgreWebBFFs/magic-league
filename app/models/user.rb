@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
+  has_many :user_objectives
+  has_many :objectives, through: :user_objectives
 
   scope :unlocked, -> { self.where(locked_at: nil) }
 

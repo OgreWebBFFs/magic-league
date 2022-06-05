@@ -11,6 +11,7 @@
       collectionId: @user.collection.id,
       tradables: @tradables,
       wishlist: @wishlist,
+      objectives: @objectives,
       trades: @trades.select{ |trade|
         (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
       }.map{ |trade| TradeSerializer.new(trade)}

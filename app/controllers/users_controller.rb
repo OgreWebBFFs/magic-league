@@ -26,6 +26,9 @@ class UsersController < ApplicationController
     @tradables = @user.tradables
     @wishlist = @user.wishlist
     @current_user_wishlist = current_user.wishlist
+    @objectives = @user.user_objectives.select{ |obj|
+      current_user.id === @user.id || obj.completed_at != nil
+    }.map{ |obj| UserObjectiveSerializer.new(obj)}
     @trades = @user.trades
   end
 
