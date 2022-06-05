@@ -4,6 +4,7 @@ class Admin::ObjectivesController < ApplicationController
 
   def create
     Objective.create(description: params[:description], value: params[:value])
+    render json: {status: 'success'}
   end
 
   def update
