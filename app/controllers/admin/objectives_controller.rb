@@ -21,6 +21,7 @@ class Admin::ObjectivesController < ApplicationController
 
   def index
     @objectives = Objective.all
+    @reroll_count = Reroll.first&.allowed.presence || 1
   end
 
   private 

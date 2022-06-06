@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rerolls, only: [:create, :update]
+  resources :rerolls, only: [:create, :update] do
+    collection do
+      patch 'update_all'
+    end
+  end
 
   namespace :admin do 
     authenticated :user, ->(u) { u.admin? } do

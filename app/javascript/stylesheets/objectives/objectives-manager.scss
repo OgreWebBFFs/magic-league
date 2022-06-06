@@ -50,4 +50,21 @@
       background-color: $color-accept;
     }
   }
+
+  &__reroll-updater {
+    display: flex;
+    align-items: top;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    input.updater {
+      margin-bottom: 0;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    &--title {
+      margin-bottom: 0;
+    }
+  }
 }

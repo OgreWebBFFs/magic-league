@@ -10,4 +10,9 @@ class RerollsController < ApplicationController
     reroll.user.reroll_objectives
     render json: { status: 'success' }
   end
+
+  def update_all
+    Reroll.all.each{ |reroll| reroll.update(allowed: params[:allowed])}
+    render json: { status: 'success' }
+  end
 end
