@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import Dashboard from './Dashboard';
 import TradeTracker from './TradeTracker';
 import ToggleSwitch from '../ToggleSwitch';
+import defaultTabs from './Dashboard/default-tabs-config';
+import eventTabs from './Dashboard/event-tabs-config';
 
 const UserDispaly = ({
+  activeObjectives,
   collectionCards,
   collectionId,
+  completedObjectives,
   currentUserId,
   currentUserWishlist,
   edit,
@@ -52,6 +56,9 @@ const UserDispaly = ({
           tradables={tradables}
           wishlist={wishlist}
           trades={trades}
+          tabs={seasonDisplay ? defaultTabs : eventTabs(edit)}
+          activeObjectives={activeObjectives}
+          completedObjectives={completedObjectives}
         />
       </div>
     </div>

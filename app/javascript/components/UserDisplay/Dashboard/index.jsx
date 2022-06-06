@@ -1,13 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useUpdateEffect } from 'react-use';
 import classNames from 'classnames';
 
 import Button from '../../Button';
-import Collection from './Collection';
-import Wishlist from './Wishlist';
-import Trades from './Trades';
-
 import { ActionBar, EditAction, ViewToggle } from './ActionBar';
 
 import WishlistContext from '../../../contexts/WishlistContext';
@@ -22,36 +18,19 @@ const InterfaceTab = ({
   </Button>
 );
 
-const Tabs = {
-  collection: {
-    view: (props) => <Collection {...props} />,
-    notification: () => false,
-    actions: ['view-toggle', 'edit'],
-  },
-  wishlist: {
-    view: (props) => <Wishlist {...props} />,
-    notification: () => false,
-    actions: ['view-toggle'],
-  },
-  trades: {
-    view: (props) => <Trades {...props} />,
-    notification: ({ trades, currentUserId }) => trades.some(({ data: { attributes } }) => (
-      attributes.to.id === currentUserId && attributes.status === 'pending'
-    )),
-    actions: [],
-  },
-};
-
 const Dashboard = ({
   tradables: initialTradables,
   wishlist: initialWishlist,
   currentUserWishlist: initialCurrentUserWishlist,
   edit,
   collectionId,
+  tabs,
   ...props
 }) => {
   const windowHistory = window.history.state || {};
-  const startingTab = windowHistory.currentTab || window.location.hash.substring(1) || 'collection';
+  const startingTab = windowHistory.currentTab
+    || window.location.hash.substring(1)
+    || Object.keys(tabs)[0];
   const startingView = windowHistory.currentView === undefined || windowHistory.currentView;
 
   const [activeTab, setActiveTab] = useState(startingTab);
@@ -76,28 +55,34 @@ const Dashboard = ({
     }, '', url);
   }, [activeTab, isListView]);
 
+  useEffect(() => {
+    if (!tabs[activeTab]) {
+      setActiveTab(Object.keys(tabs)[0]);
+    }
+  }, [tabs]);
+
   return (
     <div className="dashboard__card-interface-wrapper">
       <div className="dashboard__tab-wrapper">
-        {Object.keys(Tabs).map((tabName) => (
+        {Object.keys(tabs).map((tabName) => (
           <InterfaceTab
             key={tabName}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             title={tabName}
           >
-            {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
+            {tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
           </InterfaceTab>
         ))}
       </div>
-      <ActionBar actions={Tabs[activeTab].actions}>
+      <ActionBar actions={(tabs[activeTab] || Object.values(tabs)[0]).actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
         <EditAction key="edit" canEdit={edit} collectionId={collectionId} />
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
-            {Tabs[activeTab].view({ ...props, isListView })}
+            {(tabs[activeTab] || Object.values(tabs)[0]).view({ ...props, isListView })}
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
