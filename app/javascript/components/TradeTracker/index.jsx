@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Row, Cell } from '../Table';
 import TradeTrackerInput from './TradeTrackerInput';
 
-const TradeTracker = ({ tradesData, userId, currentUserId }) => (
+const TradeTracker = ({ tradeTrackerData, userId, currentUserId }) => (
   <div className="dashboard-profile__trades">
     <Table>
       <Row isHeading>
@@ -10,7 +10,7 @@ const TradeTracker = ({ tradesData, userId, currentUserId }) => (
         <Cell>Received</Cell>
         <Cell>Allowed</Cell>
       </Row>
-      {tradesData.map((trade) => (
+      {tradeTrackerData.map((trade) => (
         <Row>
           <Cell>{trade.rarity.charAt(0).toUpperCase() + trade.rarity.slice(1)}</Cell>
           <Cell>

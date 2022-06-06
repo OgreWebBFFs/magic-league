@@ -26,14 +26,16 @@
         }
 
         &__trades {
-                .cell {
-                    flex: 1 1 33%;
+            width: 100%;
+
+            .cell {
+                flex: 1 1 33%;
+                text-align: center;
+
+                input {
                     text-align: center;
-    
-                    input {
-                        text-align: center;
-                    }
                 }
+            }
         }
         &__edit-button {
                 margin:0.25rem 0; 

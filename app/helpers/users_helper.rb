@@ -5,7 +5,7 @@ module UsersHelper
     image_path = "#{user&.gravatar_path}?s=#{size}"
     image_path = image_path + "&d=#{default_image}" unless Rails.env == 'development'
 
-    image_tag image_path, class: 'user-image'
+    image_path
   end
 
   def checked_if_tradable(tradables, card)
