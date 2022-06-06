@@ -7,7 +7,7 @@ const eventTabs = (edit) => ({
     active: {
       view: (props) => <ActiveObjectives {...props} />,
       notification: () => false,
-      actions: [],
+      actions: ['reroll'],
     },
   } : {}),
   complete: {

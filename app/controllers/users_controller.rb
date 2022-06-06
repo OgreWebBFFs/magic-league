@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     @completed_objectives = @user.user_objectives.select{ |obj|
       obj.completed_at != nil
     }.map{ |obj| UserObjectiveSerializer.new(obj)}
+    @objective_rerolls = @user.reroll
     @trades = @user.trades
   end
 

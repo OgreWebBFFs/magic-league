@@ -14,6 +14,7 @@ const UserDispaly = ({
   currentUserWishlist,
   edit,
   gravatar,
+  objectiveRerolls,
   tradables,
   trades,
   tradeTrackerData,
@@ -59,6 +60,7 @@ const UserDispaly = ({
           tabs={seasonDisplay ? defaultTabs : eventTabs(edit)}
           activeObjectives={activeObjectives}
           completedObjectives={completedObjectives}
+          objectiveRerolls={objectiveRerolls}
         />
       </div>
     </div>

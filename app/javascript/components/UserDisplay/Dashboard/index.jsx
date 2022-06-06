@@ -4,7 +4,12 @@ import { useUpdateEffect } from 'react-use';
 import classNames from 'classnames';
 
 import Button from '../../Button';
-import { ActionBar, EditAction, ViewToggle } from './ActionBar';
+import {
+  ActionBar,
+  EditAction,
+  ViewToggle,
+  RerollAction,
+} from './ActionBar';
 
 import WishlistContext from '../../../contexts/WishlistContext';
 import TradablesContext from '../../../contexts/TradablesContext';
@@ -26,6 +31,7 @@ const Dashboard = ({
   edit,
   collectionId,
   tabs,
+  objectiveRerolls,
   ...props
 }) => {
   const windowHistory = window.history.state || {};
@@ -79,6 +85,7 @@ const Dashboard = ({
       <ActionBar actions={(tabs[activeTab] || Object.values(tabs)[0]).actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
         <EditAction key="edit" canEdit={edit} collectionId={collectionId} />
+        <RerollAction key="reroll" objectiveRerolls={objectiveRerolls} activeObjectives={props.activeObjectives} />
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
