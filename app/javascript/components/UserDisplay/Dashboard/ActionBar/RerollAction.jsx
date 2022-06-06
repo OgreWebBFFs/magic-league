@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
+import xhrRequest from '../../../../helpers/xhr-request';
 import Button from '../../../Button';
 import Modal from '../../../Modal';
 
-const rerollObjectives = () => {
+const rerollObjectives = async (id) => {
   window.confirm("Are you sure you would like to reroll your unkept objectives?");
-  console.log("REROLLY POLLI OLLIE");
+  await xhrRequest({
+    url: `/rerolls/${id}`,
+    options: {
+      method: 'PUT',
+    },
+  });
+  window.location.reload();
 };
 
-const RerollAction = ({ objectiveRerolls: { used, allowed } }) => {
+const RerollAction = ({ objectiveRerolls }) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const { used, allowed, id } = objectiveRerolls || {};
+
+  if (!objectiveRerolls) {
+    return null;
+  }
+
   return (
     <>
       <div className="dashboard__reroll-action">
         {used < allowed ? (
-          <Button onClick={() => rerollObjectives()} className="dashboard__reroll-action--btn">
+          <Button onClick={() => rerollObjectives(id)} className="dashboard__reroll-action--btn">
             <i className="fas fa-dice" />
           </Button>
         ) : null}

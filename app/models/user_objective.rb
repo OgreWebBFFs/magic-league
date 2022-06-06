@@ -13,8 +13,5 @@ class UserObjective < ApplicationRecord
     all_users_objectives = user.user_objectives.pluck(:objective_id)
     new_objective = Objective.where.not(id: all_users_objectives).sample
     UserObjective.create(objective: new_objective, user: user, assigned_at: Time.now)
-    if (self.completed_at == nil)
-      self.destroy
-    end
   end
 end
