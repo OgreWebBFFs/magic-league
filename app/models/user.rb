@@ -21,13 +21,14 @@ class User < ApplicationRecord
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives
   has_many :objectives, through: :user_objectives
+  has_one :reroll
 
   scope :unlocked, -> { self.where(locked_at: nil) }
 
   def matches
     Match.where("winner_id = ? OR loser_id = ?", id, id)
   end
-
+   
   def trades
     Trade.where("from_user = ? OR to_user = ?", id, id).order('created_at DESC')
   end

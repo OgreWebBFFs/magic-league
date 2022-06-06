@@ -17,14 +17,14 @@ const CompleteButton = ({ id, description }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
-      <Button className="dashboard__active-objects--complete-cell-button" onClick={() => setModalOpen(true)}>
+      <Button className="dashboard__active-objectives--complete-cell-button" onClick={() => setModalOpen(true)}>
         <i className="fas fa-flag-checkered" />
       </Button>
       {modalOpen && (
-        <Modal className="dashboard__active-objects--review-modal" onClose={() => setModalOpen(false)}>
+        <Modal className="dashboard__active-objectives--review-modal" onClose={() => setModalOpen(false)}>
           <h3>Declare Your Triumph</h3>
           <p>Confirm you have completed:</p>
-          <p className="dashboard__active-objects--review-modal-description">{description}</p>
+          <p className="dashboard__active-objectives--review-modal-description">{description}</p>
           <div className="modal__actions">
             <Button onClick={() => completeObjective(id)} className="modal__action-button approve">Confirm</Button>
             <Button onClick={() => setModalOpen(false)} className="modal__action-button reject">Cancel</Button>
