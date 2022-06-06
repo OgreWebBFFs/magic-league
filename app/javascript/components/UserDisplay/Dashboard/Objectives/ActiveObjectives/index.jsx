@@ -9,10 +9,10 @@ const KeepCell = ({ children }) => <Cell className="dashboard__active-objectives
 const DescriptionCell = ({ children }) => <Cell isPriority className="dashboard__active-objectives--description-cell">{children}</Cell>;
 const CompleteCell = ({ children }) => <Cell className="dashboard__active-objectives--complete-cell">{children}</Cell>;
 
-const within10Minutes = (assignedAt) => {
+const within1Minute = (assignedAt) => {
   const now = new Date();
   const assignTime = new Date(assignedAt);
-  return now - assignTime < 300000;
+  return now - assignTime < 60000;
 };
 
 const ActiveObjectives = ({ activeObjectives, currentUserId }) => (
@@ -30,7 +30,7 @@ const ActiveObjectives = ({ activeObjectives, currentUserId }) => (
             <KeepToggle id={id} />
           </KeepCell>
           <DescriptionCell>
-            { within10Minutes(assignedAt) ? <span className="new">NEW!</span> : null }
+            { within1Minute(assignedAt) ? <span className="new">NEW!</span> : null }
             { description }
           </DescriptionCell>
           <CompleteCell>
