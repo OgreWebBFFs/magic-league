@@ -3,15 +3,15 @@ import React, { useMemo, useState } from 'react';
 import { useUpdateEffect } from 'react-use';
 import classNames from 'classnames';
 
-import Button from '../Button';
+import Button from '../../Button';
 import Collection from './Collection';
 import Wishlist from './Wishlist';
 import Trades from './Trades';
 
 import { ActionBar, EditAction, ViewToggle } from './ActionBar';
 
-import WishlistContext from '../../contexts/WishlistContext';
-import TradablesContext from '../../contexts/TradablesContext';
+import WishlistContext from '../../../contexts/WishlistContext';
+import TradablesContext from '../../../contexts/TradablesContext';
 
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,

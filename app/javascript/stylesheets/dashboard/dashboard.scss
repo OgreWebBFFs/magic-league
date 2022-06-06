@@ -1,9 +1,31 @@
 @import "./trades";
 
 .dashboard {
-    &__title {
-        margin-top: 0;
+
+    &-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 10px;
+        
+        @media only screen and (max-width: 850px) {
+            flex-direction: column;
+            align-items: center;
+
+            &__title {
+                text-align: center;
+            }
+        }
+        
+        &__title {
+            margin: 0;
+        }
+
+        .toggle-switch {
+            flex: 0 0 auto;
+        }
     }
+
 
     &-profile {
         display: flex;

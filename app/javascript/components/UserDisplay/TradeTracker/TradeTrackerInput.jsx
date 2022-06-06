@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDebounce, useFirstMountState } from 'react-use';
-import xhrRequest from '../../helpers/xhr-request';
+import xhrRequest from '../../../helpers/xhr-request';
 
 const updateUsedTrades = ({ rarity, value, currentUserId }) => xhrRequest({
   url: '/received_trades',

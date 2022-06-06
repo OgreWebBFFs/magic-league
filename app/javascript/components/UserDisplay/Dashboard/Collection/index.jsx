@@ -2,13 +2,13 @@ import React from 'react';
 import {
   Row,
   Cell,
-} from '../../Table';
+} from '../../../Table';
 import CardList from '../CardList';
 import {
   CardGrid,
   CardImageLink,
-} from '../../CardGrid';
-import { WishlistToggleSmall } from '../../WishlistToggle';
+} from '../../../CardGrid';
+import { WishlistToggleSmall } from '../../../WishlistToggle';
 import EmptyState from '../EmptyState';
 import TradableToggle from './TradableToggle';
 import CallToAction from './CallToAction';

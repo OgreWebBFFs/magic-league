@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Table, Row, Cell, MobileLabel,
-} from '../../Table';
+} from '../../../Table';
 import StatusAction from './StatusAction';
 
 const EmptyState = () => (

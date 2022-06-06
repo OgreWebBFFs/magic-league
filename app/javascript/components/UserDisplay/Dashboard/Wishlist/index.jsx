@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import WishlistContext from '../../../contexts/WishlistContext';
+import WishlistContext from '../../../../contexts/WishlistContext';
 import CardList from '../CardList';
 import {
   CardGrid,
   CardImageLink,
-} from '../../CardGrid';
+} from '../../../CardGrid';
 import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
 import CallToAction from './CallToAction';
-import { Cell, Row } from '../../Table';
+import { Cell, Row } from '../../../Table';
 
 const Wishlist = ({ currentUserId, user, isListView }) => {
   const { wishlist, currentUserWishlist } = useContext(WishlistContext);

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from 'react';
-import TradablesContext from '../../../contexts/TradablesContext';
-import xhrRequest from '../../../helpers/xhr-request';
+import TradablesContext from '../../../../contexts/TradablesContext';
+import xhrRequest from '../../../../helpers/xhr-request';
 
 const addTradable = async (tradableCard) => xhrRequest({
   url: '/tradables',

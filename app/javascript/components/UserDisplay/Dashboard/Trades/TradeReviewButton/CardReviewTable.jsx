@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Row, Table, Cell } from '../../../Table';
+import { Row, Table, Cell } from '../../../../Table';
 
 const RARITY_RANKING = {
   common: 0,

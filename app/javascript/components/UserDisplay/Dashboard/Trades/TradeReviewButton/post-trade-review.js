@@ -1,4 +1,4 @@
-import xhrRequest from '../../../../helpers/xhr-request';
+import xhrRequest from '../../../../../helpers/xhr-request';
 
 const postTradeReview = async (trade, status) => {
   try {

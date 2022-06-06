@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { MobileLabel } from '../../../Table';
-import Button from '../../../Button';
-import Modal from '../../../Modal';
+import { MobileLabel } from '../../../../Table';
+import Button from '../../../../Button';
+import Modal from '../../../../Modal';
 import TradeReview from './TradeReview';
 
 const TradeReviewButton = ({ trade }) => {

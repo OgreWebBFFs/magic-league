@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Row, Cell } from '../Table';
+import { Table, Row, Cell } from '../../Table';
 import TradeTrackerInput from './TradeTrackerInput';
 
 const TradeTracker = ({ tradeTrackerData, userId, currentUserId }) => (
