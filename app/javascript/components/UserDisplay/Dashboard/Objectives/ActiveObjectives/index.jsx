@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import Button from '../../../../Button';
 import { Table, Row, Cell } from '../../../../Table';
+import CompleteButton from './CompleteButton';
 import KeepToggle from './KeepToggle';
 
 const KeepCell = ({ children }) => <Cell className="dashboard__active-objects--keep-cell">{children}</Cell>;
@@ -23,9 +23,7 @@ const Objectives = ({ activeObjectives }) => (
           { description }
         </DescriptionCell>
         <CompleteCell>
-          <Button className="dashboard__active-objects--complete-cell-button">
-            <i className="fas fa-flag-checkered" />
-          </Button>
+          <CompleteButton description={description} id={id} />
         </CompleteCell>
       </Row>
     ))}

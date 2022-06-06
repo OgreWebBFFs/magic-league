@@ -145,35 +145,4 @@
       }
     }
   }
-
-  &__actions {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  &__action-button{
-    flex: 1 1 50%;
-    margin: 1rem .5rem;
-    font-weight: 700;
-    max-width: 250px;
-
-    &.reject {
-      background-color: $color-highlight-urgent;
-    }
-
-    &.approve {
-      background-color: $color-accept;
-    }
-  }
-
-  &__warning {
-    font-size: .75rem;
-    color: $color-nuetral;
-    margin: 0;
-    width: 0;
-    min-width: 100%;
-    .warning {
-      color: $color-highlight-urgent;
-    }
-  }
 }

@@ -23,11 +23,11 @@ const TradeReview = ({ trade }) => (
         arrow={<i className="fas fa-arrow-right" />}
       />
     </div>
-    <div className="trade-review-modal__actions">
-      <Button onClick={() => postTradeReview(trade, 'approved')} className="trade-review-modal__action-button approve">Accept</Button>
-      <Button onClick={() => postTradeReview(trade, 'rejected')} className="trade-review-modal__action-button reject">Decline</Button>
+    <div className="modal__actions">
+      <Button onClick={() => postTradeReview(trade, 'approved')} className="modal__action-button approve">Accept</Button>
+      <Button onClick={() => postTradeReview(trade, 'rejected')} className="modal__action-button reject">Decline</Button>
     </div>
-    <p className="trade-review-modal__warning">
+    <p className="modal__notice">
       <span className="warning">**WARNING**</span>
       : Selecting Accept will automatically update your allottedtrades and collection!
       Choose wisely...
