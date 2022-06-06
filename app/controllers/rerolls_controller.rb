@@ -7,8 +7,13 @@ class RerollsController < ApplicationController
 
   def update
     reroll = Reroll.find(params[:id])
-    reroll.user.reroll_objectives
-    render json: { status: 'success' }
+    if (reroll.can_roll)
+      reroll.roll
+      reroll.update(used: reroll.used + 1)
+      render json: { status: 'success' }
+    else
+      render json: { status: 'error', message: 'cannot complete reroll' }, :status => 400
+    end
   end
 
   def update_all

@@ -7,4 +7,12 @@ class Reroll < ApplicationRecord
     message: 'cannot use more rerolls than allowed'
   }
   validates :user_id, uniqueness: true
+
+  def can_roll
+    self.used < self.allowed && self.user.unkept_objectives.length > 0
+  end
+
+  def roll
+    self.user.reroll_objectives
+  end
 end

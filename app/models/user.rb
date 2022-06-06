@@ -62,16 +62,14 @@ class User < ApplicationRecord
     ReceivedTrade.num_allowed(rarity, id) - num_received
   end
 
+  def unkept_objectives
+    self.user_objectives.where(keep: false)
+  end
+
   def reroll_objectives
-    reroll = self.reroll
-    if (reroll.used < reroll.allowed)
-      objectives_to_reroll = self.user_objectives.where(keep: false)
-      puts objectives_to_reroll.to_json
-      objectives_to_reroll.each{ |objective| objective.reroll }
-      objectives_to_reroll.each{ |objective| objective.destroy }
-      puts self.user_objectives.to_json
-      self.reroll.update(used: 1)
-    end
+    objectives_to_reroll = self.unkept_objectives
+    objectives_to_reroll.each{ |objective| objective.reroll }
+    objectives_to_reroll.each{ |objective| objective.destroy }
   end
 
   def to_s
