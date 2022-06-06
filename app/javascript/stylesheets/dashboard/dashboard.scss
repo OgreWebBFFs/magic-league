@@ -220,6 +220,11 @@
 
         &--description-cell {
             flex: 1 1 70%;
+            .new {
+                font-weight: 700;
+                margin-right: .75rem;
+                color: $color-highlight-urgent;
+            }
         }
 
         &--complete-cell {

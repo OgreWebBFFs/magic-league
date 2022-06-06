@@ -9,6 +9,12 @@ const KeepCell = ({ children }) => <Cell className="dashboard__active-objectives
 const DescriptionCell = ({ children }) => <Cell isPriority className="dashboard__active-objectives--description-cell">{children}</Cell>;
 const CompleteCell = ({ children }) => <Cell className="dashboard__active-objectives--complete-cell">{children}</Cell>;
 
+const within10Minutes = (assignedAt) => {
+  const now = new Date();
+  const assignTime = new Date(assignedAt);
+  return now - assignTime < 300000;
+};
+
 const ActiveObjectives = ({ activeObjectives, currentUserId }) => (
   activeObjectives.length === 0 ? (<EmptyObjectives currentUserId={currentUserId} />) : (
     <Table>
@@ -16,12 +22,15 @@ const ActiveObjectives = ({ activeObjectives, currentUserId }) => (
         <KeepCell>Keep</KeepCell>
         <DescriptionCell>Quest</DescriptionCell>
       </Row>
-      {activeObjectives.map(({ data: { attributes: { description, id } } }) => (
+      {activeObjectives.map(({
+        data: { attributes: { description, id, assigned_at: assignedAt } },
+      }) => (
         <Row>
           <KeepCell>
             <KeepToggle id={id} />
           </KeepCell>
           <DescriptionCell>
+            { within10Minutes(assignedAt) ? <span className="new">NEW!</span> : null }
             { description }
           </DescriptionCell>
           <CompleteCell>
