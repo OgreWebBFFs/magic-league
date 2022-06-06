@@ -21,6 +21,13 @@ Rails.application.routes.draw do
   resources :tradables, only: [:index, :show, :create, :destroy]
   resources :received_trades, only: [:create]
 
+  resources :user_objectives, only: [] do
+    member do
+      put 'keep'
+      put 'complete'
+    end
+  end
+
   namespace :admin do 
     authenticated :user, ->(u) { u.admin? } do
       resources :users do

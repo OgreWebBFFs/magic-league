@@ -8,6 +8,7 @@ import { ActionBar, EditAction, ViewToggle } from './ActionBar';
 
 import WishlistContext from '../../../contexts/WishlistContext';
 import TradablesContext from '../../../contexts/TradablesContext';
+import { KeptObjectivesProvider } from '../../../contexts/KeptObjectivesContext';
 
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,
@@ -82,7 +83,9 @@ const Dashboard = ({
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
-            {(tabs[activeTab] || Object.values(tabs)[0]).view({ ...props, isListView })}
+            <KeptObjectivesProvider objectives={props.activeObjectives}>
+              {(tabs[activeTab] || Object.values(tabs)[0]).view({ ...props, isListView })}
+            </KeptObjectivesProvider>
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>

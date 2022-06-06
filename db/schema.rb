@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2022_06_05_215205) do
   create_table "user_objectives", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "objective_id"
+    t.boolean "keep", default: false
     t.datetime "assigned_at"
     t.datetime "completed_at"
     t.index ["objective_id"], name: "index_user_objectives_on_objective_id"

@@ -10,14 +10,16 @@ const CompletedObjectives = ({ completedObjectives }) => (
       <KeepCell>Date</KeepCell>
       <DescriptionCell>🏆 Triumphs 🏆</DescriptionCell>
     </Row>
-    {completedObjectives.map(({ data: { attributes: { description, completed_at } } }) => (
-      <Row>
-        <KeepCell>{completed_at}</KeepCell>
-        <DescriptionCell>
-          { description }
-        </DescriptionCell>
-      </Row>
-    ))}
+    {completedObjectives.map(
+      ({ data: { attributes: { description, completed_at: completedAt } } }) => (
+        <Row>
+          <KeepCell>{completedAt}</KeepCell>
+          <DescriptionCell>
+            { description }
+          </DescriptionCell>
+        </Row>
+      ),
+    )}
   </Table>
 );
 

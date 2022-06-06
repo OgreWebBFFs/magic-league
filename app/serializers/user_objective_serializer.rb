@@ -1,6 +1,6 @@
 class UserObjectiveSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :assigned_at, :id
+  attributes :assigned_at, :id, :keep
   
   attribute :completed_at do |user_objective|
     if user_objective.completed_at != nil
