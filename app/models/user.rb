@@ -70,6 +70,10 @@ class User < ApplicationRecord
     used_rerolls = self.reroll.used
     self.reroll.update(used: used_rerolls + 1)
   end
+  
+  def completed_objectives
+    self.user_objectives.where.not(completed_at: nil)
+  end
 
   def to_s
     email
