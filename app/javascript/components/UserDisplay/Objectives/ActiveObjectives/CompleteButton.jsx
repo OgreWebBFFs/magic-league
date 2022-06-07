@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import xhrRequest from '../../../../../helpers/xhr-request';
-import Button from '../../../../Button';
-import Modal from '../../../../Modal';
+import xhrRequest from '../../../../helpers/xhr-request';
+import Button from '../../../Button';
+import Modal from '../../../Modal';
 
 const completeObjective = async (id) => {
   await xhrRequest({
@@ -21,10 +21,10 @@ const CompleteButton = ({ id, description }) => {
         <i className="fas fa-flag-checkered" />
       </Button>
       {modalOpen && (
-        <Modal className="dashboard__active-objectives--review-modal" onClose={() => setModalOpen(false)}>
+        <Modal onClose={() => setModalOpen(false)}>
           <h3>Declare Your Triumph</h3>
           <p>Confirm you have completed:</p>
-          <p className="dashboard__active-objectives--review-modal-description">{description}</p>
+          <p className="modal__text-important">{description}</p>
           <div className="modal__actions">
             <Button onClick={() => completeObjective(id)} className="modal__action-button approve">Confirm</Button>
             <Button onClick={() => setModalOpen(false)} className="modal__action-button reject">Cancel</Button>

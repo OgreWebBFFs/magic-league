@@ -37,6 +37,11 @@
         margin-top: 0;
     }
 
+    &__text-important {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
     &__close-button{
         position: absolute;
         right:-25px;

@@ -1,6 +1,6 @@
 import React from 'react';
-import xhrRequest from '../../../../../helpers/xhr-request';
-import Button from '../../../../Button';
+import xhrRequest from '../../../helpers/xhr-request';
+import Button from '../../Button';
 
 const setupRerolls = async (userId) => xhrRequest({
   url: '/rerolls',

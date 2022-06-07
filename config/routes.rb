@@ -23,12 +23,12 @@ Rails.application.routes.draw do
 
   resources :user_objectives, only: [:create] do
     member do
-      put 'keep'
+      patch 'reroll'
       put 'complete'
     end
   end
 
-  resources :rerolls, only: [:create, :update] do
+  resources :rerolls, only: [:create] do
     collection do
       patch 'update_all'
     end

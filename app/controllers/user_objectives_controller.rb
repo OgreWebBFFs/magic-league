@@ -5,10 +5,16 @@ class UserObjectivesController < ApplicationController
     render json: { status: 'success' }
   end
 
-  def keep
+  def reroll
     user_objective = UserObjective.find(params[:id])
-    user_objective.update(keep: !user_objective.keep)
-    render json: { status: 'success' }
+    can_reroll = user_objective.can_be_rerolled
+    if (can_reroll)
+      user_objective.reroll
+      user_objective.destroy
+      render json: { status: 'success' }
+    else
+      render json: { status: 'error', message: 'No rerolls available' }, status: 400
+    end
   end
 
   def complete

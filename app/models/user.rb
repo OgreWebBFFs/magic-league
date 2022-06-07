@@ -62,14 +62,13 @@ class User < ApplicationRecord
     ReceivedTrade.num_allowed(rarity, id) - num_received
   end
 
-  def unkept_objectives
-    self.user_objectives.where(keep: false)
+  def has_available_rerolls
+    self.reroll.used < self.reroll.allowed
   end
 
-  def reroll_objectives
-    objectives_to_reroll = self.unkept_objectives
-    objectives_to_reroll.each{ |objective| objective.reroll }
-    objectives_to_reroll.each{ |objective| objective.destroy }
+  def use_a_reroll
+    used_rerolls = self.reroll.used
+    self.reroll.update(used: used_rerolls + 1)
   end
 
   def to_s

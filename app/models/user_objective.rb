@@ -8,10 +8,15 @@ class UserObjective < ApplicationRecord
     self.update(completed_at: Time.now)
   end
 
+  def can_be_rerolled
+    self.user.has_available_rerolls
+  end
+
   def reroll
     user = self.user
     all_users_objectives = user.user_objectives.pluck(:objective_id)
     new_objective = Objective.where.not(id: all_users_objectives).sample
     UserObjective.create(objective: new_objective, user: user, assigned_at: Time.now)
+    user.use_a_reroll
   end
 end

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Dashboard from './Dashboard';
 import TradeTracker from './TradeTracker';
 import ToggleSwitch from '../ToggleSwitch';
-import defaultTabs from './Dashboard/default-tabs-config';
-import eventTabs from './Dashboard/event-tabs-config';
+import Objectives from './Objectives';
 
 const UserDispaly = ({
   activeObjectives,
@@ -47,21 +46,30 @@ const UserDispaly = ({
             tradeTrackerData={tradeTrackerData}
           />
         </div>
-        <Dashboard
-          currentUserId={currentUserId}
-          user={user}
-          edit={edit}
-          currentUserWishlist={currentUserWishlist}
-          collectionCards={collectionCards}
-          collectionId={collectionId}
-          tradables={tradables}
-          wishlist={wishlist}
-          trades={trades}
-          tabs={seasonDisplay ? defaultTabs : eventTabs(edit)}
-          activeObjectives={activeObjectives}
-          completedObjectives={completedObjectives}
-          objectiveRerolls={objectiveRerolls}
-        />
+        <div className="dashboard__card-interface-wrapper">
+          { seasonDisplay ? (
+            <Dashboard
+              currentUserId={currentUserId}
+              user={user}
+              edit={edit}
+              currentUserWishlist={currentUserWishlist}
+              collectionCards={collectionCards}
+              collectionId={collectionId}
+              tradables={tradables}
+              wishlist={wishlist}
+              trades={trades}
+            />
+          ) : (
+            <Objectives
+              activeObjectives={activeObjectives}
+              completedObjectives={completedObjectives}
+              objectiveRerolls={objectiveRerolls}
+              currentUserId={currentUserId}
+              user={user}
+              edit={edit}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

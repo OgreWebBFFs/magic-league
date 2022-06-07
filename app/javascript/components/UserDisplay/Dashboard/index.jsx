@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useUpdateEffect } from 'react-use';
 import classNames from 'classnames';
 
@@ -8,12 +8,13 @@ import {
   ActionBar,
   EditAction,
   ViewToggle,
-  RerollAction,
 } from './ActionBar';
+import Collection from './Collection';
+import Wishlist from './Wishlist';
+import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
 import TradablesContext from '../../../contexts/TradablesContext';
-import { KeptObjectivesProvider } from '../../../contexts/KeptObjectivesContext';
 
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,
@@ -23,6 +24,26 @@ const InterfaceTab = ({
     {children}
   </Button>
 );
+
+const Tabs = {
+  collection: {
+    view: (props) => <Collection {...props} />,
+    notification: () => false,
+    actions: ['view-toggle', 'edit'],
+  },
+  wishlist: {
+    view: (props) => <Wishlist {...props} />,
+    notification: () => false,
+    actions: ['view-toggle'],
+  },
+  trades: {
+    view: (props) => <Trades {...props} />,
+    notification: ({ trades, currentUserId }) => trades.some(({ data: { attributes } }) => (
+      attributes.to.id === currentUserId && attributes.status === 'pending'
+    )),
+    actions: [],
+  },
+};
 
 const Dashboard = ({
   tradables: initialTradables,
@@ -37,7 +58,7 @@ const Dashboard = ({
   const windowHistory = window.history.state || {};
   const startingTab = windowHistory.currentTab
     || window.location.hash.substring(1)
-    || Object.keys(tabs)[0];
+    || 'collection';
   const startingView = windowHistory.currentView === undefined || windowHistory.currentView;
 
   const [activeTab, setActiveTab] = useState(startingTab);
@@ -62,41 +83,32 @@ const Dashboard = ({
     }, '', url);
   }, [activeTab, isListView]);
 
-  useEffect(() => {
-    if (!tabs[activeTab]) {
-      setActiveTab(Object.keys(tabs)[0]);
-    }
-  }, [tabs]);
-
   return (
-    <div className="dashboard__card-interface-wrapper">
+    <>
       <div className="dashboard__tab-wrapper">
-        {Object.keys(tabs).map((tabName) => (
+        {Object.keys(Tabs).map((tabName) => (
           <InterfaceTab
             key={tabName}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             title={tabName}
           >
-            {tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
+            {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
           </InterfaceTab>
         ))}
       </div>
-      <ActionBar actions={(tabs[activeTab] || Object.values(tabs)[0]).actions}>
+      <ActionBar actions={Tabs[activeTab].actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
         <EditAction key="edit" canEdit={edit} collectionId={collectionId} />
-        <RerollAction key="reroll" objectiveRerolls={objectiveRerolls} activeObjectives={props.activeObjectives} />
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
-            <KeptObjectivesProvider objectives={props.activeObjectives}>
-              {(tabs[activeTab] || Object.values(tabs)[0]).view({ ...props, isListView })}
-            </KeptObjectivesProvider>
+            {Tabs[activeTab].view({ ...props, isListView })}
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
-    </div>
+    </>
   );
 };
 export default Dashboard;

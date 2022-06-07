@@ -232,25 +232,41 @@
         &--text {
             color: $color-light;
         }
-
-        &--info {
-            color: $color-nuetral;
-            margin: 0;
-            background: none;
-            &:hover {
-                background: none;
-            }
-        }
     }
 
-    &__active-objectives {
+    &__objectives {
 
-        &--keep-cell {
-            flex-basis: 15%;
+        &-heading {
+            align-items: start;
+            justify-content: start;
+
+            &--title {
+                font-size: 2.5rem;
+                padding-right: 0;
+            }
+            
+            &--info {
+                flex: 0 0 35px;
+                button {
+                    font-size: 1rem;
+                    color: $color-nuetral;
+                    margin: 0;
+                    background: none;
+                    &:hover {
+                        background: none;
+                    }
+                }
+            }
+
+            &--reroll {
+                flex: 1 1 100%;
+                text-align: right;
+                align-self: end;
+            }
         }
 
         &--description-cell {
-            flex: 1 1 70%;
+            flex: 1 1 75%;
             .new {
                 font-weight: 700;
                 margin-right: .75rem;
@@ -258,10 +274,22 @@
             }
         }
 
-        &--complete-cell {
-            &-button {
+        &--actions-cell {
+            align-self: flex-end;
+            display: flex;
+            justify-content: space-evenly;
+            flex: 0 0 auto;
+            gap: 1rem;
+
+            .button {
                 margin: 0;
+                flex: 1 1 50%;
+                max-width: 50px;
             }
+        }
+
+        &--date-cell {
+            flex: 0 0 auto;
         }
 
         &--review-modal-description {
