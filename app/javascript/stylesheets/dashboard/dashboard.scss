@@ -295,12 +295,14 @@
             &--title {
                 font-size: 2.5rem;
                 padding-right: 0;
+                display: flex;
             }
             
             &--info {
-                flex: 0 0 35px;
+                display: inline-flex;
+                align-items: start;
                 button {
-                    font-size: 1rem;
+                    font-size: 1.5rem;
                     color: $color-nuetral;
                     margin: 0;
                     background: none;
@@ -368,10 +370,15 @@
     }
 }
 
-.reroll-rules {
-    max-width: 60vw;
+.quest-info {
     &__detail {
-        margin-bottom: 1rem;
+        text-align: left;
+        max-width: 80vw;
+        
+        i {
+            margin-right: .5rem;
+            margin-left: .5rem;
+        }
     }
 }
 
