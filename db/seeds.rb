@@ -97,7 +97,3 @@ Exchange.find_or_create_by(card_id: card2.id, user_id: zack.id, trade_id: dustin
 objective1 = Objective.find_or_create_by(description: "Have 15 or more cards in your hand")
 objective2 = Objective.find_or_create_by(description: "Control 20 or more creatures  ")
 objective3 = Objective.find_or_create_by(description: "Hit an opponent with their own commander")
-
-UserObjective.find_or_create_by(user_id: pat.id, objective_id: objective1.id, assigned_at: Time.now)
-UserObjective.find_or_create_by(user_id: pat.id, objective_id: objective2.id, assigned_at: Time.now, keep: true)
-UserObjective.find_or_create_by(user_id: pat.id, objective_id: objective3.id, assigned_at: Time.now, completed_at: Time.now)
