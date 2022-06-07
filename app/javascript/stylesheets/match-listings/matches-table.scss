@@ -37,6 +37,22 @@
     
     }
 
+    .matches__title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .toggle-switch {
+            flex: 0 0 auto;
+        }
+
+        h2 {
+            @media only screen and (max-width: 400px) {
+                font-size: 3rem;
+            }
+        }
+    }
+
     @media only screen and (max-width: 850px) {
         .row {
             display:block; 

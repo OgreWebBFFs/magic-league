@@ -1,15 +1,21 @@
 import React from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
+import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
+import ViewToggleSwitch from '../ViewToggleSwitch';
 import {
   Table, Row, Cell, MobileLabel,
 } from '../Table';
 import Button from '../Button';
 
-const Matches = ({ matches, isAdmin = false }) => {
+const Matches = ({ matches, eventMatches, isAdmin = false }) => {
+  const [isSeasonView] = useIsSeasonView();
   const isMobile = useIsMobile();
   return (
     <>
-      <h2>Matches</h2>
+      <div className="matches__title">
+        <h2>Matches</h2>
+        <ViewToggleSwitch name="matches-type" />
+      </div>
       <Table>
         { !isMobile && (
         <Row isHeading>
@@ -23,7 +29,7 @@ const Matches = ({ matches, isAdmin = false }) => {
         )}
         {matches.map(({
           table: {
-            winner, loser, id, date, time,
+            places: [winner, loser], id, date, time,
           },
         }) => (
           <Row>
