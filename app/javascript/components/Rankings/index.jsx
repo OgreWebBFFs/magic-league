@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button';
-import ToggleSwitch from '../ToggleSwitch';
+import ViewToggleSwitch from '../ViewToggleSwitch';
+import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 
 const Rankings = ({
   rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers,
 }) => {
   const [showRankings, setShowRankings] = useState(true);
-  const [showSeasonRankings, setShowSeasonRankings] = useState(true);
+  const [isSeasonView] = useIsSeasonView();
 
   const getPlayers = (playerArr, isRanked = true) => playerArr.map((user, i) => {
     const {
@@ -47,7 +48,7 @@ const Rankings = ({
       name,
       id,
       ranking,
-      matches
+      matches,
     } = user.table;
     return (
       <Button key={`${name}-${id}`} className={classNames('rankings__user-button', { 'rankings__user-button--unranked': matches === 0 })} href={`/users/${id}`}>
@@ -85,18 +86,12 @@ const Rankings = ({
         <Button className="button--ghost rankings__title" onClick={() => { toggleRankingsVisible(); }}>
           Rankings
         </Button>
-        <ToggleSwitch
-          name="rankings-type"
-          value={showSeasonRankings}
-          onChange={() => setShowSeasonRankings(!showSeasonRankings)}
-          optionA="Season"
-          optionB="Event"
-        />
+        <ViewToggleSwitch name="rankings-type" />
         <div className="rankings__wrapper">
           <div className="rankings__scroll-catcher">
             <div className="rankings__player-listing">
               <div id="ranked-players" className="rankings__player-bucket">
-                {showSeasonRankings
+                {isSeasonView
                   ? getPlayers(rankedPlayers) : getEventPlayers(eventRankedPlayers)}
               </div>
               { unrankedPlayers.length > 0
@@ -104,7 +99,7 @@ const Rankings = ({
                     <>
                       <hr className="rankings__divider" />
                       <div id="unranked-players" className="rankings__player-bucket">
-                        { showSeasonRankings
+                        { isSeasonView
                           ? getPlayers(unrankedPlayers, false)
                           : getEventPlayers(eventUnrankedPlayers, false) }
                       </div>

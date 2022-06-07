@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 import Dashboard from './Dashboard';
 import TradeTracker from './TradeTracker';
-import ToggleSwitch from '../ToggleSwitch';
+import ViewToggleSwitch from '../ViewToggleSwitch';
 import Objectives from './Objectives';
 import EventPerformanceTracer from './EventPerformanceTracker';
 
@@ -22,27 +23,21 @@ const UserDispaly = ({
   user,
   wishlist,
 }) => {
-  const [seasonDisplay, setSeasonDisplay] = useState(true);
+  const [isSeasonView] = useIsSeasonView();
 
   return (
     <div id="dashboard" className="dashboard">
       <div className="dashboard__container">
         <div className="dashboard-header">
           <h2 className="dashboard-header__title">{user.name}</h2>
-          <ToggleSwitch
-            name="display-type"
-            value={seasonDisplay}
-            onChange={() => setSeasonDisplay(!seasonDisplay)}
-            optionA="Season"
-            optionB="Event"
-          />
+          <ViewToggleSwitch name="display-type" />
         </div>
         <div className="dashboard-profile">
           <div className="dashboard-profile__user-details">
             <img alt="profile" className="user-image" src={gravatar} />
             {edit && <a className="dashboard-profile__edit-button button" href={`/users/${user.id}/edit`}>Edit Account</a>}
           </div>
-          { seasonDisplay ? (
+          { isSeasonView ? (
             <TradeTracker
               userId={user.id}
               currentUserId={currentUserId}
@@ -55,7 +50,7 @@ const UserDispaly = ({
           )}
         </div>
         <div className="dashboard__card-interface-wrapper">
-          { seasonDisplay ? (
+          { isSeasonView ? (
             <Dashboard
               currentUserId={currentUserId}
               user={user}
