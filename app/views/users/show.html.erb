@@ -10,6 +10,7 @@
   activeObjectives: @active_objectives,
   completedObjectives: @completed_objectives,
   objectiveRerolls: @objective_rerolls,
+  eventRanking: @event_ranking,
   trades: @trades.select{ |trade|
     (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
   }.map{ |trade| TradeSerializer.new(trade)},

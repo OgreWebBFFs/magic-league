@@ -13,8 +13,8 @@ class HomeController < ApplicationController
     @unranked_players = ranker.unranked_players
 
     @event_matches = Match.where(event_id: 1)
-    event_rankings = EventRankingEngine.new(@users, @event_matches).generate_event_rankings
-    event_rankings = event_rankings.sort_by{|r| r.opponents_defeated + (2 * r.objectives_completed)}.reverse
+    event_rankings = EventRankingEngine.new().generate_event_rankings(@users)
+    event_rankings = event_rankings.sort_by{|r| r.event_points}.reverse
 
     event_ranker = PlayerRanker.new(@event_matches, event_rankings)
     @event_ranked_players = event_ranker.ranked_players

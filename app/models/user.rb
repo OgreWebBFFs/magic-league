@@ -26,7 +26,13 @@ class User < ApplicationRecord
   scope :unlocked, -> { self.where(locked_at: nil) }
 
   def matches
-    Match.where("winner_id = ? OR loser_id = ?", id, id)
+    match_ids = Result.where("user_id = ?", id).pluck(:match_id)
+    Match.where(id: match_ids)
+  end
+
+  def victories
+    victory_ids = Result.where("user_id = ? AND place = 1", id).pluck(:match_id)
+    Match.where(id: victory_ids)
   end
    
   def trades

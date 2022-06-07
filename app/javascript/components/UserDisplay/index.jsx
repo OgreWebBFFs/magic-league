@@ -13,6 +13,7 @@ const UserDispaly = ({
   currentUserId,
   currentUserWishlist,
   edit,
+  eventRanking,
   gravatar,
   objectiveRerolls,
   tradables,
@@ -48,7 +49,9 @@ const UserDispaly = ({
               tradeTrackerData={tradeTrackerData}
             />
           ) : (
-            <EventPerformanceTracer />
+            <EventPerformanceTracer
+              eventRanking={eventRanking}
+            />
           )}
         </div>
         <div className="dashboard__card-interface-wrapper">
