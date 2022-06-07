@@ -63,6 +63,53 @@
                 margin:0.25rem 0; 
         }
 
+        &__performance {
+            display: flex;
+            flex: 1 1 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            
+            .digit {
+                font-size: 2.5rem;
+                font-weight: 900;
+            }
+
+            .table {
+                flex: 1 1 75%;
+                display: flex;
+                flex-direction: column;
+                box-shadow: none;
+            }
+
+            .row {
+                flex: 1 1 50%;
+            }
+
+            .cell {
+                display: flex;
+                align-items: center;
+                font-size: 2.5rem;
+            }
+
+            &-points {
+                flex: 1 1 25%;
+                background: black;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                p {
+                    margin: 0;
+                    text-align: center;
+                }
+                 
+                & .digit {
+                    font-size: 3.5rem;
+                }
+            }
+
+        }
+
         @media only screen and (max-width: 850px) {
             display: block;
 

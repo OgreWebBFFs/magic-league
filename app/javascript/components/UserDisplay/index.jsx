@@ -3,6 +3,7 @@ import Dashboard from './Dashboard';
 import TradeTracker from './TradeTracker';
 import ToggleSwitch from '../ToggleSwitch';
 import Objectives from './Objectives';
+import EventPerformanceTracer from './EventPerformanceTracker';
 
 const UserDispaly = ({
   activeObjectives,
@@ -40,11 +41,15 @@ const UserDispaly = ({
             <img alt="profile" className="user-image" src={gravatar} />
             {edit && <a className="dashboard-profile__edit-button button" href={`/users/${user.id}/edit`}>Edit Account</a>}
           </div>
-          <TradeTracker
-            userId={user.id}
-            currentUserId={currentUserId}
-            tradeTrackerData={tradeTrackerData}
-          />
+          { seasonDisplay ? (
+            <TradeTracker
+              userId={user.id}
+              currentUserId={currentUserId}
+              tradeTrackerData={tradeTrackerData}
+            />
+          ) : (
+            <EventPerformanceTracer />
+          )}
         </div>
         <div className="dashboard__card-interface-wrapper">
           { seasonDisplay ? (
