@@ -26,7 +26,6 @@ class MatchesController < ApplicationController
   def serialize_matches(matches)
     matches.map{ |match| 
       places = []
-      puts match.to_json
       while places.length < match.participants
         places.push(match.get_user_in_place(places.length + 1).name)
       end

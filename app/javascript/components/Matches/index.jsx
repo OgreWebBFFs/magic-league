@@ -27,9 +27,9 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
           {isAdmin && <Cell className=">matches__cell matches__cell--admin-actions">Admin</Cell>}
         </Row>
         )}
-        {matches.map(({
+        {(isSeasonView ? matches : eventMatches).map(({
           table: {
-            places: [winner, loser], id, date, time,
+            places: [winner, ...losers], id, date, time,
           },
         }) => (
           <Row>
@@ -41,7 +41,9 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
             </Cell>
             <Cell className=">matches__cell matches__cell--player">
               <MobileLabel>Loser: </MobileLabel>
-              {loser}
+              <ul style={{display: 'inline-block'}}>
+                {losers.map((loser) => <li>{loser}</li>)}
+              </ul>
             </Cell>
             <Cell className=">matches__cell matches__cell--id">
               <MobileLabel>Match ID: </MobileLabel>
