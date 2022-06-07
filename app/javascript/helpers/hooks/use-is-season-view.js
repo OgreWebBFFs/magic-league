@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 
-let isSeasonViewGlobal = true;
+const wasSeasonView = window.sessionStorage.getItem('isSeasonView');
+let isSeasonViewGlobal = wasSeasonView === null || wasSeasonView === 'true';
 let observers = [];
 
 const toggleSeasonView = () => {
   isSeasonViewGlobal = !isSeasonViewGlobal;
+  window.sessionStorage.setItem('isSeasonView', isSeasonViewGlobal);
   observers.forEach((update) => update(isSeasonViewGlobal));
 };
 
