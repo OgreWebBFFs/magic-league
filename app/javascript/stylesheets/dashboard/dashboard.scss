@@ -292,18 +292,27 @@
             flex: 0 0 auto;
         }
 
+        &--trophy-cell {
+            font-size: 1.2rem;
+            flex: 0 0 auto;
+        }
+
         &--review-modal-description {
             font-weight: 900;
         }
 
         &--empty-msg {
             text-align: center;
+            display: inline-block;
+            width: 100%;
         }
 
         &--empty-btn {
+            display: inline-block;
             margin-left: auto;
             margin-right: auto;
         }
+
     }
 }
 

@@ -16,7 +16,7 @@ const Heading = ({ objectiveRerolls, edit }) => (
     </InfoCell>
     {edit && (
       <RerollCell>
-        {`Rerolls Available: ${objectiveRerolls.allowed - objectiveRerolls.used}`}
+        {`Rerolls Available: ${objectiveRerolls ? objectiveRerolls.allowed - objectiveRerolls.used : '?'}`}
       </RerollCell>
     )}
   </Row>

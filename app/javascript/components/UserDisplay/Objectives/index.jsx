@@ -9,13 +9,15 @@ import Heading from './Heading';
 const Objectives = ({
   activeObjectives,
   completedObjectives,
-  objectiveRerolls,
+  currentUserId,
   edit,
+  objectiveRerolls,
+  user,
 }) => (
   <Table>
     <Heading objectiveRerolls={objectiveRerolls} edit={edit} />
     {activeObjectives.length === 0 && completedObjectives.length === 0 ? (
-      <EmptyObjectives edit={edit} />
+      <EmptyObjectives currentUserId={currentUserId} user={user} />
     ) : (
       <>
         <ActiveObjectives
