@@ -50,7 +50,9 @@ class EventRanking
       name: self.user.name,
       id: self.user.id,
       ranking: self.event_points,
-      matches: self.matches
+      matches: self.matches,
+      victory_points: self.victory_points,
+      objective_points: self.objective_points
     }) 
   end
 end

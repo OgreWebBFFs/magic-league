@@ -19,17 +19,12 @@ const Rankings = ({
   const [showRankings, setShowRankings] = useState(true);
   const [isSeasonView] = useIsSeasonView();
 
-  const toggleRankingsVisible = () => {
-    const dateForm = document.querySelector('.rankings__date_form');
-    dateForm.classList.toggle('rankings__date_form--hidden');
-    setShowRankings(!showRankings);
-  };
-
   return (
     <>
-      {isSeasonView ? <DatePicker date={date} /> : <h1 className="rankings__title">Baldur&apos;s Gate Event</h1>}
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
-        <Button className="button--ghost rankings__title" onClick={() => { toggleRankingsVisible(); }}>
+        {isSeasonView ? <DatePicker date={date} />
+          : <h1 className="rankings__title">Baldur&apos;s Gate Event</h1>}
+        <Button className="button--ghost rankings__title" onClick={() => setShowRankings(false)}>
           Rankings
         </Button>
         <ViewToggleSwitch name="rankings-type" />
@@ -69,7 +64,7 @@ const Rankings = ({
       </div>
       { !showRankings
     && (
-    <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => { toggleRankingsVisible(); }}>
+    <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => setShowRankings(true)}>
       {' '}
       <i className="fas fa-list" />
     </Button>
