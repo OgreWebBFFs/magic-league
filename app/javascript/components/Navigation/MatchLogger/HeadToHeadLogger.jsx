@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useUpdateEffect } from 'react-use';
 import Button from '../../Button';
 import PlayerSelect from '../PlayerSelect';
 
@@ -8,11 +9,11 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
 
   const [playerA, setPlayerA] = useState(currentUserObject);
   const [playerB, setPlayerB] = useState(currentUserObject);
-  const [winnerId, setWinnerId] = useState(currentUserObject.id);
+  const [winnerId, setWinnerId] = useState();
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('en-CA'));
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (winnerId !== playerA.id && winnerId !== playerB.id) {
       setWinnerId(playerA.id);
     }
