@@ -4,9 +4,14 @@ import classNames from 'classnames';
 import Button from '../Button';
 import ViewToggleSwitch from '../ViewToggleSwitch';
 import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
+import DatePicker from './DatePicker';
 
 const Rankings = ({
-  rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers,
+  date,
+  rankedPlayers,
+  unrankedPlayers,
+  eventRankedPlayers,
+  eventUnrankedPlayers,
 }) => {
   const [showRankings, setShowRankings] = useState(true);
   const [isSeasonView] = useIsSeasonView();
@@ -82,6 +87,7 @@ const Rankings = ({
 
   return (
     <>
+      <DatePicker date={date} />
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
         <Button className="button--ghost rankings__title" onClick={() => { toggleRankingsVisible(); }}>
           Rankings

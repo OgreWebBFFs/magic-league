@@ -1,10 +1,8 @@
 <%= react_component("CyclingBackground", {bgPath:get_random_bg_image}) %>
-<%= form_with(url: "/", :class =>"rankings__date_form", method: "get", local: true) do %>
-  <%= select_date(@match_date, { order: [:month, :year], prefix: :match_date}, { onchange: ("this.form.submit();") } ) %>
-<% end %>
 <%= react_component("Rankings", {
-   rankedPlayers: @ranked_players,
-   unrankedPlayers: @unranked_players,
-   eventRankedPlayers: @event_ranked_players,
-   eventUnrankedPlayers: @event_unranked_players
+  date: @match_date,
+  rankedPlayers: @ranked_players,
+  unrankedPlayers: @unranked_players,
+  eventRankedPlayers: @event_ranked_players,
+  eventUnrankedPlayers: @event_unranked_players
 }) %>
