@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmptyState = ({ isOwner, user: { name }, CtaComponent }) => {
+const EmptyState = ({ isOwner, user: { name, id }, CtaComponent }) => {
   const youNoCards = "Hey, LISTEN! It look's like you haven't added any cards here yet.";
   const theyNoCards = `Drat! It look's like ${name} hasn't added any cards here yet.`;
   return (
@@ -8,7 +8,7 @@ const EmptyState = ({ isOwner, user: { name }, CtaComponent }) => {
       <p className="empty-card-view__message">
         {isOwner ? youNoCards : theyNoCards}
       </p>
-      {isOwner && <CtaComponent />}
+      {isOwner && <CtaComponent userId={id} />}
     </div>
   );
 };
