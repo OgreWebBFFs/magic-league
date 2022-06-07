@@ -10,7 +10,7 @@ class UserObjectivesController < ApplicationController
     can_reroll = user_objective.can_be_rerolled
     if (can_reroll)
       user_objective.reroll
-      user_objective.destroy
+      user_objective.unassign
       render json: { status: 'success' }
     else
       render json: { status: 'error', message: 'No rerolls available' }, status: 400

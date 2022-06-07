@@ -12,6 +12,10 @@ class UserObjective < ApplicationRecord
     self.user.has_available_rerolls
   end
 
+  def unassign
+    self.update(assigned_at: nil)
+  end
+
   def reroll
     user = self.user
     all_users_objectives = user.user_objectives.pluck(:objective_id)
