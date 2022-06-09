@@ -34,8 +34,9 @@
         &--admin-actions {
             display: flex;
             flex: 0 0 150px;
+            justify-content: center;
             .button {
-                margin-left:0;
+                width: auto;
             }
         }
     

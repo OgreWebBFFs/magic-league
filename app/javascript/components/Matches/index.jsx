@@ -52,7 +52,6 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
             {isAdmin
                   && (
                   <Cell className=">matches__cell matches__cell--admin-actions">
-                    <Button href={`/admin/matches/${id}/edit`}><i className="fas fa-cog" /></Button>
                     <Button data-confirm="Are you sure?" rel="nofollow" data-method="delete" href={`/admin/matches/${id}`}><i className="fas fa-times" /></Button>
                   </Cell>
                   )}

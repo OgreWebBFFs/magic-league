@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @match_date = params[:match_date] ? DateTime.new(params[:match_date][:year].to_i, params[:match_date][:month].to_i, params[:match_date][:day].to_i) : DateTime.now
 
-    @matches = Match.where(event_id: nil).played_during_month(@match_date)
+    @matches = Match.where(event_id: nil).played_during_month(@match_date).order('played_at ASC')
     @users = @users.select{|u| u.locked_at.nil? || @matches.any? {|m| m.winner_id == u.id || m.loser_id == u.id } }
 
     rankings = RankingEngine.new(@users, @matches).generate_rankings
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     @ranked_players = ranker.ranked_players
     @unranked_players = ranker.unranked_players
 
-    @event_matches = Match.where(event_id: 1)
+    @event_matches = Match.where(event_id: 1).order('played_at ASC')
     event_rankings = EventRankingEngine.new().generate_event_rankings(@users)
     event_rankings = event_rankings.sort_by{|r| r.event_points}.reverse
 

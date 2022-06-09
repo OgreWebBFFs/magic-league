@@ -41,7 +41,7 @@ Rails.application.routes.draw do
         patch :unlock
       end
 
-      resources :matches
+      resources :matches, only: [:index, :destroy]
       resources :objectives, only: [:create, :index, :update, :destroy]
 
       resources :settings do
