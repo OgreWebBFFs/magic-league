@@ -26,7 +26,17 @@ class UsersController < ApplicationController
     @tradables = @user.tradables
     @wishlist = @user.wishlist
     @current_user_wishlist = current_user.wishlist
+    @active_objectives = current_user.user_objectives.select{ |obj|
+      current_user.id == @user.id && obj.completed_at == nil && obj.assigned_at != nil
+    }.map{ |obj| UserObjectiveSerializer.new(obj)}
+    @completed_objectives = @user.user_objectives.select{ |obj|
+      obj.completed_at != nil
+    }.map{ |obj| UserObjectiveSerializer.new(obj)}
+    @objective_rerolls = @user.reroll
     @trades = @user.trades
+
+    event_matches = Match.where(event_id: 1)
+    @event_ranking = EventRankingEngine.new().generate_event_user_ranking(@user)
   end
 
 

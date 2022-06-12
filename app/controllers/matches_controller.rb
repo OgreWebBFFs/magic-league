@@ -1,32 +1,40 @@
 class MatchesController < ApplicationController
   def create
+    match_params = params[:match]
     date_time = DateTime.strptime(match_params[:date]+ " " + match_params[:time], "%Y-%m-%d %H:%M")
-    loser = ([match_params[:playerA], match_params[:playerB]] - [match_params[:winner]]).first
-    match = Match.create(played_at: date_time, participants: 2)
-    Result.create(match_id: match.id, user_id: match_params[:winner], place: 1)
-    Result.create(match_id: match.id, user_id: loser, place: 2)
+    match = Match.create(played_at: date_time, participants: match_params[:participants].to_i, event_id: match_params[:event])
+    
+    place = 1
+    while params[:match][place.to_s] != nil do
+      Result.create(match_id: match.id, user_id: match_params[place.to_s], place: place)
+      place += 1
+    end
+    
     redirect_to :root
   end
 
   
   def index
-    @matches = Match.order('played_at DESC').map { |match|
-      winner = match.get_user_in_place(1)
-      loser = match.get_user_in_place(2)
+    @matches = Match.where(event_id: nil).order('played_at DESC')
+    @matches = serialize_matches(@matches)
+    @event_matches = Match.where(event_id: 1).order('played_at DESC')
+    @event_matches = serialize_matches(@event_matches)
+  end
+
+  private
+
+  def serialize_matches(matches)
+    matches.map{ |match| 
+      places = []
+      while places.length < match.participants
+        places.push(match.get_user_in_place(places.length + 1).name)
+      end
       OpenStruct.new({
-        winner: winner.name,
-        loser: loser.name,
+        places: places,
         date: match.played_at.strftime("%a %b #{match.played_at.day.ordinalize}"),
         time: match.played_at.strftime("%I:%M%p"),
         id: match.id
       })
     }
-  
-  end
-
-  private
-
-  def match_params
-    params.require(:match).permit(:playerA, :playerB, :winner, :date, :time) 
   end
 end

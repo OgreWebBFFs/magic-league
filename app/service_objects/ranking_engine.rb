@@ -28,14 +28,30 @@ class RankingEngine
     s2 = 0.0
     winner.elo = winner.elo + (K * (s1 - e1))
     loser.elo = loser.elo + (K * (s2 - e2))
+    winner.wins = winner.wins + 1
+    loser.losses = loser.losses + 1
   end
 end
 
 class Ranking
   attr_accessor :elo
+  attr_accessor :wins
+  attr_accessor :losses
   attr_reader :user
   def initialize(user, elo)
     @user = user
     @elo = elo
+    @wins = 0
+    @losses = 0
+  end
+
+  def serialize
+    OpenStruct.new({
+      name:self.user.name,
+      id: self.user.id,
+      ranking: self.elo.round(2),
+      wins: self.wins,
+      losses: self.losses
+    }) 
   end
 end

@@ -16,6 +16,7 @@
     font-weight: 700;
     text-transform: unset;
     color: $color-light;
+    text-align: center;
   }
 
   &__date_form {
@@ -86,7 +87,7 @@
 
   &__wrapper {
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 10px auto;
     height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (3*#{$section-padding}));
     position: relative;
     max-width:350px;

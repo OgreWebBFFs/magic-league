@@ -1,9 +1,31 @@
 @import "./trades";
 
 .dashboard {
-    &__title {
-        margin-top: 0;
+
+    &-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 10px;
+        
+        @media only screen and (max-width: 850px) {
+            flex-direction: column;
+            align-items: center;
+
+            &__title {
+                text-align: center;
+            }
+        }
+        
+        &__title {
+            margin: 0;
+        }
+
+        .toggle-switch {
+            flex: 0 0 auto;
+        }
     }
+
 
     &-profile {
         display: flex;
@@ -26,17 +48,71 @@
         }
 
         &__trades {
-                .cell {
-                    flex: 1 1 33%;
+            width: 100%;
+
+            .cell {
+                flex: 1 1 33%;
+                text-align: center;
+
+                input {
                     text-align: center;
-    
-                    input {
-                        text-align: center;
-                    }
                 }
+            }
         }
         &__edit-button {
                 margin:0.25rem 0; 
+        }
+
+        &__performance {
+            display: flex;
+            flex: 1 1 100%;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            
+            .digit {
+                font-size: 2.5rem;
+                font-weight: 700;
+            }
+
+            .table {
+                flex: 1 1 75%;
+                display: flex;
+                flex-direction: column;
+                box-shadow: none;
+            }
+
+            .row {
+                flex: 1 1 50%;
+            }
+
+            .cell {
+                display: flex;
+                align-items: center;
+                font-size: 2.5rem;
+            }
+
+            &-points {
+                flex: 1 1 25%;
+                background: black;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                p {
+                    margin: 0;
+                    text-align: center;
+                }
+                 
+                & .digit {
+                    font-size: 3.5rem;
+                }
+            }
+
+            &-match-num {
+                color: $color-nuetral;
+                font-size: .75rem;
+            }
+
         }
 
         @media only screen and (max-width: 850px) {
@@ -188,5 +264,121 @@
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
     }
 
+    &__reroll-action {
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0 5px;
+        
+        &--btn {
+            font-size: 1.5rem;
+            padding: .5rem;
+            margin: 0;
+
+            &:disabled {
+                background: $color-nuetral;
+            }
+        }
+        
+        &--text {
+            color: $color-light;
+        }
+    }
+
+    &__objectives {
+
+        &-heading {
+            align-items: start;
+            justify-content: start;
+
+            &--title {
+                font-size: 2.5rem;
+                padding-right: 0;
+                display: flex;
+            }
+            
+            &--info {
+                display: inline-flex;
+                align-items: start;
+                button {
+                    font-size: 1.5rem;
+                    color: $color-nuetral;
+                    margin: 0;
+                    background: none;
+                    &:hover {
+                        background: none;
+                    }
+                }
+            }
+
+            &--reroll {
+                flex: 1 1 100%;
+                text-align: right;
+                align-self: end;
+            }
+        }
+
+        &--description-cell {
+            flex: 1 1 75%;
+            .new {
+                font-weight: 700;
+                margin-right: .75rem;
+                color: $color-highlight-urgent;
+            }
+        }
+
+        &--actions-cell {
+            align-self: flex-end;
+            display: flex;
+            justify-content: space-evenly;
+            flex: 0 0 auto;
+            gap: 1rem;
+
+            .button {
+                margin: 0;
+                flex: 1 1 50%;
+                max-width: 50px;
+            }
+        }
+
+        &--date-cell {
+            flex: 0 0 auto;
+        }
+
+        &--trophy-cell {
+            font-size: 1.2rem;
+            flex: 0 0 auto;
+        }
+
+        &--review-modal-description {
+            font-weight: 900;
+        }
+
+        &--empty-msg {
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+        }
+
+        &--empty-btn {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    }
+}
+
+.quest-info {
+    &__detail {
+        text-align: left;
+        max-width: 80vw;
+        
+        i {
+            margin-right: .5rem;
+            margin-left: .5rem;
+        }
+    }
 }
 

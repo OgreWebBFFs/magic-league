@@ -70,6 +70,10 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
             displayName: 'Admin Setting',
             href: 'admin/settings/1/edit',
           },
+          {
+            displayName: 'Admin Objectives',
+            href: 'admin/objectives',
+          },
         ],
       },
 

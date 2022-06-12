@@ -21,6 +21,19 @@ Rails.application.routes.draw do
   resources :tradables, only: [:index, :show, :create, :destroy]
   resources :received_trades, only: [:create]
 
+  resources :user_objectives, only: [:create] do
+    member do
+      patch 'reroll'
+      put 'complete'
+    end
+  end
+
+  resources :rerolls, only: [:create] do
+    collection do
+      patch 'update_all'
+    end
+  end
+
   namespace :admin do 
     authenticated :user, ->(u) { u.admin? } do
       resources :users do
@@ -28,7 +41,8 @@ Rails.application.routes.draw do
         patch :unlock
       end
 
-      resources :matches
+      resources :matches, only: [:index, :destroy]
+      resources :objectives, only: [:create, :index, :update, :destroy]
 
       resources :settings do
         get :edit

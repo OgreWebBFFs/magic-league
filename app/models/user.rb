@@ -19,13 +19,22 @@ class User < ApplicationRecord
   has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
+  has_many :user_objectives
+  has_many :objectives, through: :user_objectives
+  has_one :reroll
 
   scope :unlocked, -> { self.where(locked_at: nil) }
 
   def matches
-    Match.where("winner_id = ? OR loser_id = ?", id, id)
+    match_ids = Result.where("user_id = ?", id).pluck(:match_id)
+    Match.where(id: match_ids)
   end
 
+  def victories
+    victory_ids = Result.where("user_id = ? AND place = 1", id).pluck(:match_id)
+    Match.where(id: victory_ids)
+  end
+   
   def trades
     Trade.where("from_user = ? OR to_user = ?", id, id).order('created_at DESC')
   end
@@ -57,6 +66,19 @@ class User < ApplicationRecord
     received = received_trades.where(rarity: rarity).first
     num_received = received ? received.num_received : 0
     ReceivedTrade.num_allowed(rarity, id) - num_received
+  end
+
+  def has_available_rerolls
+    self.reroll.used < self.reroll.allowed
+  end
+
+  def use_a_reroll
+    used_rerolls = self.reroll.used
+    self.reroll.update(used: used_rerolls + 1)
+  end
+  
+  def completed_objectives
+    self.user_objectives.where.not(completed_at: nil)
   end
 
   def to_s

@@ -1,19 +1,19 @@
-<div id="dashboard" class="dashboard">
-  <div class="dashboard__container">
-    <h2 class="dashboard__title"><%= @user.name %></h2>
-    <%= render 'dashboard/user_profile', user: @user %>
-    <%= react_component("Dashboard", {
-      currentUserId: current_user.id,
-      user: @user,
-      edit: policy(@user.collection).edit?,
-      currentUserWishlist: @current_user_wishlist,
-      collectionCards: @cards,
-      collectionId: @user.collection.id,
-      tradables: @tradables,
-      wishlist: @wishlist,
-      trades: @trades.select{ |trade|
-        (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
-      }.map{ |trade| TradeSerializer.new(trade)}
-    }) %>
-  </div>
-</div>
+<%= react_component("UserDisplay", {
+  currentUserId: current_user.id,
+  user: @user,
+  edit: policy(@user.collection).edit?,
+  currentUserWishlist: @current_user_wishlist,
+  collectionCards: @cards,
+  collectionId: @user.collection.id,
+  tradables: @tradables,
+  wishlist: @wishlist,
+  activeObjectives: @active_objectives,
+  completedObjectives: @completed_objectives,
+  objectiveRerolls: @objective_rerolls,
+  eventRanking: @event_ranking,
+  trades: @trades.select{ |trade|
+    (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
+  }.map{ |trade| TradeSerializer.new(trade)},
+  tradeTrackerData: @user.trades_received_and_allowed_by_rarity,
+  gravatar: gravatar(@user)
+}) %>

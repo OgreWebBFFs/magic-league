@@ -1,15 +1,21 @@
 import React from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
+import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
+import ViewToggleSwitch from '../ViewToggleSwitch';
 import {
   Table, Row, Cell, MobileLabel,
 } from '../Table';
 import Button from '../Button';
 
-const Matches = ({ matches, isAdmin = false }) => {
+const Matches = ({ matches, eventMatches, isAdmin = false }) => {
+  const [isSeasonView] = useIsSeasonView();
   const isMobile = useIsMobile();
   return (
     <>
-      <h2>Matches</h2>
+      <div className="matches__title">
+        <h2>Matches</h2>
+        <ViewToggleSwitch name="matches-type" />
+      </div>
       <Table>
         { !isMobile && (
         <Row isHeading>
@@ -21,9 +27,9 @@ const Matches = ({ matches, isAdmin = false }) => {
           {isAdmin && <Cell className=">matches__cell matches__cell--admin-actions">Admin</Cell>}
         </Row>
         )}
-        {matches.map(({
+        {(isSeasonView ? matches : eventMatches).map(({
           table: {
-            winner, loser, id, date, time,
+            places: [winner, ...losers], id, date, time,
           },
         }) => (
           <Row>
@@ -35,7 +41,9 @@ const Matches = ({ matches, isAdmin = false }) => {
             </Cell>
             <Cell className=">matches__cell matches__cell--player">
               <MobileLabel>Loser: </MobileLabel>
-              {loser}
+              <ul style={{display: 'inline-block'}}>
+                {losers.map((loser) => <li>{loser}</li>)}
+              </ul>
             </Cell>
             <Cell className=">matches__cell matches__cell--id">
               <MobileLabel>Match ID: </MobileLabel>
@@ -44,7 +52,6 @@ const Matches = ({ matches, isAdmin = false }) => {
             {isAdmin
                   && (
                   <Cell className=">matches__cell matches__cell--admin-actions">
-                    <Button href={`/admin/matches/${id}/edit`}><i className="fas fa-cog" /></Button>
                     <Button data-confirm="Are you sure?" rel="nofollow" data-method="delete" href={`/admin/matches/${id}`}><i className="fas fa-times" /></Button>
                   </Cell>
                   )}

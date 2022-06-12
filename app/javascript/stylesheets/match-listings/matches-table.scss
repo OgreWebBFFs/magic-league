@@ -22,7 +22,11 @@
             flex: 0 0 150px;
         }
         &--player {
-            flex: 1 1 auto;
+            flex: 1 1 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
         &--id {
             flex: 0 0 50px;
@@ -30,11 +34,28 @@
         &--admin-actions {
             display: flex;
             flex: 0 0 150px;
+            justify-content: center;
             .button {
-                margin-left:0;
+                width: auto;
             }
         }
     
+    }
+
+    .matches__title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .toggle-switch {
+            flex: 0 0 auto;
+        }
+
+        h2 {
+            @media only screen and (max-width: 400px) {
+                font-size: 3rem;
+            }
+        }
     }
 
     @media only screen and (max-width: 850px) {

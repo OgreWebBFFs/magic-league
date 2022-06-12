@@ -91,3 +91,9 @@ Exchange.find_or_create_by(card_id: card2.id, user_id: dustin.id, trade_id: pat_
 Exchange.find_or_create_by(card_id: card2.id, user_id: pat.id, trade_id: pat_dustin_trade.id)
 Exchange.find_or_create_by(card_id: card1.id, user_id: dustin.id, trade_id: dustin_zack_trade.id)
 Exchange.find_or_create_by(card_id: card2.id, user_id: zack.id, trade_id: dustin_zack_trade.id)
+
+# Objectives
+# ====================================================
+objective1 = Objective.find_or_create_by(description: "Have 15 or more cards in your hand")
+objective2 = Objective.find_or_create_by(description: "Control 20 or more creatures  ")
+objective3 = Objective.find_or_create_by(description: "Hit an opponent with their own commander")

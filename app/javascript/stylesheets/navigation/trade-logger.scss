@@ -1,5 +1,7 @@
-#trade-form .trade-logger__card-select input {
-  height: auto;
+#trade-form .trade-logger__card-select {
+  & input {
+    height: auto;
+  }
 }
 
 .trade-logger {
