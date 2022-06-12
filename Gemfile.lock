@@ -133,7 +133,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.1)
     jwt (2.3.0)
-    libv8-node (15.14.0.1-x86_64-linux)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -149,8 +148,6 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_racer (0.4.0)
-      libv8-node (~> 15.14.0.0)
     minitest (5.15.0)
     msgpack (1.5.1)
     mtg_sdk (3.2.1)
@@ -333,7 +330,6 @@ DEPENDENCIES
   fast_jsonapi
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  mini_racer
   mtg_sdk
   omniauth (~> 1.9)
   omniauth-google-oauth2
