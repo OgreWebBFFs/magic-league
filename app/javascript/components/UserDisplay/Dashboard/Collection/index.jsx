@@ -48,8 +48,9 @@ const Collection = ({
       {(!isListView && !isEmpty) && (
         <div className="dashboard__card-grid-wrapper">
           <CardGrid>
-            {collectionCards.map((card) => (
-              <div key={`${card.id}-${new Date().getTime()}`}>
+            {collectionCards.map((card, i) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={`${card.id}-${i}`}>
                 <WishlistToggleSmall
                   userId={user.id}
                   cardId={card.id}
