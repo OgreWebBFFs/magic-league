@@ -84,7 +84,7 @@ const Dashboard = ({
   }, [activeTab, isListView]);
 
   return (
-    <>
+    <div data-preserve-scroll="true">
       <div className="dashboard__tab-wrapper">
         {Object.keys(Tabs).map((tabName) => (
           <InterfaceTab
@@ -108,7 +108,7 @@ const Dashboard = ({
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
-    </>
+    </div>
   );
 };
 export default Dashboard;

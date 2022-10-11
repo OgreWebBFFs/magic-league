@@ -4,8 +4,9 @@ import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 const ViewToggleSwitch = ({
   name,
 }) => {
+  const isEventActive = false;
   const [isSeasonView, toggleSeasonView] = useIsSeasonView();
-  return (
+  return isEventActive && (
     <div className="toggle-switch">
       <input
         type="checkbox"
