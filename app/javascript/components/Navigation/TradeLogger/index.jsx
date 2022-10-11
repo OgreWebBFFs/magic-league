@@ -53,7 +53,7 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
       {xhrResponse && (
         <StatusMessage
           status={xhrResponse.status}
-          invalidTradeTargets={xhrRequest.invalid_trade_targets}
+          invalidTradeTargets={xhrResponse.invalid_trade_targets}
         />
       )}
     </div>
