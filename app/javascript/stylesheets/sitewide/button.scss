@@ -38,6 +38,11 @@
         background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
     }
 
+    &:disabled {
+       color: hsla(var(--text-color-hue-sat), 50%);
+       background: hsla(var(--color-dark-hue-sat), 75%);
+    }
+
     &--inverse {
         --background-color-hue-sat: var(--color-dark-hue-sat);
         --background-color-lightness: var(--color-dark-lightness);

@@ -1,9 +1,6 @@
 module UsersHelper
   def gravatar(user = nil, size = 154)
-    default_image = URI.encode(image_url('user.png'))
-
-    image_path = "#{user&.gravatar_path}?s=#{size}"
-    image_path = image_path + "&d=#{default_image}" unless Rails.env == 'development'
+    image_path = "#{user&.gravatar_path}?s=#{size}&d=mp"
 
     image_path
   end

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useUpdateEffect } from 'react-use';
-import Button from '../../Button';
 import PlayerSelect from '../PlayerSelect';
 
 const MatchLogger = ({ unlockedUsers, currentUserId }) => {
@@ -42,7 +41,6 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
       <p>When?</p>
       <input id="match-date" defaultValue={selectedDate} onChange={(e) => { setSelectedDate(e.target.value); }} type="date" name="match[date]" />
       <input id="match-time" defaultValue={selectedTime} onChange={(e) => { setSelectedTime(e.target.value); }} type="time" name="match[time]" />
-      <Button type="submit" className="drawer_submit__button">Submit</Button>
     </>
   );
 };
