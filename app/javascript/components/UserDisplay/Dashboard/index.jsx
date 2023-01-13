@@ -100,7 +100,7 @@ const Dashboard = ({
       </div>
       <ActionBar actions={Tabs[activeTab].actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <FilterAction key="filter"/>
+        <FilterAction key="filter" />
         { edit && <EditAction key="edit" collectionId={collectionId} /> }
       </ActionBar>
       <div className="dashboard__card-view">
