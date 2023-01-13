@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../../../../Button';
 import FiltersModal from './FiltersModal';
-import filtersConfig from './filters-config';
+import filtersConfig from './filter-configs';
 
 const FilterAction = ({ onUpdate }) => {
   const [showModal, setShowModal] = useState(false);
@@ -11,7 +11,7 @@ const FilterAction = ({ onUpdate }) => {
     const mods = filtersConfig.map(
       (filterConfig) => filterConfig.options.filter(
         (filterOption) => newSelections.includes(filterOption.id),
-      ).map(
+      ).map( 
         (filterOption) => filterOption.criteria,
       ),
     ).filter(

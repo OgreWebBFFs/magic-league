@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../../../../Button';
 import Modal from '../../../../Modal';
-import filtersConfig from './filters-config';
+import filtersConfig from './filter-configs';
 
 const FiltersModal = ({ onClose, onApply, initialSelections }) => {
   const [activeDrawer, setActiveDrawer] = useState('');
