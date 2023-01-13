@@ -7,6 +7,7 @@ import Button from '../../Button';
 import {
   ActionBar,
   EditAction,
+  FilterAction,
   ViewToggle,
 } from './ActionBar';
 import Collection from './Collection';
@@ -29,7 +30,7 @@ const Tabs = {
   collection: {
     view: (props) => <Collection {...props} />,
     notification: () => false,
-    actions: ['view-toggle', 'edit'],
+    actions: ['view-toggle', 'edit', 'filter'],
   },
   wishlist: {
     view: (props) => <Wishlist {...props} />,
@@ -99,7 +100,8 @@ const Dashboard = ({
       </div>
       <ActionBar actions={Tabs[activeTab].actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <EditAction key="edit" canEdit={edit} collectionId={collectionId} />
+        <FilterAction key="filter"/>
+        { edit && <EditAction key="edit" collectionId={collectionId} /> }
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
