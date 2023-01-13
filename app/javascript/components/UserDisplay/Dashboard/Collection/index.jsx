@@ -14,10 +14,15 @@ import TradableToggle from './TradableToggle';
 import CallToAction from './CallToAction';
 
 const Collection = ({
-  collectionCards, currentUserId, user, isListView,
+  collectionCards, currentUserId, user, isListView, viewModifiers,
 }) => {
   const isEmpty = collectionCards.length < 1;
   const isOwner = currentUserId === user.id;
+  const filteredCollection = collectionCards.filter(
+    (card) => viewModifiers.every(
+      (filters) => filters.reduce((applies, filter) => applies || filter(card), false),
+    ),
+  );
   return (
     <>
       {isEmpty && (
@@ -29,7 +34,7 @@ const Collection = ({
       )}
       {(isListView && !isEmpty) && (
         <CardList>
-          {collectionCards.map((card, row) => (
+          {filteredCollection.map((card, row) => (
             <Row>
               <Cell isPriority>
                 <a href={`/cards/${card.id}`}>{card.name}</a>
@@ -48,7 +53,7 @@ const Collection = ({
       {(!isListView && !isEmpty) && (
         <div className="dashboard__card-grid-wrapper">
           <CardGrid>
-            {collectionCards.map((card, i) => (
+            {filteredCollection.map((card, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={`${card.id}-${i}`}>
                 <WishlistToggleSmall

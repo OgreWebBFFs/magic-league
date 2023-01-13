@@ -69,6 +69,8 @@ const Dashboard = ({
   const [wishlist, setWishlist] = useState(initialWishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
 
+  const [viewModifiers, setViewModifiers] = useState([]);
+
   const tradablesContextValues = useMemo(() => ({
     tradables, setTradables,
   }), [tradables]);
@@ -100,13 +102,13 @@ const Dashboard = ({
       </div>
       <ActionBar actions={Tabs[activeTab].actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <FilterAction key="filter" />
+        <FilterAction key="filter" onUpdate={setViewModifiers} />
         { edit && <EditAction key="edit" collectionId={collectionId} /> }
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
-            {Tabs[activeTab].view({ ...props, isListView })}
+            {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
