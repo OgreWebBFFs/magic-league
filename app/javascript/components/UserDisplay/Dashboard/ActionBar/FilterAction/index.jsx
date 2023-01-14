@@ -11,7 +11,7 @@ const FilterAction = ({ onUpdate }) => {
     const mods = filtersConfig.map(
       (filterConfig) => filterConfig.options.filter(
         (filterOption) => newSelections.includes(filterOption.id),
-      ).map( 
+      ).map(
         (filterOption) => filterOption.criteria,
       ),
     ).filter(
@@ -21,11 +21,13 @@ const FilterAction = ({ onUpdate }) => {
     onUpdate(mods);
   };
 
+  const numSelectedFilters = selectedFilters.length;
+
   return (
     <>
       <Button className="dashboard__filter-action" onClick={() => setShowModal(true)}>
         <i className="fas fa-filter" />
-        Filters
+        { numSelectedFilters === 0 ? 'Filter' : `(${numSelectedFilters})` }
       </Button>
       {showModal && (
         <FiltersModal

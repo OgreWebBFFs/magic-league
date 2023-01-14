@@ -93,7 +93,10 @@ const Dashboard = ({
           <InterfaceTab
             key={tabName}
             activeTab={activeTab}
-            setActiveTab={setActiveTab}
+            setActiveTab={(t) => {
+              setActiveTab(t);
+              setViewModifiers([]);
+            }}
             title={tabName}
           >
             {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}

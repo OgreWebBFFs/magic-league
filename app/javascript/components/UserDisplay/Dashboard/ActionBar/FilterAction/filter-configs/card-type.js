@@ -26,5 +26,10 @@ export default {
       display: 'Enchantment',
       criteria: (card) => card.type_line?.match(/enchantment/ig),
     },
+    {
+      id: 'land',
+      display: 'Land',
+      criteria: (card) => card.type_line?.match(/land/ig),
+    },
   ],
 };

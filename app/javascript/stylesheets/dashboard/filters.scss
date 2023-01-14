@@ -1,4 +1,28 @@
 .filter {
+  &__option-group-toggle {
+    background: #191919;
+    color: #51d0de;
+    font-weight: 700;
+    padding: 0.75rem;
+    width: 100%;
+    border-bottom: 2px solid #6667ab;
+
+    &--actives {
+      font-size: .75rem;
+      font-weight: 400;
+      color: $color-nuetral;
+    }
+
+    i {
+      margin-left: .75rem;
+    }
+
+  }
+
+  &__option-group {
+    padding: 1rem;
+  }
+
   &__option {
     text-align: left;
     
@@ -10,7 +34,7 @@
       margin: 0.25rem 0;
 
       i {
-        font-size: 2rem;
+        font-size: 1.75rem;
 
         &.ms-w {
           color: #f8e7b9
@@ -40,5 +64,11 @@
 
       }
     }
+  }
+
+  &__modal-button {
+    display: inline-block;
+    width: 40%;
+    margin: 5%;
   }
 }

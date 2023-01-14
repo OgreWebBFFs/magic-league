@@ -20,7 +20,7 @@ const Collection = ({
   const isOwner = currentUserId === user.id;
   const filteredCollection = collectionCards.filter(
     (card) => viewModifiers.every(
-      (filters) => filters.reduce((applies, filter) => applies || filter(card), false),
+      (filters) => filters.find((filter) => filter(card)),
     ),
   );
   return (

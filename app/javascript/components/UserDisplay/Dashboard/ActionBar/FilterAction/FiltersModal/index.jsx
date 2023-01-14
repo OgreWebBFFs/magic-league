@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Button from '../../../../Button';
-import Modal from '../../../../Modal';
-import filtersConfig from './filter-configs';
+import Button from '../../../../../Button';
+import Modal from '../../../../../Modal';
+import filtersConfig from '../filter-configs';
+import FilterDrawerToggle from './FilterDrawerToggle';
 
 const FiltersModal = ({ onClose, onApply, initialSelections }) => {
   const [activeDrawer, setActiveDrawer] = useState('');
@@ -15,17 +16,15 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
 
   return (
     <Modal onClose={onClose}>
-      <div style={{ width: '60vw' }}>
-        {filtersConfig.map(({name: facetName, options}) => (
+      <div style={{ width: '80vw', maxWidth: '489px' }}>
+        {filtersConfig.map(({ name: facetName, options }) => (
           <div className="filter" key={`${facetName}-filter`}>
-            <button
-              type="button"
-              className="filter__option-group-toggle"
+            <FilterDrawerToggle
               onClick={() => toggleActiveDrawer(facetName)}
-            >
-              {facetName.toUpperCase()}
-              <i className={`fas fa-caret-${activeDrawer === facetName ? 'up' : 'down'}`} />
-            </button>
+              isOpen={activeDrawer === facetName}
+              targetFilter={{ facetName, options }}
+              selectedOptions={selectedOptions}
+            />
             {activeDrawer === facetName && (
               <ul className="filter__option-group">
                 {options.map(({ id, display }) => (
@@ -44,14 +43,17 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
           </div>
         ))}
         <Button
+          className="filter__modal-button"
           onClick={() => {
             onApply(selectedOptions);
             onClose();
           }}
         >
           Apply
+          {selectedOptions.length > 0 ? ` (${selectedOptions.length})` : ''}
         </Button>
         <Button
+          className="filter__modal-button"
           onClick={() => setSelectedOptions([])}
         >
           Clear All
