@@ -19,6 +19,9 @@ const SimpleEdit = ({ userId, collectionId }) => {
         onResults={setCards}
         onReset={resetToCollection}
       />
+      <a href={`/collections/${collectionId}/bulk_edit`}>
+        Go to Bulk Edit &gt;
+      </a>
       <CardGrid>
         {cards.map((card) => (
           <>
