@@ -66,6 +66,11 @@ const Collection = ({
           </CardGrid>
         </div>
       )}
+      {filteredCollection.length === 0 && !isEmpty && (
+        <p className="dashboard__no-filter-results">
+          You&apos;ve filtered too far... turn back now
+        </p>
+      )}
     </>
   );
 };
