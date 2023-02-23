@@ -5,9 +5,9 @@
     --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
 
     --adjusted-lightness: var(--background-color-lightness);
-    --text-color: var(--color-dark);
-    --text-color-hue-sat: var(--color-dark-hue-sat);
-    --text-color-lightness: var(--color-dark-lightness);
+    --text-color: var(--color-light);
+    --text-color-hue-sat: var(--color-light-hue-sat);
+    --text-color-lightness: var(--color-light-lightness);
   
     display:flex;
     justify-content: center;

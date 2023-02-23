@@ -141,10 +141,10 @@
 
     &__tab-wrapper {
         display: flex;
-        background: $color-light;
+        background: transparent;
 
         .notification {
-            color: #fe466e;
+            color: $color-highlight-import;
             position: relative;
             left: 0.25rem;
             font-size: 1.2rem;
