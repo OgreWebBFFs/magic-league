@@ -1,4 +1,5 @@
 @import "./trades";
+@import "./filters";
 
 .dashboard {
 
@@ -205,8 +206,6 @@
         &-wrapper {
             margin: $section-margin 0;
         }
-
-        @import 'filter';
     }
 
     &__action-bar {
@@ -219,6 +218,24 @@
 
     &__cards-action {
         margin: 5px; 
+    }
+
+    &__filter-action {
+        position: absolute;
+        width: 6rem;
+        margin: 0;
+        left: calc(50% - 3rem);
+        background: $color-dark;
+        color: $color-accent;
+        border: 2px solid $color-accent;
+        border-radius: 0.5rem;
+        font-weight: 700;
+
+        &:hover {
+            background: $color-dark;
+            color: $color-highlight-import;
+            border-color: $color-highlight-import;
+        }
     }
 
     &__card-view-toggles {
@@ -368,6 +385,10 @@
             margin-right: auto;
         }
 
+    }
+
+    &__no-filter-results {
+        text-align: center;
     }
 }
 

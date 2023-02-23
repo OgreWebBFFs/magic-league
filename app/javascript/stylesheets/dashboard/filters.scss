@@ -1,0 +1,74 @@
+.filter {
+  &__option-group-toggle {
+    background: #191919;
+    color: #51d0de;
+    font-weight: 700;
+    padding: 0.75rem;
+    width: 100%;
+    border-bottom: 2px solid #6667ab;
+
+    &--actives {
+      font-size: .75rem;
+      font-weight: 400;
+      color: $color-nuetral;
+    }
+
+    i {
+      margin-left: .75rem;
+    }
+
+  }
+
+  &__option-group {
+    padding: 1rem;
+  }
+
+  &__option {
+    text-align: left;
+    
+    label {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.25rem 0;
+
+      i {
+        font-size: 1.75rem;
+
+        &.ms-w {
+          color: #f8e7b9
+        }
+
+        &.ms-u {
+          color: #0e68ab;
+        }
+
+        &.ms-b {
+          color: #150b00;
+        }
+
+        &.ms-r {
+          color: #d3202a;
+        }
+
+        &.ms-g {
+          color: #00733e;
+        }
+
+        &.ms-c {
+          color: #5e5e5e;
+        }
+
+
+
+      }
+    }
+  }
+
+  &__modal-button {
+    display: inline-block;
+    width: 40%;
+    margin: 5%;
+  }
+}

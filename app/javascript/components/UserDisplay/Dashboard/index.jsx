@@ -7,6 +7,7 @@ import Button from '../../Button';
 import {
   ActionBar,
   EditAction,
+  FilterAction,
   ViewToggle,
 } from './ActionBar';
 import Collection from './Collection';
@@ -29,7 +30,7 @@ const Tabs = {
   collection: {
     view: (props) => <Collection {...props} />,
     notification: () => false,
-    actions: ['view-toggle', 'edit'],
+    actions: ['view-toggle', 'edit', 'filter'],
   },
   wishlist: {
     view: (props) => <Wishlist {...props} />,
@@ -68,6 +69,8 @@ const Dashboard = ({
   const [wishlist, setWishlist] = useState(initialWishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
 
+  const [viewModifiers, setViewModifiers] = useState([]);
+
   const tradablesContextValues = useMemo(() => ({
     tradables, setTradables,
   }), [tradables]);
@@ -90,7 +93,10 @@ const Dashboard = ({
           <InterfaceTab
             key={tabName}
             activeTab={activeTab}
-            setActiveTab={setActiveTab}
+            setActiveTab={(t) => {
+              setActiveTab(t);
+              setViewModifiers([]);
+            }}
             title={tabName}
           >
             {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
@@ -99,12 +105,13 @@ const Dashboard = ({
       </div>
       <ActionBar actions={Tabs[activeTab].actions}>
         <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <EditAction key="edit" canEdit={edit} collectionId={collectionId} />
+        <FilterAction key="filter" onUpdate={setViewModifiers} />
+        { edit && <EditAction key="edit" collectionId={collectionId} /> }
       </ActionBar>
       <div className="dashboard__card-view">
         <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
-            {Tabs[activeTab].view({ ...props, isListView })}
+            {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
