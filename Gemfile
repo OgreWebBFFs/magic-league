@@ -11,7 +11,7 @@ gem 'rest-client'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem 'omniauth', '~>1.9'
+gem 'omniauth', '~>2.0'
 gem 'omniauth-google-oauth2'
 gem 'mtg_sdk'
 gem "pundit"
