@@ -1,5 +1,6 @@
 <div class="bulk-edit__container">
   <h3 class="bulk-edit__title">Bulk Update Collection</h3>
+  <%= link_to 'Go to Simple Edit >', edit_collection_path(@collection.id) %>
   <% if !params['alerts'].blank?  %>
     <div class="bulk-edit__error-alert" role="alert" style="display: block;">
       <ul class="bulk-edit__error-list">
