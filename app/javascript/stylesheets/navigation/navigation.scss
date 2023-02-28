@@ -19,7 +19,7 @@
   z-index: 2;
   color: var(--color-highlight-import);
   background-color: var(--color-light);
-  background: linear-gradient(45deg,  $Faded-Bone, var(--color-app-background) 10%, var(--color-app-background) 90%, $Faded-Bone);
+  background: linear-gradient(45deg,  var(--Faded-Bone), var(--color-app-background) 10%, var(--color-app-background) 90%, var(--Faded-Bone));
   width: 100%;
   height: $nav-height;
   padding: 0 10%;
