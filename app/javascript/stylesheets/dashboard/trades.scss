@@ -9,8 +9,8 @@
     }
     .cell:first-child {
       @media only screen and (max-width: 850px) {
-        color: $color-light;
-        background: $color-dark
+        color: var(--color-light);
+        background: var(--color-dark)
       }
     }
   }
@@ -36,13 +36,13 @@
         font-size: 1.5rem;
         
         &.approved {
-          color: $color-accept;
+          color: var(--color-accept);
         }
         &.rejected {
-          color: $color-highlight-urgent;
+          color: var(--highlight-urgent);
         }
         &.waiting {
-          color: $color-nuetral;
+          color: var(--color-nuetral);
         }
       }
 
@@ -141,7 +141,7 @@
         color: #838996;
       }
       &.common {
-        color: $color-dark;
+        color: var(--color-dark);
       }
     }
   }

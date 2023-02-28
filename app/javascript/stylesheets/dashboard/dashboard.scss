@@ -44,7 +44,7 @@
                 //gravatar image forces hard height/widths 154px is current
                 height: 154px;
                 width: 154px;
-                background: $color-dark;
+                background: var(--color-dark);
             }
         }
 
@@ -98,7 +98,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                border-right: 3px solid $color-accent;
+                border-right: 3px solid var(--color-accent);
 
                 p {
                     margin: 0;
@@ -111,7 +111,7 @@
             }
 
             &-match-num {
-                color: $color-nuetral;
+                color: var(--color-nuetral);
                 font-size: .75rem;
             }
 
@@ -144,7 +144,7 @@
         background: transparent;
 
         .notification {
-            color: $color-highlight-import;
+            color: var(--color-highlight-import);
             position: relative;
             left: 0.25rem;
             font-size: 1.2rem;
@@ -152,20 +152,20 @@
 
         .active {
             .notification {
-                color: $color-highlight-urgent;
+                color: var(--highlight-urgent);
             }
         }
     }
 
     &__tab {
-        color: $color-light;
-        background: darken($color-nuetral, 35%);
+        color: var(--color-light);
+        background: darken(var(--color-nuetral), 35%);
         margin-right: 5px;
         margin-bottom:0;
         margin-left:0;
         width: 150px;
-        border: 2px solid $color-dark;
-        border-bottom: 1px solid rgba($color-dark, .15);
+        border: 2px solid var(--color-dark);
+        border-bottom: 1px solid rgba(var(--color-dark), .15);
         ;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -175,12 +175,12 @@
         }
 
         &:hover {
-            background: rgba($color-dark, .8);
-            color: $color-light;
+            background: rgba(var(--color-dark), .8);
+            color: var(--color-light);
         }
 
         &.active {
-            background: $color-dark;
+            background: var(--color-dark);
 
         }
 
@@ -201,7 +201,7 @@
     }
 
     &__card-interface {
-        border: 2px solid $color-dark;
+        border: 2px solid var(--color-dark);
 
         &-wrapper {
             margin: $section-margin 0;
@@ -210,7 +210,7 @@
 
     &__action-bar {
         display: flex;
-        background-color: $color-dark;
+        background-color: var(--color-dark);
         align-items: center;
         justify-content: flex-end;
         height: 55px;
@@ -225,16 +225,16 @@
         width: 6rem;
         margin: 0;
         left: calc(50% - 3rem);
-        background: $color-dark;
-        color: $color-accent;
-        border: 2px solid $color-accent;
+        background: var(--color-dark);
+        color: var(--color-accent);
+        border: 2px solid var(--color-accent);
         border-radius: 0.5rem;
         font-weight: 700;
 
         &:hover {
-            background: $color-dark;
-            color: $color-highlight-import;
-            border-color: $color-highlight-import;
+            background: var(--color-dark);
+            color: var(--color-highlight-import);
+            border-color: var(--color-highlight-import);
         }
     }
 
@@ -295,12 +295,12 @@
             margin: 0;
 
             &:disabled {
-                background: $color-nuetral;
+                background: var(--color-nuetral);
             }
         }
         
         &--text {
-            color: $color-light;
+            color: var(--color-light);
         }
     }
 
@@ -321,7 +321,7 @@
                 align-items: start;
                 button {
                     font-size: 1.5rem;
-                    color: $color-nuetral;
+                    color: var(--color-nuetral);
                     margin: 0;
                     background: none;
                     &:hover {
@@ -342,7 +342,7 @@
             .new {
                 font-weight: 700;
                 margin-right: .75rem;
-                color: $color-highlight-urgent;
+                color: var(--highlight-urgent);
             }
         }
 

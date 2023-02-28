@@ -5,8 +5,8 @@
     justify-content: center;
     top: $nav-height;
     position: absolute;
-    color: $color-dark;
-    background-color: $color-accent;
+    color: var(--color-dark);
+    background-color: var(--color-accent);
     text-align: center;
     display: none;
     padding: 10px;
@@ -15,7 +15,7 @@
     &__close-button {
       position: relative;
       background: transparent;
-      color: $color-dark;
+      color: var(--color-dark);
       margin-left: 10px;
       top: initial;
       right: initial;
@@ -31,7 +31,7 @@
     }
   
     &.urgent {
-      background-color: $color-highlight-urgent;
+      background-color: var(--highlight-urgent);
     }
     @media only screen and (max-width: 650px) {
       width:100%;

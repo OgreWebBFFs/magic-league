@@ -7,7 +7,7 @@
   transform: scaleY(1) translateX(-50%);
   pointer-events: all;
   &-toggle {
-    color: $color-highlight-import;
+    color: var(--color-highlight-import);
   }
 }
 
@@ -17,9 +17,9 @@
   box-shadow: 0 2px 2px 0 rgba(88, 24, 69 , 0.2),
     0 3px 1px -2px rgba(88, 24, 69 , 0.3), 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
   z-index: 2;
-  color: $color-highlight-import;
-  background-color: $color-light;
-  background: linear-gradient(45deg,  $Faded-Bone, $background-color 10%, $background-color 90%, $Faded-Bone);
+  color: var(--color-highlight-import);
+  background-color: var(--color-light);
+  background: linear-gradient(45deg,  $Faded-Bone, var(--color-app-background) 10%, var(--color-app-background) 90%, $Faded-Bone);
   width: 100%;
   height: $nav-height;
   padding: 0 10%;
@@ -37,7 +37,7 @@
       height: 100%;
 
       .logo-fill {
-        fill: $color-highlight-import;
+        fill: var(--color-highlight-import);
       }
     }
 
@@ -73,10 +73,10 @@
     margin: 0;
     padding:0;
     cursor: pointer;
-    color: $color-highlight-mid-import;
+    color: var(--color-highlight-mid-import);
     &:hover,
     &:focus {
-      color: $color-highlight-import;
+      color: var(--color-highlight-import);
     }
   }
 
@@ -101,8 +101,8 @@
     }
     position: absolute;
     width: 150px;
-    background-color: darken($background-color, 2%);
-    background: linear-gradient(120deg, darken($background-color, 2%) 80%, darken($background-color, 8%))  ;
+    background-color: darken(var(--color-app-background), 2%);
+    background: linear-gradient(120deg, darken(var(--color-app-background), 2%) 80%, darken(var(--color-app-background), 8%))  ;
     margin: 0;
     left: 50%;
     display: block;
@@ -132,7 +132,7 @@
       width: 100%;
       padding: 8px 0;
       &:hover {
-        background-color: fade-out($color-light, .8)
+        background-color: fade-out(var(--color-light), .8)
       }
     }
 

@@ -15,7 +15,7 @@
     font-variant: small-caps;
     font-weight: 700;
     text-transform: unset;
-    color: $color-light;
+    color: var(--color-light);
     text-align: center;
   }
 
@@ -50,7 +50,7 @@
   }
 
   &__border {
-    background-color: $color-light;
+    background-color: var(--color-light);
     position: absolute;
     animation-duration: 4s;
     animation-timing-function: ease-in-out;
@@ -108,7 +108,7 @@
 
 
   &__user-button {
-    color: $color-dark;
+    color: var(--color-dark);
     width:100%;
     max-width: 300px;
     margin: 5px 0;
@@ -125,17 +125,17 @@
     visibility: visible !important;
 
     &:hover {
-      background: lighten($color-highlight-import, 5%);
-      color: $color-dark;
+      background: lighten(var(--color-highlight-import), 5%);
+      color: var(--color-dark);
     }
 
     &--unranked {
-      background: $color-highlight-mid-import;
+      background: var(--color-highlight-mid-import);
 
 
       &:hover {
-        background: lighten($color-highlight-mid-import, 5%);
-        color: $color-dark;
+        background: lighten(var(--color-highlight-mid-import), 5%);
+        color: var(--color-dark);
       }
 
     }
@@ -194,7 +194,7 @@
     outline: none;
     width: 100%;
     overflow: hidden;
-    background-color: $color-light;
+    background-color: var(--color-light);
     margin: 5px auto;
   }
 
@@ -220,7 +220,7 @@
 
     &::-webkit-scrollbar-thumb {
       border-radius: 5px;
-      background-color: $color-light;
+      background-color: var(--color-light);
     }
   }
   
