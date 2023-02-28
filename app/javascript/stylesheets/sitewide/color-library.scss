@@ -1,4 +1,4 @@
-//Color Library
+:root {
 $Rose-Gold: #bd8c7d;
 $Soft-Gold: #d1bfa7;
 $Silver: #8e8e90;
@@ -40,7 +40,7 @@ $Olivine: #85BE79;
 
 $Wrinkle-White: #d9d9d9;
 $Eerie-Black: #191919;
-$Faded-Bone:#e3dac9;
+
 $Bone:#F9F6EE;
 $Blood:#C70039;
 $Meat:#581845;
@@ -63,7 +63,8 @@ $ranking-border-color: $Bone;
 
 
 
-:root {
+
+    --Faded-Bone:#e3dac9;
     --meat-hue-sat: 337, 92%;
     --meat-lightness:31%;
 
