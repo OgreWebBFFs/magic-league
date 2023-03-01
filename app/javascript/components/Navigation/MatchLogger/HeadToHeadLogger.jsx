@@ -5,11 +5,10 @@ import PlayerSelect from '../PlayerSelect';
 const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const currentUserObject = unlockedUsers.find((user) => user.id === currentUserId);
   const sortedUsers = unlockedUsers.sort((a, b) => a.name.localeCompare(b.name));
-
   const [playerA, setPlayerA] = useState(currentUserObject);
   const [playerB, setPlayerB] = useState(currentUserObject);
   const [winnerId, setWinnerId] = useState();
-  const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('en-CA'));
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
 
   useUpdateEffect(() => {
@@ -32,7 +31,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
         setSelectedPlayer={setPlayerB}
       />
       <p>Who won?</p>
-      <select className="browser-default winner-selector" disabled={playerA === playerB} name="match[1]" onChange={(e) => setWinnerId(Number.parseInt(e.target.value, 10))}>
+      <select id="victor-selector" className="browser-default winner-selector" disabled={playerA === playerB} name="match[1]" onChange={(e) => setWinnerId(Number.parseInt(e.target.value, 10))}>
         <option value={playerA.id}>{playerA.name}</option>
         <option value={playerB.id}>{playerB.name}</option>
       </select>
