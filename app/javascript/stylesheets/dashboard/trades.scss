@@ -36,7 +36,7 @@
         font-size: 1.5rem;
         
         &.approved {
-          color: $color-accept;
+          color: $color-highlight-import;
         }
         &.rejected {
           color: $color-highlight-urgent;

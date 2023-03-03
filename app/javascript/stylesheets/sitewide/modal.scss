@@ -76,13 +76,7 @@
         font-weight: 700;
         max-width: 250px;
     
-        &.reject {
-          background-color: $color-highlight-urgent;
-        }
-    
-        &.approve {
-          background-color: $color-accept;
-        }
+ 
       }
     
       &__warning {

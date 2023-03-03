@@ -34,7 +34,7 @@
 
 
     &:hover {
-        --adjusted-lightness:calc(var(--background-color-lightness) - 15%);
+        --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
         background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
     }
 
@@ -47,19 +47,22 @@
         --background-color-hue-sat: var(--color-dark-hue-sat);
         --background-color-lightness: var(--color-dark-lightness);
         --background-color: var(--color-dark);
-        --text-color: var(--color-light);
+        --text-color: var(--color-highlight-primary);
     }
+
+    &--bright {
+        --background-color-lightness: calc(var(--color-accent-lightness+10));
+
+    }
+
 
     &--accent {
         --background-color-hue-sat: var(--color-accent-hue-sat);
         --background-color-lightness: calc(var(--color-accent-lightness));
         --background-color: var(--color-accent);
-        --text-color: var(--color-light);
-        &:hover{
-            --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
-        }
-
     }
+
+
 
     &--ghost {
         --background-color-opacity: 0;
