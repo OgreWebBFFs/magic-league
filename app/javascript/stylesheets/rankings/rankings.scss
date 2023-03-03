@@ -108,7 +108,7 @@
 
 
   &__user-button {
-    color: $color-dark;
+    color: $color-light;
     width:100%;
     max-width: 300px;
     margin: 5px 0;
@@ -130,14 +130,10 @@
     }
 
     &--unranked {
-      background: $color-highlight-mid-import;
-
-
-      &:hover {
-        background: lighten($color-highlight-mid-import, 5%);
-        color: $color-dark;
-      }
-
+       opacity: .75;
+       &:hover {
+         opacity: 1;
+       }
     }
 
   }
