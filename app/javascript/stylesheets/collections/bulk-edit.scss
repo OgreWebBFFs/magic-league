@@ -11,7 +11,7 @@
       }
   
       &-item{
-        color: var(--color-highlight-import);
+        color: $color-highlight-import;
       }
     }
   
@@ -29,7 +29,7 @@
     }
     &__text-area{
       flex: 1 0 auto;
-      border: 1px solid var(--color-dark);
+      border: 1px solid $color-dark;
       min-height: 300px;
     }
   

@@ -13,11 +13,11 @@ $checkbox-size: 25px;
 //Text Treatments
 a {
   text-decoration: none;
-  color: var(--color-highlight-mid-import);
+  color: $color-highlight-mid-import;
   transition: color 0.3s;
 
   &:hover {
-    color: var(--color-highlight-import);
+    color: $color-highlight-import;
   }
 }
 
@@ -152,7 +152,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background: var(--color-app-background);
+  background: $background-color;
 }
 
 
@@ -161,10 +161,10 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  background: var(--color-app-background);
+  background: $background-color;
   padding: $section-padding;
   min-height: 600px;
-  color: var(--color-dark);
+  color: $color-dark;
 
 
   //Section Types 
@@ -195,7 +195,7 @@ body {
   display: block;
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  background: var(--color-light);
+  background: $color-light;
 }
 
 .row {
@@ -206,13 +206,13 @@ body {
   text-overflow: ellipsis;
 
   &:nth-child(even) {
-    background: rgba(var(--color-dark), .15);
+    background: rgba($color-dark, .15);
   }
 
   &[class*="-headings"] {
-    background: var(--color-dark);
-    color: var(--color-light);
-    border-bottom: 3px solid var(--color-accent);
+    background: $color-dark;
+    color: $color-light;
+    border-bottom: 3px solid $color-accent;
   }
 }
 
@@ -257,13 +257,13 @@ body {
 
 //Form and Input Elements
 select:focus {
-  outline: 1px solid var(--color-highlight-mid-import);
+  outline: 1px solid $color-highlight-mid-import;
   z-index: 1;
 }
 
 label {
   font-size: 0.8rem;
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 select.browser-default {
@@ -290,8 +290,8 @@ select {
   border-radius: 2px;
   line-height: 36px;
   -webkit-tap-highlight-color: transparent;
-  background: var(--color-highlight-import);
-  color: var(--color-dark);
+  background: $color-highlight-import;
+  color: $color-dark;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -301,20 +301,20 @@ select {
   transition-duration: .3s;
 
   &:hover {
-    background: lighten(var(--color-highlight-import), 15%);
-    color: rgba(var(--color-dark), .75);
+    background: lighten($color-highlight-import, 15%);
+    color: rgba($color-dark, .75);
   }
 
   &:focus { 
-    outline: 2px solid var(--color-dark);
-    background: lighten(var(--color-highlight-import), 15%);
+    outline: 2px solid $color-dark;
+    background: lighten($color-highlight-import, 15%);
   }
 
   &.highlight-mid {
-    background: lighten(var(--color-highlight-mid-import), 5%);
+    background: lighten($color-highlight-mid-import, 5%);
 
     &:hover {
-      background: lighten(var(--color-highlight-mid-import), 10%);
+      background: lighten($color-highlight-mid-import, 10%);
     }
   }
 }
@@ -329,8 +329,8 @@ select {
   right: 5px;
   width:30px;
   height:30px;
-  background: var(--color-highlight-import);
-  color: var(--color-light);
+  background: $color-highlight-import;
+  color: $color-light;
   float: right;
   margin: 0;
   border: none;
@@ -347,19 +347,19 @@ select {
 
 // Text Inputs + Textarea
 ::-webkit-input-placeholder {
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 ::-moz-placeholder {
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 :-ms-input-placeholder {
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 ::placeholder {
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 input:not([type]),
@@ -376,7 +376,7 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default) {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--color-nuetral);
+  border-bottom: 1px solid $color-nuetral;
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -407,9 +407,9 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid var(--color-highlight-mid-import);
-  -webkit-box-shadow: 0 1px 0 0 var(--color-highlight-mid-import);
-  box-shadow: 0 1px 0 0 var(--color-highlight-mid-import);
+  border-bottom: 1px solid $color-highlight-mid-import;
+  -webkit-box-shadow: 0 1px 0 0 $color-highlight-mid-import;
+  box-shadow: 0 1px 0 0 $color-highlight-mid-import;
 }
 
 input:not([type]):disabled+label,
@@ -438,7 +438,7 @@ input[type=search]:not(.browser-default):disabled+label,
 input[type=search]:not(.browser-default)[readonly="readonly"]+label,
 textarea.materialize-textarea:disabled+label,
 textarea.materialize-textarea[readonly="readonly"]+label {
-  color: var(--color-nuetral);
+  color: $color-nuetral;
 }
 
 input[type=checkbox] {
@@ -461,24 +461,24 @@ input[type=checkbox] {
     width: $checkbox-size;
     height: $checkbox-size;
     background: transparent;
-    border: 2px solid var(--color-highlight-mid-import);
+    border: 2px solid $color-highlight-mid-import;
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
   }
 
   // Box hover
   &:hover+label:before {
-    background: rgba(var(--color-highlight-mid-import), 0.25);
+    background: rgba($color-highlight-mid-import, 0.25);
   }
 
   // Box checked
   &:checked+label:before {
-    background: var(--color-highlight-import);
+    background: $color-highlight-import;
   }
 
   // Disabled state label.
   &:disabled+label {
-    color: var(--color-nuetral);
+    color: $color-nuetral;
     cursor: auto;
   }
 
@@ -495,18 +495,18 @@ input[type=checkbox] {
     height: $checkbox-size;
     align-items: center;
     justify-content: center;
-    color: var(--color-dark);
+    color: $color-dark;
   }
    // Disabled box.
    &:disabled+label:before {
     box-shadow: none;
-    border: 2px solid var(--color-dark);
-    background: rgba(var(--color-nuetral), .25);
+    border: 2px solid $color-dark;
+    background: rgba($color-nuetral, .25);
   }
 
   &:disabled+label:after {
     box-shadow: none;
-    color: var(--color-dark)
+    color: $color-dark
   }
 
 }
@@ -533,7 +533,7 @@ input[type=checkbox] {
   }
 
   label input[type=checkbox]:checked+.lever {
-    background-color: var(--color-highlight-mid-import);
+    background-color: $color-highlight-mid-import;
   }
 
   label input[type=checkbox]:checked+.lever:before,
@@ -542,7 +542,7 @@ input[type=checkbox] {
   }
 
   label input[type=checkbox]:checked+.lever:after {
-    background-color: var(--color-highlight-import);
+    background-color: $color-highlight-import;
   }
 
   label .lever {
@@ -551,7 +551,7 @@ input[type=checkbox] {
     position: relative;
     width: 36px;
     height: 14px;
-    background-color: rgba(var(--color-highlight-mid-import), .25);
+    background-color: rgba($color-highlight-mid-import, .25);
     border-radius: 15px;
     margin-right: 10px;
     -webkit-transition: background 0.3s ease;
@@ -577,11 +577,11 @@ input[type=checkbox] {
   }
 
   label .lever:before {
-    background-color: rgba(var(--color-highlight-mid-import), .25);
+    background-color: rgba($color-highlight-mid-import, .25);
   }
 
   label .lever:after {
-    background-color: rgba(var(--color-highlight-mid-import), .25);
+    background-color: rgba($color-highlight-mid-import, .25);
     -webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
@@ -597,7 +597,7 @@ input[type=checkbox] {
   backdrop-filter: blur(5px);
   top: 0;
   left: 0;
-  background-color: rgba(var(--color-dark), .3);
+  background-color: rgba($color-dark, .3);
 }
 
 @media only screen and (max-width: 650px) {

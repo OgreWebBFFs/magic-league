@@ -17,7 +17,7 @@
         width: 40%;
         min-width: 295px;
         max-width: 400px;
-        background: rgba(var(--color-light), .9);
+        background: rgba($color-light, .9);
         padding: $section-padding;
         text-align: center;
         display: flex;

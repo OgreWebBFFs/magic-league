@@ -43,11 +43,11 @@
     }
 
     &--destroy {
-      background-color: var(--highlight-urgent);
+      background-color: $color-highlight-urgent;
     }
 
     &--submit {
-      background-color: var(--color-accept);
+      background-color: $color-accept;
     }
   }
 

@@ -72,8 +72,8 @@
                 }
             }
             &--date{
-                color: var(--color-light);
-                background: var(--color-dark);
+                color: $color-light;
+                background: $color-dark;
             }
             &-label {
                 font-weight: bold;

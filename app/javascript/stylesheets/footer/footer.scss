@@ -5,9 +5,9 @@
   padding: 0;
   width: 100%;
   height: $footer-height;
-  background-color: var(--color-light);
-  background: linear-gradient(45deg,  var(--Faded-Bone), var(--color-app-background) 10%, var(--color-app-background) 90%, var(--Faded-Bone));
-  color: var(--color-dark);
+  background-color: $color-light;
+  background: linear-gradient(45deg,  $Faded-Bone, $background-color 10%, $background-color 90%, $Faded-Bone);
+  color: $color-dark;
 
   &-content {
     height: 100%;

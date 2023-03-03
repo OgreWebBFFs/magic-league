@@ -10,7 +10,7 @@
   z-index: 100;
   display: block;
   transition-duration: 500ms;
-  color: var(--color-dark);
+  color: $color-dark;
   text-align: center;
 
   &__section {

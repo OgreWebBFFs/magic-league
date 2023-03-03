@@ -14,7 +14,7 @@
 
     &-title.error {
       margin-bottom: 1rem;
-      color: var(--highlight-urgent);
+      color: $color-highlight-urgent;
     }
 
     &-issue {
@@ -25,7 +25,7 @@
       }
 
       &-reason {
-        color: var(--color-nuetral);
+        color: $color-nuetral;
         font-size: .8rem;
       }
     }  

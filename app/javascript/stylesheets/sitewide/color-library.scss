@@ -1,100 +1,108 @@
-:root {//Color Library
---Rose-Gold: #bd8c7d;
---Soft-Gold: #d1bfa7;
---Silver: #8e8e90;
---Onyx: #49494b;
---Light-Grey: #9e9e9e;
---Turquoise: #26a69a;
---Soft-Orange: #efab45;
---Crimson: #dc143c;
---Living-Coral: #ff6f61;
---Beluga: rgb(10, 8, 3);
---Forest-Biome: #184a45;
---Sunset-Orange: #fc4445;
---Cornflower: #97caef;
---Fountain-Blue: #55bcc9;
---Goldenrod-Yellow: #fbaf08;
---Lightning-Purple: #bf4aa8;
---Lightning-Blue: #51d0de;
+//Color Library
+$Rose-Gold: #bd8c7d;
+$Soft-Gold: #d1bfa7;
+$Silver: #8e8e90;
+$Onyx: #49494b;
+$Light-Grey: #9e9e9e;
+$Turquoise: #26a69a;
+$Soft-Orange: #efab45;
+$Crimson: #dc143c;
+$Living-Coral: #ff6f61;
+$Beluga: rgb(10, 8, 3);
+$Forest-Biome: #184a45;
+$Sunset-Orange: #fc4445;
+$Cornflower: #97caef;
+$Fountain-Blue: #55bcc9;
+$Goldenrod-Yellow: #fbaf08;
+$Lightning-Purple: #bf4aa8;
+$Lightning-Blue: #51d0de;
 
---Woodsmoke: #0b0c10;
---Caribbean-Green: #00d285;
---Ebony-Clay: #1f2833;
---Eucalytus: #27876f;
---Biloba-Flower: #cbbaed;
---Mulien-Teal: #91e5da;
---Mulien-White: #e5f1ef;
---Mulien-Black: #1a1b1d;
---Mulien-Purple: hsl(276, 17%, 11%);
---Mulien-Green: #42988c;
---Engineering-International-Orange: #bf200e;
---Orioles-Orange: #fa4113;
---Dark-Tangerine: #fe9b13;
---Mellow-Apricot: #efbd76;
---Very-Very-Light-Orange: #fffaf5;
---Very-Very-Light-Purple: #f9f5fc;
---Persimon: #ec5800;
---Veri-Peri:#6667AB;
---Olivine: #85BE79;
+$Woodsmoke: #0b0c10;
+$Caribbean-Green: #00d285;
+$Ebony-Clay: #1f2833;
+$Eucalytus: #27876f;
+$Biloba-Flower: #cbbaed;
+$Mulien-Teal: #91e5da;
+$Mulien-White: #e5f1ef;
+$Mulien-Black: #1a1b1d;
+$Mulien-Purple: hsl(276, 17%, 11%);
+$Mulien-Green: #42988c;
+$Engineering-International-Orange: #bf200e;
+$Orioles-Orange: #fa4113;
+$Dark-Tangerine: #fe9b13;
+$Mellow-Apricot: #efbd76;
+$Very-Very-Light-Orange: #fffaf5;
+$Very-Very-Light-Purple: #f9f5fc;
+$Persimon: #ec5800;
+$Veri-Peri:#6667AB;
+$Olivine: #85BE79;
 
 
---Wrinkle-White: #d9d9d9;
---Eerie-Black: #191919;
---Faded-Bone:#e3dac9;
---Bone:#F9F6EE;
---Blood:#C70039;
---Meat:#581845;
---Organ: #5c1009;
+$Wrinkle-White: #d9d9d9;
+$Eerie-Black: #191919;
+$Faded-Bone:#e3dac9;
+$Bone:#F9F6EE;
+$Blood:#C70039;
+$Meat:#581845;
+$Organ: #5c1009;
 
 //Semantic Colors Names
 
---color-light: var(--Wrinkle-White);
---color-dark: var(--Eerie-Black);
---color-nuetral: var(--Meat);
---color-highlight-mid-import:var(--Blood);
---color-highlight-import: var(--Crimson);
---color-accent: var(--Organ);
---color-highlight-urgent: var(--Orioles-Orange);
---color-accept: var(--Living-Coral);
---color-app-background: var(--Bone);
-
-// Break down of theme color HSL values 
-// Needed for various css calcs 
-
---meat-hue-sat: 337, 92%;
---meat-lightness:31%;
-
---blood-hue-sat: 343, 100%;
---blood-lighness: 39%;
-
---white-hue-sat:  0, 0%;
---white-lightness: 100%;
-
---eerie-black-hue-sat: 0, 0%;
---eerie-black-lightness: 10%;
-
---desaturated-hue-sat: 0, 0%;
+$color-light: $Wrinkle-White;
+$color-dark: $Eerie-Black;
+$color-nuetral: $Meat;
+$color-highlight-mid-import:$Blood;
+$color-highlight-import: $Crimson;
+$color-accent: $Organ
+;
+$color-highlight-urgent: $Orioles-Orange;
+$color-accept: $Living-Coral;
+$background-color: $Bone;
+$ranking-border-color: $Bone;
+// 
 
 
 
---color-highlight-primary-hue-sat: var(--meat-hue-sat);
---color-highlight-primary-lightness : var(--meat-lightness);
+:root {
+    --meat-hue-sat: 337, 92%;
+    --meat-lightness:31%;
 
---color-accent-hue-sat: var(--blood-hue-sat);
---color-accent-lightness: var(--blood-lightness);
+    --blood-hue-sat: 343, 100%;
+    --blood-lighness: 39%;
 
---color-dark-hue-sat: var(--eerie-black-hue-sat);
---color-dark-lightness : var(--eerie-black-lightness);
+    --white-hue-sat:  0, 0%;
+    --white-lightness: 100%;
 
---color-light-hue-sat: var(--white-hue-sat);
---color-light-lightness : var(--white-lightness); 
+    --eerie-black-hue-sat: 0, 0%;
+    --eerie-black-lightness: 10%;
+
+    --desaturated-hue-sat: 0, 0%;
 
 
---color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
 
---color-accent: hsl(var(--color-accent-hue-sat),var(--color-accent-lightness));
+    //Needed for various css calcs 
 
---color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
+    --color-highlight-primary-hue-sat: var(--meat-hue-sat);
+    --color-highlight-primary-lightness : var(--meat-lightness);
 
---color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
+    --color-accent-hue-sat: var(--blood-hue-sat);
+    --color-accent-lightness: var(--blood-lightness);
+
+    --color-dark-hue-sat: var(--eerie-black-hue-sat);
+    --color-dark-lightness : var(--eerie-black-lightness);
+
+    --color-light-hue-sat: var(--white-hue-sat);
+    --color-light-lightness : var(--white-lightness); 
+
+
+    --color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
+
+    --color-accent: hsl(var(--color-accent-hue-sat),var(--color-accent-lightness));
+
+    --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
+
+    --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
+
+
+
 }
