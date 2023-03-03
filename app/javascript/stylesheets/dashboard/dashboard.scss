@@ -225,17 +225,6 @@
         width: 6rem;
         margin: 0;
         left: calc(50% - 3rem);
-        background: var(--color-dark);
-        color: var(--color-accent);
-        border: 2px solid var(--color-accent);
-        border-radius: 0.5rem;
-        font-weight: 700;
-
-        &:hover {
-            background: var(--color-dark);
-            color: var(--color-highlight-import);
-            border-color: var(--color-highlight-import);
-        }
     }
 
     &__card-view-toggles {
