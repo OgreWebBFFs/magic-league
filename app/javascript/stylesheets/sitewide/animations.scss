@@ -94,7 +94,7 @@
   }
 
   98% {
-    fill: $color-highlight-mid-import;
+    fill: var(--color-highlight-mid-import);
   }
 }
 
@@ -120,7 +120,7 @@
   }
 
   96% {
-    fill: $color-highlight-mid-import;
+    fill: var(--color-highlight-mid-import);
   }
 }
 
@@ -147,7 +147,7 @@
   }
 
   98% {
-    background-color: $color-highlight-mid-import;
+    background-color: var(--color-highlight-mid-import);
   }
 }
 
@@ -173,7 +173,7 @@
   }
 
   96% {
-    background-color: $color-highlight-mid-import;
+    background-color: var(--color-highlight-mid-import);
   }
 }
 

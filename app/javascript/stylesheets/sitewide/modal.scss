@@ -10,7 +10,7 @@
     z-index: 99;
     padding-bottom: 2 rem;
     transition-duration: .51s;
-    color: $color-dark;
+    color: var(--color-dark);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 
     &__area {
         position: relative;
-        background: $color-light;
+        background: var(--color-light);
         vertical-align: middle;
         overflow: auto;
         padding: 30px;
@@ -77,33 +77,33 @@
         max-width: 250px;
     
         &.reject {
-          background-color: $color-highlight-urgent;
+          background-color: var(--highlight-urgent);
         }
     
         &.approve {
-          background-color: $color-accept;
+          background-color: var(--color-accept);
         }
       }
     
       &__warning {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: var(--color-nuetral);
         margin: 0;
         width: 0;
         min-width: 100%;
         .warning {
-          color: $color-highlight-urgent;
+          color: var(--highlight-urgent);
         }
       }
 
       &__notice {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: var(--color-nuetral);
         margin: 0;
         width: 0;
         min-width: 100%;
         .warning {
-          color: $color-highlight-urgent;
+          color: var(--highlight-urgent);
         }
       }
 }

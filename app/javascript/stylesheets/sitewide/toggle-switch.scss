@@ -46,7 +46,7 @@
       content: attr(data-a);
       text-transform: uppercase;
       padding-left: 10px;
-      background-color: $color-highlight-import;
+      background-color: var(--color-highlight-import);
       color: #fff;
     }
   }
@@ -62,7 +62,7 @@
     content: attr(data-b);
     text-transform: uppercase;
     padding-right: 10px;
-    background-color: $color-accent;
+    background-color: var(--color-accent);
     color: #fff;
     text-align: right;
   }

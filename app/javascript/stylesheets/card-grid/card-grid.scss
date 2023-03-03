@@ -28,7 +28,7 @@
         cursor: pointer;
         opacity: .6;
         position: absolute;
-        color: $color-light;
+        color: var(--color-light);
     
         @media only screen and (max-width: 500px) {
             top: calc(var(--toggle-size)/-2);
@@ -67,11 +67,11 @@
                     cursor: pointer;
                     opacity: .6;
                     position: absolute;
-                    color: $color-light;
+                    color: var(--color-light);
                     //fix for mobile color issues;
                     color: transparent;  
-                    text-shadow: 0 0 0 $color-light;
-                    background-color: $color-accent;
+                    text-shadow: 0 0 0 var(--color-light);
+                    background-color: var(--color-accent);
                     @media only screen and (max-width: 500px) {
                         top: 0;
                     }
@@ -115,16 +115,16 @@
             position: absolute;
             width:100%;
             height:100%;
-            color: $color-dark;
-            background:$color-dark;
+            color: var(--color-dark);
+            background:var(--color-dark);
             border-radius: 3%;
             overflow: hidden;
             text-overflow: ellipsis;
             z-index: -1;
             box-sizing: border-box;
             padding: 5px;
-            border: 10px solid $color-dark;
-            color: $color-light;
+            border: 10px solid var(--color-dark);
+            color: var(--color-light);
         }
         &--attribute {
             margin: 0 0 5px 0;
@@ -144,7 +144,7 @@
         align-items: center;
         text-align: center;
         width: 90%;
-        background-color: $color-highlight-import;
+        background-color: var(--color-highlight-import);
         border-radius: .5rem;
         height: 2rem;
         padding: 0 .5rem;
