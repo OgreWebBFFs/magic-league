@@ -67,6 +67,10 @@ $ranking-border-color: $Bone;
     --meat-hue-sat: 337, 92%;
     --meat-lightness:31%;
 
+    --organ-hue-sat: 5, 82%;
+    --organ-lightness:20%;
+
+
     --blood-hue-sat: 343, 100%;
     --blood-lighness: 39%;
 
@@ -85,8 +89,8 @@ $ranking-border-color: $Bone;
     --color-highlight-primary-hue-sat: var(--meat-hue-sat);
     --color-highlight-primary-lightness : var(--meat-lightness);
 
-    --color-accent-hue-sat: var(--blood-hue-sat);
-    --color-accent-lightness: var(--blood-lightness);
+    --color-accent-hue-sat: var(--organ-hue-sat);
+    --color-accent-lightness: var(--organ-lightness);
 
     --color-dark-hue-sat: var(--eerie-black-hue-sat);
     --color-dark-lightness : var(--eerie-black-lightness);
@@ -102,7 +106,5 @@ $ranking-border-color: $Bone;
     --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
 
     --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
-
-
 
 }

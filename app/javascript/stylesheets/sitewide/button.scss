@@ -52,9 +52,13 @@
 
     &--accent {
         --background-color-hue-sat: var(--color-accent-hue-sat);
-        --background-color-lightness: var(--color-accent-lightness);
+        --background-color-lightness: calc(var(--color-accent-lightness));
         --background-color: var(--color-accent);
-        --text-color: var(--color-dark);
+        --text-color: var(--color-light);
+        &:hover{
+            --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
+        }
+
     }
 
     &--ghost {
