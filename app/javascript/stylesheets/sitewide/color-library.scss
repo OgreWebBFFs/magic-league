@@ -16,7 +16,7 @@ $Fountain-Blue: #55bcc9;
 $Goldenrod-Yellow: #fbaf08;
 $Lightning-Purple: #bf4aa8;
 $Lightning-Blue: #51d0de;
-$Wrinkle-White: #d9d9d9;
+
 $Woodsmoke: #0b0c10;
 $Caribbean-Green: #00d285;
 $Ebony-Clay: #1f2833;
@@ -28,36 +28,50 @@ $Mulien-Black: #1a1b1d;
 $Mulien-Purple: hsl(276, 17%, 11%);
 $Mulien-Green: #42988c;
 $Engineering-International-Orange: #bf200e;
-$Organ-Blood: #5c1009;
 $Orioles-Orange: #fa4113;
 $Dark-Tangerine: #fe9b13;
 $Mellow-Apricot: #efbd76;
-$Eerie-Black: #191919;
 $Very-Very-Light-Orange: #fffaf5;
 $Very-Very-Light-Purple: #f9f5fc;
 $Persimon: #ec5800;
 $Veri-Peri:#6667AB;
 $Olivine: #85BE79;
 
+
+$Wrinkle-White: #d9d9d9;
+$Eerie-Black: #191919;
+$Faded-Bone:#e3dac9;
+$Bone:#F9F6EE;
+$Blood:#C70039;
+$Meat:#581845;
+$Organ: #5c1009;
+
 //Semantic Colors Names
 
-$color-light: white;
+$color-light: $Wrinkle-White;
 $color-dark: $Eerie-Black;
-$color-nuetral: $Light-Grey;
-$color-highlight-mid-import: $Veri-Peri;
-$color-highlight-import: $Lightning-Blue;
-$color-accent: $Veri-Peri;
-$color-highlight-urgent: $Crimson;
-$color-accept: $Olivine;
-$background-color: $color-light;
-$ranking-border-color: $color-light;
+$color-nuetral: $Meat;
+$color-highlight-mid-import:$Blood;
+$color-highlight-import: $Crimson;
+$color-accent: $Organ
+;
+$color-highlight-urgent: $Orioles-Orange;
+$background-color: $Bone;
+$ranking-border-color: $Bone;
 // 
 
 
 
 :root {
-    --lightning-blue-hue-sat: 186, 68%;
-    --lightening-blue-lightness: 59%;
+    --meat-hue-sat: 337, 92%;
+    --meat-lightness:31%;
+
+    --organ-hue-sat: 5, 82%;
+    --organ-lightness:20%;
+
+
+    --blood-hue-sat: 343, 100%;
+    --blood-lighness: 39%;
 
     --white-hue-sat:  0, 0%;
     --white-lightness: 100%;
@@ -65,20 +79,17 @@ $ranking-border-color: $color-light;
     --eerie-black-hue-sat: 0, 0%;
     --eerie-black-lightness: 10%;
 
-    --veri-peri-hue-sat: 239, 29%;
-    --veri-peri-lightness: 54%;
-
     --desaturated-hue-sat: 0, 0%;
 
 
 
     //Needed for various css calcs 
 
-    --color-highlight-primary-hue-sat: var(--lightning-blue-hue-sat);
-    --color-highlight-primary-lightness : var(--lightening-blue-lightness);
+    --color-highlight-primary-hue-sat: var(--meat-hue-sat);
+    --color-highlight-primary-lightness : var(--meat-lightness);
 
-    --color-accent-hue-sat: var(--veri-peri-hue-sat);
-    --color-accent-lightness: var(--veri-peri-lightness);
+    --color-accent-hue-sat: var(--organ-hue-sat);
+    --color-accent-lightness: var(--organ-lightness);
 
     --color-dark-hue-sat: var(--eerie-black-hue-sat);
     --color-dark-lightness : var(--eerie-black-lightness);
@@ -94,7 +105,5 @@ $ranking-border-color: $color-light;
     --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
 
     --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
-
-
 
 }

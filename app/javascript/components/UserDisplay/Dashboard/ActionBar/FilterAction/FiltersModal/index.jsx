@@ -16,7 +16,10 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
 
   return (
     <Modal onClose={onClose}>
-      <div style={{ width: '80vw', maxWidth: '489px' }}>
+      <div style={{
+        width: '80vw', maxWidth: '489px', display: 'flex', flexDirection: 'column',
+      }}
+      >
         {filtersConfig.map(({ name: facetName, options }) => (
           <div className="filter" key={`${facetName}-filter`}>
             <FilterDrawerToggle
@@ -43,7 +46,7 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
           </div>
         ))}
         <Button
-          className="filter__modal-button"
+          className="filter__apply-button"
           onClick={() => {
             onApply(selectedOptions);
             onClose();
@@ -52,12 +55,16 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
           Apply
           {selectedOptions.length > 0 ? ` (${selectedOptions.length})` : ''}
         </Button>
-        <Button
-          className="filter__modal-button"
-          onClick={() => setSelectedOptions([])}
+        <button
+          type="button"
+          className="filter__clear-all-button"
+          onClick={() => {
+            setSelectedOptions([]);
+            onApply([]);
+          }}
         >
           Clear All
-        </Button>
+        </button>
       </div>
     </Modal>
   );
