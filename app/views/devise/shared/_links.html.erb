@@ -13,9 +13,9 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%- if provider == :google_oauth2 %>
-      <%= link_to google_svg + ' Log in with Google', omniauth_authorize_path(resource_name, provider), class:"login__button button button--inverse" %>
+      <%= link_to google_svg + ' Log in with Google', omniauth_authorize_path(resource_name, provider), class:"login__button button button--inverse", method: :post %>
     <%- else %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"login_link__btn"%>
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"login_link__btn", method: :post %>
     <%- end %>
   <% end -%>
 <% end -%>
