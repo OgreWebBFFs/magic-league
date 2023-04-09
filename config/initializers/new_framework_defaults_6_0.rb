@@ -7,7 +7,7 @@
 # Read the Guide for Upgrading Ruby on Rails for more info on each option.
 
 # Don't force requests from old versions of IE to be UTF-8 encoded.
-# Rails.application.config.action_view.default_enforce_utf8 = false
+Rails.application.config.action_view.default_enforce_utf8 = false
 
 # Embed purpose and expiry metadata inside signed and encrypted
 # cookies for increased security.
@@ -28,7 +28,7 @@
 
 # When assigning to a collection of attachments declared via `has_many_attached`, replace existing
 # attachments instead of appending. Use #attach to add new attachments without replacing existing ones.
-# Rails.application.config.active_storage.replace_on_assign_to_many = true
+Rails.application.config.active_storage.replace_on_assign_to_many = true
 
 # Use ActionMailer::MailDeliveryJob for sending parameterized and normal mail.
 #
