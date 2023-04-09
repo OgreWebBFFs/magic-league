@@ -42,11 +42,6 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
           displayName: 'Matches',
           href: 'matches',
         },
-
-        {
-          displayName: 'Contact',
-          href: 'mailto:ogretheleaguening@gmail.com?subject=From the Web App',
-        },
       ],
     },
 
