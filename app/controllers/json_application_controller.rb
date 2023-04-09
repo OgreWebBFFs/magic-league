@@ -1,4 +1,4 @@
-class JSONApplicationController < ApplicationController
+class JsonApplicationController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
   private 

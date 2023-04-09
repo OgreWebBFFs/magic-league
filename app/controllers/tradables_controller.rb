@@ -1,4 +1,4 @@
-class TradablesController < JSONApplicationController
+class TradablesController < JsonApplicationController
   before_action :set_tradable, only: [:destroy]
   before_action :set_user, only: [:show, :update]
   def index
