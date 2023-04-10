@@ -23,6 +23,9 @@ const TradeProposalRequest = ({ users, card }) => (
     <form action="/trade_mail" method="post">
       <input type="hidden" name="authenticity_token" value={document.querySelector('meta[name="csrf-token"]').content} />
       <input type="hidden" name="trade[card_id]" value={card.id} />
+      { users.length === 1 && 
+        <input type="hidden" name="trade[user_id]" value={users[0].attributes.id} />
+      }
       <button type="submit" className="trade-modal_send__button button">Send Message</button>
     </form>
   </>
