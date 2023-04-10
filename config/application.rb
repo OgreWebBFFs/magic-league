@@ -22,8 +22,7 @@ Bundler.require(*Rails.groups)
 module MtgLeague
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
-    config.autoloader = :zeitwerk # remove this when load_defaults value is changed to 6.0
+    config.load_defaults 6.0
     config.add_autoload_paths_to_load_path = false # https://guides.rubyonrails.org/v7.0.4/upgrading_ruby_on_rails.html#config-add-autoload-paths-to-load-path
     config.eager_load_paths << "#{Rails.root}/spec/mailers/previews" # zeitwerk:check reported this path would not be eager loaded, so explicitly adding here    
 
