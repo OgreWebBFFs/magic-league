@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -23,12 +23,15 @@ module MtgLeague
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.add_autoload_paths_to_load_path = false # https://guides.rubyonrails.org/v7.0.4/upgrading_ruby_on_rails.html#config-add-autoload-paths-to-load-path
-    config.eager_load_paths << "#{Rails.root}/spec/mailers/previews" # zeitwerk:check reported this path would not be eager loaded, so explicitly adding here    
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
+    config.add_autoload_paths_to_load_path = false # https://guides.rubyonrails.org/v7.0.4/upgrading_ruby_on_rails.html#config-add-autoload-paths-to-load-path
+    config.eager_load_paths << "#{Rails.root}/spec/mailers/previews" # zeitwerk:check reported this path would not be eager loaded, so explicitly adding here 
   end
 end
