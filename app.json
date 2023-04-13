@@ -1,7 +1,7 @@
 {
   "name": "magic-league",
   "scripts": {
-    "postdeploy": "rake db:migrate && rake db:seed"
+    "postdeploy": "rails db:migrate && rails db:seed"
   },
   "env": {
     "GOOGLE_OAUTH2_CLIENT_ID": "131929309054-cb05cpsv068jhimnv0v6dqih3uagb0p5.apps.googleusercontent.com",
