@@ -10,5 +10,9 @@
   "stack": "heroku-22",
   "formation": {},
   "addons": [],
-  "buildpacks": []
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
 }
