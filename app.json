@@ -6,14 +6,13 @@
   "env": {
     "GOOGLE_OAUTH2_CLIENT_ID": "131929309054-cb05cpsv068jhimnv0v6dqih3uagb0p5.apps.googleusercontent.com",
     "GOOGLE_OAUTH2_CLIENT_SECRET": "Tb5DrpnwJzUiZ8y1GIkTgh8F"
-
   },
-  "formation": {
-  },
-  "addons": [
-
-  ],
+  "stack": "heroku-22",
+  "formation": {},
+  "addons": [],
   "buildpacks": [
-
+    {
+      "url": "heroku/ruby"
+    }
   ]
 }
