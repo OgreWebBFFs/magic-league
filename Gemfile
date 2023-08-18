@@ -5,7 +5,7 @@ ruby '3.1.4'
 
 gem 'rails', '~> 6.1.0'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.6'
 gem 'rest-client', '~> 2.1.0'
 
 gem 'turbolinks', '~> 5.2.1'
