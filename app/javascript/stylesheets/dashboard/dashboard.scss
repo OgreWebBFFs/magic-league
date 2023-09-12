@@ -159,14 +159,12 @@
 
     &__tab {
         color: $color-light;
-        background: darken($color-nuetral, 35%);
+        background: rgba($color-dark, .6);
         margin-right: 5px;
         margin-bottom:0;
         margin-left:0;
         width: 150px;
-        border: 2px solid $color-dark;
         border-bottom: 1px solid rgba($color-dark, .15);
-        ;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
