@@ -13,11 +13,13 @@ $checkbox-size: 25px;
 //Text Treatments
 a {
   text-decoration: none;
-  color: $color-highlight-mid-import;
+  // color: $color-highlight-mid-import;
+  color: $Canopy;
   transition: color 0.3s;
 
   &:hover {
-    color: $color-highlight-import;
+    // color: $color-highlight-import;
+    color: $Observatory;
   }
 }
 
@@ -211,7 +213,7 @@ body {
 
   &[class*="-headings"] {
     background: $color-dark;
-    color: $color-light;
+    color: $Wrinkle-White;
     border-bottom: 3px solid $color-accent;
   }
 }
@@ -461,14 +463,14 @@ input[type=checkbox] {
     width: $checkbox-size;
     height: $checkbox-size;
     background: transparent;
-    border: 2px solid $color-highlight-mid-import;
+    border: 2px solid $Canopy;
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
   }
 
   // Box hover
   &:hover+label:before {
-    background: rgba($color-highlight-mid-import, 0.25);
+    background: rgba($color-dark, 0.25);
   }
 
   // Box checked

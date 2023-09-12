@@ -39,25 +39,33 @@ $Olivine: #85BE79;
 
 
 $Wrinkle-White: #d9d9d9;
-$Eerie-Black: #191919;
+$Eerie-Black: #270C1D;
 $Faded-Bone:#e3dac9;
 $Bone:#F9F6EE;
 $Blood:#C70039;
 $Meat:#581845;
 $Organ: #5c1009;
 
+
+$Canopy: #335f5d;
+$Observatory: #04946c;
+$Parchment: #EFEADC;
+$Peachy-White: #FAF1EB;
+$Blush: #F5C2C8;
+$Watermelonade: #E84F5C;
+$Kirsch: #B11680;
+
 //Semantic Colors Names
 
-$color-light: $Wrinkle-White;
+$color-light: $Peachy-White;
 $color-dark: $Eerie-Black;
-$color-nuetral: $Meat;
-$color-highlight-mid-import:$Blood;
-$color-highlight-import: $Crimson;
-$color-accent: $Organ
-;
+$color-nuetral: $Canopy;
+$color-highlight-mid-import: $Blush;
+$color-highlight-import: $Watermelonade;
+$color-accent: $Observatory;
 $color-highlight-urgent: $Orioles-Orange;
-$background-color: $Bone;
-$ranking-border-color: $Bone;
+$background-color: $Parchment;
+$ranking-border-color: $Blush;
 // 
 
 
@@ -65,6 +73,18 @@ $ranking-border-color: $Bone;
 :root {
     --meat-hue-sat: 337, 92%;
     --meat-lightness:31%;
+
+    --canopy-hue-sat: 177, 30%;
+    --canopy-lightness: 29%;
+
+    --observatory-hue-sat: 163, 95%;
+    --observatory-lightness: 30%;
+
+    --blush-hue-sat: 352, 71%;
+    --blush-lightness: 86%;
+
+    --watermelonade-hue-sat: 354, 76%;
+    --watermelonade-lightness: 60%;
 
     --organ-hue-sat: 5, 82%;
     --organ-lightness:20%;
@@ -85,11 +105,11 @@ $ranking-border-color: $Bone;
 
     //Needed for various css calcs 
 
-    --color-highlight-primary-hue-sat: var(--meat-hue-sat);
-    --color-highlight-primary-lightness : var(--meat-lightness);
+    --color-highlight-primary-hue-sat: var(--watermelonade-hue-sat);
+    --color-highlight-primary-lightness : var(--watermelonade-lightness);
 
-    --color-accent-hue-sat: var(--organ-hue-sat);
-    --color-accent-lightness: var(--organ-lightness);
+    --color-accent-hue-sat: var(--observatory-hue-sat);
+    --color-accent-lightness: var(--observatory-lightness);
 
     --color-dark-hue-sat: var(--eerie-black-hue-sat);
     --color-dark-lightness : var(--eerie-black-lightness);

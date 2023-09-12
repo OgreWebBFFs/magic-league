@@ -19,7 +19,7 @@
   z-index: 2;
   color: $color-highlight-import;
   background-color: $color-light;
-  background: linear-gradient(45deg,  $Faded-Bone, $background-color 10%, $background-color 90%, $Faded-Bone);
+  background: linear-gradient(45deg,  #270C1D, #223F3C 10%, #223F3C 90%, #270C1D);
   width: 100%;
   height: $nav-height;
   padding: 0 10%;
@@ -63,6 +63,10 @@
     height: 100%;
     text-align: center;
     list-style-type: none;
+
+    a {
+      color: $color-highlight-mid-import;
+    }
   }
 
   &__link,
@@ -132,8 +136,9 @@
       width: 100%;
       padding: 8px 0;
       &:hover {
-        background-color: fade-out($color-light, .8)
+        background-color: fade-out($background-color, .8)
       }
+      color: $Canopy;
     }
 
     &:hover,

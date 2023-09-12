@@ -37,7 +37,7 @@ const Collection = ({
           {filteredCollection.map((card, row) => (
             <Row>
               <Cell isPriority>
-                <a href={`/cards/${card.id}`}>{card.name}</a>
+                <a className="invert" href={`/cards/${card.id}`}>{card.name}</a>
               </Cell>
               <Cell>
                 <TradableToggle

@@ -125,7 +125,7 @@
     visibility: visible !important;
 
     &:hover {
-      background: lighten($color-highlight-import, 5%);
+      background: lighten($color-accent, 5%);
       color: $color-dark;
     }
 
