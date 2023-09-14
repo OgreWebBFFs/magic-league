@@ -159,14 +159,12 @@
 
     &__tab {
         color: $color-light;
-        background: darken($color-nuetral, 35%);
+        background: rgba($color-dark, .6);
         margin-right: 5px;
         margin-bottom:0;
         margin-left:0;
         width: 150px;
-        border: 2px solid $color-dark;
         border-bottom: 1px solid rgba($color-dark, .15);
-        ;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
@@ -238,7 +236,7 @@
     }
 
 
-    &_card-view {   
+    &__card-view {   
         &__cell {
             justify-self: flex-end;
             flex: 0 0 50px;
@@ -257,6 +255,7 @@
         .empty-card-view{
             grid-column: 1 / span 3;
             text-align: center;
+            background: $background-color;
             &__btn{
                 width:200px; 
                 margin:5px auto;
@@ -265,6 +264,8 @@
                 font-size: 20px;
             }
         }
+
+        background: $color-light;
     }
 
     &__card-grid-wrapper {
