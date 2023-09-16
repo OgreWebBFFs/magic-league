@@ -20,6 +20,7 @@ class UserPolicy < ApplicationPolicy
       return [
         :name,
         :email,
+        :pronouns,
         :admin,
         :locked_at
       ]
