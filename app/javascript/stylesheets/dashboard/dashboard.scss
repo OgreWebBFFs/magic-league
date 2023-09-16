@@ -6,7 +6,6 @@
     &-header {
         display: flex;
         align-items: baseline;
-        gap: 1rem;
         margin-bottom: 10px;
         
         @media only screen and (max-width: 850px) {
@@ -24,6 +23,24 @@
 
         .toggle-switch {
             flex: 0 0 auto;
+        }
+
+        &__discord { 
+            margin-left: auto;
+            font-size: 1.5rem;
+            color: #7289DA;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            @media only screen and (max-width: 850px) {
+                margin-left: 0;
+            }
+        }
+
+        &__pronouns {
+            color: #989898;
+            font-size: 1.2rem;
+            margin-left: .5rem;
         }
     }
 

@@ -29,7 +29,23 @@ const UserDispaly = ({
     <div id="dashboard" className="dashboard">
       <div className="dashboard__container">
         <div className="dashboard-header">
-          <h2 className="dashboard-header__title">{user.name}</h2>
+          <h2 className="dashboard-header__title">
+            {user.name}
+            {user.pronouns
+              && (
+                <span className="dashboard-header__pronouns">
+                  {`(${user.pronouns})`}
+                </span>
+              )}
+          </h2>
+          {user.discord_username && (
+            <div className="dashboard-header__discord">
+              <i className="fab fa-discord" />
+              <span>
+                {`@${user.discord_username}`}
+              </span>
+            </div>
+          )}
           <ViewToggleSwitch name="display-type" />
         </div>
         <div className="dashboard-profile">
