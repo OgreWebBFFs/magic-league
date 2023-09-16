@@ -26,6 +26,8 @@ class UserPolicy < ApplicationPolicy
     else
       return [
         :name,
+        :email,
+        :pronouns,
       ]
     end
   end

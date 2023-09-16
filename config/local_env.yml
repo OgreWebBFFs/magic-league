@@ -1,6 +1,0 @@
-DISCORD_OATUH_CLIENT_ID: 1112700178319814717
-DISCORD_OAUTH_SECRET: X8qEmFtO7v1QGEKmPUFYnnZqBmGMrGIS
-DISCORD_BOT_SECRET: MTExMjcwMDE3ODMxOTgxNDcxNw.GeF9ad.G4I918I_f5bo7f7NZixBKEbiQYxgfaQodss5uY
-
-
-# https://discord.com/api/oauth2/authorize?client_id=1112700178319814717&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fusers%2Fauth%2Fdiscord_oauth&response_type=code&scope=identify%20email
