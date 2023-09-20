@@ -1,5 +1,9 @@
 const { environment } = require('@rails/webpacker');
 
+environment.loaders.get('sass').use.splice(-1, 0, {
+  loader: 'resolve-url-loader',
+});
+
 // Get the actual sass-loader config
 const sassLoader = environment.loaders.get('sass');
 const sassLoaderConfig = sassLoader.use.find((element) => element.loader === 'sass-loader');

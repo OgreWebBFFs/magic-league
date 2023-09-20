@@ -134,6 +134,19 @@
         &--image {
             width: 100%;
             margin: 0;
+
+            &-foiled {
+                position: relative;
+                line-height: 0;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background-image: url("../../images/foil_indicator.svg");
+                    background-size: contain;
+                }
+            }
         }
     }
 

@@ -1,0 +1,2 @@
+class Draffle < ApplicationRecord
+end

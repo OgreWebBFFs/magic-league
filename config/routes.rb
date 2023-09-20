@@ -12,12 +12,17 @@ Rails.application.routes.draw do
   resources :browse, only: [:index]
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
+  resources :draffles, only: [:index, :show, :create]
 
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
   patch 'collections/:id/bulk_update', to: 'collections#bulk_update', as: 'bulk_update_collection'
 
-  resources :cards, only: [:index, :show]
+  resources :cards, only: [:index, :show] do
+    member do
+      get 'prints'
+    end
+  end
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
   resources :tradables, only: [:index, :show, :create, :destroy]

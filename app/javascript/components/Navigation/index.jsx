@@ -42,6 +42,10 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
           displayName: 'Matches',
           href: 'matches',
         },
+        {
+          displayName: 'Draffles',
+          href: 'draffles',
+        },
       ],
     },
 

@@ -1,0 +1,26 @@
+.draffle-edit {
+  &__print-selector {
+    width: 375px;
+    height: 300px;
+    display: flex;
+    gap: 5%;
+    transition: margin-left 0.3s;
+
+    &--print-option {
+      width: 30%;
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      transition: width 0.3s, filter 0.3s;
+      filter: grayscale(100%);
+      position: relative;
+
+
+      &.active {
+        width: 50%;
+        filter: none;
+        max-width: 50%;
+      }
+    }
+  }
+}
