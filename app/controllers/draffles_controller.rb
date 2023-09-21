@@ -1,3 +1,5 @@
+include DraffleImgHelper
+
 class DrafflesController < ApplicationController
   def create
     if no_active_draffles() 
@@ -41,6 +43,18 @@ class DrafflesController < ApplicationController
     @draffles = serialize_draffles(@draffles)
   end
 
+  def start
+    draffle = Draffle.find_by_id(params[:id])
+    if draffle.is_ready
+      draffle.update(status: 'started')
+      build_prize_pool_img draffle.draffle_prizes
+      # fetch_img draffle.draffle_prizes.first.image
+      render json: {status: 'success', invalid_draffle: "#{draffle.name} has begun!" }, :status => 200
+    else
+      render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
+    end
+  end
+  
   private
 
   def serialize_draffles(draffles)
