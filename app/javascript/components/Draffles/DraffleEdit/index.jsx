@@ -1,28 +1,49 @@
 import React, { useState } from 'react';
-import Modal from '../../Modal';
 import SearchInput from '../../SearchInput';
 import { CardGrid, CardImage } from '../../CardGrid';
-import xhrRequest from '../../../helpers/xhr-request';
+import Button from '../../Button';
+import updateDraffle from './update-draffle';
 import PrizeEditor from './PrizeEditor';
 import ParticipantsEditor from './ParticipantsEditor';
-import Button from '../../Button';
 
-const DraffleEdit = ({ draffle, users }) => {
-  const [participants, setParticipants] = useState([]);
+const initializeParticipantInfo = (participants) => participants.map(
+  (participant) => ({ ...participant.user }),
+);
+
+const DraffleEdit = ({
+  draffle,
+  users,
+  participants,
+  prizes,
+}) => {
+  const [participantsList, setParticipantsList] = useState(initializeParticipantInfo(participants));
+  const [random, setRandom] = useState(false);
   const [searchedCards, setSearchedCards] = useState([]);
-  const [prizePool, setPrizePool] = useState([]);
+  const [prizePool, setPrizePool] = useState([...prizes]);
   const [prizeToEdit, setPrizeToEdit] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      <h2>{draffle.name}</h2>
+      <div style={{ display: 'flex' }}>
+        <h2>{draffle.name}</h2>
+        <Button onClick={() => updateDraffle(draffle.id, participantsList, prizePool, random)}>
+          <i className="fas fa-save" />
+          SAVE
+        </Button>
+        <Button>
+          <i className="fas fa-play" />
+          START
+        </Button>
+      </div>
       <p>{draffle.status}</p>
       <div>
-        {participants.map((participant) => (
+        {participantsList.map((participant) => (
           <div>{participant.name}</div>
         ))}
         <Button onClick={() => setIsModalOpen(true)}>Add Participants</Button>
+        <label htmlFor="randomize-draft-order">Randomize Order?</label>
+        <input style={{ opacity: '100%' }} type="checkbox" id="randomize-draft-order" value={random} onClick={() => setRandom(!random)} />
       </div>
       <SearchInput
         onReset={() => setSearchedCards([])}
@@ -37,8 +58,8 @@ const DraffleEdit = ({ draffle, users }) => {
               {
                 name: card.attributes.name,
                 image: card.attributes.image_url,
-                id: card.id,
-                foil: false,
+                card_id: card.id,
+                foiled: false,
               },
             ])}
           >
@@ -48,17 +69,15 @@ const DraffleEdit = ({ draffle, users }) => {
       </div>
       <CardGrid>
         {prizePool.map((prize, i) => (
-          <div
-            onClick={() => {
-              setPrizeToEdit(prize);
-            }}
-          >
+          <div style={{ position: 'relative' }}>
             <CardImage
-              key={`${prize.name}_${i}`}
+              key={`${prize.name}_${prize.id}`}
               name={prize.name}
               imageUrl={prize.image}
               foiled={prize.foiled}
             />
+            <Button onClick={() => setPrizeToEdit(prize)}><i className="fas fa-edit" /></Button>
+            <Button onClick={() => setPrizePool([...prizePool.slice(0, i), ...prizePool.slice(i + 1)])}><i className="fas fa-ban" /></Button>
           </div>
         ))}
       </CardGrid>
@@ -73,14 +92,13 @@ const DraffleEdit = ({ draffle, users }) => {
             }}
           />
         )}
-
       {isModalOpen
         && (
           <ParticipantsEditor
             users={users}
-            participants={participants}
+            participants={participantsList}
             onClose={(newParticipants) => {
-              setParticipants(newParticipants);
+              setParticipantsList(newParticipants);
               setIsModalOpen(false);
             }}
           />

@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives
   has_many :objectives, through: :user_objectives
+  has_many :draffle_participants
   has_one :reroll
 
   scope :unlocked, -> { self.where(locked_at: nil) }

@@ -12,6 +12,30 @@ class DrafflesController < ApplicationController
 
   def show
     @draffle = Draffle.find_by_id(params[:id])
+    @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
+    @prizes = @draffle.draffle_prizes
+  end
+
+  def update
+    draffle = Draffle.find_by_id(params[:id])
+    draffle.draffle_participants.destroy_all
+    draffle.draffle_prizes.destroy_all
+
+    params[:participants].each { |participant|
+      DraffleParticipant.create(draffle_id: draffle.id, user_id: participant["user_id"], order: participant["order"])
+    }
+    params[:prizes].each { |prize| 
+      DrafflePrize.create(card_id: prize["card_id"], name: prize["name"], image: prize["image"], foiled: prize["foiled"], draffle_id: draffle.id)
+    }
+    
+    draffle.reload
+    if is_ready(draffle)
+      draffle.update(status: 'ready')
+    else
+      draffle.update(status: 'invalid')
+    end
+
+    puts params.to_json
   end
   
   def index
@@ -34,5 +58,10 @@ class DrafflesController < ApplicationController
 
   def no_active_draffles
     Draffle.where.not(status: 'complete').length == 0
+  end
+
+  def is_ready(draffle)
+    draffle.draffle_participants.length > 0 &&
+      draffle.draffle_prizes.length >= draffle.draffle_participants.length
   end
 end

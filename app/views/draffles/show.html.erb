@@ -1,1 +1,7 @@
-<%= react_component("Draffles/DraffleEdit", { draffle: @draffle, isAdmin: current_user.admin, users: @users }) %>
+<%= react_component("Draffles/DraffleEdit", {
+  draffle: @draffle,
+  participants: @participants,
+  prizes: @prizes,
+  isAdmin: current_user.admin,
+  users: @users
+}) %>

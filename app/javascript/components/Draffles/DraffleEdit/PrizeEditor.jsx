@@ -6,7 +6,7 @@ import Button from '../../Button';
 import Toggle from '../../Toggle';
 import Modal from '../../Modal';
 
-
+const currentPrizePrintFirst = (prize) => (print) => (print === prize.image ? -1 : 1);
 
 const PrizeEditor = ({ prize, onClose }) => {
   const [prints, setPrints] = useState(['https://placehold.co/488x680?text=Loading...']);
@@ -16,9 +16,9 @@ const PrizeEditor = ({ prize, onClose }) => {
   useEffect(() => {
     const fetchPrintOptions = async () => {
       const printResults = await xhrRequest({
-        url: `/cards/${prize.id}/prints`,
+        url: `/cards/${prize.card_id}/prints`,
       });
-      setPrints(printResults);
+      setPrints(printResults.sort(currentPrizePrintFirst(prize)));
     };
     fetchPrintOptions();
   }, []);

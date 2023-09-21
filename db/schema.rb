@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_18_101001) do
+ActiveRecord::Schema.define(version: 2023_09_20_173202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,29 @@ ActiveRecord::Schema.define(version: 2023_09_18_101001) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "draffle_participants", force: :cascade do |t|
+    t.integer "order"
+    t.bigint "user_id"
+    t.bigint "draffle_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["draffle_id"], name: "index_draffle_participants_on_draffle_id"
+    t.index ["user_id"], name: "index_draffle_participants_on_user_id"
+  end
+
+  create_table "draffle_prizes", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "card_id"
+    t.boolean "foiled"
+    t.bigint "draffle_id"
+    t.bigint "draffle_participant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["draffle_id"], name: "index_draffle_prizes_on_draffle_id"
+    t.index ["draffle_participant_id"], name: "index_draffle_prizes_on_draffle_participant_id"
   end
 
   create_table "draffles", force: :cascade do |t|
@@ -175,6 +198,7 @@ ActiveRecord::Schema.define(version: 2023_09_18_101001) do
     t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
+  add_foreign_key "draffle_prizes", "draffles"
   add_foreign_key "received_trades", "users"
   add_foreign_key "user_objectives", "objectives"
   add_foreign_key "user_objectives", "users"
