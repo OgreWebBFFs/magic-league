@@ -22,20 +22,18 @@ class DrafflesController < ApplicationController
     draffle.draffle_prizes.destroy_all
 
     params[:participants].each { |participant|
-      DraffleParticipant.create(draffle_id: draffle.id, user_id: participant["user_id"], order: participant["order"])
+      draffle.add_participant participant
     }
     params[:prizes].each { |prize| 
-      DrafflePrize.create(card_id: prize["card_id"], name: prize["name"], image: prize["image"], foiled: prize["foiled"], draffle_id: draffle.id)
+      draffle.add_prize prize
     }
     
     draffle.reload
-    if is_ready(draffle)
+    if draffle.is_ready
       draffle.update(status: 'ready')
     else
       draffle.update(status: 'invalid')
     end
-
-    puts params.to_json
   end
   
   def index
