@@ -48,13 +48,26 @@ class DrafflesController < ApplicationController
     if draffle.is_ready
       draffle.update(status: 'started')
       build_prize_pool_img draffle.draffle_prizes
-      # fetch_img draffle.draffle_prizes.first.image
-      render json: {status: 'success', invalid_draffle: "#{draffle.name} has begun!" }, :status => 200
+      render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
     else
       render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
     end
   end
-  
+
+  def pick
+    draffle = Draffle.find_by_id(params[:id])
+    prize = draffle.draffle_prizes.detect { |prize| prize.id == params[:prize_id]}
+    picker = draffle.current_pick
+    # if picker.user === current_user
+      picker.make_pick prize
+      draffle.reload
+      update_prize_pool_img draffle.draffle_prizes
+      render json: {status: 'success', message: "#{picker.user.name} has successfully selected #{prize.name}"}, :status => 200
+    # else
+    #   render json: {status: 'error', message: "You are not authorized to make a pick at this time. Either it is not your turn to pick or you are not elligible for this draffle."}, :status => 403
+    # end
+  end
+
   private
 
   def serialize_draffles(draffles)
