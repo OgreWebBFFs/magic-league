@@ -18,7 +18,7 @@ const randomize = (array) => {
   return newArr;
 };
 
-const updateDraffle = async (draffleId, participants, prizes, random) => xhrRequest({
+const updateDraffle = async (draffleId, participants, prizes, random, rounds, snake) => xhrRequest({
   url: `/draffles/${draffleId}`,
   options: {
     method: 'PUT',
@@ -27,6 +27,8 @@ const updateDraffle = async (draffleId, participants, prizes, random) => xhrRequ
         ? prepParticipants(randomize(participants))
         : prepParticipants(participants),
       prizes,
+      rounds: Number.parseInt(rounds, 10),
+      snake,
     }),
   },
 });

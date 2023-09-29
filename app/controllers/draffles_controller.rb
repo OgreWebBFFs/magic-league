@@ -16,6 +16,7 @@ class DrafflesController < ApplicationController
     @draffle = Draffle.find_by_id(params[:id])
     @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
     @prizes = @draffle.draffle_prizes
+    @board = @draffle.draft_board
   end
 
   def update
@@ -29,6 +30,8 @@ class DrafflesController < ApplicationController
     params[:prizes].each { |prize| 
       draffle.add_prize prize
     }
+    draffle.update(rounds: params[:rounds])
+    draffle.update(snake: params[:snake])
     
     draffle.reload
     if draffle.is_ready
@@ -83,10 +86,5 @@ class DrafflesController < ApplicationController
 
   def no_active_draffles
     Draffle.where.not(status: 'complete').length == 0
-  end
-
-  def is_ready(draffle)
-    draffle.draffle_participants.length > 0 &&
-      draffle.draffle_prizes.length >= draffle.draffle_participants.length
   end
 end

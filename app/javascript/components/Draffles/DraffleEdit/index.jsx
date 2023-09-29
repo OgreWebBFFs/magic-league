@@ -5,6 +5,7 @@ import Button from '../../Button';
 import updateDraffle from './update-draffle';
 import PrizeEditor from './PrizeEditor';
 import ParticipantsEditor from './ParticipantsEditor';
+import Toggle from '../../Toggle';
 
 const initializeParticipantInfo = (participants) => participants.map(
   (participant) => ({ ...participant.user }),
@@ -21,13 +22,15 @@ const DraffleEdit = ({
   const [searchedCards, setSearchedCards] = useState([]);
   const [prizePool, setPrizePool] = useState([...prizes]);
   const [prizeToEdit, setPrizeToEdit] = useState();
+  const [roundsEdit, setRoundsEdit] = useState(draffle.rounds);
+  const [snakeEdit, setSnakeEdit] = useState(draffle.snake);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div style={{ display: 'flex' }}>
         <h2>{draffle.name}</h2>
-        <Button onClick={() => updateDraffle(draffle.id, participantsList, prizePool, random)}>
+        <Button onClick={() => updateDraffle(draffle.id, participantsList, prizePool, random, roundsEdit, snakeEdit)}>
           <i className="fas fa-save" />
           SAVE
         </Button>
@@ -37,6 +40,21 @@ const DraffleEdit = ({
         </Button>
       </div>
       <p>{draffle.status}</p>
+      <input
+        type="number"
+        value={roundsEdit}
+        min="1"
+        onChange={(e) => setRoundsEdit(e.target.value)}
+      />
+      <div>
+        <h2>Snake?</h2>
+        <Toggle
+          name="snake-toggle"
+          checked={snakeEdit}
+          onClick={() => setSnakeEdit(!snakeEdit)}
+          options={['on', 'off']}
+        />
+      </div>
       <div>
         {participantsList.map((participant) => (
           <div>{participant.name}</div>

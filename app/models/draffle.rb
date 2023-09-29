@@ -17,6 +17,10 @@ class Draffle < ApplicationRecord
     self.draffle_participants.map { |participant| participant.picks().length }.min + 1
   end
 
+  def draft_board
+    DraftBoard.new self
+  end
+
   def add_participant participant
     DraffleParticipant.create(draffle_id: self.id, user_id: participant["user_id"], order: participant["order"])
   end
@@ -27,7 +31,7 @@ class Draffle < ApplicationRecord
 
   def is_ready
     self.draffle_participants.length > 0 &&
-      self.draffle_prizes.length >= self.draffle_participants.length
+      self.draffle_prizes.length >= self.draffle_participants.length * self.rounds
   end
 
   def is_running
