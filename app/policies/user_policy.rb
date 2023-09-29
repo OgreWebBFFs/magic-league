@@ -20,12 +20,15 @@ class UserPolicy < ApplicationPolicy
       return [
         :name,
         :email,
+        :pronouns,
         :admin,
         :locked_at
       ]
     else
       return [
         :name,
+        :email,
+        :pronouns,
       ]
     end
   end

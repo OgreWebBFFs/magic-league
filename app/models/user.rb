@@ -104,10 +104,15 @@ class User < ApplicationRecord
     image_src = "https://www.gravatar.com/avatar/#{hash}"
   end
 
+  def register_discord discord_profile
+    self.update(discord_id: discord_profile["id"], discord_username: discord_profile["username"])
+  end
+
   private
 
   def add_collection
     self.collection = Collection.new
   end
+
 
 end

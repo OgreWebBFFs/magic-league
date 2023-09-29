@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
 
+  get 'users/auth/discord', to: 'users/discord_account#index'
+
   resources :users, only: [:edit, :update, :show]
   resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
