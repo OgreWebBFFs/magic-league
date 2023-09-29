@@ -41,7 +41,7 @@ const UserDispaly = ({
           {user.discord_username && (
             <div className="dashboard-header__discord">
               <i className="fab fa-discord" />
-              <span>
+              <span className="dashboard-header__discord--username">
                 {`@${user.discord_username}`}
               </span>
             </div>
