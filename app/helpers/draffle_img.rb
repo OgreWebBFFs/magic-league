@@ -4,14 +4,32 @@ require 'enumerator'
 
 include Magick
 
-module DraffleImgHelper
+class DraffleImg
 
   ROW_LENGTH = 5
 
-  def build_prize_pool_img prizes
+  def initialize draffle
+    @prize_grid = draffle.draffle_prizes.sort_by(&:id).each_slice(ROW_LENGTH).to_a
+  end
+
+  def new_card_grid
+    self.draw_card_grid
+  end
+
+  def update_with_selection selection
+    pick_num = selection.pick_num
+    pick_name = selection.user.name
+    x = self.get_prize_x selection.prize
+    y = self.get_prize_y selection.prize
+    self.draw_selection_overlay x, y, pick_num, pick_name
+  end
+
+  private 
+
+  def draw_card_grid
     compiled_img = ImageList.new
     rows = 0
-    prizes.sort_by(&:id).each_slice(ROW_LENGTH) do |prize_row|
+    @prize_grid.each do |prize_row|
       img_row = ImageList.new
       prize_row.each do |prize|
         blob_img = URI.open(prize.image).read
@@ -30,20 +48,7 @@ module DraffleImgHelper
     compiled_img.write("draffle.png")
   end
 
-  def update_prize_pool_img prizes
-    all_prizes = prizes.sort_by(&:id)
-    picked_prizes = all_prizes.reject{ |prize| prize.draffle_participant_id.nil? }
-    last_picked_prize = picked_prizes.sort_by(&:updated_at).last
-
-    pick_number = picked_prizes.length
-    picker_name = last_picked_prize.draffle_participant.user.name
-    i = all_prizes.index last_picked_prize
-
-    x = i % ROW_LENGTH
-    y = (i / ROW_LENGTH).floor
-
-    puts "Coordinates: #{i} = #{x}, #{y}"
-
+  def draw_selection_overlay (x, y, pick_num, pick_name)
     new_img = Image.read('./draffle.png').first
     gc = Draw.new
     gc.stroke '#5c1009'
@@ -61,11 +66,18 @@ module DraffleImgHelper
     gc.font_style(NormalStyle)
   
     gc.text_align CenterAlign
-    gc.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_number}\nBy: #{picker_name}"
+    gc.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_num}\nBy: #{pick_name}"
 
     gc.draw(new_img)
     new_img.write("draffle.png")
+  end
 
+  def get_prize_x prize
+    @prize_grid.find { |row| row.include? prize }.index prize
+  end
+
+  def get_prize_y prize
+    @prize_grid.index { |row| row.include? prize }
   end
 
 end
