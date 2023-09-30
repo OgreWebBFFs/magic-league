@@ -46,6 +46,7 @@ class DrafflesController < ApplicationController
     @draffles = serialize_draffles(@draffles)
   end
 
+  # status change methods
   def start
     draffle = Draffle.find_by_id(params[:id])
     if draffle.is_ready
@@ -57,6 +58,14 @@ class DrafflesController < ApplicationController
     end
   end
 
+  def pause
+    draffle = Draffle.find_by_id(params[:id])
+    draffle.update(status: 'paused')
+    # Do other things like pause autodraft timer
+    render json: {status: 'success', draffle: "#{draffle.name} has been paused"}
+  end
+
+  # draffling methods
   def pick
     draffle = Draffle.find_by_id(params[:id])
     prize = draffle.draffle_prizes.detect { |prize| prize.id == params[:prize_id]}
@@ -69,6 +78,14 @@ class DrafflesController < ApplicationController
     # else
     #   render json: {status: 'error', message: "You are not authorized to make a pick at this time. Either it is not your turn to pick or you are not elligible for this draffle."}, :status => 403
     # end
+  end
+
+  def reset
+    draffle = Draffle.find_by_id(params[:id])
+    picked_prizes = draffle.draffle_prizes
+      .filter{ |prize| prize.is_picked }
+      .sort_by(&:updated_at)
+    puts picked_prizes.as_json
   end
 
   private

@@ -28,7 +28,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/config/local_env.yml
 
 # Ignore OS specific files
 .DS_Store

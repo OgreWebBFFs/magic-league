@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :draffles, only: [:index, :show, :create, :update]
   put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'
+  put 'draffles/:id/pause', to: 'draffles#pause', as: 'pause_draffle'
   put 'draffles/:id/pick', to: 'draffles#pick', as: 'pick_draffle'
+  put 'draffles/:id/reset', to: 'draffles#reset', as: 'reset_draffle'
 
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'

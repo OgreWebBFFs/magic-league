@@ -1,19 +1,44 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import Button from '../../Button';
 import { Table, Row, Cell } from '../../Table';
+import xhrRequest from '../../../helpers/xhr-request';
+
+const pauseDraffle = async (draffle) => {
+  await xhrRequest({
+    url: `/draffles/${draffle.id}/pause`,
+    options: {
+      method: 'PUT',
+    },
+  });
+  window.location.reload();
+};
 
 const DraffleInProgress = ({ draft_board: { rounds }, draffle }) => {
+  const [status, setStatus] = useState(draffle.status);
   const [shownRound, setShownRound] = useState(0);
   const currentPick = rounds.flat().find((slot) => slot.prize === null);
 
   return (
     <>
       <h2>{draffle.name}</h2>
-      <Button>
-        <i className="fas fa-pause" />
-        PAUSE
+      <Button onClick={() => {
+        setStatus('pausing');
+        pauseDraffle(draffle);
+      }}
+      >
+        <i className={classNames('fa', {
+          'fa-pause': status === 'started',
+          'fa-spinner': status === 'pausing' || status === 'starting',
+          'fa-play': status === 'paused',
+        })}
+        />
+        {status === 'started' ? 'PAUSE' : ''}
+        {status === 'pausing' ? 'PAUSING' : ''}
+        {status === 'paused' ? 'START' : ''}
+        {status === 'starting' ? 'STARTING' : ''}
       </Button>
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
 
         <Button onClick={() => shownRound > 0 && setShownRound(shownRound - 1)}>
           <i className="fas fa-minus" />
