@@ -1,4 +1,7 @@
 class DraftSlot
+  attr_reader :participant, :pick_num, :user
+  attr_accessor :prize
+
   def initialize participant, prize, pick_num
     @participant = participant
     @user = participant.user
@@ -6,11 +9,11 @@ class DraftSlot
     @pick_num = pick_num
   end
 
-  attr_reader :participant, :pick_num, :user
-  attr_accessor :prize
 end
 
 class DraftBoard
+  attr_reader :rounds
+
   def initialize draffle
     @rounds = Array.new
 
@@ -43,11 +46,15 @@ class DraftBoard
 
   def clear_picks pick
     slots = @rounds.flatten
-    slots.slice(pick - 1..slots.length).each do |slot|
+    slots.slice(pick..slots.length).each do |slot|
       if !slot.prize.nil?
         slot.prize.reset
       end
     end
+  end
+
+  def complete?
+    @rounds.flatten.none? { |slot| slot.prize.nil? }
   end
 
   private
@@ -56,5 +63,4 @@ class DraftBoard
     @rounds.flatten.find{ |slot| slot.prize.nil? }
   end
 
-  attr_reader :rounds
 end

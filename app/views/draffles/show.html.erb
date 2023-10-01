@@ -1,5 +1,5 @@
 <% case @draffle.status
-  when 'created', 'valid', 'invalid'%>
+  when 'created', 'valid', 'invalid' %>
     <%= react_component("Draffles/DraffleEdit", {
       draffle: @draffle,
       participants: @participants,
@@ -7,7 +7,7 @@
       isAdmin: current_user.admin,
       users: @users
     }) %>
-  <% when 'started', 'paused' %>
+  <% when 'started', 'paused', 'pending' %>
     <%= react_component("Draffles/DraffleInProgress", {
       draffle: @draffle,
       draft_board: @board,

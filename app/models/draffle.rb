@@ -3,10 +3,11 @@ class Draffle < ApplicationRecord
   has_many :draffle_prizes
 
   after_find :build_obj_models
+  attr_reader :board
 
   def start
     @img.new_card_grid
-    
+
     i = 0
     slot = @board.get_slot(i)
     while !slot.prize.nil? do
@@ -20,17 +21,19 @@ class Draffle < ApplicationRecord
 
   def reset pick
     @board.clear_picks pick
+    if self.pending?
+      self.update(status: 'paused')
+    end
   end
 
   def pick prize_id
     prize = self.draffle_prizes.find{ |prize| prize.id == prize_id}
     slot = @board.make_selection prize
     @img.update_with_selection slot
+    if @board.complete?
+      self.update(status: 'pending')
+    end
     slot
-  end
-
-  def draft_board
-    @board
   end
 
   def add_participant participant
@@ -41,13 +44,21 @@ class Draffle < ApplicationRecord
     DrafflePrize.create(draffle_id: self.id, card_id: prize["card_id"], name: prize["name"], image: prize["image"], foiled: prize["foiled"])
   end
 
-  def is_ready
+  def ready?
     self.draffle_participants.length > 0 &&
       self.draffle_prizes.length >= self.draffle_participants.length * self.rounds
   end
 
-  def is_running
-    self.status === 'started'
+  def running?
+    self.status == 'started'
+  end
+
+  def paused?
+    self.status == 'paused'
+  end
+  
+  def pending?
+    self.status == 'pending'
   end
 
   private

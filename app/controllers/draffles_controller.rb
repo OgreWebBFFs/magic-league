@@ -14,7 +14,7 @@ class DrafflesController < ApplicationController
     @draffle = Draffle.find_by_id(params[:id])
     @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
     @prizes = @draffle.draffle_prizes
-    @board = @draffle.draft_board
+    @board = @draffle.board
   end
 
   def update
@@ -47,7 +47,7 @@ class DrafflesController < ApplicationController
   # status change methods
   def start
     draffle = Draffle.find_by_id(params[:id])
-    if draffle.is_ready
+    if draffle.ready?
       draffle.start
       render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
     else
@@ -62,18 +62,45 @@ class DrafflesController < ApplicationController
     render json: {status: 'success', draffle: "#{draffle.name} has been paused"}
   end
 
+  def complete
+    draffle = Draffle.find_by_id(params[:id])
+    if draffle.pending?
+      draffle.update(status: 'completed')
+      render json: {status: 'success', message: "#{draffle.name} has been completed!"}
+    else
+      render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'pending' state to validate results"}, :status => 401
+    end
+  end
+
   # draffling methods
   def pick
     draffle = Draffle.find_by_id(params[:id])
-    slot = draffle.pick params[:prize_id]
-    render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
+    if draffle.running?
+      slot = draffle.pick params[:prize_id]
+      render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
+    else
+      render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'started' state to make picks"}, :status => 401
+    end
   end
 
   def reset
     draffle = Draffle.find_by_id(params[:id])
-    reset_pick = params[:pick].nil? ? 1 : params[:pick]
-    draffle.reset reset_pick
+    if draffle.paused? || draffle.pending?
+      if params[:pick].nil?
+        reset_pick = 0
+        msg = "has been completely resest"
+      else
+        reset_pick = params[:pick]
+        msg = "has been reset to pick #{reset_pick}"
+      end
+      draffle.reset reset_pick
+      render json: {status: 'succes', message: "#{draffle.name} #{msg}. #{draffle.board.get_slot(reset_pick).user.name} is now picking"}, :status => 200
+    else
+      render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'paused' or 'pending' state to reset picks"}
+    end
   end
+
+  
 
   private
 
