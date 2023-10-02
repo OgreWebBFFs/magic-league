@@ -6,10 +6,21 @@ import updateDraffle from './update-draffle';
 import PrizeEditor from './PrizeEditor';
 import ParticipantsEditor from './ParticipantsEditor';
 import Toggle from '../../Toggle';
+import xhrRequest from '../../../helpers/xhr-request';
 
 const initializeParticipantInfo = (participants) => participants.map(
   (participant) => ({ ...participant.user }),
 );
+
+const startDraffle = async (draffle) => {
+  await xhrRequest({
+    url: `/draffles/${draffle.id}/start`,
+    options: {
+      method: 'PUT',
+    },
+  });
+  window.location.reload();
+};
 
 const DraffleEdit = ({
   draffle,
@@ -30,11 +41,22 @@ const DraffleEdit = ({
     <>
       <div style={{ display: 'flex' }}>
         <h2>{draffle.name}</h2>
-        <Button onClick={() => updateDraffle(draffle.id, participantsList, prizePool, random, roundsEdit, snakeEdit)}>
+        <Button
+          onClick={
+            () => updateDraffle(
+              draffle.id,
+              participantsList,
+              prizePool,
+              random,
+              roundsEdit,
+              snakeEdit,
+            )
+          }
+        >
           <i className="fas fa-save" />
           SAVE
         </Button>
-        <Button>
+        <Button onClick={() => startDraffle(draffle)}>
           <i className="fas fa-play" />
           START
         </Button>
@@ -105,7 +127,7 @@ const DraffleEdit = ({
             prize={prizeToEdit}
             onClose={(newPrize) => {
               const i = prizePool.indexOf(prizeToEdit);
-              setPrizePool([...prizePool.slice(0, i), newPrize, ...prizePool.slice(i+1)]);
+              setPrizePool([...prizePool.slice(0, i), newPrize, ...prizePool.slice(i + 1)]);
               setPrizeToEdit(null);
             }}
           />

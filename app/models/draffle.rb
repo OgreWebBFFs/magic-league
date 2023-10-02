@@ -44,6 +44,10 @@ class Draffle < ApplicationRecord
     DrafflePrize.create(draffle_id: self.id, card_id: prize["card_id"], name: prize["name"], image: prize["image"], foiled: prize["foiled"])
   end
 
+  def prize_available? prize_id
+    self.draffle_prizes.any?{ |prize| prize.id === prize_id && prize.available? }
+  end
+
   def ready?
     self.draffle_participants.length > 0 &&
       self.draffle_prizes.length >= self.draffle_participants.length * self.rounds

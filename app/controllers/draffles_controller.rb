@@ -32,8 +32,8 @@ class DrafflesController < ApplicationController
     draffle.update(snake: params[:snake])
     
     draffle.reload
-    if draffle.is_ready
-      draffle.update(status: 'ready')
+    if draffle.ready?
+      draffle.update(status: 'valid')
     else
       draffle.update(status: 'invalid')
     end
@@ -76,8 +76,12 @@ class DrafflesController < ApplicationController
   def pick
     draffle = Draffle.find_by_id(params[:id])
     if draffle.running?
-      slot = draffle.pick params[:prize_id]
-      render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
+      if draffle.prize_available? params[:prize_id]
+        slot = draffle.pick params[:prize_id]
+        render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
+      else
+        render json: {status: 'error', message: "That card is not available. Please choose another"}
+      end
     else
       render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'started' state to make picks"}, :status => 401
     end

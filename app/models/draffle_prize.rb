@@ -7,8 +7,8 @@ class DrafflePrize < ApplicationRecord
     self.update(draffle_participant: nil)
   end
 
-  def is_picked
-    !self.draffle_participant.nil?
+  def available?
+    self.draffle_participant.nil?
   end
 
 end
