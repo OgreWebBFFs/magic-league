@@ -50,3 +50,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "open-uri", "~> 0.3.0"
 gem "rmagick", "~> 5.3"
+
+gem "discordrb", "~> 3.5"

@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative "../app/bot/ogre_bot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -23,12 +24,6 @@ module MtgLeague
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
-      YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
-    end
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -40,4 +35,15 @@ module MtgLeague
     config.add_autoload_paths_to_load_path = false # https://guides.rubyonrails.org/v7.0.4/upgrading_ruby_on_rails.html#config-add-autoload-paths-to-load-path
     config.eager_load_paths << "#{Rails.root}/spec/mailers/previews" # zeitwerk:check reported this path would not be eager loaded, so explicitly adding here 
   end
+
+  class OgreBotProcess < Rails::Railtie
+    server do
+      fork do
+        bot = OgreBot.new
+        at_exit { bot.stop }
+        bot.run
+      end
+    end
+  end
+
 end

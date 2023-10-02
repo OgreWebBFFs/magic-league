@@ -1,3 +1,4 @@
+
 class DrafflesController < ApplicationController
   def create
     if no_active_draffles() 
