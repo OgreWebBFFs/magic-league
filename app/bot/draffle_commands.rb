@@ -5,6 +5,7 @@ module DraffleCommands
     application_command(:test) do |event|
       ActiveRecord::Base.transaction do
         # puts event.user.id
+        @original_event = event
         draffle = Draffle.find_by status: "started"
         event.channel.send_file(File.open("#{Rails.root}/draffle.png"), caption: "Draffle Image")
         event.interaction.respond(
@@ -35,10 +36,9 @@ module DraffleCommands
     button do |event|
       draffle = Draffle.find_by status: "started"
       puts "#{@picker.name} has selected #{@prize.name}"
-      draffle.pick @prize.id
-      event.interaction.respond(
-        content: "**THE PICK IS IN!**\nYou have chosen the values: #{@prize.name}",
-      )
+      # draffle.pick @prize.id
+      @original_event.interaction.delete_response
+      event.channel.send_message "**THE PICK IS IN!**\nYou have chosen the values: #{@prize.name}"
     end
   end
 
