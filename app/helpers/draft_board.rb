@@ -44,6 +44,10 @@ class DraftBoard
     slot
   end
 
+  def who_is_picking
+    self.active_slot.participant.user
+  end
+
   def clear_picks pick
     slots = @rounds.flatten
     slots.slice(pick..slots.length).each do |slot|
