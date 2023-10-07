@@ -52,7 +52,7 @@ class DrafflesController < ApplicationController
     if draffle.status == 'valid'
       OgreBot.instance.draffle_welcome
     end
-    
+
     if !draffle.ready?
       render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
       return
@@ -67,6 +67,7 @@ class DrafflesController < ApplicationController
   def pause
     draffle = Draffle.find_by_id(params[:id])
     draffle.update(status: 'paused')
+    OgreBot.instance.draffle_pause draffle
     # # Do other things like pause autodraft timer
     render json: {status: 'success', draffle: "#{draffle.name} has been paused"}
   end

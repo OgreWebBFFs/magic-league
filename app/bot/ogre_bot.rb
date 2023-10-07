@@ -13,7 +13,7 @@ class OgreBot < Discordrb::Bot
   end
 
   def draffle_welcome
-    send_message(1158392994622361600, draffle_welcome)
+    send_message(1158392994622361600, draffle_welcome_msg)
   end
 
   def draffle_start(draffle)
@@ -22,4 +22,9 @@ class OgreBot < Discordrb::Bot
     send_file(1158392994622361600, File.open("#{Rails.root}/draffle.png"), caption: "Here are the cards available to draft 👇")
     send_message(1158392994622361600, "⚡ <@#{draffle.on_the_clock.discord_id}> you now wield the power of the `/pick` command. *Use it wisely...*")
   end
+
+  def draffle_pause(draffle)
+    send_message(1158392994622361600, "#{draffle.name} has been paused. The power of the `/pick` command has been temporarily reovked.")
+  end
+
 end

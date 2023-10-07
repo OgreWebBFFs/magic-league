@@ -1,5 +1,5 @@
 module BotMessages
-  def draffle_welcome
+  def draffle_welcome_msg
     <<~TEXT
       **Hello and Welcome** to an official **OGRE the Leaguening DRAFFLE** 🧙‍♀️🧙‍♂️
 
