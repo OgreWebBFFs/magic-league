@@ -30,12 +30,12 @@ module DraffleCommands
       new_picker = @draffle.on_the_clock
       @original_event.interaction.delete_response
 
-      event.channel.send_message "**THE PICK IS IN!**\n<@#{@picker.discord_id}> has chosen #{@prize.name} 👏"
+      event.channel.send_message "🚨🚨 **THE PICK IS IN!** 🚨🚨\n#{@picker.name} (<@#{@picker.discord_id}>) has chosen **__#{@prize.name}__** 👏"
       event.channel.send_file(File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇")
       if new_picker.nil?
-        event.channel.send_message("#{@draffle.name} has officially ended. All picks are submitted!")
+        event.channel.send_message("#{@draffle.name} has ended. All picks are submitted and pending validation by the admins!")
       else
-        event.channel.send_message("⏱ <@#{new_picker.discord_id}> it's time for you to make your pick!")
+        event.channel.send_message("⚡ <@#{new_picker.discord_id}> you now wield the power of the `/pick` command. *Use it wisely...*")
       end
     end
   end

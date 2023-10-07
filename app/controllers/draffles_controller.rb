@@ -48,13 +48,20 @@ class DrafflesController < ApplicationController
   # status change methods
   def start
     draffle = Draffle.find_by_id(params[:id])
-    if draffle.ready?
-      draffle.start
-      OgreBot.instance.say_hello draffle
-      render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
-    else
-      render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
+    
+    if draffle.status == 'valid'
+      OgreBot.instance.draffle_welcome
     end
+    
+    if !draffle.ready?
+      render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
+      return
+    end
+
+
+    draffle.start
+    OgreBot.instance.draffle_start draffle
+    render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
   end
 
   def pause
@@ -66,47 +73,58 @@ class DrafflesController < ApplicationController
 
   def complete
     draffle = Draffle.find_by_id(params[:id])
-    if draffle.pending?
-      draffle.update(status: 'completed')
-      render json: {status: 'success', message: "#{draffle.name} has been completed!"}
-    else
+    
+    if !draffle.pending?
       render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'pending' state to validate results"}, :status => 401
+      return
     end
+
+    draffle.update(status: 'completed')
+    render json: {status: 'success', message: "#{draffle.name} has been completed!"}
   end
 
   # draffling methods
   def pick
     draffle = Draffle.find_by_id(params[:id])
-    if draffle.running?
-      if draffle.prize_available? params[:prize_id]
-        slot = draffle.pick params[:prize_id]
-        render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
-      else
-        render json: {status: 'error', message: "That card is not available. Please choose another"}
-      end
-    else
+    
+    if !draffle.running?
       render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'started' state to make picks"}, :status => 401
+      return
     end
+
+    if draffle.on_the_clock != current_user
+      render json: {status: 'error', message: "It is not your time to pick"}, status: 403
+      return
+    end
+
+    if !draffle.prize_available? params[:prize_id]
+      render json: {status: 'error', message: "That card is not available. Please choose another"}, status: 401
+      return
+    end
+    
+    slot = draffle.pick params[:prize_id]
+    render json: {status: 'success', message: "#{slot.participant.user.name} has successfully selected #{slot.prize.name}"}, :status => 200
   end
 
   def reset
     draffle = Draffle.find_by_id(params[:id])
-    if draffle.paused? || draffle.pending?
-      if params[:pick].nil?
-        reset_pick = 0
-        msg = "has been completely resest"
-      else
-        reset_pick = params[:pick]
-        msg = "has been reset to pick #{reset_pick}"
-      end
-      draffle.reset reset_pick
-      render json: {status: 'succes', message: "#{draffle.name} #{msg}. #{draffle.board.get_slot(reset_pick).user.name} is now picking"}, :status => 200
-    else
+    
+    if !(draffle.paused? || draffle.pending?)
       render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'paused' or 'pending' state to reset picks"}
+      return
     end
-  end
 
-  
+    if params[:pick].nil?
+      reset_pick = 0
+      msg = "has been completely resest"
+    else
+      reset_pick = params[:pick]
+      msg = "has been reset to pick #{reset_pick}"
+    end
+
+    draffle.reset reset_pick
+    render json: {status: 'succes', message: "#{draffle.name} #{msg}. #{draffle.board.get_slot(reset_pick).user.name} is now picking"}, :status => 200
+  end
 
   private
 
