@@ -1,8 +1,8 @@
 module DraffleCommands
 
   def register_draffle_cmds
-    register_application_command(:test, "Make a selection in the current draffle", server_id: 1112702099944378491)
-    application_command(:test) do |event|
+    register_application_command(:pick, "Make a selection in the current draffle", server_id: 1112702099944378491)
+    application_command(:pick) do |event|
       @original_event = event
       @draffle = Draffle.find_by status: "started"
       if @draffle.nil?
@@ -67,7 +67,7 @@ module DraffleCommands
     )
   end
 
-  def send_reject_msg
+  def send_no_started_msg
     @original_event.interaction.respond(
       content: "There is no active draffle to pick from. Please try again when a draffle has been started.",
       ephemeral: true,

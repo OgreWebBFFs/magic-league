@@ -61,6 +61,23 @@ class DraftBoard
     @rounds.flatten.none? { |slot| slot.prize.nil? }
   end
 
+  def to_s
+    str = ""
+    round_num = 1
+    @rounds.each { |round|
+      str += "Round #{round_num}\n"
+      round.each { |slot|
+        str += "\t#{slot.pick_num} : #{slot.user.name}"
+        if slot.prize.present?
+          str += " - #{slot.prize.name}"
+        end
+        str += "\n"
+      }
+      round_num += 1
+    }
+    str
+  end
+
   private
 
   def active_slot

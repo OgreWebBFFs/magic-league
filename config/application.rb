@@ -39,9 +39,8 @@ module MtgLeague
   class OgreBotProcess < Rails::Railtie
     server do
       fork do
-        bot = OgreBot.new
-        at_exit { bot.stop }
-        bot.run
+        OgreBot.instance.run
+        at_exit { OgreBot.instace.stop }
       end
     end
   end

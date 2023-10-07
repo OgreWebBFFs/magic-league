@@ -50,6 +50,7 @@ class DrafflesController < ApplicationController
     draffle = Draffle.find_by_id(params[:id])
     if draffle.ready?
       draffle.start
+      OgreBot.instance.say_hello draffle
       render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
     else
       render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
