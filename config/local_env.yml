@@ -1,0 +1,6 @@
+# Use this file to setup ENV variables for local development.
+# This file will be checked in to git so do not place sensative information
+# such as API keys, secrets, or crednetials. Use rails credentials storage
+# for that instead.
+DRAFFLE_DISCORD_CHANNEL_ID: "1158392994622361600"
+DISCORD_SERVER_ID: "1112702099944378491"
