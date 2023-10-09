@@ -1,7 +1,7 @@
 module Autodraft
   
   class Scheduler
-    AUTODRAFT_QUEUE = "autodraft"
+    AUTODRAFT_QUEUE = "autodraftqueue"
     
     def initialize
       self.class.clear
