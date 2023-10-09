@@ -1,6 +1,6 @@
 require 'discordrb'
 require 'singleton'
-require_relative 'draffle/draffle_actions'
+require_relative 'draffle_actions'
 
 class OgreBot < Discordrb::Bot
   include Singleton
