@@ -27,17 +27,8 @@ module DraffleCommands
     end
 
     @bot.button do |event|
-      @draffle.pick @prize.id
-      new_picker = @draffle.on_the_clock
       @original_event.interaction.delete_response
-
-      send_draffle_msg DRAFFLE_ANOUNCE_PICK % {name: @picker.name, discord_id: @picker.discord_id, prize: @prize.name}
-      send_draffle_pool_img
-      if new_picker.nil?
-        event.channel.send_message(DRAFFLE_END % {name: @draffle.name})
-      else
-        event.channel.send_message(DRAFFLE_YOUR_TURN % {discord_id: new_picker.discord_id})
-      end
+      @draffle.pick @prize.id
     end
   end
 

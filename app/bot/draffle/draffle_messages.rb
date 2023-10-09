@@ -30,7 +30,9 @@ module DraffleMessages
 
   DRAFFLE_PICK_PROMPT = "You have invoked the power of the `/pick` command. You may now make your selection."
 
-  DRAFFLE_ANOUNCE_PICK = "🚨🚨 **THE PICK IS IN!** 🚨🚨\n%{name} (<@%{discord_id}>) has chosen **__%{prize}__** 👏"
+  DRAFFLE_ANNOUNCE_PICK = "🚨🚨 **THE PICK IS IN!** 🚨🚨\n%{name} (<@%{discord_id}>) has chosen **__%{prize}__** 👏"
+
+  DRAFFLE_ANNOUNCE_AUTOPICK = "🚨🚨 **TIME'S UP!😞** 🚨🚨\nBut don't worry, <@%{discord_id}> I picked you a *great* card!\n%{name} (<@%{discord_id}>) gets **__%{prize}__** 👏"
 
   DRAFFLE_NOT_YOUR_TURN = "🛑 It's not your turn to pick. %{name} is currently on the clock"
 

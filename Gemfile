@@ -52,3 +52,5 @@ gem "open-uri", "~> 0.3.0"
 gem "rmagick", "~> 5.3"
 
 gem "discordrb", "~> 3.5"
+gem 'delayed_job', "~> 4.1.11"
+gem 'delayed_job_active_record'

@@ -16,12 +16,33 @@ class DraffleActions
 
   def start draffle
     send_draffle_msg DRAFFLE_START % {name: draffle.name, board: draffle.board}
-    send_draffle_pool_img
-    send_draffle_msg DRAFFLE_YOUR_TURN % {discord_id: draffle.on_the_clock.discord_id}
   end
 
   def pause draffle
     send_draffle_msg DRAFFLE_PAUSE % {name: draffle.name}
+  end
+
+  def end draffle
+    send_draffle_msg DRAFFLE_END % {name: draffle.name}
+  end
+
+  def notify_next user
+    send_draffle_pool_img DRAFFLE_YOUR_TURN % {discord_id: user.discord_id}
+  end
+
+  def announce_pick user, prize
+    send_draffle_msg DRAFFLE_ANNOUNCE_PICK % {name: user.name, discord_id: user.discord_id, prize: prize.name}
+  end
+
+  def announce_autopick user, prize
+    send_draffle_msg DRAFFLE_ANNOUNCE_AUTOPICK % {name: user.name, discord_id: user.discord_id, prize: prize.name} 
+  end
+
+  def autodraft_warning(num)
+    draffle = Draffle.find_by status: 'started'
+    picker = draffle.on_the_clock
+    warnings = Array["⏳ Warning 1", "Warning 2", "Final Warning"]
+    send_draffle_msg warnings[num]
   end
 
   private
@@ -30,8 +51,8 @@ class DraffleActions
     @bot.send_message(ENV["DRAFFLE_DISCORD_CHANNEL_ID"], msg)
   end
 
-  def send_draffle_pool_img
-    @bot.send_file(ENV["DRAFFLE_DISCORD_CHANNEL_ID"], File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇")
+  def send_draffle_pool_img text
+    @bot.send_file(ENV["DRAFFLE_DISCORD_CHANNEL_ID"], File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇 #{text}")
   end
 
 end

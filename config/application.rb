@@ -26,7 +26,7 @@ module MtgLeague
     config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.
-    #
+    #1
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
@@ -34,7 +34,8 @@ module MtgLeague
     # config.eager_load_paths << Rails.root.join("extras")
     config.add_autoload_paths_to_load_path = false # https://guides.rubyonrails.org/v7.0.4/upgrading_ruby_on_rails.html#config-add-autoload-paths-to-load-path
     config.eager_load_paths << "#{Rails.root}/spec/mailers/previews" # zeitwerk:check reported this path would not be eager loaded, so explicitly adding here 
-  
+    config.active_job.queue_adapter = :delayed_job
+
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')
       YAML.load(File.open(env_file)).each do |key, value|

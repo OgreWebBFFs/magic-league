@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-module DiscordApiHelper
+module DiscordApi
 
   discord = Rails.application.credentials.discord
 

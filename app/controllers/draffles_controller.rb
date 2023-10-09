@@ -48,27 +48,17 @@ class DrafflesController < ApplicationController
   # status change methods
   def start
     draffle = Draffle.find_by_id(params[:id])
-    
-    if draffle.status == 'valid'
-      OgreBot.instance.draffle_actions.welcome
-    end
-
     if !draffle.ready?
       render json: {status: 'error', invalid_draffle: "participants are 0 or more than prizes" }, :status => 400
       return
     end
-
-
     draffle.start
-    OgreBot.instance.draffle_actions.start draffle
     render json: {status: 'success', draffle: "#{draffle.name} has begun!" }, :status => 200
   end
 
   def pause
     draffle = Draffle.find_by_id(params[:id])
-    draffle.update(status: 'paused')
-    OgreBot.instance.draffle_actions.pause draffle
-    # # Do other things like pause autodraft timer
+    draffle.pause
     render json: {status: 'success', draffle: "#{draffle.name} has been paused"}
   end
 

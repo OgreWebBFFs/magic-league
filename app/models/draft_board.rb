@@ -1,18 +1,18 @@
-class DraftSlot
-  attr_reader :participant, :pick_num, :user
-  attr_accessor :prize
-
-  def initialize participant, prize, pick_num
-    @participant = participant
-    @user = participant.user
-    @prize = prize
-    @pick_num = pick_num
-  end
-
-end
-
 class DraftBoard
   attr_reader :rounds
+
+  class Slot
+    attr_reader :participant, :pick_num, :user
+    attr_accessor :prize
+  
+    def initialize participant, prize, pick_num
+      @participant = participant
+      @user = participant.user
+      @prize = prize
+      @pick_num = pick_num
+    end
+  
+  end
 
   def initialize draffle
     @rounds = Array.new
@@ -26,7 +26,7 @@ class DraftBoard
       slots = participants.map.with_index { |participant, i|
         prize = participant.draffle_prizes[round]
         pick_num = round * participants.length + i + 1
-        DraftSlot.new participant, prize, pick_num
+        Slot.new participant, prize, pick_num
       }
       @rounds.push slots
       round = round + 1
