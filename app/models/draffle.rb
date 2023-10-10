@@ -8,7 +8,7 @@ class Draffle < ApplicationRecord
   def start
     initialize_img
     if self.status == 'valid'
-      OgreBot.instance.draffle_actions.welcome
+      OgreBot.instance.draffle_actions.welcome self
     end
 
     self.update(status: 'started')

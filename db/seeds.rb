@@ -100,5 +100,5 @@ objective3 = Objective.find_or_create_by(description: "Hit an opponent with thei
 
 # Draffles
 # =====================================================
-draffle_completed1 = Draffle.find_or_create_by(name: "Completed Draffle 1", status: "complete")
-draffle_completed2 = Draffle.find_or_create_by(name: "Completed Draffle 2", status: "complete")
+draffle_completed1 = Draffle.find_or_create_by(name: "Completed Draffle 1", status: "completed")
+draffle_completed2 = Draffle.find_or_create_by(name: "Completed Draffle 2", status: "completed")

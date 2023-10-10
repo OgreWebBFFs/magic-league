@@ -80,6 +80,12 @@ const DraffleInProgress = ({ draft_board: { rounds }, draffle }) => {
         {status === 'starting' ? 'STARTING' : ''}
         {status === 'pending' ? 'VALIDATE' : ''}
       </Button>
+      {(status === 'paused' || status === 'pending') && (
+        <Button onClick={() => resetDraffle(draffle, 0)}>
+          <i className="fas fa-undo" />
+          RESET ALL
+        </Button>
+      )}
       {rounds.map((round, i) => (
         <>
           <h3>{`Round ${i + 1}`}</h3>

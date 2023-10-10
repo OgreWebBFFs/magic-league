@@ -10,7 +10,13 @@ class DraffleActions
     register_cmds
   end
 
-  def welcome
+  def welcome draffle
+    draffle_channel = @bot.channel ENV["DRAFFLE_DISCORD_CHANNEL_ID"]
+    thread = draffle_channel.start_thread(
+      draffle.name,
+      10080,
+    )
+    draffle.update discord_thread_id: thread.id
     send_draffle_msg DRAFFLE_WELCOME
   end
 
@@ -48,11 +54,13 @@ class DraffleActions
   private
 
   def send_draffle_msg msg
-    @bot.send_message(ENV["DRAFFLE_DISCORD_CHANNEL_ID"], msg)
+    draffle = Draffle.where.not(status: "completed").first
+    @bot.send_message(draffle.discord_thread_id, msg)
   end
 
   def send_draffle_pool_img text
-    @bot.send_file(ENV["DRAFFLE_DISCORD_CHANNEL_ID"], File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇 #{text}")
+    draffle = Draffle.where.not(status: "completed").first
+    @bot.send_file(draffle.discord_thread_id, File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇 #{text}")
   end
 
 end
