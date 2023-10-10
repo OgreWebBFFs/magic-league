@@ -6,7 +6,6 @@ class Draffle < ApplicationRecord
   attr_reader :board
 
   def start
-    initialize_img
     if self.status == 'valid'
       OgreBot.instance.draffle_actions.welcome self
     end
@@ -30,18 +29,16 @@ class Draffle < ApplicationRecord
   end
 
   def autopick
-    # Need to re-initialize image here since autodrafter runs in a separate heroku dyno
-    initialize_img 
     prize_num = rand(0...self.available_prizes.length)
     prize = self.available_prizes[prize_num]
-    pick_info = pick_prize prize
+    pick_info = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_autopick pick_info.user, pick_info.prize
     progress_draft
   end
 
   def pick prize_id
     prize = self.draffle_prizes.find{ |prize| prize.id == prize_id}
-    pick_info = pick_prize prize
+    pick_info = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_pick pick_info.user, pick_info.prize
     progress_draft
     pick_info
@@ -92,25 +89,19 @@ class Draffle < ApplicationRecord
 
   def build_obj_models
     @board = DraftBoard.new self
-    @img = DraffleImg.new self
   end
 
-  def initialize_img
-    @img.new_card_grid
+  def build_img
+    img = DraffleImg.new self
+    img.new_card_grid
 
     i = 0
     slot = @board.get_slot(i)
     while !slot.prize.nil? do
-      @img.update_with_selection slot
+      img.update_with_selection slot
       i = i + 1
       slot = @board.get_slot(i)
     end
-  end
-
-  def pick_prize prize
-    slot = @board.make_selection prize
-    @img.update_with_selection slot
-    slot
   end
 
   def progress_draft
@@ -119,6 +110,7 @@ class Draffle < ApplicationRecord
       Autodraft::Scheduler.clear
       OgreBot.instance.draffle_actions.end self
     else
+      build_img
       OgreBot.instance.draffle_actions.notify_next self.on_the_clock
       Autodraft::Scheduler.new
     end

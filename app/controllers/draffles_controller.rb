@@ -131,6 +131,6 @@ class DrafflesController < ApplicationController
   end
 
   def no_active_draffles
-    Draffle.where.not(status: 'complete').length == 0
+    Draffle.where.not(status: 'completed').length == 0
   end
 end
