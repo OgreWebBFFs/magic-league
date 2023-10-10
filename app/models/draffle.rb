@@ -6,16 +6,7 @@ class Draffle < ApplicationRecord
   attr_reader :board
 
   def start
-    @img.new_card_grid
-
-    i = 0
-    slot = @board.get_slot(i)
-    while !slot.prize.nil? do
-      @img.update_with_selection slot
-      i = i + 1
-      slot = @board.get_slot(i)
-    end
-
+    initialize_img
     if self.status == 'valid'
       OgreBot.instance.draffle_actions.welcome
     end
@@ -39,6 +30,8 @@ class Draffle < ApplicationRecord
   end
 
   def autopick
+    # Need to re-initialize image here since autodrafter runs in a separate heroku dyno
+    initialize_img 
     prize_num = rand(0...self.available_prizes.length)
     prize = self.available_prizes[prize_num]
     pick_info = pick_prize prize
@@ -100,6 +93,18 @@ class Draffle < ApplicationRecord
   def build_obj_models
     @board = DraftBoard.new self
     @img = DraffleImg.new self
+  end
+
+  def initialize_img
+    @img.new_card_grid
+
+    i = 0
+    slot = @board.get_slot(i)
+    while !slot.prize.nil? do
+      @img.update_with_selection slot
+      i = i + 1
+      slot = @board.get_slot(i)
+    end
   end
 
   def pick_prize prize
