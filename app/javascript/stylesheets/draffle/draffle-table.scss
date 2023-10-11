@@ -1,0 +1,30 @@
+.draffle-table {
+  
+  .cell {
+    text-align: left;
+  }
+
+  .date-cell {
+    flex: 1 0 20%;
+  }
+
+  .name-cell {
+    flex: 2 0 50%;
+  }
+
+  .status-cell {
+    flex: 1 0 15%;
+  }
+
+  .action-cell {
+    width: 15%;
+    text-align: center;
+
+    a {
+      i {
+        margin-right: .5rem;
+      }
+    }
+  }
+
+}

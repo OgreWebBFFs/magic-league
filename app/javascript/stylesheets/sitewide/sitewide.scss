@@ -216,6 +216,12 @@ body {
     color: $Wrinkle-White;
     border-bottom: 3px solid $color-accent;
   }
+
+  &[class*="-title"] {
+    background: $color-dark;
+    color: $Wrinkle-White;
+    font-size: 1.6rem;
+  }
 }
 
 .cell {
