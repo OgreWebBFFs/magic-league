@@ -17,12 +17,12 @@
         <% end %>
     <% end %>
 
-    <div class="dashboard_edit-user-details__fields">
-        <%= f.input :name, wrapper_html: { class: 'dashboard_edit-user-details__text-field' } %>
-        <%= f.input :email, wrapper_html: { class: 'dashboard_edit-user-details__text-field'} %>
-        <%= f.input :pronouns, wrapper_html: { class: 'dashboard_edit-user-details__text-field'} %>
+    <div class="form">
+        <%= f.input :name, wrapper_html: { class: 'form__field' } %>
+        <%= f.input :email, wrapper_html: { class: 'form__field'} %>
+        <%= f.input :pronouns, wrapper_html: { class: 'form__field'} %>
+        <%= f.input :admin, :as => :switch, wrapper_html: { class: 'form__switch' }  %>
     </div>
-    <%= f.input :admin, :as => :switch, wrapper_html: { class: 'dashboard_edit-user-details__switch' }  %>
     <div style="margin: 1rem 0;">
         <%= f.button :submit, class: "dashboard_edit-user-details_actions-submit__btn" %>
     </div>

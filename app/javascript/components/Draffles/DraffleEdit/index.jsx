@@ -1,148 +1,56 @@
 import React, { useState } from 'react';
-import SearchInput from '../../SearchInput';
-import { CardGrid, CardImage } from '../../CardGrid';
-import Button from '../../Button';
-import updateDraffle from './update-draffle';
-import PrizeEditor from './PrizeEditor';
-import ParticipantsEditor from './ParticipantsEditor';
 import Toggle from '../../Toggle';
-import xhrRequest from '../../../helpers/xhr-request';
-
-const initializeParticipantInfo = (participants) => participants.map(
-  (participant) => ({ ...participant.user }),
-);
-
-const startDraffle = async (draffle) => {
-  await xhrRequest({
-    url: `/draffles/${draffle.id}/start`,
-    options: {
-      method: 'PUT',
-    },
-  });
-  window.location.reload();
-};
 
 const DraffleEdit = ({
   draffle,
-  users,
-  participants,
-  prizes,
 }) => {
-  const [participantsList, setParticipantsList] = useState(initializeParticipantInfo(participants));
-  const [random, setRandom] = useState(false);
-  const [searchedCards, setSearchedCards] = useState([]);
-  const [prizePool, setPrizePool] = useState([...prizes]);
-  const [prizeToEdit, setPrizeToEdit] = useState();
-  const [roundsEdit, setRoundsEdit] = useState(draffle.rounds);
-  const [snakeEdit, setSnakeEdit] = useState(draffle.snake);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [draffleName, setDraffleName] = useState(draffle.name);
+  const [draffleWelcome, setDraffleWelcome] = useState(draffle.welcome);
+  const [rounds, setRounds] = useState(draffle.rounds);
+  const [snake, setSnake] = useState(draffle.snake);
+  
   return (
     <>
-      <div style={{ display: 'flex' }}>
-        <h2>{draffle.name}</h2>
-        <Button
-          onClick={
-            () => updateDraffle(
-              draffle.id,
-              participantsList,
-              prizePool,
-              random,
-              roundsEdit,
-              snakeEdit,
-            )
-          }
-        >
-          <i className="fas fa-save" />
-          SAVE
-        </Button>
-        <Button onClick={() => startDraffle(draffle)}>
-          <i className="fas fa-play" />
-          START
-        </Button>
-      </div>
-      <p>{draffle.status}</p>
-      <input
-        type="number"
-        value={roundsEdit}
-        min="1"
-        onChange={(e) => setRoundsEdit(e.target.value)}
-      />
-      <div>
-        <h2>Snake?</h2>
-        <Toggle
-          name="snake-toggle"
-          checked={snakeEdit}
-          onClick={() => setSnakeEdit(!snakeEdit)}
-          options={['on', 'off']}
-        />
-      </div>
-      <div>
-        {participantsList.map((participant) => (
-          <div>{participant.name}</div>
-        ))}
-        <Button onClick={() => setIsModalOpen(true)}>Add Participants</Button>
-        <label htmlFor="randomize-draft-order">Randomize Order?</label>
-        <input style={{ opacity: '100%' }} type="checkbox" id="randomize-draft-order" value={random} onClick={() => setRandom(!random)} />
-      </div>
-      <SearchInput
-        onReset={() => setSearchedCards([])}
-        onResults={(results) => setSearchedCards([...results])}
-      />
-      <div>
-        {searchedCards.map((card) => (
-          <button
-            type="button"
-            onClick={() => setPrizePool([
-              ...prizePool,
-              {
-                name: card.attributes.name,
-                image: card.attributes.image_url,
-                card_id: card.id,
-                foiled: false,
-              },
-            ])}
-          >
-            {card.attributes.name}
-          </button>
-        ))}
-      </div>
-      <CardGrid>
-        {prizePool.map((prize, i) => (
-          <div style={{ position: 'relative' }}>
-            <CardImage
-              key={`${prize.name}_${prize.id}`}
-              name={prize.name}
-              imageUrl={prize.image}
-              foiled={prize.foiled}
-            />
-            <Button onClick={() => setPrizeToEdit(prize)}><i className="fas fa-edit" /></Button>
-            <Button onClick={() => setPrizePool([...prizePool.slice(0, i), ...prizePool.slice(i + 1)])}><i className="fas fa-ban" /></Button>
-          </div>
-        ))}
-      </CardGrid>
-      {prizeToEdit
-        && (
-          <PrizeEditor
-            prize={prizeToEdit}
-            onClose={(newPrize) => {
-              const i = prizePool.indexOf(prizeToEdit);
-              setPrizePool([...prizePool.slice(0, i), newPrize, ...prizePool.slice(i + 1)]);
-              setPrizeToEdit(null);
-            }}
+      <h1>Draffle Creation Portal</h1>
+      <h2>Details:</h2>
+      <div className="form">
+        <div className="form__field">
+          <label htmlFor="draffle_name">Name</label>
+          <input
+            id="draffle_name"
+            type="text"
+            value={draffleName}
+            onChange={(e) => setDraffleName(e.target.value)}
           />
-        )}
-      {isModalOpen
-        && (
-          <ParticipantsEditor
-            users={users}
-            participants={participantsList}
-            onClose={(newParticipants) => {
-              setParticipantsList(newParticipants);
-              setIsModalOpen(false);
-            }}
+        </div>
+        <div className="form__field">
+          <label htmlFor="draffle_welcome">Welcome</label>
+          <textarea
+            name="text"
+            id="text"
+            value={draffleWelcome}
+            onInput={(e) => setDraffleWelcome(e.target.value)}
           />
-        )}
+        </div>
+        <div className="form__field">
+          <label htmlFor="draffle_rounds">Rounds</label>
+          <input
+            id="draffle_rounds"
+            type="number"
+            value={rounds}
+            onChange={(e) => e.target.value >= 1 && setRounds(e.target.value)}
+          />
+        </div>
+        <div className="form__field">
+          <label htmlFor="snake-toggle" style={{ display: 'flex', alignItems: 'center', height: '3rem' }}>Snake?</label>
+          <Toggle
+            name="snake-toggle"
+            checked={snake}
+            onClick={() => setSnake(!snake && rounds > 1)}
+            options={['On', 'Off']}
+          />
+        </div>
+      </div>
     </>
   );
 };
