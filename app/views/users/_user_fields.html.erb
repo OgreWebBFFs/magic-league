@@ -6,12 +6,12 @@
     <% end %>    
   </div>
   <% if @user.discord_username.blank? %>
-    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=1112700178319814717&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord blank' do %>
+    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord blank' do %>
       <i class="fab fa-discord"></i>
       Link With Discord
     <% end %>
   <% else %>
-    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=1112700178319814717&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord linked' do %>
+    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord linked' do %>
       <i class="fab fa-discord"></i>
       @<%= @user.discord_username %>
     <% end %>
