@@ -27,8 +27,13 @@ module DraffleCommands
     end
 
     @bot.button do |event|
-      @original_event.interaction.delete_response
-      @draffle.pick @prize.id
+      if @prize.nil?
+        event.interaction.defer_update
+      else
+        @original_event.interaction.delete_response
+        @draffle.pick @prize.id
+        @prize = nil
+      end
     end
   end
 
