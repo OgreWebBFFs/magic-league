@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Toggle from '../../Toggle';
+import Modal from '../../Modal';
+import { toHTML } from 'discord-markdown';
 
 const DraffleEdit = ({
   draffle,
@@ -8,6 +10,7 @@ const DraffleEdit = ({
   const [draffleWelcome, setDraffleWelcome] = useState(draffle.welcome);
   const [rounds, setRounds] = useState(draffle.rounds);
   const [snake, setSnake] = useState(draffle.snake);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -29,7 +32,7 @@ const DraffleEdit = ({
             <button
               type="button"
               className="sub-msg interactable"
-              onClick={() => showDiscordMarkdownModal()}
+              onClick={() => setShowModal(true)}
             >
               See Markdown
             </button>
@@ -66,6 +69,16 @@ const DraffleEdit = ({
             options={['On', 'Off']}
           />
         </div>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <div
+              style={{ maxWidth: '80vw' }}
+              dangerouslySetInnerHTML={{
+                __html: toHTML(draffleWelcome),
+              }}
+            />
+          </Modal>
+        )}
       </div>
     </>
   );
