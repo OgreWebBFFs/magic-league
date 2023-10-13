@@ -202,7 +202,7 @@
     }
 
     @media only screen and (max-width: 500px) {
-        display: block;
+        grid-template-columns: repeat(1, 100%);
 
         &_card__wrapper {
             margin-bottom: 25px;

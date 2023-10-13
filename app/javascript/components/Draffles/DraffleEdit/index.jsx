@@ -8,7 +8,7 @@ const DraffleEdit = ({
   const [draffleWelcome, setDraffleWelcome] = useState(draffle.welcome);
   const [rounds, setRounds] = useState(draffle.rounds);
   const [snake, setSnake] = useState(draffle.snake);
-  
+
   return (
     <>
       <h1>Draffle Creation Portal</h1>
@@ -24,7 +24,16 @@ const DraffleEdit = ({
           />
         </div>
         <div className="form__field">
-          <label htmlFor="draffle_welcome">Welcome</label>
+          <label htmlFor="draffle_welcome" className="with-sub-msg">
+            Welcome
+            <button
+              type="button"
+              className="sub-msg interactable"
+              onClick={() => showDiscordMarkdownModal()}
+            >
+              See Markdown
+            </button>
+          </label>
           <textarea
             name="text"
             id="text"
@@ -38,11 +47,18 @@ const DraffleEdit = ({
             id="draffle_rounds"
             type="number"
             value={rounds}
-            onChange={(e) => e.target.value >= 1 && setRounds(e.target.value)}
+            onChange={(e) => {
+              const num = Number.parseInt(e.target.value, 10);
+              if (num >= 1) setRounds(num);
+              if (num === 1) setSnake(false);
+            }}
           />
         </div>
         <div className="form__field">
-          <label htmlFor="snake-toggle" style={{ display: 'flex', alignItems: 'center', height: '3rem' }}>Snake?</label>
+          <label className="with-sub-msg" htmlFor="snake-toggle" style={{ height: '3rem' }}>
+            Snake?
+           {rounds === 1 && (<span className="sub-msg">rounds must be greater than 1 to enable snake draft</span>)}
+          </label>
           <Toggle
             name="snake-toggle"
             checked={snake}

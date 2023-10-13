@@ -18,6 +18,26 @@
       font-weight: 600;
       font-size: 1.2rem;
       transition: font-size 0.3s, color 0.3s, font-weight 0.3s;
+
+      &.with-sub-msg {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        
+        .sub-msg {
+          font-size: .8rem;
+          font-weight: 400;
+          color: $Light-Grey;
+
+          &.interactable {
+            border: none;
+            background: none;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
     }
 
     
