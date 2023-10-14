@@ -28,3 +28,103 @@
     }
   }
 }
+
+.edit-participants {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+
+  &__dashboard {
+    display: flex;
+    flex: 1 1 auto;
+    margin: 1rem 0;
+  }
+  
+  &__picker {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 0 1.5rem;
+    
+    &-choice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-radius: .5rem;
+      padding: .5rem;
+      cursor: pointer;
+      min-height: 3rem;
+      width: 100%;
+      
+      &.orderable {
+        border-radius: .5rem 0 0 .5rem;
+        flex: 1 1 auto;
+      }
+    }
+    
+    &-order {
+      display: flex;
+      flex-direction: column;
+
+      &--button {
+        background: $color-nuetral;
+        color: $color-highlight-import;
+        border: none;
+        border-bottom: 1px solid $color-accent;
+        cursor: pointer;
+        flex: 1 1 50%;
+
+        &.up {
+          border-radius: 0 .5rem 0 0;
+        }
+
+        &.down {
+          border-radius: 0 0 .5rem 0;
+        }
+
+      }
+    }
+  }
+}
+
+.edit-prizes {
+  display: flex;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+
+  &__card-search {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 33%;
+    gap: 0.5rem;
+    position: sticky;
+    align-self: flex-start;
+    top: 0.5rem;
+    margin: 0 1rem;
+
+    &--results {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem; 
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        min-height: 3rem;
+        width: 100%;
+      }
+    }
+
+  }
+
+}
