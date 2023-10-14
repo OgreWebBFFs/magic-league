@@ -5,14 +5,14 @@ const prepParticipants = (participants) => participants.map((participant, i) => 
   order: i + 1,
 }));
 
-const updateDraffle = async (draffleId, participants, prizes, draffle) => xhrRequest({
-  url: `/draffles/${draffleId}`,
+const updateDraffle = async (draffle, participants, prizes, draffleDetails) => xhrRequest({
+  url: `/draffles/${draffle.id}`,
   options: {
     method: 'PUT',
     body: JSON.stringify({
       participants: prepParticipants(participants),
       prizes,
-      ...draffle,
+      ...draffleDetails,
     }),
   },
 });

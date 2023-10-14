@@ -10,7 +10,7 @@ const PrintPicker = ({
 }) => {
   const [foiled, setFoiled] = useState(prize.foiled);
   const [pos, setPos] = useState(0);
-  const [prints, setPrints] = useState([]);
+  const [prints, setPrints] = useState(['https://placehold.co/488x680?text=Loading...']);
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {

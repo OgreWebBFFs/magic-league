@@ -5,6 +5,12 @@ import EditDetails from './EditDetails';
 import EditParticipants from './EditParticipants';
 import EditPrizes from './EditPrizes';
 import updateDraffle from './update-draffle';
+import startDraffle from './start-draffle';
+import {
+  checkDetailsChanges,
+  checkParticipantChanges,
+  checkPrizeChanges
+} from './check-changes';
 
 const DraffleEdit = ({
   draffle,
@@ -16,6 +22,14 @@ const DraffleEdit = ({
   const [newParticipants, setNewParticipants] = useState(participants);
   const [newPrizes, setNewPrizes] = useState(prizes);
   const [loading, setLoading] = useState(false);
+  const [changed, setChanged] = useState(false);
+
+  useEffect(() => {
+    const detailsChanged = checkDetailsChanges(draffle, newDraffle);
+    const participantsChanged = checkParticipantChanges(participants, newParticipants);
+    const prizesChanged = checkPrizeChanges(prizes, newPrizes);
+    setChanged(detailsChanged || participantsChanged || prizesChanged);
+  }, [newDraffle, newParticipants, newPrizes]);
 
   return (
     <div className="draffle-edit">
@@ -24,17 +38,17 @@ const DraffleEdit = ({
         <div className="draffle-edit__header--actions">
           <Button onClick={async () => {
             setLoading(true);
-            await updateDraffle(draffle.id, newParticipants, newPrizes, newDraffle);
+            await updateDraffle(draffle, newParticipants, newPrizes, newDraffle);
             window.location.reload();
           }}>
             <i className="fas fa-upload" style={{ marginRight: "0.5rem" }}/>
             UPLOAD<br />CHANGES
           </Button>
           <Button 
-            disabled={draffle.status !== 'valid'}
+            disabled={changed || draffle.status !== 'valid'}
             onClick={async () => {
               setLoading(true);
-              await startDraffle(draffle.id, newParticipants, newPrizes, newDraffle);
+              await startDraffle(draffle);
               window.location.reload();
             }}
           >
@@ -42,7 +56,12 @@ const DraffleEdit = ({
             START<br />DRAFFLE
           </Button>
         </div>
-        {draffle.status !== 'valid' && (
+        {changed && (
+          <div className="draffle-edit__header--alert">
+            You have unsaved changes to the draffle. Please upload those changes or refresh to revert them before saving.
+          </div>
+        )}
+        {!changed && draffle.status !== 'valid' && (
           <div className="draffle-edit__header--alert">
             Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick.
           </div>

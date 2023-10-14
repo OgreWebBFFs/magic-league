@@ -17,7 +17,7 @@ class DraffleActions
       10080,
     )
     draffle.update discord_thread_id: thread.id
-    send_draffle_msg DRAFFLE_WELCOME
+    send_draffle_msg draffle.welcome
   end
 
   def start draffle
