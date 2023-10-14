@@ -2,6 +2,7 @@
   &__print-selector {
     width: 100%;
     display: flex;
+    flex: 1 1 auto;
     gap: 5%;
 
     &.animate {
@@ -21,9 +22,9 @@
       }
 
       &.active {
-        width: 50%;
+        width: 75%;
         filter: none;
-        max-width: 50%;
+        max-width: 75%;
       }
     }
   }
@@ -125,6 +126,20 @@
       }
     }
 
+  }
+
+  &__card-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    button {
+      margin: 0 1rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-items: center;
+    }
   }
 
 }
