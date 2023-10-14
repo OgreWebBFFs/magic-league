@@ -31,7 +31,7 @@ const DraffleEdit = ({
             UPLOAD<br />CHANGES
           </Button>
           <Button 
-            disabled={!changed && draffle.status === 'valid'}
+            disabled={draffle.status === 'valid'}
             onClick={async () => {
               setLoading(true);
               await startDraffle(draffle.id, newParticipants, newPrizes, newDraffle);
@@ -43,8 +43,7 @@ const DraffleEdit = ({
           </Button>
         </div>
         <div className="draffle-edit__header--alert">
-            {changed && 'You have made changes that have not been upload. You will need to upload these changes before you will be able to start this draffle.'}
-            {!changed && draffle.status !== 'valid' && 'Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick.'}
+            {draffle.status !== 'valid' && 'Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick.'}
         </div>
       </div>
       <EditDetails draffle={newDraffle} onChange={(val) => setNewDraffle(val)}/>
