@@ -40,6 +40,7 @@ const EditPrizes = ({ prizes, onChange }) => {
         <CardGrid>
           {prizePool.map((prize) => (
             <PrizeEditor
+              key={prize.id}
               prize={prize}
               onUpdate={(card) => editCardInPool(card)}
               onDelete={(card) => removeCardInPool(card)}
