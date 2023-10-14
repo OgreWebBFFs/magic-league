@@ -1,33 +1,28 @@
 .draffle-edit {
-  &__print-selector {
-    width: 100%;
+  &__header {
     display: flex;
-    flex: 1 1 auto;
-    gap: 5%;
+    flex-direction: column;
+    align-items: center;
 
-    &.animate {
-      transition: margin-left 0.3s;
+    &--actions {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      width: 100%;
+  
+      button {
+        margin: 0;
+        flex: 1 1 auto;
+      }
     }
 
-    &--print-option {
-      width: 30%;
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      filter: grayscale(100%);
-      position: relative;
-      
-      &.animate {
-        transition: width 0.3s, filter 0.3s;
-      }
-
-      &.active {
-        width: 75%;
-        filter: none;
-        max-width: 75%;
-      }
+    &--alert {
+      font-size: .8rem;
+      color: var(--color-dark-hue-sat);
     }
   }
+
 }
 
 .edit-participants {
@@ -152,6 +147,37 @@
       gap: 0.5rem;
       align-items: center;
       justify-items: center;
+    }
+
+  }
+
+  &__print-selector {
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    gap: 5%;
+
+    &.animate {
+      transition: margin-left 0.3s;
+    }
+
+    &--print-option {
+      width: 30%;
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      filter: grayscale(100%);
+      position: relative;
+      
+      &.animate {
+        transition: width 0.3s, filter 0.3s;
+      }
+
+      &.active {
+        width: 75%;
+        filter: none;
+        max-width: 75%;
+      }
     }
   }
 

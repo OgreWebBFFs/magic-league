@@ -32,11 +32,11 @@ const PrintPicker = ({
         width: imgWidth, height: imgHeight, overflow: 'hidden', display: 'flex', flexDirection: 'column',
       }}
       >
-        <div className={classNames('draffle-edit__print-selector', { animate })} style={{ marginLeft: `${12.5 - (pos * 35)}%` }}>
+        <div className={classNames('edit-prizes__print-selector', { animate })} style={{ marginLeft: `${12.5 - (pos * 35)}%` }}>
           {prints.map((print, i) => (
             <div
               className={classNames(
-                'draffle-edit__print-selector--print-option foiled',
+                'edit-prizes__print-selector--print-option foiled',
                 {
                   active: i === pos,
                   animate,
@@ -59,7 +59,7 @@ const PrintPicker = ({
             name={`foiled--${prize.id}`}
             checked={foiled}
             onClick={() => setFoiled(!foiled)}
-            options={['Foil', 'Non-Foil']}
+            options={['Foil', '']}
           />
           <Button
             onClick={() => setPos(pos < prints.length - 1 ? pos + 1 : pos)}

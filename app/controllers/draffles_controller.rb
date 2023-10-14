@@ -31,6 +31,8 @@ class DrafflesController < ApplicationController
     }
     draffle.update(rounds: params[:rounds])
     draffle.update(snake: params[:snake])
+    draffle.update(name: params[:name])
+    draffle.update(welcome: params[:welcome])
     
     draffle.reload
     if draffle.ready?
@@ -38,6 +40,7 @@ class DrafflesController < ApplicationController
     else
       draffle.update(status: 'invalid')
     end
+    render json: {}
   end
   
   def index

@@ -1,13 +1,17 @@
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { CardGrid } from '../../../CardGrid';
 import PrizeSearch from './PrizeSearch';
 import Divider from './Divider';
 import PrizeEditor from './PrizeEditor';
 
-const EditPrizes = ({ prizes }) => {
+const EditPrizes = ({ prizes, onChange }) => {
   const [prizePool, setPrizePool] = useState(prizes);
+
+  useEffect(() => {
+    onChange(prizePool)
+  }, [prizePool])
 
   const addCardToPool = ({ attributes: { name, image_url: image }, id: card_id }) => {
     setPrizePool([

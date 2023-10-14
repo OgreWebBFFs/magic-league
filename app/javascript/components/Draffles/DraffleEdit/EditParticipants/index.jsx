@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toggle from '../../../Toggle';
 import {
   nonParticipantUsers,
@@ -8,13 +8,19 @@ import {
 import ParticipantPicker from './ParticipantPicker';
 import ParticipantOrderer from './ParticipantOrderer';
 import Divider from './Divider';
+import randomizeOrder from './randomize-order';
 
 const EditParticipants = ({
   participants,
   users,
+  onChange,
 }) => {
   const [newParticipants, setNewParticipants] = useState(participants.map((p) => p.user || p));
   const [isRandom, setIsRandom] = useState(false);
+
+  useEffect(() => {
+    onChange(isRandom ? randomizeOrder(newParticipants) : newParticipants)
+  }, [newParticipants, isRandom])
 
   return (
     <>

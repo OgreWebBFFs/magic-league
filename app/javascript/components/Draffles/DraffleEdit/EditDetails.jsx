@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Toggle from '../../Toggle';
 import Modal from '../../Modal';
 import { toHTML } from 'discord-markdown';
 
 const EditDetails = ({
   draffle,
+  onChange
 }) => {
   const [draffleName, setDraffleName] = useState(draffle.name);
   const [draffleWelcome, setDraffleWelcome] = useState(draffle.welcome);
   const [rounds, setRounds] = useState(draffle.rounds);
   const [snake, setSnake] = useState(draffle.snake);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    onChange({
+      name: draffleName,
+      welcome: draffleWelcome,
+      rounds,
+      snake,
+    });
+  }, [draffleName, draffleWelcome, rounds, snake])
 
   return (
     <>
