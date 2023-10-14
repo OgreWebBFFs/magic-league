@@ -98,8 +98,13 @@
   border-radius: 1rem;
   padding: 1.5rem;
 
+  @media only screen and (max-width: 500px) {
+    flex-direction: column;
+  }
+
   &__card-search {
     display: flex;
+    background: white;
     flex-direction: column;
     flex: 1 1 33%;
     gap: 0.5rem;
@@ -107,6 +112,14 @@
     align-self: flex-start;
     top: 0.5rem;
     margin: 0 1rem;
+    z-index: 1;
+
+    @media only screen and (max-width: 500px) {
+      top: 0;
+      margin: 0;
+      width: 100%;
+      padding: 1rem .5rem;
+    }
 
     &--results {
       display: flex;
