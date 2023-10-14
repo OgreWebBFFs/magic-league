@@ -24,8 +24,8 @@ const TradeReview = ({ trade }) => (
       />
     </div>
     <div className="modal__actions">
-      <Button onClick={() => postTradeReview(trade, 'approved')} className="modal__action-button button--bright">Accept</Button>
-      <Button onClick={() => postTradeReview(trade, 'rejected')} className="modal__action-button button--accent">Decline</Button>
+      <Button onClick={() => postTradeReview(trade, 'approved')} className="modal__action-button button--accent">Accept</Button>
+      <Button onClick={() => postTradeReview(trade, 'rejected')} className="modal__action-button button--bright">Decline</Button>
     </div>
     <p className="modal__notice">
       <span className="warning">**WARNING**</span>
