@@ -23,7 +23,7 @@ const resetDraffle = async (draffle, pick) => xhrRequest({
   url: `/draffles/${draffle.id}/reset`,
   options: {
     method: 'PUT',
-    body: JSON.stringify(pick ? {} : { pick })
+    body: JSON.stringify(pick ? { pick } : { })
   },
 });
 
@@ -58,7 +58,7 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
                 Player
                 <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
                   <i className="fa"/>
-                    RESET ALL
+                    REWIND ALL
                 </Button>
               </Cell>
               <Cell className="prize-column">Prize</Cell>
@@ -75,7 +75,7 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
                     <Button
                       onClick={() => reloadOnFinish(resetDraffle, draffle, j + rounds[0].length * i + 1)}
                     >
-                      RESET TO
+                      REWIND TO
                     </Button>
                   )}
                 </Cell>

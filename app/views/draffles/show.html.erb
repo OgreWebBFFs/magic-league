@@ -1,16 +1,38 @@
 <% case @draffle.status
   when 'created', 'valid', 'invalid' %>
-    <%= react_component("Draffles/DraffleEdit", {
-      draffle: @draffle,
-      participants: @participants,
-      prizes: @prizes,
-      isAdmin: current_user.admin,
-      users: @users
-    }) %>
+    <% if current_user.admin? %>
+      <%= react_component("Draffles/DraffleEdit", {
+        draffle: @draffle,
+        participants: @participants,
+        prizes: @prizes,
+        isAdmin: current_user.admin,
+        users: @users
+      }) %>
+    <% else %>
+      <div>
+        Well isn't someone eager! The admins haven't finished setting this draffle up yet. Check back in later to see the results.
+      </div>
+    <% end %>
   <% when 'started', 'paused', 'pending' %>
-    <%= react_component("Draffles/DraffleInProgress", {
-      draffle: @draffle,
-      draft_board: @board,
-      prizes: @prizes
-    }) %>
+    <% if current_user.admin? %>
+      <%= react_component("Draffles/DraffleInProgress", {
+        draffle: @draffle,
+        draft_board: @board,
+        prizes: @prizes
+      }) %>
+    <% else %>
+      <div style="text-align: center;">
+        Sorry! Only admins have access to this view while a draffle is in progress.
+        <br />
+        <br />
+        But you can head on over to the draffle thread to follow along with the action!
+        <br />
+        <br />
+        Just Click Here 👇
+        <br />
+        <a style="text-decoration: underline;" href='https://discord.com/channels/<%= ENV["DISCORD_SERVER_ID"] %>/<%= @draffle.discord_thread_id %>'>
+          <i class="fab fa-discord" style="margin-right: .5rem;"> </i><%= @draffle.name %>
+        </a>
+      </div>
+    <% end %>
 <% end %>
