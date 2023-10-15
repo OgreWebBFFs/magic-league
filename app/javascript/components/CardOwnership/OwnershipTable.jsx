@@ -21,7 +21,7 @@ const OwnershipTable = ({
       {totalCount <= 0 ? <NoOwnersMessage /> : (
         ownerDetails.map(({ count, id, name }) => (
           <Row>
-            <Cell isPriority>{name}</Cell>
+            <Cell isPriority><a href={`/users/${id}`}>{name}</a></Cell>
             <AmountCell>
               {count}
               {id !== currentUserId && (
