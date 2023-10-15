@@ -1,0 +1,41 @@
+.draft-board {
+
+  .pick-column { 
+    flex: 0 1 5%;
+  }
+
+  .name-column {
+    flex: 0 0 25%;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .prize-column {
+    flex: 0 0 45%;
+  }
+
+  .time-column {
+    flex: 0 0 25%
+  }
+}
+
+.prize-name-img-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .img-wrapper {
+    width: 10rem;
+  }
+
+  .name-image-toggle {
+    position: absolute;
+    margin: 0;
+    width: auto;
+    right: 0;
+    padding: 0.5rem;
+  }
+}

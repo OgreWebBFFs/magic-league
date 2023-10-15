@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { toHTML } from 'discord-markdown';
 import Toggle from '../../Toggle';
 import Modal from '../../Modal';
-import { toHTML } from 'discord-markdown';
 
 const EditDetails = ({
   draffle,

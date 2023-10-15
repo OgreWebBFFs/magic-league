@@ -10,8 +10,8 @@ const EditPrizes = ({ prizes, onChange }) => {
   const [prizePool, setPrizePool] = useState(prizes);
 
   useEffect(() => {
-    onChange(prizePool)
-  }, [prizePool])
+    onChange(prizePool);
+  }, [prizePool]);
 
   const addCardToPool = ({ attributes: { name, image_url: image }, id: card_id }) => {
     setPrizePool([
