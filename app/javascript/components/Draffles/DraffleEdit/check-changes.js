@@ -6,7 +6,7 @@ export const checkDetailsChanges = (initial, current) => !(initial.name === curr
 export const checkParticipantChanges = (initial, current) => {
   let i = 0;
   while (i < current.length) {
-    if (initial[i].user.id !== current[i].id) {
+    if (initial[i]?.user.id !== current[i].id) {
       return true;
     }
     i += 1;

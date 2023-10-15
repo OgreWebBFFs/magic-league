@@ -6,25 +6,40 @@ include Magick
 
 class DraffleImg
 
-  ROW_LENGTH = 5
+  ROW_LENGTH = 7
 
   def initialize draffle
-    @prize_grid = draffle.draffle_prizes.sort_by(&:id).each_slice(ROW_LENGTH).to_a
+    @draffle = draffle
+    @prize_grid = draffle.draffle_prizes.sort_by(&:name).each_slice(ROW_LENGTH).to_a
+    if !File.exists?("./draffle_base.png")
+      draw_card_grid
+    end
   end
 
-  def new_card_grid
-    self.draw_card_grid
+  def self.reset
+    FileUtils.rm "./draffle_base.png", :force => true
   end
 
-  def update_with_selection selection
+  def build_current_draft_board 
+    clear_board
+    @draffle.board.filled_slots.each do |slot|
+      draw_selection slot
+    end
+  end
+  
+  private 
+
+  def clear_board
+    FileUtils.cp("./draffle_base.png", "./draffle.png")
+  end
+
+  def draw_selection selection
     pick_num = selection.pick_num
     pick_name = selection.user.name
-    x = self.get_prize_x selection.prize
-    y = self.get_prize_y selection.prize
-    self.draw_selection_overlay x, y, pick_num, pick_name
+    x = get_prize_x selection.prize
+    y = get_prize_y selection.prize
+    draw_selection_overlay x, y, pick_num, pick_name
   end
-
-  private 
 
   def draw_card_grid
     compiled_img = ImageList.new
@@ -45,7 +60,7 @@ class DraffleImg
       compiled_img.push(img_row.append(false))
     end
     compiled_img = compiled_img.append(true)
-    compiled_img.write("draffle.png")
+    compiled_img.write("draffle_base.png")
   end
 
   def draw_selection_overlay (x, y, pick_num, pick_name)

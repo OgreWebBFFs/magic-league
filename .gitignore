@@ -40,4 +40,5 @@ yarn-debug.log*
 .yarn-integrity
 
 draffle.png
+draffle_base.png
 local_env.yml

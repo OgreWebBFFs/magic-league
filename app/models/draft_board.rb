@@ -37,6 +37,12 @@ class DraftBoard
     @rounds.flatten[i]
   end
 
+  def filled_slots
+    @rounds.flatten.filter do |slot|
+      !slot.prize.nil?
+    end
+  end
+
   def make_selection prize
     slot = self.active_slot
     slot.participant.make_pick prize

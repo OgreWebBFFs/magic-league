@@ -12,6 +12,7 @@ class Draffle < ApplicationRecord
 
     self.update(status: 'started')
     OgreBot.instance.draffle_actions.start self
+    DraffleImg.reset
     progress_draft
   end
 
@@ -92,26 +93,26 @@ class Draffle < ApplicationRecord
     @board = DraftBoard.new self
   end
 
-  def build_img
-    img = DraffleImg.new self
-    img.new_card_grid
+  # def build_img
+  #   img = DraffleImg.new self
 
-    i = 0
-    slot = @board.get_slot(i)
-    while !slot.prize.nil? do
-      img.update_with_selection slot
-      i = i + 1
-      slot = @board.get_slot(i)
-    end
-  end
+  #   i = 0
+  #   slot = @board.get_slot(i)
+  #   while !slot.prize.nil? do
+  #     img.update_with_selection slot
+  #     i = i + 1
+  #     slot = @board.get_slot(i)
+  #   end
+  # end
 
   def progress_draft
+    img = DraffleImg.new self
+    img.build_current_draft_board
     if @board.complete?
       self.update(status: 'pending')
       Autodraft::Scheduler.clear
       OgreBot.instance.draffle_actions.end self
     else
-      build_img
       OgreBot.instance.draffle_actions.notify_next self.on_the_clock
       Autodraft::Scheduler.new
     end

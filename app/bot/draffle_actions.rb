@@ -29,7 +29,7 @@ class DraffleActions
   end
 
   def end draffle
-    send_draffle_msg DRAFFLE_END % {name: draffle.name}
+    send_draffle_pool_img DRAFFLE_END % {name: draffle.name}
   end
 
   def notify_next user
