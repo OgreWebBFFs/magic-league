@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CardImage } from "../../CardGrid";
-import Button from "../../Button";
+import { CardImage } from "../../../CardGrid";
+import Button from "../../../Button";
 
 const PrizeNameImageToggle = ({ prize }) => {
   const [showImage, setShowImage] = useState(false);

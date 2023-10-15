@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 const LoadingTakeOver = () => {
   
   useEffect(() => {
-    document.body.style.position = 'fixed'
+    document.body.style.overflow = 'hidden'
   }, []);
 
   return (
@@ -19,7 +19,7 @@ const LoadingTakeOver = () => {
       left: '0',
       zIndex: '200',
     }}>
-      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <div className="lds-ring"><div /><div /><div /><div /></div>
     </div>
   )  
 }

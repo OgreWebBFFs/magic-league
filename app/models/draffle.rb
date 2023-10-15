@@ -65,7 +65,8 @@ class Draffle < ApplicationRecord
   end
 
   def prize_available? prize_id
-    self.draffle_prizes.any?{ |prize| prize.id === prize_id && prize.available? }
+    puts prize_id
+    self.draffle_prizes.any?{ |prize| prize.id == prize_id && prize.available? }
   end
 
   def ready?
