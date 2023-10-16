@@ -13,7 +13,7 @@ module DraffleCommands
       else
         @picker = @draffle.on_the_clock
         if @picker.discord_id.to_s == event.user.id.to_s
-          @prize_groups = @draffle.available_prizes.sort_by(&:name).each_slice(20).to_a
+          @prize_groups = @draffle.available_prizes.each_slice(20).to_a
           @viewing_group = 0
           send_draffle_selector @prize_groups[0], false, @prize_groups.length > 1      
         else

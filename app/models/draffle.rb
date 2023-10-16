@@ -62,7 +62,7 @@ class Draffle < ApplicationRecord
   end
 
   def available_prizes
-    self.draffle_prizes.filter { |prize| prize.available? }.sort_by(&:id)
+    self.draffle_prizes.filter { |prize| prize.available? }.sort_by { |prize| [prize.name, prize.id] }
   end
 
   def prize_available? prize_id

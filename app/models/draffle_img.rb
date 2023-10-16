@@ -10,7 +10,7 @@ class DraffleImg
 
   def initialize draffle
     @draffle = draffle
-    @prize_grid = draffle.draffle_prizes.sort_by(&:name).each_slice(ROW_LENGTH).to_a
+    @prize_grid = draffle.draffle_prizes.sort_by{ |prize| [prize.name, prize.id] }.each_slice(ROW_LENGTH).to_a
     if !File.exists?("./draffle_base.png")
       draw_card_grid
     end
@@ -64,6 +64,7 @@ class DraffleImg
   end
 
   def draw_selection_overlay (x, y, pick_num, pick_name)
+    parsed_pick_name = pick_name.gsub(/[^\u{0000}-\u{007F}]/, "").truncate(25)
     new_img = Image.read('./draffle.png').first
     gc = Draw.new
     gc.stroke '#5c1009'
@@ -81,7 +82,7 @@ class DraffleImg
     gc.font_style(NormalStyle)
   
     gc.text_align CenterAlign
-    gc.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_num}\nBy: #{pick_name}"
+    gc.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_num}\nBy: #{parsed_pick_name}"
 
     gc.draw(new_img)
     new_img.write("draffle.png")
