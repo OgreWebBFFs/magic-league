@@ -24,7 +24,7 @@ class DraftBoard
         participants = participants.reverse
       end
       slots = participants.map.with_index { |participant, i|
-        prize = participant.draffle_prizes[round]
+        prize = participant.draffle_prizes.sort_by(&:updated_at).to_a[round]
         pick_num = round * participants.length + i + 1
         Slot.new participant, prize, pick_num
       }

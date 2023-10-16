@@ -35,4 +35,9 @@
         </a>
       </div>
     <% end %>
+  <% when 'completed' %>
+    <%= react_component("Draffles/DraffleCompleted", {
+      draffle: @draffle,
+      draft_board: @board,
+    })%>
 <% end %>

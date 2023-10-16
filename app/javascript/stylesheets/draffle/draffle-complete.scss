@@ -1,0 +1,31 @@
+.slot {
+  border: 2px solid $color-nuetral;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  &__header {
+    background: $color-nuetral;
+    color: $color-highlight-mid-import;
+    &.pick {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    &.date {
+      font-size: .8rem;
+    }
+  }
+
+  &__user {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $color-highlight-import;
+    padding: .5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__prize {
+    padding: .5rem;
+  }
+}

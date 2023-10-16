@@ -56,10 +56,12 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
               <Cell className="pick-column">Pick</Cell>
               <Cell className="name-column">
                 Player
-                <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
-                  <i className="fa"/>
-                    REWIND ALL
-                </Button>
+                {i ===  0 && (
+                  <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
+                    <i className="fa"/>
+                      REWIND ALL
+                  </Button>
+                )}
               </Cell>
               <Cell className="prize-column">Prize</Cell>
               <Cell className="time-column">Pick Date/Time</Cell>
