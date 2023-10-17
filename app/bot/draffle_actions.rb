@@ -21,7 +21,7 @@ class DraffleActions
   end
 
   def start draffle
-    send_draffle_msg DRAFFLE_START % {name: draffle.name, board: draffle.board}
+    send_draffle_msg DRAFFLE_START % {name: draffle.name, board: sanitize(draffle.board.to_s)}
   end
 
   def pause draffle
@@ -37,11 +37,11 @@ class DraffleActions
   end
 
   def announce_pick user, prize
-    send_draffle_msg DRAFFLE_ANNOUNCE_PICK % {name: user.name, discord_id: user.discord_id, prize: prize.name}
+    send_draffle_msg DRAFFLE_ANNOUNCE_PICK % {name: sanitize(user.name), discord_id: user.discord_id, prize: prize.name}
   end
 
   def announce_autopick user, prize
-    send_draffle_msg DRAFFLE_ANNOUNCE_AUTOPICK % {name: user.name, discord_id: user.discord_id, prize: prize.name} 
+    send_draffle_msg DRAFFLE_ANNOUNCE_AUTOPICK % {name: sanitize(user.name), discord_id: user.discord_id, prize: prize.name} 
   end
 
   def autodraft_warning(num)
@@ -61,6 +61,10 @@ class DraffleActions
   def send_draffle_pool_img text
     draffle = Draffle.where.not(status: "completed").first
     @bot.send_file(draffle.discord_thread_id, File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇 #{text}")
+  end
+
+  def sanitize text
+    text.gsub(/(_|`|\*|~|_|`|\*|~|(?<!<@\d{18})>|\|)/, '\\\\\1')
   end
 
 end
