@@ -67,7 +67,7 @@ const EditDetails = ({
           />
         </div>
         <div className="form__field">
-          <label className="with-sub-msg" htmlFor="snake-toggle" style={{ height: '3rem' }}>
+          <label className="with-sub-msg" htmlFor="snake-toggle" style={{ minHeight: '3rem' }}>
             Snake?
             {rounds === 1 && (<span className="sub-msg">rounds must be greater than 1 to enable snake draft</span>)}
           </label>

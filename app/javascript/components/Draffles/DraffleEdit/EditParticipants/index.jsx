@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useWindowSize } from 'react-use';
+import classNames from 'classnames';
 import Toggle from '../../../Toggle';
+import Button from '../../../Button';
 import {
   nonParticipantUsers,
   addParticipant,
@@ -15,6 +18,8 @@ const EditParticipants = ({
   users,
   onChange,
 }) => {
+  const { width: screenSize } = useWindowSize();
+  const [viewIn, setViewIn] = useState(false);
   const [newParticipants, setNewParticipants] = useState(participants.map((p) => p.user || p));
   const [isRandom, setIsRandom] = useState(false);
 
@@ -38,8 +43,9 @@ const EditParticipants = ({
             options={['Yes', 'No']}
           />
         </div>
-        <div className="edit-participants__dashboard" style={{ minHeight: `${users.length * 3.5}rem` }}>
+        <div className={classNames("edit-participants__dashboard", { "view-in": viewIn })} style={{ minHeight: `${users.length * 3.5}rem` }}>
           <div className="edit-participants__picker">
+            {screenSize <= 500 && <Button onClick={() => setViewIn(true)}>View In ▶</Button>}
             {nonParticipantUsers(users, newParticipants).map(
               (user) => (
                 <ParticipantPicker
@@ -51,6 +57,7 @@ const EditParticipants = ({
           </div>
           <Divider />
           <div className="edit-participants__picker">
+            {screenSize <= 500 && <Button onClick={() => setViewIn(false)}>◀ View Out</Button>}
             {newParticipants.map((participant) => (
               <div style={{ display: 'flex' }}>
                 <ParticipantPicker

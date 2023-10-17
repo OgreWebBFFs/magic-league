@@ -32,11 +32,22 @@
   background: white;
   border-radius: 1rem;
   padding: 1.5rem;
+  overflow: hidden;
 
   &__dashboard {
     display: flex;
     flex: 1 1 auto;
     margin: 1rem 0;
+
+    @media only screen and (max-width: 500px) {
+      width: 200%;
+      transition: margin-left 0.3s ease-in 0s;
+    }
+    &.view-in {
+      @media only screen and (max-width: 500px) {
+        margin-left: -100%;
+      }
+    }
   }
   
   &__picker {

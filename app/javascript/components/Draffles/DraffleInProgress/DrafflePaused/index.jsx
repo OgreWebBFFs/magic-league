@@ -41,13 +41,15 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
     await f(...params);
     window.location.reload();
   }
-
   return (
     <>
       <Button onClick={() => reloadOnFinish(draffle.status === 'pending' ? validateDraffle : startDraffle, draffle)}>
           {draffle.status === 'pending' ? 'VALIDATE' : 'START'}
       </Button>
-      
+      <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
+        <i className="fa"/>
+          REWIND ALL
+      </Button>
       {rounds.map((round, i) => (
         <>
           <h3>{`Round ${i + 1}`}</h3>
@@ -56,12 +58,6 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
               <Cell className="pick-column">Pick</Cell>
               <Cell className="name-column">
                 Player
-                {i ===  0 && (
-                  <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
-                    <i className="fa"/>
-                      REWIND ALL
-                  </Button>
-                )}
               </Cell>
               <Cell className="prize-column">Prize</Cell>
               <Cell className="time-column">Pick Date/Time</Cell>

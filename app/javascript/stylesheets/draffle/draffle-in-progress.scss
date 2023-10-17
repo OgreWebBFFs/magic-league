@@ -1,7 +1,29 @@
 .draft-board {
 
+  @media only screen and (max-width: 850px) {
+    .row--headings {
+      display: none;
+    }
+
+    .row {
+      flex-direction: column;
+      
+      
+
+      .cell {
+        width: 100%;
+      }
+    }
+  }
+
   .pick-column { 
     flex: 0 1 5%;
+
+    @media only screen and (max-width: 850px) {
+        background: $color-dark;
+        color: $Wrinkle-White;
+        border-bottom: 3px solid $color-accent;
+    }
   }
 
   .name-column {
@@ -10,6 +32,20 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+
+    @media only screen and (max-width: 850px) {
+      align-items: center;
+      flex-direction: column;
+      gap: .5rem;
+
+      button {
+        order: 1;
+      }
+
+      span {
+        order: 2;
+      }
+    }
 
     span {
       white-space: nowrap;
@@ -22,6 +58,9 @@
       margin: 0;
       padding: .25rem;
       flex: 0 0 auto;
+      @media only screen and (max-width: 850px) {
+        width: 100%;
+      }
     }
   }
 
