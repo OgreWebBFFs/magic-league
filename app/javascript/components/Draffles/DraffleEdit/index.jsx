@@ -58,12 +58,12 @@ const DraffleEdit = ({
         </div>
         {changed && (
           <div className="draffle-edit__header--alert">
-            You have unsaved changes to the draffle. Please upload those changes or refresh to revert them before saving.
+            You have unsaved changes to the draffle. Please upload those changes or refresh to revert them before starting.
           </div>
         )}
         {!changed && draffle.status !== 'valid' && (
           <div className="draffle-edit__header--alert">
-            Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick.
+            Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick one in each round.
           </div>
         )}
       </div>
