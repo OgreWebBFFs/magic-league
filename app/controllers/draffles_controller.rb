@@ -90,9 +90,7 @@ class DrafflesController < ApplicationController
       render json: {status: 'error', message: "only admins are allowed to make picks via api"}, status: 403
       return
     end
-    puts "\n\n\n"
-    puts params
-    puts "\n\n\n"
+
     if !draffle.prize_available? params[:prize_id]
       render json: {status: 'error', message: "That card is not available. Please choose another"}, status: 401
       return

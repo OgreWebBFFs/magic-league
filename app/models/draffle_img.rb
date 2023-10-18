@@ -96,5 +96,6 @@ class DraffleImg
     @draffle.draffle_img.purge
     @draffle.draffle_img.attach(io: stream, filename: filename, content_type: "image/png")
     File.delete("temp.png")
+    img.destroy!
   end
 end
