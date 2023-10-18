@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '3.1.4'
 
@@ -23,8 +23,8 @@ gem 'image_processing', '~> 1.12'
 gem 'simple_form', '~> 5.1.0'
 gem 'fast_jsonapi', '~> 1.5'
 
-gem "react-rails", "~> 2.6.2"
-gem "webpacker", "~> 5.4.3"
+gem 'react-rails', '~> 2.6.2'
+gem 'webpacker', '~> 5.4.3'
 
 group :development, :test do
   gem 'byebug', '~> 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
@@ -48,9 +48,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem "open-uri", "~> 0.3.0"
-gem "rmagick", "~> 5.3"
+gem 'open-uri', '~> 0.3.0'
+gem 'rmagick', '~> 5.3'
 
-gem "discordrb", "~> 3.5"
-gem 'delayed_job', "~> 4.1.11"
+gem 'discordrb', '~> 3.5'
+gem 'delayed_job', '~> 4.1.11'
 gem 'delayed_job_active_record'
+
+gem 'aws-sdk-s3', require: false

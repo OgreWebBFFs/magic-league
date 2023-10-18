@@ -1,4 +1,6 @@
 class Draffle < ApplicationRecord
+  has_one_attached :draffle_img
+
   has_many :draffle_participants
   has_many :draffle_prizes
 
@@ -9,10 +11,10 @@ class Draffle < ApplicationRecord
     if self.status == 'valid'
       OgreBot.instance.draffle_actions.welcome self
     end
-
+    @img_manager.draw_current_draft_board
+    
     self.update(status: 'started')
     OgreBot.instance.draffle_actions.start self
-    DraffleImg.reset
     progress_draft
   end
 
@@ -32,17 +34,19 @@ class Draffle < ApplicationRecord
   def autopick
     prize_num = rand(0...self.available_prizes.length)
     prize = self.available_prizes[prize_num]
-    pick_info = @board.make_selection prize
-    OgreBot.instance.draffle_actions.announce_autopick pick_info.user, pick_info.prize
+    slot = @board.make_selection prize
+    OgreBot.instance.draffle_actions.announce_autopick slot.user, slot.prize
+    @img_manager.draw_selection slot
     progress_draft
   end
 
   def pick prize_id
     prize = self.draffle_prizes.find{ |prize| prize.id == prize_id}
-    pick_info = @board.make_selection prize
-    OgreBot.instance.draffle_actions.announce_pick pick_info.user, pick_info.prize
+    slot = @board.make_selection prize
+    OgreBot.instance.draffle_actions.announce_pick slot.user, slot.prize
+    @img_manager.draw_selection slot
     progress_draft
-    pick_info
+    slot
   end
 
   def add_participant participant
@@ -91,23 +95,10 @@ class Draffle < ApplicationRecord
 
   def build_obj_models
     @board = DraftBoard.new self
+    @img_manager = DraffleImg.new self
   end
 
-  # def build_img
-  #   img = DraffleImg.new self
-
-  #   i = 0
-  #   slot = @board.get_slot(i)
-  #   while !slot.prize.nil? do
-  #     img.update_with_selection slot
-  #     i = i + 1
-  #     slot = @board.get_slot(i)
-  #   end
-  # end
-
   def progress_draft
-    img = DraffleImg.new self
-    img.build_current_draft_board
     if @board.complete?
       self.update(status: 'pending')
       Autodraft::Scheduler.clear

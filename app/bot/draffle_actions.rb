@@ -60,7 +60,9 @@ class DraffleActions
 
   def send_draffle_pool_img text
     draffle = Draffle.where.not(status: "completed").first
-    @bot.send_file(draffle.discord_thread_id, File.open("#{Rails.root}/draffle.png"), caption: "Here is the updated draft pool 👇 #{text}")
+    draffle.draffle_img.blob.open do |tmpfile|
+      @bot.send_file(draffle.discord_thread_id, File.open(tmpfile), caption: "Here is the updated draft pool 👇 #{text}")
+    end
   end
 
   def sanitize text

@@ -7,39 +7,33 @@ include Magick
 class DraffleImg
 
   ROW_LENGTH = 7
+  TMP_FILE_NAME = "draffle.png"
 
   def initialize draffle
     @draffle = draffle
     @prize_grid = draffle.draffle_prizes.sort_by{ |prize| [prize.name, prize.id] }.each_slice(ROW_LENGTH).to_a
-    if !File.exists?("./draffle_base.png")
-      draw_card_grid
-    end
   end
 
-  def self.reset
-    FileUtils.rm "./draffle_base.png", :force => true
-  end
-
-  def build_current_draft_board 
-    clear_board
+  def draw_current_draft_board
+    grid_img = draw_card_grid
     @draffle.board.filled_slots.each do |slot|
-      draw_selection slot
+      selection_overlay = draw_selection_overlay slot
+      selection_overlay.draw(grid_img)
+    end
+    upload_image grid_img
+  end
+
+  def draw_selection selection
+    @draffle.draffle_img.blob.open do |tmpfile|
+      tmp_blob = File.open(tmpfile).read
+      new_img = Image.from_blob(tmp_blob).first
+      selection_overlay = draw_selection_overlay selection
+      selection_overlay.draw(new_img)
+      upload_image new_img
     end
   end
   
   private 
-
-  def clear_board
-    FileUtils.cp("./draffle_base.png", "./draffle.png")
-  end
-
-  def draw_selection selection
-    pick_num = selection.pick_num
-    pick_name = selection.user.name
-    x = get_prize_x selection.prize
-    y = get_prize_y selection.prize
-    draw_selection_overlay x, y, pick_num, pick_name
-  end
 
   def draw_card_grid
     compiled_img = ImageList.new
@@ -59,33 +53,32 @@ class DraffleImg
       end
       compiled_img.push(img_row.append(false))
     end
-    compiled_img = compiled_img.append(true)
-    compiled_img.write("draffle_base.png")
+    compiled_img.append(true)
   end
 
-  def draw_selection_overlay (x, y, pick_num, pick_name)
-    parsed_pick_name = pick_name.gsub(/[^\u{0000}-\u{007F}]/, "").truncate(25)
-    new_img = Image.read('./draffle.png').first
-    gc = Draw.new
-    gc.stroke '#5c1009'
-    gc.stroke_width 10
-    gc.fill '#5c1009'
-    gc.fill_opacity 0.8
-    gc.rectangle 372*x, 520*y, 372*(x + 1), 520*(y+1)
+  def draw_selection_overlay selection
+    pick_num = selection.pick_num
+    pick_name = selection.user.name.gsub(/[^\u{0000}-\u{007F}]/, "").truncate(25)
+    x = get_prize_x selection.prize
+    y = get_prize_y selection.prize
+    pen = Draw.new
+    pen.stroke '#5c1009'
+    pen.stroke_width 10
+    pen.fill '#5c1009'
+    pen.fill_opacity 0.8
+    pen.rectangle 372*x, 520*y, 372*(x + 1), 520*(y+1)
 
-    gc.stroke 'white'
-    gc.stroke_width 0
-    gc.fill 'white'
-    gc.font_family('helvetica')
-    gc.font_weight(NormalWeight)
-    gc.pointsize(24)
-    gc.font_style(NormalStyle)
+    pen.stroke 'white'
+    pen.stroke_width 0
+    pen.fill 'white'
+    pen.font_family('helvetica')
+    pen.font_weight(NormalWeight)
+    pen.pointsize(24)
+    pen.font_style(NormalStyle)
   
-    gc.text_align CenterAlign
-    gc.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_num}\nBy: #{parsed_pick_name}"
-
-    gc.draw(new_img)
-    new_img.write("draffle.png")
+    pen.text_align CenterAlign
+    pen.text 372*(x + 0.5), 520*(y + 0.5), "Pick ##{pick_num}\nBy: #{pick_name}"
+    pen
   end
 
   def get_prize_x prize
@@ -96,4 +89,12 @@ class DraffleImg
     @prize_grid.index { |row| row.include? prize }
   end
 
+  def upload_image img
+    filename = "#{@draffle.name.parameterize(separator: "_")}_img.png"
+    img.write("temp.png")
+    stream = File.open("temp.png")
+    @draffle.draffle_img.purge
+    @draffle.draffle_img.attach(io: stream, filename: filename, content_type: "image/png")
+    File.delete("temp.png")
+  end
 end
