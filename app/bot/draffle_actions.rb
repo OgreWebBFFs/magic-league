@@ -54,8 +54,7 @@ class DraffleActions
 
   def autodraft_warning(num)
     draffle = Draffle.find_by status: 'started'
-    autopick_job = Delayed::Job.where("handler LIKE ?", "%AutodraftPickJob%").first
-    time = autopick_job.run_at.strftime("%A, %B %d, %Y at %I:%M %p")
+    time = Autodraft::Manager.autopick_time
     user = draffle.on_the_clock
     warnings = Array[
       DRAFFLE_AUTODRAFT_WARNING % {warning: "Autodraft Warning #1", discord_tag: user.discord_tag, time: time},

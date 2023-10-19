@@ -3,6 +3,8 @@ require_relative "draffle_messages"
 module DraffleCommands
   include DraffleMessages
 
+  COOLDOWN_DURATION = 10;
+
   def register_cmds
     @bot.register_application_command(:pick, "Open the card picker and take your turn. (Type \"/pick\" and hit enter. No need to type a card name)", server_id: ENV["DISCORD_SERVER_ID"])
     @bot.application_command(:pick) do |event|
@@ -13,6 +15,7 @@ module DraffleCommands
       else
         @picker = @draffle.on_the_clock
         if @picker.discord_id.to_s == event.user.id.to_s
+          @wait = false
           @prize_groups = @draffle.available_prizes.each_slice(20).to_a
           @viewing_group = 0
           send_draffle_selector @prize_groups[0], false, @prize_groups.length > 1      
@@ -43,12 +46,12 @@ module DraffleCommands
     end
 
     @bot.button do |event|
-      if @prize.nil?
+      if @prize.nil? || @wait
         event.interaction.defer_update
       else
+        @wait = true
         @original_event.interaction.delete_response
         @draffle.pick @prize.id
-        @prize = nil
       end
     end
   end

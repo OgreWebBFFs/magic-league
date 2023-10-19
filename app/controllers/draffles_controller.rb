@@ -13,9 +13,14 @@ class DrafflesController < ApplicationController
 
   def show
     @draffle = Draffle.find_by_id(params[:id])
-    @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
-    @prizes = @draffle.draffle_prizes
-    @board = @draffle.board
+    if (@draffle.nil?)
+      flash[:notice] = "No Draffle Found"
+      render status: 404, template: "errors/not_found"
+    else
+      @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
+      @prizes = @draffle.draffle_prizes
+      @board = @draffle.board
+    end
   end
 
   def update
@@ -44,8 +49,10 @@ class DrafflesController < ApplicationController
   end
   
   def index
-    @draffles = Draffle.order('updated_at DESC')
-    @draffles = serialize_draffles(@draffles)
+    draffle = Draffle.all.first
+    if (!draffle.nil?) 
+      redirect_to draffle_path(draffle)
+    end
   end
 
   # status change methods

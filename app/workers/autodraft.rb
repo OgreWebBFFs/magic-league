@@ -14,9 +14,21 @@ module Autodraft
     def self.clear
       Delayed::Job.where(queue: AUTODRAFT_QUEUE).destroy_all
     end
-
+    
   end
 
+  class Manager
+    
+    def self.autopick_time_utc
+      autopick_job = Delayed::Job.where("handler LIKE ?", "%AutodraftPickJob%").first
+      autopick_job.run_at
+    end
+
+    def self.autopick_time
+      self.class.autopick_time_utc.strftime("%A, %B %d, %Y at %I:%M %p")
+    end
+  end
+  
   private
 
   class AutodraftWarningJob < Struct.new(:warning_num)

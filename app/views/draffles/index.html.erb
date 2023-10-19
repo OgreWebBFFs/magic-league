@@ -1,1 +1,15 @@
-<%= react_component("Draffles", { draffles: @draffles, isAdmin: current_user.admin}, :class => "draffles__container") %>
+<%= form_with(
+  url: "/draffles",
+  method: "post",
+  local: false,
+  class: "form draffle-form",
+) do |form| %>
+  <h2>You Are About To Create a Draffle!</h2>
+  <div>
+    By doing so, you will begin the setup process for inputing details, participants, and prizes for a brand new draffle. This will create a new "Draffle" link within the "League" navigation dropdown. If users navigate to this link, they will see that a draffle is being created (helps to build some anticipation 😊).
+  </div>
+  <div>
+    Click below to begin!
+  </div>
+  <%= form.submit "Create Draffle", class: "button lg" %>
+<% end %>
