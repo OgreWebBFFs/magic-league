@@ -73,7 +73,7 @@ class DrafflesController < ApplicationController
       return
     end
 
-    draffle.update(status: 'completed')
+    draffle.validate
     render json: {status: 'success', message: "#{draffle.name} has been completed!"}
   end
 

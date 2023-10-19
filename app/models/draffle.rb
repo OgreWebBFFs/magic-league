@@ -11,6 +11,7 @@ class Draffle < ApplicationRecord
     if self.status == 'valid'
       OgreBot.instance.draffle_actions.welcome self
     end
+    self.update(status: 'processing')
     @img_manager.draw_current_draft_board
     
     self.update(status: 'started')
@@ -22,6 +23,14 @@ class Draffle < ApplicationRecord
     self.update(status: 'paused')
     Autodraft::Scheduler.clear
     OgreBot.instance.draffle_actions.pause self
+  end
+  
+  def validate
+    @board.filled_slots.each do |slot|
+      slot.user.add_card slot.prize.card_id
+    end
+    OgreBot.instance.draffle_actions.complete self
+    self.update(status: "completed")
   end
 
   def reset pick
@@ -41,10 +50,12 @@ class Draffle < ApplicationRecord
   end
 
   def pick prize_id
+    self.update(status: 'processing')
     prize = self.draffle_prizes.find{ |prize| prize.id == prize_id}
     slot = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_pick slot.user, slot.prize
     @img_manager.draw_selection slot
+    self.update(status: 'started')
     progress_draft
     slot
   end

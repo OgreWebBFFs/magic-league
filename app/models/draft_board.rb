@@ -73,7 +73,7 @@ class DraftBoard
     @rounds.each { |round|
       str += "Round #{round_num}\n"
       round.each { |slot|
-        str += "\t#{slot.pick_num} : #{slot.user.name} (<@#{slot.user.discord_id}>)"
+        str += "\t#{slot.pick_num} : #{slot.user.discord_tag}"
         if slot.prize.present?
           str += " - #{slot.prize.name}"
         end

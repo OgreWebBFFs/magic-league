@@ -36,13 +36,16 @@ const DraffleEdit = ({
       <div className="draffle-edit__header">
         <h1>Draffle Creation Portal</h1>
         <div className="draffle-edit__header--actions">
-          <Button onClick={async () => {
-            setLoading(true);
-            await updateDraffle(draffle, newParticipants, newPrizes, newDraffle);
-            window.location.reload();
-          }}>
-            <i className="fas fa-upload" style={{ marginRight: "0.5rem" }}/>
-            UPLOAD<br />CHANGES
+          <Button
+            disabled={newDraffle.welcome.length > 2000}
+            onClick={async () => {
+              setLoading(true);
+              await updateDraffle(draffle, newParticipants, newPrizes, newDraffle);
+              window.location.reload();
+            }}
+          >
+            <i className="fas fa-save" style={{ marginRight: "0.5rem" }}/>
+            SAVE<br />CHANGES
           </Button>
           <Button 
             disabled={changed || draffle.status !== 'valid'}
@@ -58,12 +61,17 @@ const DraffleEdit = ({
         </div>
         {changed && (
           <div className="draffle-edit__header--alert">
-            You have unsaved changes to the draffle. Please upload those changes or refresh to revert them before starting.
+            You have unsaved changes to the draffle. Please save those changes or refresh to revert them before starting.
           </div>
         )}
         {!changed && draffle.status !== 'valid' && (
           <div className="draffle-edit__header--alert">
             Your Draffle is in an invalid state. Check there are enough prizes for each participant to pick one in each round.
+          </div>
+        )}
+        {newDraffle.welcome.length > 2000 && (
+          <div className="draffle-edit__header--alert">
+            Your Welcome message cannot be longer than 2000 characters. Please shorten it before uploading.
           </div>
         )}
       </div>

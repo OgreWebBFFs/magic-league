@@ -21,7 +21,11 @@ class DraffleActions
   end
 
   def start draffle
-    send_draffle_msg DRAFFLE_START % {name: draffle.name, board: sanitize(draffle.board.to_s)}
+    round_strs = draffle.board.to_s.split(/\n(?=Round \d+)/)
+    round_strs[0] = DRAFFLE_START % {name: draffle.name} + round_strs[0]
+    round_strs.each do |round_str|
+      send_draffle_msg round_str
+    end
   end
 
   def pause draffle
@@ -32,28 +36,38 @@ class DraffleActions
     send_draffle_pool_img DRAFFLE_END % {name: draffle.name}
   end
 
+  def complete draffle
+    send_draffle_msg DRAFFLE_COMPLETE % {name: draffle.name}
+  end
+
   def notify_next user
-    send_draffle_pool_img DRAFFLE_YOUR_TURN % {discord_id: user.discord_id}
+    send_draffle_pool_img DRAFFLE_YOUR_TURN % {discord_tag: user.discord_tag}
   end
 
   def announce_pick user, prize
-    send_draffle_msg DRAFFLE_ANNOUNCE_PICK % {name: sanitize(user.name), discord_id: user.discord_id, prize: prize.name}
+    send_draffle_msg DRAFFLE_ANNOUNCE_PICK % {discord_tag: user.discord_tag, prize: prize.name}
   end
 
   def announce_autopick user, prize
-    send_draffle_msg DRAFFLE_ANNOUNCE_AUTOPICK % {name: sanitize(user.name), discord_id: user.discord_id, prize: prize.name} 
+    send_draffle_msg DRAFFLE_ANNOUNCE_AUTOPICK % {discord_tag: user.discord_tag, prize: prize.name} 
   end
 
   def autodraft_warning(num)
     draffle = Draffle.find_by status: 'started'
-    picker = draffle.on_the_clock
-    warnings = Array["⏳ Warning 1", "Warning 2", "Final Warning"]
+    autopick_job = Delayed::Job.where("handler LIKE ?", "%AutodraftPickJob%").first
+    time = autopick_job.run_at.strftime("%A, %B %d, %Y at %I:%M %p")
+    user = draffle.on_the_clock
+    warnings = Array[
+      DRAFFLE_AUTODRAFT_WARNING % {warning: "Autodraft Warning #1", discord_tag: user.discord_tag, time: time},
+      DRAFFLE_AUTODRAFT_WARNING % {warning: "Autodraft Warning #2", discord_tag: user.discord_tag, time: time},
+      DRAFFLE_AUTODRAFT_WARNING % {warning: "**FINAL Autodraft Warning**", discord_tag: user.discord_tag, time: time}
+    ]
     send_draffle_msg warnings[num]
   end
 
   private
 
-  def send_draffle_msg msg
+  def send_draffle_msg msg, split_on = nil
     draffle = Draffle.where.not(status: "completed").first
     @bot.send_message(draffle.discord_thread_id, msg)
   end
@@ -63,10 +77,6 @@ class DraffleActions
     draffle.draffle_img.blob.open do |tmpfile|
       @bot.send_file(draffle.discord_thread_id, File.open(tmpfile), caption: "Here is the updated draft pool 👇 #{text}")
     end
-  end
-
-  def sanitize text
-    text.gsub(/(_|`|\*|~|_|`|\*|~|(?<!<@\d{18})>|\|)/, '\\\\\1')
   end
 
 end

@@ -6,7 +6,7 @@
         participants: @participants,
         prizes: @prizes,
         isAdmin: current_user.admin,
-        users: @users
+        users: User.unlocked
       }) %>
     <% else %>
       <div>
@@ -35,6 +35,10 @@
         </a>
       </div>
     <% end %>
+  <% when 'processing' %>
+    <div style="text-align: center;">
+      This is embarrassing. You caught me in the middle of processing 🙈 Try back again in a little bit
+    </div>
   <% when 'completed' %>
     <%= react_component("Draffles/DraffleCompleted", {
       draffle: @draffle,

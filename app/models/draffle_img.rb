@@ -91,11 +91,8 @@ class DraffleImg
 
   def upload_image img
     filename = "#{@draffle.name.parameterize(separator: "_")}_img.png"
-    img.write("temp.png")
-    stream = File.open("temp.png")
     @draffle.draffle_img.purge
-    @draffle.draffle_img.attach(io: stream, filename: filename, content_type: "image/png")
-    File.delete("temp.png")
+    @draffle.draffle_img.attach(io: StringIO.new(img.to_blob), filename: filename, content_type: 'image/png')
     img.destroy!
     GC.start
   end

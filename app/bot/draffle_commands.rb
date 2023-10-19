@@ -4,7 +4,7 @@ module DraffleCommands
   include DraffleMessages
 
   def register_cmds
-    @bot.register_application_command(:pick, "Make a selection in the current draffle", server_id: ENV["DISCORD_SERVER_ID"])
+    @bot.register_application_command(:pick, "Open the card picker and take your turn. (Type \"/pick\" and hit enter. No need to type a card name)", server_id: ENV["DISCORD_SERVER_ID"])
     @bot.application_command(:pick) do |event|
       @original_event = event
       @draffle = Draffle.find_by status: "started"
