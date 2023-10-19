@@ -26,14 +26,11 @@
       </div>
     </div>
   <% when 'processing' %>
-    <div class="draffle__alert">
-      <div class="draffle__alert--emoji">🙈</div>
-      This is embarrassing. You caught me in the middle of processing. Try back again in a little bit
-    </div>
+    <%= render 'processing' %>
   <% when 'completed' %>
     <%= react_component("Draffles/DraffleCompleted", {
       draffle: @draffle,
-      draft_board: @board,
+      draft_board: @draffle.board,
       admin: false,
     })%>
 <% end %>

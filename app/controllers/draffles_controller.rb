@@ -16,10 +16,6 @@ class DrafflesController < ApplicationController
     if (@draffle.nil?)
       flash[:notice] = "No Draffle Found"
       render status: 404, template: "errors/not_found"
-    else
-      @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
-      @prizes = @draffle.draffle_prizes
-      @board = @draffle.board
     end
   end
 
