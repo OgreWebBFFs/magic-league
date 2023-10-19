@@ -21,11 +21,15 @@ module Autodraft
     
     def self.autopick_time_utc
       autopick_job = Delayed::Job.where("handler LIKE ?", "%AutodraftPickJob%").first
-      autopick_job.run_at
+      if !autopick_job.nil?
+        autopick_job.run_at
+      else
+        nil
+      end
     end
 
     def self.autopick_time
-      self.class.autopick_time_utc.strftime("%A, %B %d, %Y at %I:%M %p")
+      self.class.autopick_time_utc&.strftime("%A, %B %d, %Y at %I:%M %p")
     end
   end
   

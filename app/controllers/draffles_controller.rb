@@ -2,7 +2,7 @@
 class DrafflesController < ApplicationController
   def create
     if no_active_draffles() 
-      draffle = Draffle.create()
+      draffle = Draffle.create(name: params[:name])
       redirect_to draffle_path(draffle)    
     else
       ## Alert is not working for some reason... fix later
@@ -52,6 +52,18 @@ class DrafflesController < ApplicationController
     draffle = Draffle.all.first
     if (!draffle.nil?) 
       redirect_to draffle_path(draffle)
+    end
+  end
+
+  def destroy
+    if params[:confirmation] == "DELETE"
+      draffle = Draffle.find_by_id params[:id]
+      flash[:notice] = "#{draffle.name} has been destroyed"
+      draffle.destroy
+      redirect_to :root
+    else
+      flash[:notice] = "FAILED: Expected confirmation of \"DELETE\" but received \"#{params[:confirmation]}\""
+      redirect_to draffles_path
     end
   end
 

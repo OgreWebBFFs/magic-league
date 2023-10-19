@@ -1,10 +1,11 @@
 class Draffle < ApplicationRecord
   has_one_attached :draffle_img
 
-  has_many :draffle_participants
-  has_many :draffle_prizes
+  has_many :draffle_participants, dependent: :destroy
+  has_many :draffle_prizes, dependent: :destroy
 
   after_find :build_obj_models
+  before_destroy :destroy_associated_records
   attr_reader :board
 
   def start
@@ -106,6 +107,12 @@ class Draffle < ApplicationRecord
   def build_obj_models
     @board = DraftBoard.new self
     @img_manager = DraffleImg.new self
+  end
+
+  def destroy_associated_records
+    self.draffle_participants.destroy_all
+    self.draffle_prizes.destroy_all
+    self.draffle_img.purge
   end
 
   def progress_draft

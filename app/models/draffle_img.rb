@@ -95,7 +95,7 @@ class DraffleImg
   end
 
   def upload_image img
-    filename = "#{@draffle.name.parameterize(separator: "_")}_img.png"
+    filename = "#{@draffle.name.parameterize(separator: "_")}_img[#{@draffle.board.filled_slots.length}].png"
     @draffle.draffle_img.purge
     @draffle.draffle_img.attach(io: StringIO.new(img.to_blob), filename: filename, content_type: 'image/png')
     @cleanup.each do |trash|

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 
-  resources :draffles, only: [:index, :show, :create, :update]
+  resources :draffles, only: [:index, :show, :create, :update, :destroy]
   put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'
   put 'draffles/:id/pause', to: 'draffles#pause', as: 'pause_draffle'
   put 'draffles/:id/complete', to: 'draffles#complete', as: 'complete_draffle'

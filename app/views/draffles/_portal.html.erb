@@ -18,6 +18,14 @@
       This is embarrassing. You caught me in the middle of processing 🙈 Try back again in a little bit
     </div>
   <% when 'completed' %>
+    <%= form_with(
+      url: "/draffles/#{@draffle.id}",
+      method: "DELETE",
+      class: "form draffle-form__delete",
+    ) do |f| %>
+      <%= f.text_field :confirmation, placeholder: 'Type "DELETE" to confirm', required: true %>
+      <%= f.submit "DESTROY DRAFFLE", class: "button" %>
+    <% end %>
     <%= react_component("Draffles/DraffleCompleted", {
       draffle: @draffle,
       draft_board: @board,
