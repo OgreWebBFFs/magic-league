@@ -29,7 +29,7 @@ module Autodraft
     end
 
     def self.autopick_time
-      self.class.autopick_time_utc.strftime("%A, %B %d, %Y at %I:%M %p")
+      self.autopick_time_utc.strftime("%A, %B %d, %Y at %I:%M %p")
     end
   end
   
