@@ -12,6 +12,7 @@ class DraffleImg
   def initialize draffle
     @draffle = draffle
     @prize_grid = draffle.draffle_prizes.sort_by{ |prize| [prize.name, prize.id] }.each_slice(ROW_LENGTH).to_a
+    @cleanup = Array.new
   end
 
   def draw_current_draft_board
@@ -36,6 +37,8 @@ class DraffleImg
   private 
 
   def draw_card_grid
+    foil = Image.read("./app/javascript/images/foil_indicator.png").first
+    @cleanup.push(foil)
     compiled_img = ImageList.new
     rows = 0
     @prize_grid.each do |prize_row|
@@ -44,15 +47,17 @@ class DraffleImg
         blob_img = URI.open(prize.image).read
         img = Image.from_blob(blob_img).first
         if prize.foiled
-          foil = Image.read("./app/javascript/images/foil_indicator.png").first
           img = img.composite(foil, CenterGravity, OverCompositeOp)
         end
         img = img.resize_to_fit(373, 520)
         img_row.push(img)
+        @cleanup.push(img)
         rows = rows + 1
       end
+      @cleanup.push(img_row)
       compiled_img.push(img_row.append(false))
     end
+    @cleanup.push(compiled_img)
     compiled_img.append(true)
   end
 
@@ -93,7 +98,9 @@ class DraffleImg
     filename = "#{@draffle.name.parameterize(separator: "_")}_img.png"
     @draffle.draffle_img.purge
     @draffle.draffle_img.attach(io: StringIO.new(img.to_blob), filename: filename, content_type: 'image/png')
-    img.destroy!
+    @cleanup.each do |trash|
+      trash.destroy!
+    end
     GC.start
   end
 end

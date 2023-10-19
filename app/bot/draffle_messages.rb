@@ -17,7 +17,9 @@ module DraffleMessages
   DRAFFLE_COMPLETE = <<~TEXT
     ## %{name} has been validated and completed 🏁
     
-    **Thank you**" for participating in this draffle. I hope you had as much fun as I did and got some schweet bling 💍😉 At this time, all collections have been updated with the appropriate selections. Please coordinate with an admin to get your cards in hand.
+    **Thank you** for participating in this draffle. I hope you had as much fun as I did and got some schweet bling 💍😉
+    
+    At this time, *all collections have been updated with the appropriate selections*. Please coordinate with an admin to get your cards in hand.
     
     Until next time, this is **OGRE BOT** signing off 👋 Over and Out!
   TEXT
