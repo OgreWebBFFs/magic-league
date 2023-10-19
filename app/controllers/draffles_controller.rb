@@ -7,11 +7,11 @@ class DrafflesController < ApplicationController
     else
       ## Alert is not working for some reason... fix later
       flash[:notice] = "Cannot create a new draffle while another is in progress"
-      redirect_to draffles_path
+      redirect_to draffles_portal_path(draffle)
     end
   end
 
-  def show
+  def portal
     @draffle = Draffle.find_by_id(params[:id])
     if (@draffle.nil?)
       flash[:notice] = "No Draffle Found"
@@ -20,6 +20,14 @@ class DrafflesController < ApplicationController
       @participants = @draffle.draffle_participants.order(:order).as_json(include: :user)
       @prizes = @draffle.draffle_prizes
       @board = @draffle.board
+    end
+  end
+
+  def show
+    @draffle = Draffle.find_by_id(params[:id])
+    if (@draffle.nil?)
+      flash[:notice] = "No Draffle Found"
+      render status: 404, template: "errors/not_found"
     end
   end
 
@@ -51,7 +59,11 @@ class DrafflesController < ApplicationController
   def index
     draffle = Draffle.all.first
     if (!draffle.nil?) 
-      redirect_to draffle_path(draffle)
+      if current_user.admin?
+        redirect_to draffle_portal_path(draffle)
+      else
+        redirect_to draffle_path(draffle)
+      end
     end
   end
 

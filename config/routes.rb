@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :trades, only: [:index, :create, :update, :destroy]
 
   resources :draffles, only: [:index, :show, :create, :update, :destroy]
+  get 'draffles/:id/portal', to: 'draffles#portal', as: 'draffle_portal'
   put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'
   put 'draffles/:id/pause', to: 'draffles#pause', as: 'pause_draffle'
   put 'draffles/:id/complete', to: 'draffles#complete', as: 'complete_draffle'
