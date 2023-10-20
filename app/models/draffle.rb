@@ -15,7 +15,6 @@ class Draffle < ApplicationRecord
     @image_worker.delay.draw_current_draft_board
     
     OgreBot.instance.draffle_actions.start self
-    progress_draft
   end
 
   def pause
@@ -45,7 +44,6 @@ class Draffle < ApplicationRecord
     slot = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_autopick slot.user, slot.prize
     @image_worker.delay.draw_selection slot
-    progress_draft
   end
 
   def pick prize_id
@@ -55,8 +53,19 @@ class Draffle < ApplicationRecord
     OgreBot.instance.draffle_actions.announce_pick slot.user, slot.prize
     @image_worker.delay.draw_selection slot
     self.update(status: 'started')
-    progress_draft
+    
     slot
+  end
+
+  def progress_draft
+    if @board.complete?
+      self.update(status: 'pending')
+      Autodraft::Scheduler.clear
+      OgreBot.instance.draffle_actions.end self
+    else
+      OgreBot.instance.draffle_actions.notify_next self.on_the_clock
+      Autodraft::Scheduler.new
+    end
   end
 
   def add_participant participant
@@ -99,7 +108,7 @@ class Draffle < ApplicationRecord
   def pending?
     self.status == 'pending'
   end
-
+  
   private
 
   def build_obj_models
@@ -113,15 +122,5 @@ class Draffle < ApplicationRecord
     self.draffle_img.purge
   end
 
-  def progress_draft
-    if @board.complete?
-      self.update(status: 'pending')
-      Autodraft::Scheduler.clear
-      OgreBot.instance.draffle_actions.end self
-    else
-      OgreBot.instance.draffle_actions.notify_next self.on_the_clock
-      Autodraft::Scheduler.new
-    end
-  end
 
 end

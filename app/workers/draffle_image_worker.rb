@@ -103,6 +103,7 @@ class DraffleImageWorker
       trash.destroy!
     end
     @draffle.update(status: 'started')
+    @draffle.progress_draft
     GC.start
   end
 end
