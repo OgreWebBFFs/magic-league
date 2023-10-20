@@ -4,10 +4,9 @@ require 'enumerator'
 
 include Magick
 
-class DraffleImg
+class DraffleImageWorker
 
   ROW_LENGTH = 7
-  TMP_FILE_NAME = "draffle.png"
 
   def initialize draffle
     @draffle = draffle
@@ -16,6 +15,7 @@ class DraffleImg
   end
 
   def draw_current_draft_board
+    @draffle.update(status: 'processing')
     grid_img = draw_card_grid
     @draffle.board.filled_slots.each do |slot|
       selection_overlay = draw_selection_overlay slot
@@ -25,6 +25,7 @@ class DraffleImg
   end
 
   def draw_selection selection
+    @draffle.update(status: 'processing')
     @draffle.draffle_img.blob.open do |tmpfile|
       tmp_blob = File.open(tmpfile).read
       new_img = Image.from_blob(tmp_blob).first
@@ -101,6 +102,7 @@ class DraffleImg
     @cleanup.each do |trash|
       trash.destroy!
     end
+    @draffle.update(status: 'started')
     GC.start
   end
 end

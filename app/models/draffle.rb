@@ -12,10 +12,8 @@ class Draffle < ApplicationRecord
     if self.status == 'valid'
       OgreBot.instance.draffle_actions.welcome self
     end
-    self.update(status: 'processing')
-    @img_manager.draw_current_draft_board
+    @image_worker.delay.draw_current_draft_board
     
-    self.update(status: 'started')
     OgreBot.instance.draffle_actions.start self
     progress_draft
   end
@@ -46,7 +44,7 @@ class Draffle < ApplicationRecord
     prize = self.available_prizes[prize_num]
     slot = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_autopick slot.user, slot.prize
-    @img_manager.draw_selection slot
+    @image_worker.delay.draw_selection slot
     progress_draft
   end
 
@@ -55,7 +53,7 @@ class Draffle < ApplicationRecord
     prize = self.draffle_prizes.find{ |prize| prize.id == prize_id}
     slot = @board.make_selection prize
     OgreBot.instance.draffle_actions.announce_pick slot.user, slot.prize
-    @img_manager.draw_selection slot
+    @image_worker.delay.draw_selection slot
     self.update(status: 'started')
     progress_draft
     slot
@@ -106,7 +104,7 @@ class Draffle < ApplicationRecord
 
   def build_obj_models
     @board = DraftBoard.new self
-    @img_manager = DraffleImg.new self
+    @image_worker = DraffleImageWorker.new self
   end
 
   def destroy_associated_records
