@@ -66,9 +66,9 @@ class DraffleActions
 
   private
 
-  def send_draffle_msg msg, split_on = nil
+  def send_draffle_msg msg
     draffle = Draffle.where.not(status: "completed").first
-    @bot.send_message(draffle.discord_thread_id, msg)
+    @bot.send_message(draffle.discord_thread_id, msg.truncate(1997))
   end
 
   def send_draffle_pool_img text
