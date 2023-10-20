@@ -19,12 +19,12 @@ class DraftBoard
 
     round = 0
     while round < draffle.rounds  do
-      participants = draffle.draffle_participants.sort_by(&:order)
+      participants = draffle.draffle_participants
       if (round + 1).even? && draffle.snake
         participants = participants.reverse
       end
       slots = participants.map.with_index { |participant, i|
-        prize = participant.draffle_prizes.sort_by(&:updated_at).to_a[round]
+        prize = participant.draffle_prizes.to_a[round]
         pick_num = round * participants.length + i + 1
         Slot.new participant, prize, pick_num
       }

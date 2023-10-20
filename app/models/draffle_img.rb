@@ -11,7 +11,7 @@ class DraffleImg
 
   def initialize draffle
     @draffle = draffle
-    @prize_grid = draffle.draffle_prizes.sort_by{ |prize| [prize.name, prize.id] }.each_slice(ROW_LENGTH).to_a
+    @prize_grid = draffle.draffle_prizes.each_slice(ROW_LENGTH).to_a
     @cleanup = Array.new
   end
 

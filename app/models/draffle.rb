@@ -1,8 +1,8 @@
 class Draffle < ApplicationRecord
   has_one_attached :draffle_img
 
-  has_many :draffle_participants, dependent: :destroy
-  has_many :draffle_prizes, dependent: :destroy
+  has_many :draffle_participants, -> { order(order: :asc) }, dependent: :destroy
+  has_many :draffle_prizes, -> { order(name: :asc, id: :desc) }, dependent: :destroy
 
   after_find :build_obj_models
   before_destroy :destroy_associated_records
@@ -78,7 +78,7 @@ class Draffle < ApplicationRecord
   end
 
   def available_prizes
-    self.draffle_prizes.filter { |prize| prize.available? }.sort_by { |prize| [prize.name, prize.id] }
+    self.draffle_prizes.filter { |prize| prize.available? }
   end
 
   def prize_available? prize_id

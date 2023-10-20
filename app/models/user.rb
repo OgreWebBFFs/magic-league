@@ -120,7 +120,7 @@ class User < ApplicationRecord
   end
 
   def sanitize text
-    text.gsub(/(_|`|\*|~|_|`|\*|~|(?<!<@\d{18})>|\||#)/, '\\\\\1')
+    text.gsub(/(_|`|\*|~|_|`|\*|~|(?<!<@\d{18})>|\||#|-)/, '\\\\\1')
   end
 
 
