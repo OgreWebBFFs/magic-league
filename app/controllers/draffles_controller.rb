@@ -3,11 +3,9 @@ class DrafflesController < ApplicationController
   def create
     if no_active_draffles() 
       draffle = Draffle.create(name: params[:name])
-      redirect_to draffle_path(draffle)    
+      redirect_to draffle_portal_path(draffle)    
     else
-      ## Alert is not working for some reason... fix later
-      flash[:notice] = "Cannot create a new draffle while another is in progress"
-      redirect_to draffles_portal_path(draffle)
+      render json: {status: 'error', invalid_draffle: "Cannot create a new draffle while there is one already created" }, :status => 400 
     end
   end
 
@@ -134,17 +132,10 @@ class DrafflesController < ApplicationController
       render json: {status: 'error', message: "#{draffle.name} is in a(n) #{draffle.status} state. Draffle must be in a 'paused' or 'pending' state to reset picks"}
       return
     end
-
-    if params[:pick].nil?
-      reset_pick = 0
-      msg = "has been completely resest"
-    else
-      reset_pick = params[:pick]
-      msg = "has been reset to pick #{reset_pick}"
-    end
-
+    reset_pick = params[:pick]
+    msg = "has been reset to pick #{reset_pick}"
     draffle.reset reset_pick
-    render json: {status: 'succes', message: "#{draffle.name} #{msg}. #{draffle.board.get_slot(reset_pick).user.name} is now picking"}, :status => 200
+    render json: {status: 'succes', message: "#{draffle.name} #{msg}."}, :status => 200
   end
 
   private

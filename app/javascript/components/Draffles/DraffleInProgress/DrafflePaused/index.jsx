@@ -46,10 +46,6 @@ const DrafflePaused = ({ draftBoard: { rounds }, draffle }) => {
       <Button onClick={() => reloadOnFinish(draffle.status === 'pending' ? validateDraffle : startDraffle, draffle)}>
           {draffle.status === 'pending' ? 'VALIDATE' : 'START'}
       </Button>
-      <Button onClick={async () => reloadOnFinish(resetDraffle, draffle)}>
-        <i className="fa"/>
-          REWIND ALL
-      </Button>
       {rounds.map((round, i) => (
         <>
           <h3>{`Round ${i + 1}`}</h3>

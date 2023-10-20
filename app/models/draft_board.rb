@@ -56,7 +56,7 @@ class DraftBoard
 
   def clear_picks pick
     slots = @rounds.flatten
-    slots.slice(pick..slots.length).each do |slot|
+    slots.slice(pick - 1..slots.length).each do |slot|
       if !slot.prize.nil?
         slot.prize.reset
       end
