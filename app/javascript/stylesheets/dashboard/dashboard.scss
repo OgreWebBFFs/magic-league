@@ -26,6 +26,7 @@
         }
 
         &__discord { 
+            max-width: 100%;
             margin-left: auto;
             font-size: 1.5rem;
             color: #7289DA;
@@ -34,6 +35,12 @@
             align-items: baseline;
             @media only screen and (max-width: 850px) {
                 margin-left: 0;
+            }
+
+            &--username {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
 
