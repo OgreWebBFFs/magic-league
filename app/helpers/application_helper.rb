@@ -3,13 +3,13 @@ module ApplicationHelper
   def get_random_bg_image
       image_path_prefix = "app/javascript/images/"
       background_files = Dir.glob("#{image_path_prefix}backgrounds/*").map{ |s| File.basename(s) }
-      asset_pack_path 'media/images/backgrounds/' + background_files[rand(0..background_files.length-1)]
+      asset_pack_path 'static/images/backgrounds/' + background_files[rand(0..background_files.length-1)]
   end
 
   def get_random_event_bg_image
     image_path_prefix = "app/javascript/images/"
     background_files = Dir.glob("#{image_path_prefix}event-backgrounds/*").map{ |s| File.basename(s) }
-    asset_pack_path 'media/images/event-backgrounds/' + background_files[rand(0..background_files.length-1)]
+    asset_pack_path 'static/images/event-backgrounds/' + background_files[rand(0..background_files.length-1)]
   end
 
   def google_svg

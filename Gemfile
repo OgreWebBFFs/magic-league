@@ -55,3 +55,5 @@ gem 'delayed_job', '~> 4.1.11'
 gem 'delayed_job_active_record'
 
 gem 'aws-sdk-s3', require: false
+
+gem "shakapacker", "~> 7.1"
