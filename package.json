@@ -1,9 +1,6 @@
 {
   "name": "mtg-league",
   "private": true,
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
     "start-mac": "pg_ctl -D /usr/local/var/postgres start && rails s",
     "start-ubuntu": "sudo service postgresql start && rails s",
