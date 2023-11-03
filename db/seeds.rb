@@ -97,3 +97,8 @@ Exchange.find_or_create_by(card_id: card2.id, user_id: zack.id, trade_id: dustin
 objective1 = Objective.find_or_create_by(description: "Have 15 or more cards in your hand")
 objective2 = Objective.find_or_create_by(description: "Control 20 or more creatures  ")
 objective3 = Objective.find_or_create_by(description: "Hit an opponent with their own commander")
+
+# Draffles
+# =====================================================
+draffle_completed1 = Draffle.find_or_create_by(name: "Completed Draffle 1", status: "completed")
+draffle_completed2 = Draffle.find_or_create_by(name: "Completed Draffle 2", status: "completed")

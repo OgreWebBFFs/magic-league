@@ -1,3 +1,5 @@
+include PrintsHelper
+
 class CardsController < ApplicationController
   def index
     cards = Card.query_all_text(params[:query]).order(:name)
@@ -23,5 +25,10 @@ class CardsController < ApplicationController
       user = w.user
       @wishlisters_details[user.id] = { id: user.id, name: user.name }
     end
+  end
+
+  def prints
+    card = Card.find_by_id(params[:id])
+    render json: get_card_prints(card)
   end
 end

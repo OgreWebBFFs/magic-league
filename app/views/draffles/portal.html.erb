@@ -1,0 +1,31 @@
+<% case @draffle.status
+    when 'created', 'valid', 'invalid' %>
+    <%= react_component("Draffles/DraffleEdit", {
+      draffle: @draffle,
+      participants: @draffle.draffle_participants.order(:order).as_json(include: :user),
+      prizes: @draffle.draffle_prizes,
+      isAdmin: current_user.admin,
+      users: User.unlocked
+    }) %>
+  <% when 'started', 'paused', 'pending' %>
+    <%= react_component("Draffles/DraffleInProgress", {
+      draffle: @draffle,
+      draft_board: @draffle.board,
+      prizes: @draffle.draffle_prizes
+    }) %>
+  <% when 'processing' %>
+    <%= render 'processing' %>
+  <% when 'completed' %>
+    <%= form_with(
+      url: "/draffles/#{@draffle.id}",
+      method: "DELETE",
+      class: "form draffle-form",
+    ) do |f| %>
+      <h2><%= @draffle.name %> has been Completed!</h2>
+      <div>
+        All collections have been updated and there are no further actions for this draffle. Feel free to leave this draffle active for as long as you'd like. As long as this draffle is active the link will remain on the homepage and users may access it to see the final results. Otherwise, you may use the input field below to delete the draffle from the database which will also return the homepage back to the regular state (without the Draffle Call-to-Action).
+      </div>
+      <%= f.text_field :confirmation, placeholder: 'Type "DELETE" to confirm', required: true %>
+      <%= f.submit "DESTROY DRAFFLE", class: "button lg" %>
+    <% end %>
+<% end %>

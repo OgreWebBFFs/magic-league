@@ -2,9 +2,9 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-module DiscordApiHelper
+module DiscordApi
 
-  discord = Rails.application.credentials.discord
+  discord = Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym]
 
   API_ENDPOINT_BASE = 'https://discord.com/api/v10/'
   CLIENT_ID = discord[:client_id]

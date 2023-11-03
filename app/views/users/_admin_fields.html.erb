@@ -6,23 +6,23 @@
         <% end %>    
     </div>
     <% if @user.discord_username.blank? %>
-        <%= link_to "https://discord.com/api/oauth2/authorize?client_id=1112700178319814717&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord blank' do %>
+        <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord blank' do %>
         <i class="fab fa-discord"></i>
         Link With Discord
         <% end %>
     <% else %>
-        <%= link_to "https://discord.com/api/oauth2/authorize?client_id=1112700178319814717&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord linked' do %>
+        <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord linked' do %>
         <i class="fab fa-discord"></i>
         @<%= @user.discord_username %>
         <% end %>
     <% end %>
 
-    <div class="dashboard_edit-user-details__fields">
-        <%= f.input :name, wrapper_html: { class: 'dashboard_edit-user-details__text-field' } %>
-        <%= f.input :email, wrapper_html: { class: 'dashboard_edit-user-details__text-field'} %>
-        <%= f.input :pronouns, wrapper_html: { class: 'dashboard_edit-user-details__text-field'} %>
+    <div class="form">
+        <%= f.input :name, wrapper_html: { class: 'form__field' } %>
+        <%= f.input :email, wrapper_html: { class: 'form__field'} %>
+        <%= f.input :pronouns, wrapper_html: { class: 'form__field'} %>
+        <%= f.input :admin, :as => :switch, wrapper_html: { class: 'form__switch' }  %>
     </div>
-    <%= f.input :admin, :as => :switch, wrapper_html: { class: 'dashboard_edit-user-details__switch' }  %>
     <div style="margin: 1rem 0;">
         <%= f.button :submit, class: "dashboard_edit-user-details_actions-submit__btn" %>
     </div>

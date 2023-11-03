@@ -19,12 +19,11 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <% unlockedUsers = User.unlocked %>
+      <% unlocked_users = User.unlocked %>
       <%= react_component("Navigation", {
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
-        unlockedUsers: unlockedUsers,
-        collections: unlockedUsers.map { |user| user.collection }
+        unlockedUsers: unlocked_users,
       }) %>
     <% end %>
 

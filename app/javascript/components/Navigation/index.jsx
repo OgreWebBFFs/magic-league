@@ -17,6 +17,7 @@ const DrawerContents = {
   'trade-logger': ({ currentUserId, unlockedUsers }) => <TradeLogger currentUserId={currentUserId} unlockedUsers={unlockedUsers} />,
 };
 
+
 const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContetSelector, setDrawerContentSelector] = useState('match-logger');
@@ -41,10 +42,9 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
         {
           displayName: 'Matches',
           href: 'matches',
-        },
+        }
       ],
     },
-
   ];
 
   if (isAdmin) {
@@ -68,6 +68,10 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers }) => {
           {
             displayName: 'Admin Objectives',
             href: 'admin/objectives',
+          },
+          {
+            displayName: 'Draffle Portal',
+            href: 'draffles',
           },
         ],
       },

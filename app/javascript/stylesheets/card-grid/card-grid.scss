@@ -1,6 +1,7 @@
 .card-grid {
     display: inline-grid;
     grid-template-columns: repeat(3, 33%);
+    grid-auto-rows: fit-content(100%);
     width: 100%;
 
     &__card__wrapper {
@@ -134,6 +135,19 @@
         &--image {
             width: 100%;
             margin: 0;
+
+            &-foiled {
+                position: relative;
+                
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    background-image: url("../../images/foil_indicator.svg");
+                    background-size: contain;
+                }
+            }
         }
     }
 
@@ -189,7 +203,7 @@
     }
 
     @media only screen and (max-width: 500px) {
-        display: block;
+        grid-template-columns: repeat(1, 100%);
 
         &_card__wrapper {
             margin-bottom: 25px;

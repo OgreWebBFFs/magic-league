@@ -1,0 +1,104 @@
+@import './draffle-complete.scss';
+@import './draffle-edit.scss';
+@import './draffle-in-progress.scss';
+@import './loader.scss';
+
+.draffle {
+  &-view-button {
+    margin: 3rem auto;
+    max-width: 350px;
+    border-radius: 3rem;
+    font-weight: 700;
+  }
+
+  &__alert {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 100%;
+    gap: 1rem;
+
+    &--emoji {
+      font-size: 8rem;
+    }
+  }
+
+  &-form {
+    text-align: center;
+    gap: 1.2rem;
+    font-size: 1.2rem;
+
+    &__delete {
+      flex-direction: row;
+      align-items: center;
+      
+      .button {
+        flex: 1 0 175px;
+      }
+
+      @media only screen and (max-width: 500px) {
+        flex-direction: column;
+
+        .button {
+          flex: 0 0 auto;
+          width: 175px;
+        }
+      }
+
+
+    }
+  }
+
+  &__viewer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    h1 {
+      margin: 2.4rem;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $color-nuetral;
+    }
+
+    &--image-view {
+      max-width: 100%;
+      overflow-x: scroll;
+    }
+
+    &--thread-link {
+      text-align: center;
+      font-size: 2rem;
+      text-decoration: underline;
+      
+      i {
+        margin-right: .5rem;
+      }
+    }
+
+    &--picker {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: .5rem;
+
+      img {
+        border-radius: 100%;
+      }
+
+    }
+  }
+}

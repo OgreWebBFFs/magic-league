@@ -13,11 +13,23 @@ Rails.application.routes.draw do
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 
+  resources :draffles, only: [:index, :show, :create, :update, :destroy]
+  get 'draffles/:id/portal', to: 'draffles#portal', as: 'draffle_portal'
+  put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'
+  put 'draffles/:id/pause', to: 'draffles#pause', as: 'pause_draffle'
+  put 'draffles/:id/complete', to: 'draffles#complete', as: 'complete_draffle'
+  put 'draffles/:id/pick', to: 'draffles#pick', as: 'pick_draffle'
+  put 'draffles/:id/reset', to: 'draffles#reset', as: 'reset_draffle'
+
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
   patch 'collections/:id/bulk_update', to: 'collections#bulk_update', as: 'bulk_update_collection'
 
-  resources :cards, only: [:index, :show]
+  resources :cards, only: [:index, :show] do
+    member do
+      get 'prints'
+    end
+  end
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
   resources :tradables, only: [:index, :show, :create, :destroy]

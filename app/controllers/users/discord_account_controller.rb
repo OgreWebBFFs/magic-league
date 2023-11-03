@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-include DiscordApiHelper
+include DiscordApi
 
 class Users::DiscordAccountController < ApplicationController
 

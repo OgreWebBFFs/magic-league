@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives
   has_many :objectives, through: :user_objectives
+  has_many :draffle_participants
   has_one :reroll
 
   scope :unlocked, -> { self.where(locked_at: nil) }
@@ -108,10 +109,18 @@ class User < ApplicationRecord
     self.update(discord_id: discord_profile["id"], discord_username: discord_profile["username"])
   end
 
+  def discord_tag
+    "#{sanitize(self.name)} (<@#{self.discord_id}>)"
+  end
+
   private
 
   def add_collection
     self.collection = Collection.new
+  end
+
+  def sanitize text
+    text.gsub(/(_|`|\*|~|_|`|\*|~|(?<!<@\d{18})>|\||#|-)/, '\\\\\1')
   end
 
 

@@ -5,6 +5,7 @@ import PlayerSelect from '../PlayerSelect';
 const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const currentUserObject = unlockedUsers.find((user) => user.id === currentUserId);
   const sortedUsers = unlockedUsers.sort((a, b) => a.name.localeCompare(b.name));
+  const utcOffset = (new Date().getTimezoneOffset() / 60) * -1;
   const [playerA, setPlayerA] = useState(currentUserObject);
   const [playerB, setPlayerB] = useState(currentUserObject);
   const [winnerId, setWinnerId] = useState();
@@ -40,6 +41,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
       <p>When?</p>
       <input id="match-date" defaultValue={selectedDate} onChange={(e) => { setSelectedDate(e.target.value); }} type="date" name="match[date]" />
       <input id="match-time" defaultValue={selectedTime} onChange={(e) => { setSelectedTime(e.target.value); }} type="time" name="match[time]" />
+      <input style={{display: 'none'}} defaultValue={utcOffset} type="number" name="match[zone]" />
     </>
   );
 };
