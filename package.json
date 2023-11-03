@@ -15,7 +15,6 @@
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@rails/activestorage": "^6.1.7",
     "@rails/ujs": "^6.1.7",
-    "@rails/webpacker": "5.4.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "caniuse-lite": "^1.0.30001477",
     "classnames": "^2.3.1",
@@ -33,7 +32,7 @@
     "sass": "^1.32.7",
     "turbolinks": "^5.2.0",
     "uuid": "^9.0.1",
-    "webpack": "^4.46.0",
+    "webpack": "^5.52.1",
     "webpack-cli": "^4.3.0"
   },
   "devDependencies": {
