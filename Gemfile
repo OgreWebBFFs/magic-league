@@ -24,7 +24,6 @@ gem 'simple_form', '~> 5.1.0'
 gem 'fast_jsonapi', '~> 1.5'
 
 gem 'react-rails', '~> 2.6.2'
-gem 'webpacker', '~> 5.4.3'
 
 group :development, :test do
   gem 'byebug', '~> 11.1.3', platforms: [:mri, :mingw, :x64_mingw]
@@ -56,3 +55,5 @@ gem 'delayed_job', '~> 4.1.11'
 gem 'delayed_job_active_record'
 
 gem 'aws-sdk-s3', require: false
+
+gem "shakapacker", "~> 7.1"
