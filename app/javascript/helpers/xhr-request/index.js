@@ -1,12 +1,15 @@
-const XhrRequestError = async (response) => {
-  const error = new Error(`[ERROR] Request Failed: ${response.status} - ${response.statusText}`);
-  error.status = response.status;
-  error.data = await response.json();
-  return error;
-};
+class XhrRequestError extends Error {
+  constructor({ response, data}) {
+    super(`[ERROR] Request Failed: ${response.status} - ${response.statusText}`);
+    this.name = "XhrRequestError";
+    this.status = response.status;
+    this.data = data;
+  }
+}
 
 const throwException = async (response) => {
-  throw await new XhrRequestError(response);
+  const data = await response.json();
+  throw new XhrRequestError({ response, data });
 };
 
 const xhrRequest = async ({ url, options }) => {
