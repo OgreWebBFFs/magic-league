@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { useUpdateEffect } from 'react-use';
 import PlayerSelect from '../PlayerSelect';
 
+const addZeroIfNeeded = (num) => num < 10 ? `0${num}` : num;
+
+const getTodaysDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const date = addZeroIfNeeded(today.getDate());
+  const month = addZeroIfNeeded(today.getMonth() + 1);
+  return `${year}-${month}-${date}`;
+}
+
 const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const currentUserObject = unlockedUsers.find((user) => user.id === currentUserId);
   const sortedUsers = unlockedUsers.sort((a, b) => a.name.localeCompare(b.name));
@@ -9,7 +19,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
   const [playerA, setPlayerA] = useState(currentUserObject);
   const [playerB, setPlayerB] = useState(currentUserObject);
   const [winnerId, setWinnerId] = useState();
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
+  const [selectedDate, setSelectedDate] = useState(getTodaysDate());
   const [selectedTime, setSelectedTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
 
   useUpdateEffect(() => {
@@ -41,7 +51,7 @@ const MatchLogger = ({ unlockedUsers, currentUserId }) => {
       <p>When?</p>
       <input id="match-date" defaultValue={selectedDate} onChange={(e) => { setSelectedDate(e.target.value); }} type="date" name="match[date]" />
       <input id="match-time" defaultValue={selectedTime} onChange={(e) => { setSelectedTime(e.target.value); }} type="time" name="match[time]" />
-      <input style={{display: 'none'}} defaultValue={utcOffset} type="number" name="match[zone]" />
+      <input style={{display: 'none'}} defaultValue={utcOffset > 0 ? `+${utcOffset}` : utcOffset} type="text" name="match[zone]" />
     </>
   );
 };
