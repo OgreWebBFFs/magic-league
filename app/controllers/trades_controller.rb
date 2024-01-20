@@ -41,6 +41,7 @@ class TradesController < ApplicationController
       if invalid_trade_targets.length > 0
         trade.update(status: 'error')
         render json: {status: 'error', invalid_trade_targets: invalid_trade_targets }, :status => 400
+        OgreBot.instance.trade_alerts.trade_error trade, invalid_trade_targets
       else
         to_user = User.find_by_id(trade.to_user)
         from_user = User.find_by_id(trade.from_user)

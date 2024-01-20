@@ -45,4 +45,29 @@ class TradeAlerts
     discord_user.pm(msg)
   end
 
+  def trade_error trade, invalid_trade_targets
+    to_user = trade.to
+    from_user = trade.from
+    to_msg = <<~TEXT
+      There was an ❗*ERROR*❗ processing a trade you were involved in.
+
+      #{trade.to_user_s}
+
+      Cannot be processed for the following reasons:
+      #{invalid_trade_targets.map{ |target| "- #{target[:player]} has #{target[:reason]}: #{target[:card]}"}.join("\n")}
+    TEXT
+    from_msg = <<~TEXT
+      There was an ❗*ERROR*❗ processing a trade you were involved in.
+
+      #{trade.from_user_s}
+
+      Cannot be processed for the following reasons:
+      #{invalid_trade_targets.map{ |target| "- #{target[:player]} has #{target[:reason]}: #{target[:card]}"}.join("\n")}
+    TEXT
+    to_discord_user = @bot.user(to_user.discord_id)
+    from_discord_user = @bot.user(from_user.discord_id)
+    to_discord_user.pm(to_msg)
+    from_discord_user.pm(from_msg)
+  end
+
 end
