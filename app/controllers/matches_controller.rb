@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   def create
     match_params = params[:match]
+    puts match_params
     date_time = DateTime.strptime("#{match_params[:date] } #{match_params[:time]} UTC#{match_params[:zone]}", "%Y-%m-%d %H:%M %z")
     match = Match.create(played_at: date_time, participants: match_params[:participants].to_i, event_id: match_params[:event])
     
