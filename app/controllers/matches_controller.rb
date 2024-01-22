@@ -9,7 +9,7 @@ class MatchesController < ApplicationController
       Result.create(match_id: match.id, user_id: match_params[place.to_s], place: place)
       place += 1
     end
-    
+    Rails.cache.delete("rankings_#{date_time.month}/#{date_time.year}")
     redirect_to :root
   end
 
