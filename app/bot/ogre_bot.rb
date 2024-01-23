@@ -12,4 +12,13 @@ class OgreBot < Discordrb::Bot
     @draffle_actions = DraffleActions.new(self)
   end
 
+  def link_to_recent_announcement
+    announcements_channel = self.channel ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"]
+    latest_announcement = announcements_channel.history(1)[0]
+    if Time.now - latest_announcement.timestamp < 864000
+      "https://discord.com/channels/#{ENV["DISCORD_SERVER_ID"]}/#{ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"]}/#{latest_announcement.id}"
+    else
+      nil
+    end
+  end
 end
