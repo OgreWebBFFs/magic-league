@@ -40,6 +40,10 @@ class User < ApplicationRecord
     Trade.where("from_user = ? OR to_user = ?", id, id).order('created_at DESC')
   end
 
+  def has_pending_trade_offer?
+    self.trades.where("to_user = ? AND status = ?", id, "pending").length > 0
+  end
+
   def wishlist
     wishlist_items
   end

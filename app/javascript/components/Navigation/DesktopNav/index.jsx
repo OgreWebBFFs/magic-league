@@ -7,10 +7,9 @@ const DesktopNav = ({ links }) => {
       return (
         <li key={`${link.displayName}-dropdown`} className="nav__dropdown-wrapper">
           <Button className="nav__dropdown-toggle">
-            {link.notification && <i className='fas fa-exclamation-circle' style={{marginRight: '0.5rem'}} />}
             {link.displayName}
-            {' '}
-            ▼
+            {link.notification && <i className='fas fa-exclamation-circle notification' />}
+            <span>▼</span>
           </Button>
           <ul className="nav__dropdown">{renderDesktopNavLinks(link.dropdownItems)}</ul>
         </li>
@@ -18,8 +17,10 @@ const DesktopNav = ({ links }) => {
     }
     return (
       <li key={`${link.displayName}-inline`} className="nav__link-wrapper">
-        <a className="nav__link" href={`/${link.href}`}>{link.displayName}</a>
-        {link.notification && <i className="fas fa-exclamation" />}
+        <a className="nav__link" href={`/${link.href}`}>
+          {link.displayName}
+          {link.notification && <i className="fas fa-exclamation-circle" />}
+        </a>
       </li>
     );
   });

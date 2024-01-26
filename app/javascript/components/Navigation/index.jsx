@@ -18,7 +18,7 @@ const DrawerContents = {
 };
 
 
-const Navigation = ({ isAdmin, currentUserId, unlockedUsers, newAnnouncement }) => {
+const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContetSelector, setDrawerContentSelector] = useState('match-logger');
   const isMobile = useIsMobile();
@@ -27,6 +27,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, newAnnouncement }) 
     {
       displayName: 'My Profile',
       href: `users/${currentUserId}`,
+      notification: notifications.pendingTradeOffer,
     },
     {
       displayName: 'Browse Cards',
@@ -34,11 +35,11 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, newAnnouncement }) 
     },
     {
       displayName: 'League',
-      notification: newAnnouncement,
+      notification: true,
       dropdownItems: [
         {
           displayName: 'Announcements',
-          notification: newAnnouncement,
+          notification: true,
           href: 'announcements',
         },
         {
