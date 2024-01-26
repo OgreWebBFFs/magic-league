@@ -21,7 +21,15 @@ Rails.application.configure do
     config.action_controller.enable_fragment_cache_logging = true
     config.cache_classes = true
 
-    config.cache_store = :memory_store
+    config.cache_store = :mem_cache_store, 
+      (ENV["MEMCACHIER_SERVERS"] || "").split(","), {
+        :username => ENV["MEMCACHIER_USERNAME"],
+        :password => ENV["MEMCACHIER_PASSWORD"],
+        :failover => true,
+        :socket_timeout => 1.5,
+        :socket_failure_delay => 0.2,
+        :down_retry_delay => 60
+      }
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }

@@ -7,18 +7,15 @@ class OgreBot < Discordrb::Bot
 
   attr_reader :draffle_actions
 
+  # @last_event_announcement = Time.now
+
   def initialize 
     super(token: Rails.application.credentials.dig(:discord, ENV["DISCORD_APP_ENV"].to_sym, :bot_secret))
     @draffle_actions = DraffleActions.new(self)
-  end
 
-  def link_to_recent_announcement
-    announcements_channel = self.channel ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"]
-    latest_announcement = announcements_channel.history(1)[0]
-    if Time.now - latest_announcement.timestamp < 864000
-      "https://discord.com/channels/#{ENV["DISCORD_SERVER_ID"]}/#{ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"]}/#{latest_announcement.id}"
-    else
-      nil
+    self.message(in: ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"].to_i) do |event|
+      Rails.cache.write('new_announcement', true, expires_in: 2.minutes)
     end
   end
+
 end

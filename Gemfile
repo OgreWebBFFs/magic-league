@@ -19,6 +19,7 @@ gem 'pundit', '~> 2.2.0'
 gem 'bootsnap', '~> 1.11.1', require: false
 gem 'dry-types', '~> 1.5.0'
 gem 'image_processing', '~> 1.12'
+gem 'dalli'
 
 gem 'simple_form', '~> 5.1.0'
 gem 'fast_jsonapi', '~> 1.5'

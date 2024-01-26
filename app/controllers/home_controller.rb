@@ -4,7 +4,5 @@ class HomeController < ApplicationController
 
     @ranked_players = RankingEngine.new(@match_date).generate_rankings
     @unranked_players = User.all.select{ |u| !@ranked_players.any? { |r| r.user === u }}
-
-    @announcement = OgreBot.instance.link_to_recent_announcement
   end
 end
