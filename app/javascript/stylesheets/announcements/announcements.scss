@@ -5,7 +5,8 @@
   border-radius: .5rem;
   display: grid;
   gap: 1rem;
-  
+  position: relative;
+
   &__heading {
     font-size: 2.25rem;
     text-align: center;
@@ -24,5 +25,14 @@
   &__link {
     font-weight: 600;
     text-decoration: underline;
+  }
+
+  &__new {
+    position: absolute;
+    transform: rotate(-45deg);
+    color: red;
+    font-size: 2rem;
+    font-weight: 700;
+    left: -1rem;
   }
 }
