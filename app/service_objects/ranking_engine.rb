@@ -2,18 +2,22 @@ class RankingEngine
   INITIAL_RANKING = 1200
   K = 32
 
-  def initialize(users, matches)
-    @users = users
-    @matches = matches
+  def initialize(date)
+    @date = date
+    @cache_key = "rankings_#{date.month}/#{date.year}"
   end
-
+  
   def generate_rankings
-    rankings = @users.map {|user| Ranking.new(user, INITIAL_RANKING)}
-    @matches.each do |match|
-      generate_elo_for_match(match, rankings) 
-    end
-    rankings
-  end 
+    Rails.cache.fetch(@cache_key) {
+      matches = Match.where(event_id: nil).played_during_month(@date).order('played_at ASC')
+      users = User.all.select{|u| matches.any? {|m| m.includes_user? u }}
+      rankings = users.map {|user| Ranking.new(user, INITIAL_RANKING)}
+      matches.each do |match|
+        generate_elo_for_match(match, rankings) 
+      end
+      rankings.sort_by{|r| r.elo}.reverse
+    }
+  end
 
   private 
 
@@ -45,13 +49,7 @@ class Ranking
     @losses = 0
   end
 
-  def serialize
-    OpenStruct.new({
-      name:self.user.name,
-      id: self.user.id,
-      ranking: self.elo.round(2),
-      wins: self.wins,
-      losses: self.losses
-    }) 
+  def elo=(new_value)
+    @elo = new_value.round(2)
   end
 end

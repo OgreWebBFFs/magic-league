@@ -15,4 +15,8 @@ class Match < ApplicationRecord
     Result.where('match_id = ?', id).map{ |result| result.user }
   end
 
+  def includes_user? user
+    self.users_in_match.include? user
+  end
+
 end

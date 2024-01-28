@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Button from '../Button';
 
 const PlayerRanking = ({
-  name, id, rank, ranking, wins = 0, losses = 0,
+  user: { name, id }, rank, elo, wins = 0, losses = 0,
 }) => (
   <Button key={`${name}-${id}`} className={classNames('rankings__user-button', { 'rankings__user-button--unranked': !rank })} href={`/users/${id}`}>
     { rank && (
@@ -18,7 +18,7 @@ const PlayerRanking = ({
       <div className="rankings__player-stats">
         { rank && (
         <div className="rankings__player-elo">
-          {ranking}
+          {elo}
         </div>
         )}
         <div className="rankings__player-record">

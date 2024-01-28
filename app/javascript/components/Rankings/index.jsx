@@ -22,8 +22,7 @@ const Rankings = ({
   return (
     <>
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
-        {isSeasonView ? <DatePicker date={date} />
-          : <h1 className="rankings__title">Baldur&apos;s Gate Event</h1>}
+        <DatePicker date={date} />
         <Button className="button--ghost rankings__title" onClick={() => setShowRankings(false)}>
           Rankings
         </Button>
@@ -33,9 +32,9 @@ const Rankings = ({
             <div className="rankings__player-listing">
               <div id="ranked-players" className="rankings__player-bucket">
                 {isSeasonView
-                  ? rankedPlayers.map((user, i) => <PlayerRanking {...user.table} rank={i + 1} />)
+                  ? rankedPlayers.map((ranking, i) => <PlayerRanking {...ranking} rank={i + 1} />)
                   : eventRankedPlayers.map(
-                    (user, i) => <EventPlayerRanking {...user.table} rank={i + 1} />,
+                    (ranking, i) => <EventPlayerRanking {...ranking} rank={i + 1} />,
                   )}
               </div>
               { unrankedPlayers.length > 0
@@ -44,9 +43,9 @@ const Rankings = ({
                       <hr className="rankings__divider" />
                       <div id="unranked-players" className="rankings__player-bucket">
                         { isSeasonView
-                          ? unrankedPlayers.map((user) => <PlayerRanking {...user.table} />)
+                          ? unrankedPlayers.map((player) => <PlayerRanking user={player} wins={0} losses={0} />)
                           : eventUnrankedPlayers.map(
-                            (user) => <EventPlayerRanking {...user.table} />,
+                            (ranking) => <EventPlayerRanking {...ranking} />,
                           )}
                       </div>
                     </>
