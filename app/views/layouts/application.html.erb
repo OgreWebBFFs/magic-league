@@ -26,7 +26,7 @@
         unlockedUsers: unlocked_users,
         notifications: {
           pendingTradeOffer: current_user.has_pending_trade_offer?,
-          announcement: Rails.cache.read('new_announcement') === true
+          newAnnouncement: Rails.cache.read('new_announcement') === true
         }
       }) %>
     <% end %>

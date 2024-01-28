@@ -35,11 +35,11 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
     },
     {
       displayName: 'League',
-      notification: true,
+      notification: notifications.newAnnouncement,
       dropdownItems: [
         {
           displayName: 'Announcements',
-          notification: true,
+          notification: notifications.newAnnouncement,
           href: 'announcements',
         },
         {
