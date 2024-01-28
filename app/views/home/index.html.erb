@@ -5,11 +5,6 @@
     View<br /><%= draffle.name %>
   <% end %>
 <% end %>
-<% if !@announcement.nil? %>
-  <%= link_to @announcement, class: "button draffle-view-button" do %>
-    Click Here! To View a Recent Announcement
-  <% end %>
-<% end %>
 <%= react_component("Rankings", {
   date: @match_date,
   rankedPlayers: @ranked_players,
