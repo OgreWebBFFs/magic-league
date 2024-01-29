@@ -1,0 +1,23 @@
+.paginator {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+
+  &__first,
+  &__last {
+    font-size: .85rem;
+  }
+
+  &__prev,
+  &__next {
+    font-size: 1.15rem;
+  }
+
+  &__text {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+}

@@ -1,3 +1,7 @@
-<%= react_component("Matches", { matches: @matches, eventMatches: @event_matches}, :class => "matches__container") %>
+<%= react_component("Matches", {
+  matches: @matches,
+  currentPage: @current_page,
+  totalPages: @total_pages,
+}, :class => "matches__container") %>
   
  
