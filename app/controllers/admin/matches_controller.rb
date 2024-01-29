@@ -5,10 +5,11 @@ class Admin::MatchesController < ApplicationController
 
   
   def index
-    @matches = Match.where(event_id: nil).order('played_at DESC')
+    page = params[:page] || 1
+    @matches = Match.where(event_id: nil).order('played_at DESC').page(page).per(100)
+    @total_pages = @matches.total_pages
+    @current_page = @matches.current_page
     @matches = serialize_matches(@matches)
-    @event_matches = Match.where(event_id: 1).order('played_at DESC')
-    @event_matches = serialize_matches(@event_matches)
   end
 
   def destroy

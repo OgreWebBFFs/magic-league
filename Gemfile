@@ -24,6 +24,7 @@ gem 'simple_form', '~> 5.1.0'
 gem 'fast_jsonapi', '~> 1.5'
 
 gem 'react-rails', '~> 2.6.2'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', '~> 11.1.3', platforms: [:mri, :mingw, :x64_mingw]

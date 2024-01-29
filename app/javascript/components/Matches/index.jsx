@@ -1,14 +1,13 @@
 import React from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
-import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 import ViewToggleSwitch from '../ViewToggleSwitch';
 import {
   Table, Row, Cell, MobileLabel,
 } from '../Table';
 import Button from '../Button';
+import Paginator from './Paginator';
 
-const Matches = ({ matches, eventMatches, isAdmin = false }) => {
-  const [isSeasonView] = useIsSeasonView();
+const Matches = ({ matches, currentPage, totalPages, isAdmin = false }) => {
   const isMobile = useIsMobile();
   return (
     <>
@@ -16,6 +15,11 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
         <h2>Matches</h2>
         <ViewToggleSwitch name="matches-type" />
       </div>
+      <Paginator
+        link="/matches"
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
       <Table>
         { !isMobile && (
         <Row isHeading>
@@ -27,7 +31,7 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
           {isAdmin && <Cell className=">matches__cell matches__cell--admin-actions">Admin</Cell>}
         </Row>
         )}
-        {(isSeasonView ? matches : eventMatches).map(({
+        {matches.map(({
           table: {
             places: [winner, ...losers], id, date, time,
           },
@@ -58,6 +62,11 @@ const Matches = ({ matches, eventMatches, isAdmin = false }) => {
           </Row>
         ))}
       </Table>
+      <Paginator
+        link="/matches"
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </>
   );
 };
