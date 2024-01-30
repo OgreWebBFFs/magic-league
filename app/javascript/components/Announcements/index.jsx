@@ -20,7 +20,7 @@ const Announcements = ({ messages }) => (
           />
           <div className="announcement__details">
             <div className="announcement__details--author">Sent by {author.name}</div>
-            <div className="announcement__details--age">{age} ago</div>
+            <div className="announcement__details--age">{age}</div>
           </div>
           <div
             // eslint-disable-next-line react/no-danger

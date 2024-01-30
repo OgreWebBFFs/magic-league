@@ -23,14 +23,16 @@ class RenderMessage
     days = (hours / 24).to_i
     weeks = (days / 7).to_i
 
-    if weeks > 0
-      return age_str("week", weeks)
+    if weeks > 8
+      return timestamp.strftime("%b %d, %Y")
+    elsif weeks > 0
+      return age_str("week", weeks) + " ago"
     elsif days > 0
-      return age_str("day", days)
+      return age_str("day", days) + " ago"
     elsif hours > 0
-      return age_str("hour", hours)
+      return age_str("hour", hours) + " ago"
     else
-      return age_str("minute", minutes)
+      return age_str("minute", minutes) + " ago"
     end
   end
 
