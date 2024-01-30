@@ -18,6 +18,8 @@ class TradesController < ApplicationController
           Exchange.create(card_id: card_id, user_id: params[:to][:id], trade_id: new_trade.id)
         }
         flash[:success] = "Your trade request was sent successfully!"
+        review_link = "#{request.base_url}#{user_path params[:to][:id]}#trades"
+        OgreBot.instance.trade_alerts.trade_requested new_trade, review_link
         render json: {status: 'success'}
       end
   end
@@ -27,6 +29,7 @@ class TradesController < ApplicationController
     if params[:status] == 'rejected'
       flash[:notice] = "You've successfully declined a trade"
       render json: {status: params[:status]}
+      OgreBot.instance.trade_alerts.trade_rejected trade
     elsif params[:status] == 'approved' && trade.status != 'approved'
       to_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.to_user).pluck(:card_id)
       from_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.from_user).pluck(:card_id)
@@ -38,6 +41,7 @@ class TradesController < ApplicationController
       if invalid_trade_targets.length > 0
         trade.update(status: 'error')
         render json: {status: 'error', invalid_trade_targets: invalid_trade_targets }, :status => 400
+        OgreBot.instance.trade_alerts.trade_error trade, invalid_trade_targets
       else
         to_user = User.find_by_id(trade.to_user)
         from_user = User.find_by_id(trade.from_user)
@@ -45,6 +49,7 @@ class TradesController < ApplicationController
         give_cards(to_card_ids, from_user, to_user);
         flash[:success] = "You've successfully accepted a trade!"
         render json: {status: 'success'}
+        OgreBot.instance.trade_alerts.trade_accepted trade
       end
     end
     trade.update(status: params[:status])
