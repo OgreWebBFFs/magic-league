@@ -1,1 +1,6 @@
-<%= react_component("Matches", { matches: @matches, eventMatches:  @event_matches, isAdmin: true}, :class => "matches__container") %>
+<%= react_component("Matches", {
+  matches: @matches,
+  currentPage: @current_page,
+  totalPages: @total_pages,
+  isAdmin: true
+}, :class => "matches__container") %>

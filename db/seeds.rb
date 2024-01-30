@@ -78,6 +78,16 @@ match6 = Match.find_or_create_by(played_at: Time.now, participants: 2)
 Result.find_or_create_by(match: match6, user: zack, place: 1)
 Result.find_or_create_by(match: match6, user: dustin, place: 2)
 
+i = 0
+while i < 1000
+  puts i
+  new_match = Match.find_or_create_by(played_at: Time.now, participants: 2)
+  Result.find_or_create_by(match: new_match, user: zack, place: 1)
+  Result.find_or_create_by(match: new_match, user: pat, place: 2)
+  i += 1
+end
+
+
 # Trades
 # ===================================================
 pat_zack_trade = Trade.find_or_create_by(from_user: pat.id, to_user: zack.id)

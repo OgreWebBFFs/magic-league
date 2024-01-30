@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   def create
     match_params = params[:match]
+    puts match_params
     date_time = DateTime.strptime("#{match_params[:date] } #{match_params[:time]} UTC#{match_params[:zone]}", "%Y-%m-%d %H:%M %z")
     match = Match.create(played_at: date_time, participants: match_params[:participants].to_i, event_id: match_params[:event])
     
@@ -15,10 +16,11 @@ class MatchesController < ApplicationController
 
   
   def index
-    @matches = Match.where(event_id: nil).order('played_at DESC')
+    page = params[:page] || 1
+    @matches = Match.where(event_id: nil).order('played_at DESC').page(page).per(100)
+    @total_pages = @matches.total_pages
+    @current_page = @matches.current_page
     @matches = serialize_matches(@matches)
-    @event_matches = Match.where(event_id: 1).order('played_at DESC')
-    @event_matches = serialize_matches(@event_matches)
   end
 
   private
