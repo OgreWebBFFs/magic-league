@@ -48,7 +48,7 @@ module MtgLeague
     server do
       fork do
         OgreBot.instance.run
-        at_exit { OgreBot.instace.stop }
+        at_exit { OgreBot.instance.stop }
       end
     end
   end
