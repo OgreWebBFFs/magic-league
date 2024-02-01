@@ -1,8 +1,8 @@
 require 'discordrb'
 require 'singleton'
-require_relative './draffle/draffle_actions'
-require_relative './trade/trade_alerts'
-require_relative './announcements/announcements_access'
+require_relative 'draffle_actions'
+require_relative 'trade_alerts'
+require_relative 'announcements_access'
 require_relative '../service_objects/giphy_api'
 
 include GiphyApi
