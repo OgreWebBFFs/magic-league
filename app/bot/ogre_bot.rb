@@ -16,9 +16,9 @@ class OgreBot < Discordrb::Bot
 
   def initialize 
     super(token: Rails.application.credentials.dig(:discord, ENV["DISCORD_APP_ENV"].to_sym, :bot_secret))
-    @draffle_actions = DraffleActions.new(self)
-    @announcements_access = AnnouncementsAccess.new(self)
-    @trade_alerts = TradeAlerts.new(self)
+    @draffle_actions = Draffle::DraffleActions.new(self)
+    @announcements_access = Announcements::AnnouncementsAccess.new(self)
+    @trade_alerts = Trade::TradeAlerts.new(self)
   end
 
   def congratulate_champ top_rank, date
