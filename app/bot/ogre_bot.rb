@@ -23,7 +23,7 @@ class OgreBot < Discordrb::Bot
 
   def congratulate_champ top_rank, date
     general_channel = self.channel ENV["GENERAL_DISCORD_CHANNEL_ID"]
-    gif_uri = generate_random_gif 'congratulations'
+    gif_uri = generate_random_gif 'clapping+congratulations'
     congratulations_msg = <<~TEXT
       ## A New Month, A New CHAMPION 🏆👑
 
