@@ -16,7 +16,8 @@
   z-index: 2;
   color: var(--color-text-neutral);
   background-color: var(--color-fill-neutral);
-  background: linear-gradient(45deg,  var(--color-fill-theme),  var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--color-fill-theme));
+  --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
+  background: linear-gradient(56deg, var(--nav-corner-color), var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--nav-corner-color));
   width: 100%;
   height: $nav-height;
   padding: 0 10%;
@@ -74,6 +75,7 @@
     align-items: center;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
+    font-size: 1rem;
     text-transform: capitalize;
     cursor: pointer;
     color: var(--color-text-neutral);
@@ -83,16 +85,11 @@
     &:focus {
       background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), .2);
     }
-  }
-
-  &__dropdown-toggle {
-    background: transparent;
-    border: none;
-    &:hover,
-    &:focus {
-      background: transparent;
+    .notification {
+      color: var(--color-fill-alert)
     }
   }
+
 
   &__dropdown {
     padding-bottom: var(--spacer-sm);
@@ -159,9 +156,13 @@
   }
 
   &__mobile-menu-toggle {
-    padding: 0.5rem;
+    padding: var(--spacer-sm);
     font-size: 1.8rem;
-    margin: 0 0.5rem;
+    margin: 0 var(--spacer-sm);
+    gap:var(--spacer-sm);
+    i.notification {
+      color: var(--color-fill-alert)
+    }
   }
 
   &__match-logger,

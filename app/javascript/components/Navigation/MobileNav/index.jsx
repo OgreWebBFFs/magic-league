@@ -10,8 +10,8 @@ const MobileNav = ({ links }) => {
     }
     return (
       <li className="nav__link-wrapper" key={`${link.displayName}-mobilenav`}>
-        <a className="nav__link" href={`/${link.href}`}>{link.displayName}</a>
-        {link.notification && <i className="fas fa-exclamation" />}
+        <Button className="nav__link button--small button--ghost" href={`/${link.href}`}>{link.displayName}  {link.notification && <i className="fas fa-exclamation notification" />}</Button>
+       
       </li>
     );
   });
@@ -20,7 +20,7 @@ const MobileNav = ({ links }) => {
     <li className="nav__dropdown-wrapper">
       <Button className="nav__mobile-menu-toggle">
         <i className="fas fa-caret-down" />
-        {notification && <i className="fas fa-exclamation" style={{fontSize: '1.3rem', marginLeft: '.5rem'}} />}
+        {notification && <i className="fas fa-exclamation notification" />}
       </Button>
       <ul className="nav__dropdown">{renderMobileNavLinks(links)}</ul>
     </li>

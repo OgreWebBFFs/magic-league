@@ -19,7 +19,7 @@ const DesktopNav = ({ links }) => {
       <li key={`${link.displayName}-inline`} className="nav__link-wrapper">
        <Button className="nav__link button--ghost button--small" href={`/${link.href}`}>
           {link.displayName}
-          {link.notification && <i className="fas fa-exclamation-circle" />}
+          {link.notification && <i className="fas fa-exclamation-circle notification" />}
         </Button>
       </li>
     );
