@@ -57,13 +57,13 @@ $Kirsch: #B11680;
 
 //Semantic Colors Names
 
-$color-highlight-mid-import: $Blush;
+
 $color-highlight-import: $Watermelonade;
 $color-accent: $Observatory;
 $color-highlight-urgent: $Orioles-Orange;
 $background-color: $Parchment;
 $ranking-border-color: $Blush;
-// 
+
 
 :root {
     --green-hue-sat: 149, 100%;
@@ -84,23 +84,23 @@ $ranking-border-color: $Blush;
     --peacock-hue-sat:  217, 100%;
     --peacock-lightness: 100%;
 
-    --eerie-black-hue-sat: 0, 0%;
-    --eerie-black-lightness: 10%;
+    --black-hue-sat: 100, 100%;
+    --black-lightness: 0%;
 
     --desaturated-hue-sat: 0, 0%;
 
     //Needed for various css calcs 
 
-    --color-fill-accent-hue-sat: var(--eerie-hue-sat);
-    --color-fill-accent-lightness: var(--eerie-lightness);
+    --color-fill-accent-hue-sat: var(--black-hue-sat);
+    --color-fill-accent-lightness: var(--black-lightness);
     --color-fill-accent: hsl(var(--color-fill-accent-hue-sat),var(--color-fill-accent-lightness));
     
     --color-fill-inverse-hue-sat: var(--white-hue-sat);
     --color-fill-inverse-lightness : var(--white-lightness); 
     --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
     
-    --color-fill-neutral-hue-sat: var(--eerie-black-hue-sat);
-    --color-fill-neutral-lightness : var(--eerie-black-lightness);
+    --color-fill-neutral-hue-sat: var(--black-hue-sat);
+    --color-fill-neutral-lightness : var(--black-lightness);
     --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
     
     --color-fill-theme-hue-sat: var(--mustard-hue-sat);

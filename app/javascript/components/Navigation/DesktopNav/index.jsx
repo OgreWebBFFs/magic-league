@@ -6,7 +6,7 @@ const DesktopNav = ({ links }) => {
     if (link.dropdownItems) {
       return (
         <li key={`${link.displayName}-dropdown`} className="nav__dropdown-wrapper">
-          <Button className="nav__dropdown-toggle">
+          <Button className="nav__dropdown-toggle button--ghost button--small">
             {link.displayName}
             {link.notification && <i className='fas fa-exclamation-circle notification' />}
             <span>▼</span>
@@ -17,10 +17,10 @@ const DesktopNav = ({ links }) => {
     }
     return (
       <li key={`${link.displayName}-inline`} className="nav__link-wrapper">
-        <a className="nav__link" href={`/${link.href}`}>
+       <Button className="nav__link button--ghost button--small" href={`/${link.href}`}>
           {link.displayName}
           {link.notification && <i className="fas fa-exclamation-circle" />}
-        </a>
+        </Button>
       </li>
     );
   });

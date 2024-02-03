@@ -7,19 +7,19 @@
   transform: scaleY(1) translateX(-50%);
   pointer-events: all;
   &-toggle {
-    color: $color-highlight-import;
+    color: var(--color-text-theme);
   }
 }
 
 .nav {
   position: relative;
   box-sizing: border-box;
-  box-shadow: 0 2px 2px 0 rgba(88, 24, 69 , 0.2),
-    0 3px 1px -2px rgba(88, 24, 69 , 0.3), 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
+  box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
   z-index: 2;
   color: $color-highlight-import;
-  background-color: var(--color-fill-inverse);
-  background: linear-gradient(45deg,  #270C1D, #223F3C 10%, #223F3C 90%, #270C1D);
+  background-color: var(--color-fill-nuetral);
+  background: linear-gradient(45deg,  var(--color-fill-theme),  var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--color-fill-theme));
   width: 100%;
   height: $nav-height;
   padding: 0 10%;
@@ -37,7 +37,7 @@
       height: 100%;
 
       .logo-fill {
-        fill: $color-highlight-import;
+        fill: var(--color-fill-theme);
       }
     }
 
@@ -63,30 +63,29 @@
     height: 100%;
     text-align: center;
     list-style-type: none;
-    gap: 1.75rem;
     a {
-      color: $color-highlight-mid-import;
+      color: var(--color-text-neutral);
     }
     @media only screen and (max-width: 850px) {
       margin-right: 0;
     }
   }
 
-  &__link,
-  &__dropdown-toggle {
+  a.nav__link.button,
+  &__dropdown-toggle { 
+    --background-opacity: 0;
     align-items: center;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
     text-transform: capitalize;
-    margin: 0;
-    padding:0;
     cursor: pointer;
-    color: $color-highlight-mid-import;
+    color: var(--color-text-neutral);
     display: flex;
-    gap: 0.25rem;
+    gap: var(--spacer-xs);
     &:hover,
     &:focus {
-      color: $color-highlight-import;
+      color: var(--color-text-theme);
+      background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), .1);
     }
   }
 
@@ -100,19 +99,19 @@
   }
 
   &__dropdown {
+    padding-bottom: var(--spacer-sm);
     &::before{
       display: block;
       position: absolute;
       height: 2px;
       width: 100%;
       content: "";
-      box-shadow: inset 0 2px 2px 0 rgba(88, 24, 69 , 0.2), inset 
-      0 3px 1px -2px rgba(88, 24, 69 , 0.3), inset 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
+      box-shadow: inset 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2), inset 
+      0 3px 1px -2px rgba(88, 24, 69 , 0.3), inset 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
     }
     position: absolute;
     width: 150px;
-    background-color: darken($background-color, 2%);
-    background: linear-gradient(120deg, darken($background-color, 2%) 80%, darken($background-color, 8%))  ;
+    background-color: var(--color-fill-neutral);
     margin: 0;
     left: 50%;
     display: block;
@@ -125,9 +124,9 @@
     opacity: 0;
     z-index: 99;
     pointer-events: none;
-    box-shadow: 0 2px 2px 0 rgba(88, 24, 69 , 0.2), 
-    0 3px 1px -2px rgba(88, 24, 69 , 0.3), 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
-;
+    box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
+ 
     transition: 0.2s;
     max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
    
@@ -139,14 +138,7 @@
 
     .nav__link {
       text-align: center;
-
-      padding: 8px 0;
       display: flex;
-      gap: 0.25rem;
-      &:hover {
-        background-color: fade-out($background-color, .8)
-      }
-      color: $Canopy;
     }
 
     &:hover,
