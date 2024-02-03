@@ -1,16 +1,16 @@
 .filter {
   &__option-group-toggle {
-    background: $color-dark;
-    color: $color-light;
+    background-color: var(--color-fill-neutral);
+    color: var(--color-text-neutral);
     font-weight: 700;
     padding: 0.75rem;
     width: 100%;
-    border-bottom: 2px solid $color-nuetral;
+    border-bottom: 2px solid $color-neutral;
 
     &--actives {
       font-size: .75rem;
       font-weight: 400;
-      color: $color-light;
+      color: var(--color-text-neutral);
 
     }
 

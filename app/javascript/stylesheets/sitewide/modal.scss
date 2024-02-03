@@ -10,7 +10,7 @@
     z-index: 99;
     padding-bottom: 2 rem;
     transition-duration: .51s;
-    color: $color-dark;
+    color: var(--color-text-inverse);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 
     &__area {
         position: relative;
-        background: $color-light;
+        background-color: var(--color-fill-inverse);
         vertical-align: middle;
         overflow: auto;
         padding: 30px;
@@ -81,7 +81,7 @@
     
       &__warning {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: $color-neutral;
         margin: 0;
         width: 0;
         min-width: 100%;
@@ -92,7 +92,7 @@
 
       &__notice {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: $color-neutral;
         margin: 0;
         width: 0;
         min-width: 100%;

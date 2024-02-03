@@ -3,6 +3,8 @@
 
 .dashboard {
 
+    --tab-heading-color-hue-sat: var(--color-fill-neutral-hue-sat);
+    --tab-heading-color-lightness: 0%;
     &-header {
         display: flex;
         align-items: baseline;
@@ -45,7 +47,7 @@
         }
 
         &__pronouns {
-            color: #989898;
+            color: hsl(var(--color-text-inverse-hue-sat), 50%);
             font-size: 1.2rem;
             margin-left: .5rem;
         }
@@ -68,7 +70,7 @@
                 //gravatar image forces hard height/widths 154px is current
                 height: 154px;
                 width: 154px;
-                background: $color-dark;
+                background-color: var(--color-fill-neutral);
             }
         }
 
@@ -117,8 +119,8 @@
 
             &-points {
                 flex: 1 1 25%;
-                background: black;
-                color: white;
+                background: var(--color-fill-neutral);
+                color: var(--color-text-neutral);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -135,7 +137,7 @@
             }
 
             &-match-num {
-                color: $color-nuetral;
+                color: var(--color-text-inverse);
                 font-size: .75rem;
             }
 
@@ -182,13 +184,15 @@
     }
 
     &__tab {
-        color: $color-light;
-        background: rgba($color-dark, .6);
+        --background-color-opacity: 0.6;
+        --background-color-hue-sat: var(--tab-heading-color-hue-sat);
+        --background-color-lightness: 0%;
+        color: var(--color-text-neutral);
         margin-right: 5px;
         margin-bottom:0;
         margin-left:0;
         width: 150px;
-        border-bottom: 1px solid rgba($color-dark, .15);
+        border-bottom: 1px solid hsl(var(--color-fill-neutral), 0.15);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
@@ -197,13 +201,12 @@
         }
 
         &:hover {
-            background: rgba($color-dark, .8);
-            color: $color-light;
+            --background-color-opacity: 1;
+            color: var(--color-text-neutral);
         }
 
         &.active {
-            background: $color-dark;
-
+            --background-color-opacity: 1;
         }
 
         @media only screen and (max-width: 850px) {
@@ -223,7 +226,7 @@
     }
 
     &__card-interface {
-        border: 2px solid $color-dark;
+        border: 2px solid var(--color-fill-neutral);
 
         &-wrapper {
             margin: $section-margin 0;
@@ -232,10 +235,10 @@
 
     &__action-bar {
         display: flex;
-        background-color: $color-dark;
+        background-color: hsl(var(--tab-heading-color-hue-sat), var(--tab-heading-color-lightness));
         align-items: center;
         justify-content: flex-end;
-        height: 55px;
+        
     }
 
     &__cards-action {
@@ -289,7 +292,7 @@
             }
         }
 
-        background: $color-light;
+        background-color: var(--color-fill-inverse);
     }
 
     &__card-grid-wrapper {
@@ -309,12 +312,12 @@
             margin: 0;
 
             &:disabled {
-                background: $color-nuetral;
+                background: var(--color-fill-neutral);
             }
         }
         
         &--text {
-            color: $color-light;
+            color: var(--color-text-neutral);
         }
     }
 
@@ -335,7 +338,7 @@
                 align-items: start;
                 button {
                     font-size: 1.5rem;
-                    color: $color-nuetral;
+                    color: $color-neutral;
                     margin: 0;
                     background: none;
                     &:hover {

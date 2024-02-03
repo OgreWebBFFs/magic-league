@@ -9,7 +9,7 @@
     }
     .cell:first-child {
       @media only screen and (max-width: 850px) {
-        color: $color-light;
+        color: var(--color-text-neutral);
         background: $color-dark
       }
     }
@@ -45,7 +45,7 @@
           color: $color-highlight-urgent;
         }
         &.waiting {
-          color: $color-nuetral;
+          color: $color-neutral;
         }
       }
 
@@ -144,7 +144,7 @@
         color: #838996;
       }
       &.common {
-        color: $color-dark;
+        color: var(--color-text-inverse);
       }
     }
   }

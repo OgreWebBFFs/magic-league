@@ -6,7 +6,7 @@
   width: 100%;
   height: $footer-height;
   background: linear-gradient(45deg,  #270C1D, #223F3C 10%, #223F3C 90%, #270C1D);
-  color: $color-light;
+  color: var(--color-text-neutral);
 
   &-content {
     height: 100%;

@@ -1,20 +1,18 @@
+a.button,
 .button {
-    --background-color-hue-sat: var(--color-highlight-primary-hue-sat);
-    --background-color-lightness: var(--color-highlight-primary-lightness);
+    --background-color-hue-sat: var(--color-fill-theme-hue-sat);
+    --background-color-lightness: var(--color-fill-theme-lightness);
     --background-color-opacity: 1;
     --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
-
     --adjusted-lightness: var(--background-color-lightness);
-    --text-color: var(--color-light);
-    --text-color-hue-sat: var(--color-light-hue-sat);
-    --text-color-lightness: var(--color-light-lightness);
-  
+    --text-color: var(--color-text-neutral);
+    
     display:flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    margin: 1rem;
-    padding: 10px;
+    padding-block: var(--spacer-md);
+    padding-inline: var(--spacer-lg);
     text-decoration: none;
     text-align: center;
     letter-spacing: .5px;
@@ -32,9 +30,10 @@
     transition-timing-function: ease-in-out;
     transition-duration: .3s;
     
-    &.lg {
+    &--large {
         font-size: 1.2rem;
-        padding: 2rem;
+        padding-inline: var(--spacer-lg);
+        padding-block: var(--spacer-xl);
     }
 
 
@@ -47,17 +46,18 @@
        color: hsla(var(--text-color-hue-sat), 50%);
        background: hsla(var(--color-dark-hue-sat), 75%);
     }
-
-    &--inverse {
-        --background-color-hue-sat: var(--color-dark-hue-sat);
-        --background-color-lightness: var(--color-dark-lightness);
-        --background-color: var(--color-dark);
-        --text-color: var(--color-highlight-primary);
+    &--secondary {
+        --background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --background-color-lightness: var(--color-fill-neutral-lightness);
+        --background-color: var(--color-fill-neutral);
+        --text-color: var(--color-text-neutral);
     }
 
-    &--bright {
-        --background-color-lightness: calc(var(--color-accent-lightness+10));
-
+    &--inverse {
+        --background-color-hue-sat: var(--color-fill-inverse-hue-sat);
+        --background-color-lightness: var(--color-fill-inverse-lightness);
+        --background-color: var(--color-fill-inverse);
+        --text-color: var(--color-text-inverse);
     }
 
 
@@ -71,8 +71,6 @@
 
     &--ghost {
         --background-color-opacity: 0;
-        padding:0;
-        margin:0;
         &:hover,
         &:focus {
             --background-color-opacity: 0;

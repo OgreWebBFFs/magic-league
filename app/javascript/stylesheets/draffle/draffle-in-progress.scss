@@ -20,7 +20,7 @@
     flex: 0 1 5%;
 
     @media only screen and (max-width: 850px) {
-        background: $color-dark;
+        background-color: var(--color-fill-neutral);
         color: $Wrinkle-White;
         border-bottom: 3px solid $color-accent;
     }
