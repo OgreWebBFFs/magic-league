@@ -10,13 +10,16 @@
 
 
   &__title {
-    font-size: 40px;
-    margin: 0 auto 10px;
+    font-size: 20px;
+    margin: 0 auto;
     font-variant: small-caps;
     font-weight: 700;
     text-transform: unset;
     color: var(--color-text-neutral);
     text-align: center;
+    &:hover{
+      --background-opacity: 0;
+    }
   }
 
   &__date_form {
@@ -28,8 +31,8 @@
     transition-timing-function: ease-in-out;
 
     select {
-      // 125px is the width of the month input on the longest months
-      flex: 0 0 125px;
+
+      flex: 0 0 100px;
       margin: 0 5px;
     }
 
@@ -123,11 +126,6 @@
     animation-timing-function: ease-out;
     -webkit-animation-timing-function: ease-out;
     visibility: visible !important;
-
-    &:hover {
-      background: lighten($color-accent, 5%);
-      color: var(--color-text-inverse);
-    }
 
     &--unranked {
        opacity: .75;

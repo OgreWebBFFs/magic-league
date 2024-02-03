@@ -212,8 +212,8 @@ body {
 
   &[class*="-headings"] {
     background-color: var(--color-fill-neutral);
-    color: $Wrinkle-White;
-    border-bottom: 3px solid $color-accent;
+    color: var(--color-text-neutral);
+    border-bottom: 3px solid hsl(var(--color-fill-theme-hue-sat), 20%);
   }
 
   &[class*="-title"] {
