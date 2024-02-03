@@ -170,7 +170,7 @@
         background: transparent;
 
         .notification {
-            color: $color-highlight-import;
+            color: var(--color-fill-alert);
             position: relative;
             left: 0.25rem;
             font-size: 1.2rem;
@@ -178,7 +178,7 @@
 
         .active {
             .notification {
-                color: $color-highlight-urgent;
+                color: var(--color-fill-alert);
             }
         }
     }
@@ -338,7 +338,7 @@
                 align-items: start;
                 button {
                     font-size: 1.5rem;
-                    color: var(--color-text-theme);
+                    color: var(--color-text-neutral);
                     margin: 0;
                     background: none;
                     &:hover {

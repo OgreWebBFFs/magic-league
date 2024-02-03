@@ -267,7 +267,7 @@ select:focus {
 
 label {
   font-size: 0.8rem;
-  color: var(--color-text-theme);
+  color: var(--color-text-inverse);
 }
 
 select.browser-default {
@@ -313,7 +313,7 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default) {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid  hsl(var(--color-text-theme-hue-sat), 20%); 
+  border-bottom: 1px solid  var(--color-fill-theme-highlight); 
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -344,7 +344,6 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid  var(--color-fill-theme);
   -webkit-box-shadow: 0 1px 0 0  var(--color-fill-theme);
   box-shadow: 0 1px 0 0  var(--color-fill-theme);
 }
@@ -411,7 +410,7 @@ input[type=checkbox] {
 
   // Box checked
   &:checked+label:before {
-    background: $color-highlight-import;
+    background: var(--color-fill-theme-highlight);
   }
 
   // Disabled state label.

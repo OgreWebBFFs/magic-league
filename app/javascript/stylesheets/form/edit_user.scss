@@ -6,7 +6,7 @@ form.edit_user {
 
   &__title {
     font-weight: 600;
-    color: var(--color-text-theme);
+    color: var(--color-text-neutral);
   }
 
   &__form {
@@ -23,7 +23,7 @@ form.edit_user {
     img {
       max-width: 250px;
       border-radius: 100%;
-      border: .5rem solid white;
+      border: .5rem solid var(--color-fill-inverse);
     }
 
     a {

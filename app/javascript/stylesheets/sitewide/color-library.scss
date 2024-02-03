@@ -57,8 +57,6 @@ $Kirsch: #B11680;
 
 //Semantic Colors Names
 
-
-$color-highlight-import: $Watermelonade;
 $color-accent: $Observatory;
 $color-highlight-urgent: $Orioles-Orange;
 $background-color: $Parchment;
@@ -66,35 +64,28 @@ $ranking-border-color: $Blush;
 
 
 :root {
-    --green-hue-sat: 149, 100%;
-    --green-lightness: 20%;
 
+    --saturated-fill-lightness: 25%;
+    --green-hue-sat: 149, 100%;
+   
     --mustard-hue-sat: 47, 100%;
-    --mustard-lightness:20%;
 
     --scarlet-hue-sat: 343, 100%;
-    --scarlet-lighness: 39%;
 
     --white-hue-sat:  0, 0%;
     --white-lightness: 100%;
 
     --plum-hue-sat:  265, 85%;
-    --plum-lightness: 20%;
     
     --peacock-hue-sat:  217, 100%;
-    --peacock-lightness: 100%;
 
-    --black-hue-sat: 100, 100%;
+    --black-hue-sat: 0, 0%;
     --black-lightness: 0%;
 
     --desaturated-hue-sat: 0, 0%;
 
     //Needed for various css calcs 
 
-    --color-fill-accent-hue-sat: var(--black-hue-sat);
-    --color-fill-accent-lightness: var(--black-lightness);
-    --color-fill-accent: hsl(var(--color-fill-accent-hue-sat),var(--color-fill-accent-lightness));
-    
     --color-fill-inverse-hue-sat: var(--white-hue-sat);
     --color-fill-inverse-lightness : var(--white-lightness); 
     --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
@@ -103,10 +94,28 @@ $ranking-border-color: $Blush;
     --color-fill-neutral-lightness : var(--black-lightness);
     --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
     
-    --color-fill-theme-hue-sat: var(--mustard-hue-sat);
-    --color-fill-theme-lightness : var(--mustard-lightness);
+    --color-fill-theme-hue-sat: var(--peacock-hue-sat);
+    --color-fill-theme-lightness: var(--saturated-fill-lightness);
     --color-fill-theme: hsl(var(--color-fill-theme-hue-sat),var(--color-fill-theme-lightness));
     
+    --color-fill-theme-highlight-lightness: calc(var(--color-fill-theme-lightness) + 15%);
+    --color-fill-theme-highlight: hsl(var(--color-fill-theme-hue-sat), var(--color-fill-theme-highlight-lightness)); 
+
+    --color-fill-positive-hue-sat: 168, 76%;
+    --color-fill-positive-lightness:var(--saturated-fill-lightness);
+    --color-fill-positive: hsl(var(--color-fill-positive-hue-sat),var(--color-fill-positive-lightness));
+    
+    --color-fill-negative-hue-sat: 2, 100%;
+    // currently negative is a red and reds need a slightly higher lightness to come through 
+    --color-fill-negative-lightness: calc(var(--saturated-fill-lightness) + 20%);
+    --color-fill-negative: hsl(var(--color-fill-negative-hue-sat),var(--color-fill-negative-lightness));
+    
+    --color-fill-alert-hue-sat: 25, 100%;
+    // currently alert is a orange and reds need a slightly higher lightness to come through 
+    --color-fill-alert-lightness: calc(var(--saturated-fill-lightness) + 25%);
+    --color-fill-alert: hsl(var(--color-fill-alert-hue-sat),var(--color-fill-alert-lightness));
+    
+
     --color-text-inverse-hue-sat: var(--color-fill-neutral-hue-sat);
     --color-text-inverse-lightness : var(--color-fill-neutral-lightness);
     --color-text-inverse: var(--color-fill-neutral);
@@ -116,8 +125,14 @@ $ranking-border-color: $Blush;
     --color-text-neutral: var(--color-fill-inverse); 
 
     --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
-    --color-text-theme-lightness: 20%;
+    --color-text-theme-lightness: 10%;
     --color-text-theme: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness)); 
+   
+
+    --color-text-negative-hue-sat: var(--color-fill-negative-hue-sat);
+    --color-text-negative-lightness: calc(var(--saturated-fill-lightness) + 15%);
+    --color-text-negative: hsl(var(--color-text-negative-hue-sat), var(--color-text-negative-lightness)); 
+   
 }
 
 

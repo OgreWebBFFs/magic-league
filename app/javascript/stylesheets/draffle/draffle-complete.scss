@@ -1,5 +1,5 @@
 .slot {
-  border: 2px solid  hsl(var(--color-text-theme-hue-sat), 20%); 
+  border: 2px solid  var(--color-fill-theme-highlight); 
   border-radius: 1rem;
   overflow: hidden;
 
@@ -18,7 +18,7 @@
   &__user {
     font-size: 1.2rem;
     font-weight: 600;
-    color: $color-highlight-import;
+    color: var(--color-text-neutral);
     padding: .5rem;
     text-overflow: ellipsis;
     overflow: hidden;

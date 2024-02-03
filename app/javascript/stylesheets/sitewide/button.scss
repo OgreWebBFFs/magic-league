@@ -47,7 +47,7 @@ a.button,
 
     &:hover:not(:disabled) {
         --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
-        background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
+        background-color:(hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity)));
     }
 
     &:disabled {

@@ -6,9 +6,6 @@
   opacity: 1;
   transform: scaleY(1) translateX(-50%);
   pointer-events: all;
-  &-toggle {
-    color: var(--color-text-theme);
-  }
 }
 
 .nav {
@@ -17,8 +14,8 @@
   box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2),
     0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
   z-index: 2;
-  color: $color-highlight-import;
-  background-color: var(--color-fill-nuetral);
+  color: var(--color-text-neutral);
+  background-color: var(--color-fill-neutral);
   background: linear-gradient(45deg,  var(--color-fill-theme),  var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--color-fill-theme));
   width: 100%;
   height: $nav-height;
@@ -84,8 +81,7 @@
     gap: var(--spacer-xs);
     &:hover,
     &:focus {
-      color: var(--color-text-theme);
-      background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), .1);
+      background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), .2);
     }
   }
 

@@ -81,13 +81,15 @@
     
       &__warning {
         font-size: .75rem;
-        color: var(--color-text-theme);
+        color: var(--color-text-negative);
         margin: 0;
         width: 0;
         min-width: 100%;
-        .warning {
-          color: $color-highlight-urgent;
-        }
+      
+      }
+
+      .warning {
+        color: var(--color-text-negative);
       }
 
       &__notice {
@@ -96,8 +98,5 @@
         margin: 0;
         width: 0;
         min-width: 100%;
-        .warning {
-          color: $color-highlight-urgent;
-        }
       }
 }

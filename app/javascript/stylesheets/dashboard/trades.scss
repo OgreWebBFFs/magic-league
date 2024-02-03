@@ -38,17 +38,15 @@
         font-size: 1.5rem;
         
         &.approved {
-          color: $color-highlight-import;
+          color: var(--color-fill-positive);
         }
         &.rejected {
-          color: $color-highlight-urgent;
+          color: var(--color-fill-negative);
         }
         &.error {
-          color: $color-highlight-urgent;
+          color: var(--color-fill-negative);
         }
-        &.waiting {
-          color: var(--color-text-theme);
-        }
+    
       }
 
     }
