@@ -13,7 +13,9 @@ class Admin::MatchesController < ApplicationController
   end
 
   def destroy
-    @match.destroy
+    match_time = @match.played_at
+    Rails.cache.delete("rankings_#{match_time.month}/#{match_time.year}")
+    @match.delete
     redirect_to admin_matches_path
   end
 
