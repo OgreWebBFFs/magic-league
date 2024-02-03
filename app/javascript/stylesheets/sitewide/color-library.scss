@@ -57,7 +57,6 @@ $Kirsch: #B11680;
 
 //Semantic Colors Names
 
-$color-neutral: $Canopy;
 $color-highlight-mid-import: $Blush;
 $color-highlight-import: $Watermelonade;
 $color-accent: $Observatory;
@@ -91,7 +90,7 @@ $ranking-border-color: $Blush;
     --desaturated-hue-sat: 0, 0%;
 
     //Needed for various css calcs 
-    
+
     --color-fill-accent-hue-sat: var(--eerie-hue-sat);
     --color-fill-accent-lightness: var(--eerie-lightness);
     --color-fill-accent: hsl(var(--color-fill-accent-hue-sat),var(--color-fill-accent-lightness));
@@ -117,8 +116,8 @@ $ranking-border-color: $Blush;
     --color-text-neutral: var(--color-fill-inverse); 
 
     --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
-    --color-text-theme-lightness: 10%;
-    --color-text-theme: var(--color-fill-theme); 
+    --color-text-theme-lightness: 20%;
+    --color-text-theme: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness)); 
 }
 
 

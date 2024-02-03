@@ -25,7 +25,7 @@
       }
 
       &-reason {
-        color: $color-neutral;
+        color: var(--color-text-theme);
         font-size: .8rem;
       }
     }  

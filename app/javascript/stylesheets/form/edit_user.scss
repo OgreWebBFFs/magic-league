@@ -6,7 +6,7 @@ form.edit_user {
 
   &__title {
     font-weight: 600;
-    color: $color-neutral;
+    color: var(--color-text-theme);
   }
 
   &__form {

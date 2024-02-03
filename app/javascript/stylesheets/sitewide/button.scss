@@ -45,14 +45,16 @@ a.button,
 
 
 
-    &:hover {
+    &:hover:not(:disabled) {
         --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
         background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
     }
 
     &:disabled {
-       color: hsla(var(--text-color-hue-sat), 50%);
-       background: hsla(var(--color-dark-hue-sat), 75%);
+
+        --background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --background-color-lightness: var(--color-fill-neutral-lightness);
+        --background-color-opacity: .25;
     }
     &--secondary {
         --background-color-hue-sat: var(--color-fill-neutral-hue-sat);

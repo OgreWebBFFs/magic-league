@@ -81,7 +81,7 @@
     
       &__warning {
         font-size: .75rem;
-        color: $color-neutral;
+        color: var(--color-text-theme);
         margin: 0;
         width: 0;
         min-width: 100%;
@@ -92,7 +92,7 @@
 
       &__notice {
         font-size: .75rem;
-        color: $color-neutral;
+        color: var(--color-text-theme);
         margin: 0;
         width: 0;
         min-width: 100%;

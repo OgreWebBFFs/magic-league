@@ -47,7 +47,7 @@
           color: $color-highlight-urgent;
         }
         &.waiting {
-          color: $color-neutral;
+          color: var(--color-text-theme);
         }
       }
 

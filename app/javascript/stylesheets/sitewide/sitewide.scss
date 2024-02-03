@@ -14,12 +14,11 @@ $checkbox-size: 25px;
 a {
   text-decoration: none;
   // color: $color-highlight-mid-import;
-  color: $Canopy;
+  color: var(--color-text-theme);
   transition: color 0.3s;
 
   &:hover {
-    // color: $color-highlight-import;
-    color: $Observatory;
+  color: hsl(var(--color-text-theme-hue-sat), 35%); 
   }
 }
 
@@ -269,7 +268,7 @@ select:focus {
 
 label {
   font-size: 0.8rem;
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 select.browser-default {
@@ -286,19 +285,19 @@ select {
 }
 // Text Inputs + Textarea
 ::-webkit-input-placeholder {
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 ::-moz-placeholder {
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 :-ms-input-placeholder {
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 ::placeholder {
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 input:not([type]),
@@ -315,7 +314,7 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default) {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $color-neutral;
+  border-bottom: 1px solid  hsl(var(--color-text-theme-hue-sat), 20%); 
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -377,7 +376,7 @@ input[type=search]:not(.browser-default):disabled+label,
 input[type=search]:not(.browser-default)[readonly="readonly"]+label,
 textarea.materialize-textarea:disabled+label,
 textarea.materialize-textarea[readonly="readonly"]+label {
-  color: $color-neutral;
+  color: var(--color-text-theme);
 }
 
 input[type=checkbox] {
@@ -418,7 +417,7 @@ input[type=checkbox] {
 
   // Disabled state label.
   &:disabled+label {
-    color: $color-neutral;
+    color: var(--color-text-theme);
     cursor: auto;
   }
 
