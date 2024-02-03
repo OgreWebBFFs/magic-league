@@ -17,7 +17,7 @@
         width: 40%;
         min-width: 295px;
         max-width: 400px;
-        background: rgba($color-light, .9);
+        background-color: hsla(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness), 0.9);
         padding: $section-padding;
         text-align: center;
         display: flex;

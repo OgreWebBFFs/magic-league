@@ -3,7 +3,8 @@
     max-width: 500px;
     margin:0 auto;
     text-align: center;
-    background: rgba($color-light, .25);
+    background-color: hsla(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness), 0.9);
+      
     &_user__btn {
         margin: 5px 0;
         width: 200px;
