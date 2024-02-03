@@ -1,12 +1,14 @@
 :root{
---spacer-sm: .25rem;
---spacer-md: .5rem;
---spacer-lg: .75rem;
---spacer-xl: 1rem;
-    @media only screen and (min-width: 560px) { 
-    --spacer-sm: .5rem;
-    --spacer-md: 1rem;
-    --spacer-lg: 1.25rem;
-    --spacer-xl: 1.5rem;
-    }
+    --spacer-xs: .125rem;
+    --spacer-sm: .25rem;
+    --spacer-md: .5rem;
+    --spacer-lg: .75rem;
+    --spacer-xl: 1rem;
+        @media only screen and (min-width: 560px) { 
+        --spacer-xs: .25rem;
+        --spacer-sm: .5rem;
+        --spacer-md: 1rem;
+        --spacer-lg: 1.25rem;
+        --spacer-xl: 1.5rem;
+        }
 }

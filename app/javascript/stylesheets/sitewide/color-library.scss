@@ -66,8 +66,6 @@ $background-color: $Parchment;
 $ranking-border-color: $Blush;
 // 
 
-
-
 :root {
     --green-hue-sat: 149, 100%;
     --green-lightness: 20%;
@@ -92,40 +90,35 @@ $ranking-border-color: $Blush;
 
     --desaturated-hue-sat: 0, 0%;
 
-
-
-
     //Needed for various css calcs 
-    --color-fill-theme-hue-sat: var(--mustard-hue-sat);
-    --color-fill-theme-lightness : var(--mustard-lightness);
-
+    
     --color-fill-accent-hue-sat: var(--eerie-hue-sat);
     --color-fill-accent-lightness: var(--eerie-lightness);
-
-    --color-fill-neutral-hue-sat: var(--eerie-black-hue-sat);
-    --color-fill-neutral-lightness : var(--eerie-black-lightness);
-
+    --color-fill-accent: hsl(var(--color-fill-accent-hue-sat),var(--color-fill-accent-lightness));
+    
     --color-fill-inverse-hue-sat: var(--white-hue-sat);
     --color-fill-inverse-lightness : var(--white-lightness); 
-
-    --color-text-neutral-hue-sat: var(--color-fill-neutral-hue-sat);
-    --color-text-neutral-lightness : var(--color-fill-neutral-lightness);
+    --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
+    
+    --color-fill-neutral-hue-sat: var(--eerie-black-hue-sat);
+    --color-fill-neutral-lightness : var(--eerie-black-lightness);
+    --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
+    
+    --color-fill-theme-hue-sat: var(--mustard-hue-sat);
+    --color-fill-theme-lightness : var(--mustard-lightness);
+    --color-fill-theme: hsl(var(--color-fill-theme-hue-sat),var(--color-fill-theme-lightness));
     
     --color-text-inverse-hue-sat: var(--color-fill-neutral-hue-sat);
     --color-text-inverse-lightness : var(--color-fill-neutral-lightness);
-
-
-    --color-fill-theme: hsl(var(--color-fill-theme-hue-sat),var(--color-fill-theme-lightness));
-
-    --color-fill-accent: hsl(var(--color-fill-accent-hue-sat),var(--color-fill-accent-lightness));
-
-    --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
-
-    --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
-    
-    --color-text-neutral: var(--color-fill-inverse);
     --color-text-inverse: var(--color-fill-neutral);
+    
+    --color-text-neutral-hue-sat: var(--color-fill-neutral-hue-sat);
+    --color-text-neutral-lightness : var(--color-fill-neutral-lightness);
+    --color-text-neutral: var(--color-fill-inverse); 
 
+    --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
+    --color-text-theme-lightness: 10%;
+    --color-text-theme: var(--color-fill-theme); 
 }
 
 

@@ -11,6 +11,7 @@ a.button,
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    gap: var(--spacer-xs);
     padding-block: var(--spacer-md);
     padding-inline: var(--spacer-lg);
     text-decoration: none;
@@ -35,6 +36,13 @@ a.button,
         padding-inline: var(--spacer-lg);
         padding-block: var(--spacer-xl);
     }
+
+    &--small {
+        font-size:.8rem;
+        padding-inline: var(--spacer-md);
+        padding-block: var(--spacer-sm);
+    }
+
 
 
     &:hover {
