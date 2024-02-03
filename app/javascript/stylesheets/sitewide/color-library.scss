@@ -8,11 +8,11 @@
 
     --site-background: var(--color-fill-inverse);
 
-    --white-hue-sat:  0, 0%;
-    --white-lightness: 100%;
+    --inverse-hue-sat:  0, 0%;
+    --inverse-lightness: 100%;
 
-    --black-hue-sat: 0, 0%;
-    --black-lightness: 0%;
+    --neutral-hue-sat: 0, 0%;
+    --neutral-lightness: 0%;
 
     --saturated-fill-lightness: 25%;
 
@@ -20,12 +20,12 @@
 
     //Derivative values 
 
-    --color-fill-inverse-hue-sat: var(--white-hue-sat);
-    --color-fill-inverse-lightness : var(--white-lightness); 
+    --color-fill-inverse-hue-sat: var(--inverse-hue-sat);
+    --color-fill-inverse-lightness : var(--inverse-lightness); 
     --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
     
-    --color-fill-neutral-hue-sat: var(--black-hue-sat);
-    --color-fill-neutral-lightness : var(--black-lightness);
+    --color-fill-neutral-hue-sat: var(--neutral-hue-sat);
+    --color-fill-neutral-lightness : var(--neutral-lightness);
     --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
     
     --color-fill-theme-hue-sat: var(--peacock-hue-sat);
@@ -54,8 +54,8 @@
     --color-text-inverse-lightness : var(--color-fill-neutral-lightness);
     --color-text-inverse: var(--color-fill-neutral);
     
-    --color-text-neutral-hue-sat: var(--color-fill-neutral-hue-sat);
-    --color-text-neutral-lightness : var(--color-fill-neutral-lightness);
+    --color-text-neutral-hue-sat: var(--color-fill-inverse-hue-sat);
+    --color-text-neutral-lightness : var(--color-fill-inverse-lightness);
     --color-text-neutral: var(--color-fill-inverse); 
 
     --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
