@@ -42,13 +42,7 @@
       font-size: 1.5rem;
     }
 
-    &--destroy {
-      background-color: $color-highlight-urgent;
-    }
 
-    &--submit {
-      background-color: var(--color-fill-theme);
-    }
   }
 
   &__reroll-updater {

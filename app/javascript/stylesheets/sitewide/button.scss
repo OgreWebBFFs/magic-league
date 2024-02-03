@@ -83,4 +83,12 @@ a.button,
     &--inactive {
         --background-color-hue-sat: var(--desaturated-hue-sat);
     }
+    &--negative {
+        --background-color-hue-sat: var(--color-fill-negative-hue-sat);
+        --background-color-lightness: var(--color-fill-negative-lightness);
+    }
+    &--positive {
+        --background-color-hue-sat: var(--color-fill-positive-hue-sat);
+        --background-color-lightness: var(--color-fill-positive-lightness);
+    }
 }

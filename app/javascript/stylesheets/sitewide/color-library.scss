@@ -1,89 +1,24 @@
-//Color Library
-$Rose-Gold: #bd8c7d;
-$Soft-Gold: #d1bfa7;
-$Silver: #8e8e90;
-$Onyx: #49494b;
-$Light-Grey: #9e9e9e;
-$Turquoise: #26a69a;
-$Soft-Orange: #efab45;
-$Crimson: #dc143c;
-$Living-Coral: #ff6f61;
-$Beluga: rgb(10, 8, 3);
-$Forest-Biome: #184a45;
-$Sunset-Orange: #fc4445;
-$Cornflower: #97caef;
-$Fountain-Blue: #55bcc9;
-$Goldenrod-Yellow: #fbaf08;
-$Lightning-Purple: #bf4aa8;
-$Lightning-Blue: #51d0de;
-
-$Woodsmoke: #0b0c10;
-$Caribbean-Green: #00d285;
-$Ebony-Clay: #1f2833;
-$Eucalytus: #27876f;
-$Biloba-Flower: #cbbaed;
-$Mulien-Teal: #91e5da;
-$Mulien-White: #e5f1ef;
-$Mulien-Black: #1a1b1d;
-$Mulien-Purple: hsl(276, 17%, 11%);
-$Mulien-Green: #42988c;
-$Engineering-International-Orange: #bf200e;
-$Orioles-Orange: #fa4113;
-$Dark-Tangerine: #fe9b13;
-$Mellow-Apricot: #efbd76;
-$Very-Very-Light-Orange: #fffaf5;
-$Very-Very-Light-Purple: #f9f5fc;
-$Persimon: #ec5800;
-$Veri-Peri:#6667AB;
-$Olivine: #85BE79;
-
-
-$Wrinkle-White: #d9d9d9;
-$Eerie-Black: #270C1D;
-$Faded-Bone:#e3dac9;
-$Bone:#F9F6EE;
-$Blood:#C70039;
-$Meat:#581845;
-$Organ: #5c1009;
-
-
-$Canopy: #335f5d;
-$Observatory: #04946c;
-$Parchment: #EFEADC;
-$Peachy-White: #FAF1EB;
-$Blush: #F5C2C8;
-$Watermelonade: #E84F5C;
-$Kirsch: #B11680;
-
-//Semantic Colors Names
-
-$color-highlight-urgent: $Orioles-Orange;
-$background-color: $Parchment;
-$ranking-border-color: $Blush;
-
-
 :root {
-
-    --saturated-fill-lightness: 25%;
+  //Current Theme Values
     --green-hue-sat: 149, 100%;
-   
     --mustard-hue-sat: 47, 100%;
-
     --scarlet-hue-sat: 343, 100%;
+    --plum-hue-sat:  265, 85%;
+    --peacock-hue-sat:  217, 100%;
+
+    --site-background: var(--color-fill-inverse);
 
     --white-hue-sat:  0, 0%;
     --white-lightness: 100%;
 
-    --plum-hue-sat:  265, 85%;
-    
-    --peacock-hue-sat:  217, 100%;
-
     --black-hue-sat: 0, 0%;
     --black-lightness: 0%;
 
+    --saturated-fill-lightness: 25%;
+
     --desaturated-hue-sat: 0, 0%;
 
-    //Needed for various css calcs 
+    //Derivative values 
 
     --color-fill-inverse-hue-sat: var(--white-hue-sat);
     --color-fill-inverse-lightness : var(--white-lightness); 

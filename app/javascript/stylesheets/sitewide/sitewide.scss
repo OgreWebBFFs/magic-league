@@ -152,7 +152,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background: $background-color;
+  background-color:var(--site-background);
 }
 
 
@@ -161,7 +161,7 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  background: $background-color;
+  background-color:var(--site-background);
   padding: $section-padding;
   min-height: 600px;
   color: var(--color-text-inverse);
@@ -218,7 +218,6 @@ body {
 
   &[class*="-title"] {
     background-color: var(--color-fill-neutral);
-    color: $Wrinkle-White;
     font-size: 1.6rem;
   }
 }
@@ -397,9 +396,10 @@ input[type=checkbox] {
     width: $checkbox-size;
     height: $checkbox-size;
     background: transparent;
-    border: 2px solid $Canopy;
+    border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
+    border-radius:var(--spacer-xs);
   }
 
   // Box hover

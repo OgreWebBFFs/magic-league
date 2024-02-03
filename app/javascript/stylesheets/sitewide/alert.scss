@@ -31,7 +31,7 @@
     }
   
     &.urgent {
-      background-color: $color-highlight-urgent;
+      background-color:var(--color-fill-alert);
     }
     @media only screen and (max-width: 650px) {
       width:100%;

@@ -61,12 +61,13 @@ const ObjectiveManagerRow = ({ id, description: initDescription, value: initValu
           className={classNames({
             'objectives-manager__controls-cell--edit': !isEditing,
             'objectives-manager__controls-cell--submit': isEditing,
+            'button--positive': isEditing
           })}
           onClick={() => (isEditing ? submitObjective() : setIsEditing(true))}
         >
           <i className={classNames('fa', { 'fa-pencil': !isEditing, 'fa-check': isEditing })} />
         </Button>
-        <Button className="objectives-manager__controls-cell--destroy" onClick={() => (isEditing ? cancelEdit() : destroyObjective())}>
+        <Button className="objectives-manager__controls-cell--destroy button--negative" onClick={() => (isEditing ? cancelEdit() : destroyObjective())}>
           <i className={classNames('fa', { 'fa-ban': !isEditing, 'fa-times': isEditing })} />
         </Button>
       </ControlsCell>

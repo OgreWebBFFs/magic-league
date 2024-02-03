@@ -282,7 +282,7 @@
         .empty-card-view{
             grid-column: 1 / span 3;
             text-align: center;
-            background: $background-color;
+            background-color: var(--site-background);
             &__btn{
                 width:200px; 
                 margin:5px auto;
@@ -359,7 +359,7 @@
             .new {
                 font-weight: 700;
                 margin-right: .75rem;
-                color: $color-highlight-urgent;
+                color: var(--color-fill-alert);
             }
         }
 
