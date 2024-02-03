@@ -208,7 +208,8 @@ body {
   text-overflow: ellipsis;
 
   &:nth-child(even) {
-    background: rgba($color-dark, .15);
+    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.15);
+      
   }
 
   &[class*="-headings"] {
@@ -286,73 +287,6 @@ select {
   border-radius: 2px;
   height: 3rem;
 }
-
-//Buttons 
-[class*="__btn"] {
-  text-decoration: none;
-  text-align: center;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  outline: 0;
-  border: none;
-  border-radius: 2px;
-  line-height: 36px;
-  -webkit-tap-highlight-color: transparent;
-  background: $color-highlight-import;
-  color: var(--color-text-inverse);
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  transition-property: all;
-  transition-timing-function: ease-in-out;
-  transition-duration: .3s;
-
-  &:hover {
-    background: lighten($color-highlight-import, 15%);
-    color: rgba($color-dark, .75);
-  }
-
-  &:focus { 
-    outline: 2px solid $color-dark;
-    background: lighten($color-highlight-import, 15%);
-  }
-
-  &.highlight-mid {
-    background: lighten($color-highlight-mid-import, 5%);
-
-    &:hover {
-      background: lighten($color-highlight-mid-import, 10%);
-    }
-  }
-}
-
-//TODO refactor close buttons to work with other button classes
-[class*="__close-button"] {
-  position: absolute;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  top: 5px;
-  right: 5px;
-  width:30px;
-  height:30px;
-  background: $color-highlight-import;
-  color: var(--color-text-neutral);
-  float: right;
-  margin: 0;
-  border: none;
-  cursor: pointer;
-
-  &:focus {
-    background: none;
-  }
-
-  .material-icons {
-    font-size: 30px;
-  }
-}
-
 // Text Inputs + Textarea
 ::-webkit-input-placeholder {
   color: $color-neutral;
@@ -476,7 +410,8 @@ input[type=checkbox] {
 
   // Box hover
   &:hover+label:before {
-    background: rgba($color-dark, 0.25);
+  background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.25);  
+
   }
 
   // Box checked
@@ -508,13 +443,13 @@ input[type=checkbox] {
    // Disabled box.
    &:disabled+label:before {
     box-shadow: none;
-    border: 2px solid $color-dark;
-    background: rgba($color-neutral, .25);
+    border: 2px solid var(--color-fill-neutral);
+    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.25);  
   }
 
   &:disabled+label:after {
     box-shadow: none;
-    color: $color-dark
+    color: var(--color-text-inverse)
   }
 
 }
@@ -605,7 +540,7 @@ input[type=checkbox] {
   backdrop-filter: blur(5px);
   top: 0;
   left: 0;
-  background-color: rgba($color-dark, .3);
+  background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.3);  
 }
 
 @media only screen and (max-width: 650px) {

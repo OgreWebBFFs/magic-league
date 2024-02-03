@@ -10,7 +10,7 @@
     .cell:first-child {
       @media only screen and (max-width: 850px) {
         color: var(--color-text-neutral);
-        background: $color-dark
+        background:var(--color-fill-neutral)
       }
     }
   }

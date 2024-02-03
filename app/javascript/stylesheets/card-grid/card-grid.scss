@@ -124,7 +124,7 @@
             z-index: -1;
             box-sizing: border-box;
             padding: 5px;
-            border: 10px solid $color-dark;
+            border: 10px solid var(--color-fill-neutral);
         }
         &--attribute {
             margin: 0 0 5px 0;
