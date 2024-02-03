@@ -67,19 +67,15 @@
     }
   }
 
-  &__apply-button {
+  &__apply-button,
+  &__clear-all-button {
     display: inline-block;
     width: 50%;
     margin: 1rem 0;
     align-self: center;
   }
-
   &__clear-all-button {
-    border: none;
-    background: none;
-    color: $color-accent;
-    border-bottom: 1px solid $color-accent;
-    align-self: center;
-    cursor: pointer;
+    margin: 0,
   }
+
 }

@@ -1,35 +1,35 @@
 a.button,
 .button {
+    --adjusted-lightness: var(--background-color-lightness);
     --background-color-hue-sat: var(--color-fill-theme-hue-sat);
     --background-color-lightness: var(--color-fill-theme-lightness);
     --background-color-opacity: 1;
     --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
-    --adjusted-lightness: var(--background-color-lightness);
     --text-color: var(--color-text-neutral);
-    
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    gap: var(--spacer-xs);
-    padding-block: var(--spacer-md);
-    padding-inline: var(--spacer-lg);
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    outline: 0;
-    border: none;
-    border-radius: 2px;
     -webkit-tap-highlight-color: transparent;
+    align-items: center;
     background-color:var(--background-color);
+    border-radius: 2px;
+    border: none;
+    box-sizing: border-box;
     color: var(--text-color);
     cursor: pointer;
+    display:flex;
+    gap: var(--spacer-xs);
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1.5;
+    outline: 0;
     overflow: hidden;
+    padding-block: var(--spacer-md);
+    padding-inline: var(--spacer-lg);
+    text-align: center;
+    text-decoration: none;
     text-overflow: ellipsis;
+    text-transform: uppercase;
+    transition-duration: .3s;
     transition-property: all;
     transition-timing-function: ease-in-out;
-    transition-duration: .3s;
     
     &--large {
         font-size: 1.2rem;
@@ -70,22 +70,13 @@ a.button,
         --text-color: var(--color-text-inverse);
     }
 
-
-    &--accent {
-        --background-color-hue-sat: var(--color-accent-hue-sat);
-        --background-color-lightness: calc(var(--color-accent-lightness));
-        --background-color: var(--color-accent);
-    }
-
-
-
     &--ghost {
         --background-color-opacity: 0;
+        --text-color: var(--color-text-inverse);
         &:hover,
         &:focus {
-            --background-color-opacity: 0;
+            --background-color-opacity: .25;
             --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
-            color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
         }
     }
     

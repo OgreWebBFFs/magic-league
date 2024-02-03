@@ -22,6 +22,7 @@
   height: $nav-height;
   padding: 0 10%;
   display: flex;
+  gap: var(--spacer-md);
   align-items: center;
   justify-content: flex-end;
 
@@ -57,6 +58,7 @@
   &__links {
     margin-right: 1.75rem;
     display: flex;
+    gap: var(--spacer-xs);
     align-items: center;
     height: 100%;
     text-align: center;
@@ -81,10 +83,6 @@
     color: var(--color-text-neutral);
     display: flex;
     gap: var(--spacer-xs);
-    &:hover,
-    &:focus {
-      background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), .2);
-    }
     .notification {
       color: var(--color-fill-alert)
     }
@@ -156,22 +154,15 @@
   }
 
   &__mobile-menu-toggle {
-    padding: var(--spacer-sm);
-    font-size: 1.8rem;
-    margin: 0 var(--spacer-sm);
     gap:var(--spacer-sm);
     i.notification {
       color: var(--color-fill-alert)
     }
   }
-
-  &__match-logger,
-  &__trade-logger {
-    &-button {
-      padding: 0.5rem;
+  &__mobile-menu-toggle,
+  &__match-logger-button,
+  &__trade-logger-button {
       font-size: 1.8rem;
-      margin: 0 0.5rem;
-    }
   }
 
   &--mobile {

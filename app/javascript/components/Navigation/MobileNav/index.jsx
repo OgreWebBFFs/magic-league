@@ -11,14 +11,13 @@ const MobileNav = ({ links }) => {
     return (
       <li className="nav__link-wrapper" key={`${link.displayName}-mobilenav`}>
         <Button className="nav__link button--small button--ghost" href={`/${link.href}`}>{link.displayName}  {link.notification && <i className="fas fa-exclamation notification" />}</Button>
-       
       </li>
     );
   });
 
   return (
     <li className="nav__dropdown-wrapper">
-      <Button className="nav__mobile-menu-toggle">
+      <Button className="nav__mobile-menu-toggle button--small">
         <i className="fas fa-caret-down" />
         {notification && <i className="fas fa-exclamation notification" />}
       </Button>

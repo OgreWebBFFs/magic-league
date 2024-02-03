@@ -97,7 +97,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
           : <DesktopNav links={links} />}
       </ul>
       <Button
-        className="nav__match-logger-button"
+        className="nav__match-logger-button button--small"
         onClick={() => {
           setDrawerContentSelector('match-logger');
           setIsDrawerOpen(true);
@@ -106,7 +106,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
         <i className="fas fa-magic" />
       </Button>
       <Button
-        className="nav__trade-logger-button"
+        className="nav__trade-logger-button button--small"
         onClick={() => {
           setDrawerContentSelector('trade-logger');
           setIsDrawerOpen(true);
