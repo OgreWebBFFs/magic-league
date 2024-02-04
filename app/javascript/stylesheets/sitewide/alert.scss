@@ -3,7 +3,7 @@
     left: -10%;
     align-items: center;
     justify-content: center;
-    top: $nav-height;
+    top: var(--nav-height);
     position: absolute;
     color: var(--color-text-inverse);
     background-color: var(--color-fill-theme-highlight);

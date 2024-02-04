@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Button from '../Button';
 import ViewToggleSwitch from '../ViewToggleSwitch';
@@ -15,14 +16,28 @@ const Rankings = ({
   unrankedPlayers,
   eventRankedPlayers,
   eventUnrankedPlayers,
+  draffle
 }) => {
   const [showRankings, setShowRankings] = useState(true);
   const [isSeasonView] = useIsSeasonView();
+  const draffleButtonRef = useRef();
+  const dateWrapperRef = useRef();
+  const isMobile = useIsMobile();
+
+  useEffect(()=>{
+    const draffleButtonHeight = draffleButtonRef?.current?.offsetHeight;
+    const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
+    document.documentElement.style.setProperty('--draffle-button-height', draffleButtonHeight);
+    document.documentElement.style.setProperty('--date-wrapper-height', dateWrapperHeight);
+  },[isMobile]) 
 
   return (
-    <>
+    <div class="rankings__page">
+      {draffle && 
+      <Button ref={draffleButtonRef} className="button button--secondary draffle-view-button" href={`/draffles/${draffle}`}>Check out the current draffle</Button>
+    }
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
-        <div class="rankings__date-wrapper">
+        <div ref={dateWrapperRef} className="rankings__date-wrapper">
           <DatePicker date={date} />
           <Button className={classNames('rankings__toggle-visbility-button rankings__toggle-visbility-button--off')} onClick={() => setShowRankings(false)}>
             <i className="fas fa-paint-brush" />
@@ -68,7 +83,7 @@ const Rankings = ({
           <i className="fas fa-list" />
         </Button>
       }
-    </>
+    </div>
   );
 };
 

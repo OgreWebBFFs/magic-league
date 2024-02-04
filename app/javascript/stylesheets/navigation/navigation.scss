@@ -19,17 +19,15 @@
   --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
   background: linear-gradient(56deg, var(--nav-corner-color), var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--nav-corner-color));
   width: 100%;
-  height: $nav-height;
-  padding: 0 10%;
+  padding: var(--spacer-sm) 10%;
   display: flex;
   gap: var(--spacer-md);
   align-items: center;
   justify-content: flex-end;
 
   &__logo {
-    height: 100%;
     margin-right: auto;
-    padding: 2px 0;
+    width: 100px;
   
     svg {
       width: auto;
@@ -111,7 +109,7 @@
     transform: scaleY(0) translateX(-50%);
     transform-origin: top;    
     transition-delay: 200ms;
-    top: $nav-height;
+    top: var(--nav-height);
     opacity: 0;
     z-index: 99;
     pointer-events: none;
@@ -119,7 +117,7 @@
     0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
  
     transition: 0.2s;
-    max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
+    max-height: calc(100vh - var(--nav-height) - var(--footer-height));
    
     .nav__link-wrapper {
       margin: 0;
@@ -166,7 +164,7 @@
   }
 
   &--mobile {
-    padding: 0 5%;
+    padding-inline: 5%;
     .nav__logo {
       width: 32px;
       overflow: hidden;

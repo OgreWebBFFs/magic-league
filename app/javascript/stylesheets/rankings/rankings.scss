@@ -1,9 +1,10 @@
-
+:root{
+  --ranking-border-stroke-width: 2px;
+}
 .rankings {
   text-align: center;
-  $ranking-board-heading: 60px;
+
   $month-selector: 45px;
-  $border-stroke-width: 2px;
   transition-property: opacity;
   transition-duration: 100ms;
   transition-timing-function: ease-in-out;
@@ -13,11 +14,12 @@
     gap:var(--spacer-sm);
     align-items: center;
     justify-content: center;
+    margin-top: var(--spacer-md);
+    margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
   }
   &__date_form {
     display: flex;
     justify-content: center;
-    margin: 10px 0;
     transition-property: opacity;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
@@ -35,11 +37,11 @@
 
   &__border-wrapper {
     width: 100%;
-    height: calc(100% + 2 * #{$border-stroke-width}); 
+    height: calc(100% + 2 * var(--ranking-border-stroke-width)); 
     position: absolute;
     transform: translateX(-50%);
     left:50%;
-    top: -$border-stroke-width;
+    top: calc(-1 * var(--ranking-border-stroke-width));
     pointer-events: none;
   }
 
@@ -50,13 +52,13 @@
     animation-timing-function: ease-in-out;
     &--top,
     &--bottom {
-      height: $border-stroke-width;
+      height: var(--ranking-border-stroke-width);
       width:100%;
       animation-name: growHorz;
     }
     &--right, 
     &--left {
-      width: $border-stroke-width;
+      width: var(--ranking-border-stroke-width);
       height:100%;
       animation-name: growVert;
     }
@@ -81,8 +83,8 @@
 
   &__wrapper {
     box-sizing: border-box;
-    margin: 10px auto;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - (2*#{$section-padding}));
+    margin: 0 auto;
+    height: calc(100vh - var(--nav-height) - var(footer-height) - #{$month-selector} - (2*#{var(--spacer-section)}));
     position: relative;
     max-width:350px;
   }
@@ -184,7 +186,7 @@
   }
 
   &__scroll-catcher {
-    $contract-catch-by:calc(100% - 2 * #{$border-stroke-width}); 
+    $contract-catch-by:calc(100% - 2 * var(--ranking-border-stroke-width)); 
     height: 100%;
     width: $contract-catch-by;
     overflow-x: hidden;

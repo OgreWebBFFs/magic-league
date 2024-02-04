@@ -18,7 +18,7 @@
         min-width: 295px;
         max-width: 400px;
         background-color: hsla(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness), 0.9);
-        padding: $section-padding;
+        padding: var(--spacer-section);
         text-align: center;
         display: flex;
         flex-direction: column;

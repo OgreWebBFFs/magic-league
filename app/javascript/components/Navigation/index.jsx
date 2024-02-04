@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Logo from '../Logo';
@@ -22,6 +22,13 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContetSelector, setDrawerContentSelector] = useState('match-logger');
   const isMobile = useIsMobile();
+  const navRef = useRef();
+  useEffect(()=>{
+    const navHeight = navRef?.current?.offsetHeight;
+    document.documentElement.style.setProperty('--nav-height', navHeight);
+    const footerHeight = 33;
+    document.documentElement.style.setProperty('--footer-height', navHeight);
+  }, [isMobile]) 
 
   let links = [
     {
@@ -87,7 +94,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
   }
 
   return (
-    <nav id="top-nav" className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
+    <nav ref={navRef} id="top-nav" className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
       <a href="/" className="nav__logo">
         <Logo />
       </a>
