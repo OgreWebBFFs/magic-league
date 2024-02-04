@@ -22,16 +22,20 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
   const [receiveCards, setReceiveCards] = useState([]);
   const [giveCards, setGiveCards] = useState([]);
   const [xhrResponse, setXhrResponse] = useState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const postBody = buildTradeData(tradePartner.id, receiveCards, currentUserId, giveCards);
       const response = await createTrade(postBody);
       setXhrResponse(response);
       window.location.reload();
+      setIsSubmitting(false);
     } catch (error) {
       setXhrResponse(error.data);
+      setIsSubmitting(false);
     }
   };
   return (
@@ -48,7 +52,7 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
         <CardSelect onUpdate={setReceiveCards} />
         <p>What are you offering</p>
         <CardSelect onUpdate={setGiveCards} />
-        <Button type="submit" className="drawer_submit__button">Submit</Button>
+        <Button type="submit" className="drawer_submit__button" disabled={isSubmitting}>{`Submit${isSubmitting ? 'ing...' : ''}`}</Button>
       </form>
       {xhrResponse && (
         <StatusMessage
