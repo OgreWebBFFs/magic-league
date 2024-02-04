@@ -1,4 +1,8 @@
+require_relative 'trade_alert_messages'
+
 class TradeAlerts
+  include TradeAlertMessages
+
 
   def initialize(bot)
     @bot = bot
@@ -6,13 +10,7 @@ class TradeAlerts
 
   def trade_requested trade, review_link
     to_user = trade.to
-    msg = <<~TEXT
-      Hey there 👋 I'm just here to let you know you've got a trade request!
-
-      #{trade.to_user_s}
-
-      [Click here](#{review_link}) to review your trade
-    TEXT
+    msg = TRADE_REQUESTED % {trade: trade.to_user_s, review_link: review_link}
     discord_user = @bot.user(to_user.discord_id.to_i)
     discord_user.pm(msg)
   end
@@ -20,13 +18,7 @@ class TradeAlerts
   def trade_accepted trade
     to_user = trade.to
     from_user = trade.from
-    msg = <<~TEXT
-      Your trade request to #{to_user.name} has been ✅*ACCEPTED*✅ 
-
-      #{trade.from_user_s}
-
-      Your card collection and trade allotments have been updated accordingly. Congratulations 🎉
-    TEXT
+    msg = TRADE_ACCEPTED % {user: to_user.name, trade: trade.from_user_s}
     discord_user = @bot.user(from_user.discord_id.to_i)
     discord_user.pm(msg)
   end
@@ -34,13 +26,7 @@ class TradeAlerts
   def trade_rejected trade
     to_user = trade.to
     from_user = trade.from
-    msg = <<~TEXT
-      The following trade request to #{to_user.name} was ❌*REJECTED*❌
-
-      #{trade.from_user_s}
-
-      You can reach out to them on discord @#{to_user.discord_username} to work out another deal.
-    TEXT
+    msg = TRADE_REJECTED % {user: to_user.name, trade: trade.from_user_s, discord: to_user.discord_username}
     discord_user = @bot.user(from_user.discord_id.to_i)
     discord_user.pm(msg)
   end
@@ -48,22 +34,9 @@ class TradeAlerts
   def trade_error trade, invalid_trade_targets
     to_user = trade.to
     from_user = trade.from
-    to_msg = <<~TEXT
-      There was an ❗*ERROR*❗ processing a trade you were involved in.
-
-      #{trade.to_user_s}
-
-      Cannot be processed for the following reasons:
-      #{invalid_trade_targets.map{ |target| "- #{target[:player]} has #{target[:reason]}: #{target[:card]}"}.join("\n")}
-    TEXT
-    from_msg = <<~TEXT
-      There was an ❗*ERROR*❗ processing a trade you were involved in.
-
-      #{trade.from_user_s}
-
-      Cannot be processed for the following reasons:
-      #{invalid_trade_targets.map{ |target| "- #{target[:player]} has #{target[:reason]}: #{target[:card]}"}.join("\n")}
-    TEXT
+    invalid_trade_targets_s = invalid_trade_targets.map{ |target| "- #{target[:player]} has #{target[:reason]}: #{target[:card]}"}.join("\n")
+    to_msg = TRADE_ERROR % {trade: trade.to_user_s, invalid_targets: invalid_trade_targets_s}
+    from_msg = TRADE_ERROR % {trade: trade.from_user_s, invalid_targets: invalid_trade_targets_s}
     to_discord_user = @bot.user(to_user.discord_id)
     from_discord_user = @bot.user(from_user.discord_id)
     to_discord_user.pm(to_msg)
