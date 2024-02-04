@@ -1,6 +1,6 @@
 <%= react_component("CyclingBackground", {bgPath:get_random_bg_image}) %>
 <% draffle = Draffle.all.first %>
-<% if draffle.nil? %>
+<% if !draffle.nil? %>
   <%= link_to "/draffles/#{draffle.id}", class: "button button--secondary draffle-view-button" do %>
     Check out the current draffle!
   <% end %>
