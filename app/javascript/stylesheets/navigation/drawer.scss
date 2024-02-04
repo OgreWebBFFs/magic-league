@@ -26,6 +26,7 @@
 
     h3 {
       margin-top: 0;
+      font-size: 2rem;
     }
 
     p {
@@ -42,7 +43,9 @@
   } 
 
   &__close-button {
-    margin:0;
+   position:absolute;
+   top:var(--spacer-sm);
+   right:var(--spacer-sm);
   }
 
   &--open {
@@ -52,7 +55,7 @@
   @media only screen and (max-width: 400px) {
     &__section {
       h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
 
       p {
