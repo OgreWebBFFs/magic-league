@@ -29,7 +29,7 @@ const Drawer = ({ children, isOpen, close }) => {
         <>
           <div className="drawer__overlay overlay" onClick={handleClose} role="none" />
           <div className="drawer__section" role="dialog">
-            <Button className="drawer__close-button button--small button--secondary" onClick={handleClose}>
+            <Button className="drawer__close-button button--small button--ghost " onClick={handleClose}>
               <i className="fas fa-times" />
             </Button>
             {children}

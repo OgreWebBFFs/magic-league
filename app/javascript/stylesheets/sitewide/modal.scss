@@ -43,8 +43,8 @@
 
     &__close-button{
         position: absolute;
-        right:-25px;
-        top: -25px;
+        right: var(--spacer-xs);
+        top: var(--spacer-xs);
     }
 
     form {
