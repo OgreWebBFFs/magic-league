@@ -7,7 +7,6 @@ import {
 } from '../../../CardGrid';
 import EmptyState from '../EmptyState';
 import RemoveWish from './RemoveWish';
-import CallToAction from './CallToAction';
 import { Cell, Row } from '../../../Table';
 
 const Wishlist = ({ currentUserId, user, isListView }) => {
@@ -21,7 +20,6 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
       <EmptyState
         isOwner={isOwner}
         user={user}
-        CtaComponent={CallToAction}
       />
       )}
       {(isListView && !isEmpty) && (

@@ -150,11 +150,6 @@
                 margin: 0 auto var(--spacer-section);
                 align-items: center;
                 padding-right: 0;
-
-                &_edit__btn {
-                    padding: 0 10px;
-                    width: 200px;
-                }
             }
 
             &__trades {
@@ -188,7 +183,7 @@
         --button-background-color-hue-sat: var(--tab-heading-color-hue-sat);
         --button-background-color-lightness: 0%;
         color: var(--color-text-neutral);
-        margin-right: 5px;
+        margin-right: var(--spacer-sm);
         margin-bottom:0;
         margin-left:0;
         width: 150px;
@@ -202,7 +197,7 @@
 
         &:hover {
             --button-background-color-opacity: 1;
-            color: var(--color-text-neutral);
+        
         }
 
         &.active {
@@ -216,12 +211,6 @@
                 align-self: start;
             }
 
-            &_edit__btn {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 200px;
-                flex: 0 0 auto;
-            }
         }
     }
 
@@ -237,30 +226,26 @@
         display: flex;
         background-color: hsl(var(--tab-heading-color-hue-sat), var(--tab-heading-color-lightness));
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
+        padding-inline: var(--spacer-sm);
+        padding-top: var(--spacer-sm);
         
     }
 
-    &__cards-action {
-        margin: 5px; 
-    }
 
     &__filter-action {
         position: absolute;
-        width: 6rem;
-        margin: 0;
-        left: calc(50% - 3rem);
-    }
+        transform: translateX(-50%);
+        left: 50%;
+    } 
 
     &__card-view-toggles {
         display: flex;
-        margin-right: auto;
         flex-grow: 1;
+        gap:var(--spacer-xs);
     }
 
-    &__card-view-toggle {
-        margin: 5px;
-    }
+
 
 
     &__card-view {   
@@ -283,7 +268,7 @@
             grid-column: 1 / span 3;
             text-align: center;
             background-color: var(--site-background);
-            &__btn{
+            &__button{
                 width:200px; 
                 margin:5px auto;
             }
