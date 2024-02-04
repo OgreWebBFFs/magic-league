@@ -8,20 +8,12 @@
   transition-duration: 100ms;
   transition-timing-function: ease-in-out;
 
-
-  &__title {
-    font-size: 20px;
-    margin: 0 auto;
-    font-variant: small-caps;
-    font-weight: 700;
-    text-transform: unset;
-    color: var(--color-text-neutral);
-    text-align: center;
-    &:hover{
-      --background-opacity: 0;
-    }
+  &__date-wrapper {
+    display: flex;
+    gap:var(--spacer-sm);
+    align-items: center;
+    justify-content: center;
   }
-
   &__date_form {
     display: flex;
     justify-content: center;
@@ -29,12 +21,11 @@
     transition-property: opacity;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
-
-    select {
-
-      flex: 0 0 100px;
-      margin: 0 5px;
+    gap: var(--spacer-sm);
+    #match_date_month {
+      flex: 1 0 100px;
     }
+
 
     &--hidden {
       opacity: 0;
@@ -91,7 +82,7 @@
   &__wrapper {
     box-sizing: border-box;
     margin: 10px auto;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (3*#{$section-padding}));
+    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - (2*#{$section-padding}));
     position: relative;
     max-width:350px;
   }
@@ -220,10 +211,14 @@
   
   &__toggle-visbility-button {
     position: fixed;
-    bottom: 5%;
+    bottom: 7%;
     right:5%;
     animation:  mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite; 
-
+    &--off{
+      position: relative;
+      bottom: unset;
+      right: unset;
+    }
   }
 
   &--hidden {
