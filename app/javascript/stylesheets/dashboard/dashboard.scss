@@ -184,9 +184,9 @@
     }
 
     &__tab {
-        --background-color-opacity: 0.6;
-        --background-color-hue-sat: var(--tab-heading-color-hue-sat);
-        --background-color-lightness: 0%;
+        --button-background-color-opacity: 0.6;
+        --button-background-color-hue-sat: var(--tab-heading-color-hue-sat);
+        --button-background-color-lightness: 0%;
         color: var(--color-text-neutral);
         margin-right: 5px;
         margin-bottom:0;
@@ -201,12 +201,12 @@
         }
 
         &:hover {
-            --background-color-opacity: 1;
+            --button-background-color-opacity: 1;
             color: var(--color-text-neutral);
         }
 
         &.active {
-            --background-color-opacity: 1;
+            --button-background-color-opacity: 1;
         }
 
         @media only screen and (max-width: 850px) {

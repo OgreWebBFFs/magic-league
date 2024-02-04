@@ -101,13 +101,12 @@
     justify-content: center;
   }
 
-
-  &__user-button {
+  .rankings__user-button.button {
     color: var(--color-text-neutral);
     width:100%;
     max-width: 300px;
-    margin: 5px 0;
-    padding: 5px 10px 5px 5px;
+    margin: var(--spacer-sm) 0;
+    padding: var(--spacer-sm);
     height: auto;
     display: flex;
     font-size: 12px;
@@ -118,14 +117,14 @@
     animation-timing-function: ease-out;
     -webkit-animation-timing-function: ease-out;
     visibility: visible !important;
+  }
 
-    &--unranked {
-       opacity: .75;
+  .rankings__user-button.rankings__user-button--unranked.button{
+       --button-background-color-opacity: .75;
        &:hover {
-         opacity: 1;
+        --button-background-color-opacity: 1;
        }
-    }
-
+    
   }
 
   &__player {
@@ -218,6 +217,7 @@
       position: relative;
       bottom: unset;
       right: unset;
+      animation: none;
     }
   }
 

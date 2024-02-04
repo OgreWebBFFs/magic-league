@@ -1,20 +1,21 @@
 a.button,
 .button {
-    --adjusted-lightness: var(--background-color-lightness);
-    --background-color-hue-sat: var(--color-fill-theme-hue-sat);
-    --background-color-lightness: var(--color-fill-theme-lightness);
-    --background-color-opacity: 1;
-    --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
-    --text-color: var(--color-text-neutral);
+    --button-adjusted-lightness: var(--button-background-color-lightness);
+    --button-background-color-hue-sat: var(--color-fill-theme-hue-sat);
+    --button-background-color-lightness: var(--color-fill-theme-lightness);
+    --button-background-color-opacity: 1;
+    --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+    --button-text-color: var(--color-text-neutral);
     -webkit-tap-highlight-color: transparent;
     align-items: center;
-    background-color:var(--background-color);
+    background-color:var(--button-background-color);
     border-radius: 2px;
     border: none;
     box-sizing: border-box;
-    color: var(--text-color);
+    color: var(--button-text-color);
     cursor: pointer;
-    display:flex;
+    display: flex;
+    font-weight: 400;
     gap: var(--spacer-xs);
     justify-content: center;
     letter-spacing: .5px;
@@ -46,49 +47,49 @@ a.button,
 
 
     &:hover:not(:disabled) {
-        --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
-        background-color:(hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity)));
+        --button-adjusted-lightness:calc(var(--button-background-color-lightness) + 15%);
+        background-color:(hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity)));
     }
 
     &:disabled {
 
-        --background-color-hue-sat: var(--color-fill-neutral-hue-sat);
-        --background-color-lightness: var(--color-fill-neutral-lightness);
-        --background-color-opacity: .25;
+        --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --button-background-color-lightness: var(--color-fill-neutral-lightness);
+        --button-background-color-opacity: .25;
     }
     &--secondary {
-        --background-color-hue-sat: var(--color-fill-neutral-hue-sat);
-        --background-color-lightness: var(--color-fill-neutral-lightness);
-        --background-color: var(--color-fill-neutral);
-        --text-color: var(--color-text-neutral);
+        --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --button-background-color-lightness: var(--color-fill-neutral-lightness);
+        --button-background-color: var(--color-fill-neutral);
+        --button-text-color: var(--color-text-neutral);
     }
 
     &--inverse {
-        --background-color-hue-sat: var(--color-fill-inverse-hue-sat);
-        --background-color-lightness: var(--color-fill-inverse-lightness);
-        --background-color: var(--color-fill-inverse);
-        --text-color: var(--color-text-inverse);
+        --button-background-color-hue-sat: var(--color-fill-inverse-hue-sat);
+        --button-background-color-lightness: var(--color-fill-inverse-lightness);
+        --button-background-color: var(--color-fill-inverse);
+        --button-text-color: var(--color-text-inverse);
     }
 
     &--ghost {
-        --background-color-opacity: 0;
-        --text-color: var(--color-text-inverse);
+        --button-background-color-opacity: 0;
+        --button-text-color: var(--color-text-inverse);
         &:hover,
         &:focus {
-            --background-color-opacity: .25;
-            --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
+            --button-background-color-opacity: .25;
+            --button-adjusted-lightness:calc(var(--button-text-color-lightness) + 25%);
         }
     }
     
     &--inactive {
-        --background-color-hue-sat: var(--desaturated-hue-sat);
+        --button-background-color-hue-sat: var(--desaturated-hue-sat);
     }
     &--negative {
-        --background-color-hue-sat: var(--color-fill-negative-hue-sat);
-        --background-color-lightness: var(--color-fill-negative-lightness);
+        --button-background-color-hue-sat: var(--color-fill-negative-hue-sat);
+        --button-background-color-lightness: var(--color-fill-negative-lightness);
     }
     &--positive {
-        --background-color-hue-sat: var(--color-fill-positive-hue-sat);
-        --background-color-lightness: var(--color-fill-positive-lightness);
+        --button-background-color-hue-sat: var(--color-fill-positive-hue-sat);
+        --button-background-color-lightness: var(--color-fill-positive-lightness);
     }
 }

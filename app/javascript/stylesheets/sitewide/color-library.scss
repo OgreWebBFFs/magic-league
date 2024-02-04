@@ -15,7 +15,7 @@
     --neutral-lightness: 0%;
 
     --saturated-fill-lightness: 25%;
-
+    --color-shift-basis: 1;
     --desaturated-hue-sat: 0, 0%;
 
     //Derivative values 
@@ -25,7 +25,7 @@
     --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
     
     --color-fill-neutral-hue-sat: var(--neutral-hue-sat);
-    --color-fill-neutral-lightness : var(--neutral-lightness);
+    --color-fill-neutral-lightness: var(--neutral-lightness);
     --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
     
     --color-fill-theme-hue-sat: var(--peacock-hue-sat);
