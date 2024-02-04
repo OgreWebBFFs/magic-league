@@ -10,6 +10,22 @@ import DatePicker from './DatePicker';
 import PlayerRanking from './PlayerRanking';
 import EventPlayerRanking from './EventPlayerRanking';
 
+const setTheme = (theme) => {
+  document.documentElement.style.setProperty('--color-fill-theme-hue-sat', `var(--${theme}-hue-sat)`)
+}
+
+const setLightMode = () => {
+  document.documentElement.style.setProperty('--color-fill-neutral-lightness', `100%`);
+  document.documentElement.style.setProperty('--color-fill-inverse-lightness', `0%`)
+  document.documentElement.style.setProperty('--saturated-fill-lightness', `75%`)
+}
+const setDarkMode = () => {
+  document.documentElement.style.setProperty('--color-fill-neutral-lightness', `0%`);
+  document.documentElement.style.setProperty('--color-fill-inverse-lightness', `100%`)
+  document.documentElement.style.setProperty('--saturated-fill-lightness', `25%`)
+}
+const clueThemes = ['mustard', 'scarlet', 'peacock', 'plum', 'green']
+
 const Rankings = ({
   date,
   rankedPlayers,
@@ -35,13 +51,20 @@ const Rankings = ({
 
   return (
     <div class="rankings__page">
-      {draffle && 
+      <div style={{display: 'flex', gap: 'var(--spacer-md)', marginBottom: 'var(--spacer-lg)', justifyContent: 'center'}}>
+      {
+        clueThemes.map(theme => <Button className='button--small' style={{backgroundColor: `hsl(var(--${theme}-hue-sat), 25%)`}} onClick={()=>{setTheme(theme)}}> {theme}</Button>) 
+      }
+      <Button  className='button--small' style={{backgroundColor: `black`, color: 'white'}} onClick={()=>{setDarkMode()}}>Dark</Button>
+      <Button  className='button--small' style={{backgroundColor: `white`, color: 'black'}} onClick={()=>{setLightMode()}}>Light</Button>
+      </div>
+      { draffle && 
       <Button ref={draffleButtonRef} className="button button--secondary draffle-view-button" href={`/draffles/${draffle}`}>Check out the current draffle</Button>
-    }
+      }
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
         <div ref={dateWrapperRef} className="rankings__date-wrapper">
           <DatePicker date={date} />
-          <Button className={classNames('rankings__toggle-visbility-button rankings__toggle-visbility-button--off')} onClick={() => setShowRankings(false)}>
+          <Button className={classNames('rankings__toggle-visbility-button rankings__toggle-visbility-button--off button--small button--secondary')} onClick={() => setShowRankings(false)}>
             <i className="fas fa-paint-brush" />
           </Button>
           </div>
