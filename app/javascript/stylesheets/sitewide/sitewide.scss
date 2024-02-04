@@ -1,15 +1,17 @@
 //Static Reused Numbers
-$nav-height: 64px;
-$footer-height: 30px;
+
 $section-padding: 25px;
 $section-margin: 25px;
 $animation-delay: 2s;
-$title-height: 50px;
-$checkbox-size: 25px;
-@media only screen and (max-width: 850px) { 
-  $footer-height: 45px;
-}
 
+
+:root {
+  --nav-height: 0;
+  --footer-height: 0;
+  --draffle-button-height: 0;
+  --date-wrapper-height: 0;
+  --checkbox-size: 25px;
+}
 //Text Treatments
 a {
   text-decoration: none;
@@ -170,7 +172,7 @@ body {
   //Section Types 
   &.full-page {
     background: transparent;
-    min-height: calc(100vh - #{$nav-height} - #{$footer-height});
+    min-height: calc(100vh -  var(--nav-height) - var(--footer-height));
   }
 }
 
@@ -379,7 +381,7 @@ textarea.materialize-textarea[readonly="readonly"]+label {
 input[type=checkbox] {
   position: absolute; // take it out of document flow
   opacity: 0; // hide it
-
+  
 
   &+label {
     position: relative;
@@ -393,8 +395,8 @@ input[type=checkbox] {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     background: transparent;
     border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
     -webkit-tap-highlight-color: transparent;
@@ -426,13 +428,13 @@ input[type=checkbox] {
     position: absolute;
     left: 0px;
     top: 0px;
-    font-size: calc#{$checkbox-size*.8};
+    font-size: calc(var(--checkbox-size) * .6);
     display: flex;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     align-items: center;
     justify-content: center;
-    color: var(--color-text-inverse);
+    color: var(--color-text-neutral);
   }
    // Disabled box.
    &:disabled+label:before {
