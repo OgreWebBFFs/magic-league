@@ -6,22 +6,12 @@
     top: $nav-height;
     position: absolute;
     color: var(--color-text-inverse);
-    background-color: var(--color-fill-theme-highlight);;
+    background-color: var(--color-fill-theme-highlight);
     text-align: center;
     display: none;
-    padding: 10px;
+    gap: var(--spacer-md);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-    &__close-button {
-      position: relative;
-      background: transparent;
-      color: var(--color-text-inverse);
-      margin-left: 10px;
-      top: initial;
-      right: initial;
-      float: none;
-    }
-  
     &.active {
       display: flex;
     }
