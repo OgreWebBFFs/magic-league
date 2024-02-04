@@ -1,9 +1,5 @@
 //Static Reused Numbers
 
-$section-padding: 25px;
-$section-margin: 25px;
-$animation-delay: 2s;
-
 
 :root {
   --nav-height: 0;
@@ -11,6 +7,7 @@ $animation-delay: 2s;
   --draffle-button-height: 0;
   --date-wrapper-height: 0;
   --checkbox-size: 25px;
+  --section-spacer: var(--spacer-xl)
 }
 //Text Treatments
 a {
@@ -160,14 +157,12 @@ body {
 
 [class*="__section"],
 .section {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-inline: var(--section-spacer);
+  padding-block: var(--section-spacer);
   width: 100%;
   background-color:var(--site-background);
-  padding: $section-padding;
   min-height: 600px;
   color: var(--color-text-inverse);
-
 
   //Section Types 
   &.full-page {

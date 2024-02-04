@@ -3,8 +3,6 @@
 }
 .rankings {
   text-align: center;
-
-  $month-selector: 45px;
   transition-property: opacity;
   transition-duration: 100ms;
   transition-timing-function: ease-in-out;
@@ -84,7 +82,7 @@
   &__wrapper {
     box-sizing: border-box;
     margin: 0 auto;
-    height: calc(100vh - var(--nav-height) - var(footer-height) - #{$month-selector} - (2*#{var(--spacer-section)}));
+    height: calc(100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - (2 * var(--spacer-section)));
     position: relative;
     max-width:350px;
   }
@@ -186,9 +184,8 @@
   }
 
   &__scroll-catcher {
-    $contract-catch-by:calc(100% - 2 * var(--ranking-border-stroke-width)); 
     height: 100%;
-    width: $contract-catch-by;
+    width: calc(100% - 2 * var(--ranking-border-stroke-width));
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: thin;
