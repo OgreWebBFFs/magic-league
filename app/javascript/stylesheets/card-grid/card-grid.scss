@@ -61,7 +61,6 @@
             position: absolute;
             width:100%;
             height:100%;
-            color: var(--color-text-inverse);
             background: var(--color-fill-neutral);
             border-radius: 3%;
             overflow: hidden;
@@ -70,9 +69,12 @@
             box-sizing: border-box;
             padding: 5px;
             border: 10px solid var(--color-fill-neutral);
+            p {
+                color:var(--color-text-neutral);
+            }
         }
         &--attribute {
-            margin: 0 0 5px 0;
+            margin: 0 0 var(--spacer-sm) 0;
             text-align: left;
         }
 
