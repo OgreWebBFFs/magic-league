@@ -2,12 +2,17 @@
 
 
 :root {
-  --nav-height: 0;
-  --footer-height: 0;
+  --nav-height: 40px;
+  --footer-height: 35px;
   --draffle-button-height: 0;
   --date-wrapper-height: 0;
   --checkbox-size: 25px;
-  --section-spacer: var(--spacer-xl)
+  --spacer-section: var(--spacer-xl);
+
+  @media only screen and (min-width: 850px) { 
+    --nav-height: 50px;
+    --footer-height: 45px;
+  }
 }
 //Text Treatments
 a {
@@ -157,8 +162,8 @@ body {
 
 [class*="__section"],
 .section {
-  padding-inline: var(--section-spacer);
-  padding-block: var(--section-spacer);
+  padding-block: var(--spacer-section);
+  padding-inline: calc(2 * var(--spacer-section));
   width: 100%;
   background-color:var(--site-background);
   min-height: 600px;

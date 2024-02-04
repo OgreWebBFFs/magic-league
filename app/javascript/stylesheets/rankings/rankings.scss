@@ -79,10 +79,11 @@
     }
   }
 
+
   &__wrapper {
     box-sizing: border-box;
     margin: 0 auto;
-    height: calc(100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - (2 * var(--spacer-section)));
+    height: calc(100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - var(--date-wrapper-height) - var(--spacer-section));
     position: relative;
     max-width:350px;
   }

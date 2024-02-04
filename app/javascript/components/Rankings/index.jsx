@@ -27,8 +27,10 @@ const Rankings = ({
   useEffect(()=>{
     const draffleButtonHeight = draffleButtonRef?.current?.offsetHeight;
     const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
-    document.documentElement.style.setProperty('--draffle-button-height', draffleButtonHeight);
-    document.documentElement.style.setProperty('--date-wrapper-height', dateWrapperHeight);
+    const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
+    const dateFullHeight = dateWrapperHeight + parseInt( dateWrapperStyle.marginTop) + parseInt( dateWrapperStyle.marginBottom) + "px";
+    document.documentElement.style.setProperty('--draffle-button-height', `${draffleButtonHeight}px`);
+    document.documentElement.style.setProperty('--date-wrapper-height', dateFullHeight);
   },[isMobile]) 
 
   return (

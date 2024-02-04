@@ -23,12 +23,6 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
   const [drawerContetSelector, setDrawerContentSelector] = useState('match-logger');
   const isMobile = useIsMobile();
   const navRef = useRef();
-  useEffect(()=>{
-    const navHeight = navRef?.current?.offsetHeight;
-    document.documentElement.style.setProperty('--nav-height', navHeight);
-    const footerHeight = 33;
-    document.documentElement.style.setProperty('--footer-height', navHeight);
-  }, [isMobile]) 
 
   let links = [
     {
