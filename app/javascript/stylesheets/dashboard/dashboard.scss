@@ -4,7 +4,7 @@
 .dashboard {
 
     --tab-heading-color-hue-sat: var(--color-fill-neutral-hue-sat);
-    --tab-heading-color-lightness: 0%;
+    --tab-heading-color-lightness: var(--neutral-lightness);
     &-header {
         display: flex;
         align-items: baseline;
@@ -178,10 +178,9 @@
         }
     }
 
-    &__tab {
+    &__tab.button {
         --button-background-color-opacity: 0.6;
-        --button-background-color-hue-sat: var(--tab-heading-color-hue-sat);
-        --button-background-color-lightness: 0%;
+        --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
         color: var(--color-text-neutral);
         margin-right: var(--spacer-sm);
         margin-bottom:0;
@@ -195,14 +194,16 @@
             margin-right: 0;
         }
 
-        &:hover {
+        &:hover:not(:disabled) {
             --button-background-color-opacity: 1;
-        
         }
 
-        &.active {
+        &.active.button {
             --button-background-color-opacity: 1;
+
         }
+
+       
 
         @media only screen and (max-width: 850px) {
             flex-basis: 33%;
@@ -227,8 +228,7 @@
         background-color: hsl(var(--tab-heading-color-hue-sat), var(--tab-heading-color-lightness));
         align-items: center;
         justify-content: space-between;
-        padding-inline: var(--spacer-sm);
-        padding-top: var(--spacer-sm);
+        padding: var(--spacer-sm);
         
     }
 
@@ -276,11 +276,11 @@
                 font-size: 20px;
             }
         }
-
-        background-color: var(--color-fill-inverse);
     }
 
     &__card-grid-wrapper {
+        // This should always be light
+        background-color: hsl(var(--desaturated-hue-sat), 80%);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
     }
 

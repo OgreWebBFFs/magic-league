@@ -9,22 +9,9 @@ import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 import DatePicker from './DatePicker';
 import PlayerRanking from './PlayerRanking';
 import EventPlayerRanking from './EventPlayerRanking';
+import ThemeSwapper from '../ThemeSwapper';
 
-const setTheme = (theme) => {
-  document.documentElement.style.setProperty('--color-fill-theme-hue-sat', `var(--${theme}-hue-sat)`)
-}
 
-const setLightMode = () => {
-  document.documentElement.style.setProperty('--color-fill-neutral-lightness', `100%`);
-  document.documentElement.style.setProperty('--color-fill-inverse-lightness', `0%`)
-  document.documentElement.style.setProperty('--saturated-fill-lightness', `75%`)
-}
-const setDarkMode = () => {
-  document.documentElement.style.setProperty('--color-fill-neutral-lightness', `0%`);
-  document.documentElement.style.setProperty('--color-fill-inverse-lightness', `100%`)
-  document.documentElement.style.setProperty('--saturated-fill-lightness', `25%`)
-}
-const clueThemes = ['mustard', 'scarlet', 'peacock', 'plum', 'green']
 
 const Rankings = ({
   date,
@@ -51,13 +38,7 @@ const Rankings = ({
 
   return (
     <div class="rankings__page">
-      <div style={{display: 'flex', gap: 'var(--spacer-md)', marginBottom: 'var(--spacer-lg)', justifyContent: 'center'}}>
-      {
-        clueThemes.map(theme => <Button className='button--small' style={{backgroundColor: `hsl(var(--${theme}-hue-sat), 25%)`}} onClick={()=>{setTheme(theme)}}> {theme}</Button>) 
-      }
-      <Button  className='button--small' style={{backgroundColor: `black`, color: 'white'}} onClick={()=>{setDarkMode()}}>Dark</Button>
-      <Button  className='button--small' style={{backgroundColor: `white`, color: 'black'}} onClick={()=>{setLightMode()}}>Light</Button>
-      </div>
+      <ThemeSwapper/>
       { draffle && 
       <Button ref={draffleButtonRef} className="button button--secondary draffle-view-button" href={`/draffles/${draffle}`}>Check out the current draffle</Button>
       }

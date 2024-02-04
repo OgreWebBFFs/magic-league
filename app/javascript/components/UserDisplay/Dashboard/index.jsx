@@ -20,7 +20,7 @@ import TradablesContext from '../../../contexts/TradablesContext';
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,
 }) => (
-  <Button className={classNames('dashboard__tab', { active: activeTab === title })} onClick={() => setActiveTab(title)}>
+  <Button className={classNames('dashboard__tab button--secondary', { active: activeTab === title })} onClick={() => setActiveTab(title)}>
     {title}
     {children}
   </Button>

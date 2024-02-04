@@ -165,10 +165,9 @@ body {
   padding-block: var(--spacer-section);
   padding-inline: calc(2 * var(--spacer-section));
   width: 100%;
-  background-color:var(--site-background);
   min-height: 600px;
   color: var(--color-text-inverse);
-
+  background-color:var(--site-background);
   //Section Types 
   &.full-page {
     background: transparent;
@@ -197,7 +196,10 @@ body {
   display: block;
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  background-color: var(--color-fill-inverse);
+  --table-background-adjusted-lightness:calc(var(--table-background-lightness) + (5% * var(--color-lightness-shift-basis)));
+  --table-background: hsl(var(--table-background-hue-sat), var(--table-background-adjusted-lightness));
+  background-color: var(--table-background);
+  color: var(--color-text-neutral);
 }
 
 .row {
@@ -208,13 +210,13 @@ body {
   text-overflow: ellipsis;
 
   &:nth-child(even) {
-    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.15);
+    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 10%);
       
   }
 
   &[class*="-headings"] {
     background-color: var(--color-fill-neutral);
-    color: var(--color-text-neutral);
+  
     border-bottom: 3px solid hsl(var(--color-fill-theme-hue-sat), 20%);
   }
 
