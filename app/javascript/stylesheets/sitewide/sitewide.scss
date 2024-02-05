@@ -156,7 +156,18 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color:var(--site-background);
+  background-size: 100% 00%;
+  background-image: linear-gradient(
+  45deg,
+  hsla(var(--color-fill-theme-hue-sat),90%, 5%) 1%,
+  hsla(var(--color-fill-theme-hue-sat),90%, 15%) 1%,
+  hsla(var(--color-fill-theme-hue-sat),79%, 25%) 6%,
+  hsla(var(--desaturated-hue-sat),60%, 15%) 77%,
+  hsla(var(--desaturated-hue-sat),79%, 5%) 94%,
+  hsla(var(--desaturated-hue-sat),90%, 5%) 99%,
+  var(--site-background),
+);
+
 }
 
 
@@ -199,7 +210,7 @@ body {
   --table-background-adjusted-lightness:calc(var(--table-background-lightness) + (5% * var(--color-lightness-shift-basis)));
   --table-background: hsl(var(--table-background-hue-sat), var(--table-background-adjusted-lightness));
   background-color: var(--table-background);
-  color: var(--color-text-neutral);
+  color: var(--color-text-inverse);
 }
 
 .row {
@@ -216,7 +227,7 @@ body {
 
   &[class*="-headings"] {
     background-color: var(--color-fill-neutral);
-  
+    color: var(--color-text-neutral);
     border-bottom: 3px solid hsl(var(--color-fill-theme-hue-sat), 20%);
   }
 

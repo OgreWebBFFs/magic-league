@@ -1,27 +1,29 @@
 :root {
   //Current Theme Values
-    --green-hue-sat: 149, 100%;
+    --green-hue-sat: 127, 61%;
     --mustard-hue-sat: 47, 100%;
-    --scarlet-hue-sat: 343, 100%;
-    --plum-hue-sat:  265, 85%;
-    --peacock-hue-sat:  217, 100%;
-    --white-hue-sat:  0, 0%;
+    --scarlet-hue-sat: 360, 60%;
+    --plum-hue-sat: 269, 47%;
+    --peacock-hue-sat: 220, 85%;
+    --white-hue-sat: 0, 0%; 
 
     --site-background-hue-sat: 0, 0%;
     --site-background-lightness: 10%;
     --site-background-adjusted-lightness:calc(var(--site-background-lightness) + (25% * var(--color-lightness-shift-basis)));
     --site-background: hsl(var(--site-background-hue-sat), var(--site-background-adjusted-lightness));
 
-    --inverse-hue-sat:  0, 0%;
+    --desaturated-hue-sat: 50, 7%;
+
+    --inverse-hue-sat: var(--desaturated-hue-sat);
     --inverse-lightness: 95%;
 
-    --neutral-hue-sat: 0, 0%;
+    --neutral-hue-sat:  var(--desaturated-hue-sat);
     --neutral-lightness: 5%;
-
+ 
     --saturated-fill-lightness: 25%;
     --saturated-text-lightness: calc(8% * var(--color-lightness-shift-basis));
     --color-lightness-shift-basis: 1;
-    --desaturated-hue-sat: 0, 0%;
+    
     //Derivative values 
 
     --color-fill-inverse-hue-sat: var(--inverse-hue-sat);
