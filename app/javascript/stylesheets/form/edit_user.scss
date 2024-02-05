@@ -2,17 +2,23 @@ form.edit_user {
   width: 100%;
 }
 
-.dashboard_edit-user-details {
+.dashboard-edit-user-details {
 
   &__title {
     font-weight: 600;
-    color: var(--color-text-neutral);
+    color: var(--color-text-inverse);
   }
 
   &__form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .form--basic {
+      .switch.optional {
+      margin: var(--spacer-xs) 0;
+      color: var(--color-text-inverse);
+      }
+    }
   }
 
   &__gravatar {
@@ -41,7 +47,6 @@ form.edit_user {
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    border-radius: 3rem;
     margin: 1rem auto 1rem auto;
     align-items: center;
     font-size: 1.25rem;
@@ -51,14 +56,19 @@ form.edit_user {
     }
 
     &.blank {
+      border-radius: 3rem;
       color: #7289DA;
       background: none;
       border: 3px solid #7289DA;
     }
 
     &.linked {
+      border-radius: 3rem;
       color: white;
       background: #7289DA;
     }
+
+
   }
+  
 }
