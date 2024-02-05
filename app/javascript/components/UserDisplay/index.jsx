@@ -5,7 +5,6 @@ import TradeTracker from './TradeTracker';
 import ViewToggleSwitch from '../ViewToggleSwitch';
 import Objectives from './Objectives';
 import EventPerformanceTracer from './EventPerformanceTracker';
-import ThemeSwapper from '../ThemeSwapper';
 
 const UserDispaly = ({
   activeObjectives,
@@ -28,7 +27,6 @@ const UserDispaly = ({
 
   return (
     <div id="dashboard" className="dashboard">
-         <ThemeSwapper/>
       <div className="dashboard__container">
         <div className="dashboard-header">
           <h2 className="dashboard-header__title">
