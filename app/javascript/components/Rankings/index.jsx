@@ -24,13 +24,13 @@ const Rankings = ({
 }) => {
   const [showRankings, setShowRankings] = useState(true);
   const [isSeasonView] = useIsSeasonView();
-  const draffleButtonRef = useRef();
   const dateWrapperRef = useRef();
   const isMobile = useIsMobile();
 
   useEffect(()=>{
-    const draffleButtonHeight = draffleButtonRef?.current?.offsetHeight;
+    const draffleButtonHeight = document.querySelector('.draffle-view-button')?.offsetHeight;
     const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
+    console.log(draffleButtonHeight);
     const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
     const dateFullHeight = dateWrapperHeight + parseInt( dateWrapperStyle.marginTop) + parseInt( dateWrapperStyle.marginBottom) + "px";
     document.documentElement.style.setProperty('--draffle-button-height', `${draffleButtonHeight}px`);
@@ -47,9 +47,6 @@ const Rankings = ({
 
   return (
     <div class="rankings__page">
-      { draffle && 
-      <Button ref={draffleButtonRef} className="button button--secondary draffle-view-button" href={`/draffles/${draffle}`}>Check out the current draffle</Button>
-      }
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
         <div ref={dateWrapperRef} className="rankings__date-wrapper">
           <DatePicker date={date} />
