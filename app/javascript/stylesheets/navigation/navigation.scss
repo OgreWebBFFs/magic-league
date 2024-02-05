@@ -28,7 +28,7 @@
 
   &__logo {
     margin-right: auto;
-    width: 100px;
+    height: 100%;
   
     svg {
       width: auto;
@@ -167,7 +167,7 @@
   &--mobile {
     padding-inline: 5%;
     .nav__logo {
-      width: 32px;
+      width: 19px;
       overflow: hidden;
       svg {
         padding-left: 0;
