@@ -4,7 +4,7 @@ import Button from '../Button';
 const Login = () => (
   <div className="login">
     <div className="login-content">
-      <h3 className="login__title">Log isfdfsen</h3>
+      <h3 className="login__title">Log in</h3>
       <form className="new_user" id="new_user" action="/users/sign_in" acceptCharset="UTF-8" method="post">
         <div className="login_form-field">
           <label htmlFor="user_email">Email</label>
