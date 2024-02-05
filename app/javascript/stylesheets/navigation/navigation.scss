@@ -19,7 +19,7 @@
   --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
   background: linear-gradient(56deg, var(--nav-corner-color), var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--nav-corner-color));
   width: 100%;
-  padding: var(--spacer-sm) 10%;
+  padding: 0 10%;
   display: flex;
   gap: var(--spacer-md);
   align-items: center;
@@ -117,7 +117,7 @@
     0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
     transition: 0.2s;
     max-height: calc(100vh - var(--nav-height) - var(--footer-height));
-    top: calc(var(--nav-height) - var(--spacer-sm));
+    top:var(--nav-height);
 
     .nav__link-wrapper {
       margin: 0;
@@ -128,6 +128,7 @@
     .nav__link {
       text-align: center;
       display: flex;
+      width: 95%;
     }
 
     &:hover,
