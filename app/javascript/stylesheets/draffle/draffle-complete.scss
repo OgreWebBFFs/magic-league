@@ -1,31 +1,31 @@
 .slot {
-  border: 2px solid  var(--color-fill-theme-highlight); 
-  border-radius: 1rem;
-  overflow: hidden;
-
-  &__header {
-    background-color:var(--color-fill-neutral);
-    color: var(--color-text-neutral);
-    &.pick {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    &.date {
-      font-size: .8rem;
-    }
-  }
-
-  &__user {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-text-neutral);
-    padding: .5rem;
-    text-overflow: ellipsis;
+    border: 2px solid var(--color-fill-theme-highlight);
+    border-radius: 1rem;
     overflow: hidden;
-    white-space: nowrap;
-  }
 
-  &__prize {
-    padding: .5rem;
-  }
+    &__header {
+        background-color: var(--color-fill-neutral);
+        color: var(--color-text-neutral);
+        &.pick {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        &.date {
+            font-size: 0.8rem;
+        }
+    }
+
+    &__user {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--color-text-neutral);
+        padding: 0.5rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    &__prize {
+        padding: 0.5rem;
+    }
 }

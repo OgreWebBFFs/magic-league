@@ -1,68 +1,68 @@
 .drawer {
-  position: fixed;
-  bottom: 0%;
-  top: 0%;
-  left: 0;
-  padding-bottom: 2 rem;
-  width: 0;
-  background-color: transparent;
-  overflow: hidden;
-  z-index: 100;
-  display: block;
-  transition-duration: 500ms;
-  color: var(--color-text-inverse);
-  text-align: center;
+    position: fixed;
+    bottom: 0%;
+    top: 0%;
+    left: 0;
+    padding-bottom: 2 rem;
+    width: 0;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 100;
+    display: block;
+    transition-duration: 500ms;
+    color: var(--color-text-inverse);
+    text-align: center;
 
-  &__section {
-    position: relative;
-    z-index: 2;
-    max-width: 300px;
-    min-height: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
-    width: 75%;
-    padding: 30px 10px;
-    background-color: var(--color-fill-inverse);
-
-    h3 {
-      margin-top: 0;
-      font-size: 2rem;
-    }
-
-    p {
-      margin: 25px 0;
-      line-height: 1.25;
-    }
-  }
-
-  &_submit__button {
-    margin-top: 25px;
-    margin: 10px auto;
-    width: 150px;
-    -webkit-tap-highlight-color: transparent;
-  } 
-
-  &__close-button {
-   position:absolute;
-   top:var(--spacer-sm);
-   right:var(--spacer-sm);
-  }
-
-  &--open {
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 400px) {
     &__section {
-      h3 {
-        font-size: 1.25rem;
-      }
+        position: relative;
+        z-index: 2;
+        max-width: 300px;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+        width: 75%;
+        padding: 30px 10px;
+        background-color: var(--color-fill-inverse);
 
-      p {
-        margin: 15px 0 5px;
-      }
-      width: 100%;
+        h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        p {
+            margin: 25px 0;
+            line-height: 1.25;
+        }
     }
-  }
+
+    &_submit__button {
+        margin-top: 25px;
+        margin: 10px auto;
+        width: 150px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    &__close-button {
+        position: absolute;
+        top: var(--spacer-sm);
+        right: var(--spacer-sm);
+    }
+
+    &--open {
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 400px) {
+        &__section {
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                margin: 15px 0 5px;
+            }
+            width: 100%;
+        }
+    }
 }

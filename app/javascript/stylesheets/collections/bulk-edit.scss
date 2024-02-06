@@ -1,42 +1,40 @@
-.bulk-edit{
-
+.bulk-edit {
     &__error,
-    &__form{
-      flex: 1 0 auto;
+    &__form {
+        flex: 1 0 auto;
     }
-  
+
     &__error {
-      &-list{
-        margin: 0 5px;
-      }
-  
-      &-item{
-        color: var(--color-text-negative);
-      }
+        &-list {
+            margin: 0 5px;
+        }
+
+        &-item {
+            color: var(--color-text-negative);
+        }
     }
-  
-    &__form{
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-     
-  
-      .help-text {
-        white-space: pre-line;
-        font-size: 80%;
-        color: #333;
-      }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .help-text {
+            white-space: pre-line;
+            font-size: 80%;
+            color: #333;
+        }
     }
-    &__text-area{
-      flex: 1 0 auto;
-      border: 1px solid var(--color-fill-neutral);
-      min-height: 300px;
+    &__text-area {
+        flex: 1 0 auto;
+        border: 1px solid var(--color-fill-neutral);
+        min-height: 300px;
     }
-  
+
     &_submit__btn {
-      margin-top: 10px;
-      flex: 0 0 36px;
-      justify-self: flex-end;
-      align-self: flex-end;
+        margin-top: 10px;
+        flex: 0 0 36px;
+        justify-self: flex-end;
+        align-self: flex-end;
     }
-  }
+}

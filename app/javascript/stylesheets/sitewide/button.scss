@@ -4,11 +4,15 @@ a.button,
     --button-background-color-hue-sat: var(--color-fill-theme-hue-sat);
     --button-background-color-lightness: var(--color-fill-theme-lightness);
     --button-background-color-opacity: 1;
-    --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+    --button-background-color: hsla(
+        var(--button-background-color-hue-sat),
+        var(--button-adjusted-lightness),
+        var(--button-background-color-opacity)
+    );
     --button-text-color: var(--color-text-neutral);
     -webkit-tap-highlight-color: transparent;
     align-items: center;
-    background-color:var(--button-background-color);
+    background-color: var(--button-background-color);
     border-radius: 2px;
     border: none;
     box-sizing: border-box;
@@ -18,7 +22,7 @@ a.button,
     font-weight: 400;
     gap: var(--spacer-xs);
     justify-content: center;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
     line-height: 1.5;
     outline: 0;
     overflow: hidden;
@@ -28,10 +32,10 @@ a.button,
     text-decoration: none;
     text-overflow: ellipsis;
     text-transform: uppercase;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     transition-property: all;
     transition-timing-function: ease-in-out;
-    
+
     &--large {
         font-size: 1.2rem;
         padding-inline: var(--spacer-lg);
@@ -39,23 +43,26 @@ a.button,
     }
 
     &--small {
-        font-size:.8rem;
+        font-size: 0.8rem;
         padding-inline: var(--spacer-md);
         padding-block: var(--spacer-sm);
     }
 
-
-
     &:hover:not(:disabled) {
-        --button-adjusted-lightness:calc(var(--button-background-color-lightness) + (15% * var(--color-lightness-shift-basis)));
-        background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+        --button-adjusted-lightness: calc(
+            var(--button-background-color-lightness) + (15% * var(--color-lightness-shift-basis))
+        );
+        background-color: hsla(
+            var(--button-background-color-hue-sat),
+            var(--button-adjusted-lightness),
+            var(--button-background-color-opacity)
+        );
     }
 
     &:disabled {
-
         --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
         --button-background-color-lightness: var(--color-fill-neutral-lightness);
-        --button-background-color-opacity: .25;
+        --button-background-color-opacity: 0.25;
     }
     &--secondary {
         --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
@@ -76,11 +83,11 @@ a.button,
         --button-text-color: var(--color-text-inverse);
         &:hover,
         &:focus {
-            --button-background-color-opacity: .25;
-            --button-adjusted-lightness:calc(var(--button-text-color-lightness) + 25%);
+            --button-background-color-opacity: 0.25;
+            --button-adjusted-lightness: calc(var(--button-text-color-lightness) + 25%);
         }
     }
-    
+
     &--inactive {
         --button-background-color-hue-sat: var(--desaturated-hue-sat);
     }
