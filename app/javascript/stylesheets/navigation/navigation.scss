@@ -77,13 +77,11 @@
     }
 
     a.nav__link.button,
-    &__dropdown-toggle {
+    &__dropdown-toggle.button {
         --background-opacity: 0;
         align-items: center;
         -webkit-transition: color 0.3s;
         transition: color 0.3s;
-        font-size: 1rem;
-        text-transform: capitalize;
         cursor: pointer;
         color: var(--color-text-neutral);
         display: flex;
