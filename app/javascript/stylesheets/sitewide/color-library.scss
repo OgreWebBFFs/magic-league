@@ -1,129 +1,79 @@
-//Color Library
-$Rose-Gold: #bd8c7d;
-$Soft-Gold: #d1bfa7;
-$Silver: #8e8e90;
-$Onyx: #49494b;
-$Light-Grey: #9e9e9e;
-$Turquoise: #26a69a;
-$Soft-Orange: #efab45;
-$Crimson: #dc143c;
-$Living-Coral: #ff6f61;
-$Beluga: rgb(10, 8, 3);
-$Forest-Biome: #184a45;
-$Sunset-Orange: #fc4445;
-$Cornflower: #97caef;
-$Fountain-Blue: #55bcc9;
-$Goldenrod-Yellow: #fbaf08;
-$Lightning-Purple: #bf4aa8;
-$Lightning-Blue: #51d0de;
-
-$Woodsmoke: #0b0c10;
-$Caribbean-Green: #00d285;
-$Ebony-Clay: #1f2833;
-$Eucalytus: #27876f;
-$Biloba-Flower: #cbbaed;
-$Mulien-Teal: #91e5da;
-$Mulien-White: #e5f1ef;
-$Mulien-Black: #1a1b1d;
-$Mulien-Purple: hsl(276, 17%, 11%);
-$Mulien-Green: #42988c;
-$Engineering-International-Orange: #bf200e;
-$Orioles-Orange: #fa4113;
-$Dark-Tangerine: #fe9b13;
-$Mellow-Apricot: #efbd76;
-$Very-Very-Light-Orange: #fffaf5;
-$Very-Very-Light-Purple: #f9f5fc;
-$Persimon: #ec5800;
-$Veri-Peri:#6667AB;
-$Olivine: #85BE79;
-
-
-$Wrinkle-White: #d9d9d9;
-$Eerie-Black: #270C1D;
-$Faded-Bone:#e3dac9;
-$Bone:#F9F6EE;
-$Blood:#C70039;
-$Meat:#581845;
-$Organ: #5c1009;
-
-
-$Canopy: #335f5d;
-$Observatory: #04946c;
-$Parchment: #EFEADC;
-$Peachy-White: #FAF1EB;
-$Blush: #F5C2C8;
-$Watermelonade: #E84F5C;
-$Kirsch: #B11680;
-
-//Semantic Colors Names
-
-$color-light: $Peachy-White;
-$color-dark: $Eerie-Black;
-$color-nuetral: $Canopy;
-$color-highlight-mid-import: $Blush;
-$color-highlight-import: $Watermelonade;
-$color-accent: $Observatory;
-$color-highlight-urgent: $Orioles-Orange;
-$background-color: $Parchment;
-$ranking-border-color: $Blush;
-// 
-
-
-
 :root {
-    --meat-hue-sat: 337, 92%;
-    --meat-lightness:31%;
+  //Current Theme Values
+    --green-hue-sat: 127, 61%;
+    --mustard-hue-sat: 47, 100%;
+    --scarlet-hue-sat: 360, 60%;
+    --plum-hue-sat: 269, 47%;
+    --peacock-hue-sat: 220, 85%;
+    --white-hue-sat: 0, 0%; 
 
-    --canopy-hue-sat: 177, 30%;
-    --canopy-lightness: 29%;
+    --site-background-hue-sat: 0, 0%;
+    --site-background-lightness: 10%;
+    --site-background-adjusted-lightness:calc(var(--site-background-lightness) + (25% * var(--color-lightness-shift-basis)));
+    --site-background: hsl(var(--site-background-hue-sat), var(--site-background-adjusted-lightness));
 
-    --observatory-hue-sat: 163, 95%;
-    --observatory-lightness: 30%;
+    --desaturated-hue-sat: 50, 7%;
 
-    --blush-hue-sat: 352, 71%;
-    --blush-lightness: 86%;
+    --inverse-hue-sat: var(--desaturated-hue-sat);
+    --inverse-lightness: 95%;
 
-    --watermelonade-hue-sat: 354, 76%;
-    --watermelonade-lightness: 60%;
+    --neutral-hue-sat:  var(--desaturated-hue-sat);
+    --neutral-lightness: 5%;
+ 
+    --saturated-fill-lightness: 25%;
+    --saturated-text-lightness: calc(8% * var(--color-lightness-shift-basis));
+    --color-lightness-shift-basis: 1;
+    
+    //Derivative values 
 
-    --organ-hue-sat: 5, 82%;
-    --organ-lightness:20%;
+    --color-fill-inverse-hue-sat: var(--inverse-hue-sat);
+    --color-fill-inverse-lightness : var(--inverse-lightness); 
+    --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat),var(--color-fill-inverse-lightness));
+    
+    --color-fill-neutral-hue-sat: var(--neutral-hue-sat);
+    --color-fill-neutral-lightness: var(--neutral-lightness);
+    --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness));
+    
+    --color-fill-theme-hue-sat: var(--peacock-hue-sat);
+    --color-fill-theme-lightness: var(--saturated-fill-lightness);
+    --color-fill-theme: hsl(var(--color-fill-theme-hue-sat),var(--color-fill-theme-lightness));
+    
+    --color-fill-theme-highlight-lightness: calc(var(--color-fill-theme-lightness) + 15%);
+    --color-fill-theme-highlight: hsl(var(--color-fill-theme-hue-sat), var(--color-fill-theme-highlight-lightness)); 
 
+    --color-fill-positive-hue-sat: 168, 76%;
+    --color-fill-positive-lightness: 25%;
+    --color-fill-positive: hsl(var(--color-fill-positive-hue-sat),var(--color-fill-positive-lightness));
+    
+    --color-fill-negative-hue-sat: 2, 100%;
+    // currently negative is a red and reds need a slightly higher lightness to come through 
+    --color-fill-negative-lightness: 50%;
+    --color-fill-negative: hsl(var(--color-fill-negative-hue-sat),var(--color-fill-negative-lightness));
+    
+    --color-fill-alert-hue-sat: 25, 100%;
+    // currently alert is a orange and reds need a slightly higher lightness to come through 
+    --color-fill-alert-lightness: 50%;
+    --color-fill-alert: hsl(var(--color-fill-alert-hue-sat),var(--color-fill-alert-lightness));
+    
 
-    --blood-hue-sat: 343, 100%;
-    --blood-lighness: 39%;
+    --color-text-inverse-hue-sat: var(--color-fill-neutral-hue-sat);
+    --color-text-inverse-lightness : var(--color-fill-neutral-lightness);
+    --color-text-inverse: var(--color-fill-neutral);
+    
+    --color-text-neutral-hue-sat: var(--color-fill-inverse-hue-sat);
+    --color-text-neutral-lightness : var(--color-fill-inverse-lightness);
+    --color-text-neutral: var(--color-fill-inverse); 
 
-    --white-hue-sat:  0, 0%;
-    --white-lightness: 100%;
+    --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
+    --color-text-theme-lightness: var(--saturated-text-lightness);
+    --color-text-theme: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness)); 
+   
 
-    --eerie-black-hue-sat: 0, 0%;
-    --eerie-black-lightness: 10%;
-
-    --desaturated-hue-sat: 0, 0%;
-
-
-
-    //Needed for various css calcs 
-
-    --color-highlight-primary-hue-sat: var(--watermelonade-hue-sat);
-    --color-highlight-primary-lightness : var(--watermelonade-lightness);
-
-    --color-accent-hue-sat: var(--observatory-hue-sat);
-    --color-accent-lightness: var(--observatory-lightness);
-
-    --color-dark-hue-sat: var(--eerie-black-hue-sat);
-    --color-dark-lightness : var(--eerie-black-lightness);
-
-    --color-light-hue-sat: var(--white-hue-sat);
-    --color-light-lightness : var(--white-lightness); 
-
-
-    --color-highlight-primary: hsl(var(--color-highlight-primary-hue-sat),var(--color-highlight-primary-lightness));
-
-    --color-accent: hsl(var(--color-accent-hue-sat),var(--color-accent-lightness));
-
-    --color-light: hsl(var(--color-light-hue-sat),var(--color-light-lightness));
-
-    --color-dark: hsl(var(--color-dark-hue-sat),var(--color-dark-lightness));
-
+    --color-text-negative-hue-sat: var(--color-fill-negative-hue-sat);
+    --color-text-negative-lightness: calc(var(--saturated-fill-lightness) + 15%);
+    --color-text-negative: hsl(var(--color-text-negative-hue-sat), var(--color-text-negative-lightness)); 
+   
 }
+
+
+

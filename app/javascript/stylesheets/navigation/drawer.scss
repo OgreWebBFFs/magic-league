@@ -10,7 +10,7 @@
   z-index: 100;
   display: block;
   transition-duration: 500ms;
-  color: $color-dark;
+  color: var(--color-text-inverse);
   text-align: center;
 
   &__section {
@@ -23,9 +23,11 @@
     height: 100%;
     width: 75%;
     padding: 30px 10px;
+    background-color: var(--color-fill-inverse);
 
     h3 {
       margin-top: 0;
+      font-size: 2rem;
     }
 
     p {
@@ -42,7 +44,9 @@
   } 
 
   &__close-button {
-    margin:0;
+   position:absolute;
+   top:var(--spacer-sm);
+   right:var(--spacer-sm);
   }
 
   &--open {
@@ -52,7 +56,7 @@
   @media only screen and (max-width: 400px) {
     &__section {
       h3 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
 
       p {

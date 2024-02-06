@@ -11,7 +11,7 @@ const TradeTracker = ({ tradeTrackerData, userId, currentUserId }) => (
         <Cell>Allowed</Cell>
       </Row>
       {tradeTrackerData.map((trade) => (
-        <Row>
+        <Row key={trade.rarity} >
           <Cell>{trade.rarity.charAt(0).toUpperCase() + trade.rarity.slice(1)}</Cell>
           <Cell>
             <TradeTrackerInput

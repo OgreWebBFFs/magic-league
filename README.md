@@ -50,3 +50,28 @@
 
 ## Adding/Modifying Omniauth Providers
 * Google - https://console.cloud.google.com/apis/dashboard?project=ogre-mtg
+
+## CSS Style notes
+### Colors and Theme
+
+For the most part theme colors are now derived from a short list of css custom props, in the [color-library](https://github.com/OgreWebBros/magic-league/blob/main/app/javascript/stylesheets/sitewide/color-library.scss) style sheet.  Updating these colors should cascade down to the entire site.
+
+* neutral
+   * fill: the background of interaction areas where we generally expect text or icons to be overlayed, ex: buttons, tabs, etc.. 
+   * text: the color of text laid on top of neutral-fill. (Currently, but not neccesarily derived from inverse-fill, see below)
+* theme
+   * theme-fill: brighter highlight color meant to signify higher priority user interactions, ex: primary ctas
+   * theme-text: color used for editorial text or to indicate text with user interactions, ex: links
+* inverse:
+   * fill: The background of non-interaction areas such as the background of a table cell. This color should be very different from nuetral, eg: nuetral: black, inverse: white
+   * text: the color of text laid on top of inverse-fill. (Currently, but not neccesarily derived from neutral-fill)
+
+In addition to these we have several colors are mainly independent of theme and meant to signify more semantic use. 
+
+* urgent:  alerts, calls to attention
+* negative: errors, more critical cancel actions
+* positive: success, more critical accept actions
+
+### Spacers
+[Spacers](https://github.com/OgreWebBros/magic-league/blob/main/app/javascript/stylesheets/sitewide/spacers.scss)are a set of css custom props that are used for internal paddings and margins, ie button padding, but not page layout margins.  
+They are responsive, although currently only updating at our mobile-ish breakpoint. 

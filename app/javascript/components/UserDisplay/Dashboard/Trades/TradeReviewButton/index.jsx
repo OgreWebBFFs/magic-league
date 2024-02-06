@@ -8,7 +8,7 @@ const TradeReviewButton = ({ trade }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setModalOpen(true)} className="review-button">
+      <Button onClick={() => setModalOpen(true)} className="review-button button--small">
         <MobileLabel>REVIEW </MobileLabel>
         <i className="fas fa-reply" />
       </Button>

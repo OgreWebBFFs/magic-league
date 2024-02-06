@@ -10,7 +10,7 @@
     z-index: 99;
     padding-bottom: 2 rem;
     transition-duration: .51s;
-    color: $color-dark;
+    color: var(--color-text-inverse);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 
     &__area {
         position: relative;
-        background: $color-light;
+        background-color: var(--color-fill-inverse);
         vertical-align: middle;
         overflow: auto;
         padding: 30px;
@@ -30,7 +30,6 @@
     &__content {
         max-height: 80vh;
         overflow-x: hidden;
-        overflow-y: scroll;
     }
     
     &__title {
@@ -44,8 +43,8 @@
 
     &__close-button{
         position: absolute;
-        right:-25px;
-        top: -25px;
+        right: var(--spacer-xs);
+        top: var(--spacer-xs);
     }
 
     form {
@@ -81,23 +80,22 @@
     
       &__warning {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: var(--color-text-negative);
         margin: 0;
         width: 0;
         min-width: 100%;
-        .warning {
-          color: $color-highlight-urgent;
-        }
+      
+      }
+
+      .warning {
+        color: var(--color-text-negative);
       }
 
       &__notice {
         font-size: .75rem;
-        color: $color-nuetral;
+        color: var(--color-text-theme);
         margin: 0;
         width: 0;
         min-width: 100%;
-        .warning {
-          color: $color-highlight-urgent;
-        }
       }
 }

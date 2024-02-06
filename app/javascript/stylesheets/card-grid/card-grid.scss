@@ -43,62 +43,7 @@
         }
 
     }
-    //Temporary until we refactor the Browse Cards page
-    &__browse-wishlist__toggle {
-        top: -25px;
-        right: 20px;
-        opacity: 1;
-        position: absolute;
-        z-index: 2;
-        
-
-        input[type=checkbox] {
-            + label {
-                &:before {
-                    $checkbox-size:36px;
-                    border: none;
-                    font-family: "Font Awesome 5 Free";
-                    font-weight:400;
-                    content: "\f004";
-                    width: $checkbox-size;
-                    height: $checkbox-size;
-                    font-size: calc(#{$checkbox-size}*.5);
-                    border-radius:  $checkbox-size;
-                    padding:2px;
-                    cursor: pointer;
-                    opacity: .6;
-                    position: absolute;
-                    color: $color-light;
-                    //fix for mobile color issues;
-                    color: transparent;  
-                    text-shadow: 0 0 0 $color-light;
-                    background-color: $color-accent;
-                    @media only screen and (max-width: 500px) {
-                        top: 0;
-                    }
-                }
-            }
-
-                &:checked+label::before {
-                    opacity: 1;
-                    font-weight: bold;
-                }
-                
-                &:checked+label::after {
-                    content: "";
-                    
-                }
-
-
-            }
-
-
-
-        }
-
-
-
-
+  
     &__card {
         width: 90%;
         text-align: center;
@@ -116,19 +61,20 @@
             position: absolute;
             width:100%;
             height:100%;
-            color: $color-dark;
-            background:$color-dark;
+            background: var(--color-fill-neutral);
             border-radius: 3%;
             overflow: hidden;
             text-overflow: ellipsis;
             z-index: -1;
             box-sizing: border-box;
             padding: 5px;
-            border: 10px solid $color-dark;
-            color: $color-light;
+            border: 10px solid var(--color-fill-neutral);
+            p {
+                color:var(--color-text-neutral);
+            }
         }
         &--attribute {
-            margin: 0 0 5px 0;
+            margin: 0 0 var(--spacer-sm) 0;
             text-align: left;
         }
 
@@ -158,7 +104,7 @@
         align-items: center;
         text-align: center;
         width: 90%;
-        background-color: $color-highlight-import;
+        background-color: var(--color-fill-theme);
         border-radius: .5rem;
         height: 2rem;
         padding: 0 .5rem;

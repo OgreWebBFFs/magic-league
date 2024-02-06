@@ -1,17 +1,17 @@
-<div class="dashboard_edit-user-details__form">
-  <div class="dashboard_edit-user-details__gravatar">
+<div class="dashboard-edit-user-details__form">
+  <div class="dashboard-edit-user-details__gravatar">
     <img src="<%= gravatar(@user, 154) %>" />
-    <%= link_to 'https://en.gravatar.com/emails/',target: "_blank", class:'dashboard_edit-user-details__gravatar__btn' do %>
+    <%= link_to 'https://en.gravatar.com/emails/',target: "_blank", class:'dashboard-edit-user-details__gravatar__btn button' do %>
       <i class="fas fa-pen"></i>
     <% end %>    
   </div>
   <% if @user.discord_username.blank? %>
-    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord blank' do %>
+    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard-edit-user-details__discord blank button--secondary' do %>
       <i class="fab fa-discord"></i>
       Link With Discord
     <% end %>
   <% else %>
-    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard_edit-user-details__discord linked' do %>
+    <%= link_to "https://discord.com/api/oauth2/authorize?client_id=#{Rails.application.credentials.discord[ENV["DISCORD_APP_ENV"].to_sym][:client_id]}&redirect_uri=#{CGI.escape ENV["DISCORD_OAUTH_REDIRECT_URI"]}&response_type=code&scope=identify",target: "_blank", class:'dashboard-edit-user-details__discord linked  button--secondary' do %>
       <i class="fab fa-discord"></i>
       @<%= @user.discord_username %>
     <% end %>
@@ -22,7 +22,7 @@
     <%= f.input :email, wrapper_html: { class: 'form__field'} %>
     <%= f.input :pronouns, wrapper_html: { class: 'form__field'} %>
   </div>
-  <div style="margin: 1rem 0;">
-      <%= f.button :submit, class: "dashboard_edit-user-details_actions-submit__btn" %>
+  <div style="margin: var(--spacer-lg) 0;">
+      <%= f.button :submit, class: "dashboard-edit-user-details_actions-submit__btn button" %>
   </div>
 </div>

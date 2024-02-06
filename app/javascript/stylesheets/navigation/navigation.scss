@@ -6,38 +6,36 @@
   opacity: 1;
   transform: scaleY(1) translateX(-50%);
   pointer-events: all;
-  &-toggle {
-    color: $color-highlight-import;
-  }
 }
 
 .nav {
   position: relative;
   box-sizing: border-box;
-  box-shadow: 0 2px 2px 0 rgba(88, 24, 69 , 0.2),
-    0 3px 1px -2px rgba(88, 24, 69 , 0.3), 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
+  box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
   z-index: 2;
-  color: $color-highlight-import;
-  background-color: $color-light;
-  background: linear-gradient(45deg,  #270C1D, #223F3C 10%, #223F3C 90%, #270C1D);
+  color: var(--color-text-neutral);
+  background-color: var(--color-fill-neutral);
+  --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
+  background: linear-gradient(56deg, var(--nav-corner-color), var(--color-fill-neutral) 8%, var(--color-fill-neutral)  92%,  var(--nav-corner-color));
   width: 100%;
-  height: $nav-height;
   padding: 0 10%;
   display: flex;
+  gap: var(--spacer-md);
   align-items: center;
   justify-content: flex-end;
+  height: var(--nav-height);
 
   &__logo {
-    height: 100%;
     margin-right: auto;
-    padding: 2px 0;
+    height: 100%;
   
     svg {
       width: auto;
       height: 100%;
 
       .logo-fill {
-        fill: $color-highlight-import;
+        fill: var(--color-fill-theme);
       }
     }
 
@@ -59,60 +57,51 @@
   &__links {
     margin-right: 1.75rem;
     display: flex;
+    gap: var(--spacer-xs);
     align-items: center;
     height: 100%;
     text-align: center;
     list-style-type: none;
-    gap: 1.75rem;
     a {
-      color: $color-highlight-mid-import;
+      color: var(--color-text-neutral);
     }
     @media only screen and (max-width: 850px) {
       margin-right: 0;
     }
   }
 
-  &__link,
-  &__dropdown-toggle {
+  a.nav__link.button,
+  &__dropdown-toggle { 
+    --background-opacity: 0;
     align-items: center;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
+    font-size: 1rem;
     text-transform: capitalize;
-    margin: 0;
-    padding:0;
     cursor: pointer;
-    color: $color-highlight-mid-import;
+    color: var(--color-text-neutral);
     display: flex;
-    gap: 0.25rem;
-    &:hover,
-    &:focus {
-      color: $color-highlight-import;
+    gap: var(--spacer-xs);
+    .notification {
+      color: var(--color-fill-alert)
     }
   }
 
-  &__dropdown-toggle {
-    background: transparent;
-    border: none;
-    &:hover,
-    &:focus {
-      background: transparent;
-    }
-  }
 
   &__dropdown {
+    padding-bottom: var(--spacer-sm);
     &::before{
       display: block;
       position: absolute;
       height: 2px;
       width: 100%;
       content: "";
-      box-shadow: inset 0 2px 2px 0 rgba(88, 24, 69 , 0.2), inset 
-      0 3px 1px -2px rgba(88, 24, 69 , 0.3), inset 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
+      box-shadow: inset 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2), inset 
+      0 3px 1px -2px rgba(88, 24, 69 , 0.3), inset 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
     }
     position: absolute;
     width: 150px;
-    background-color: darken($background-color, 2%);
-    background: linear-gradient(120deg, darken($background-color, 2%) 80%, darken($background-color, 8%))  ;
+    background-color: var(--color-fill-neutral);
     margin: 0;
     left: 50%;
     display: block;
@@ -121,16 +110,15 @@
     transform: scaleY(0) translateX(-50%);
     transform-origin: top;    
     transition-delay: 200ms;
-    top: $nav-height;
     opacity: 0;
     z-index: 99;
     pointer-events: none;
-    box-shadow: 0 2px 2px 0 rgba(88, 24, 69 , 0.2), 
-    0 3px 1px -2px rgba(88, 24, 69 , 0.3), 0 1px 5px 0 rgba(88, 24, 69 , 0.4);
-;
+    box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.3), 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), .4);
     transition: 0.2s;
-    max-height: calc(100vh - #{$nav-height} - (#{$footer-height}/ 2));
-   
+    max-height: calc(100vh - var(--nav-height) - var(--footer-height));
+    top:var(--nav-height);
+
     .nav__link-wrapper {
       margin: 0;
       width: 100%;
@@ -139,20 +127,15 @@
 
     .nav__link {
       text-align: center;
-
-      padding: 8px 0;
       display: flex;
-      gap: 0.25rem;
-      &:hover {
-        background-color: fade-out($background-color, .8)
-      }
-      color: $Canopy;
+      width: 95%;
     }
 
     &:hover,
     &:focus-within {
       @include openDropdown();
     }
+ 
   }
   
   &__link-wrapper,
@@ -171,24 +154,21 @@
   }
 
   &__mobile-menu-toggle {
-    padding: 0.5rem;
-    font-size: 1.8rem;
-    margin: 0 0.5rem;
-  }
-
-  &__match-logger,
-  &__trade-logger {
-    &-button {
-      padding: 0.5rem;
-      font-size: 1.8rem;
-      margin: 0 0.5rem;
+    gap:var(--spacer-sm);
+    i.notification {
+      color: var(--color-fill-alert)
     }
+  }
+  &__mobile-menu-toggle,
+  &__match-logger-button,
+  &__trade-logger-button {
+      font-size: 1.8rem;
   }
 
   &--mobile {
-    padding: 0 5%;
+    padding-inline: 5%;
     .nav__logo {
-      width: 32px;
+      width: 19px;
       overflow: hidden;
       svg {
         padding-left: 0;

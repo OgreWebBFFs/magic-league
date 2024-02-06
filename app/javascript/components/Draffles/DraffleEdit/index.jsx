@@ -79,9 +79,9 @@ const DraffleEdit = ({
       <EditParticipants
         participants={newParticipants}
         users={users}
-        onChange={(participants) => setNewParticipants(participants)}
+        onChange={(x) => setNewParticipants(x)}
       />
-      <EditPrizes prizes={newPrizes} onChange={(prizes) => setNewPrizes(prizes)}/>
+      <EditPrizes prizes={newPrizes} onChange={(x) => setNewPrizes(x)}/>
       {loading && <LoadingTakeOver />}
     </div>
   );

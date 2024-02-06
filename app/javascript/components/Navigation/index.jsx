@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Logo from '../Logo';
@@ -22,6 +22,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [drawerContetSelector, setDrawerContentSelector] = useState('match-logger');
   const isMobile = useIsMobile();
+  const navRef = useRef();
 
   let links = [
     {
@@ -87,8 +88,8 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
   }
 
   return (
-    <nav id="top-nav" className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
-      <a href="/" className="nav__logo">
+    <nav ref={navRef} id="top-nav" className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
+      <a href="/" className="nav__logo" aria-label='home'>
         <Logo />
       </a>
       <ul className="nav__links">
@@ -97,7 +98,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
           : <DesktopNav links={links} />}
       </ul>
       <Button
-        className="nav__match-logger-button"
+        className="nav__match-logger-button button--small"
         onClick={() => {
           setDrawerContentSelector('match-logger');
           setIsDrawerOpen(true);
@@ -106,7 +107,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
         <i className="fas fa-magic" />
       </Button>
       <Button
-        className="nav__trade-logger-button"
+        className="nav__trade-logger-button button--small"
         onClick={() => {
           setDrawerContentSelector('trade-logger');
           setIsDrawerOpen(true);

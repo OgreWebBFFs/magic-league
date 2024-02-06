@@ -1,87 +1,95 @@
+a.button,
 .button {
-    --background-color-hue-sat: var(--color-highlight-primary-hue-sat);
-    --background-color-lightness: var(--color-highlight-primary-lightness);
-    --background-color-opacity: 1;
-    --background-color: hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
-
-    --adjusted-lightness: var(--background-color-lightness);
-    --text-color: var(--color-light);
-    --text-color-hue-sat: var(--color-light-hue-sat);
-    --text-color-lightness: var(--color-light-lightness);
-  
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    margin: 1rem;
-    padding: 10px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    outline: 0;
-    border: none;
-    border-radius: 2px;
+    --button-adjusted-lightness: var(--button-background-color-lightness);
+    --button-background-color-hue-sat: var(--color-fill-theme-hue-sat);
+    --button-background-color-lightness: var(--color-fill-theme-lightness);
+    --button-background-color-opacity: 1;
+    --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+    --button-text-color: var(--color-text-neutral);
     -webkit-tap-highlight-color: transparent;
-    background-color:var(--background-color);
-    color: var(--text-color);
+    align-items: center;
+    background-color:var(--button-background-color);
+    border-radius: 2px;
+    border: none;
+    box-sizing: border-box;
+    color: var(--button-text-color);
     cursor: pointer;
+    display: flex;
+    font-weight: 400;
+    gap: var(--spacer-xs);
+    justify-content: center;
+    letter-spacing: .5px;
+    line-height: 1.5;
+    outline: 0;
     overflow: hidden;
+    padding-block: var(--spacer-md);
+    padding-inline: var(--spacer-lg);
+    text-align: center;
+    text-decoration: none;
     text-overflow: ellipsis;
+    text-transform: uppercase;
+    transition-duration: .3s;
     transition-property: all;
     transition-timing-function: ease-in-out;
-    transition-duration: .3s;
     
-    &.lg {
+    &--large {
         font-size: 1.2rem;
-        padding: 2rem;
+        padding-inline: var(--spacer-lg);
+        padding-block: var(--spacer-xl);
+    }
+
+    &--small {
+        font-size:.8rem;
+        padding-inline: var(--spacer-md);
+        padding-block: var(--spacer-sm);
     }
 
 
-    &:hover {
-        --adjusted-lightness:calc(var(--background-color-lightness) + 15%);
-        background-color:hsla(var(--background-color-hue-sat),var(--adjusted-lightness),var(--background-color-opacity));
+
+    &:hover:not(:disabled) {
+        --button-adjusted-lightness:calc(var(--button-background-color-lightness) + (15% * var(--color-lightness-shift-basis)));
+        background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
     }
 
     &:disabled {
-       color: hsla(var(--text-color-hue-sat), 50%);
-       background: hsla(var(--color-dark-hue-sat), 75%);
+
+        --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --button-background-color-lightness: var(--color-fill-neutral-lightness);
+        --button-background-color-opacity: .25;
+    }
+    &--secondary {
+        --button-background-color-hue-sat: var(--color-fill-neutral-hue-sat);
+        --button-background-color-lightness: var(--color-fill-neutral-lightness);
+        --button-background-color: var(--color-fill-neutral);
+        --button-text-color: var(--color-text-neutral);
     }
 
     &--inverse {
-        --background-color-hue-sat: var(--color-dark-hue-sat);
-        --background-color-lightness: var(--color-dark-lightness);
-        --background-color: var(--color-dark);
-        --text-color: var(--color-highlight-primary);
+        --button-background-color-hue-sat: var(--color-fill-inverse-hue-sat);
+        --button-background-color-lightness: var(--color-fill-inverse-lightness);
+        --button-background-color: var(--color-fill-inverse);
+        --button-text-color: var(--color-text-inverse);
     }
-
-    &--bright {
-        --background-color-lightness: calc(var(--color-accent-lightness+10));
-
-    }
-
-
-    &--accent {
-        --background-color-hue-sat: var(--color-accent-hue-sat);
-        --background-color-lightness: calc(var(--color-accent-lightness));
-        --background-color: var(--color-accent);
-    }
-
-
 
     &--ghost {
-        --background-color-opacity: 0;
-        padding:0;
-        margin:0;
+        --button-background-color-opacity: 0;
+        --button-text-color: var(--color-text-inverse);
         &:hover,
         &:focus {
-            --background-color-opacity: 0;
-            --adjusted-lightness:calc(var(--text-color-lightness) + 25%);
-            color:hsl(var(--text-color-hue-sat),var(--adjusted-lightness));
+            --button-background-color-opacity: .25;
+            --button-adjusted-lightness:calc(var(--button-text-color-lightness) + 25%);
         }
     }
     
     &--inactive {
-        --background-color-hue-sat: var(--desaturated-hue-sat);
+        --button-background-color-hue-sat: var(--desaturated-hue-sat);
+    }
+    &--negative {
+        --button-background-color-hue-sat: var(--color-fill-negative-hue-sat);
+        --button-background-color-lightness: var(--color-fill-negative-lightness);
+    }
+    &--positive {
+        --button-background-color-hue-sat: var(--color-fill-positive-hue-sat);
+        --button-background-color-lightness: var(--color-fill-positive-lightness);
     }
 }

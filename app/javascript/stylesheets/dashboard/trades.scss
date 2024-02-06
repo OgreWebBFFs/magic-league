@@ -9,8 +9,8 @@
     }
     .cell:first-child {
       @media only screen and (max-width: 850px) {
-        color: $color-light;
-        background: $color-dark
+        color: var(--color-text-neutral);
+        background:var(--color-fill-neutral)
       }
     }
   }
@@ -30,23 +30,23 @@
 
     &__date-status {
       flex-basis: 15%;
-      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       i {
         font-size: 1.5rem;
         
         &.approved {
-          color: $color-highlight-import;
+          color: var(--color-fill-positive);
         }
         &.rejected {
-          color: $color-highlight-urgent;
+          color: var(--color-fill-negative);
         }
         &.error {
-          color: $color-highlight-urgent;
+          color: var(--color-fill-negative);
         }
-        &.waiting {
-          color: $color-nuetral;
-        }
+    
       }
 
     }
@@ -65,10 +65,11 @@
   }
 
   .review-button {
-    margin: 0;
-    max-width: 50px;
-    @media only screen and (max-width: 850px) {
-      max-width: 100%;
+
+    @media only screen and (max-width: 650px) {
+      i{
+        font-size: 0.8rem;
+      }
     }
   }
 }
@@ -144,7 +145,7 @@
         color: #838996;
       }
       &.common {
-        color: $color-dark;
+        color: var(--color-text-inverse);
       }
     }
   }

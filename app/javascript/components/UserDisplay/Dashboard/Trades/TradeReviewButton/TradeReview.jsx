@@ -26,8 +26,8 @@ const TradeReview = ({ trade }) => {
         />
       </div>
       <div className="modal__actions">
-        <Button onClick={() => { setIsSubmitting(true); postTradeReview(trade, 'rejected')}} className="modal__action-button button--bright" disabled={isSubmitting}>Decline</Button>
-        <Button onClick={() => { setIsSubmitting(true); postTradeReview(trade, 'approved')}} className="modal__action-button button--accent" disabled={isSubmitting}>Accept</Button>
+        <Button onClick={() => { setIsSubmitting(true); postTradeReview(trade, 'rejected')}} className="modal__action-button button--negative" disabled={isSubmitting}>Decline</Button>
+        <Button onClick={() => { setIsSubmitting(true); postTradeReview(trade, 'approved')}} className="modal__action-button button--positive" disabled={isSubmitting}>Accept</Button>
       </div>
       <p className="modal__notice">
         <span className="warning">**WARNING**</span>

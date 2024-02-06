@@ -19,8 +19,8 @@
         &__cell{
             text-align:center;
             &-date{
-                color: $color-light;
-                background: $color-dark;
+                color: var(--color-text-neutral);
+                background-color: var(--color-fill-neutral);
             }
         }
 

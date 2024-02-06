@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../../../../Button';
 
 const FilterDrawerToggle = ({
   onClick,
@@ -11,9 +12,9 @@ const FilterDrawerToggle = ({
   );
   const hasSelections = selectionsForTargetFilter.length > 0;
   return (
-    <button
+    <Button
       type="button"
-      className="filter__option-group-toggle"
+      className="filter__option-group-toggle button--secondary"
       onClick={onClick}
     >
       {`${targetFilter.facetName.toUpperCase()}${hasSelections ? ` (${selectionsForTargetFilter.length})` : ''}`}
@@ -21,7 +22,7 @@ const FilterDrawerToggle = ({
       <div className="filter__option-group-toggle--actives">
         {selectionsForTargetFilter.join(', ')}
       </div>
-    </button>
+    </Button>
   );
 };
 

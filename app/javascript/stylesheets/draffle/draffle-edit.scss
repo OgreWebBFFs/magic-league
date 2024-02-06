@@ -79,10 +79,10 @@
       flex-direction: column;
 
       &--button {
-        background: $color-nuetral;
-        color: $color-highlight-import;
+        background-color: var(--color-fill-neutral);
+        color: var(--color-text-neutral);
         border: none;
-        border-bottom: 1px solid $color-accent;
+        border-bottom: 1px solid var(--color-text-neutral);
         cursor: pointer;
         flex: 1 1 50%;
 

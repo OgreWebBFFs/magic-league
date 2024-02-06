@@ -38,16 +38,17 @@
       padding: 0;
       line-height: 34px;
       font-size: 14px;
-      color: white;
+      color: var(--color-text-neutral);
       font-weight: bold;
       box-sizing: border-box;
+      color: var(--color-text-neutral);
     }
     &:before {
       content: attr(data-a);
       text-transform: uppercase;
       padding-left: 10px;
-      background-color: $color-highlight-import;
-      color: #fff;
+      background-color: var(--color-fill-positive);
+   
     }
   }
   &-disabled {
@@ -62,15 +63,14 @@
     content: attr(data-b);
     text-transform: uppercase;
     padding-right: 10px;
-    background-color: $color-accent;
-    color: #fff;
+    background-color: var(--color-fill-negative);
     text-align: right;
   }
   &-switch {
     display: block;
     width: 24px;
     margin: 5px;
-    background: #fff;
+    color: var(--color-text-neutral);
     position: absolute;
     top: 0;
     bottom: 0;
