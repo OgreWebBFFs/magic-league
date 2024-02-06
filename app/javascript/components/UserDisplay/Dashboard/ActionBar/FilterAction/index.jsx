@@ -25,7 +25,7 @@ const FilterAction = ({ onUpdate }) => {
 
   return (
     <>
-      <Button className="dashboard__filter-action" onClick={() => setShowModal(true)}>
+      <Button className="dashboard__filter-action button--secondary" onClick={() => setShowModal(true)}>
         <i className="fas fa-filter" />
         { numSelectedFilters === 0 ? 'Filter' : `(${numSelectedFilters})` }
       </Button>

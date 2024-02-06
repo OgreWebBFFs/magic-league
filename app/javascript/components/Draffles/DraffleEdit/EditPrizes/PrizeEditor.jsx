@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useMeasure } from 'react-use';
-import { CardImage } from '../../../CardGrid';
-import Button from '../../../Button';
 import PrintPicker from './PrintPicker';
 import PrintViewer from './PrintViewer';
 

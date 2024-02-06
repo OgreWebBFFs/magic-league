@@ -1,22 +1,24 @@
 .filter {
   &__option-group-toggle {
-    background: $color-dark;
-    color: $color-light;
+    background-color: var(--color-fill-neutral);
+    color: var(--color-text-neutral);
     font-weight: 700;
     padding: 0.75rem;
     width: 100%;
-    border-bottom: 2px solid $color-nuetral;
+    border-bottom: 2px solid var(--color-fill-theme-highlight); 
 
     &--actives {
       font-size: .75rem;
       font-weight: 400;
-      color: $color-light;
+      color: var(--color-text-neutral);
 
     }
 
     i {
       margin-left: .75rem;
     }
+    border-radius:0;
+ 
 
   }
 
@@ -67,19 +69,15 @@
     }
   }
 
-  &__apply-button {
+  &__apply-button,
+  &__clear-all-button {
     display: inline-block;
     width: 50%;
     margin: 1rem 0;
     align-self: center;
   }
-
   &__clear-all-button {
-    border: none;
-    background: none;
-    color: $color-accent;
-    border-bottom: 1px solid $color-accent;
-    align-self: center;
-    cursor: pointer;
+    margin: 0,
   }
+
 }

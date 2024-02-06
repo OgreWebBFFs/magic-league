@@ -1,25 +1,27 @@
 //Static Reused Numbers
-$nav-height: 64px;
-$footer-height: 32px;
-$section-padding: 25px;
-$section-margin: 25px;
-$animation-delay: 2s;
-$title-height: 50px;
-$checkbox-size: 25px;
-@media only screen and (max-width: 850px) { 
-  $title-height: 25px;
-}
 
+
+:root {
+  --nav-height: 40px;
+  --footer-height: 35px;
+  --draffle-button-height: 0;
+  --date-wrapper-height: 0;
+  --checkbox-size: 25px;
+  --spacer-section: var(--spacer-xl);
+
+  @media only screen and (min-width: 850px) { 
+    --nav-height: 50px;
+    --footer-height: 45px;
+  }
+}
 //Text Treatments
 a {
   text-decoration: none;
-  // color: $color-highlight-mid-import;
-  color: $Canopy;
+  color: var(--color-text-theme);
   transition: color 0.3s;
 
   &:hover {
-    // color: $color-highlight-import;
-    color: $Observatory;
+  color: hsl(var(--color-text-theme-hue-sat), 35%); 
   }
 }
 
@@ -68,37 +70,37 @@ h6 a {
 }
 
 h1 {
-  font-size: 4.2rem;
+  font-size: 2rem;
   line-height: 110%;
   margin: 0 0 1.68rem 0;
 }
 
 h2 {
-  font-size: 3.56rem;
+  font-size: 1.5rem;
   line-height: 110%;
   margin: 0 0 1.424rem 0;
 }
 
 h3 {
-  font-size: 2.92rem;
+  font-size: 1.25rem;
   line-height: 110%;
   margin: 0 0 1.168rem 0;
 }
 
 h4 {
-  font-size: 2.28rem;
+  font-size: 1.15rem;
   line-height: 110%;
   margin: 0 0 0.912rem 0;
 }
 
 h5 {
-  font-size: 1.64rem;
+  font-size: 1rem;
   line-height: 110%;
   margin: 0 0 0.656rem 0;
 }
 
 h6 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 110%;
   margin: 0 0 0.46rem 0;
 }
@@ -154,25 +156,33 @@ html {
 
 body {
   overflow-x: hidden;
-  background: $background-color;
+  background-size: 100% 00%;
+  background-image: linear-gradient(
+  45deg,
+  hsla(var(--color-fill-theme-hue-sat),90%, 5%) 1%,
+  hsla(var(--color-fill-theme-hue-sat),90%, 15%) 1%,
+  hsla(var(--color-fill-theme-hue-sat),79%, 25%) 6%,
+  hsla(var(--desaturated-hue-sat),60%, 15%) 77%,
+  hsla(var(--desaturated-hue-sat),79%, 5%) 94%,
+  hsla(var(--desaturated-hue-sat),90%, 5%) 99%,
+  var(--site-background),
+);
+
 }
 
 
 [class*="__section"],
 .section {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-block: var(--spacer-section);
+  padding-inline: calc(2 * var(--spacer-section));
   width: 100%;
-  background: $background-color;
-  padding: $section-padding;
   min-height: 600px;
-  color: $color-dark;
-
-
+  color: var(--color-text-inverse);
+  background-color:var(--site-background);
   //Section Types 
   &.full-page {
     background: transparent;
-    min-height: calc(100vh - #{$nav-height} - #{$footer-height});
+    min-height: calc(100vh -  var(--nav-height) - var(--footer-height));
   }
 }
 
@@ -197,7 +207,10 @@ body {
   display: block;
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  background: $color-light;
+  --table-background-adjusted-lightness:calc(var(--table-background-lightness) + (5% * var(--color-lightness-shift-basis)));
+  --table-background: hsl(var(--table-background-hue-sat), var(--table-background-adjusted-lightness));
+  background-color: var(--table-background);
+  color: var(--color-text-inverse);
 }
 
 .row {
@@ -208,18 +221,18 @@ body {
   text-overflow: ellipsis;
 
   &:nth-child(even) {
-    background: rgba($color-dark, .15);
+    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 10%);
+      
   }
 
   &[class*="-headings"] {
-    background: $color-dark;
-    color: $Wrinkle-White;
-    border-bottom: 3px solid $color-accent;
+    background-color: var(--color-fill-neutral);
+    color: var(--color-text-neutral);
+    border-bottom: 3px solid hsl(var(--color-fill-theme-hue-sat), 20%);
   }
 
   &[class*="-title"] {
-    background: $color-dark;
-    color: $Wrinkle-White;
+    background-color: var(--color-fill-neutral);
     font-size: 1.6rem;
   }
 }
@@ -247,10 +260,7 @@ body {
     justify-self: start;
   }
 
-  .button {
-    width: 100%;
-    display: inline-block;
-  }
+
 
   & input {
     text-align: center;
@@ -265,13 +275,13 @@ body {
 
 //Form and Input Elements
 select:focus {
-  outline: 1px solid $color-highlight-mid-import;
+  outline: 1px solid var(--color-fill-theme);
   z-index: 1;
 }
 
 label {
   font-size: 0.8rem;
-  color: $color-nuetral;
+  color: var(--color-text-inverse);
 }
 
 select.browser-default {
@@ -286,88 +296,21 @@ select {
   border-radius: 2px;
   height: 3rem;
 }
-
-//Buttons 
-[class*="__btn"] {
-  text-decoration: none;
-  text-align: center;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  outline: 0;
-  border: none;
-  border-radius: 2px;
-  line-height: 36px;
-  -webkit-tap-highlight-color: transparent;
-  background: $color-highlight-import;
-  color: $color-dark;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  transition-property: all;
-  transition-timing-function: ease-in-out;
-  transition-duration: .3s;
-
-  &:hover {
-    background: lighten($color-highlight-import, 15%);
-    color: rgba($color-dark, .75);
-  }
-
-  &:focus { 
-    outline: 2px solid $color-dark;
-    background: lighten($color-highlight-import, 15%);
-  }
-
-  &.highlight-mid {
-    background: lighten($color-highlight-mid-import, 5%);
-
-    &:hover {
-      background: lighten($color-highlight-mid-import, 10%);
-    }
-  }
-}
-
-//TODO refactor close buttons to work with other button classes
-[class*="__close-button"] {
-  position: absolute;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  top: 5px;
-  right: 5px;
-  width:30px;
-  height:30px;
-  background: $color-highlight-import;
-  color: $color-light;
-  float: right;
-  margin: 0;
-  border: none;
-  cursor: pointer;
-
-  &:focus {
-    background: none;
-  }
-
-  .material-icons {
-    font-size: 30px;
-  }
-}
-
 // Text Inputs + Textarea
 ::-webkit-input-placeholder {
-  color: $color-nuetral;
+  color: var(--color-text-theme);
 }
 
 ::-moz-placeholder {
-  color: $color-nuetral;
+  color: var(--color-text-theme);
 }
 
 :-ms-input-placeholder {
-  color: $color-nuetral;
+  color: var(--color-text-theme);
 }
 
 ::placeholder {
-  color: $color-nuetral;
+  color: var(--color-text-theme);
 }
 
 input:not([type]),
@@ -384,7 +327,7 @@ input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default) {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid $color-nuetral;
+  border-bottom: 1px solid  var(--color-fill-theme-highlight); 
   border-radius: 0;
   outline: none;
   height: 3rem;
@@ -415,9 +358,8 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid $color-highlight-mid-import;
-  -webkit-box-shadow: 0 1px 0 0 $color-highlight-mid-import;
-  box-shadow: 0 1px 0 0 $color-highlight-mid-import;
+  -webkit-box-shadow: 0 1px 0 0  var(--color-fill-theme);
+  box-shadow: 0 1px 0 0  var(--color-fill-theme);
 }
 
 input:not([type]):disabled+label,
@@ -446,13 +388,13 @@ input[type=search]:not(.browser-default):disabled+label,
 input[type=search]:not(.browser-default)[readonly="readonly"]+label,
 textarea.materialize-textarea:disabled+label,
 textarea.materialize-textarea[readonly="readonly"]+label {
-  color: $color-nuetral;
+  color: var(--color-text-theme);
 }
 
 input[type=checkbox] {
   position: absolute; // take it out of document flow
   opacity: 0; // hide it
-
+  
 
   &+label {
     position: relative;
@@ -466,27 +408,29 @@ input[type=checkbox] {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     background: transparent;
-    border: 2px solid $Canopy;
+    border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
     -webkit-tap-highlight-color: transparent;
     transition: .25s;
+    border-radius:var(--spacer-xs);
   }
 
   // Box hover
   &:hover+label:before {
-    background: rgba($color-dark, 0.25);
+  background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.25);  
+
   }
 
   // Box checked
   &:checked+label:before {
-    background: $color-highlight-import;
+    background: var(--color-fill-theme-highlight);
   }
 
   // Disabled state label.
   &:disabled+label {
-    color: $color-nuetral;
+    color: var(--color-text-theme);
     cursor: auto;
   }
 
@@ -497,24 +441,24 @@ input[type=checkbox] {
     position: absolute;
     left: 0px;
     top: 0px;
-    font-size: calc#{$checkbox-size*.8};
+    font-size: calc(var(--checkbox-size) * .6);
     display: flex;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     align-items: center;
     justify-content: center;
-    color: $color-dark;
+    color: var(--color-text-neutral);
   }
    // Disabled box.
    &:disabled+label:before {
     box-shadow: none;
-    border: 2px solid $color-dark;
-    background: rgba($color-nuetral, .25);
+    border: 2px solid var(--color-fill-neutral);
+    background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.25);  
   }
 
   &:disabled+label:after {
     box-shadow: none;
-    color: $color-dark
+    color: var(--color-text-inverse)
   }
 
 }
@@ -540,8 +484,33 @@ input[type=checkbox] {
     height: 0;
   }
 
+
+}
+
+//switch 
+
+[class*="__switch"],
+.switch,
+.switch * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  --switch-opacity: 1;
+
+  label {
+    cursor: pointer;
+  }
+
+  label input[type=checkbox] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
   label input[type=checkbox]:checked+.lever {
-    background-color: $color-highlight-mid-import;
+    background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-theme-lightness), 25%);
   }
 
   label input[type=checkbox]:checked+.lever:before,
@@ -550,7 +519,7 @@ input[type=checkbox] {
   }
 
   label input[type=checkbox]:checked+.lever:after {
-    background-color: $color-highlight-import;
+    background-color: var(--color-fill-theme);
   }
 
   label .lever {
@@ -559,7 +528,7 @@ input[type=checkbox] {
     position: relative;
     width: 36px;
     height: 14px;
-    background-color: rgba($color-highlight-mid-import, .25);
+    background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-theme-lightness), 25%);
     border-radius: 15px;
     margin-right: 10px;
     -webkit-transition: background 0.3s ease;
@@ -585,17 +554,19 @@ input[type=checkbox] {
   }
 
   label .lever:before {
-    background-color: rgba($color-highlight-mid-import, .25);
+    background-color: hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 25%);
   }
 
   label .lever:after {
-    background-color: rgba($color-highlight-mid-import, .25);
+    background-color: var(--color-fill-neutral);
     -webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 
 
 }
+
+
 
 //Overlays for modals and drawers
 .overlay {
@@ -605,7 +576,7 @@ input[type=checkbox] {
   backdrop-filter: blur(5px);
   top: 0;
   left: 0;
-  background-color: rgba($color-dark, .3);
+  background-color: hsla(var(--color-fill-neutral-hue-sat),var(--color-fill-neutral-lightness), 0.3);  
 }
 
 @media only screen and (max-width: 650px) {

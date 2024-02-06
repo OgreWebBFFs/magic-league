@@ -1,37 +1,31 @@
-
+:root{
+  --ranking-border-stroke-width: 2px;
+}
 .rankings {
   text-align: center;
-  $ranking-board-heading: 60px;
-  $month-selector: 45px;
-  $border-stroke-width: 2px;
   transition-property: opacity;
   transition-duration: 100ms;
   transition-timing-function: ease-in-out;
 
-
-  &__title {
-    font-size: 40px;
-    margin: 0 auto 10px;
-    font-variant: small-caps;
-    font-weight: 700;
-    text-transform: unset;
-    color: $color-light;
-    text-align: center;
+  &__date-wrapper {
+    display: flex;
+    gap:var(--spacer-sm);
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--spacer-md);
+    margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
   }
-
   &__date_form {
     display: flex;
     justify-content: center;
-    margin: 10px 0;
     transition-property: opacity;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
-
-    select {
-      // 125px is the width of the month input on the longest months
-      flex: 0 0 125px;
-      margin: 0 5px;
+    gap: var(--spacer-sm);
+    #match_date_month {
+      flex: 1 0 100px;
     }
+
 
     &--hidden {
       opacity: 0;
@@ -41,28 +35,28 @@
 
   &__border-wrapper {
     width: 100%;
-    height: calc(100% + 2 * #{$border-stroke-width}); 
+    height: calc(100% + 2 * var(--ranking-border-stroke-width)); 
     position: absolute;
     transform: translateX(-50%);
     left:50%;
-    top: -$border-stroke-width;
+    top: calc(-1 * var(--ranking-border-stroke-width));
     pointer-events: none;
   }
 
   &__border {
-    background-color: $color-light;
+    background-color: var(--color-fill-inverse);
     position: absolute;
     animation-duration: 4s;
     animation-timing-function: ease-in-out;
     &--top,
     &--bottom {
-      height: $border-stroke-width;
+      height: var(--ranking-border-stroke-width);
       width:100%;
       animation-name: growHorz;
     }
     &--right, 
     &--left {
-      width: $border-stroke-width;
+      width: var(--ranking-border-stroke-width);
       height:100%;
       animation-name: growVert;
     }
@@ -85,10 +79,11 @@
     }
   }
 
+
   &__wrapper {
     box-sizing: border-box;
-    margin: 10px auto;
-    height: calc(100vh - #{$nav-height} - #{$footer-height} - #{$month-selector} - #{$ranking-board-heading} - (3*#{$section-padding}));
+    margin: 0 auto;
+    height: calc(100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - var(--date-wrapper-height) - var(--spacer-section));
     position: relative;
     max-width:350px;
   }
@@ -106,13 +101,12 @@
     justify-content: center;
   }
 
-
-  &__user-button {
-    color: $color-light;
+  .rankings__user-button.button {
+    color: var(--color-text-neutral);
     width:100%;
     max-width: 300px;
-    margin: 5px 0;
-    padding: 5px 10px 5px 5px;
+    margin: var(--spacer-sm) 0;
+    padding: var(--spacer-sm);
     height: auto;
     display: flex;
     font-size: 12px;
@@ -123,19 +117,14 @@
     animation-timing-function: ease-out;
     -webkit-animation-timing-function: ease-out;
     visibility: visible !important;
+  }
 
-    &:hover {
-      background: lighten($color-accent, 5%);
-      color: $color-dark;
-    }
-
-    &--unranked {
-       opacity: .75;
+  .rankings__user-button.rankings__user-button--unranked.button{
+       --button-background-color-opacity: .75;
        &:hover {
-         opacity: 1;
+        --button-background-color-opacity: 1;
        }
-    }
-
+    
   }
 
   &__player {
@@ -190,14 +179,13 @@
     outline: none;
     width: 100%;
     overflow: hidden;
-    background-color: $color-light;
+    background-color: var(--color-fill-inverse);
     margin: 5px auto;
   }
 
   &__scroll-catcher {
-    $contract-catch-by:calc(100% - 2 * #{$border-stroke-width}); 
     height: 100%;
-    width: $contract-catch-by;
+    width: calc(100% - 2 * var(--ranking-border-stroke-width));
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -216,16 +204,21 @@
 
     &::-webkit-scrollbar-thumb {
       border-radius: 5px;
-      background-color: $color-light;
+      background-color: var(--color-fill-inverse);
     }
   }
   
   &__toggle-visbility-button {
     position: fixed;
-    bottom: 5%;
+    bottom: 7%;
     right:5%;
     animation:  mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite; 
-
+    &--off{
+      position: relative;
+      bottom: unset;
+      right: unset;
+      animation: none;
+    }
   }
 
   &--hidden {

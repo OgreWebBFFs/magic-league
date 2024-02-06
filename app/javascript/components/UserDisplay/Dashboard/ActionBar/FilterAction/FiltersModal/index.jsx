@@ -55,16 +55,15 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
           Apply
           {selectedOptions.length > 0 ? ` (${selectedOptions.length})` : ''}
         </Button>
-        <button
-          type="button"
-          className="filter__clear-all-button"
+        <Button
+          className="filter__clear-all-button button--ghost"
           onClick={() => {
             setSelectedOptions([]);
             onApply([]);
           }}
         >
           Clear All
-        </button>
+        </Button>
       </div>
     </Modal>
   );

@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
+import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Button from '../Button';
 import ViewToggleSwitch from '../ViewToggleSwitch';
@@ -8,6 +9,10 @@ import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
 import DatePicker from './DatePicker';
 import PlayerRanking from './PlayerRanking';
 import EventPlayerRanking from './EventPlayerRanking';
+import useTheme from '../../helpers/hooks/use-theme';
+
+
+
 
 const Rankings = ({
   date,
@@ -18,14 +23,35 @@ const Rankings = ({
 }) => {
   const [showRankings, setShowRankings] = useState(true);
   const [isSeasonView] = useIsSeasonView();
+  const dateWrapperRef = useRef();
+  const isMobile = useIsMobile();
+
+  useEffect(()=>{
+    const draffleButtonHeight = document.querySelector('.draffle-view-button')?.offsetHeight;
+    const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
+    const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
+    const dateFullHeight = `${dateWrapperHeight + parseInt(dateWrapperStyle.marginTop, 10) + parseInt(dateWrapperStyle.marginBottom, 10)  }px`;
+    document.documentElement.style.setProperty('--draffle-button-height', `${draffleButtonHeight}px`);
+    document.documentElement.style.setProperty('--date-wrapper-height', dateFullHeight);
+  },[isMobile]) 
+
+  const { setCurrentTheme } = useTheme();
+
+  useEffect(()=>{
+    const clueThemes = ['white','mustard', 'scarlet', 'peacock', 'plum', 'green'];
+    const randomTheme =  clueThemes[Math.floor(Math.random() * clueThemes.length)];
+    setCurrentTheme(randomTheme);
+  },[])
 
   return (
-    <>
+    <div className="rankings__page">
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
-        <DatePicker date={date} />
-        <Button className="button--ghost rankings__title" onClick={() => setShowRankings(false)}>
-          Rankings
-        </Button>
+        <div ref={dateWrapperRef} className="rankings__date-wrapper">
+          <DatePicker date={date} />
+          <Button className={classNames('rankings__toggle-visbility-button rankings__toggle-visbility-button--off button--small button--secondary')} onClick={() => setShowRankings(false)}>
+            <i className="fas fa-paint-brush" />
+          </Button>
+          </div>
         <ViewToggleSwitch name="rankings-type" />
         <div className="rankings__wrapper">
           <div className="rankings__scroll-catcher">
@@ -61,14 +87,12 @@ const Rankings = ({
         </div>
 
       </div>
-      { !showRankings
-    && (
-    <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => setShowRankings(true)}>
-      {' '}
-      <i className="fas fa-list" />
-    </Button>
-    )}
-    </>
+      {!showRankings &&
+        <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => setShowRankings(true)}>
+          <i className="fas fa-list" />
+        </Button>
+      }
+    </div>
   );
 };
 

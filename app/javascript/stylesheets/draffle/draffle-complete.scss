@@ -1,11 +1,11 @@
 .slot {
-  border: 2px solid $color-nuetral;
+  border: 2px solid  var(--color-fill-theme-highlight); 
   border-radius: 1rem;
   overflow: hidden;
 
   &__header {
-    background: $color-nuetral;
-    color: $color-highlight-mid-import;
+    background-color:var(--color-fill-neutral);
+    color: var(--color-text-neutral);
     &.pick {
       font-size: 1.2rem;
       font-weight: 600;
@@ -18,7 +18,7 @@
   &__user {
     font-size: 1.2rem;
     font-weight: 600;
-    color: $color-highlight-import;
+    color: var(--color-text-neutral);
     padding: .5rem;
     text-overflow: ellipsis;
     overflow: hidden;

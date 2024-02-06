@@ -6,7 +6,7 @@ const Modal = ({ onClose, children }) => createPortal((
   <div className="modal active">
     <div className="modal__overlay overlay" onClick={onClose} role="none" />
     <div className="modal__area">
-      <Button className="modal__close-button" onClick={onClose}>
+      <Button className="modal__close-button button--small button--ghost" onClick={onClose}>
         <i className="fas fa-times" />
       </Button>
       <div className="modal__content">

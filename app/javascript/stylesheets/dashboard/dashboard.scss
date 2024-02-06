@@ -3,6 +3,8 @@
 
 .dashboard {
 
+    --tab-heading-color-hue-sat: var(--color-fill-neutral-hue-sat);
+    --tab-heading-color-lightness: var(--neutral-lightness);
     &-header {
         display: flex;
         align-items: baseline;
@@ -45,7 +47,7 @@
         }
 
         &__pronouns {
-            color: #989898;
+            color: hsl(var(--color-text-inverse-hue-sat), 50%);
             font-size: 1.2rem;
             margin-left: .5rem;
         }
@@ -59,16 +61,15 @@
             display: flex;
             flex-direction: column;
             flex: 0 0 20%;
-            padding-right: $section-margin;
+            padding-right: var(--spacer-section);
             //Height of trades table 
             height: 192px;
             align-items: center;
-
             .user-image {
                 //gravatar image forces hard height/widths 154px is current
                 height: 154px;
                 width: 154px;
-                background: $color-dark;
+                background-color: var(--color-fill-neutral);
             }
         }
 
@@ -117,12 +118,12 @@
 
             &-points {
                 flex: 1 1 25%;
-                background: black;
-                color: white;
+                background: var(--color-fill-neutral);
+                color: var(--color-text-neutral);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                border-right: 3px solid $color-accent;
+                border-right: 3px solid hsl(var(--color-fill-theme-hue-sat), 70%);
 
                 p {
                     margin: 0;
@@ -135,7 +136,7 @@
             }
 
             &-match-num {
-                color: $color-nuetral;
+                color: var(--color-text-inverse);
                 font-size: .75rem;
             }
 
@@ -145,14 +146,9 @@
             display: block;
 
             &__user-details {
-                margin: 0 auto $section-margin;
+                margin: 0 auto var(--spacer-section);
                 align-items: center;
                 padding-right: 0;
-
-                &_edit__btn {
-                    padding: 0 10px;
-                    width: 200px;
-                }
             }
 
             &__trades {
@@ -168,7 +164,7 @@
         background: transparent;
 
         .notification {
-            color: $color-highlight-import;
+            color: var(--color-fill-alert);
             position: relative;
             left: 0.25rem;
             font-size: 1.2rem;
@@ -176,19 +172,20 @@
 
         .active {
             .notification {
-                color: $color-highlight-urgent;
+                color: var(--color-fill-alert);
             }
         }
     }
 
-    &__tab {
-        color: $color-light;
-        background: rgba($color-dark, .6);
-        margin-right: 5px;
+    &__tab.button {
+        --button-background-color-opacity: 0.6;
+        --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+        color: var(--color-text-neutral);
+        margin-right: var(--spacer-sm);
         margin-bottom:0;
         margin-left:0;
         width: 150px;
-        border-bottom: 1px solid rgba($color-dark, .15);
+        border-bottom: 1px solid hsl(var(--color-fill-neutral), 0.15);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
 
@@ -196,15 +193,16 @@
             margin-right: 0;
         }
 
-        &:hover {
-            background: rgba($color-dark, .8);
-            color: $color-light;
+        &:hover:not(:disabled) {
+            --button-background-color-opacity: 1;
         }
 
-        &.active {
-            background: $color-dark;
+        &.active.button {
+            --button-background-color-opacity: 1;
 
         }
+
+       
 
         @media only screen and (max-width: 850px) {
             flex-basis: 33%;
@@ -213,51 +211,40 @@
                 align-self: start;
             }
 
-            &_edit__btn {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 200px;
-                flex: 0 0 auto;
-            }
         }
     }
 
     &__card-interface {
-        border: 2px solid $color-dark;
+        border: 2px solid var(--color-fill-neutral);
 
         &-wrapper {
-            margin: $section-margin 0;
+            margin: var(--spacer-section) 0;
         }
     }
 
     &__action-bar {
         display: flex;
-        background-color: $color-dark;
+        background-color: hsl(var(--tab-heading-color-hue-sat), var(--tab-heading-color-lightness));
         align-items: center;
-        justify-content: flex-end;
-        height: 55px;
+        justify-content: space-between;
+        padding: var(--spacer-sm);
+        
     }
 
-    &__cards-action {
-        margin: 5px; 
-    }
 
     &__filter-action {
         position: absolute;
-        width: 6rem;
-        margin: 0;
-        left: calc(50% - 3rem);
-    }
+        transform: translateX(-50%);
+        left: 50%;
+    } 
 
     &__card-view-toggles {
         display: flex;
-        margin-right: auto;
         flex-grow: 1;
+        gap:var(--spacer-xs);
     }
 
-    &__card-view-toggle {
-        margin: 5px;
-    }
+
 
 
     &__card-view {   
@@ -279,8 +266,7 @@
         .empty-card-view{
             grid-column: 1 / span 3;
             text-align: center;
-            background: $background-color;
-            &__btn{
+            &__button{
                 width:200px; 
                 margin:5px auto;
             }
@@ -288,11 +274,11 @@
                 font-size: 20px;
             }
         }
-
-        background: $color-light;
     }
 
     &__card-grid-wrapper {
+        // This should always be light
+        background-color: hsl(var(--desaturated-hue-sat), 80%);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
     }
 
@@ -309,12 +295,12 @@
             margin: 0;
 
             &:disabled {
-                background: $color-nuetral;
+                background: var(--color-fill-neutral);
             }
         }
         
         &--text {
-            color: $color-light;
+            color: var(--color-text-neutral);
         }
     }
 
@@ -335,7 +321,7 @@
                 align-items: start;
                 button {
                     font-size: 1.5rem;
-                    color: $color-nuetral;
+                    color: var(--color-text-neutral);
                     margin: 0;
                     background: none;
                     &:hover {
@@ -356,7 +342,7 @@
             .new {
                 font-weight: 700;
                 margin-right: .75rem;
-                color: $color-highlight-urgent;
+                color: var(--color-fill-alert);
             }
         }
 

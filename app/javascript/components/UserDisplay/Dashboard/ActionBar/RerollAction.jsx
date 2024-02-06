@@ -4,6 +4,7 @@ import Button from '../../../Button';
 import Modal from '../../../Modal';
 
 const rerollObjectives = async (id) => {
+  // eslint-disable-next-line no-alert
   window.confirm("Are you sure you would like to reroll your unkept objectives?");
   await xhrRequest({
     url: `/rerolls/${id}`,

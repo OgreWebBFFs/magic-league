@@ -1,5 +1,11 @@
 //Animations
-
+:root {
+--Caribbean-Green: #00d285;
+--Crimson: #dc143c;
+--Eerie-Black: #270C1D;
+--Fountain-Blue: #55bcc9;
+--Mellow-Apricot: #efbd76;
+}
 //Background saturation animation
 @keyframes fadeInBGFilter {
   0% {
@@ -74,106 +80,106 @@
 //Logo Color Cylcle on hover
 @keyframes mtgColorCycle {
   16% {
-    fill: $Caribbean-Green;
+    fill: var(--Caribbean-Green);
   }
 
   32% {
-    fill: $Fountain-Blue;
+    fill: var(--Fountain-Blue);
   }
 
   48% {
-    fill: $Eerie-Black;
+    fill: var(--Eerie-Black);
   }
 
   64% {
-    fill: $Mellow-Apricot;
+    fill: var(--Mellow-Apricot);
   }
 
   82% {
-    fill: $Crimson;
+    fill: var(--Crimson);
   }
 
   98% {
-    fill: $color-highlight-mid-import;
+    fill: var(--color-fill-theme);
   }
 }
 
 @-webkit-keyframes mtgColorCycle {
   16% {
-    fill: $Caribbean-Green;
+    fill: var(--Caribbean-Green);
   }
 
   32% {
-    fill: $Fountain-Blue;
+    fill: var(--Fountain-Blue);
   }
 
   48% {
-    fill: $Eerie-Black;
+    fill: var(--Eerie-Black);
   }
 
   64% {
-    fill: $Mellow-Apricot;
+    fill: var(--Mellow-Apricot);
   }
 
   80% {
-    fill: $Crimson;
+    fill: var(--Crimson);
   }
 
   96% {
-    fill: $color-highlight-mid-import;
+    fill: var(--color-fill-theme);
   }
 }
 
 
 @keyframes mtgBackgroundColorCycle {
   16% {
-    background-color: $Caribbean-Green;
+    background-color: var(--Caribbean-Green);
   }
 
   32% {
-    background-color: $Fountain-Blue;
+    background-color: var(--Fountain-Blue);
   }
 
   48% {
-    background-color: $Eerie-Black;
+    background-color: var(--Eerie-Black);
   }
 
   64% {
-    background-color: $Mellow-Apricot;
+    background-color: var(--Mellow-Apricot);
   }
 
   82% {
-    background-color: $Crimson;
+    background-color: var(--Crimson);
   }
 
   98% {
-    background-color: $color-highlight-mid-import;
+    background-color:var(--color-fill-theme);
   }
 }
 
 @-webkit-keyframes mtgColorCycle {
   16% {
-    background-color: $Caribbean-Green;
+    background-color: var(--Caribbean-Green);
   }
 
   32% {
-    background-color: $Fountain-Blue;
+    background-color: var(--Fountain-Blue);
   }
 
   48% {
-    background-color: $Eerie-Black;
+    background-color: var(--Eerie-Black);
   }
 
   64% {
-    background-color: $Mellow-Apricot;
+    background-color: var(--Mellow-Apricot);
   }
 
   80% {
-    background-color: $Crimson;
+    background-color: var(--Crimson);
   }
 
   96% {
-    background-color: $color-highlight-mid-import;
+    background-color: var(--color-fill-theme);
   }
 }
 
