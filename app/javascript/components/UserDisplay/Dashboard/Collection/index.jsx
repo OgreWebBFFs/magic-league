@@ -35,7 +35,7 @@ const Collection = ({
       {(isListView && !isEmpty) && (
         <CardList>
           {filteredCollection.map((card, row) => (
-            <Row key={row} >
+            <Row>
               <Cell isPriority>
                 <a className="invert" href={`/cards/${card.id}`}>{card.name}</a>
               </Cell>

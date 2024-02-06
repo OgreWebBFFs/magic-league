@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
-import Button from '../../../Button';
 import PlacementSelector from './PlacementSelector';
 
 const MultiplayerMatchLogger = ({ unlockedUsers, currentUserId }) => {

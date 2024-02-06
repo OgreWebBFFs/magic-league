@@ -24,6 +24,7 @@ const ObjectiveManagerRow = ({ id, description: initDescription, value: initValu
       });
       window.location.reload();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e);
     }
   };
@@ -44,6 +45,7 @@ const ObjectiveManagerRow = ({ id, description: initDescription, value: initValu
       });
       window.location.reload();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e);
     }
   };

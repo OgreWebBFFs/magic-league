@@ -1,8 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import Button from '../../../Button';
 
-const ViewToggle = ({ isListView, setIsListView }) => (
+const ViewToggle = ({ setIsListView }) => (
   <div className="dashboard__card-view-toggles">
     <Button id="collection-table-toggle" className='dashboard__card-view-toggle button--secondary' onClick={() => setIsListView(true)}>
       <i className="fas fa-list" />

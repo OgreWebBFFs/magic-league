@@ -82,6 +82,7 @@ const EditDetails = ({
           <Modal onClose={() => setShowModal(false)}>
             <div
               style={{ maxWidth: '80vw' }}
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: toHTML(draffleWelcome),
               }}

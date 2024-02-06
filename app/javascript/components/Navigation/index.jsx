@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import useIsMobile from '../../helpers/hooks/use-is-mobile';
 
 import Logo from '../Logo';
@@ -89,7 +89,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
 
   return (
     <nav ref={navRef} id="top-nav" className={`nav ${isMobile ? 'nav--mobile' : 'nav--desktop'}`} role="navigation">
-      <a href="/" className="nav__logo">
+      <a href="/" className="nav__logo" aria-label='home'>
         <Logo />
       </a>
       <ul className="nav__links">

@@ -7,13 +7,13 @@ const isNew = (age) => age.includes('minute') || age.includes('hour') || (
 
 const Announcements = ({ messages }) => (
     <>
-      <h1 class="page__heading">Announcements</h1>
+      <h1 className="page__heading">Announcements</h1>
       {messages.map(({ heading, sub_heading: subHeading, author, age, link, id }) => (
         <div className="announcement" key={id}>
           {isNew(age) && <div className="announcement__new">NEW!</div>}
           <div
-            // eslint-disable-next-line react/no-danger
             className="announcement__heading"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `${toHTML(heading)}`
             }}
@@ -23,8 +23,8 @@ const Announcements = ({ messages }) => (
             <div className="announcement__details--age">{age}</div>
           </div>
           <div
-            // eslint-disable-next-line react/no-danger
             className="announcement__subheading"
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `${toHTML(subHeading)}...`
             }}
