@@ -1,0 +1,31 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // These are all my auto-save configs
+    "editor.formatOnSave": true,
+    // turn it off for JS and JSX, we will do this via eslint
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": null
+    },
+    "[scss]": {
+        // "editor.defaultFormatter": null
+    },
+    // show eslint icon at bottom toolbar
+    "eslint.alwaysShowStatus": true,
+    // tell the ESLint plugin to run on save
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "css.validate": false,
+    "scss.validate": false
+}
