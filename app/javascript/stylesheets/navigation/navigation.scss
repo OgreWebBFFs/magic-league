@@ -27,12 +27,15 @@
     );
     width: 100%;
     padding: 0 10%;
-    display: flex;
-    gap: var(--spacer-md);
-    align-items: center;
-    justify-content: flex-end;
     height: var(--nav-height);
 
+    &__container {
+        height: 100%;
+        display: flex;
+        gap: var(--spacer-md);
+        align-items: center;
+        justify-content: flex-end;
+    }
     &__logo {
         margin-right: auto;
         height: 100%;
