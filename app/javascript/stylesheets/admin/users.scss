@@ -1,31 +1,28 @@
-.admin-users{
-    &__cell{
-        flex:0 0 25%;
-        overflow:hidden;
+.admin-users {
+    &__cell {
+        flex: 0 0 25%;
+        overflow: hidden;
         text-overflow: ellipsis;
-
     }
 
-
     @media only screen and (max-width: 850px) {
-
         &__row {
-            display:block; 
+            display: block;
             &-headings {
-                display:none;
+                display: none;
             }
         }
 
-        &__cell{
-            text-align:center;
-            &-date{
+        &__cell {
+            text-align: center;
+            &-date {
                 color: var(--color-text-neutral);
                 background-color: var(--color-fill-neutral);
             }
         }
 
         .button {
-         width: 100px;
+            width: 100px;
         }
     }
 }

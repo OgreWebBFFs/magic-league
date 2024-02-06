@@ -1,202 +1,207 @@
 //Animations
 :root {
---Caribbean-Green: #00d285;
---Crimson: #dc143c;
---Eerie-Black: #270C1D;
---Fountain-Blue: #55bcc9;
---Mellow-Apricot: #efbd76;
+    --Caribbean-Green: #00d285;
+    --Crimson: #dc143c;
+    --Eerie-Black: #270c1d;
+    --Fountain-Blue: #55bcc9;
+    --Mellow-Apricot: #efbd76;
 }
 //Background saturation animation
 @keyframes fadeInBGFilter {
-  0% {
-    -webkit-filter: saturate(0.25);
-    filter: saturate(0.25);
-  }
+    0% {
+        -webkit-filter: saturate(0.25);
+        filter: saturate(0.25);
+    }
 }
 
 //Rankings name entry animation
 @keyframes bigEntrance {
-  0% {
-    transform: translateY(10px);
-    opacity: 0.2;
-  }
+    0% {
+        transform: translateY(10px);
+        opacity: 0.2;
+    }
 
-  30% {
-    opacity: 1;
-  }
+    30% {
+        opacity: 1;
+    }
 
-  45% {
-    opacity: 1;
-  }
+    45% {
+        opacity: 1;
+    }
 
-  60% {
-    opacity: 1;
-  }
+    60% {
+        opacity: 1;
+    }
 
-  75% {
-    opacity: 1;
-  }
+    75% {
+        opacity: 1;
+    }
 
-  90% {
-    opacity: 1;
-  }
+    90% {
+        opacity: 1;
+    }
 
-  100% {
-    opacity: 1;
-  }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes bigEntrance {
-  0% {
-    transform: translateY(10px);
-    opacity: 0.2;
-  }
+    0% {
+        transform: translateY(10px);
+        opacity: 0.2;
+    }
 
-  30% {
-    opacity: 1;
-  }
+    30% {
+        opacity: 1;
+    }
 
-  45% {
-    opacity: 1;
-  }
+    45% {
+        opacity: 1;
+    }
 
-  60% {
-    opacity: 1;
-  }
+    60% {
+        opacity: 1;
+    }
 
-  75% {
-    opacity: 1;
-  }
+    75% {
+        opacity: 1;
+    }
 
-  90% {
-    opacity: 1;
-  }
+    90% {
+        opacity: 1;
+    }
 
-  100% {
-    opacity: 1;
-  }
+    100% {
+        opacity: 1;
+    }
 }
 
 //Logo Color Cylcle on hover
 @keyframes mtgColorCycle {
-  16% {
-    fill: var(--Caribbean-Green);
-  }
+    16% {
+        fill: var(--Caribbean-Green);
+    }
 
-  32% {
-    fill: var(--Fountain-Blue);
-  }
+    32% {
+        fill: var(--Fountain-Blue);
+    }
 
-  48% {
-    fill: var(--Eerie-Black);
-  }
+    48% {
+        fill: var(--Eerie-Black);
+    }
 
-  64% {
-    fill: var(--Mellow-Apricot);
-  }
+    64% {
+        fill: var(--Mellow-Apricot);
+    }
 
-  82% {
-    fill: var(--Crimson);
-  }
+    82% {
+        fill: var(--Crimson);
+    }
 
-  98% {
-    fill: var(--color-fill-theme);
-  }
+    98% {
+        fill: var(--color-fill-theme);
+    }
 }
 
 @-webkit-keyframes mtgColorCycle {
-  16% {
-    fill: var(--Caribbean-Green);
-  }
+    16% {
+        fill: var(--Caribbean-Green);
+    }
 
-  32% {
-    fill: var(--Fountain-Blue);
-  }
+    32% {
+        fill: var(--Fountain-Blue);
+    }
 
-  48% {
-    fill: var(--Eerie-Black);
-  }
+    48% {
+        fill: var(--Eerie-Black);
+    }
 
-  64% {
-    fill: var(--Mellow-Apricot);
-  }
+    64% {
+        fill: var(--Mellow-Apricot);
+    }
 
-  80% {
-    fill: var(--Crimson);
-  }
+    80% {
+        fill: var(--Crimson);
+    }
 
-  96% {
-    fill: var(--color-fill-theme);
-  }
+    96% {
+        fill: var(--color-fill-theme);
+    }
 }
-
 
 @keyframes mtgBackgroundColorCycle {
-  16% {
-    background-color: var(--Caribbean-Green);
-  }
+    16% {
+        background-color: var(--Caribbean-Green);
+    }
 
-  32% {
-    background-color: var(--Fountain-Blue);
-  }
+    32% {
+        background-color: var(--Fountain-Blue);
+    }
 
-  48% {
-    background-color: var(--Eerie-Black);
-  }
+    48% {
+        background-color: var(--Eerie-Black);
+    }
 
-  64% {
-    background-color: var(--Mellow-Apricot);
-  }
+    64% {
+        background-color: var(--Mellow-Apricot);
+    }
 
-  82% {
-    background-color: var(--Crimson);
-  }
+    82% {
+        background-color: var(--Crimson);
+    }
 
-  98% {
-    background-color:var(--color-fill-theme);
-  }
+    98% {
+        background-color: var(--color-fill-theme);
+    }
 }
 
 @-webkit-keyframes mtgColorCycle {
-  16% {
-    background-color: var(--Caribbean-Green);
-  }
+    16% {
+        background-color: var(--Caribbean-Green);
+    }
 
-  32% {
-    background-color: var(--Fountain-Blue);
-  }
+    32% {
+        background-color: var(--Fountain-Blue);
+    }
 
-  48% {
-    background-color: var(--Eerie-Black);
-  }
+    48% {
+        background-color: var(--Eerie-Black);
+    }
 
-  64% {
-    background-color: var(--Mellow-Apricot);
-  }
+    64% {
+        background-color: var(--Mellow-Apricot);
+    }
 
-  80% {
-    background-color: var(--Crimson);
-  }
+    80% {
+        background-color: var(--Crimson);
+    }
 
-  96% {
-    background-color: var(--color-fill-theme);
-  }
+    96% {
+        background-color: var(--color-fill-theme);
+    }
 }
-
-
 
 @keyframes growVert {
- 0%{ transform: scaleY(0)}
+    0% {
+        transform: scaleY(0);
+    }
 }
-  
-@-webkit-keyframes growVert {
-  0%{ transform: scaleY(0)}
- }
 
- @keyframes growHorz {
-  0%{ transform: scaleX(0)}
- }
-   
- @-webkit-keyframes growHorz {
-   0%{ transform: scaleX(0)}
-  }
+@-webkit-keyframes growVert {
+    0% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes growHorz {
+    0% {
+        transform: scaleX(0);
+    }
+}
+
+@-webkit-keyframes growHorz {
+    0% {
+        transform: scaleX(0);
+    }
+}

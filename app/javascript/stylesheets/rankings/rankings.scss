@@ -1,229 +1,227 @@
-:root{
-  --ranking-border-stroke-width: 2px;
+:root {
+    --ranking-border-stroke-width: 2px;
 }
 .rankings {
-  text-align: center;
-  transition-property: opacity;
-  transition-duration: 100ms;
-  transition-timing-function: ease-in-out;
-
-  &__date-wrapper {
-    display: flex;
-    gap:var(--spacer-sm);
-    align-items: center;
-    justify-content: center;
-    margin-top: var(--spacer-md);
-    margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
-  }
-  &__date_form {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     transition-property: opacity;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
-    gap: var(--spacer-sm);
-    #match_date_month {
-      flex: 1 0 100px;
+
+    &__date-wrapper {
+        display: flex;
+        gap: var(--spacer-sm);
+        align-items: center;
+        justify-content: center;
+        margin-top: var(--spacer-md);
+        margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
+    }
+    &__date_form {
+        display: flex;
+        justify-content: center;
+        transition-property: opacity;
+        transition-duration: 100ms;
+        transition-timing-function: ease-in-out;
+        gap: var(--spacer-sm);
+        #match_date_month {
+            flex: 1 0 100px;
+        }
+
+        &--hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
+    &__border-wrapper {
+        width: 100%;
+        height: calc(100% + 2 * var(--ranking-border-stroke-width));
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        top: calc(-1 * var(--ranking-border-stroke-width));
+        pointer-events: none;
+    }
+
+    &__border {
+        background-color: var(--color-fill-inverse);
+        position: absolute;
+        animation-duration: 4s;
+        animation-timing-function: ease-in-out;
+        &--top,
+        &--bottom {
+            height: var(--ranking-border-stroke-width);
+            width: 100%;
+            animation-name: growHorz;
+        }
+        &--right,
+        &--left {
+            width: var(--ranking-border-stroke-width);
+            height: 100%;
+            animation-name: growVert;
+        }
+        &--right {
+            right: 0;
+            transform-origin: top right;
+        }
+        &--left {
+            left: 0;
+            transform-origin: bottom left;
+        }
+        &--top {
+            top: 0;
+            transform-origin: top left;
+        }
+        &--bottom {
+            bottom: 0;
+            transform-origin: bottom right;
+        }
+    }
+
+    &__wrapper {
+        box-sizing: border-box;
+        margin: 0 auto;
+        height: calc(
+            100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - var(--date-wrapper-height) -
+                var(--spacer-section)
+        );
+        position: relative;
+        max-width: 350px;
+    }
+
+    &__player-listing {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &__player-bucket {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rankings__user-button.button {
+        color: var(--color-text-neutral);
+        width: 100%;
+        max-width: 300px;
+        margin: var(--spacer-sm) 0;
+        padding: var(--spacer-sm);
+        height: auto;
+        display: flex;
+        font-size: 12px;
+        animation-name: bigEntrance;
+        -webkit-animation-name: bigEntrance;
+        animation-duration: 1.6s;
+        -webkit-animation-duration: 1.6s;
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+        visibility: visible !important;
+    }
+
+    .rankings__user-button.rankings__user-button--unranked.button {
+        --button-background-color-opacity: 0.75;
+        &:hover {
+            --button-background-color-opacity: 1;
+        }
+    }
+
+    &__player {
+        line-height: 14px;
+        text-align: left;
+        display: flex;
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+        min-width: 0;
+        align-items: center;
+
+        &-position {
+            font-weight: bolder;
+            font-size: 20px;
+            align-self: center;
+            flex: 0 0 35px;
+            text-align: center;
+        }
+
+        &-name {
+            flex: 1 1 100%;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &-overflow-boundary {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            &--unranked {
+                text-align: center;
+            }
+        }
+
+        &-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        &-record {
+            flex: 1 1 auto;
+            text-align: right;
+        }
+    }
+
+    &__divider {
+        height: 2px;
+        border: none;
+        outline: none;
+        width: 100%;
+        overflow: hidden;
+        background-color: var(--color-fill-inverse);
+        margin: 5px auto;
+    }
+
+    &__scroll-catcher {
+        height: 100%;
+        width: calc(100% - 2 * var(--ranking-border-stroke-width));
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        padding: 5px;
+
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: var(--color-fill-inverse);
+        }
+    }
+
+    &__toggle-visbility-button {
+        position: fixed;
+        bottom: 7%;
+        right: 5%;
+        animation: mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite;
+        &--off {
+            position: relative;
+            bottom: unset;
+            right: unset;
+            animation: none;
+        }
+    }
 
     &--hidden {
-      opacity: 0;
-      pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
     }
-  }
-
-  &__border-wrapper {
-    width: 100%;
-    height: calc(100% + 2 * var(--ranking-border-stroke-width)); 
-    position: absolute;
-    transform: translateX(-50%);
-    left:50%;
-    top: calc(-1 * var(--ranking-border-stroke-width));
-    pointer-events: none;
-  }
-
-  &__border {
-    background-color: var(--color-fill-inverse);
-    position: absolute;
-    animation-duration: 4s;
-    animation-timing-function: ease-in-out;
-    &--top,
-    &--bottom {
-      height: var(--ranking-border-stroke-width);
-      width:100%;
-      animation-name: growHorz;
-    }
-    &--right, 
-    &--left {
-      width: var(--ranking-border-stroke-width);
-      height:100%;
-      animation-name: growVert;
-    }
-    &--right{
-      right:0;
-      transform-origin: top right;
-    }
-    &--left{
-      left:0;
-      transform-origin: bottom left;
-    }
-    &--top{
-      top:0;
-      transform-origin: top left;
-
-    }
-    &--bottom{
-      bottom:0;
-      transform-origin: bottom right;
-    }
-  }
-
-
-  &__wrapper {
-    box-sizing: border-box;
-    margin: 0 auto;
-    height: calc(100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - var(--date-wrapper-height) - var(--spacer-section));
-    position: relative;
-    max-width:350px;
-  }
-
-  &__player-listing {
-    display: flex;  
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  &__player-bucket {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .rankings__user-button.button {
-    color: var(--color-text-neutral);
-    width:100%;
-    max-width: 300px;
-    margin: var(--spacer-sm) 0;
-    padding: var(--spacer-sm);
-    height: auto;
-    display: flex;
-    font-size: 12px;
-    animation-name: bigEntrance;
-    -webkit-animation-name: bigEntrance;
-    animation-duration: 1.6s;
-    -webkit-animation-duration: 1.6s;
-    animation-timing-function: ease-out;
-    -webkit-animation-timing-function: ease-out;
-    visibility: visible !important;
-  }
-
-  .rankings__user-button.rankings__user-button--unranked.button{
-       --button-background-color-opacity: .75;
-       &:hover {
-        --button-background-color-opacity: 1;
-       }
-    
-  }
-
-  &__player {
-    line-height: 14px;
-    text-align:left;
-    display: flex;
-    flex: 1 1 auto;
-    flex-wrap: wrap;
-    min-width: 0;
-    align-items: center;
-
-    &-position {
-      font-weight: bolder;
-      font-size: 20px;
-      align-self: center;
-      flex:0 0 35px;
-      text-align: center;
-    }
-
-    &-name {
-      flex: 1 1 100%;
-      min-width: 0; 
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      &-overflow-boundary {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis
-      }
-      &--unranked {
-        text-align: center;;
-      }
-    }
-
-    &-stats {
-      display:flex;
-      justify-content: space-between;
-      width:100%;
-    }
-  
-    &-record {
-      flex: 1 1 auto;
-      text-align: right;
-    }
-  }
-
-  &__divider {
-    height: 2px;
-    border: none;
-    outline: none;
-    width: 100%;
-    overflow: hidden;
-    background-color: var(--color-fill-inverse);
-    margin: 5px auto;
-  }
-
-  &__scroll-catcher {
-    height: 100%;
-    width: calc(100% - 2 * var(--ranking-border-stroke-width));
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    padding: 5px;
-
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      background-color: transparent;
-    }
-
-    &::-webkit-scrollbar {
-      width: 5px;
-      background-color: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      background-color: var(--color-fill-inverse);
-    }
-  }
-  
-  &__toggle-visbility-button {
-    position: fixed;
-    bottom: 7%;
-    right:5%;
-    animation:  mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite; 
-    &--off{
-      position: relative;
-      bottom: unset;
-      right: unset;
-      animation: none;
-    }
-  }
-
-  &--hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
 }

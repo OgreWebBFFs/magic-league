@@ -2,14 +2,13 @@
 @import "./filters";
 
 .dashboard {
-
     --tab-heading-color-hue-sat: var(--color-fill-neutral-hue-sat);
     --tab-heading-color-lightness: var(--neutral-lightness);
     &-header {
         display: flex;
         align-items: baseline;
         margin-bottom: 10px;
-        
+
         @media only screen and (max-width: 850px) {
             flex-direction: column;
             align-items: center;
@@ -18,7 +17,7 @@
                 text-align: center;
             }
         }
-        
+
         &__title {
             margin: 0;
         }
@@ -27,11 +26,11 @@
             flex: 0 0 auto;
         }
 
-        &__discord { 
+        &__discord {
             max-width: 100%;
             margin-left: auto;
             font-size: 1.5rem;
-            color: #7289DA;
+            color: #7289da;
             display: flex;
             gap: 0.5rem;
             align-items: baseline;
@@ -49,10 +48,9 @@
         &__pronouns {
             color: hsl(var(--color-text-inverse-hue-sat), 50%);
             font-size: 1.2rem;
-            margin-left: .5rem;
+            margin-left: 0.5rem;
         }
     }
-
 
     &-profile {
         display: flex;
@@ -62,7 +60,7 @@
             flex-direction: column;
             flex: 0 0 20%;
             padding-right: var(--spacer-section);
-            //Height of trades table 
+            //Height of trades table
             height: 192px;
             align-items: center;
             .user-image {
@@ -86,14 +84,15 @@
             }
         }
         &__edit-button {
-                margin:0.25rem 0; 
+            margin: 0.25rem 0;
         }
 
         &__performance {
             display: flex;
             flex: 1 1 100%;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-            
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+                0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
             .digit {
                 font-size: 2.5rem;
                 font-weight: 700;
@@ -129,7 +128,7 @@
                     margin: 0;
                     text-align: center;
                 }
-                 
+
                 & .digit {
                     font-size: 3.5rem;
                 }
@@ -137,9 +136,8 @@
 
             &-match-num {
                 color: var(--color-text-inverse);
-                font-size: .75rem;
+                font-size: 0.75rem;
             }
-
         }
 
         @media only screen and (max-width: 850px) {
@@ -154,9 +152,7 @@
             &__trades {
                 flex: 1 0 100%;
             }
-
         }
-
     }
 
     &__tab-wrapper {
@@ -179,11 +175,15 @@
 
     &__tab.button {
         --button-background-color-opacity: 0.6;
-        --button-background-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+        --button-background-color: hsla(
+            var(--button-background-color-hue-sat),
+            var(--button-adjusted-lightness),
+            var(--button-background-color-opacity)
+        );
         color: var(--color-text-neutral);
         margin-right: var(--spacer-sm);
-        margin-bottom:0;
-        margin-left:0;
+        margin-bottom: 0;
+        margin-left: 0;
         width: 150px;
         border-bottom: 1px solid hsl(var(--color-fill-neutral), 0.15);
         border-bottom-left-radius: 0;
@@ -199,10 +199,7 @@
 
         &.active.button {
             --button-background-color-opacity: 1;
-
         }
-
-       
 
         @media only screen and (max-width: 850px) {
             flex-basis: 33%;
@@ -210,7 +207,6 @@
             &__title {
                 align-self: start;
             }
-
         }
     }
 
@@ -228,26 +224,21 @@
         align-items: center;
         justify-content: space-between;
         padding: var(--spacer-sm);
-        
     }
-
 
     &__filter-action {
         position: absolute;
         transform: translateX(-50%);
         left: 50%;
-    } 
+    }
 
     &__card-view-toggles {
         display: flex;
         flex-grow: 1;
-        gap:var(--spacer-xs);
+        gap: var(--spacer-xs);
     }
 
-
-
-
-    &__card-view {   
+    &__card-view {
         &__cell {
             justify-self: flex-end;
             flex: 0 0 50px;
@@ -263,12 +254,12 @@
             }
         }
 
-        .empty-card-view{
+        .empty-card-view {
             grid-column: 1 / span 3;
             text-align: center;
-            &__button{
-                width:200px; 
-                margin:5px auto;
+            &__button {
+                width: 200px;
+                margin: 5px auto;
             }
             &__message {
                 font-size: 20px;
@@ -279,7 +270,7 @@
     &__card-grid-wrapper {
         // This should always be light
         background-color: hsl(var(--desaturated-hue-sat), 80%);
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0,20%);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 14%), 0 3px 1px -2px rgba(0, 0, 0, 12%), 0 1px 5px 0 rgba(0, 0, 0, 20%);
     }
 
     &__reroll-action {
@@ -288,24 +279,23 @@
         align-items: center;
         gap: 1rem;
         padding: 0 5px;
-        
+
         &--btn {
             font-size: 1.5rem;
-            padding: .5rem;
+            padding: 0.5rem;
             margin: 0;
 
             &:disabled {
                 background: var(--color-fill-neutral);
             }
         }
-        
+
         &--text {
             color: var(--color-text-neutral);
         }
     }
 
     &__objectives {
-
         &-heading {
             align-items: start;
             justify-content: start;
@@ -315,7 +305,7 @@
                 padding-right: 0;
                 display: flex;
             }
-            
+
             &--info {
                 display: inline-flex;
                 align-items: start;
@@ -341,7 +331,7 @@
             flex: 1 1 75%;
             .new {
                 font-weight: 700;
-                margin-right: .75rem;
+                margin-right: 0.75rem;
                 color: var(--color-fill-alert);
             }
         }
@@ -384,7 +374,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
     }
 
     &__no-filter-results {
@@ -396,11 +385,10 @@
     &__detail {
         text-align: left;
         max-width: 80vw;
-        
+
         i {
-            margin-right: .5rem;
-            margin-left: .5rem;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
         }
     }
 }
-
