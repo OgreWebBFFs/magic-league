@@ -13,9 +13,9 @@ const OwnershipTable = ({
   card, currentUserId, totalCount, ownerDetails,
 }) => (
   <>
-    <Table>
+    <Table className="card-profile__table--ownership">
       <Row className="card-profile__row--headings" isHeading>
-        <Cell isPriority>Owner</Cell>
+        <Cell isPriority>Owned By</Cell>
         <AmountCell>Amount</AmountCell>
       </Row>
       {totalCount <= 0 ? <NoOwnersMessage /> : (
@@ -34,8 +34,13 @@ const OwnershipTable = ({
           </Row>
         ))
       )}
+      {totalCount > 0 && 
+        <Row>
+          <Cell isPriority><b><i>Total</i></b></Cell>
+          <AmountCell><b><i>{totalCount}</i></b></AmountCell>
+        </Row>
+      }
     </Table>
-    <p>{`*total copies in league: ${totalCount}`}</p>
   </>
 );
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import OwnershipTable from './OwnershipTable';
+import WishlistTable from './WishlistTable';
 import { TradeProposalButtonLarge } from '../TradeProposal';
 import formatCard from './format-card';
 import WishlistToggleLarge from '../WishlistToggle/WishlistToggleLarge';
 import { CardImage } from '../CardGrid';
 
 const CardOwnership = ({
-  card, currentUserId, totalCount, ownerDetails, wishlist,
+  card, currentUserId, totalCount, ownerDetails, wishlist, totalWishlisters, wishlisterDetails
 }) => {
   const isWishlisted = wishlist[currentUserId] !== undefined;
   return (
@@ -15,7 +16,11 @@ const CardOwnership = ({
         {card.name}
       </h3>
       <div className="card-profile__card">
-        <div style={{ maxWidth: '220px', margin: 'auto' }}>
+        {/*
+          The below style seems to override what's in card-profile.scss for the above className
+          When the below style is removed, card image is as large as it seemingly can be
+        */}
+        <div style={{ maxWidth: '350px', margin: 'auto' }}>
           <CardImage name={card.name} imageUrl={card.image_url} />
         </div>
       </div>
@@ -37,6 +42,10 @@ const CardOwnership = ({
           currentUserId={currentUserId}
           totalCount={totalCount}
           ownerDetails={ownerDetails}
+        />
+        <WishlistTable
+          totalWishlisters={totalWishlisters}
+          wishlisterDetails={wishlisterDetails}
         />
       </div>
     </>
