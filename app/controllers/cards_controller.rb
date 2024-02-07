@@ -9,21 +9,22 @@ class CardsController < ApplicationController
   
   def show
     @card = Card.find_by_id(params[:id])
-    @total_count = @card.ownerships.count
+    
     counts_by_id = Hash.new
     @card.ownerships.each do |o|
       counts_by_id[o.collection.user.id] ||= 0
       counts_by_id[o.collection.user.id] += 1
     end
     @owner_details = Hash.new
-    @card.ownerships.each do |o|
+    @card.ownerships.sort_by{ |o| o.collection.user.name }.each do |o|
       user = o.collection.user
       @owner_details[user.id] = {id: user.id, name: user.name, count: counts_by_id[user.id] }
     end
+
     @wishlisters_details = Hash.new
-    @card.wishes.each do |w|
+    @card.wishes.sort_by{ |w| w.user.name }.each do |w|
       user = w.user
-      @wishlisters_details[user.id] = { id: user.id, name: user.name }
+      @wishlisters_details[user.id] = { id: user.id, name: user.name, count: counts_by_id[user.id] ? counts_by_id[user.id] : 0 }
     end
   end
 
