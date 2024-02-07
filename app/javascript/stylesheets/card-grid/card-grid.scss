@@ -115,6 +115,10 @@
             margin-bottom: 0;
             -moz-appearance: textfield;
             height:auto;
+            color: var(--color-text-neutral)
+        }
+        button {
+            color: var(--color-text-neutral)
         }
 
     }
