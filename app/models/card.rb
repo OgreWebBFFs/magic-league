@@ -38,4 +38,8 @@ class Card < ApplicationRecord
     new_card.rarity = card_res['rarity']
     new_card.save! 
   end
+
+  def owned
+    self.ownerships.count > 0
+  end
 end

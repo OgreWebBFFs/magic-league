@@ -1,0 +1,43 @@
+module Filters
+  class CardsFilter < Filters::GenericFilter
+    FILTERS = {
+      name_contains_filter: {
+        apply?: ->(params) {
+          params[:query].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          scope.where('name ILIKE ?', "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
+        }
+      }.freeze,
+      colors_filter: {
+        apply?: ->(params) {
+          params[:colors].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          possible_colors = params[:colors].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
+          scope.where('colors && ARRAY[?]::varchar[]', possible_colors)
+        }
+      }.freeze,
+      owned_filter: {
+        apply?: ->(params) {
+          params[:owned] === 'true'
+        },
+        apply: ->(scope, params) {
+          scope.joins(:ownerships).group('cards.id').having('COUNT(ownerships.id) > ?', 0)
+        }
+      }.freeze,
+      rarity_filter: {
+        apply?: ->(params) {
+          ['common', 'uncommon', 'rare', 'mythic'].include? params[:rarity]
+        },
+        apply: ->(scope, params) {
+          scope.where('rarity = ?', params[:rarity])
+        }
+      }
+    }.freeze
+
+    def self.filters
+      FILTERS
+    end
+  end
+end

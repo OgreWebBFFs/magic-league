@@ -7,7 +7,7 @@ const MINIMUM_QUERY_MSG = `Input at least ${MIN_QUERY_LENGTH} characters to sear
 const NO_RESULTS_MSG = 'There were no results found for this search';
 
 const searchCards = async (query) => (await xhrRequest({
-  url: `/cards?query=${query}`,
+  url: `/cards?name=${query}&owned=true`,
   options: {
     method: 'GET',
   },
