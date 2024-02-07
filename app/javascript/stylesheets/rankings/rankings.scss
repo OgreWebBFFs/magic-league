@@ -209,8 +209,8 @@
 
     &__toggle-visbility-button {
         position: fixed;
-        bottom: 7%;
-        right: 5%;
+        bottom:calc(var(--footer-height) + var(--spacer-md));
+        right: var(--spacer-md);
         animation: mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite;
         &--off {
             position: relative;

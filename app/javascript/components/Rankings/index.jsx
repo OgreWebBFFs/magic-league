@@ -48,9 +48,6 @@ const Rankings = ({
       <div className={classNames('rankings', { 'rankings--hidden': !showRankings })}>
         <div ref={dateWrapperRef} className="rankings__date-wrapper">
           <DatePicker date={date} />
-          <Button className={classNames('rankings__toggle-visbility-button rankings__toggle-visbility-button--off button--small button--secondary')} onClick={() => setShowRankings(false)}>
-            <i className="fas fa-paint-brush" />
-          </Button>
           </div>
         <ViewToggleSwitch name="rankings-type" />
         <div className="rankings__wrapper">
@@ -87,11 +84,9 @@ const Rankings = ({
         </div>
 
       </div>
-      {!showRankings &&
-        <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => setShowRankings(true)}>
-          <i className="fas fa-list" />
-        </Button>
-      }
+        <Button className={classNames('rankings__toggle-visbility-button', 'button--inverse')} onClick={() => setShowRankings(!showRankings)}>
+          <i className={showRankings ? "fas fa-paint-brush" : "fas fa-list"} />
+        </Button> 
     </div>
   );
 };
