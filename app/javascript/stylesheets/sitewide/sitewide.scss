@@ -15,12 +15,15 @@
 }
 //Text Treatments
 a {
+    --a-adjusted-lightness: calc(
+        var(--color-text-theme-lightness) + (10% * var(--color-lightness-shift-basis))
+    );
     text-decoration: none;
-    color: var(--color-text-theme);
+    color: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness));
     transition: color 0.3s;
 
     &:hover {
-        color: hsl(var(--color-text-theme-hue-sat), 35%);
+        color: hsl(var(--color-text-theme-hue-sat), var(--a-adjusted-lightness));
     }
 }
 

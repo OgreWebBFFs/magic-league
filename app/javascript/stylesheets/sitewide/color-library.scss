@@ -22,7 +22,7 @@
     --neutral-lightness: 5%;
 
     --saturated-fill-lightness: 45%;
-    --saturated-text-lightness: calc(8% * var(--color-lightness-shift-basis));
+    --saturated-text-lightness: calc((var(--saturated-fill-lightness) - 10%) * var(--color-lightness-shift-basis));
     --color-lightness-shift-basis: 1;
 
     //Derivative values
