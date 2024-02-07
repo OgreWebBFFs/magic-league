@@ -5,8 +5,10 @@ const rootStyle = document.documentElement.style;
 const setThemeCss = (theme) => {
     if (theme === 'white'){
       rootStyle.setProperty('--saturated-fill-lightness', '50%');
+    } else if (theme === 'mustard') {
+      rootStyle.setProperty('--saturated-fill-lightness', '25%');
     } else { 
-        rootStyle.setProperty('--saturated-fill-lightness', '25%');
+        rootStyle.setProperty('--saturated-fill-lightness', '45%');
     }
     rootStyle.setProperty('--color-fill-theme-hue-sat', `var(--${theme}-hue-sat)`);
   }
