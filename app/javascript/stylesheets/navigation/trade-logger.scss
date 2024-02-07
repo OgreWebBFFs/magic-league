@@ -1,32 +1,32 @@
 #trade-form .trade-logger__card-select {
-  & input {
-    height: auto;
-  }
+    & input {
+        height: auto;
+    }
 }
 
 .trade-logger {
-  &__status {
-    margin: 1rem 0;
+    &__status {
+        margin: 1rem 0;
 
-    p {
-      margin: 0;
+        p {
+            margin: 0;
+        }
+
+        &-title.error {
+            margin-bottom: 1rem;
+            color: var(--color-text-negative);
+        }
+
+        &-issue {
+            margin-bottom: 1rem;
+            &-name {
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+
+            &-reason {
+                font-size: 0.8rem;
+            }
+        }
     }
-
-    &-title.error {
-      margin-bottom: 1rem;
-      color: var(--color-text-negative);
-    }
-
-    &-issue {
-      margin-bottom: 1rem;
-      &-name {
-        font-weight: 700;
-        font-size: 1.2rem;
-      }
-
-      &-reason {
-        font-size: .8rem;
-      }
-    }  
-  }
 }

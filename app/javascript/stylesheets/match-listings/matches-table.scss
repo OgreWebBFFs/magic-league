@@ -8,15 +8,14 @@
         &-time {
             flex: 0 0 150px;
         }
-        &-id{
+        &-id {
             flex: 0 0 50px;
         }
         &-delete,
-        &-edit{
+        &-edit {
             flex: 0 0 80px;
         }
     }
-
 
     .matches__cell {
         &--date,
@@ -41,7 +40,6 @@
                 width: auto;
             }
         }
-    
     }
 
     .matches__title {
@@ -62,18 +60,18 @@
 
     @media only screen and (max-width: 850px) {
         .row {
-            display:block; 
-        }     
-    
-        .matches__cell { 
-            text-align:center;
+            display: block;
+        }
+
+        .matches__cell {
+            text-align: center;
             justify-items: center;
-            &--admin-actions{
+            &--admin-actions {
                 .button {
                     margin: 1rem;
                 }
             }
-            &--date{
+            &--date {
                 color: var(--color-text-neutral);
                 background-color: var(--color-fill-neutral);
             }
@@ -81,8 +79,5 @@
                 font-weight: bold;
             }
         }
-     
-        
     }
 }
-
