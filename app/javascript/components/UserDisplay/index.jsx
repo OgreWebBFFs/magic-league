@@ -29,7 +29,7 @@ const UserDispaly = ({
     <div id="dashboard" className="dashboard">
       <div className="dashboard__container">
         <div className="dashboard-header">
-          <h2 className="dashboard-header__title">
+          <h1 className="dashboard-header__title">
             {user.name}
             {user.pronouns
               && (
@@ -37,7 +37,7 @@ const UserDispaly = ({
                   {`(${user.pronouns})`}
                 </span>
               )}
-          </h2>
+          </h1>
           {user.discord_username && (
             <div className="dashboard-header__discord">
               <i className="fab fa-discord" />

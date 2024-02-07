@@ -174,7 +174,7 @@ body {
 [class*="__section"],
 .section {
     padding-block: var(--spacer-section);
-    padding-inline: calc(2 * var(--spacer-section));
+    padding-inline: var(--spacer-section);
     width: 100%;
     min-height: 600px;
     color: var(--color-text-inverse);
@@ -577,14 +577,7 @@ input[type="checkbox"] {
 }
 
 @media only screen and (max-width: 500px) {
-    [class*="__section"] {
-        padding-left: 1px;
-        padding-right: 1px;
 
-        &.full-page {
-            padding: 5px;
-        }
-    }
 
     [class*="__container"],
     .container {

@@ -12,7 +12,7 @@ const Matches = ({ matches, currentPage, totalPages, isAdmin = false }) => {
   return (
     <>
       <div className="matches__title">
-        <h2>Matches</h2>
+        <h1>Matches</h1>
         <ViewToggleSwitch name="matches-type" />
       </div>
       <Paginator
