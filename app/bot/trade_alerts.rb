@@ -35,7 +35,7 @@ class TradeAlerts
     to_msg = TRADE_ERROR % {trade: trade.to_user_s, invalid_targets: invalid_trade_targets_s}
     from_msg = TRADE_ERROR % {trade: trade.from_user_s, invalid_targets: invalid_trade_targets_s}
     @bot.pm_user(to_user.discord_id.to_i, to_msg)
-    @bot.pm_user(from_user.discord_id.to_i, to_msg)
+    @bot.pm_user(from_user.discord_id.to_i, from_msg)
   end
 
 end
