@@ -42,3 +42,4 @@ yarn-debug.log*
 draffle.png
 draffle_base.png
 local_env.yml
+package-lock.json
