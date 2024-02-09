@@ -1,7 +1,7 @@
 <%= react_component("CardOwnership", {
         card: @card,
         wishlist: @wishlisters_details,
-        totalCount: @owner_details.size,
+        totalCount: @card.ownerships.count,
         ownerDetails: @owner_details.collect { |key, value| value },
         currentUserId: current_user.id,
         totalWishlisters: @wishlisters_details.size,
