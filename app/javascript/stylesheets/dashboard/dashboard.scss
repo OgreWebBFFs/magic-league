@@ -158,6 +158,7 @@
     &__tab-wrapper {
         display: flex;
         background: transparent;
+        border-bottom: var(--spacer-sm) var(--color-fill-neutral) solid;
 
         .notification {
             color: var(--color-fill-alert);
@@ -223,7 +224,14 @@
         background-color: hsl(var(--tab-heading-color-hue-sat), var(--tab-heading-color-lightness));
         align-items: center;
         justify-content: space-between;
-        padding: var(--spacer-sm);
+        padding-inline: var(--spacer-sm);
+        padding-block-end: var(--spacer-sm);
+        // Temp fix until we redo the actions area
+        .button {
+            i {
+                padding-block: 3px;
+            }
+        }
     }
 
     &__filter-action {
