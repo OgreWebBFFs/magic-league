@@ -127,7 +127,7 @@
         top: var(--nav-height);
 
         .nav__link-wrapper {
-            margin: 0;
+            margin-block: var(--spacer-md);
             width: 100%;
             height: auto;
         }
