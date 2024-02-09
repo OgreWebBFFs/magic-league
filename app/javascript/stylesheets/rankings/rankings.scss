@@ -81,7 +81,7 @@
         box-sizing: border-box;
         margin: 0 auto;
         height: calc(
-            100vh - var(--nav-height) - var(--footer-height) - var(--date-wrapper-height) - var(--date-wrapper-height) -
+            100vh - var(--nav-height) - var(--footer-height) - var(--draffle-button-height) - var(--date-wrapper-height) -
                 var(--spacer-section)
         );
         position: relative;
@@ -209,7 +209,7 @@
 
     &__toggle-visbility-button {
         position: fixed;
-        bottom:calc(var(--footer-height) + var(--spacer-md));
+        bottom: calc(var(--footer-height) + var(--spacer-md));
         right: var(--spacer-md);
         animation: mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite;
         &--off {
