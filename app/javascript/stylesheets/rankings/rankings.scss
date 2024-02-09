@@ -188,6 +188,7 @@
         width: calc(100% - 2 * var(--ranking-border-stroke-width));
         overflow-x: hidden;
         overflow-y: auto;
+        scrollbar-width: thin;
         padding: 5px;
 
         &::-webkit-scrollbar-track {
