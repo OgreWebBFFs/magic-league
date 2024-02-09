@@ -5,6 +5,7 @@ import CardReviewTable from "./CardReviewTable";
 
 const TradeReview = ({ trade }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    
     return (
         <>
             <h3>Reviewing Trade</h3>
