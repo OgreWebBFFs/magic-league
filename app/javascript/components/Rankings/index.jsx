@@ -31,7 +31,7 @@ const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, ev
         const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
         const dateFullHeight = `${dateWrapperHeight + parseInt(dateWrapperStyle.marginBottom, 10)}px`;
 
-        document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0"}px`);
+        document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0px"}`);
         document.documentElement.style.setProperty("--date-wrapper-height", dateFullHeight);
     }, [isMobile]);
 
