@@ -21,6 +21,13 @@ class OgreBot < Discordrb::Bot
     @trade_alerts = TradeAlerts.new(self)
   end
 
+  def pm_user discord_id, msg
+    user = self.user discord_id
+    if !user.nil?
+      user.pm msg
+    end
+  end
+
   def congratulate_champ top_rank, date
     general_channel = self.channel ENV["GENERAL_DISCORD_CHANNEL_ID"]
     gif_uri = generate_random_gif 'clapping+congratulations'

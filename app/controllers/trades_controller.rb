@@ -30,6 +30,7 @@ class TradesController < ApplicationController
       flash[:notice] = "You've successfully declined a trade"
       render json: {status: params[:status]}
       OgreBot.instance.trade_alerts.trade_rejected trade
+      trade.update(status: 'rejected')
     elsif params[:status] == 'approved' && trade.status != 'approved'
       to_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.to_user).pluck(:card_id)
       from_card_ids = Exchange.where(trade_id: trade.id, user_id: trade.from_user).pluck(:card_id)
@@ -41,6 +42,7 @@ class TradesController < ApplicationController
       if invalid_trade_targets.length > 0
         trade.update(status: 'error')
         render json: {status: 'error', invalid_trade_targets: invalid_trade_targets }, :status => 400
+        flash[:success] = "⚠ Oh No! There was an error processing your trade ⚠"
         OgreBot.instance.trade_alerts.trade_error trade, invalid_trade_targets
       else
         to_user = User.find_by_id(trade.to_user)
@@ -50,9 +52,9 @@ class TradesController < ApplicationController
         flash[:success] = "You've successfully accepted a trade!"
         render json: {status: 'success'}
         OgreBot.instance.trade_alerts.trade_accepted trade
+        trade.update(status: 'approved')
       end
     end
-    trade.update(status: params[:status])
   end
 
   def destroy
