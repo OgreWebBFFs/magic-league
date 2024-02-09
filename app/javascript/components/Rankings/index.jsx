@@ -18,13 +18,20 @@ const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, ev
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        const draffleButtonHeight = document.querySelector(".draffle-view-button")?.offsetHeight || 0;
+        const draffleButton = document.querySelector(".draffle-view-button");
+        let draffleFullButtonHeight;
+        if (draffleButton) {
+            const draffleButtonHeight = draffleButton?.offsetHeight;
+            const draffleButtonStyle = window.getComputedStyle(draffleButton);
+
+            draffleFullButtonHeight = `${draffleButtonHeight + parseInt(draffleButtonStyle.marginBottom, 10)}px`;
+        }
+
         const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
         const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
-        const dateFullHeight = `${
-            dateWrapperHeight + parseInt(dateWrapperStyle.marginTop, 10) + parseInt(dateWrapperStyle.marginBottom, 10)
-        }px`;
-        document.documentElement.style.setProperty("--draffle-button-height", `${draffleButtonHeight}px`);
+        const dateFullHeight = `${dateWrapperHeight + parseInt(dateWrapperStyle.marginBottom, 10)}px`;
+
+        document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0"}px`);
         document.documentElement.style.setProperty("--date-wrapper-height", dateFullHeight);
     }, [isMobile]);
 

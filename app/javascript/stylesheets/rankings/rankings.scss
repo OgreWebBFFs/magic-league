@@ -12,7 +12,6 @@
         gap: var(--spacer-sm);
         align-items: center;
         justify-content: center;
-        margin-top: var(--spacer-md);
         margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
     }
     &__date_form {
@@ -82,8 +81,10 @@
         margin: 0 auto;
         height: calc(
             100vh - var(--nav-height) - var(--footer-height) - var(--draffle-button-height) - var(--date-wrapper-height) -
-                var(--spacer-section)
+                var(--spacer-section) - var(--spacer-section) - 6px
         );
+        //last value is for minor calc rounding errors
+        // height: calc(100vh - 50px - 45px - 0px - 61px - 1.5rem - 1.5rem - 2px);
         position: relative;
         max-width: 350px;
     }
@@ -187,22 +188,21 @@
         width: calc(100% - 2 * var(--ranking-border-stroke-width));
         overflow-x: hidden;
         overflow-y: auto;
-        scrollbar-width: thin;
         padding: 5px;
 
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: none;
             box-shadow: none;
             background-color: transparent;
+            border: transparent;
         }
 
         &::-webkit-scrollbar {
             width: 5px;
-            background-color: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-            border-radius: 5px;
+            border-radius: 20px;
             background-color: var(--color-fill-inverse);
         }
     }
