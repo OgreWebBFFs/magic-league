@@ -194,11 +194,11 @@
             -webkit-box-shadow: none;
             box-shadow: none;
             background-color: transparent;
-            border: transparent;
         }
 
         &::-webkit-scrollbar {
             width: 5px;
+            background-color: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
