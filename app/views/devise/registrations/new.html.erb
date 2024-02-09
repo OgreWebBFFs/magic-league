@@ -1,7 +1,7 @@
 <%= react_component("CyclingBackground", {bgPath:get_random_bg_image}) %>
 <div class="login">
   <div class="login__content">
-  <h3 class="login__title">Sign Up</h3>
+  <h1 class="login__title">Sign Up</h1>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
     <div class="login_form-field">

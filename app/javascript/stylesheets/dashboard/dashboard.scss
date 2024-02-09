@@ -59,7 +59,7 @@
             display: flex;
             flex-direction: column;
             flex: 0 0 20%;
-            padding-right: var(--spacer-section);
+            padding-right: var(--spacer-xl);
             //Height of trades table
             height: 192px;
             align-items: center;
@@ -144,7 +144,7 @@
             display: block;
 
             &__user-details {
-                margin: 0 auto var(--spacer-section);
+                margin: 0 auto var(--spacer-xl);
                 align-items: center;
                 padding-right: 0;
             }
@@ -214,7 +214,7 @@
         border: 2px solid var(--color-fill-neutral);
 
         &-wrapper {
-            margin: var(--spacer-section) 0;
+            margin: var(--spacer-xl) 0;
         }
     }
 

@@ -6,7 +6,6 @@
     --plum-hue-sat: 269, 47%;
     --peacock-hue-sat: 220, 85%;
     --white-hue-sat: 0, 0%;
-
     --site-background-hue-sat: 0, 0%;
     --site-background-lightness: 10%;
     --site-background-adjusted-lightness: calc(
@@ -22,8 +21,8 @@
     --neutral-hue-sat: var(--desaturated-hue-sat);
     --neutral-lightness: 5%;
 
-    --saturated-fill-lightness: 25%;
-    --saturated-text-lightness: calc(8% * var(--color-lightness-shift-basis));
+    --saturated-fill-lightness: 45%;
+    --saturated-text-lightness: calc((var(--saturated-fill-lightness) - 10%) * var(--color-lightness-shift-basis));
     --color-lightness-shift-basis: 1;
 
     //Derivative values

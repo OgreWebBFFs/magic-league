@@ -3,10 +3,15 @@ import { useState, useEffect } from "react";
 const rootStyle = document.documentElement.style;
 
 const setThemeCss = (theme) => {
+  rootStyle.setProperty('--color-text-theme-hue-sat', `var(--${theme}-hue-sat)`)
     if (theme === 'white'){
       rootStyle.setProperty('--saturated-fill-lightness', '50%');
+      rootStyle.setProperty('--color-text-theme-hue-sat', 'var(--plum-hue-sat)')
+    } else if (theme === 'mustard') {
+      rootStyle.setProperty('--saturated-fill-lightness', '25%');
+      rootStyle.setProperty('--color-text-theme-lightness', '35%');
     } else { 
-        rootStyle.setProperty('--saturated-fill-lightness', '25%');
+        rootStyle.setProperty('--saturated-fill-lightness', '45%');
     }
     rootStyle.setProperty('--color-fill-theme-hue-sat', `var(--${theme}-hue-sat)`);
   }
