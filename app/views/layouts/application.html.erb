@@ -24,10 +24,7 @@
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
         unlockedUsers: unlocked_users,
-        notifications: {
-          pendingTradeOffer: current_user.has_pending_trade_offer?,
-          newAnnouncement: Rails.cache.read('new_announcement') === true
-        }
+        notifications: @notifications
       }) %>
     <% end %>
 

@@ -28,7 +28,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
     {
       displayName: 'My Profile',
       href: `users/${currentUserId}`,
-      notification: notifications.pendingTradeOffer,
+      notification: notifications.pending_trade_offer,
     },
     {
       displayName: 'Browse Cards',
@@ -36,11 +36,11 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
     },
     {
       displayName: 'League',
-      notification: notifications.newAnnouncement,
+      notification: notifications.new_announcement,
       dropdownItems: [
         {
           displayName: 'Announcements',
-          notification: notifications.newAnnouncement,
+          notification: notifications.new_announcement,
           href: 'announcements',
         },
         {

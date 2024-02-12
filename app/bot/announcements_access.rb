@@ -14,7 +14,7 @@ class AnnouncementsAccess
 
   def listener
     @bot.message(in: ENV["ANNOUNCEMENTS_DISCORD_CHANNEL_ID"].to_i) do |event|
-      Rails.cache.write('new_announcement', true, expires_in: 10.days)
+      Rails.cache.write('new_announcement', DateTime.now, expires_in: 10.days)
     end
   end
 
