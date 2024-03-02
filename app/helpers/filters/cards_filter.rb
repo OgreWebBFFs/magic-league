@@ -1,12 +1,12 @@
 module Filters
   class CardsFilter < Filters::GenericFilter
     FILTERS = {
-      name_contains_filter: {
+      generic_text_query_filter: {
         apply?: ->(params) {
           params[:query].is_a?(String)
         },
         apply: ->(scope, params) {
-          scope.where('name ILIKE ?', "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
+          scope.where('name ILIKE :query OR oracle_text ILIKE :query OR type_line ILIKE :query', query: "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
         }
       }.freeze,
       colors_filter: {

@@ -19,8 +19,14 @@ const CardBrowser = ({ userId, wishlist }) => {
   return (
     <>
       <SearchInput
-        onResults={setCards}
-        onReset={() => setCards([])}
+        onResults={(results, query) => {
+          setCards(results);
+          updateHashParams({query: [encodeURIComponent(query)]});
+        }}
+        onReset={() => {
+          setCards([]);
+          updateHashParams({});
+        }}
       />
       <a href="/advanced_browse">
         Go to Advanced Browser &gt;

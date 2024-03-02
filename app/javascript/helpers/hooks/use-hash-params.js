@@ -1,4 +1,5 @@
 import { useHash } from 'react-use';
+import Turbolinks from 'turbolinks';
 
 const parseHash = (hashString) => hashString
   .split('&')
@@ -12,7 +13,7 @@ const parseHash = (hashString) => hashString
   }, {});
 
 const stringifyHash = (hashObj) => Object.entries(hashObj).reduce((hashStr, [key, value]) => (
-  `${hashStr.length > 0 ? `${hashStr}&` : ''}${key}=${value.join(',')}`
+  `#${hashStr.length > 0 ? `${hashStr}&` : ''}${key}=${value.join(',')}`
 ), "");
 
 const useHashParams = () => {
@@ -20,7 +21,9 @@ const useHashParams = () => {
   const hashParams = parseHash(hash.replace(/^#/, ''));
 
   const updateHashParams = (newHashParamsObj) => {
-    setHash(stringifyHash(newHashParamsObj))
+    const newHashString = stringifyHash(newHashParamsObj);
+    setHash(newHashString);
+    window.history.pushState({ turbolinks: true }, "", newHashString);
   }
 
   return [hashParams, updateHashParams]
