@@ -4,10 +4,13 @@ import { CardGrid, CardImageLink } from '../CardGrid';
 import { WishlistToggleSmall } from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 import { TradeProposalButtonLarge } from '../TradeProposal';
+import useHashParams from '../../helpers/hooks/use-hash-params';
 
 const CardBrowser = ({ userId, wishlist }) => {
   const [cards, setCards] = useState([]);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(wishlist);
+  const [hashParams, updateHashParams] = useHashParams();
+  
 
   const wishlistContextValues = useMemo(() => ({
     currentUserWishlist,
