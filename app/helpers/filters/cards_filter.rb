@@ -33,7 +33,16 @@ module Filters
         apply: ->(scope, params) {
           scope.where('rarity = ?', params[:rarity])
         }
-      }
+      },
+      types_filter: {
+        apply?: ->(params) {
+          params[:types].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          types_regex = params[:types].split(',').join('|')
+          scope.where('type_line ~* ?', types_regex)
+        }
+      }.freeze
     }.freeze
 
     def self.filters

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
   resources :browse, only: [:index]
+  resources :advanced_browse, only: [:index]
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 

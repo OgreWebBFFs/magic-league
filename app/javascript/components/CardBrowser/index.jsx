@@ -19,6 +19,9 @@ const CardBrowser = ({ userId, wishlist }) => {
         onResults={setCards}
         onReset={() => setCards([])}
       />
+      <a href="/advanced_browse">
+        Go to Advanced Browser &gt;
+      </a>
       <WishlistContext.Provider value={wishlistContextValues}>
         <CardGrid>
           {cards.map((card) => (
