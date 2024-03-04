@@ -26,6 +26,14 @@ module Filters
           scope.where('name ILIKE ?', "%#{ActiveRecord::Base.sanitize_sql params[:name]}%")
         }
       }.freeze,
+      oracle_text_filter: {
+        apply?: ->(params) {
+          params[:oracle_text].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          scope.where('oracle_text ILIKE ?', "%#{ActiveRecord::Base.sanitize_sql params[:oracle_text]}%")
+        }
+      }.freeze,
       owned_filter: {
         apply?: ->(params) {
           params[:owned] === 'true'

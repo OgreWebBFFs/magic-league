@@ -1,7 +1,7 @@
 import React from "react";
 
 const CardNameInput = ({ hashParams, onUpdate }) => (
-  <div>
+  <>
     <h2>Card Name</h2>
     <div>
       <input
@@ -11,7 +11,7 @@ const CardNameInput = ({ hashParams, onUpdate }) => (
         onChange={(e) => onUpdate({ name: [e.target.value] })}
       />
     </div>
-  </div>
+  </>
 );
 
 export default CardNameInput;

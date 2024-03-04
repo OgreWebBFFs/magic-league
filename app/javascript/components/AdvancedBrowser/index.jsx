@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
 import CardNameInput from './CardNameInput';
+import RulesTextInput from './RulesTextInput';
 
 const Filters = [
-  CardNameInput
+  CardNameInput,
+  RulesTextInput,
 ];
 
 const AdvancedCardBrowser = () => {
@@ -16,10 +18,12 @@ const AdvancedCardBrowser = () => {
       <h1>Advanced Browser</h1>
       <div style={{height: "1000px"}}>
         {Filters.map(Filter => (
-          <Filter
-            hashParams={appliedFilters}
-            onUpdate={(newParams) => setAppliedFilters({ ...appliedFilters, ...newParams })}
-          />
+          <div style={{ padding: "1rem", borderBottom: "solid 2px #ddd"}}>
+            <Filter
+              hashParams={appliedFilters}
+              onUpdate={(newParams) => setAppliedFilters({ ...appliedFilters, ...newParams })}
+            />
+          </div>
         ))}
       </div>
       <div
