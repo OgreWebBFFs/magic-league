@@ -4,12 +4,14 @@ import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-param
 import CardNameInput from './CardNameInput';
 import RulesTextInput from './RulesTextInput';
 import { CardTypePicker, SubTypePicker} from './TypePickers';
+import ColorsPicker from './ColorsPicker';
 
 const Filters = [
   CardNameInput,
   RulesTextInput,
   CardTypePicker,
   SubTypePicker,
+  ColorsPicker
 ];
 
 const AdvancedCardBrowser = (options) => {
@@ -21,7 +23,7 @@ const AdvancedCardBrowser = (options) => {
       <h1>Advanced Browser</h1>
       <div style={{height: "1000px"}}>
         {Filters.map(Filter => (
-          <div style={{ padding: "1rem", borderBottom: "solid 2px #ddd"}}>
+          <div style={{ padding: "1rem", borderBottom: "solid 2px #ddd"}} key={Filter.toString()}>
             <Filter
               hashParams={appliedFilters}
               onUpdate={(newParams) => setAppliedFilters({ ...appliedFilters, ...newParams })}

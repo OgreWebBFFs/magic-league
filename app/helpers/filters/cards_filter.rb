@@ -15,7 +15,11 @@ module Filters
         },
         apply: ->(scope, params) {
           possible_colors = params[:colors].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
-          scope.where('colors && ARRAY[?]::varchar[]', possible_colors)
+          if possible_colors.include? 'C'
+            scope.where('colors && ARRAY[?]::varchar[] OR colors = ARRAY[]::varchar[]', possible_colors)
+          else
+            scope.where('colors && ARRAY[?]::varchar[]', possible_colors)
+          end
         }
       }.freeze,
       name_filter: {
@@ -56,7 +60,7 @@ module Filters
         },
         apply: ->(scope, params) {
           types_regex = params[:card_types].split(',').join('|')
-          scope.where('type_line ~* ?', ".*(#{types_regex}).*( — .*)?")
+          scope.where('type_line ~* ?', ".*(#{types_regex}).*(— .*)?")
         }
       }.freeze,
       sub_types_filter: {

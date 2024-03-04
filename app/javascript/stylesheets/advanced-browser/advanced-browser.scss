@@ -32,3 +32,63 @@
     }
   }
 }
+
+.color-picker {
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+  }
+
+  &__option {
+    @media screen and (max-width: 800px) {
+      flex: 1 1 50%;
+    }
+    flex: 1 1 33%;
+    margin: var(--spacer-md) 0;
+
+    &--label {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      gap: var(--spacer-md);
+
+      .ms {
+        display: flex;
+        -webkit-border-radius: 500px;
+        border-radius: 500px;
+        -webkit-box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+        box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+        overflow: hidden;
+        width: 20px;
+        height: 20px;
+        justify-content: center;
+        align-items: center;
+
+        &.ms-w {
+          background-color: var(--color-white-mana);
+        }
+
+        &.ms-u {
+          background-color: var(--color-blue-mana);
+        }
+
+        &.ms-b {
+          background-color: var(--color-black-mana);
+        }
+
+        &.ms-r {
+          background-color: var(--color-red-mana);
+        }
+
+        &.ms-g {
+          background-color: var(--color-green-mana);
+        }
+
+        &.ms-c {
+          background-color: var(--color-colorless-mana);
+        }
+      }
+    }
+  }
+}
