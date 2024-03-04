@@ -1,16 +1,18 @@
 import React, { useState, useMemo } from 'react';
-import SearchInput from '../SearchInput';
 import { CardGrid, CardImageLink } from '../CardGrid';
 import { WishlistToggleSmall } from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 import { TradeProposalButtonLarge } from '../TradeProposal';
 import useHashParams from '../../helpers/hooks/use-hash-params';
+import BasicBrowseControls from './BasicBrowseControls';
+import AdvancedBrowseControls from './AdvancedBrowseControls';
 
 const CardBrowser = ({ userId, wishlist }) => {
   const [cards, setCards] = useState([]);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(wishlist);
-  const [hashParams, updateHashParams] = useHashParams();
+  const [hashParams] = useHashParams();
   
+  const isAdvanced = hashParams.advanced?.[0] === 'true';
 
   const wishlistContextValues = useMemo(() => ({
     currentUserWishlist,
@@ -18,19 +20,12 @@ const CardBrowser = ({ userId, wishlist }) => {
   }), [currentUserWishlist]);
   return (
     <>
-      <SearchInput
-        onResults={(results, query) => {
-          setCards(results);
-          updateHashParams({query: [encodeURIComponent(query)]});
-        }}
-        onReset={() => {
-          setCards([]);
-          updateHashParams({});
-        }}
-      />
-      <a href="/advanced_browse">
-        Go to Advanced Browser &gt;
-      </a>
+      {isAdvanced ? (
+          <AdvancedBrowseControls setCards={setCards} />
+        ) : (
+          <BasicBrowseControls setCards={setCards} />
+        )
+      }
       <WishlistContext.Provider value={wishlistContextValues}>
         <CardGrid>
           {cards.map((card) => (

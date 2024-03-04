@@ -1,7 +1,7 @@
 module Filters
   class CardsFilter < Filters::GenericFilter
     FILTERS = {
-      generic_text_query_filter: {
+      generic_query_filter: {
         apply?: ->(params) {
           params[:query].is_a?(String)
         },
@@ -16,6 +16,14 @@ module Filters
         apply: ->(scope, params) {
           possible_colors = params[:colors].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
           scope.where('colors && ARRAY[?]::varchar[]', possible_colors)
+        }
+      }.freeze,
+      name_filter: {
+        apply?: ->(params) {
+          params[:name].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          scope.where('name ILIKE ?', "%#{ActiveRecord::Base.sanitize_sql params[:name]}%")
         }
       }.freeze,
       owned_filter: {
