@@ -24,3 +24,11 @@
     }
   }
 }
+
+.card-type {
+  &__select {
+    &:focus {
+      border-color: var(--color-fill-theme)
+    }
+  }
+}

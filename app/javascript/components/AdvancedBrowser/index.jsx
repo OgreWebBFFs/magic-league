@@ -3,13 +3,16 @@ import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
 import CardNameInput from './CardNameInput';
 import RulesTextInput from './RulesTextInput';
+import { CardTypePicker, SubTypePicker} from './TypePickers';
 
 const Filters = [
   CardNameInput,
   RulesTextInput,
+  CardTypePicker,
+  SubTypePicker,
 ];
 
-const AdvancedCardBrowser = () => {
+const AdvancedCardBrowser = (options) => {
   const [hashParams] = useHashParams();
   const [appliedFilters, setAppliedFilters] = useState(hashParams);
 
@@ -22,6 +25,7 @@ const AdvancedCardBrowser = () => {
             <Filter
               hashParams={appliedFilters}
               onUpdate={(newParams) => setAppliedFilters({ ...appliedFilters, ...newParams })}
+              options={options}
             />
           </div>
         ))}

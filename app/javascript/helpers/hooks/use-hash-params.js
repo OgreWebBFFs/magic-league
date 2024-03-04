@@ -11,7 +11,9 @@ const parseHash = (hashString) => hashString
     }
   }, {});
 
-export const stringifyHash = (hashObj) => Object.entries(hashObj).reduce((hashStr, [key, value]) => (
+const noValues = ([_, value]) => value.length > 0;
+
+export const stringifyHash = (hashObj) => Object.entries(hashObj).filter(noValues).reduce((hashStr, [key, value]) => (
   `${hashStr.length > 0 ? `${hashStr}&` : ''}${key}=${encodeURIComponent([].concat(value).join(','))}`
 ), "");
 

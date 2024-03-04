@@ -50,13 +50,22 @@ module Filters
           scope.where('rarity = ?', params[:rarity])
         }
       },
-      types_filter: {
+      card_types_filter: {
         apply?: ->(params) {
-          params[:types].is_a?(String)
+          params[:card_types].is_a?(String)
         },
         apply: ->(scope, params) {
-          types_regex = params[:types].split(',').join('|')
-          scope.where('type_line ~* ?', types_regex)
+          types_regex = params[:card_types].split(',').join('|')
+          scope.where('type_line ~* ?', ".*(#{types_regex}).*( — .*)?")
+        }
+      }.freeze,
+      sub_types_filter: {
+        apply?: ->(params) {
+          params[:sub_types].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          types_regex = params[:sub_types].split(',').join('|')
+          scope.where('type_line ~* ?', ".* — .*(#{types_regex}).*")
         }
       }.freeze
     }.freeze
