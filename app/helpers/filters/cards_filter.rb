@@ -9,16 +9,42 @@ module Filters
           scope.where('name ILIKE :query OR oracle_text ILIKE :query OR type_line ILIKE :query', query: "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
         }
       }.freeze,
-      colors_filter: {
+      colors_exact_filter: {
         apply?: ->(params) {
-          params[:colors].is_a?(String)
+          params[:colors_exact].is_a?(String)
         },
         apply: ->(scope, params) {
-          possible_colors = params[:colors].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
-          if possible_colors.include? 'C'
-            scope.where('colors && ARRAY[?]::varchar[] OR colors = ARRAY[]::varchar[]', possible_colors)
+          possible_colors = params[:colors_exact].split(',').sort.map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
+          if possible_colors[0] === 'colorless'
+            scope.where('colors = ARRAY[]::varchar[]')
           else
-            scope.where('colors && ARRAY[?]::varchar[]', possible_colors)
+            scope.where('ARRAY(SELECT unnest(colors) ORDER BY 1) = ARRAY[?]::varchar[]', possible_colors)
+          end
+        }
+      }.freeze,
+      colors_include_filter: {
+        apply?: ->(params) {
+          params[:colors_include].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          possible_colors = params[:colors_include].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
+          if possible_colors[0] === 'colorless'
+            scope.where('colors = ARRAY[]::varchar[]')
+          else
+            scope.where('colors @> ARRAY[?]::varchar[]', possible_colors)
+          end
+        }
+      }.freeze,
+      colors_atmost_filter: {
+        apply?: ->(params) {
+          params[:colors_atmost].is_a?(String)
+        },
+        apply: ->(scope, params) {
+          possible_colors = params[:colors_atmost].split(',').map{ |x|  "#{ActiveRecord::Base.sanitize_sql x}" }
+          if possible_colors[0] === 'colorless'
+            scope.where('colors = ARRAY[]::varchar[]')
+          else
+            scope.where.not(colors: '{}').where('colors <@ ARRAY[?]::varchar[]', possible_colors)
           end
         }
       }.freeze,
@@ -81,7 +107,13 @@ module Filters
         apply: ->(scope, params) {
           scope.where(set: params[:sets].split(','))
         }
-      }
+      }.freeze,
+      alwayas_apply: {
+        apply?: -> (params) { true },
+        apply: ->(scope, params) {
+          scope.where.not("type_line ILIKE ?", "%basic land%")
+        }
+      }.freeze
     }.freeze
 
     def self.filters

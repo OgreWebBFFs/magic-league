@@ -17,8 +17,8 @@ const OwnedFilter = ({ hashParams: { owned }, onUpdate }) => (
       />
     </div>
     <div className="rules-text__reminder">
-      Toggling "Owned" cards will only search through cards that are currently within players' collections. Otherwise,
-      toggling "All" will search through all cards within the database whether they are currently owned or not.
+      Toggling &quot;Owned&quot; cards will only search through cards that are currently within players&apos; collections. Otherwise,
+      toggling &quot;All&quot; will search through all cards that are league elligible whether they are currently owned or not.
     </div>
   </>
 )

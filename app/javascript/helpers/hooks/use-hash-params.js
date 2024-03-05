@@ -11,9 +11,9 @@ const parseHash = (hashString) => hashString
     }
   }, {});
 
-const noValues = ([_, value]) => value.length > 0;
+const hasValidValues = ([_, value]) => value?.length > 0 && value.every((val) => val.length > 0);
 
-export const stringifyHash = (hashObj) => Object.entries(hashObj).filter(noValues).reduce((hashStr, [key, value]) => (
+export const stringifyHash = (hashObj) => Object.entries(hashObj).filter(hasValidValues).reduce((hashStr, [key, value]) => (
   `${hashStr.length > 0 ? `${hashStr}&` : ''}${key}=${encodeURIComponent([].concat(value).join(','))}`
 ), "");
 

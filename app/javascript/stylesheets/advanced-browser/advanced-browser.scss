@@ -117,6 +117,16 @@
   }
 }
 
+.color-picker {
+  &__select-options {
+    border-color: var(--color-fill-theme-highlight);
+    margin-bottom: var(--spacer-md);
+    &:focus-within {
+      border-color: var(--color-fill-theme);
+    }
+  }
+}
+
 .owned-filter {
   &__toggle-wrapper {
     display: flex;
@@ -132,3 +142,36 @@
     }
   }
 }
+
+.advanced-browse {
+  &__clear-button {
+    margin: 1rem auto 2rem auto;
+    max-width: 50%;
+    @media screen and (max-width: 500px) {
+      max-width: 100%;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacer-xl);
+  
+    .button {
+      flex: 1 1 auto;
+    }
+  }
+
+  &__description {
+    margin: var(--spacer-xl) 0;
+    padding: var(--spacer-lg);
+    .heading {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .content {
+      border-left: solid 3px #aaa;
+      padding: var(--spacer-sm) var(--spacer-lg);
+    }
+  }
+} 

@@ -3,23 +3,25 @@ import xhrRequest from '../../helpers/xhr-request';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
 
-const hashParamStringVerbs = {
-  name: "LIKE",
-  oracle_text: "LIKE",
-  card_types: "ARE",
-  sub_types: "ARE",
-  colors: "ARE",
-  rarity: "IS",
-  sets: "ARE",
-  owned: "IS",
-};
+const APPLIED_FILTER_STR_TEMPLATES = {
+  name: { prefix: 'the name is like', joiner: 'or' },
+  oracle_text: { prefix: 'the rules text contains', joiner: 'or' },
+  card_types: { prefix: 'the card type is', joiner: 'or' },
+  sub_types: { prefix: 'the subtype contains', joiner: 'or'},
+  colors_exact: { prefix: 'the colors are exactly', joiner: 'and' },
+  colors_include: { prefix: 'the colors include', joiner: 'or' },
+  colors_atmost: { prefix: 'the colors are only', joiner: 'or' },
+  rarity: { prefix: 'the rarity is', joiner: 'or' },
+  sets: { prefix: 'belongs to the set', joiner: 'or'},
+  owned: { prefix: 'there is at least one owner in the league' },
+}
 
-const acceptedParams = ([key]) => Object.keys(hashParamStringVerbs).includes(key);
+const appliedParamsDescription = (hashParams) => Object.entries(APPLIED_FILTER_STR_TEMPLATES)
+  .filter(([key]) => typeof hashParams[key] !== 'undefined')
+  .map(([key, value]) => (
+    `${value.prefix} ${value.joiner ? hashParams[key].map((val) => `"${val}"`).join(` ${value.joiner} `) : ''}`
+  ));
 
-
-const appliedParamsDescription = (hashParams) => Object.entries(hashParams).filter(acceptedParams).reduce((result, [key, value]) => (
-    `${result}${result === '' ? '' : ' AND '}${key.replace("_", " ")} ${hashParamStringVerbs[key] || 'IS'} ${value.join(' OR ')}`
-  ),"");
 
 const searchCards = async (query) => (await xhrRequest({
   url: `/cards?${query}`,
@@ -41,7 +43,7 @@ const AdvancedBrowseControls = ({ setCards }) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-around', gap: "var(--spacer-xl)" }}>
+      <div className="advanced-browse__controls">
         <Button href="/browse" className="controls__action-button button--negative">
           <i className="fas fa-times" />
           Clear
@@ -51,8 +53,19 @@ const AdvancedBrowseControls = ({ setCards }) => {
           <i className="fas fa-arrow-right"/>
         </Button>
       </div>
-      <div>
-        {appliedParamsDescription(hashParams)}
+      <div className="advanced-browse__description">
+        <h1 className="heading">Searching for cards where:</h1>
+        <ul className="content">
+          {(() => {
+            const [first, ...rest] = appliedParamsDescription(hashParams);
+            return (
+              <>
+                <li>{first}</li>
+                {rest.map((str) => <li>AND {str}</li>)}
+              </>
+            )
+          })()}
+        </ul>
       </div>
     </div>
   );

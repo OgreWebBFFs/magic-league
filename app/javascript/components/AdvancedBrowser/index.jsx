@@ -40,6 +40,9 @@ const AdvancedCardBrowser = ({ options }) => {
             />
           </div>
         ))}
+        <Button className="advanced-browse__clear-button button--negative" href="/advanced_browse">
+          Clear All Selections
+        </Button>
       </div>
       <div
         style={{
