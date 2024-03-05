@@ -41,4 +41,18 @@ namespace :cards do
       end
     end
   end
+
+  task :change_img_quality, [:quality] => [:environment] do |task, args|
+    # card = Card.all.first;
+    Card.all.each { |card|
+      puts "Processing #{card.name}..."
+      card_query = "https://api.scryfall.com/cards/search?order=name&q=e:#{card.set}+#{CGI.escape(card.name)}"
+      response = JSON.parse(RestClient.get(card_query))
+      if (response["data"])
+        image_url = response["data"][0]["image_uris"][args[:quality]]
+        card.update image_url: image_url
+        puts "Updated #{card.name} to use #{image_url}"
+      end
+    }
+  end
 end
