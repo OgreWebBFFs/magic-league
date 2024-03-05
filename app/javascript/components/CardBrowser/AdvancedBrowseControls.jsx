@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import xhrRequest from '../../helpers/xhr-request';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
@@ -32,10 +32,12 @@ const searchCards = async (query) => (await xhrRequest({
 
 const AdvancedBrowseControls = ({ setCards }) => {
   const [hashParams] = useHashParams();
+  const [cardsEmpty, setCardsEmpty] = useState(false);
   
   useEffect(() => {
     const fetchCardResults = async () => {
       const cards = await searchCards(stringifyHash(hashParams));
+      setCardsEmpty(cards.length === 0);
       setCards(cards);
     }
     fetchCardResults();
@@ -67,6 +69,12 @@ const AdvancedBrowseControls = ({ setCards }) => {
           })()}
         </ul>
       </div>
+      {cardsEmpty && (
+        <div className="advanced-browse__no-cards-found">
+          <p className="emoji">🚫</p>
+          No cards found for the current selections. Please modify and try again.
+        </div>
+      )}
     </div>
   );
 }
