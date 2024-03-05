@@ -116,3 +116,19 @@
     }
   }
 }
+
+.owned-filter {
+  &__toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacer-lg);
+
+    .toggle-switch-inner::before {
+      background-color: var(--color-fill-theme);
+    }
+
+    .toggle-switch-inner::after {
+      background-color: #aaa;
+    }
+  }
+}

@@ -11,6 +11,7 @@ const hashParamStringVerbs = {
   colors: "ARE",
   rarity: "IS",
   sets: "ARE",
+  owned: "IS",
 };
 
 const acceptedParams = ([key]) => Object.keys(hashParamStringVerbs).includes(key);

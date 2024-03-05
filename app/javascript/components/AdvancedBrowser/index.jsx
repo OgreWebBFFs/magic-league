@@ -7,6 +7,7 @@ import { CardTypePicker, SubTypePicker} from './TypePickers';
 import ColorsPicker from './ColorsPicker';
 import RarityPicker from './RarityPicker';
 import SetsPicker from './SetsPicker';
+import OwnedFilter from './OnwedFilter';
 
 const Filters = [
   CardNameInput,
@@ -16,6 +17,7 @@ const Filters = [
   ColorsPicker,
   RarityPicker,
   SetsPicker,
+  OwnedFilter,
 ];
 
 const AdvancedCardBrowser = ({ options }) => {
