@@ -32,11 +32,8 @@
             align-items: center;
             gap: 0.5rem;
             margin: 0.25rem 0;
-
-            i {
-                font-size: 1.75rem;
-
-              .ms {
+            
+            .ms {
                 display: flex;
                 -webkit-border-radius: 500px;
                 border-radius: 500px;
@@ -71,9 +68,8 @@
                 &.ms-c {
                   background-color: var(--color-colorless-mana);
                 }
-              }
             }
-      }
+        }
     }
 
     &__apply-button,
