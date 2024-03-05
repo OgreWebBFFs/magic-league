@@ -9,7 +9,7 @@ const BasicBrowseControls = ({ setCards }) => {
       <SearchInput
         onResults={(results, query) => {
           setCards(results);
-          updateHashParams({ query })
+          updateHashParams({ query: [query] })
         }}
         onReset={() => {
           setCards([]);
