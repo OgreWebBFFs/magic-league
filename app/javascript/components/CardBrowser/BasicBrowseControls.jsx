@@ -4,12 +4,13 @@ import useHashParams from '../../helpers/hooks/use-hash-params';
 
 const BasicBrowseControls = ({ setCards }) => {
   const [_, updateHashParams] = useHashParams();
+
   return (
     <>
       <SearchInput
         onResults={(results, query) => {
           setCards(results);
-          updateHashParams({ query: [query] })
+          updateHashParams({ query: [query] });
         }}
         onReset={() => {
           setCards([]);

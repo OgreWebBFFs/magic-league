@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { CardGrid, CardImageLink } from '../CardGrid';
 import { WishlistToggleSmall } from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
@@ -6,18 +6,26 @@ import { TradeProposalButtonLarge } from '../TradeProposal';
 import useHashParams from '../../helpers/hooks/use-hash-params';
 import BasicBrowseControls from './BasicBrowseControls';
 import AdvancedBrowseControls from './AdvancedBrowseControls';
+import usePreserveScroll from '../../helpers/hooks/use-preserve-scroll';
+
 
 const CardBrowser = ({ userId, wishlist }) => {
   const [cards, setCards] = useState([]);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(wishlist);
   const [hashParams] = useHashParams();
-  
+  const { scrollToPrev } = usePreserveScroll();
+
   const isAdvanced = hashParams.advanced?.[0] === 'true';
 
   const wishlistContextValues = useMemo(() => ({
     currentUserWishlist,
     setCurrentUserWishlist,
   }), [currentUserWishlist]);
+  
+  useEffect(() => {
+    if (cards.length > 0) scrollToPrev();
+  }, [cards]);
+  
   return (
     <>
       {isAdvanced ? (

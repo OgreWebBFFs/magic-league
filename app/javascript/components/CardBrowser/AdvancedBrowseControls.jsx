@@ -31,32 +31,39 @@ const searchCards = async (query) => (await xhrRequest({
 })).data;
 
 const AdvancedBrowseControls = ({ setCards }) => {
+  const [cardsCount, setCardsCount] = useState();
   const [hashParams] = useHashParams();
-  const [cardsEmpty, setCardsEmpty] = useState(false);
+  // const { scrollToPrev, forgetScroll } = usePreserveScroll();
   
   useEffect(() => {
     const fetchCardResults = async () => {
       const cards = await searchCards(stringifyHash(hashParams));
-      setCardsEmpty(cards.length === 0);
+      setCardsCount(cards.length);
       setCards(cards);
     }
     fetchCardResults();
   }, []);
-
   return (
-    <div>
+    <div style={typeof cardsCount === 'undefined' ? {height: '5000px'} : {}}>
       <div className="advanced-browse__controls">
-        <Button href="/browse" className="controls__action-button button--negative">
+        <Button
+          href="/browse"
+          className="controls__action-button button--negative"
+        >
           <i className="fas fa-times" />
           Clear
         </Button>
-        <Button href={`/advanced_browse#${stringifyHash(hashParams)}`} className="controls__action-button">
+        <Button
+          href={`/advanced_browse#${stringifyHash(hashParams)}`}
+          className="controls__action-button"
+        >
           Modify
           <i className="fas fa-arrow-right"/>
         </Button>
       </div>
       <div className="advanced-browse__description">
-        <h1 className="heading">Searching for cards where:</h1>
+        <h1 className="heading">
+          {typeof cardsCount === 'undefined' ? "Searching for" : `Found ${cardsCount}`} cards where:</h1>
         <ul className="content">
           {(() => {
             const [first, ...rest] = appliedParamsDescription(hashParams);
@@ -69,7 +76,7 @@ const AdvancedBrowseControls = ({ setCards }) => {
           })()}
         </ul>
       </div>
-      {cardsEmpty && (
+      {cardsCount === 0 && (
         <div className="advanced-browse__no-cards-found">
           <p className="emoji">🚫</p>
           No cards found for the current selections. Please modify and try again.
