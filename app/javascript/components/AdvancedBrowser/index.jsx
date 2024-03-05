@@ -5,23 +5,30 @@ import CardNameInput from './CardNameInput';
 import RulesTextInput from './RulesTextInput';
 import { CardTypePicker, SubTypePicker} from './TypePickers';
 import ColorsPicker from './ColorsPicker';
+import RarityPicker from './RarityPicker';
+import SetsPicker from './SetsPicker';
 
 const Filters = [
   CardNameInput,
   RulesTextInput,
   CardTypePicker,
   SubTypePicker,
-  ColorsPicker
+  ColorsPicker,
+  RarityPicker,
+  SetsPicker,
 ];
 
-const AdvancedCardBrowser = (options) => {
+const AdvancedCardBrowser = ({ options }) => {
   const [hashParams] = useHashParams();
   const [appliedFilters, setAppliedFilters] = useState(hashParams);
 
   return (
     <>
       <h1>Advanced Browser</h1>
-      <div style={{height: "1000px"}}>
+      <a href="/browse">
+        Go to Basic Browser &gt;
+      </a>
+      <div>
         {Filters.map(Filter => (
           <div style={{ padding: "1rem", borderBottom: "solid 2px #ddd"}} key={Filter.toString()}>
             <Filter

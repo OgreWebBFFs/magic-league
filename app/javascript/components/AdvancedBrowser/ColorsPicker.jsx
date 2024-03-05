@@ -10,14 +10,14 @@ const COLORS = [
 ]
 
 
-const ColorsPicker = ({ hashParams, onUpdate }) => (
+const ColorPicker = ({ hashParams, onUpdate }) => (
   <>
     <h2>Colors</h2>
-    <fieldset className="color-picker__options">
+    <fieldset className="checkbox-picker__options colors">
       {COLORS.map(({label, Symbol, value}) => (
-        <div key={label} className="color-picker__option">
+        <div key={label} className="checkbox-picker__option">
           <input 
-            className="color-picker__option--checkbox"
+            className="checkbox-picker__option--checkbox"
             id={label}
             name={label}
             value={value}
@@ -31,7 +31,7 @@ const ColorsPicker = ({ hashParams, onUpdate }) => (
               )
             })} 
           />
-          <label className="color-picker__option--label" htmlFor={label}>
+          <label className="checkbox-picker__option--label" htmlFor={label}>
             <Symbol />
             {label}
           </label>
@@ -41,4 +41,4 @@ const ColorsPicker = ({ hashParams, onUpdate }) => (
   </>
   )
 
-export default ColorsPicker;
+export default ColorPicker;

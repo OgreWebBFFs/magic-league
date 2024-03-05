@@ -8,6 +8,9 @@ const hashParamStringVerbs = {
   oracle_text: "LIKE",
   card_types: "ARE",
   sub_types: "ARE",
+  colors: "ARE",
+  rarity: "IS",
+  sets: "ARE",
 };
 
 const acceptedParams = ([key]) => Object.keys(hashParamStringVerbs).includes(key);

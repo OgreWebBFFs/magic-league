@@ -36,31 +36,42 @@
             i {
                 font-size: 1.75rem;
 
-                &.ms-w {
-                    color: #f8e7b9;
-                }
+      .ms {
+        display: flex;
+        -webkit-border-radius: 500px;
+        border-radius: 500px;
+        -webkit-box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+        box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+        overflow: hidden;
+        width: 20px;
+        height: 20px;
+        justify-content: center;
+        align-items: center;
 
-                &.ms-u {
-                    color: #0e68ab;
-                }
-
-                &.ms-b {
-                    color: #150b00;
-                }
-
-                &.ms-r {
-                    color: #d3202a;
-                }
-
-                &.ms-g {
-                    color: #00733e;
-                }
-
-                &.ms-c {
-                    color: #5e5e5e;
-                }
-            }
+        &.ms-w {
+          background-color: var(--color-white-mana);
         }
+
+        &.ms-u {
+          background-color: var(--color-blue-mana);
+        }
+
+        &.ms-b {
+          background-color: var(--color-black-mana);
+        }
+
+        &.ms-r {
+          background-color: var(--color-red-mana);
+        }
+
+        &.ms-g {
+          background-color: var(--color-green-mana);
+        }
+
+        &.ms-c {
+          background-color: var(--color-colorless-mana);
+        }
+      }
     }
 
     &__apply-button,

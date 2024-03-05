@@ -48,10 +48,12 @@ module Filters
       }.freeze,
       rarity_filter: {
         apply?: ->(params) {
-          ['common', 'uncommon', 'rare', 'mythic'].include? params[:rarity]
+          params[:rarity].is_a?(String) && params[:rarity].split(',').all? { |r|
+            ['common', 'uncommon', 'rare', 'mythic'].include? r
+          }
         },
         apply: ->(scope, params) {
-          scope.where('rarity = ?', params[:rarity])
+          scope.where(rarity: params[:rarity].split(','))
         }
       },
       card_types_filter: {
@@ -71,7 +73,15 @@ module Filters
           types_regex = params[:sub_types].split(',').join('|')
           scope.where('type_line ~* ?', ".* — .*(#{types_regex}).*")
         }
-      }.freeze
+      }.freeze,
+      sets_filter: {
+        apply?: ->(params) {
+          params[:sets].is_a?(String) 
+        },
+        apply: ->(scope, params) {
+          scope.where(set: params[:sets].split(','))
+        }
+      }
     }.freeze
 
     def self.filters
