@@ -69,8 +69,8 @@ const AdvancedBrowseControls = ({ setCards }) => {
             const [first, ...rest] = appliedParamsDescription(hashParams);
             return (
               <>
-                <li>{first}</li>
-                {rest.map((str) => <li>AND {str}</li>)}
+                <li key={first.replace(/\s/ig, "")}>{first}</li>
+                {rest.map((str) => <li key={str.replace(/\s/ig,"")}>AND {str}</li>)}
               </>
             )
           })()}

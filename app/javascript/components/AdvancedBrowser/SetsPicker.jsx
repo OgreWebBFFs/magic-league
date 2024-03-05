@@ -27,7 +27,7 @@ const SetsPicker = ({ hashParams, onUpdate, options }) => (
             name={setAbbr}
             value={setAbbr}
             type="checkbox"
-            checked={hashParams.sets?.includes(setAbbr)}
+            defaultChecked={hashParams.sets?.includes(setAbbr)}
             onClick={(e) => onUpdate({
               sets: hashParams.sets?.includes(e.target.value) ? (
                 hashParams.sets.filter((s) => s !== e.target.value)
