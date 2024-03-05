@@ -43,7 +43,6 @@ namespace :cards do
   end
 
   task :change_img_quality, [:quality] => [:environment] do |task, args|
-    # card = Card.all.first;
     Card.all.each { |card|
       puts "Processing #{card.name}..."
       card_query = "https://api.scryfall.com/cards/search?order=name&q=e:#{card.set}+#{CGI.escape(card.name)}"
