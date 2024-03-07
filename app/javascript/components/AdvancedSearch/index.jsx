@@ -43,7 +43,7 @@ const AdvancedCardSearch = ({ options }) => {
        
       </div>
       <div className="advanced-search__action-bar">
-        <Button className="advanced-search__action-button button--secondary" href="/advanced_browse">
+        <Button className="advanced-search__action-button button--secondary" href="/advanced_search">
           Reset
         </Button>
         <Button
