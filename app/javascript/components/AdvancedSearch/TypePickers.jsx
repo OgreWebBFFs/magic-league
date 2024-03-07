@@ -15,6 +15,9 @@ const TypePicker = ({ options, value, onChange}) => (
       styles={{
         control: (base, { isFocused }) => ({
           ...base,
+          "& input[type=text]": {
+            height: "auto",
+          },
           borderColor: "var(--color-fill-theme-highlight)",
           ":hover": {
             borderColor: "var(--color-fill-theme-highlight)",
