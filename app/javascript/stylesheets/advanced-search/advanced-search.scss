@@ -104,6 +104,10 @@
       gap: var(--spacer-md);
       text-transform: capitalize;
 
+      &.no-cap {
+        text-transform: none;
+      }
+
       &::before {
         flex: 0 0 auto;
       }

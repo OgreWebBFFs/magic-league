@@ -17,7 +17,10 @@ const ColorPicker = ({ hashParams, onUpdate }) => {
 
   const removeColor = (color) => (hashParams[populatedOption] || []).filter((c) => c !== color);
 
-  const addColor = (color) => color === 'colorless' ? [color] : [...removeColor('colorless'), color];
+  const addColor = (color) => {
+    console.log(color);
+    return color === 'colorless' ? [color] : [...removeColor('colorless'), color]
+  };
     
   return (
     <>
@@ -31,8 +34,8 @@ const ColorPicker = ({ hashParams, onUpdate }) => {
               name={label}
               value={value}
               type="checkbox"
-              defaultChecked={hashParams[populatedOption]?.includes(value)}
-              onClick={(e) => onUpdate({
+              checked={hashParams[populatedOption]?.includes(value)}
+              onChange={(e) => onUpdate({
                 [populatedOption]: hashParams[populatedOption]?.includes(e.target.value) ?
                   removeColor(e.target.value) :
                   addColor(e.target.value)

@@ -58,7 +58,6 @@ const AdvancedBrowseControls = ({ setCards }) => {
         </Button>
         <Button
           className="advanced-search__controls--edit-search"
-          onClick={() => forgetScroll()}
           href={`/advanced_search#${stringifyHash(hashParams)}`}
         >
           Edit Search

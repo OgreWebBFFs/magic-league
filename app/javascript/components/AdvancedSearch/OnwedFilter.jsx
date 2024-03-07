@@ -3,19 +3,23 @@ import React from 'react';
 const OwnedFilter = ({ hashParams: { owned }, onUpdate }) => (
   <>
       <h2>Owned</h2>
-     <input 
-        id="owned"
-        name="owned"
-        value="owned"
-        type="checkbox"
-        defaultChecked={owned?.includes("true")}
-        onClick={() => onUpdate({
-          owned: owned?.includes("true") ? [] : ["true"] 
-        })} 
-      />
-      <label htmlFor="owned" className="owned-filter__checkbox">
-        Only show cards anyone owns
-      </label>
+      <fieldset className="checkbox-picker__options">
+        <div className="checkbox-picker__option">
+          <input 
+            id="owned"
+            name="owned"
+            value="owned"
+            type="checkbox"
+            defaultChecked={owned?.includes("true")}
+            onClick={() => onUpdate({
+              owned: owned?.includes("true") ? [] : ["true"] 
+            })} 
+          />
+          <label htmlFor="owned" className="no-cap">
+            Only show cards anyone owns
+          </label>
+        </div>
+      </fieldset>
   </>
 )
 

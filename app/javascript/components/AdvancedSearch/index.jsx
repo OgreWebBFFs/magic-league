@@ -8,6 +8,7 @@ import ColorsPicker from './ColorsPicker';
 import RarityPicker from './RarityPicker';
 import SetsPicker from './SetsPicker';
 import OwnedFilter from './OnwedFilter';
+import { forgetScroll } from '../../helpers/hooks/use-preserve-scroll';
 
 const Filters = [
   CardNameInput,
@@ -48,6 +49,7 @@ const AdvancedCardSearch = ({ options }) => {
         </Button>
         <Button
           className="advanced-search__action-button"
+          onClick={() => forgetScroll()}
           href={`/search#${stringifyHash(appliedFilters)}&advanced=true`}
         >
           Search
