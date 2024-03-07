@@ -4,8 +4,8 @@ import { WishlistToggleSmall } from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 import { TradeProposalButtonLarge } from '../TradeProposal';
 import useHashParams from '../../helpers/hooks/use-hash-params';
-import BasicBrowseControls from './BasicBrowseControls';
-import AdvancedBrowseControls from './AdvancedBrowseControls';
+import BasicSearchControls from './BasicSearchControls';
+import AdvancedSearchControls from './AdvancedSearchControls';
 import usePreserveScroll from '../../helpers/hooks/use-preserve-scroll';
 
 
@@ -29,9 +29,9 @@ const CardBrowser = ({ userId, wishlist }) => {
   return (
     <>
       {isAdvanced ? (
-          <AdvancedBrowseControls setCards={setCards} />
+          <AdvancedSearchControls setCards={setCards} />
         ) : (
-          <BasicBrowseControls setCards={setCards} />
+          <BasicSearchControls setCards={setCards} />
         )
       }
       <WishlistContext.Provider value={wishlistContextValues}>

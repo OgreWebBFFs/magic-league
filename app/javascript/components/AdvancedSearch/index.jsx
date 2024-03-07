@@ -20,19 +20,19 @@ const Filters = [
   OwnedFilter,
 ];
 
-const AdvancedCardBrowser = ({ options }) => {
+const AdvancedCardSearch = ({ options }) => {
   const [hashParams] = useHashParams();
   const [appliedFilters, setAppliedFilters] = useState(hashParams);
 
   return (
     <>
-      <h1>Advanced Browser</h1>
-      <a href="/browse">
-        Go to Basic Browser &gt;
+      <h1>Advanced Search</h1>
+      <a href="/search">
+        Go to Basic Search &gt;
       </a>
       <div>
         {Filters.map(Filter => (
-          <div style={{ padding: "1rem", borderBottom: "solid 2px #ddd"}} key={Filter.toString()}>
+          <div className="advanced-search__filter-wrapper" key={Filter.toString()}>
             <Filter
               hashParams={appliedFilters}
               onUpdate={(newParams) => setAppliedFilters({ ...appliedFilters, ...newParams })}
@@ -40,30 +40,21 @@ const AdvancedCardBrowser = ({ options }) => {
             />
           </div>
         ))}
-        <Button className="advanced-browse__clear-button button--negative" href="/advanced_browse">
-          Clear All Selections
-        </Button>
+       
       </div>
-      <div
-        style={{
-          position: "sticky",
-          bottom: 0,
-          padding: "0.5rem",
-          background: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0px -25px 20px -20px rgba(0,0,0,0.45)"
-        }}
-      >
+      <div className="advanced-search__action-bar">
+        <Button className="advanced-search__action-button button--secondary" href="/advanced_browse">
+          Reset
+        </Button>
         <Button
-          href={`/browse#${stringifyHash(appliedFilters)}&advanced=true`}
+          className="advanced-search__action-button"
+          href={`/search#${stringifyHash(appliedFilters)}&advanced=true`}
         >
-          Search with these options
+          Search
         </Button>
       </div>
     </>
   );
 }
 
-export default AdvancedCardBrowser;
+export default AdvancedCardSearch;

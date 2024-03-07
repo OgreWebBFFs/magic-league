@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 
+export const forgetScroll = () => sessionStorage.removeItem('prevScrollY');
+
 const usePreserveScroll = () => {
 
   const storeScroll = () => {
-    console.log("STORING SCROLL AS:", window.scrollY);
     sessionStorage.setItem("prevScrollY", window.scrollY);
     document.removeEventListener("turbolinks:before-visit", storeScroll);
   }
-  
-  const forgetScroll = () => sessionStorage.removeItem('prevScrollY');
 
   const scrollToPrev = () => {
     const prevYPos = parseInt(sessionStorage.getItem('prevScrollY'), 10);
@@ -20,7 +19,7 @@ const usePreserveScroll = () => {
     document.addEventListener("turbolinks:before-visit", storeScroll);
   }, []);
 
-  return { scrollToPrev, forgetScroll };
+  return { scrollToPrev };
 }
 
 export default usePreserveScroll;

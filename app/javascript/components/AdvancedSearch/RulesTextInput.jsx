@@ -12,15 +12,10 @@ const SYMBOLS = [
   {symbol: "{G}", description: "one green mana"},
   {symbol: "{C}", description: "one colorless mana"},
   {symbol: "{Q}", description: "untap this permanent"},
-  {symbol: "{E}", description: "an energy counter"},
-  {symbol: "{PW}", description: "planeswalker"},
-  {symbol: "{CHAOS}", description: "chaos"},
-  {symbol: "{TK}", description: "a ticket counter"},
   {symbol: "{X}", description: "X generic mana"},
   {symbol: "{0}", description: "zero mana"},
   {symbol: "{1}", description: "1 generic mana"},
   {symbol: "{N}", description: "(Replace N with any number) N generic mana"},
-  {symbol: "{S}", description: "one snow mana"},
 ];
 
 const RulesTextInput = ({ hashParams, onUpdate }) => {
@@ -28,17 +23,15 @@ const RulesTextInput = ({ hashParams, onUpdate }) => {
   return (
     <>
       <h2>Rules Text</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Any text, e.g. deathtouch..."
-          value={hashParams.oracle_text?.[0] || ''}
-          onChange={(e) => onUpdate({ oracle_text: [e.target.value] })}
-        />
-        <div className="rules-text__reminder">
-          Add any text you would expect to see in the rules text. You can also search for particular symbols.
-          A list of those possible symbols can be found <Button type="button" className="button--no-button" onClick={() => setModalOpen(true)}>here</Button>.
-        </div>
+      <input
+        type="text"
+        placeholder="Any text, e.g. deathtouch..."
+        value={hashParams.oracle_text?.[0] || ''}
+        onChange={(e) => onUpdate({ oracle_text: [e.target.value] })}
+      />
+      <div className="rules-text__reminder">
+        Add any text you would expect to see in the rules text. You can also search for particular symbols.
+        A list of those possible symbols can be found <Button type="button" className="button--no-button" onClick={() => setModalOpen(true)}>here</Button>.
       </div>
       {modalOpen && (
         <Modal onClose={() => setModalOpen(false)}>

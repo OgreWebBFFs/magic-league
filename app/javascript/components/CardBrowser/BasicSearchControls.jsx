@@ -17,8 +17,8 @@ const BasicBrowseControls = ({ setCards }) => {
           updateHashParams({});
         }}
       />
-      <a href="/advanced_browse">
-        Go to Advanced Browser &gt;
+      <a href="/advanced_search">
+        Go to Advanced Search &gt;
       </a>
     </>
   )

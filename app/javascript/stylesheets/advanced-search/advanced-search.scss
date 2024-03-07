@@ -128,34 +128,38 @@
 }
 
 .owned-filter {
-  &__toggle-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: var(--spacer-lg);
-
-    .toggle-switch-inner::before {
-      background-color: var(--color-fill-theme);
-    }
-
-    .toggle-switch-inner::after {
-      background-color: #aaa;
-    }
+  &__checkbox {
+    margin-bottom: var(--spacer-xl);
+    gap: var(--spacer-md);
+    font-size: 1.25rem;
   }
 }
 
-.advanced-browse {
-  &__clear-button {
-    margin: 1rem auto 2rem auto;
-    max-width: 50%;
-    @media screen and (max-width: 500px) {
-      max-width: 100%;
-    }
+.advanced-search {
+  &__filter-wrapper {
+    margin-bottom: var(--spacer-lg);
+   
+  }
+
+  &__action-bar {
+    position: sticky;
+    bottom: 0;
+    padding: var(--spacer-lg) 0 var(--spacer-xl);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px -25px 20px -20px rgba(0,0,0,0.45);
+  }
+
+  &__action-button {
+    flex: 0 0 35%;
+    max-width: 200px;
   }
 
   &__controls {
-    display: flex;
-    justify-content: space-around;
-    gap: var(--spacer-xl);
+    background: white;
+    padding: var(--spacer-xl) var(--spacer-md) var(--spacer-xs); 
   
     .button {
       flex: 1 1 auto;
@@ -163,15 +167,22 @@
   }
 
   &__description {
-    margin: var(--spacer-xl) 0;
-    padding: var(--spacer-lg);
+    padding: var(--spacer-xl) var(--spacer-lg);
+    transition: transform 300ms ease-in-out;
+    transform-origin: top;
+    background: white;
+
     .heading {
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
+      transition: transform 300ms ease-in-out;
+      transform-origin: center;
     }
     .content {
       border-left: solid 3px #aaa;
       padding: var(--spacer-sm) var(--spacer-lg);
+      transition: transform 300ms ease-in-out;
+      transform-origin: center;
     }
   }
 
@@ -186,3 +197,19 @@
   }
 }
 
+.stuck {
+  .advanced-search {
+  
+    &__description {
+      transform: scaleY(0.5);
+
+      .heading {
+        transform: scaleX(0.5);
+      }
+
+      .content {
+        transform: scaleX(0.5);
+      }
+    }
+  }
+}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import xhrRequest from '../../helpers/xhr-request';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
+import Sticky from '../Sticky';
+import { forgetScroll } from '../../helpers/hooks/use-preserve-scroll';
 
 const APPLIED_FILTER_STR_TEMPLATES = {
   name: { prefix: 'the name is like', joiner: 'or' },
@@ -33,7 +35,6 @@ const searchCards = async (query) => (await xhrRequest({
 const AdvancedBrowseControls = ({ setCards }) => {
   const [cardsCount, setCardsCount] = useState();
   const [hashParams] = useHashParams();
-  // const { scrollToPrev, forgetScroll } = usePreserveScroll();
   
   useEffect(() => {
     const fetchCardResults = async () => {
@@ -44,24 +45,17 @@ const AdvancedBrowseControls = ({ setCards }) => {
     fetchCardResults();
   }, []);
   return (
-    <div style={typeof cardsCount === 'undefined' ? {height: '5000px'} : {}}>
-      <div className="advanced-browse__controls">
+    <Sticky>
+      <div className="advanced-search__controls">
         <Button
-          href="/browse"
-          className="controls__action-button button--negative"
-        >
-          <i className="fas fa-times" />
-          Clear
-        </Button>
-        <Button
-          href={`/advanced_browse#${stringifyHash(hashParams)}`}
+          onClick={() => forgetScroll()}
+          href={`/advanced_search#${stringifyHash(hashParams)}`}
           className="controls__action-button"
         >
-          Modify
-          <i className="fas fa-arrow-right"/>
+          Edit Search
         </Button>
       </div>
-      <div className="advanced-browse__description">
+      <div className="advanced-search__description">
         <h1 className="heading">
           {typeof cardsCount === 'undefined' ? "Searching for" : `Found ${cardsCount}`} cards where:</h1>
         <ul className="content">
@@ -77,12 +71,11 @@ const AdvancedBrowseControls = ({ setCards }) => {
         </ul>
       </div>
       {cardsCount === 0 && (
-        <div className="advanced-browse__no-cards-found">
-          <p className="emoji">🚫</p>
-          No cards found for the current selections. Please modify and try again.
+        <div className="advanced-search__no-cards-found">
+          <i className="emoji">🚫</i>
         </div>
       )}
-    </div>
+    </Sticky>
   );
 }
 

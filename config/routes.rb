@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :matches, only: [:index, :create]
   resources :dashboard, only: [:index]
   resources :rules, only: [:index]
-  resources :browse, only: [:index]
-  resources :advanced_browse, only: [:index]
+  resources :search, only: [:index]
+  resources :advanced_search, only: [:index]
   resources :trade_mail, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 

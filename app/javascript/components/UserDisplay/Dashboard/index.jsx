@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useMemo, useState } from 'react';
-import { useUpdateEffect } from 'react-use';
+import { useUpdateEffect, useEffectOnce } from 'react-use';
 import classNames from 'classnames';
 
 import Button from '../../Button';
@@ -16,6 +16,7 @@ import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
 import TradablesContext from '../../../contexts/TradablesContext';
+import usePreserveScroll from '../../../helpers/hooks/use-preserve-scroll';
 
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,
@@ -79,6 +80,8 @@ const Dashboard = ({
     wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
   }), [wishlist, currentUserWishlist]);
 
+  const { scrollToPrev } = usePreserveScroll();
+
   useUpdateEffect(() => {
     const url = `#${activeTab}`;
     window.history.replaceState({
@@ -86,8 +89,12 @@ const Dashboard = ({
     }, '', url);
   }, [activeTab, isListView]);
 
+  useEffectOnce(() => {
+    scrollToPrev();
+  });
+
   return (
-    <div data-preserve-scroll="true">
+    <>
       <div className="dashboard__tab-wrapper">
         {Object.keys(Tabs).map((tabName) => (
           <InterfaceTab
@@ -115,7 +122,7 @@ const Dashboard = ({
           </WishlistContext.Provider>
         </TradablesContext.Provider>
       </div>
-    </div>
+    </>
   );
 };
 export default Dashboard;
