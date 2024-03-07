@@ -97,7 +97,7 @@ module Filters
         },
         apply: ->(scope, params) {
           types_regex = params[:sub_types].split(',').join('|')
-          scope.where('type_line ~* ?', ".* — .*(#{types_regex}).*")
+          scope.where('type_line ~* ?', "—.*\s(#{types_regex})\s?.*")
         }
       }.freeze,
       sets_filter: {
