@@ -66,7 +66,7 @@ const ColorPicker = ({ hashParams, onUpdate }) => {
       </select>
       <div className="rules-text__reminder">
       &quot;Including&quot; means cards that are all the colors you select, with or without any others.
-      &quot;At most&quot; means cards that have some or all of the colors you select.
+      &quot;At most&quot; means cards that have some or all of the colors you select and no others.
       </div>
     </>
   )

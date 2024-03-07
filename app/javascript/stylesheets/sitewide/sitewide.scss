@@ -410,7 +410,7 @@ input[type="checkbox"] {
         border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
         -webkit-tap-highlight-color: transparent;
         transition: 0.25s;
-        border-radius: var(--spacer-xs);
+        border-radius: 0.25rem;
     }
 
     // Box hover

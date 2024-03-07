@@ -47,7 +47,7 @@ const AdvancedBrowseControls = ({ setCards }) => {
     fetchCardResults();
   }, []);
   return (
-    <Sticky>
+    <Sticky onUnstuck={() => setDrawerOpen(false)}>
       <div className={classNames("advanced-search__controls", { shadowed: !drawerOpen})}>
         <Button
           className="advanced-search__controls--drawer-toggle button--secondary"

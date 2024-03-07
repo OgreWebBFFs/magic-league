@@ -38,12 +38,11 @@
     display: flex;
     flex-wrap: wrap;
     border: none;
+    padding: 0 var(--spacer-md);
+    align-self: start;
 
     &.sets {
-      @media screen and (max-width: 800px) {
-        flex-direction: column;
-        gap: var(--spacer-lg);
-      }
+      flex-direction: column;
     }
 
     &.colors {
@@ -89,9 +88,10 @@
   &__option {
     @media screen and (max-width: 800px) {
       flex: 1 1 50%;
+      margin: var(--spacer-md) 0;
     }
     flex: 1 1 33%;
-    margin: var(--spacer-md) 0;
+    margin-bottom: var(--spacer-lg);
 
     &.set {
       flex: 1 1 50%;
@@ -124,7 +124,7 @@
 .color-picker {
   &__select-options {
     border-color: var(--color-fill-theme-highlight);
-    margin-bottom: var(--spacer-md);
+    margin: var(--spacer-md) 0;
     &:focus-within {
       border-color: var(--color-fill-theme);
     }
@@ -141,8 +141,26 @@
 
 .advanced-search {
   &__filter-wrapper {
-    margin-bottom: var(--spacer-lg);
-   
+    margin: 2rem auto;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: baseline;
+
+    h2 {
+      margin: 0;
+      grid-column: 1;
+      grid-row: 1 / span 3;
+    }
+
+    @media screen and (max-width: 800px) {
+      display: block;
+      
+      h2 {
+        margin-bottom: var(--spacer-md);
+      }
+    }
   }
 
   &__action-bar {

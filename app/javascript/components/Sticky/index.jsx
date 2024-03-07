@@ -2,13 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 
-const Sticky = ({ children }) => {
+const Sticky = ({ children, onUnstuck, onStuck }) => {
   const stickyRef = useRef(null);
   const [stuck, setStuck] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((([e]) => {
-      e.intersectionRatio < 1 ? setStuck(true) : setStuck(false)
+      if (e.intersectionRatio < 1) {
+        setStuck(true);
+        onStuck();
+      } else {
+        setStuck(false);
+        onUnstuck();
+      }
     }), { threshold: [1] });
 
     if(stickyRef.current) observer.observe(stickyRef.current);
