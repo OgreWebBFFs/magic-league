@@ -17,10 +17,7 @@ const ColorPicker = ({ hashParams, onUpdate }) => {
 
   const removeColor = (color) => (hashParams[populatedOption] || []).filter((c) => c !== color);
 
-  const addColor = (color) => {
-    console.log(color);
-    return color === 'colorless' ? [color] : [...removeColor('colorless'), color]
-  };
+  const addColor = (color) => color === 'colorless' ? [color] : [...removeColor('colorless'), color];
     
   return (
     <>

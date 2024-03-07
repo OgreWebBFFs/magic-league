@@ -22,9 +22,11 @@ const useHashParams = () => {
   const hashParams = parseHash(hash.replace(/^#/, ''));
 
   const updateHashParams = (newHashParamsObj) => {
-    const newHashString = `#${stringifyHash(newHashParamsObj)}`;
-    setHash(newHashString);
-    window.history.pushState({ turbolinks: true }, "", newHashString);
+    const newHashString = `${stringifyHash(newHashParamsObj)}`;
+    if (newHashString !== hash) {
+      setHash(`#${newHashString}`);
+      window.history.pushState({ turbolinks: true }, "", `#${newHashString}`);
+    }
   }
 
   return [hashParams, updateHashParams]
