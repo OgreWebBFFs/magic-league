@@ -159,30 +159,52 @@
 
   &__controls {
     background: white;
-    padding: var(--spacer-xl) var(--spacer-md) var(--spacer-xs); 
+    padding: var(--spacer-xl) var(--spacer-md); 
+    display: flex;
+    gap: .5rem;
+    justify-content: space-around;
+
+    @media screen and (max-width: 800px) {
+      justify-content: end;
+    }
   
     .button {
-      flex: 1 1 auto;
+      width: 50%;
+      max-width: 400px;
+    }
+
+    &--drawer-toggle {
+      display: flex;
+      gap: 0.5rem;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 300ms ease-in;
+
+      i {
+        transform-origin: center;
+        transition: transform 300ms ease-in;
+        &.drawerOpen {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 
-  &__description {
-    padding: var(--spacer-xl) var(--spacer-lg);
-    transition: transform 300ms ease-in-out;
-    transform-origin: top;
+  &__drawer {
     background: white;
+    padding: var(--spacer-md);
+    transform-origin: top;
+    transition: transform 300ms ease-in;
+    
 
-    .heading {
+    h1 {
+      margin-bottom: var(--spacer-md);
       font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      transition: transform 300ms ease-in-out;
-      transform-origin: center;
     }
-    .content {
+
+    ul {
       border-left: solid 3px #aaa;
-      padding: var(--spacer-sm) var(--spacer-lg);
-      transition: transform 300ms ease-in-out;
-      transform-origin: center;
+      padding-left: var(--spacer-md);
     }
   }
 
@@ -198,17 +220,22 @@
 }
 
 .stuck {
+  .shadowed {
+    box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+  }
+
   .advanced-search {
-  
-    &__description {
-      transform: scaleY(0.5);
-
-      .heading {
-        transform: scaleX(0.5);
+    &__controls {
+      &--drawer-toggle {
+        transform: scaleY(1);
       }
-
-      .content {
-        transform: scaleX(0.5);
+    }
+    &__drawer {
+      transform: scaleY(0);
+      box-shadow: 0px 25px 20px -20px rgba(0, 0, 0, 0.45);
+      
+      &.drawerOpen {
+        transform: scaleY(1);
       }
     }
   }

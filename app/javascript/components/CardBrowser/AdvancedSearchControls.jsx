@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import xhrRequest from '../../helpers/xhr-request';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
@@ -34,6 +35,7 @@ const searchCards = async (query) => (await xhrRequest({
 
 const AdvancedBrowseControls = ({ setCards }) => {
   const [cardsCount, setCardsCount] = useState();
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [hashParams] = useHashParams();
   
   useEffect(() => {
@@ -46,19 +48,27 @@ const AdvancedBrowseControls = ({ setCards }) => {
   }, []);
   return (
     <Sticky>
-      <div className="advanced-search__controls">
+      <div className={classNames("advanced-search__controls", { shadowed: !drawerOpen})}>
         <Button
+          className="advanced-search__controls--drawer-toggle button--secondary"
+          onClick={() => setDrawerOpen(!drawerOpen)}
+        >
+          <i className={classNames('fas fa-caret-down', { drawerOpen })} />
+          {cardsCount} cards
+        </Button>
+        <Button
+          className="advanced-search__controls--edit-search"
           onClick={() => forgetScroll()}
           href={`/advanced_search#${stringifyHash(hashParams)}`}
-          className="controls__action-button"
         >
           Edit Search
         </Button>
       </div>
-      <div className="advanced-search__description">
-        <h1 className="heading">
-          {typeof cardsCount === 'undefined' ? "Searching for" : `Found ${cardsCount}`} cards where:</h1>
-        <ul className="content">
+      <div className={classNames("advanced-search__drawer shadowed", { drawerOpen })}>
+        <h1>
+          {typeof cardsCount === 'undefined' ? "Searching for" : `Found ${cardsCount}`} cards where
+        </h1>
+        <ul>
           {(() => {
             const [first, ...rest] = appliedParamsDescription(hashParams);
             return (
@@ -70,9 +80,9 @@ const AdvancedBrowseControls = ({ setCards }) => {
           })()}
         </ul>
       </div>
-      {cardsCount === 0 && (
+    {cardsCount === 0 && (
         <div className="advanced-search__no-cards-found">
-          <i className="emoji">🚫</i>
+          <p className="emoji">🚫</p>
         </div>
       )}
     </Sticky>

@@ -19,7 +19,7 @@ const Sticky = ({ children }) => {
   }, [stickyRef])
   
   return (
-    <div ref={stickyRef} style={{ position: 'sticky', top: '-1px', zIndex: 100}} className={classNames({ stuck })}>
+    <div ref={stickyRef} className={classNames("sticky", { stuck })}>
       {children}
     </div>
   )

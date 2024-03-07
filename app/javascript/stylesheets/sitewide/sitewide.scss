@@ -584,3 +584,14 @@ input[type="checkbox"] {
         width: 100%;
     }
 }
+
+.sticky {
+    position: sticky;
+    top: -1px;
+    z-index: 69;
+    pointer-events: none;
+
+    * {
+        pointer-events: auto;
+    }
+}
