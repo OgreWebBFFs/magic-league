@@ -49,13 +49,11 @@ const ColorPicker = ({ hashParams, onUpdate }) => {
         name="color_options"
         className="color-picker__select-options"
         value={populatedOption}
-        onChange={(e) => {
-          const value = {
+        onChange={(e) => onUpdate({
             [e.target.value]: hashParams[populatedOption] || [],
             [populatedOption]: undefined,
-          }
-          onUpdate(value);
-        }}
+          })
+        }
       >
         <option value="colors_exact">Exactly these colors</option>
         <option value="colors_include">Including these colors</option>

@@ -17,8 +17,8 @@ const RarityPicker = ({ hashParams, onUpdate }) => (
             name={rarity}
             value={rarity}
             type="checkbox"
-            defaultChecked={hashParams.rarity?.includes(rarity)}
-            onClick={(e) => onUpdate({
+            checked={hashParams.rarity?.includes(rarity)}
+            onChange={(e) => onUpdate({
               rarity: hashParams.rarity?.includes(e.target.value) ? (
                 hashParams.rarity.filter((r) => r !== e.target.value)
               ) : (

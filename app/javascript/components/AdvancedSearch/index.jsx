@@ -7,7 +7,7 @@ import { CardTypePicker, SubTypePicker} from './TypePickers';
 import ColorsPicker from './ColorsPicker';
 import RarityPicker from './RarityPicker';
 import SetsPicker from './SetsPicker';
-import OwnedFilter from './OnwedFilter';
+import OwnedFilter from './OwnedFilter';
 import { forgetScroll } from '../../helpers/hooks/use-preserve-scroll';
 
 const Filters = [

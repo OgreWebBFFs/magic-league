@@ -10,8 +10,8 @@ const OwnedFilter = ({ hashParams: { owned }, onUpdate }) => (
             name="owned"
             value="owned"
             type="checkbox"
-            defaultChecked={owned?.includes("true")}
-            onClick={() => onUpdate({
+            checked={owned?.includes("true")}
+            onChange={() => onUpdate({
               owned: owned?.includes("true") ? [] : ["true"] 
             })} 
           />
