@@ -89,13 +89,7 @@ const Dashboard = ({
       tab: [activeTab],
       view: [isListView ? 'list' : 'grid'],
     });
-  }, [isListView]);
-
-  // Reset filters when changing tab
-  useUpdateEffect(() => updateHashParams({
-    tab: [activeTab],
-    view: [isListView ? 'list' : 'grid'],
-  }), [activeTab])
+  }, [activeTab, isListView]);
 
   useEffectOnce(() => {
     scrollToPrev();

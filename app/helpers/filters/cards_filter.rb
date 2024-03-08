@@ -44,7 +44,7 @@ module Filters
           if possible_colors[0] === 'colorless'
             scope.where('colors = ARRAY[]::varchar[]')
           else
-            scope.where.not(colors: '{}').where('colors <@ ARRAY[?]::varchar[]', possible_colors)
+            scope.where('colors <@ ARRAY[?]::varchar[]', possible_colors)
           end
         }
       }.freeze,
