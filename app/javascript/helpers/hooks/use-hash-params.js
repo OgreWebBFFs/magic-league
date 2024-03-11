@@ -25,7 +25,7 @@ const useHashParams = () => {
     const newHashString = `${stringifyHash(newHashParamsObj)}`;
     if (newHashString !== hash) {
       setHash(`#${newHashString}`);
-      window.history.pushState({ turbolinks: true }, "", `#${newHashString}`);
+      window.history.replaceState({ turbolinks: true }, "", `#${newHashString}`);
     }
   }
 
