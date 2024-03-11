@@ -37,7 +37,12 @@ const searchCards = async (query) => (await xhrRequest({
 const AdvancedBrowseControls = ({ setCards }) => {
   const [hashParams] = useHashParams();
   const [cardsCount, setCardsCount] = useState(isCachedCards(hashParams) ? getCachedCards(hashParams).length : undefined);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
+
+  const closeDrawerOnFirstScroll = () => {
+    setDrawerOpen(false);
+    window.removeEventListener('scroll', closeDrawerOnFirstScroll);
+  }
   
   useEffect(() => {
     const fetchCardResults = async () => {
@@ -47,6 +52,9 @@ const AdvancedBrowseControls = ({ setCards }) => {
       setCards(cards);
     }
     if(!isCachedCards(hashParams)) fetchCardResults();
+    window.requestAnimationFrame(() => {
+      window.addEventListener("scroll", closeDrawerOnFirstScroll);
+    });
   }, []);
   
   return (

@@ -19,6 +19,5 @@ document.addEventListener('turbolinks:render', () => {
 
   window.requestAnimationFrame(() => {
     document.documentElement.scrollTop = savedScroll.document;
-    document.body.scrollTop = savedScroll.body;
   });
 });
