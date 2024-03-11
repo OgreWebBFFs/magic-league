@@ -10,10 +10,10 @@ const Sticky = ({ children, onUnstuck, onStuck }) => {
     const observer = new IntersectionObserver((([e]) => {
       if (e.intersectionRatio < 1) {
         setStuck(true);
-        onStuck();
+        if(typeof onStuck === 'function') onStuck();
       } else {
         setStuck(false);
-        onUnstuck();
+        if(typeof onUnstuck === 'function') onUnstuck();
       }
     }), { threshold: [1] });
 
@@ -22,7 +22,7 @@ const Sticky = ({ children, onUnstuck, onStuck }) => {
     return () => {
       if(stickyRef.current) observer.unobserve(stickyRef.current);
     }
-  }, [stickyRef])
+  }, [])
   
   return (
     <div ref={stickyRef} className={classNames("sticky", { stuck })}>

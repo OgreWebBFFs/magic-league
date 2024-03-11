@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchInput from '../SearchInput';
 import useHashParams from '../../helpers/hooks/use-hash-params';
+import { cacheCards } from './card-results-cache';
 
 const BasicBrowseControls = ({ setCards }) => {
   const [_, updateHashParams] = useHashParams();
@@ -11,6 +12,7 @@ const BasicBrowseControls = ({ setCards }) => {
         onResults={(results, query) => {
           setCards(results);
           updateHashParams({ query: [query] });
+          cacheCards(results, { query: [query] });
         }}
         onReset={() => {
           setCards([]);

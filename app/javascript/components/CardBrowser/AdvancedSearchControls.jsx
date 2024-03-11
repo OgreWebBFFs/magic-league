@@ -4,7 +4,7 @@ import xhrRequest from '../../helpers/xhr-request';
 import Button from '../Button';
 import useHashParams, { stringifyHash } from '../../helpers/hooks/use-hash-params';
 import Sticky from '../Sticky';
-import { forgetScroll } from '../../helpers/hooks/use-preserve-scroll';
+import { cacheCards, isCachedCards, getCachedCards } from './card-results-cache';
 
 const APPLIED_FILTER_STR_TEMPLATES = {
   name: { prefix: 'the name is like', joiner: 'or' },
@@ -33,19 +33,22 @@ const searchCards = async (query) => (await xhrRequest({
   },
 })).data;
 
+
 const AdvancedBrowseControls = ({ setCards }) => {
-  const [cardsCount, setCardsCount] = useState();
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [hashParams] = useHashParams();
+  const [cardsCount, setCardsCount] = useState(isCachedCards(hashParams) ? getCachedCards(hashParams).length : undefined);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   
   useEffect(() => {
     const fetchCardResults = async () => {
       const cards = await searchCards(stringifyHash(hashParams));
+      cacheCards(cards, hashParams);
       setCardsCount(cards.length);
       setCards(cards);
     }
-    fetchCardResults();
+    if(!isCachedCards(hashParams)) fetchCardResults();
   }, []);
+  
   return (
     <Sticky onUnstuck={() => setDrawerOpen(false)}>
       <div className={classNames("advanced-search__controls", { shadowed: !drawerOpen})}>

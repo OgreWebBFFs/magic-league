@@ -590,7 +590,9 @@ input[type="checkbox"] {
     top: -1px;
     z-index: 69;
     pointer-events: none;
-
+    &.rendering {
+        visibility: hidden;
+    }
     * {
         pointer-events: auto;
     }

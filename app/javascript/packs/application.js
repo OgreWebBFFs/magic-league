@@ -17,6 +17,7 @@
 import Rails from '@rails/ujs';
 import Turbolinks from 'turbolinks';
 import * as ActiveStorage from '@rails/activestorage';
+import '../helpers/scroll-restoration';
 
 Rails.start();
 Turbolinks.start();
