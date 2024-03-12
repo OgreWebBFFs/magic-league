@@ -29,7 +29,7 @@
           pendingTradeOffer: current_user.has_pending_trade_offer?,
           newAnnouncement: Rails.cache.read('new_announcement') === true
         }
-      }) %>
+      }, { :class => "navigation__container" }) %>
     <% end %>
 
     <div class="app__section full-page">
