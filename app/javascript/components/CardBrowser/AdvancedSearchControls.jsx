@@ -12,7 +12,7 @@ const APPLIED_FILTER_STR_TEMPLATES = {
   card_types: { prefix: 'the card type is', joiner: 'or' },
   sub_types: { prefix: 'the subtype contains', joiner: 'or'},
   colors_exact: { prefix: 'the colors are exactly', joiner: 'and' },
-  colors_include: { prefix: 'the colors include', joiner: 'or' },
+  colors_include: { prefix: 'the colors include', joiner: 'and' },
   colors_atmost: { prefix: 'the colors are only', joiner: 'or' },
   rarity: { prefix: 'the rarity is', joiner: 'or' },
   sets: { prefix: 'belongs to the set', joiner: 'or'},
