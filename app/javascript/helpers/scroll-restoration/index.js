@@ -4,7 +4,8 @@ document.addEventListener('turbolinks:before-visit', () => {
   if (document.querySelector('*[data-preserve-scroll=true]')) {
     Turbolinks.savedScrolls = {
       [window.location.href]: {
-        scrollTo: document.documentElement.scrollTop,
+        document: document.documentElement.scrollTop,
+        body: document.body.scrollTop,
       },
     };
   }
@@ -17,8 +18,6 @@ document.addEventListener('turbolinks:render', () => {
   delete Turbolinks.savedScrolls[window.location.href];
 
   window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(() => {
-      window.scrollTo({ top: savedScroll.scrollTo });
-    });
+    document.documentElement.scrollTop = savedScroll.document;
   });
 });

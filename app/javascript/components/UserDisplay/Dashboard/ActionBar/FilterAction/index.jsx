@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../../../Button";
 import FiltersModal from "./FiltersModal";
 import filtersConfig from "./filter-configs";
+import useHashParams from "../../../../../helpers/hooks/use-hash-params";
 
 const FilterAction = ({ onUpdate }) => {
     const [showModal, setShowModal] = useState(false);
-    const [selectedFilters, setSelectedFilters] = useState([]);
+    const [hashParams, updateHashParams] = useHashParams();
+    const [selectedFilters, setSelectedFilters] = useState(hashParams.filters || []);
 
-    const updateFilterSelections = (newSelections) => {
+    useEffect(() => {
         const mods = filtersConfig
             .map((filterConfig) =>
                 filterConfig.options
-                    .filter((filterOption) => newSelections.includes(filterOption.id))
+                    .filter((filterOption) => selectedFilters.includes(filterOption.id))
                     .map((filterOption) => filterOption.criteria)
             )
             .filter((modArr) => modArr.length > 0);
-        setSelectedFilters(newSelections);
+        setSelectedFilters(selectedFilters);
+        updateHashParams({ ...hashParams, filters: selectedFilters })
         onUpdate(mods);
-    };
+    }, [selectedFilters])
 
     const numSelectedFilters = selectedFilters.length;
 
@@ -30,7 +33,7 @@ const FilterAction = ({ onUpdate }) => {
             {showModal && (
                 <FiltersModal
                     onClose={() => setShowModal(false)}
-                    onApply={updateFilterSelections}
+                    onApply={setSelectedFilters}
                     initialSelections={selectedFilters}
                 />
             )}

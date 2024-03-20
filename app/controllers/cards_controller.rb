@@ -1,8 +1,9 @@
 include PrintsHelper
+include Filters
 
 class CardsController < ApplicationController
   def index
-    cards = Card.query_all_text(params[:query]).order(:name)
+    cards = CardsFilter.new.call(Card.all, params).order(:name)
     options = {params: {current_user: current_user}}
     render json: CardSerializer.new(cards, options).serialized_json
   end

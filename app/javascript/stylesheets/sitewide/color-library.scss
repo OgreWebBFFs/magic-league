@@ -70,5 +70,31 @@
 
     --color-text-negative-hue-sat: var(--color-fill-negative-hue-sat);
     --color-text-negative-lightness: calc(var(--saturated-fill-lightness) + 15%);
-    --color-text-negative: hsl(var(--color-text-negative-hue-sat), var(--color-text-negative-lightness));
+    --color-text-negative: hsl(var(--color-text-negative-hue-sat), var(--color-text-negative-lightness)); 
+   
+
+    // Mana Colors
+    --color-white-mana-hue-sat: 56, 69%;
+    --color-white-mana-lightness: 91%;
+    --color-white-mana: hsl(var(--color-white-mana-hue-sat), var(--color-white-mana-lightness));
+
+    --color-blue-mana-hue-sat: 207, 47%;
+    --color-blue-mana-lightness: 83%;
+    --color-blue-mana: hsl(var(--color-blue-mana-hue-sat), var(--color-blue-mana-lightness));
+
+    --color-black-mana-hue-sat: 30, 8%;
+    --color-black-mana-lightness: 77%;
+    --color-black-mana: hsl(var(--color-black-mana-hue-sat), var(--color-black-mana-lightness));
+
+    --color-red-mana-hue-sat: 19, 66%;
+    --color-red-mana-lightness: 68%;
+    --color-red-mana: hsl(var(--color-red-mana-hue-sat), var(--color-red-mana-lightness));
+
+    --color-green-mana-hue-sat: 100, 25%;
+    --color-green-mana-lightness: 66%;
+    --color-green-mana: hsl(var(--color-green-mana-hue-sat), var(--color-green-mana-lightness)); 
+
+    --color-colorless-mana-hue-sat: 30, 8%;
+    --color-colorless-mana-lightness: 77%;
+    --color-colorless-mana: hsl(var(--color-colorless-mana-hue-sat), var(--color-colorless-mana-lightness)); 
 }

@@ -99,4 +99,20 @@ a.button,
         --button-background-color-hue-sat: var(--color-fill-positive-hue-sat);
         --button-background-color-lightness: var(--color-fill-positive-lightness);
     }
+
+    &--no-button {
+        --button-text-color: var(--button-background-color);
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        display: inline-flex;
+        text-transform: none;
+        text-decoration: underline;
+
+        &:hover:not(:disabled) {
+            --button-adjusted-lightness:calc(var(--button-background-color-lightness) + (15% * var(--color-lightness-shift-basis)));
+            --button-text-color: hsla(var(--button-background-color-hue-sat),var(--button-adjusted-lightness),var(--button-background-color-opacity));
+            background: none;
+        }
+    }
 }

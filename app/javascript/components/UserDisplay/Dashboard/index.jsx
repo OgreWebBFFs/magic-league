@@ -16,6 +16,7 @@ import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
 import TradablesContext from '../../../contexts/TradablesContext';
+import useHashParams from '../../../helpers/hooks/use-hash-params';
 
 const InterfaceTab = ({
   children, activeTab, setActiveTab, title,
@@ -56,14 +57,14 @@ const Dashboard = ({
   objectiveRerolls,
   ...props
 }) => {
-  const windowHistory = window.history.state || {};
-  const startingTab = windowHistory.currentTab
-    || window.location.hash.substring(1)
-    || 'collection';
-  const startingView = windowHistory.currentView === undefined || windowHistory.currentView;
+  const [{
+    tab: [ initialTab ] = [ 'collection'],
+    view: [ initialView ] = [ 'list' ],
+    ...hashParams
+  }, updateHashParams] = useHashParams();
 
-  const [activeTab, setActiveTab] = useState(startingTab);
-  const [isListView, setIsListView] = useState(startingView);
+  const [activeTab, setActiveTab] = useState(initialTab);
+  const [isListView, setIsListView] = useState(initialView === 'list');
 
   const [tradables, setTradables] = useState(initialTradables);
   const [wishlist, setWishlist] = useState(initialWishlist);
@@ -80,10 +81,11 @@ const Dashboard = ({
   }), [wishlist, currentUserWishlist]);
 
   useUpdateEffect(() => {
-    const url = `#${activeTab}`;
-    window.history.replaceState({
-      turbolinks: true, url, currentTab: activeTab, currentView: isListView,
-    }, '', url);
+    updateHashParams({
+      ...hashParams,
+      tab: [activeTab],
+      view: [isListView ? 'list' : 'grid'],
+    });
   }, [activeTab, isListView]);
 
   return (

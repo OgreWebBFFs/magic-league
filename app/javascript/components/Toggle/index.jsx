@@ -5,7 +5,7 @@ const Toggle = ({ name, checked, onClick, options }) => (
     <input
       type="checkbox"
       className="toggle-switch-checkbox"
-      checked={checked}
+      defaultChecked={checked}
       onClick={onClick}
       name={name}
       id={name}

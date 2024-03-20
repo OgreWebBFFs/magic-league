@@ -14,7 +14,7 @@
     box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.2),
         0 3px 1px -2px rgba(0, 0, 0, 0.3),
         0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.4);
-    z-index: 2;
+    z-index: 99;
     color: var(--color-text-neutral);
     background-color: var(--color-fill-neutral);
     --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));

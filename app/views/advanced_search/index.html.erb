@@ -1,0 +1,11 @@
+<div id="trade-search__wrapper">
+  <div class="trade__container">
+    <%= react_component("AdvancedSearch", {
+      options: {
+        cardTypes: @card_types,
+        subTypes: @sub_types,
+        sets: @sets
+      }
+    }) %>
+  </div>
+</div>

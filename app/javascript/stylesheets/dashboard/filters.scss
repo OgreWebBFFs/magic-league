@@ -32,32 +32,41 @@
             align-items: center;
             gap: 0.5rem;
             margin: 0.25rem 0;
-
-            i {
-                font-size: 1.75rem;
+            
+            .ms {
+                display: flex;
+                -webkit-border-radius: 500px;
+                border-radius: 500px;
+                -webkit-box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+                box-shadow: -1px 1px 0 rgba(0,0,0,0.85);
+                overflow: hidden;
+                width: 20px;
+                height: 20px;
+                justify-content: center;
+                align-items: center;
 
                 &.ms-w {
-                    color: #f8e7b9;
+                  background-color: var(--color-white-mana);
                 }
 
                 &.ms-u {
-                    color: #0e68ab;
+                  background-color: var(--color-blue-mana);
                 }
 
                 &.ms-b {
-                    color: #150b00;
+                  background-color: var(--color-black-mana);
                 }
 
                 &.ms-r {
-                    color: #d3202a;
+                  background-color: var(--color-red-mana);
                 }
 
                 &.ms-g {
-                    color: #00733e;
+                  background-color: var(--color-green-mana);
                 }
 
                 &.ms-c {
-                    color: #5e5e5e;
+                  background-color: var(--color-colorless-mana);
                 }
             }
         }

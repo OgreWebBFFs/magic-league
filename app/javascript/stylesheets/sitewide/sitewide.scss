@@ -394,6 +394,8 @@ input[type="checkbox"] {
         position: relative;
         cursor: pointer;
         padding: 0;
+        display: flex;
+        align-items: center;
     }
 
     // Box.
@@ -408,7 +410,7 @@ input[type="checkbox"] {
         border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
         -webkit-tap-highlight-color: transparent;
         transition: 0.25s;
-        border-radius: var(--spacer-xs);
+        border-radius: 0.25rem;
     }
 
     // Box hover
@@ -432,8 +434,6 @@ input[type="checkbox"] {
         font-weight: 900;
         content: "\f00c";
         position: absolute;
-        left: 0px;
-        top: 0px;
         font-size: calc(var(--checkbox-size) * 0.6);
         display: flex;
         width: var(--checkbox-size);
@@ -582,5 +582,18 @@ input[type="checkbox"] {
     [class*="__container"],
     .container {
         width: 100%;
+    }
+}
+
+.sticky {
+    position: sticky;
+    top: -1px;
+    z-index: 69;
+    pointer-events: none;
+    &.rendering {
+        visibility: hidden;
+    }
+    * {
+        pointer-events: auto;
     }
 }

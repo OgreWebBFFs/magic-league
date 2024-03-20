@@ -32,7 +32,7 @@ const Navigation = ({ isAdmin, currentUserId, unlockedUsers, notifications }) =>
     },
     {
       displayName: 'Browse Cards',
-      href: 'browse',
+      href: 'search',
     },
     {
       displayName: 'League',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDebounce } from 'react-use';
 import xhrRequest from '../../helpers/xhr-request';
+import useHashParams from '../../helpers/hooks/use-hash-params';
 
 const MIN_QUERY_LENGTH = 3;
 const MINIMUM_QUERY_MSG = `Input at least ${MIN_QUERY_LENGTH} characters to search`;
@@ -14,7 +15,8 @@ const searchCards = async (query) => (await xhrRequest({
 })).data;
 
 const SearchInput = ({ onReset, onResults }) => {
-  const [query, setQuery] = useState('');
+  const [{ query: initialQuery }] = useHashParams();
+  const [query, setQuery] = useState((initialQuery || [''])[0]);
   const [error, setError] = useState('');
 
   const handleErrorMessaging = (results) => {
@@ -34,7 +36,7 @@ const SearchInput = ({ onReset, onResults }) => {
     }
     if (query.length >= MIN_QUERY_LENGTH) {
       results = await searchCards(query);
-      onResults(results);
+      onResults(results, query);
     }
     handleErrorMessaging(results);
   }, 300, [query]);
@@ -46,6 +48,7 @@ const SearchInput = ({ onReset, onResults }) => {
         type="text"
         placeholder={MINIMUM_QUERY_MSG}
         onChange={(e) => setQuery(e.target.value)}
+        value={query}
       />
       {error ? <div>{error}</div> : null}
     </>

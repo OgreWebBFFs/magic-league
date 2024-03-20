@@ -24,7 +24,7 @@ gem 'dalli'
 gem 'simple_form', '~> 5.1.0'
 gem 'fast_jsonapi', '~> 1.5'
 
-gem 'react-rails', '~> 2.6.2'
+gem 'react-rails', '~> 3.2.0'
 gem 'kaminari'
 
 group :development, :test do
