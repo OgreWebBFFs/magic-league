@@ -12,6 +12,18 @@ const SET_DETAILS = {
   "spg": {
     text: "Special Guest",
     symbol: 'ss ss-spg'
+  },
+  "otj": {
+    text: "Outlaws of Thunder Junction",
+    symbol: 'ss ss-otj'
+  },
+  "big": {
+    text: "The Big Score",
+    symbol: 'ss ss-big',
+  },
+  "otp": {
+    text: "Breaking News",
+    symbol: 'ss ss-otp',
   }
 }
 
