@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_18_215144) do
+ActiveRecord::Schema.define(version: 2024_05_31_155501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_10_18_215144) do
     t.decimal "cmc"
     t.string "colors", default: [], array: true
     t.string "rarity"
+    t.string "back_image_url"
   end
 
   create_table "collections", force: :cascade do |t|

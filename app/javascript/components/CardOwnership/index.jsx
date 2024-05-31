@@ -21,7 +21,7 @@ const CardOwnership = ({
           When the below style is removed, card image is as large as it seemingly can be
         */}
         <div style={{ maxWidth: '350px', margin: 'auto' }}>
-          <CardImage name={card.name} imageUrl={card.image_url} />
+          <CardImage name={card.name} imageUrl={card.image_url} backImageUrl={card.back_image_url} />
         </div>
       </div>
       <div className="card-profile__details">

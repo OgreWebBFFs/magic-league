@@ -4,7 +4,12 @@ import CardImage from './CardImage';
 
 const CardImageLink = ({
   card: {
-    name, id, mana_cost: manaCost, type_line: typeLine, image_url: imgUrl,
+    name,
+    id,
+    mana_cost: manaCost,
+    type_line: typeLine,
+    image_url: imgUrl,
+    back_image_url: backImgUrl
   },
 }) => (
   <a className="card-grid__card--link" href={`/cards/${id}`}>
@@ -16,7 +21,7 @@ const CardImageLink = ({
       </p>
       <p className="card-grid__card--attribute">{typeLine}</p>
     </div>
-    <CardImage name={name} imageUrl={imgUrl} />
+    <CardImage name={name} imageUrl={imgUrl} backImageUrl={backImgUrl} />
   </a>
 );
 
