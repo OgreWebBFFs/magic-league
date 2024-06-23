@@ -24,6 +24,14 @@ const SET_DETAILS = {
   "otp": {
     text: "Breaking News",
     symbol: 'ss ss-otp',
+  },
+  "mh3": {
+    text: "Modern Horizons 3",
+    symbol: 'ss ss-mh3',
+  },
+  "m3c": {
+    text: "Modern Horizons 3 Commander",
+    symbol: 'ss ss-m3c',
   }
 }
 
