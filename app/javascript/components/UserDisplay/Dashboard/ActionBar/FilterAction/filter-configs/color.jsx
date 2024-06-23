@@ -11,7 +11,7 @@ export default {
           White
         </>
       ),
-      criteria: (card) => card.colors.includes('W'),
+      criteria: (card) => card.colors?.includes('W'),
     }, {
       id: 'blue',
       display: (
@@ -20,7 +20,7 @@ export default {
           Blue
         </>
       ),
-      criteria: (card) => card.colors.includes('U'),
+      criteria: (card) => card.colors?.includes('U'),
     },
     {
       id: 'black',
@@ -30,7 +30,7 @@ export default {
           Black
         </>
       ),
-      criteria: (card) => card.colors.includes('B'),
+      criteria: (card) => card.colors?.includes('B'),
     },
     {
       id: 'red',
@@ -40,7 +40,7 @@ export default {
           Red
         </>
       ),
-      criteria: (card) => card.colors.includes('R'),
+      criteria: (card) => card.colors?.includes('R'),
     },
     {
       id: 'green',
@@ -50,7 +50,7 @@ export default {
           Green
         </>
       ),
-      criteria: (card) => card.colors.includes('G'),
+      criteria: (card) => card.colors?.includes('G'),
     },
     {
       id: 'colorless',
@@ -60,6 +60,6 @@ export default {
           Colorless
         </>
       ),
-      criteria: (card) => card.colors.length === 0,
+      criteria: (card) => !(card.colors?.length > 0),
     }],
 };
