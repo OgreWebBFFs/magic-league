@@ -40,7 +40,7 @@ class Card < ApplicationRecord
     new_card.type_line = card_res['type_line']
     new_card.mana_cost = card_res['mana_cost']
     new_card.cmc = card_res['cmc']
-    new_card.colors = card_res['colors']
+    new_card.colors = card_res['color_identity']
     new_card.rarity = card_res['rarity']
     new_card.save! 
   end
