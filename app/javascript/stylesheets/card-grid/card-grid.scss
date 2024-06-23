@@ -78,8 +78,39 @@
 
         &--image {
             width: 100%;
-            margin: 0;
             border-radius: 1rem;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            
+            &.back {
+                position: absolute;
+                transform: rotateY(180deg);
+            }
+
+            &-flipper {
+                position: absolute;
+                right: 2rem;
+                top: 25%;
+                border-radius: 100%;
+                height: 4rem;
+                width: 4rem;
+                opacity: 50%;
+                border: 3px solid black;
+                cursor: pointer;
+                background: white;
+
+                &.flipped {
+                    border-color: white;
+                    color: white;
+                    background: black;
+                }
+
+                &:hover {
+                    opacity: 80%;   
+                }
+            }
             
             &-foiled {
                 position: relative;
@@ -89,7 +120,7 @@
                     position: absolute;
                     height: 100%;
                     width: 100%;
-                    background-image: image_url("../images/foil_indicator.svg");
+                    background-image: url("../images/foil_indicator.svg");
                     background-size: contain;
                 }
             }

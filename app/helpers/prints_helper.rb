@@ -11,7 +11,10 @@ module PrintsHelper
     if res.is_a?(Net::HTTPSuccess)
       json_res = JSON.parse(res.body)
       json_res["data"].map { |card|
-        card["image_uris"]["png"]
+        if card["card_faces"]
+          card = card["card_faces"].first
+        end
+        card["image_uris"]["normal"]
       }
     else
       raise StandardError.new JSON.parse(res.body)

@@ -20,11 +20,17 @@ class Card < ApplicationRecord
       new_card.image_url = card_res['image_uris']['normal']
     elsif card_res['card_faces']
       first_face = card_res['card_faces'].first
+      second_face = card_res['card_faces'].second
       if first_face['image_uris']
         new_card.image_url = first_face['image_uris']['normal']
       else
         puts "Couldn't find an image_url for #{card_res['name']}"
       end
+      if second_face['image_uris']
+        new_card.back_image_url = second_face['image_uris']['normal']
+      else
+        puts "Couldn't find an image_url for #{card_res['name']}"
+      end 
     else
       puts "Couldn't find an image_url for #{card_res['name']}"
     end
