@@ -52,7 +52,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'open-uri', '~> 0.3.0'
 gem 'rmagick', '~> 5.3'
 
-gem 'discordrb', '~> 3.5'
+gem 'discordrb', '~> 3.5', git: 'https://github.com/shardlab/discordrb', branch: 'main'
 gem 'delayed_job', '~> 4.1.11'
 gem 'delayed_job_active_record'
 

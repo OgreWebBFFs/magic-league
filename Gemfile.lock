@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/shardlab/discordrb
+  revision: f2a313b795ecba34b99239db9627bdcbdeddbd46
+  branch: main
+  specs:
+    discordrb (3.5.0)
+      discordrb-webhooks (~> 3.5.0)
+      ffi (>= 1.9.24)
+      opus-ruby
+      rest-client (>= 2.0.0)
+      websocket-client-simple (>= 0.3.0)
+    discordrb-webhooks (3.5.0)
+      rest-client (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,14 +137,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
-    discordrb (3.5.0)
-      discordrb-webhooks (~> 3.5.0)
-      ffi (>= 1.9.24)
-      opus-ruby
-      rest-client (>= 2.0.0)
-      websocket-client-simple (>= 0.3.0)
-    discordrb-webhooks (3.5.0)
-      rest-client (>= 2.0.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dry-configurable (0.13.0)
@@ -444,7 +450,7 @@ DEPENDENCIES
   delayed_job (~> 4.1.11)
   delayed_job_active_record
   devise (~> 4.8.1)
-  discordrb (~> 3.5)
+  discordrb (~> 3.5)!
   dry-types (~> 1.5.0)
   fast_jsonapi (~> 1.5)
   image_processing (~> 1.12)
