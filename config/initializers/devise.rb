@@ -159,8 +159,9 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  # config.rememberable_options = {}
-
+  config.rememberable_options = {}
+  config.rememberable_options[:secure] = true if Rails.env.production?
+  
   # ==> Configuration for :validatable
   # Range for password length.
   config.password_length = 6..128
@@ -173,7 +174,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  config.timeout_in = 1.day
+  # config.timeout_in = 1.day
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
