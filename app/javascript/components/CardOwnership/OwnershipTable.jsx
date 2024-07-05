@@ -10,23 +10,22 @@ const AmountCell = ({ children }) => <Cell className="card-profile__cell--amount
 const NoOwnersMessage = () => <Cell isPriority>No one owns this card yet</Cell>;
 
 const OwnershipTable = ({
-  card, currentUserId, totalCount, ownerDetails,
+  card, currentUserId, totalCount, ownerships,
 }) => (
-  <>
     <Table className="card-profile__table--ownership">
       <Row className="card-profile__row--headings" isHeading>
         <Cell isPriority>Owned By</Cell>
         <AmountCell>Amount</AmountCell>
       </Row>
       {totalCount <= 0 ? <NoOwnersMessage /> : (
-        ownerDetails.map(({ count, id, name }) => (
+        ownerships.map(({ quantity, collection: { user: { id, name }}}, i) => (
           <Row>
             <Cell isPriority><a href={`/users/${id}`}>{name}</a></Cell>
             <AmountCell>
-              {count}
+              {quantity}
               {id !== currentUserId && (
               <TradeProposalButtonSmall
-                card={formatCard(card, [{ id, name }])}
+                card={formatCard(card, [ownerships[i]])}
                 currentUserId
               />
               )}
@@ -41,7 +40,6 @@ const OwnershipTable = ({
         </Row>
       }
     </Table>
-  </>
 );
 
 export default OwnershipTable;

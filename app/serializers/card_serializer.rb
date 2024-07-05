@@ -8,7 +8,8 @@ class CardSerializer
   end
 
   attribute :count_in_collection do |object, params|
-    params[:current_user].ownerships.where('card_id = ?', object.id).first.quantity
+    ownership = params[:current_user].ownerships.where('card_id = ?', object.id).first
+    ownership.present? ? ownership.quantity : 0
   end
 
 end

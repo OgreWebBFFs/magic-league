@@ -1,9 +1,9 @@
-export default (card, owners) => ({
+export default (card, ownerships) => ({
   id: card.id,
   attributes: {
     name: card.name,
     users: {
-      data: owners.map((owner) => ({ attributes: owner })),
+      data: ownerships.map((o) => ({ attributes: o.collection.user })),
     },
   },
 });

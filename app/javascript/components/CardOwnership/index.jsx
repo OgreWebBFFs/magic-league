@@ -7,7 +7,7 @@ import WishlistToggleLarge from '../WishlistToggle/WishlistToggleLarge';
 import { CardImage } from '../CardGrid';
 
 const CardOwnership = ({
-  card, currentUserId, totalCount, ownerDetails, wishlist, totalWishlisters, wishlisterDetails
+  card, currentUserId, totalCount, ownerships, wishlist, totalWishlisters, wishlisterDetails
 }) => {
   const isWishlisted = wishlist[currentUserId] !== undefined;
   return (
@@ -28,7 +28,7 @@ const CardOwnership = ({
         <div className="card-profile__action-bar">
           <TradeProposalButtonLarge
             isAvailable={totalCount > 0}
-            card={formatCard(card, ownerDetails)}
+            card={formatCard(card, ownerships)}
             currentUserId={currentUserId}
           />
           <WishlistToggleLarge
@@ -41,7 +41,7 @@ const CardOwnership = ({
           card={card}
           currentUserId={currentUserId}
           totalCount={totalCount}
-          ownerDetails={ownerDetails}
+          ownerships={ownerships}
         />
         <WishlistTable
           totalWishlisters={totalWishlisters}
