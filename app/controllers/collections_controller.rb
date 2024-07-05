@@ -16,12 +16,8 @@ class CollectionsController < ApplicationController
 
   def update
     authorize(@collection)
-    results = OwnershipManager.new(collection_params[:ownership]).update_ownerships
-    if results.all?
-      render json: {count: results.count}
-    else
-      render json: {}, status: 500
-    end
+    count = OwnershipManager.new(collection_params[:ownership]).update_ownerships
+    render json: {count: count}
   end
 
   def edit

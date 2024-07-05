@@ -49,11 +49,12 @@ class User < ApplicationRecord
   end
 
   def add_card(card_id)
-    Ownership.new(card_id: card_id, collection_id: collection_id).save
+    Ownership.find_or_create_by(card_id: card_id, collection_id: collection_id).add
+    # Ownership.new(card_id: card_id, collection_id: collection_id).save
   end
 
   def remove_card(card_id)
-    Ownership.where(card_id: card_id, collection_id: collection_id).first.destroy
+    Ownership.where(card_id: card_id, collection_id: collection_id).remove
   end
 
   def trades_received_and_allowed_by_rarity

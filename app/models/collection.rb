@@ -4,8 +4,8 @@ class Collection < ApplicationRecord
   has_many :cards, through: :ownerships
 
   def to_s
-    cards.select(:name).group(:name).order(:name).map{ |card|
-      "#{self.cards.where(name: card.name).count}x #{card.name}"
+    ownerships.sort_by{ |o| o.card.name }.map{ |o| 
+        "#{o.quantity}x #{o.card.name}"
     }.join("\n")
   end
 end
