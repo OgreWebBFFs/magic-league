@@ -16,8 +16,13 @@ class CollectionsController < ApplicationController
 
   def update
     authorize(@collection)
-    count = OwnershipManager.new(collection_params[:ownership]).update_ownerships
-    render json: {count: count}
+    if collection_params[:quantity]
+        OwnershipManager.new(collection_params[:quantity]).update_quantity
+    end
+    if collection_params[:tradable]
+        OwnershipManager.new(collection_params[:tradable]).update_tradable
+    end
+    render json: {status: 'success'}
   end
 
   def edit
@@ -59,7 +64,13 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.permit(:id, :alerts, ownership: [ :count, :card_id, :collection_id ], collection: [:card_list])
+    params.permit(
+        :id,
+        :alerts,
+        quantity: [ :quantity, :card_id, :collection_id ],
+        tradable: [:tradable, :card_id, :collection_id],
+        collection: [:card_list]
+    )
   end
 
 end

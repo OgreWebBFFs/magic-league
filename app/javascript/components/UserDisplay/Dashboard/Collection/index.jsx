@@ -7,10 +7,10 @@ import EmptyState from "../EmptyState";
 import TradableToggle from "./TradableToggle";
 import Button from "../../../Button";
 
-const Collection = ({ collectionCards, currentUserId, user, isListView, viewModifiers }) => {
-    const isEmpty = collectionCards.length < 1;
+const Collection = ({ collection, currentUserId, user, isListView, viewModifiers }) => {
+    const isEmpty = collection.length < 1;
     const isOwner = currentUserId === user.id;
-    const filteredCollection = collectionCards.filter((card) =>
+    const filteredCollection = collection.filter(({ card }) =>
         viewModifiers.every((filters) => filters.find((filter) => filter(card)))
     );
     return (
@@ -28,7 +28,7 @@ const Collection = ({ collectionCards, currentUserId, user, isListView, viewModi
             )}
             {isListView && !isEmpty && (
                 <CardList>
-                    {filteredCollection.map((card, row) => (
+                    {filteredCollection.map(({ card }, row) => (
                         <Row>
                             <Cell isPriority>
                                 <a className="invert" href={`/cards/${card.id}`}>
@@ -45,7 +45,7 @@ const Collection = ({ collectionCards, currentUserId, user, isListView, viewModi
             {!isListView && !isEmpty && (
                 <div className="dashboard__card-grid-wrapper">
                     <CardGrid>
-                        {filteredCollection.map((card, i) => (
+                        {filteredCollection.map(({ card }, i) => (
                             // eslint-disable-next-line react/no-array-index-key
                             <div key={`${card.id}-${i}`}>
                                 <WishlistToggleSmall userId={user.id} cardId={card.id} />

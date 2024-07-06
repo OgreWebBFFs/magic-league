@@ -10,8 +10,8 @@ const storeQuantity = ({ collectionId, cardId, quantity }) => xhrRequest({
     method: 'PUT',
     body: JSON.stringify({
       id: collectionId,
-      ownership: {
-        count: quantity,
+      quantity: {
+        quantity,
         card_id: cardId,
         collection_id: collectionId,
       },
@@ -19,17 +19,20 @@ const storeQuantity = ({ collectionId, cardId, quantity }) => xhrRequest({
   },
 });
 
-const QuantityControl = ({ collectionId, cardId, value }) => {
-  const [quantity, setQuantity] = useState(value);
+const QuantityControl = ({ collectionId, cardId, initialValue, onChange }) => {
+  const [quantity, setQuantity] = useState(initialValue);
   const isInitial = useFirstMountState();
 
-  useDebounce(() => {
-    if (!isInitial) storeQuantity({ collectionId, cardId, quantity });
+  useDebounce(async () => {
+    if (!isInitial) {
+        await storeQuantity({ collectionId, cardId, quantity });
+        onChange(quantity)    
+    }
   }, 300, [quantity]);
 
   return (
     <div className="card-grid__quantity-control">
-      <Button type="button" className="button--ghost" onClick={() => setQuantity(quantity - 1)}><i className="material-icons">indeterminate_check_box</i></Button>
+      <Button type="button" className="button--ghost" onClick={() => quantity > 0 && setQuantity(quantity - 1)}><i className="material-icons">indeterminate_check_box</i></Button>
       <input
         type="number"
         readOnly="readonly"

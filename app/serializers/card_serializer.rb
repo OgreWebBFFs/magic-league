@@ -7,9 +7,9 @@ class CardSerializer
     UserSerializer.new(object.users).serializable_hash
   end
 
-  attribute :count_in_collection do |object, params|
+  attribute :ownership_attr do |object, params|
     ownership = params[:current_user].ownerships.where('card_id = ?', object.id).first
-    ownership.present? ? ownership.quantity : 0
+    ownership.present? ? ownership.as_json : nil
   end
 
 end

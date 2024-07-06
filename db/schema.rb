@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2024_07_05_053431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity", default: 0
-    t.boolean "tradeable"
+    t.boolean "tradable"
     t.index ["card_id"], name: "index_ownerships_on_card_id"
     t.index ["collection_id"], name: "index_ownerships_on_collection_id"
   end

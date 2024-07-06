@@ -8,7 +8,7 @@ import EventPerformanceTracer from './EventPerformanceTracker';
 
 const UserDispaly = ({
   activeObjectives,
-  collectionCards,
+  collection,
   collectionId,
   completedObjectives,
   currentUserId,
@@ -72,7 +72,7 @@ const UserDispaly = ({
               user={user}
               edit={edit}
               currentUserWishlist={currentUserWishlist}
-              collectionCards={collectionCards}
+              collection={collection}
               collectionId={collectionId}
               tradables={tradables}
               wishlist={wishlist}

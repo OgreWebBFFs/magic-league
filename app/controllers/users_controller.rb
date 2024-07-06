@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
 
   def show
-    @cards = @user.cards.order(:name)
-    @count = @cards.count
+    @ownerships = @user.collection.ownerships.includes(:card).as_json(include: :card)
+    @count = @ownerships.count
     @tradables = @user.tradables
     @wishlist = @user.wishlist
     @current_user_wishlist = current_user.wishlist
