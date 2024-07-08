@@ -18,16 +18,29 @@ const OwnershipTable = ({
         <AmountCell>Amount</AmountCell>
       </Row>
       {totalCount <= 0 ? <NoOwnersMessage /> : (
-        ownerships.map(({ quantity, collection: { user: { id, name }}}, i) => (
+        ownerships.map(({ keeper, quantity, collection: { user: { id, name }}}, i) => (
           <Row>
             <Cell isPriority><a href={`/users/${id}`}>{name}</a></Cell>
             <AmountCell>
               {quantity}
-              {id !== currentUserId && (
+              {id !== currentUserId && !keeper && (
               <TradeProposalButtonSmall
                 card={formatCard(card, [ownerships[i]])}
                 currentUserId
               />
+              )}
+              {id !== currentUserId && keeper && (
+                <div style={{
+                    color: 'var(--color-fill-negative)',
+                    marginLeft: '8px',
+                    width: '100%',
+                    display: 'grid',
+                    placeItems: 'center',
+                    fontSize: '1.25rem'
+                }}>
+                    <i className='fas fa-slash' style={{ position: 'absolute '}} />
+                    <i className='fas fa-exchange-alt' />
+                </div>
               )}
             </AmountCell>
           </Row>
