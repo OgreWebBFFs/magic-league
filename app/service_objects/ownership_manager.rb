@@ -3,7 +3,7 @@ class OwnershipManager
     @card_id = params[:card_id]
     @collection_id = params[:collection_id]
     @quantity = params[:quantity]&.to_i
-    @tradable = params[:tradable]
+    @keeper = params[:keeper]
     @ownership = Ownership.find_or_create_by(card_id: @card_id, collection_id: @collection_id)
   end
 
@@ -15,8 +15,8 @@ class OwnershipManager
     end
   end
 
-  def update_tradable
-    @ownership.update(tradable: @tradable)
+  def update_keeper
+    @ownership.update(keeper: @keeper)
   end
 
 

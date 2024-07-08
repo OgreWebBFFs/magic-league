@@ -19,8 +19,8 @@ class CollectionsController < ApplicationController
     if collection_params[:quantity]
         OwnershipManager.new(collection_params[:quantity]).update_quantity
     end
-    if collection_params[:tradable]
-        OwnershipManager.new(collection_params[:tradable]).update_tradable
+    if collection_params[:keeper]
+        OwnershipManager.new(collection_params[:keeper]).update_keeper
     end
     render json: {status: 'success'}
   end
@@ -68,7 +68,7 @@ class CollectionsController < ApplicationController
         :id,
         :alerts,
         quantity: [ :quantity, :card_id, :collection_id ],
-        tradable: [:tradable, :card_id, :collection_id],
+        keeper: [:keeper, :card_id, :collection_id],
         collection: [:card_list]
     )
   end
