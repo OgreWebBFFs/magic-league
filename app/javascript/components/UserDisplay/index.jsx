@@ -17,7 +17,6 @@ const UserDispaly = ({
   eventRanking,
   gravatar,
   objectiveRerolls,
-  tradables,
   trades,
   tradeTrackerData,
   user,
@@ -74,7 +73,6 @@ const UserDispaly = ({
               currentUserWishlist={currentUserWishlist}
               collection={collection}
               collectionId={collectionId}
-              tradables={tradables}
               wishlist={wishlist}
               trades={trades}
             />

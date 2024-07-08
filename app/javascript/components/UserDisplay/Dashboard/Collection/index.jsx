@@ -4,7 +4,6 @@ import CardList from "../CardList";
 import { CardGrid, CardImageLink } from "../../../CardGrid";
 import { WishlistToggleSmall } from "../../../WishlistToggle";
 import EmptyState from "../EmptyState";
-import TradableToggle from "./TradableToggle";
 import Button from "../../../Button";
 
 const Collection = ({ collection, currentUserId, user, isListView, viewModifiers }) => {
@@ -34,9 +33,6 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                 <a className="invert" href={`/cards/${card.id}`}>
                                     {card.name}
                                 </a>
-                            </Cell>
-                            <Cell>
-                                <TradableToggle isOwner={isOwner} card={card} row={row} />
                             </Cell>
                         </Row>
                     ))}

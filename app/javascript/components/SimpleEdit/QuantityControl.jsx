@@ -19,15 +19,12 @@ const storeQuantity = ({ collectionId, cardId, quantity }) => xhrRequest({
   },
 });
 
-const QuantityControl = ({ collectionId, cardId, initialValue, onChange }) => {
+const QuantityControl = ({ collectionId, cardId, initialValue }) => {
   const [quantity, setQuantity] = useState(initialValue);
   const isInitial = useFirstMountState();
 
   useDebounce(async () => {
-    if (!isInitial) {
-        await storeQuantity({ collectionId, cardId, quantity });
-        onChange(quantity)    
-    }
+    if (!isInitial)  storeQuantity({ collectionId, cardId, quantity });
   }, 300, [quantity]);
 
   return (

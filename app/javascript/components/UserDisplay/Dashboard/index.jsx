@@ -15,7 +15,6 @@ import Wishlist from './Wishlist';
 import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
-import TradablesContext from '../../../contexts/TradablesContext';
 import useHashParams from '../../../helpers/hooks/use-hash-params';
 
 const InterfaceTab = ({
@@ -48,7 +47,6 @@ const Tabs = {
 };
 
 const Dashboard = ({
-  tradables: initialTradables,
   wishlist: initialWishlist,
   currentUserWishlist: initialCurrentUserWishlist,
   edit,
@@ -66,15 +64,10 @@ const Dashboard = ({
   const [activeTab, setActiveTab] = useState(initialTab);
   const [isListView, setIsListView] = useState(initialView === 'list');
 
-  const [tradables, setTradables] = useState(initialTradables);
   const [wishlist, setWishlist] = useState(initialWishlist);
   const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
 
   const [viewModifiers, setViewModifiers] = useState([]);
-
-  const tradablesContextValues = useMemo(() => ({
-    tradables, setTradables,
-  }), [tradables]);
 
   const wishlistContextValues = useMemo(() => ({
     wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
@@ -111,11 +104,9 @@ const Dashboard = ({
         { edit && <EditAction key="edit" collectionId={collectionId} /> }
       </ActionBar>
       <div className="dashboard__card-view">
-        <TradablesContext.Provider value={tradablesContextValues}>
           <WishlistContext.Provider value={wishlistContextValues}>
             {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
           </WishlistContext.Provider>
-        </TradablesContext.Provider>
       </div>
     </div>
   );

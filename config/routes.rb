@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   end
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
-  resources :tradables, only: [:index, :show, :create, :destroy]
   resources :received_trades, only: [:create]
 
   resources :user_objectives, only: [:create] do

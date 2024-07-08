@@ -5,7 +5,6 @@
       <%= link_to 'Edit', edit_collection_path(@collection.id), class: 'sub-nav_link__btn' if policy(@collection).edit? %>
       <%= link_to 'Collection', collection_path(@user.id), class: 'sub-nav_link__btn active' if !policy(@collection).edit? %>
       <%= link_to 'Wishlist', wishlist_path(@user.id), class: 'sub-nav_link__btn' %>
-      <%= link_to 'Tradables', tradable_path(@user.id), class: 'sub-nav_link__btn'%>
     </div>
     <div class="card-grid">
       <% @cards.each do |card| %>

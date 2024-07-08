@@ -29,8 +29,3 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
-  pundit:
-   tradable_policy:
-     destroy?: 'You are not authorized to perform this action.'

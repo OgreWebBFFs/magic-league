@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SearchInput from '../SearchInput';
 import { CardGrid, CardImageLink } from '../CardGrid';
-import EditControls from './EditControls';
+import QuantityControl from './QuantityControl';
 import xhrRequest from '../../helpers/xhr-request';
 
 const fetchCollection = async (userId) => (await xhrRequest({
@@ -27,7 +27,12 @@ const SimpleEdit = ({ userId, collectionId }) => {
         {cards.map((card) => (
             <>
                 <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
-                <EditControls key={`${card.attributes.name} controls`} card={card} collectionId={collectionId} />
+                <QuantityControl
+                    key={`${card.attributes.name} quantity`}
+                    collectionId={collectionId}
+                    cardId={card.attributes.id}
+                    initialValue={card.attributes.ownership_attr?.quantity || 0}
+                />
             </>
         ))}
       </CardGrid>

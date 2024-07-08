@@ -12,8 +12,6 @@ class User < ApplicationRecord
   has_one :collection
   has_many :ownerships, through: :collection
   has_many :cards, through: :ownerships
-  has_many :tradables
-  has_many :tradable_cards, through: :tradables, source: :card
   has_many :received_trades
   has_many :wishes
   has_many :wishlist_items, through: :wishes, source: :card
