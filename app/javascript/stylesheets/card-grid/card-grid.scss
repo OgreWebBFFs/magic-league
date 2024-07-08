@@ -1,4 +1,6 @@
 .card-grid {
+    --icon-size: 36px;
+
     display: inline-grid;
     grid-template-columns: repeat(3, 33%);
     grid-auto-rows: fit-content(100%);
@@ -12,27 +14,42 @@
         align-items: center;
     }
 
+    &__icon {
+        height: var(--icon-size);
+        width: var(--icon-size);
+        margin: 0;
+        opacity: 1;
+        z-index: 1;
+        font-size: calc(var(--icon-size) / 2);
+        font-weight: 400;
+        border-radius: var(--icon-size);
+    }
+
+    &__card-rail {
+        position: absolute;
+        top: calc(var(--icon-size) / -1.5);
+        right: -10px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 1;
+
+        @media only screen and (max-width: 500px) {
+            top: calc(var(--icon-size) / -2);
+        }
+    }
+
     &__wishlist__toggle {
         --toggle-size: 36px;
         height: var(--toggle-size);
         width: var(--toggle-size);
         margin: 0;
-        top: calc(var(--toggle-size) / -1.5);
-        right: -10px;
         opacity: 1;
-        position: absolute;
-        z-index: 1;
         font-family: "Font Awesome 5 Free";
         font-weight: 400;
-        font-size: calc(var(--toggle-size) / 2);
         border-radius: var(--toggle-size);
         cursor: pointer;
         opacity: 0.6;
-        position: absolute;
-
-        @media only screen and (max-width: 500px) {
-            top: calc(var(--toggle-size) / -2);
-        }
 
         &.active {
             opacity: 1;

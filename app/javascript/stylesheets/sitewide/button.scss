@@ -53,6 +53,7 @@ a.button,
     &:disabled {
         --button-text-color: var(--color-text-inverse);
         --button-background-color-opacity: 0.25;
+        cursor: not-allowed;
     }
     &--secondary {
         --button-background-color-base: var(--color-fill-neutral);
