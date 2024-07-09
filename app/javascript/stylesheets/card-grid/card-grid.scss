@@ -207,3 +207,93 @@
         }
     }
 }
+
+.keeper-toggle {
+    --color-fill-toggle-adjusted-brightness: calc( var(--color-fill-theme-lightness) + (15% * var(--color-lightness-shift-basis)) );
+    --color-fill-toggle-hsl: var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness);
+    --color-fill-toggle-adjusted-hsl: var(--color-fill-theme-hue-sat), var(--color-fill-toggle-adjusted-brightness);
+    --color-fill-toggle-alpha: .6;
+    --color-fill-toggle-hsla: hsla(var(--color-fill-toggle-hsl), var(--color-fill-toggle-alpha));
+    --color-fill-toggle-adjusted-hsla: hsla(var(--color-fill-toggle-adjusted-hsl), var(--color-fill-toggle-alpha));
+
+    height: 72px;
+    width: 72px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    color: white;
+    font-size: 1.5rem;
+    padding: .25rem;
+
+    &.interactive {
+        cursor: pointer;
+
+        background: linear-gradient(
+            -45deg,
+            transparent 49.9%, 
+            transparent 50%,
+            var(--color-fill-toggle-hsla) 50%,
+            var(--color-fill-toggle-hsla) 100%
+        );
+
+        &:hover {
+            background: linear-gradient(
+                -45deg,
+                transparent 49.9%, 
+                transparent 50%,
+                var(--color-fill-toggle-adjusted-hsla) 50%,
+                var(--color-fill-toggle-adjusted-hsla) 100%
+            );
+        }
+
+
+        &.enabled {
+            background: linear-gradient(
+                -45deg,
+                var(--color-fill-toggle-hsla) 49.9%, 
+                var(--color-fill-toggle-hsla) 50%,
+                hsl(var(--desaturated-hue-sat), 80%) 50%,
+                hsl(var(--desaturated-hue-sat), 80%) 100%
+            );
+
+            &:hover {
+                background: linear-gradient(
+                    -45deg,
+                    var(--color-fill-toggle-adjusted-hsla) 49.9%, 
+                    var(--color-fill-toggle-adjusted-hsla) 50%,
+                    hsl(var(--desaturated-hue-sat), 80%) 50%,
+                    hsl(var(--desaturated-hue-sat), 80%) 100%
+                );
+            }
+        }
+    }
+
+    border-radius: 1rem 0 0 0;
+
+    .icon {
+        display: grid;
+        place-items: center;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    &.enabled {
+        border-radius: 0 0 1rem 0;
+        background: linear-gradient(
+            -45deg,
+            var(--color-fill-negative) 49.9%, 
+            var(--color-fill-negative) 50%,
+            hsl(var(--desaturated-hue-sat), 80%) 50%,
+            hsl(var(--desaturated-hue-sat), 80%) 100%
+        );
+
+        .icon {
+            grid-column: 2;
+            grid-row: 2;
+        }
+    }
+}

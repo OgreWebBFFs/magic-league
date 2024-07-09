@@ -47,7 +47,6 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                             <div key={`${card.id}-${i}`}>
                                 <div className="card-grid__card-rail">
                                     <WishlistToggleSmall userId={user.id} cardId={card.id} />
-                                    <KeeperToggle keeper={keeper} disabled={currentUserId !== user.id} cardId={card.id} collectionId={collection_id} />
                                     {quantity > 1 && (
                                         <div className="card-grid__icon" style={{background: 'black', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                             {`x${quantity}`}
@@ -55,6 +54,12 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                     )}
                                 </div>
                                 <CardImageLink card={card} />
+                                <KeeperToggle
+                                    keeper={keeper}
+                                    interactive={currentUserId === user.id}
+                                    cardId={card.id}
+                                    collectionId={collection_id}
+                                />
                             </div>
                         ))}
                     </CardGrid>

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import Button from '../../../Button';
 import xhrRequest from '../../../../helpers/xhr-request';
 
 const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
@@ -18,29 +17,25 @@ const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
     },
   });
 
-const KeeperToggle = ({ collectionId, cardId, keeper, disabled }) => {
+const KeeperToggle = ({ collectionId, cardId, keeper, interactive }) => {
     const [enabled, setEnabled] = useState(keeper)
 
-    if (disabled && !keeper) return null;
+    if (!interactive && !keeper) return null;
 
     return (
-        <Button
-            className={classNames('card-grid__icon')}
+        <div
+            className={classNames('keeper-toggle', { enabled, interactive })}
             onClick={async () => {
-                await storeKeeper({
-                    collectionId, cardId, keeper: !enabled
-                });
+                await storeKeeper({ collectionId, cardId, keeper: !enabled });
                 setEnabled(!enabled)
             }}
-            style={{
-                background: 'var(--color-fill-negative)',
-                opacity: enabled ? '1' : '.6',
-            }}
-            disabled={disabled}
+            role='button'
         >
-            <i className='fas fa-slash' style={{ position: 'absolute' }}/>
-            <i className='fas fa-exchange-alt' />
-        </Button>
+            <div className='icon'>
+                <i className='fas fa-slash' style={{ position: 'absolute' }}/>
+                <i className='fas fa-exchange-alt' />
+            </div>
+        </div>
     )
 }
 
