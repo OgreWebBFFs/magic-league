@@ -99,4 +99,23 @@ a.button,
             background: none;
         }
     }
+
+    &--togglable {
+        --button-background-color-lightness:  calc(
+            var(--color-fill-theme-lightness) + (15% * var(--color-lightness-shift-basis))
+        );
+        border: 2px solid var(--button-background-color);
+
+        &.on {
+            --button-background-color-lightness: var(--color-fill-theme-lightness);
+        }
+
+        & .hollow-text {
+            color: var(--button-background-color);
+            transition-duration: 0.3s;
+            transition-property: all;
+            transition-timing-function: ease-in-out;
+        }
+    }
+    
 }

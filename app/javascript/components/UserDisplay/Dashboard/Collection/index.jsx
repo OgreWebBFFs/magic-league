@@ -45,21 +45,25 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                         {filteredCollection.map(({ card, quantity, keeper, collection_id }, i) => (
                             // eslint-disable-next-line react/no-array-index-key
                             <div key={`${card.id}-${i}`}>
-                                <div className="card-grid__card-rail">
-                                    <WishlistToggleSmall userId={user.id} cardId={card.id} />
-                                    {quantity > 1 && (
-                                        <div className="card-grid__icon" style={{background: 'black', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                            {`x${quantity}`}
-                                        </div>
-                                    )}
-                                </div>
+                                {quantity > 1 && (
+                                    <div className="card-grid__quantity">
+                                        {`x${quantity}`}
+                                    </div>
+                                )}
                                 <CardImageLink card={card} />
-                                <KeeperToggle
-                                    keeper={keeper}
-                                    interactive={currentUserId === user.id}
-                                    cardId={card.id}
-                                    collectionId={collection_id}
-                                />
+                                <div className="card-grid__card-actions">
+                                    <div className="card-grid__card-action">
+                                        <KeeperToggle
+                                            keeper={keeper}
+                                            interactive={currentUserId === user.id}
+                                            cardId={card.id}
+                                            collectionId={collection_id}
+                                        />
+                                    </div>
+                                    <div className="card-grid__card-action">
+                                        <WishlistToggleSmall userId={user.id} cardId={card.id} />
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </CardGrid>

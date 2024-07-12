@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import Button from '../../../Button';
 import xhrRequest from '../../../../helpers/xhr-request';
 
 const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
@@ -23,19 +24,13 @@ const KeeperToggle = ({ collectionId, cardId, keeper, interactive }) => {
     if (!interactive && !keeper) return null;
 
     return (
-        <div
-            className={classNames('keeper-toggle', { enabled, interactive })}
-            onClick={async () => {
-                await storeKeeper({ collectionId, cardId, keeper: !enabled });
-                setEnabled(!enabled)
-            }}
-            role='button'
-        >
-            <div className='icon'>
-                <i className='fas fa-slash' style={{ position: 'absolute' }}/>
-                <i className='fas fa-exchange-alt' />
-            </div>
-        </div>
+        <Button onClick={() => setEnabled(!enabled)} className={classNames('button--togglable button--small', {on: enabled})} style={{ flexDirection: 'column' }}>
+            <span style={{ display: 'grid', placeItems: 'center', marginRight: '4px' }}>
+                <i className={classNames({ 'fas fa-circle': !enabled, 'fas fa-ban': enabled })} style={{ fontSize: '1.6rem' }} />
+                <i className={classNames("fas fa-exchange-alt", { 'hollow-text': !enabled })} style={{ position: 'absolute', fontSize: '1rem' }}/>
+            </span>
+            {enabled ? 'won\'t trade' : 'will trade'}
+        </Button>
     )
 }
 

@@ -15,8 +15,9 @@ const WishlistToggleSmall = ({ cardId, userId }) => {
     setCurrentUserWishlist(updatedWishlist);
   };
   return (
-    <Button className={classNames(`wishlist-${cardId}__toggle`, 'card-grid__wishlist__toggle', 'button--accent', { active: isWishlisted })} onClick={toggleWishlist}>
-      <i className="far fa-heart" />
+    <Button className={classNames('button--togglable button--small', { on: isWishlisted })} onClick={toggleWishlist} style={{ flexDirection: 'column' }}>
+      <i className={classNames({far: !isWishlisted, fas: isWishlisted}, "fa-heart")} style={{ fontSize: '1.6rem' }} />
+      {isWishlisted ? 'Added!' : 'Wishlist'}
     </Button>
   );
 };
