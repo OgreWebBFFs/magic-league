@@ -9,7 +9,6 @@ import useIsSeasonView from "../../helpers/hooks/use-is-season-view";
 import DatePicker from "./DatePicker";
 import PlayerRanking from "./PlayerRanking";
 import EventPlayerRanking from "./EventPlayerRanking";
-import useTheme from "../../helpers/hooks/use-theme";
 
 const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers }) => {
     const [showRankings, setShowRankings] = useState(true);
@@ -34,14 +33,6 @@ const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, ev
         document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0px"}`);
         document.documentElement.style.setProperty("--date-wrapper-height", dateFullHeight);
     }, [isMobile]);
-
-    const { setCurrentTheme } = useTheme();
-
-    useEffect(() => {
-        const clueThemes = ["white", "mustard", "scarlet", "peacock", "plum", "green"];
-        const randomTheme = clueThemes[Math.floor(Math.random() * clueThemes.length)];
-        setCurrentTheme(randomTheme);
-    }, []);
 
     return (
         <div className="rankings__page">
