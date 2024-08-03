@@ -11,20 +11,20 @@
 .nav {
     position: relative;
     box-sizing: border-box;
-    box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.2),
-        0 3px 1px -2px rgba(0, 0, 0, 0.3),
-        0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.4);
+    box-shadow: 0 2px 2px 0 hsl(from var(--color-fill-neutral) h s l / 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.3),
+        0 1px 5px 0 hsl(from var(--color-fill-neutral) h s l / 0.4);
     z-index: 99;
-    color: var(--color-text-neutral);
     background-color: var(--color-fill-neutral);
-    --nav-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
+    --nav-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10) / 0.5);
+    --nav-central-color: hsl(from var(--color-fill-neutral) h s l / 0.7);
     background: linear-gradient(
         56deg,
-        var(--nav-corner-color),
-        var(--color-fill-neutral) 8%,
-        var(--color-fill-neutral) 92%,
+        var(--color-fill-neutral),
+        var(--nav-central-color) 30%,
+        var(--nav-central-color) 92%,
         var(--nav-corner-color)
     );
+
     width: 100%;
     padding: 0 10%;
     display: flex;
@@ -32,6 +32,14 @@
     align-items: center;
     justify-content: flex-end;
     height: var(--nav-height);
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: -1;
+    }
 
     &__logo {
         margin-right: auto;
@@ -69,7 +77,7 @@
         text-align: center;
         list-style-type: none;
         a {
-            color: var(--color-text-neutral);
+            color: var(--color-text-inverse);
         }
         @media only screen and (max-width: 850px) {
             margin-right: 0;
@@ -101,9 +109,8 @@
             height: 2px;
             width: 100%;
             content: "";
-            box-shadow: inset 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.2),
-                inset 0 3px 1px -2px rgba(88, 24, 69, 0.3),
-                inset 0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.4);
+            box-shadow: inset 0 2px 2px 0 hsl(from var(--color-fill-theme) / 0.2),
+                inset 0 3px 1px -2px rgba(88, 24, 69, 0.3), inset 0 1px 5px 0 hsl(from var(--color-fill-theme) / 0.4);
         }
         position: absolute;
         width: 150px;
@@ -119,9 +126,8 @@
         opacity: 0;
         z-index: 99;
         pointer-events: none;
-        box-shadow: 0 2px 2px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.2),
-            0 3px 1px -2px rgba(0, 0, 0, 0.3),
-            0 1px 5px 0 hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 0.4);
+        box-shadow: 0 2px 2px 0 hsl(from var(--color-fill-theme) / 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.3),
+            0 1px 5px 0 hsl(from var(--color-fill-theme) / 0.4);
         transition: 0.2s;
         max-height: calc(100vh - var(--nav-height) - var(--footer-height));
         top: var(--nav-height);

@@ -1,100 +1,37 @@
 :root {
     //Current Theme Values
-    --green-hue-sat: 127, 61%;
-    --mustard-hue-sat: 47, 100%;
-    --scarlet-hue-sat: 360, 60%;
-    --plum-hue-sat: 269, 47%;
-    --peacock-hue-sat: 220, 85%;
-    --white-hue-sat: 0, 0%;
-    --site-background-hue-sat: 0, 0%;
-    --site-background-lightness: 10%;
-    --site-background-adjusted-lightness: calc(
-        var(--site-background-lightness) + (25% * var(--color-lightness-shift-basis))
-    );
-    --site-background: hsl(var(--site-background-hue-sat), var(--site-background-adjusted-lightness));
-
-    --desaturated-hue-sat: 50, 7%;
-
-    --inverse-hue-sat: var(--desaturated-hue-sat);
-    --inverse-lightness: 95%;
-
-    --neutral-hue-sat: var(--desaturated-hue-sat);
-    --neutral-lightness: 5%;
-
-    --saturated-fill-lightness: 45%;
-    --saturated-text-lightness: calc((var(--saturated-fill-lightness) - 10%) * var(--color-lightness-shift-basis));
+    --color-theme: hsl(105, 16%, 58%);
+    --color-dark: #052b05;
+    --color-light: #dfeee1;
+    --color-site-background: hsl(from var(--color-theme) h calc(s - 10) calc(l + 50));
+    --desaturated-hue: 50;
+    --desaturated-sat: 7%;
     --color-lightness-shift-basis: 1;
 
     //Derivative values
 
-    --color-fill-inverse-hue-sat: var(--inverse-hue-sat);
-    --color-fill-inverse-lightness: var(--inverse-lightness);
-    --color-fill-inverse: hsl(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness));
+    --color-fill-inverse: var(--color-light);
+    --color-fill-neutral: var(--color-dark);
+    --color-fill-theme: var(--color-theme);
+    --color-fill-theme-highlight: hsl(from var(--color-fill-theme) h s calc(l + 15));
 
-    --color-fill-neutral-hue-sat: var(--neutral-hue-sat);
-    --color-fill-neutral-lightness: var(--neutral-lightness);
-    --color-fill-neutral: hsl(var(--color-fill-neutral-hue-sat), var(--color-fill-neutral-lightness));
+    --color-fill-positive: hsl(130, 69%, 45%);
+    --color-fill-negative: hsl(2, 100%, 50%);
+    --color-fill-alert: hsl(25, 100%, 50%);
 
-    --color-fill-theme-hue-sat: var(--peacock-hue-sat);
-    --color-fill-theme-lightness: var(--saturated-fill-lightness);
-    --color-fill-theme: hsl(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness));
-
-    --color-fill-theme-highlight-lightness: calc(var(--color-fill-theme-lightness) + 15%);
-    --color-fill-theme-highlight: hsl(var(--color-fill-theme-hue-sat), var(--color-fill-theme-highlight-lightness));
-
-    --color-fill-positive-hue-sat: 168, 76%;
-    --color-fill-positive-lightness: 25%;
-    --color-fill-positive: hsl(var(--color-fill-positive-hue-sat), var(--color-fill-positive-lightness));
-
-    --color-fill-negative-hue-sat: 2, 100%;
-    // currently negative is a red and reds need a slightly higher lightness to come through
-    --color-fill-negative-lightness: 50%;
-    --color-fill-negative: hsl(var(--color-fill-negative-hue-sat), var(--color-fill-negative-lightness));
-
-    --color-fill-alert-hue-sat: 25, 100%;
-    // currently alert is a orange and reds need a slightly higher lightness to come through
-    --color-fill-alert-lightness: 50%;
-    --color-fill-alert: hsl(var(--color-fill-alert-hue-sat), var(--color-fill-alert-lightness));
-
-    --color-text-inverse-hue-sat: var(--color-fill-neutral-hue-sat);
-    --color-text-inverse-lightness: var(--color-fill-neutral-lightness);
     --color-text-inverse: var(--color-fill-neutral);
 
-    --color-text-neutral-hue-sat: var(--color-fill-inverse-hue-sat);
-    --color-text-neutral-lightness: var(--color-fill-inverse-lightness);
     --color-text-neutral: var(--color-fill-inverse);
 
-    --color-text-theme-hue-sat: var(--color-fill-theme-hue-sat);
-    --color-text-theme-lightness: var(--saturated-text-lightness);
-    --color-text-theme: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness));
+    --color-text-theme: hsl(from var(--color-fill-theme) h s calc(l - 30));
 
-    --color-text-negative-hue-sat: var(--color-fill-negative-hue-sat);
-    --color-text-negative-lightness: calc(var(--saturated-fill-lightness) + 15%);
-    --color-text-negative: hsl(var(--color-text-negative-hue-sat), var(--color-text-negative-lightness)); 
-   
+    --color-text-negative: hsl(from var(--color-fill-negative) h s calc(l - 30));
 
     // Mana Colors
-    --color-white-mana-hue-sat: 56, 69%;
-    --color-white-mana-lightness: 91%;
-    --color-white-mana: hsl(var(--color-white-mana-hue-sat), var(--color-white-mana-lightness));
-
-    --color-blue-mana-hue-sat: 207, 47%;
-    --color-blue-mana-lightness: 83%;
-    --color-blue-mana: hsl(var(--color-blue-mana-hue-sat), var(--color-blue-mana-lightness));
-
-    --color-black-mana-hue-sat: 30, 8%;
-    --color-black-mana-lightness: 77%;
-    --color-black-mana: hsl(var(--color-black-mana-hue-sat), var(--color-black-mana-lightness));
-
-    --color-red-mana-hue-sat: 19, 66%;
-    --color-red-mana-lightness: 68%;
-    --color-red-mana: hsl(var(--color-red-mana-hue-sat), var(--color-red-mana-lightness));
-
-    --color-green-mana-hue-sat: 100, 25%;
-    --color-green-mana-lightness: 66%;
-    --color-green-mana: hsl(var(--color-green-mana-hue-sat), var(--color-green-mana-lightness)); 
-
-    --color-colorless-mana-hue-sat: 30, 8%;
-    --color-colorless-mana-lightness: 77%;
-    --color-colorless-mana: hsl(var(--color-colorless-mana-hue-sat), var(--color-colorless-mana-lightness)); 
+    --color-white-mana: hsl(56, 69%, 91%);
+    --color-blue-mana: hsl(206, 42%, 57%);
+    --color-black-mana: hsl(30, 8%, 77%);
+    --color-red-mana: hsl(19, 66%, 68%);
+    --color-green-mana: hsl(100, 61%, 22%);
+    --color-colorless-mana: hsl(30, 8%, 77%);
 }

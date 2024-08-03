@@ -3,7 +3,7 @@
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
-    background-color: hsla(var(--color-fill-inverse-hue-sat), var(--color-fill-inverse-lightness), 0.9);
+    background-color: hsl(from var(--color-fill-inverse) h s l / 0.9);
 
     &_user__btn {
         margin: 5px 0;

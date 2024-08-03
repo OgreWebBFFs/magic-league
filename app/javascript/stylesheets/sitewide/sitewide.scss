@@ -15,15 +15,13 @@
 }
 //Text Treatments
 a {
-    --a-adjusted-lightness: calc(
-        var(--color-text-theme-lightness) + (10% * var(--color-lightness-shift-basis))
-    );
+    --a-adjusted-lightness: calc(var(--color-text-theme-lightness) + (10% * var(--color-lightness-shift-basis)));
     text-decoration: none;
-    color: hsl(var(--color-text-theme-hue-sat), var(--color-text-theme-lightness));
+    color: var(--color-test-theme);
     transition: color 0.3s;
 
     &:hover {
-        color: hsl(var(--color-text-theme-hue-sat), var(--a-adjusted-lightness));
+        color: hsl(from var(--color-text-theme) h s calc(l + --a-adjusted-lightness));
     }
 }
 
@@ -161,12 +159,12 @@ body {
     background-size: 100% 00%;
     background-image: linear-gradient(
         45deg,
-        hsla(var(--color-fill-theme-hue-sat), 90%, 5%) 1%,
-        hsla(var(--color-fill-theme-hue-sat), 90%, 15%) 1%,
-        hsla(var(--color-fill-theme-hue-sat), 79%, 25%) 6%,
-        hsla(var(--desaturated-hue-sat), 60%, 15%) 77%,
-        hsla(var(--desaturated-hue-sat), 79%, 5%) 94%,
-        hsla(var(--desaturated-hue-sat), 90%, 5%) 99%,
+        hsl(from var(--color-fill-theme) h s 90% / 0.05) 1%,
+        hsl(from var(--color-fill-theme) h s 90% / 0.15) 1%,
+        hsl(from var(--color-fill-theme) h s 79% / 0.25) 6%,
+        hsl(from var(--color-fill-theme) h var(--desaturated-sat) 60% / 0.15) 77%,
+        hsl(from var(--color-fill-theme) h var(--desaturated-sat) 70% / 0.05) 94%,
+        hsl(from var(--color-fill-theme) h var(--desaturated-sat) 90% / 0.05) 99%,
         var(--site-background)
     );
 }
@@ -178,7 +176,7 @@ body {
     width: 100%;
     min-height: 600px;
     color: var(--color-text-inverse);
-    background-color: var(--site-background);
+    background-color: var(--color-site-background);
     //Section Types
     &.full-page {
         background: transparent;
@@ -205,11 +203,7 @@ body {
     display: block;
     width: 100%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-    --table-background-adjusted-lightness: calc(
-        var(--table-background-lightness) + (5% * var(--color-lightness-shift-basis))
-    );
-    --table-background: hsl(var(--table-background-hue-sat), var(--table-background-adjusted-lightness));
-    background-color: var(--table-background);
+    background-color: var(--color-site-background);
     color: var(--color-text-inverse);
 }
 
@@ -221,13 +215,13 @@ body {
     text-overflow: ellipsis;
 
     &:nth-child(even) {
-        background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-neutral-lightness), 10%);
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.1);
     }
 
     &[class*="-headings"] {
         background-color: var(--color-fill-neutral);
         color: var(--color-text-neutral);
-        border-bottom: 3px solid hsl(var(--color-fill-theme-hue-sat), 20%);
+        border-bottom: 3px solid hsl(from var(--color-fill-theme) h s l / 20%);
     }
 
     &[class*="-title"] {
@@ -407,7 +401,7 @@ input[type="checkbox"] {
         width: var(--checkbox-size);
         height: var(--checkbox-size);
         background: transparent;
-        border: 2px solid hsl(var(--color-text-theme-hue-sat), 50%);
+        border: 2px solid hsl(from var(--color-text-theme) h s l / 0.5);
         -webkit-tap-highlight-color: transparent;
         transition: 0.25s;
         border-radius: 0.25rem;
@@ -415,7 +409,7 @@ input[type="checkbox"] {
 
     // Box hover
     &:hover + label:before {
-        background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-neutral-lightness), 0.25);
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.25);
     }
 
     // Box checked
@@ -440,13 +434,13 @@ input[type="checkbox"] {
         height: var(--checkbox-size);
         align-items: center;
         justify-content: center;
-        color: var(--color-text-neutral);
+        color: var(--color-text-inverse);
     }
     // Disabled box.
     &:disabled + label:before {
         box-shadow: none;
         border: 2px solid var(--color-fill-neutral);
-        background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-neutral-lightness), 0.25);
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.25);
     }
 
     &:disabled + label:after {
@@ -500,7 +494,7 @@ input[type="checkbox"] {
     }
 
     label input[type="checkbox"]:checked + .lever {
-        background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-theme-lightness), 25%);
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.25);
     }
 
     label input[type="checkbox"]:checked + .lever:before,
@@ -518,7 +512,7 @@ input[type="checkbox"] {
         position: relative;
         width: 36px;
         height: 14px;
-        background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-theme-lightness), 25%);
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.25);
         border-radius: 15px;
         margin-right: 10px;
         -webkit-transition: background 0.3s ease;
@@ -546,7 +540,7 @@ input[type="checkbox"] {
     }
 
     label .lever:before {
-        background-color: hsla(var(--color-fill-theme-hue-sat), var(--color-fill-theme-lightness), 25%);
+        background-color: hsl(from var(--color-fill-theme) h s l / 0.25);
     }
 
     label .lever:after {
@@ -566,7 +560,7 @@ input[type="checkbox"] {
     backdrop-filter: blur(5px);
     top: 0;
     left: 0;
-    background-color: hsla(var(--color-fill-neutral-hue-sat), var(--color-fill-neutral-lightness), 0.3);
+    background-color: hsl(from var(--color-fill-neutral) h s l / 0.3);
 }
 
 @media only screen and (max-width: 650px) {
@@ -577,8 +571,6 @@ input[type="checkbox"] {
 }
 
 @media only screen and (max-width: 500px) {
-
-
     [class*="__container"],
     .container {
         width: 100%;

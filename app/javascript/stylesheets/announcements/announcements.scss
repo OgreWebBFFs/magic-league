@@ -5,7 +5,7 @@
     }
     .announcement {
         color: var(--color-text-inverse);
-        background-color: hsla(var(--color-fill-theme-hue-sat), 90%, 50%);
+        background-color: hsl(from var(--color-fill-theme) h s 90% / 50%);
         padding: var(--spacer-xl);
         margin: var(--spacer-xl) 0;
         border-radius: 0.5rem;

@@ -5,15 +5,18 @@
 
     width: 100%;
     height: var(--footer-height);
-    --footer-corner-color: hsl(var(--color-fill-neutral-hue-sat), calc(var(--color-fill-neutral-lightness) + 25%));
+    background-color: var(--color-fill-neutral);
+    --footer-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10) / 0.2);
+    --footer-central-color: hsl(from var(--color-fill-neutral) h s l / 0.4);
     background: linear-gradient(
         56deg,
-        var(--footer-corner-color),
-        var(--color-fill-neutral) 8%,
-        var(--color-fill-neutral) 92%,
+        var(--color-fill-neutral),
+        var(--footer-central-color) 40%,
+        var(--footer-central-color) 92%,
         var(--footer-corner-color)
     );
-
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     color: var(--color-text-neutral);
 
     &__content {

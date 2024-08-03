@@ -117,16 +117,55 @@
         animation-timing-function: ease-out;
         -webkit-animation-timing-function: ease-out;
         visibility: visible !important;
-    }
-
-    .rankings__user-button.rankings__user-button--unranked.button {
-        --button-background-color-opacity: 0.75;
-        &:hover {
-            --button-background-color-opacity: 1;
+        transition-property: all;
+        transition-duration: 500ms;
+        transition-timing-function: ease-in-out;
+        background-color: var(--color-fill-neutral);
+        --rankings-button-lightness-shift: 0;
+        --rankings-corner-color: hsl(
+            from var(--color-fill-neutral) h s calc(l + 15 + var(--rankings-button-lightness-shift)) / 0.4
+        );
+        --rankings-central-color: hsl(
+            from var(--color-fill-neutral) h s calc(l + var(--rankings-button-lightness-shift)) / 0.6
+        );
+        background: linear-gradient(
+            56deg,
+            var(--color-fill-neutral),
+            var(--rankings-central-color) 20%,
+            var(--rankings-central-color) 92%,
+            var(--rankings-corner-color)
+        );
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        &::before {
+            content: "";
+            background-color: var(--color-fill-theme);
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition-property: opacity;
+            transition-duration: 500ms;
+            transition-timing-function: ease-in-out;
         }
+
+        &:hover {
+            &::before {
+                opacity: 0.5;
+            }
+        }
+    }
+    .rankings__user-button.rankings__user-button--unranked.button {
+        --rankings-central-color: hsl(
+            from var(--color-fill-neutral) h s calc(l + var(--rankings-button-lightness-shift)) / 0.3
+        );
+        --rankings-corner-color: hsl(
+            from var(--color-fill-neutral) h s calc(l + 15 + var(--rankings-button-lightness-shift)) / 0.2
+        );
     }
 
     &__player {
+        position: relative;
         line-height: 14px;
         text-align: left;
         display: flex;
@@ -136,6 +175,7 @@
         align-items: center;
 
         &-position {
+            position: relative;
             font-weight: bolder;
             font-size: 20px;
             align-self: center;
