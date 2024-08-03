@@ -251,7 +251,12 @@
         position: fixed;
         bottom: calc(var(--footer-height) + var(--spacer-md));
         right: var(--spacer-md);
-        animation: mtgBackgroundColorCycle 15s ease-in-out alternate-reverse infinite;
+        background-color: hsl(from var(--button-background-color) h s l / 0.3);
+        backdrop-filter: blur(20px);
+        &:hover {
+            background-color: var(--button-background-color);
+        }
+
         &--off {
             position: relative;
             bottom: unset;

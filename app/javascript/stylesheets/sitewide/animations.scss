@@ -80,94 +80,89 @@
 //Logo Color Cylcle on hover
 @keyframes mtgColorCycle {
     16% {
-        fill: var(--Caribbean-Green);
+        fill: var(--color-white-mana);
     }
 
     32% {
-        fill: var(--Fountain-Blue);
-    }
-
-    48% {
-        fill: var(--Eerie-Black);
+        fill: var(--color-blue-mana);
     }
 
     64% {
-        fill: var(--Mellow-Apricot);
+        fill: var(--color-green-mana);
     }
 
     82% {
-        fill: var(--Crimson);
+        fill: var(--color-red-mana);
     }
 
     98% {
-        fill: var(--color-fill-theme);
+        fill: var(--color-black-mana);
     }
 }
 
 @-webkit-keyframes mtgColorCycle {
     16% {
-        fill: var(--Caribbean-Green);
+        fill: var(--color-white-mana);
     }
 
     32% {
-        fill: var(--Fountain-Blue);
+        fill: var(--color-blue-mana);
     }
 
     64% {
-        fill: var(--Mellow-Apricot);
+        fill: var(--color-green-mana);
     }
 
-    80% {
-        fill: var(--Crimson);
+    82% {
+        fill: var(--color-red-mana);
     }
 
-    96% {
-        fill: var(--color-fill-theme);
+    98% {
+        fill: var(--color-black-mana);
     }
 }
 
 @keyframes mtgBackgroundColorCycle {
     16% {
-        background-color: var(--Caribbean-Green);
+        background-color: var(--color-white-mana);
     }
 
     32% {
-        background-color: var(--Fountain-Blue);
+        background-color: var(--color-blue-mana);
     }
 
     64% {
-        background-color: var(--Mellow-Apricot);
+        background-color: var(--color-green-mana);
     }
 
     82% {
-        background-color: var(--Crimson);
+        background-color: var(--color-red-mana);
     }
 
     98% {
-        background-color: var(--color-fill-theme);
+        background-color: var(--color-black-mana);
     }
 }
 
 @-webkit-keyframes mtgColorCycle {
     16% {
-        background-color: var(--Caribbean-Green);
+        background-color: var(--color-white-mana);
     }
 
     32% {
-        background-color: var(--Fountain-Blue);
+        background-color: var(--color-blue-mana);
     }
-
 
     64% {
-        background-color: var(--Mellow-Apricot);
+        background-color: var(--color-green-mana);
     }
 
-    80% {
-        background-color: var(--Crimson);
+    82% {
+        background-color: var(--color-red-mana);
     }
 
-    96% {
-        background-color: var(--color-fill-theme);
+    98% {
+        background-color: var(--color-black-mana);
     }
 }
 
