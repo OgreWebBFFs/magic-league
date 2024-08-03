@@ -165,7 +165,7 @@ body {
         hsl(from var(--color-fill-theme) h var(--desaturated-sat) 60% / 0.15) 77%,
         hsl(from var(--color-fill-theme) h var(--desaturated-sat) 70% / 0.05) 94%,
         hsl(from var(--color-fill-theme) h var(--desaturated-sat) 90% / 0.05) 99%,
-        var(--site-background)
+        var(--color-site-background)
     );
 }
 

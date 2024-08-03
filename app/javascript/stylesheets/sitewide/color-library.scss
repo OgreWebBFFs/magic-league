@@ -1,8 +1,8 @@
 :root {
     //Current Theme Values
     --color-theme: hsl(105, 16%, 58%);
-    --color-dark: #052b05;
-    --color-light: #dfeee1;
+    --color-dark: hsl(from var(--color-theme) h s calc(l - 40));
+    --color-light: hsl(from var(--color-theme) h s calc(l + 40));
     --color-site-background: hsl(from var(--color-theme) h calc(s - 10) calc(l + 50));
     --desaturated-hue: 50;
     --desaturated-sat: 7%;
@@ -29,9 +29,9 @@
 
     // Mana Colors
     --color-white-mana: hsl(56, 69%, 91%);
-    --color-blue-mana: hsl(206, 42%, 57%);
-    --color-black-mana: hsl(275, 75%, 63%);
+    --color-blue-mana: hsl(215, 49%, 68%);
+    --color-black-mana: hsl(275, 21%, 63%);
     --color-red-mana: hsl(19, 66%, 68%);
-    --color-green-mana: hsl(100, 61%, 22%);
+    --color-green-mana: hsl(100, 55%, 43%);
     --color-colorless-mana: hsl(30, 8%, 77%);
 }

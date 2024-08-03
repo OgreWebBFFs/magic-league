@@ -75,6 +75,10 @@ a.button,
 
     &--negative {
         --button-background-color-base: var(--color-fill-negative);
+        // red colors don't show lightness as well, so we need to shift the background more to be lighter
+        &:hover:not(:disabled) {
+            --button-lightness-shift: calc(20 * var(--color-lightness-shift-basis));
+        }
     }
     &--positive {
         --button-background-color-base: var(--color-fill-positive);
