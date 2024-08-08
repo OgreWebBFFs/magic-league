@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../Button';
 import TradeProposalModal from './TradeProposalModal';
 
-const TradeProposalButtonSmall = ({ card, currentUserId, unavailable }) => {
+const TradeProposalButton = ({ card, currentUserId, unavailable, large }) => {
   const [modalOn, setModalOn] = useState(false);
   return (
     <>
@@ -20,7 +20,7 @@ const TradeProposalButtonSmall = ({ card, currentUserId, unavailable }) => {
                 </>
             )}
         </span>
-        {unavailable ? 'Not Trading' : 'Message'}
+        {large && (unavailable ? 'Not Trading' : 'Message')}
       </Button>
       {modalOn && (
       <TradeProposalModal
@@ -33,4 +33,4 @@ const TradeProposalButtonSmall = ({ card, currentUserId, unavailable }) => {
   );
 };
 
-export default TradeProposalButtonSmall;
+export default TradeProposalButton;

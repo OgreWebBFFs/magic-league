@@ -7,7 +7,6 @@ import Button from "../../../Button";
 import RemoveWish from "./RemoveWish";
 import { Cell, Row } from "../../../Table";
 import AvailabilityChecker from "./AvailabilityChecker";
-import { TradeProposalButtonSmall } from "../../../TradeProposal";
 
 const Wishlist = ({ currentUserId, user, isListView }) => {
     const { wishlist, currentUserWishlist } = useContext(WishlistContext);

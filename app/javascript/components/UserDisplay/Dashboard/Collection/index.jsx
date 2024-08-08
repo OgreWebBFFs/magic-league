@@ -6,7 +6,7 @@ import { WishlistToggleSmall } from "../../../WishlistToggle";
 import EmptyState from "../EmptyState";
 import Button from "../../../Button";
 import KeeperToggle from "./KeeperToggle";
-import { TradeProposalButtonSmall } from "../../../TradeProposal";
+import { TradeProposalButton } from "../../../TradeProposal";
 
 const Collection = ({ collection, currentUserId, user, isListView, viewModifiers }) => {
     const isEmpty = collection.length < 1;
@@ -61,10 +61,11 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                                 collectionId={collectionId}
                                             />
                                         ) : (
-                                            <TradeProposalButtonSmall
+                                            <TradeProposalButton
                                                 card={card}
                                                 currentUserId={currentUserId}
                                                 unavailable={keeper}
+                                                large
                                             />
                                         )}
                                     </div>

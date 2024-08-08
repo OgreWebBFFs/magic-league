@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, Row, Cell } from '../Table';
 import {
-  TradeProposalButtonSmall,
+  TradeProposalButton,
 } from '../TradeProposal';
 import formatCard from './format-card';
 import UserLink from '../UserLink';
@@ -27,10 +27,10 @@ const OwnershipTable = ({
             <AmountCell>
               {quantity}
               {user.id !== currentUserId && !keeper && (
-              <TradeProposalButtonSmall
-                card={formatCard(card, [ownerships[i]])}
-                currentUserId
-              />
+                <TradeProposalButton
+                    card={formatCard(card, [ownerships[i]])}
+                    currentUserId={currentUserId}
+                />
               )}
               {keeper && (
                 <div style={{

@@ -1,2 +1,1 @@
-export { default as TradeProposalButtonLarge } from './TradeProposalButtonLarge';
-export { default as TradeProposalButtonSmall } from './TradeProposalButtonSmall';
+export { default as TradeProposalButton } from './TradeProposalButton';
