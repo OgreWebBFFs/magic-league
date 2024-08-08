@@ -70,7 +70,7 @@
             opacity: 0;
             display: grid;
             place-items: center;
-            box-shadow: 0 0px 10px 3px hsl(var(--color-fill-theme-hue-sat), 85%);
+            box-shadow: 0 0px 10px 3px var(--color-fill-theme-highlight);
             clip-path: inset(-10px -10px 5px -10px);
 
             &.animate {
