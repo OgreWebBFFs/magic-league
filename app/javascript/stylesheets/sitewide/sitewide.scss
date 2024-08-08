@@ -185,7 +185,6 @@ body {
 }
 
 [class*="__container"] {
-    width: 70%;
     margin: 0 auto;
     max-width: 1024px;
 
@@ -561,13 +560,6 @@ input[type="checkbox"] {
     top: 0;
     left: 0;
     background-color: hsl(from var(--color-fill-neutral) h s l / 0.3);
-}
-
-@media only screen and (max-width: 650px) {
-    [class*="__container"] .container {
-        width: 90%;
-        position: relative;
-    }
 }
 
 @media only screen and (max-width: 500px) {

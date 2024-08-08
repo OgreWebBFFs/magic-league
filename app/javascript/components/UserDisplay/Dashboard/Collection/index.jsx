@@ -6,6 +6,7 @@ import { WishlistToggleSmall } from "../../../WishlistToggle";
 import EmptyState from "../EmptyState";
 import Button from "../../../Button";
 import KeeperToggle from "./KeeperToggle";
+import { TradeProposalButtonSmall } from "../../../TradeProposal";
 
 const Collection = ({ collection, currentUserId, user, isListView, viewModifiers }) => {
     const isEmpty = collection.length < 1;
@@ -28,7 +29,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
             )}
             {isListView && !isEmpty && (
                 <CardList>
-                    {filteredCollection.map(({ card }, row) => (
+                    {filteredCollection.map(({ card }) => (
                         <Row>
                             <Cell isPriority>
                                 <a className="invert" href={`/cards/${card.id}`}>
@@ -42,7 +43,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
             {!isListView && !isEmpty && (
                 <div className="dashboard__card-grid-wrapper">
                     <CardGrid>
-                        {filteredCollection.map(({ card, quantity, keeper, collection_id }, i) => (
+                        {filteredCollection.map(({ card, quantity, keeper, collection_id: collectionId }, i) => (
                             // eslint-disable-next-line react/no-array-index-key
                             <div key={`${card.id}-${i}`}>
                                 {quantity > 1 && (
@@ -53,12 +54,19 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                 <CardImageLink card={card} />
                                 <div className="card-grid__card-actions">
                                     <div className="card-grid__card-action">
-                                        <KeeperToggle
-                                            keeper={keeper}
-                                            interactive={currentUserId === user.id}
-                                            cardId={card.id}
-                                            collectionId={collection_id}
-                                        />
+                                        {user.id === currentUserId ? (
+                                            <KeeperToggle
+                                                keeper={keeper}
+                                                cardId={card.id}
+                                                collectionId={collectionId}
+                                            />
+                                        ) : (
+                                            <TradeProposalButtonSmall
+                                                card={card}
+                                                currentUserId={currentUserId}
+                                                unavailable={keeper}
+                                            />
+                                        )}
                                     </div>
                                     <div className="card-grid__card-action">
                                         <WishlistToggleSmall userId={user.id} cardId={card.id} />

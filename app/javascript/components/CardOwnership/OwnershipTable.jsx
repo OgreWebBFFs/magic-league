@@ -4,6 +4,7 @@ import {
   TradeProposalButtonSmall,
 } from '../TradeProposal';
 import formatCard from './format-card';
+import UserLink from '../UserLink';
 
 const AmountCell = ({ children }) => <Cell className="card-profile__cell--amount">{children}</Cell>;
 
@@ -18,18 +19,20 @@ const OwnershipTable = ({
         <AmountCell>Amount</AmountCell>
       </Row>
       {totalCount <= 0 ? <NoOwnersMessage /> : (
-        ownerships.map(({ keeper, quantity, collection: { user: { id, name }}}, i) => (
+        ownerships.map(({ keeper, quantity, collection: { user }}, i) => (
           <Row>
-            <Cell isPriority><a href={`/users/${id}`}>{name}</a></Cell>
+            <Cell isPriority>
+                <UserLink user={user} />
+            </Cell>
             <AmountCell>
               {quantity}
-              {id !== currentUserId && !keeper && (
+              {user.id !== currentUserId && !keeper && (
               <TradeProposalButtonSmall
                 card={formatCard(card, [ownerships[i]])}
                 currentUserId
               />
               )}
-              {id !== currentUserId && keeper && (
+              {user.id !== currentUserId && keeper && (
                 <div style={{
                     color: 'var(--color-fill-negative)',
                     marginLeft: '8px',

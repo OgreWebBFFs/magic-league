@@ -6,6 +6,8 @@ class Ownership < ApplicationRecord
     where(card_id: params[:card_id]).where(collection_id: params[:collection_id])
   }
 
+  scope :available, -> { where(keeper: false) }
+
   def add
     self.quantity.increment!(1)  
   end

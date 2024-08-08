@@ -32,7 +32,6 @@ class UsersController < ApplicationController
     }.map{ |obj| UserObjectiveSerializer.new(obj)}
     @objective_rerolls = @user.reroll
     @trades = @user.trades
-
     event_matches = Match.where(event_id: 1)
     @event_ranking = EventRankingEngine.new().generate_event_user_ranking(@user)
   end

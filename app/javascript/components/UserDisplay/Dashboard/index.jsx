@@ -57,7 +57,7 @@ const Dashboard = ({
 }) => {
   const [{
     tab: [ initialTab ] = [ 'collection'],
-    view: [ initialView ] = [ 'list' ],
+    view: [ initialView ] = [ 'grid' ],
     ...hashParams
   }, updateHashParams] = useHashParams();
 

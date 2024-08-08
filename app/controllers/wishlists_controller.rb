@@ -13,7 +13,7 @@ class WishlistsController < ApplicationController
   end
 
   def update
-    card = current_user.wishlist.where(id: wishlist_params[:card_id])
+    card = current_user.wishes.where(card_id: wishlist_params[:card_id])
     if card.count != 0
       current_user.wishes.where(card_id: wishlist_params[:card_id]).destroy_all
     else

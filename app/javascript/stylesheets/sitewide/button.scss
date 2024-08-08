@@ -109,13 +109,13 @@ a.button,
         &.on {
             --button-background-color-lightness: var(--color-fill-theme-lightness);
         }
+    }
 
-        & .hollow-text {
-            color: var(--button-background-color);
-            transition-duration: 0.3s;
-            transition-property: all;
-            transition-timing-function: ease-in-out;
-        }
+    .hollow-text {
+        color: var(--button-background-color);
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
     }
     
 }

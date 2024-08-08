@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :cards, through: :ownerships
   has_many :received_trades
   has_many :wishes
-  has_many :wishlist_items, through: :wishes, source: :card
+  # has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives
@@ -43,12 +43,11 @@ class User < ApplicationRecord
   end
 
   def wishlist
-    wishlist_items
+    wishes.map{ |wish| { card: wish.card, availablities: wish.availablities, total: wish.total }}
   end
 
   def add_card(card_id)
     Ownership.find_or_create_by(card_id: card_id, collection_id: collection_id).add
-    # Ownership.new(card_id: card_id, collection_id: collection_id).save
   end
 
   def remove_card(card_id)

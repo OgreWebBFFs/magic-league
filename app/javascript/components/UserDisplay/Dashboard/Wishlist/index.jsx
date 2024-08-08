@@ -6,6 +6,7 @@ import EmptyState from "../EmptyState";
 import Button from "../../../Button";
 import RemoveWish from "./RemoveWish";
 import { Cell, Row } from "../../../Table";
+import AvailabilityChecker from "./AvailabilityChecker";
 
 const Wishlist = ({ currentUserId, user, isListView }) => {
     const { wishlist, currentUserWishlist } = useContext(WishlistContext);
@@ -27,7 +28,7 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
             )}
             {isListView && !isEmpty && (
                 <CardList>
-                    {wishlistToRender.map((card) => (
+                    {wishlistToRender.map(({ card }) => (
                         <Row>
                             <Cell isPriority>
                                 <a href={`/cards/${card.id}`}>{card.name}</a>
@@ -40,16 +41,22 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
             {!isListView && !isEmpty && (
                 <div className="dashboard__card-grid-wrapper">
                     <CardGrid>
-                        {wishlistToRender.map((card) => (
+                        {wishlistToRender.map(({ card, availablities }) => (
                             <>
-                                {isOwner && (
-                                    <RemoveWish
-                                        user={user}
-                                        card={card}
-                                        classes="button button--accent card-grid__wishlist__toggle active"
-                                    />
-                                )}
                                 <CardImageLink card={card} />
+                                <div className="card-grid__card-actions">
+                                    <div className="card-grid__card-action">
+                                        <AvailabilityChecker availabilities={availablities} />  
+                                    </div>
+                                    <div className="card-grid__card-action">
+                                        {isOwner && (
+                                            <RemoveWish
+                                                user={user}
+                                                card={card}
+                                            />
+                                        )}
+                                    </div>
+                                </div>
                             </>
                         ))}
                     </CardGrid>
