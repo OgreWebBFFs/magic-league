@@ -6,9 +6,9 @@ class Wish < ApplicationRecord
     User
       .includes(:ownerships)
       .joins(:ownerships)
-      .where(ownerships: { card_id: card.id })
+      .where(ownerships: { card_id: card.id, keeper: false })
       .where.not(id: user.id)
-      .select('users.id as user_id, users.name AS user_name, ownerships.keeper AS keeper, ownerships.quantity as quantity')
+      .select('users.id as user_id, users.name AS user_name, ownerships.quantity as quantity')
   end
 
   def total
