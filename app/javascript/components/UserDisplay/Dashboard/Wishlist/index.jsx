@@ -56,16 +56,10 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
                                     </div>
                                 )}
                                 {!isOwner && availablities.some(({ collection }) => collection.user.id === currentUserId) && (
-                                    <div className="card-grid__card-actions">
-                                        <div
-                                            className="card-grid__card-action"
-                                            style={{ fontSize: '1.2rem', fontWeight: 'bold', display: 'grid', alignItems: 'center', padding: '0 .5rem' }}
-                                        >
-                                         {`You have ${availablities.find(({ collection }) => collection.user.id === currentUserId).quantity}\navailable for trade!`}   
-                                        </div>
-                                        <div className="card-grid__card-action">
-                                            <TradeProposalButtonSmall user={user} card={card} />
-                                        </div>
+                                    <div
+                                        style={{ fontSize: '1.2rem', fontWeight: 'bold', display: 'grid', alignItems: 'center', padding: '0 .5rem' }}
+                                    >
+                                        {`You have ${availablities.find(({ collection }) => collection.user.id === currentUserId).quantity}\navailable for trade!`}   
                                     </div>
                                 )}
                             </>
