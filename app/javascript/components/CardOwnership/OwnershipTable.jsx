@@ -32,7 +32,7 @@ const OwnershipTable = ({
                 currentUserId
               />
               )}
-              {user.id !== currentUserId && keeper && (
+              {keeper && (
                 <div style={{
                     color: 'var(--color-fill-negative)',
                     marginLeft: '8px',
