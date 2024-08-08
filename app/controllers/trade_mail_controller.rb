@@ -1,3 +1,4 @@
+# Deprecated for now in favor fo Trade Messages in Discord
 class TradeMailController < ApplicationController
   def index
 

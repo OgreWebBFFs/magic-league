@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../Button';
 import TradeProposalModal from './TradeProposalModal';
 
-const TradeProposalButton = ({ card, currentUserId, unavailable, large }) => {
+const TradeProposalButton = ({ card, currentUserId, unavailable, large, user }) => {
   const [modalOn, setModalOn] = useState(false);
   return (
     <>
@@ -23,11 +23,12 @@ const TradeProposalButton = ({ card, currentUserId, unavailable, large }) => {
         {large && (unavailable ? 'Not Trading' : 'Message')}
       </Button>
       {modalOn && (
-      <TradeProposalModal
-        card={card}
-        currentUserId={currentUserId}
-        onClose={() => setModalOn(false)}
-      />
+        <TradeProposalModal
+            card={card}
+            currentUserId={currentUserId}
+            user={user}
+            onClose={() => setModalOn(false)}
+        />
       )}
     </>
   );

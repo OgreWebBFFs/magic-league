@@ -64,6 +64,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                             <TradeProposalButton
                                                 card={card}
                                                 currentUserId={currentUserId}
+                                                user={user}
                                                 unavailable={keeper}
                                                 large
                                             />

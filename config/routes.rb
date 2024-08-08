@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :rules, only: [:index]
   resources :search, only: [:index]
   resources :advanced_search, only: [:index]
-  resources :trade_mail, only: [:index, :create]
+  resources :trade_message, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 
   resources :draffles, only: [:index, :show, :create, :update, :destroy]
