@@ -7,6 +7,7 @@ import Button from "../../../Button";
 import RemoveWish from "./RemoveWish";
 import { Cell, Row } from "../../../Table";
 import AvailabilityChecker from "./AvailabilityChecker";
+import { TradeProposalButtonSmall } from "../../../TradeProposal";
 
 const Wishlist = ({ currentUserId, user, isListView }) => {
     const { wishlist, currentUserWishlist } = useContext(WishlistContext);
@@ -44,19 +45,29 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
                         {wishlistToRender.map(({ card, availablities }) => (
                             <>
                                 <CardImageLink card={card} />
-                                <div className="card-grid__card-actions">
-                                    <div className="card-grid__card-action">
-                                        <AvailabilityChecker availabilities={availablities} />  
+                                {isOwner && (
+                                    <div className="card-grid__card-actions">
+                                        <div className="card-grid__card-action">
+                                            <AvailabilityChecker availabilities={availablities} />  
+                                        </div>
+                                        <div className="card-grid__card-action">
+                                            <RemoveWish user={user} card={card} />
+                                        </div>
                                     </div>
-                                    <div className="card-grid__card-action">
-                                        {isOwner && (
-                                            <RemoveWish
-                                                user={user}
-                                                card={card}
-                                            />
-                                        )}
+                                )}
+                                {!isOwner && availablities.some(({ collection }) => collection.user.id === currentUserId) && (
+                                    <div className="card-grid__card-actions">
+                                        <div
+                                            className="card-grid__card-action"
+                                            style={{ fontSize: '1.2rem', fontWeight: 'bold', display: 'grid', alignItems: 'center', padding: '0 .5rem' }}
+                                        >
+                                         {`You have ${availablities.find(({ collection }) => collection.user.id === currentUserId).quantity}\navailable for trade!`}   
+                                        </div>
+                                        <div className="card-grid__card-action">
+                                            <TradeProposalButtonSmall user={user} card={card} />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </>
                         ))}
                     </CardGrid>

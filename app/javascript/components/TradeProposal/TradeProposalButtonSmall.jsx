@@ -20,7 +20,7 @@ const TradeProposalButtonSmall = ({ card, currentUserId, unavailable }) => {
                 </>
             )}
         </span>
-        {unavailable ? 'Not Trading' : 'Request'}
+        {unavailable ? 'Not Trading' : 'Message'}
       </Button>
       {modalOn && (
       <TradeProposalModal

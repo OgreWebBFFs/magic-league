@@ -20,7 +20,7 @@ const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
   });
 
 const KeeperToggle = ({ collectionId, cardId, keeper }) => {
-    const [enabled, setEnabled] = useState(keeper || undefined);
+    const [enabled, setEnabled] = useState(keeper);
     const [animate, setAnimate] = useState(false);
 
     useEffectOnce(() => {
@@ -31,7 +31,7 @@ const KeeperToggle = ({ collectionId, cardId, keeper }) => {
     return (
         <Button
             onClick={async () => {
-                await storeKeeper({ cardId, collectionId, enabled: !enabled });
+                await storeKeeper({ cardId, collectionId, keeper: !enabled });
                 setEnabled(!enabled);
             }}
             style={{ position: 'relative', overflow: 'visible' }}
