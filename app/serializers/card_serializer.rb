@@ -3,13 +3,11 @@ class CardSerializer
 
   attributes :name, :colors, :cmc, :id, :image_url, :oracle_text, :mana_cost,:rarity, :set, :type_line, :back_image_url
 
-  attribute :users do |object|
-    UserSerializer.new(object.users).serializable_hash
+  attribute :ownerships do |object|
+    User
+      .includes(:ownerships)
+      .joins(:ownerships)
+      .where(ownerships: { card_id: object.id })
+      .select('users.id AS user_id, users.name AS user_name, ownerships.keeper AS keeper, ownerships.quantity as quantity')
   end
-
-  attribute :ownership_attr do |object, params|
-    ownership = params[:current_user].ownerships.where('card_id = ?', object.id).first
-    ownership.present? ? ownership.as_json : nil
-  end
-
 end

@@ -9,6 +9,10 @@ const fetchCollection = async (userId) => (await xhrRequest({
   options: { method: 'GET' },
 })).data;
 
+const initialQuantity = (card, userId) => card.attributes.ownerships.data.find(( ownership ) => (
+    ownership.attributes.user.id === userId
+))?.attributes.quantity || 0;
+
 const SimpleEdit = ({ userId, collectionId }) => {
   const [cards, setCards] = useState([]);
 
@@ -31,7 +35,7 @@ const SimpleEdit = ({ userId, collectionId }) => {
                     key={`${card.attributes.name} quantity`}
                     collectionId={collectionId}
                     cardId={card.attributes.id}
-                    initialValue={card.attributes.ownership_attr?.quantity || 0}
+                    initialValue={initialQuantity(card, userId)}
                 />
             </>
         ))}

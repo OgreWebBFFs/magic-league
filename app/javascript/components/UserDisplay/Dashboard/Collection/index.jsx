@@ -47,7 +47,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                             // eslint-disable-next-line react/no-array-index-key
                             <div key={`${card.id}-${i}`}>
                                 {quantity > 1 && (
-                                    <div className="card-grid__quantity">
+                                    <div className="card-grid__quantity-display">
                                         {`x${quantity}`}
                                     </div>
                                 )}

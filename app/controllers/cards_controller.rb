@@ -4,8 +4,7 @@ include Filters
 class CardsController < ApplicationController
   def index
     cards = CardsFilter.new.call(Card.all, params).order(:name)
-    options = {params: {current_user: current_user}}
-    render json: CardSerializer.new(cards, options).serialized_json
+    render json: CardSerializer.new(cards).serialized_json
   end
   
   def show

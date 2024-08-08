@@ -55,11 +55,11 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
                                         </div>
                                     </div>
                                 )}
-                                {!isOwner && availablities.some(({ collection }) => collection.user.id === currentUserId) && (
+                                {!isOwner && availablities.some(({ user_id }) => user_id === currentUserId) && (
                                     <div
                                         style={{ fontSize: '1.2rem', fontWeight: 'bold', display: 'grid', alignItems: 'center', padding: '0 .5rem' }}
                                     >
-                                        {`You have ${availablities.find(({ collection }) => collection.user.id === currentUserId).quantity}\navailable for trade!`}   
+                                        {`You have ${availablities.find(({ user_id }) => user_id === currentUserId).quantity}\navailable for trade!`}   
                                     </div>
                                 )}
                             </>

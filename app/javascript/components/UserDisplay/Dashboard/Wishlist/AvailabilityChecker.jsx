@@ -25,10 +25,10 @@ const AvailabilityChecker = ({ availabilities }) => {
                             <Cell isPriority>Owner</Cell>
                             <Cell>Quantity</Cell>
                         </Row>
-                        {availabilities.map(({ collection: { user }, quantity }) => (
+                        {availabilities.map(({ user_name: name, user_id: id, quantity }) => (
                             <Row>
                                 <Cell isPriority>
-                                    <UserLink user={user} />
+                                    <UserLink user={{ name, id }} />
                                 </Cell>
                                 <Cell>{quantity}</Cell>
                             </Row>

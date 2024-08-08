@@ -3,9 +3,12 @@ class Wish < ApplicationRecord
   belongs_to :card
 
   def availablities
-    card.ownerships.available.includes(collection: :user).where.not(collections: { user_id: user.id} ).as_json({
-        include: { collection: { include: :user }}
-    })
+    User
+      .includes(:ownerships)
+      .joins(:ownerships)
+      .where(ownerships: { card_id: card.id })
+      .where.not(id: user.id)
+      .select('users.id as user_id, users.name AS user_name, ownerships.keeper AS keeper, ownerships.quantity as quantity')
   end
 
   def total
