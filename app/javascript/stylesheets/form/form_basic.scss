@@ -28,7 +28,7 @@
                 .sub-msg {
                     font-size: 0.8rem;
                     font-weight: 400;
-                    color: hsl(var(--color-text-inverse-hue-sat), 50%);
+                    color: hsl(from var(--color-text-inverse) h s 50);
 
                     &.interactable {
                         border: none;
@@ -53,7 +53,7 @@
             box-shadow: none;
             text-align: right;
             font-size: 1rem;
-            color: hsl(var(--color-text-inverse-hue-sat), 50%);
+            color: hsl(from var(--color-text-inverse) h s 50%);
             transition: font-size 0.3s, color 0.3s, font-weight 0.3s;
 
             &:focus {
