@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Cell } from "../../../Table";
 import CardList from "../CardList";
 import { CardGrid, CardImageLink } from "../../../CardGrid";
-import { WishlistToggleSmall } from "../../../WishlistToggle";
+import WishlistToggle from "../../../WishlistToggle";
 import EmptyState from "../EmptyState";
 import Button from "../../../Button";
 import KeeperToggle from "./KeeperToggle";
@@ -71,7 +71,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                         )}
                                     </div>
                                     <div className="card-grid__card-action">
-                                        <WishlistToggleSmall userId={user.id} cardId={card.id} />
+                                        <WishlistToggle userId={user.id} cardId={card.id} />
                                     </div>
                                 </div>
                             </div>

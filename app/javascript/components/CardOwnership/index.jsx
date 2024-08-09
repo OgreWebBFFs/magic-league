@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import OwnershipTable from './OwnershipTable';
 import WishlistTable from './WishlistTable';
 import { CardImage } from '../CardGrid';
-import { WishlistToggleSmall } from '../WishlistToggle';
+import WishlistToggle from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 
 const CardOwnership = ({
@@ -26,7 +26,7 @@ const CardOwnership = ({
         <div style={{ maxWidth: '350px', margin: 'auto' }}>
           <CardImage name={card.name} imageUrl={card.image_url} backImageUrl={card.back_image_url} />
           <div className="card-grid__card-action" style={{ marginBottom: '1rem' }}>
-            <WishlistToggleSmall cardId={card.id} userId={currentUserId} />
+            <WishlistToggle cardId={card.id} userId={currentUserId} />
           </div>
         </div>
       </div>

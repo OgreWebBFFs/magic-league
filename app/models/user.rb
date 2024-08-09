@@ -14,7 +14,6 @@ class User < ApplicationRecord
   has_many :cards, through: :ownerships
   has_many :received_trades
   has_many :wishes
-  # has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives

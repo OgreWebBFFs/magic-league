@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { CardGrid, CardImageLink } from '../CardGrid';
-import { WishlistToggleSmall } from '../WishlistToggle';
+import WishlistToggle from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 import useHashParams from '../../helpers/hooks/use-hash-params';
 import BasicSearchControls from './BasicSearchControls';
@@ -39,7 +39,7 @@ const CardBrowser = ({ userId, wishlist }) => {
                     <AvailabilityChecker availabilities={card.attributes.ownerships.filter(({ keeper, user_id }) => user_id !== userId && !keeper)} />
                 </div>
                 <div className="card-grid__card-action">
-                    <WishlistToggleSmall userId={userId} cardId={card.attributes.id} />
+                    <WishlistToggle userId={userId} cardId={card.attributes.id} />
                 </div>
               </div>
             </>

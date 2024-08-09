@@ -7,12 +7,7 @@ class TradeMessageController < ApplicationController
     card = Card.find(trades_params[:card_id])
     to_user  = User.where(id: trades_params[:to_user_id]).first
     from_user = User.where(id: trades_params[:from_user_id]).first
-
     wishlist_cards = Wish.where(user_id: to_user).where(card_id: from_user.cards).map(&:card)
-    
-    puts "\n\n\n"
-    puts wishlist_cards.to_json
-    puts"\n\n\n"
 
     if (to_user.discord_id.nil?)
       flash[:error] = "Message could not be sent. User has not linked their discord"

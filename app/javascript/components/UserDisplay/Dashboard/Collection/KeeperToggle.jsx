@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useEffectOnce } from 'react-use';
 import Button from '../../../Button';
 import xhrRequest from '../../../../helpers/xhr-request';
+import NoTradeIcon from '../../../Icons/NoTradeIcon';
 
 const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
     url: `/collections/${collectionId}`,
@@ -37,10 +38,7 @@ const KeeperToggle = ({ collectionId, cardId, keeper }) => {
             style={{ position: 'relative', overflow: 'visible' }}
         >
             <div className={classNames('card-grid__card-action--toggle-indicator', {enabled, animate})}>
-                <span style={{ display: 'grid', placeItems: 'center' }}>
-                    <i className={classNames('fas fa-slash')} style={{ fontSize: '1.3rem' }} />
-                    <i className={classNames("fas fa-exchange-alt")} style={{ position: 'absolute', fontSize: '1.3rem' }}/>
-                </span>
+                <NoTradeIcon />
             </div>
             {enabled ? 'Kept!' : 'Keeplist'}
         </Button>
