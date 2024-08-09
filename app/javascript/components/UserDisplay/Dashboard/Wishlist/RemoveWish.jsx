@@ -18,7 +18,7 @@ const RemoveWish = ({ card, user }) => {
     setCurrentUserWishlist(updatedWishlist);
   };
   return (
-    <Button className='button--negative' onClick={removeWish}>
+    <Button className='button--secondary' onClick={removeWish}>
       REMOVE
     </Button>
   );

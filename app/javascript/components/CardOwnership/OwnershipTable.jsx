@@ -3,7 +3,6 @@ import { Table, Row, Cell } from '../Table';
 import {
   TradeProposalButton,
 } from '../TradeProposal';
-import formatCard from './format-card';
 import UserLink from '../UserLink';
 
 const AmountCell = ({ children }) => <Cell className="card-profile__cell--amount">{children}</Cell>;
@@ -19,7 +18,7 @@ const OwnershipTable = ({
         <AmountCell>Amount</AmountCell>
       </Row>
       {totalCount <= 0 ? <NoOwnersMessage /> : (
-        ownerships.map(({ keeper, quantity, collection: { user }}, i) => (
+        ownerships.map(({ keeper, quantity, collection: { user }}) => (
           <Row>
             <Cell isPriority>
                 <UserLink user={user} />
@@ -28,8 +27,9 @@ const OwnershipTable = ({
               {quantity}
               {user.id !== currentUserId && !keeper && (
                 <TradeProposalButton
-                    card={formatCard(card, [ownerships[i]])}
+                    card={card}
                     currentUserId={currentUserId}
+                    user={user}
                 />
               )}
               {keeper && (

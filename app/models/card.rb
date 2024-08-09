@@ -44,6 +44,11 @@ class Card < ApplicationRecord
     new_card.save! 
   end
 
+  def discord_link
+    domain = ENV["DOMAIN"] || "https://www.mtgleague.xyz"
+    "[#{name}](#{domain}/cards/#{id})"  
+  end
+
   def owned
     self.ownerships.count > 0
   end
