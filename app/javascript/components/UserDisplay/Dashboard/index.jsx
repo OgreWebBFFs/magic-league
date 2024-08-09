@@ -15,6 +15,7 @@ import Wishlist from './Wishlist';
 import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
+import KeeplistContext from '../../../contexts/KeeplistContext';
 import useHashParams from '../../../helpers/hooks/use-hash-params';
 
 const InterfaceTab = ({
@@ -55,31 +56,38 @@ const Dashboard = ({
   objectiveRerolls,
   ...props
 }) => {
-  const [{
-    tab: [ initialTab ] = [ 'collection'],
-    view: [ initialView ] = [ 'grid' ],
-    ...hashParams
-  }, updateHashParams] = useHashParams();
+    const [{
+        tab: [ initialTab ] = [ 'collection'],
+        view: [ initialView ] = [ 'grid' ],
+        ...hashParams
+    }, updateHashParams] = useHashParams();
 
-  const [activeTab, setActiveTab] = useState(initialTab);
-  const [isListView, setIsListView] = useState(initialView === 'list');
+    const [activeTab, setActiveTab] = useState(initialTab);
+    const [isListView, setIsListView] = useState(initialView === 'list');
 
-  const [wishlist, setWishlist] = useState(initialWishlist);
-  const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
+    const [wishlist, setWishlist] = useState(initialWishlist);
+    const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
+    const wishlistContextValues = useMemo(() => ({
+        wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
+    }), [wishlist, currentUserWishlist]);
+    
+    const initialKeeplist = props.collection
+        .filter((ownership) => ownership.keeper)
+        .map(({ card }) => card);
+    const [keeplist, setKeeplist] = useState(initialKeeplist);
+    const keeplistContextValues = useMemo(() => ({
+      keeplist, setKeeplist,
+    }), [keeplist, setKeeplist]);
 
-  const [viewModifiers, setViewModifiers] = useState([]);
+    const [viewModifiers, setViewModifiers] = useState([]);
 
-  const wishlistContextValues = useMemo(() => ({
-    wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
-  }), [wishlist, currentUserWishlist]);
-
-  useUpdateEffect(() => {
-    updateHashParams({
-      ...hashParams,
-      tab: [activeTab],
-      view: [isListView ? 'list' : 'grid'],
-    });
-  }, [activeTab, isListView]);
+    useUpdateEffect(() => {
+        updateHashParams({
+        ...hashParams,
+        tab: [activeTab],
+        view: [isListView ? 'list' : 'grid'],
+        });
+    }, [activeTab, isListView]);
 
     return (
         <div data-preserve-scroll="true">
@@ -99,14 +107,16 @@ const Dashboard = ({
                 ))}
             </div>
             <WishlistContext.Provider value={wishlistContextValues}>
-                <ActionBar actions={Tabs[activeTab].actions}>
-                    <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-                    <FilterAction key="filter" onUpdate={setViewModifiers} />
-                    { edit && <EditAction key="edit" collectionId={collectionId} /> }
-                </ActionBar>
-                <div className="dashboard__card-view">
-                    {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
-                </div>
+                <KeeplistContext.Provider value={keeplistContextValues}>
+                    <ActionBar actions={Tabs[activeTab].actions}>
+                        <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
+                        <FilterAction key="filter" onUpdate={setViewModifiers} />
+                        { edit && <EditAction key="edit" collectionId={collectionId} /> }
+                    </ActionBar>
+                    <div className="dashboard__card-view">
+                        {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
+                    </div>
+                </KeeplistContext.Provider>
             </WishlistContext.Provider>
         </div>
     );

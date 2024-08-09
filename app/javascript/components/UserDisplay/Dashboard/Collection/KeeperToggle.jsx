@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 import Button from '../../../Button';
 import xhrRequest from '../../../../helpers/xhr-request';
 import NoTradeIcon from '../../../Icons/NoTradeIcon';
+import KeeplistContext from '../../../../contexts/KeeplistContext';
 
 const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
     url: `/collections/${collectionId}`,
@@ -20,9 +21,11 @@ const storeKeeper = ({ collectionId, cardId, keeper }) => xhrRequest({
     },
   });
 
-const KeeperToggle = ({ collectionId, cardId, keeper }) => {
-    const [enabled, setEnabled] = useState(keeper);
+const KeeperToggle = ({ collectionId, cardId }) => {
     const [animate, setAnimate] = useState(false);
+    const {keeplist, setKeeplist} = useContext(KeeplistContext);
+
+    const enabled = keeplist.some((card) => card.id === cardId);
 
     useEffectOnce(() => {
         // prevents initial animation on page load 
@@ -33,7 +36,11 @@ const KeeperToggle = ({ collectionId, cardId, keeper }) => {
         <Button
             onClick={async () => {
                 await storeKeeper({ cardId, collectionId, keeper: !enabled });
-                setEnabled(!enabled);
+                if (!enabled) {
+                    setKeeplist([...keeplist, { id: cardId }]);
+                } else {
+                    setKeeplist(keeplist.filter((card) => card.id !== cardId));
+                }
             }}
             style={{ position: 'relative', overflow: 'visible' }}
         >

@@ -56,7 +56,6 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                     <div className="card-grid__card-action">
                                         {user.id === currentUserId ? (
                                             <KeeperToggle
-                                                keeper={keeper}
                                                 cardId={card.id}
                                                 collectionId={collectionId}
                                             />
