@@ -81,34 +81,34 @@ const Dashboard = ({
     });
   }, [activeTab, isListView]);
 
-  return (
-    <div data-preserve-scroll="true">
-      <div className="dashboard__tab-wrapper">
-        {Object.keys(Tabs).map((tabName) => (
-          <InterfaceTab
-            key={tabName}
-            activeTab={activeTab}
-            setActiveTab={(t) => {
-              setActiveTab(t);
-              setViewModifiers([]);
-            }}
-            title={tabName}
-          >
-            {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
-          </InterfaceTab>
-        ))}
-      </div>
-      <ActionBar actions={Tabs[activeTab].actions}>
-        <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <FilterAction key="filter" onUpdate={setViewModifiers} />
-        { edit && <EditAction key="edit" collectionId={collectionId} /> }
-      </ActionBar>
-      <div className="dashboard__card-view">
-          <WishlistContext.Provider value={wishlistContextValues}>
-            {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
-          </WishlistContext.Provider>
-      </div>
-    </div>
-  );
+    return (
+        <div data-preserve-scroll="true">
+            <div className="dashboard__tab-wrapper">
+                {Object.keys(Tabs).map((tabName) => (
+                    <InterfaceTab
+                        key={tabName}
+                        activeTab={activeTab}
+                        setActiveTab={(t) => {
+                            setActiveTab(t);
+                            setViewModifiers([]);
+                        }}
+                        title={tabName}
+                    >
+                        {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
+                    </InterfaceTab>
+                ))}
+            </div>
+            <WishlistContext.Provider value={wishlistContextValues}>
+                <ActionBar actions={Tabs[activeTab].actions}>
+                    <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
+                    <FilterAction key="filter" onUpdate={setViewModifiers} />
+                    { edit && <EditAction key="edit" collectionId={collectionId} /> }
+                </ActionBar>
+                <div className="dashboard__card-view">
+                    {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
+                </div>
+            </WishlistContext.Provider>
+        </div>
+    );
 };
 export default Dashboard;
