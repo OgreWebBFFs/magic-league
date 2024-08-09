@@ -1,6 +1,6 @@
 a.button,
 .button {
-    --button-text-color: var(--color-text-inverse);
+    --button-text-color: var(--color-text-neutral);
     --button-background-color-opacity: 1;
     --button-lightness-shift: 0;
     --button-background-color-base: var(--color-fill-theme);
@@ -51,11 +51,11 @@ a.button,
     }
 
     &:disabled {
+        --button-text-color: var(--color-text-inverse);
         --button-background-color-opacity: 0.25;
     }
     &--secondary {
         --button-background-color-base: var(--color-fill-neutral);
-        --button-text-color: var(--color-text-neutral);
     }
 
     &--inverse {
