@@ -9,11 +9,11 @@ class Ownership < ApplicationRecord
   scope :available, -> { where(keeper: false) }
 
   def add
-    self.quantity.increment!(1)  
+    self.increment!(:quantity)  
   end
 
   def remove
-    self.quantity.decrement!(1)
+    self.decrement!(:quantity)
     if self.quantity == 0
         self.destroy
     end  

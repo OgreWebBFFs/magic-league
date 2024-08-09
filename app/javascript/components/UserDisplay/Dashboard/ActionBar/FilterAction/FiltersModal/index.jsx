@@ -45,17 +45,6 @@ const FiltersModal = ({ onClose, onApply, initialSelections }) => {
             )}
           </div>
         ))}
-        {/* <ul className="filter__option-group">
-            <li className="filter__option">
-                <input
-                    id="wishlisted"
-                    type="checkbox"
-                    checked={selectedOptions.includes('wishlisted')}
-                    onChange={() => toggleSelectedOption('wishlisted')}
-                />
-                <label htmlFor="wishlisted">Cards on my Wishlist</label>
-            </li>
-        </ul> */}
         <Button
           className="filter__apply-button"
           onClick={() => {

@@ -46,12 +46,22 @@ class User < ApplicationRecord
     wishes.map{ |wish| { card: wish.card, availablities: wish.availablities, total: wish.total }}
   end
 
-  def add_card(card_id)
-    Ownership.find_or_create_by(card_id: card_id, collection_id: collection_id).add
+  def add_card(card)
+    collection.add_card card
   end
 
-  def remove_card(card_id)
-    Ownership.where(card_id: card_id, collection_id: collection_id).remove
+  def remove_card(card)
+    collection.remove_card card
+  end
+
+  def add_card_by_id card_id
+    card = Card.where(id: card_id).first
+    add_card card
+  end
+
+  def remove_card_by_id card_id
+    card = Card.where(id: card_id).first
+    remove_card card
   end
 
   def trades_received_and_allowed_by_rarity
