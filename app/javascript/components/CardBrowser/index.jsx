@@ -36,7 +36,7 @@ const CardBrowser = ({ userId, wishlist }) => {
               <CardImageLink card={card.attributes} />
               <div className="card-grid__card-actions">
                 <div className="card-grid__card-action">
-                    <AvailabilityChecker availabilities={card.attributes.ownerships.filter(({ keeper, user_id }) => user_id !== userId && !keeper)} />
+                    <AvailabilityChecker availabilities={card.attributes.ownerships.filter(({ keeper }) => !keeper)} />
                 </div>
                 <div className="card-grid__card-action">
                     <WishlistToggle userId={userId} cardId={card.attributes.id} />
