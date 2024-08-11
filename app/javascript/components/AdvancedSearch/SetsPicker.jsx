@@ -1,41 +1,17 @@
 import React from "react";
 
 const SET_DETAILS = {
-    mkm: {
-        text: "Murders at Karlov Manner",
-        symbol: "ss ss-mkm",
-    },
-    plst: {
-        text: "The List",
-        symbol: "ms ms-planeswalker",
-    },
     spg: {
         text: "Special Guest",
         symbol: "ss ss-spg",
     },
-    otj: {
-        text: "Outlaws of Thunder Junction",
-        symbol: "ss ss-otj",
-    },
-    big: {
-        text: "The Big Score",
-        symbol: "ss ss-big",
-    },
-    otp: {
-        text: "Breaking News",
-        symbol: "ss ss-otp",
-    },
-    mh3: {
-        text: "Modern Horizons 3",
-        symbol: "ss ss-mh3",
-    },
-    m3c: {
-        text: "Modern Horizons 3 Commander",
-        symbol: "ss ss-m3c",
-    },
     blb: {
         text: "Bloomburrow",
         symbol: "ss ss-blb",
+    },
+    blc: {
+        text: "Imagine: Courageous Critters",
+        symbol: "ss ss-blc",
     },
 };
 
