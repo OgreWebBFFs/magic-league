@@ -12,11 +12,8 @@ class User < ApplicationRecord
   has_one :collection
   has_many :ownerships, through: :collection
   has_many :cards, through: :ownerships
-  has_many :tradables
-  has_many :tradable_cards, through: :tradables, source: :card
   has_many :received_trades
   has_many :wishes
-  has_many :wishlist_items, through: :wishes, source: :card
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
   has_many :user_objectives
@@ -45,15 +42,25 @@ class User < ApplicationRecord
   end
 
   def wishlist
-    wishlist_items
+    wishes.map{ |wish| { card: wish.card, availablities: wish.availablities, total: wish.total }}
   end
 
-  def add_card(card_id)
-    Ownership.new(card_id: card_id, collection_id: collection_id).save
+  def add_card(card)
+    collection.add_card card
   end
 
-  def remove_card(card_id)
-    Ownership.where(card_id: card_id, collection_id: collection_id).first.destroy
+  def remove_card(card)
+    collection.remove_card card
+  end
+
+  def add_card_by_id card_id
+    card = Card.where(id: card_id).first
+    add_card card
+  end
+
+  def remove_card_by_id card_id
+    card = Card.where(id: card_id).first
+    remove_card card
   end
 
   def trades_received_and_allowed_by_rarity

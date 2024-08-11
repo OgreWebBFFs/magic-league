@@ -57,7 +57,7 @@ class CardImporter
       cards_to_import.each do |name, count|
         card = Card.find_by('lower(name) = ?', name.downcase)
         (1..count).each do 
-          @collection.cards << card
+          @collection.add_card card
         end
       end
     end

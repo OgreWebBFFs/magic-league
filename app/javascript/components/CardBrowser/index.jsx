@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { CardGrid, CardImageLink } from '../CardGrid';
-import { WishlistToggleSmall } from '../WishlistToggle';
+import WishlistToggle from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
-import { TradeProposalButtonLarge } from '../TradeProposal';
 import useHashParams from '../../helpers/hooks/use-hash-params';
 import BasicSearchControls from './BasicSearchControls';
 import AdvancedSearchControls from './AdvancedSearchControls';
 import { getCachedCards, isCachedCards } from './card-results-cache';
+import AvailabilityChecker from '../UserDisplay/Dashboard/Wishlist/AvailabilityChecker';
 
 const CardBrowser = ({ userId, wishlist }) => {
   const [hashParams] = useHashParams();
@@ -33,13 +33,15 @@ const CardBrowser = ({ userId, wishlist }) => {
         <CardGrid>
           {cards.map((card) => (
             <>
-              <WishlistToggleSmall userId={userId} cardId={card.attributes.id} />
               <CardImageLink card={card.attributes} />
-              <TradeProposalButtonLarge
-                isAvailable={card.attributes.users.data.length > 0}
-                card={card}
-                currentUserId={userId}
-              />
+              <div className="card-grid__card-actions">
+                <div className="card-grid__card-action">
+                    <AvailabilityChecker availabilities={card.attributes.ownerships.filter(({ keeper }) => !keeper)} />
+                </div>
+                <div className="card-grid__card-action">
+                    <WishlistToggle userId={userId} cardId={card.attributes.id} />
+                </div>
+              </div>
             </>
           ))}
         </CardGrid>

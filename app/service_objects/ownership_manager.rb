@@ -1,27 +1,36 @@
 class OwnershipManager
   def initialize(params)
-    @ownerships = Ownership.from_params(params)
     @card_id = params[:card_id]
     @collection_id = params[:collection_id]
-    @count = params[:count].to_i
+    @quantity = params[:quantity]&.to_i
+    @keeper = params[:keeper]
+    @ownership = Ownership.find_or_create_by(card_id: @card_id, collection_id: @collection_id)
   end
 
-  def update_ownerships
-    @count > @ownerships.count ? increase_ownerships : decrease_ownerships 
+  def update_quantity
+    if @quantity == 0
+        @ownership.destroy
+    else
+        @ownership.update(quantity: @quantity)
+    end
+  end
+
+  def update_keeper
+    @ownership.update(keeper: @keeper)
   end
 
 
   private
 
   def increase_ownerships
-    (@count - @ownerships.count).times.map do |i|
-      Ownership.new(card_id: @card_id, collection_id: @collection_id).save
+    (@quantity - @ownership.quantity).times.map do |i|
+      Ownership.find_or_create_by(card_id: @card_id, collection_id: @collection_id).add
     end
   end
 
   def decrease_ownerships
-    (@count - @ownerships.count).abs.times.map do |i|
-      @ownerships.last.destroy
+    (@quantity - @ownership.quantity).abs.times.map do |i|
+      Ownership.find_or_create_by(card_id: @card_id, collection_id: @collection_id).remove
     end
   end
 end

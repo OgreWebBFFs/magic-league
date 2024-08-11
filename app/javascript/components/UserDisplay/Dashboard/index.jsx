@@ -15,7 +15,7 @@ import Wishlist from './Wishlist';
 import Trades from './Trades';
 
 import WishlistContext from '../../../contexts/WishlistContext';
-import TradablesContext from '../../../contexts/TradablesContext';
+import KeeplistContext from '../../../contexts/KeeplistContext';
 import useHashParams from '../../../helpers/hooks/use-hash-params';
 
 const InterfaceTab = ({
@@ -48,7 +48,6 @@ const Tabs = {
 };
 
 const Dashboard = ({
-  tradables: initialTradables,
   wishlist: initialWishlist,
   currentUserWishlist: initialCurrentUserWishlist,
   edit,
@@ -57,67 +56,69 @@ const Dashboard = ({
   objectiveRerolls,
   ...props
 }) => {
-  const [{
-    tab: [ initialTab ] = [ 'collection'],
-    view: [ initialView ] = [ 'list' ],
-    ...hashParams
-  }, updateHashParams] = useHashParams();
+    const [{
+        tab: [ initialTab ] = [ 'collection'],
+        view: [ initialView ] = [ 'grid' ],
+        ...hashParams
+    }, updateHashParams] = useHashParams();
 
-  const [activeTab, setActiveTab] = useState(initialTab);
-  const [isListView, setIsListView] = useState(initialView === 'list');
+    const [activeTab, setActiveTab] = useState(initialTab);
+    const [isListView, setIsListView] = useState(initialView === 'list');
 
-  const [tradables, setTradables] = useState(initialTradables);
-  const [wishlist, setWishlist] = useState(initialWishlist);
-  const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
+    const [wishlist, setWishlist] = useState(initialWishlist);
+    const [currentUserWishlist, setCurrentUserWishlist] = useState(initialCurrentUserWishlist);
+    const wishlistContextValues = useMemo(() => ({
+        wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
+    }), [wishlist, currentUserWishlist]);
+    
+    const initialKeeplist = props.collection
+        .filter((ownership) => ownership.keeper)
+        .map(({ card }) => card);
+    const [keeplist, setKeeplist] = useState(initialKeeplist);
+    const keeplistContextValues = useMemo(() => ({
+      keeplist, setKeeplist,
+    }), [keeplist, setKeeplist]);
 
-  const [viewModifiers, setViewModifiers] = useState([]);
+    const [viewModifiers, setViewModifiers] = useState([]);
 
-  const tradablesContextValues = useMemo(() => ({
-    tradables, setTradables,
-  }), [tradables]);
+    useUpdateEffect(() => {
+        updateHashParams({
+        ...hashParams,
+        tab: [activeTab],
+        view: [isListView ? 'list' : 'grid'],
+        });
+    }, [activeTab, isListView]);
 
-  const wishlistContextValues = useMemo(() => ({
-    wishlist, setWishlist, currentUserWishlist, setCurrentUserWishlist,
-  }), [wishlist, currentUserWishlist]);
-
-  useUpdateEffect(() => {
-    updateHashParams({
-      ...hashParams,
-      tab: [activeTab],
-      view: [isListView ? 'list' : 'grid'],
-    });
-  }, [activeTab, isListView]);
-
-  return (
-    <div data-preserve-scroll="true">
-      <div className="dashboard__tab-wrapper">
-        {Object.keys(Tabs).map((tabName) => (
-          <InterfaceTab
-            key={tabName}
-            activeTab={activeTab}
-            setActiveTab={(t) => {
-              setActiveTab(t);
-              setViewModifiers([]);
-            }}
-            title={tabName}
-          >
-            {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
-          </InterfaceTab>
-        ))}
-      </div>
-      <ActionBar actions={Tabs[activeTab].actions}>
-        <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
-        <FilterAction key="filter" onUpdate={setViewModifiers} />
-        { edit && <EditAction key="edit" collectionId={collectionId} /> }
-      </ActionBar>
-      <div className="dashboard__card-view">
-        <TradablesContext.Provider value={tradablesContextValues}>
-          <WishlistContext.Provider value={wishlistContextValues}>
-            {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
-          </WishlistContext.Provider>
-        </TradablesContext.Provider>
-      </div>
-    </div>
-  );
+    return (
+        <div data-preserve-scroll="true">
+            <div className="dashboard__tab-wrapper">
+                {Object.keys(Tabs).map((tabName) => (
+                    <InterfaceTab
+                        key={tabName}
+                        activeTab={activeTab}
+                        setActiveTab={(t) => {
+                            setActiveTab(t);
+                            setViewModifiers([]);
+                        }}
+                        title={tabName}
+                    >
+                        {Tabs[tabName].notification(props) && (<i className="fas fa-exclamation-circle notification" />)}
+                    </InterfaceTab>
+                ))}
+            </div>
+            <WishlistContext.Provider value={wishlistContextValues}>
+                <KeeplistContext.Provider value={keeplistContextValues}>
+                    <ActionBar actions={Tabs[activeTab].actions}>
+                        <ViewToggle key="view-toggle" isListView={isListView} setIsListView={setIsListView} />
+                        <FilterAction key="filter" onUpdate={setViewModifiers} />
+                        { edit && <EditAction key="edit" collectionId={collectionId} /> }
+                    </ActionBar>
+                    <div className="dashboard__card-view">
+                        {Tabs[activeTab].view({ ...props, isListView, viewModifiers })}
+                    </div>
+                </KeeplistContext.Provider>
+            </WishlistContext.Provider>
+        </div>
+    );
 };
 export default Dashboard;

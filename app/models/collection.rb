@@ -3,9 +3,19 @@ class Collection < ApplicationRecord
   has_many :ownerships
   has_many :cards, through: :ownerships
 
+  def add_card card
+    o = ownerships.find_or_create_by(card: card)
+    puts o.to_json
+    o.add
+  end
+
+  def remove_card card
+    ownerships.find_by(card: card).remove
+  end
+
   def to_s
-    cards.select(:name).group(:name).order(:name).map{ |card|
-      "#{self.cards.where(name: card.name).count}x #{card.name}"
+    ownerships.sort_by{ |o| o.card.name }.map{ |o| 
+        "#{o.quantity}x #{o.card.name}"
     }.join("\n")
   end
 end

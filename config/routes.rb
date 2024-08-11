@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :rules, only: [:index]
   resources :search, only: [:index]
   resources :advanced_search, only: [:index]
-  resources :trade_mail, only: [:index, :create]
+  resources :trade_message, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
 
   resources :draffles, only: [:index, :show, :create, :update, :destroy]
@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   end
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
-  resources :tradables, only: [:index, :show, :create, :destroy]
   resources :received_trades, only: [:create]
 
   resources :user_objectives, only: [:create] do

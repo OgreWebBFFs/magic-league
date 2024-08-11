@@ -1,4 +1,6 @@
 .card-grid {
+    --icon-size: 36px;
+
     display: inline-grid;
     grid-template-columns: repeat(3, 33%);
     grid-auto-rows: fit-content(100%);
@@ -12,34 +14,89 @@
         align-items: center;
     }
 
-    &__wishlist__toggle {
-        --toggle-size: 36px;
-        height: var(--toggle-size);
-        width: var(--toggle-size);
+    &__icon {
+        height: var(--icon-size);
+        width: var(--icon-size);
         margin: 0;
-        top: calc(var(--toggle-size) / -1.5);
-        right: -10px;
         opacity: 1;
-        position: absolute;
         z-index: 1;
-        font-family: "Font Awesome 5 Free";
+        font-size: calc(var(--icon-size) / 2);
         font-weight: 400;
-        font-size: calc(var(--toggle-size) / 2);
-        border-radius: var(--toggle-size);
-        cursor: pointer;
-        opacity: 0.6;
-        position: absolute;
+        border-radius: var(--icon-size);
+    }
 
-        @media only screen and (max-width: 500px) {
-            top: calc(var(--toggle-size) / -2);
+    &__card-actions {
+        display: flex;
+        gap: var(--spacer-md);
+        padding: var(--spacer-sm) var(--spacer-md);
+    }
+
+    &__card-action {
+        flex: 1 1 50%;
+        position: relative;
+
+        button {
+            height: 100%;
+            width: 100%;
         }
 
-        &.active {
-            opacity: 1;
-            i {
-                font-weight: bold;
+        &--toggle-indicator {
+            @keyframes grow-and-show {
+                0% {transform: scale(0); }
+                66% {transform: scale(1.2);}
+                100% {transform: scale(1); }
+            }
+
+            @keyframes shrink-and-hide {
+                0% {transform: scale(1); }
+                33% {transform: scale(1.2);}
+                100% {transform: scale(0); }
+            }
+
+            position: absolute;
+            background: inherit;
+            border-radius: 36px 36px 0 0;
+            height: 36px;
+            width: 72px;
+            z-index: 1;
+            top: -30px;
+            left: calc(50% - 36px);
+            transform: scale(0);
+            animation-duration: .3s;
+            animation-fill-mode: forwards;
+            transform: scale(0);
+            transform-origin: center 30px;
+            animation-name: shrink-and-hide;
+            opacity: 0;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 0px 10px 3px var(--color-fill-theme-highlight);
+            clip-path: inset(-10px -10px 5px -10px);
+
+            &.animate {
+                opacity: 100;
+            }
+            
+            &.enabled {
+                animation-name: grow-and-show;
+                transform: scale(1);
             }
         }
+    }
+
+    &__quantity-display {
+        position: absolute;
+        right: -12px;
+        top: calc(48px / -2);
+        border-radius: 100%;
+        background: black;
+        color: white;
+        height: 48px;
+        width: 48px;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        font-size: 1.6rem;
     }
 
     &__card {
@@ -178,7 +235,7 @@
         }
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 850px) {
         grid-template-columns: repeat(2, 50%);
     }
 

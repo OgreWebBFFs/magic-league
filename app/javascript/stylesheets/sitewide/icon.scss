@@ -1,0 +1,26 @@
+.icon {
+    &__compound {
+        position: relative;
+        
+        &.no-trade {
+            font-size: 1.3rem;
+        }
+
+        &.trade-message {
+            i:first-of-type {
+                font-size: 1.6rem;
+            }
+
+            i:last-of-type {
+                font-size: .9rem;
+            }
+        }
+
+        &--top-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

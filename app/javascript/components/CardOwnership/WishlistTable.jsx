@@ -6,7 +6,6 @@ const NoWishlistersMessage = () => <Cell isPriority>No one has put this card on 
 const WishlistTable = ({
   totalWishlisters, wishlisterDetails
 }) => (
-  <>
     <Table>
       <Row className="card-profile__row--headings" isHeading>
         <Cell isPriority>Wishlisted By</Cell>
@@ -21,7 +20,6 @@ const WishlistTable = ({
       ))
     )}
     </Table>
-  </>
 );
 
 export default WishlistTable;

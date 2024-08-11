@@ -31,6 +31,4 @@
 
 en:
   hello: "Hello world"
-  pundit:
-   tradable_policy:
-     destroy?: 'You are not authorized to perform this action.'
+

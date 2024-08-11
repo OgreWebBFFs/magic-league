@@ -74,8 +74,8 @@ class TradesController < ApplicationController
         tracked_trade = receive_user.received_trades.find_or_initialize_by(rarity: card.received_trades_to_update)
         tracked_trade.increment
       end
-      receive_user.add_card card_id
-      give_user.remove_card card_id
+      receive_user.add_card card
+      give_user.remove_card card
     }
   end
 

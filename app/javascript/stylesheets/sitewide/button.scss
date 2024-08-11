@@ -53,6 +53,7 @@ a.button,
     &:disabled {
         --button-text-color: var(--color-text-inverse);
         --button-background-color-opacity: 0.25;
+        cursor: not-allowed;
     }
     &--secondary {
         --button-background-color-base: var(--color-fill-neutral);
@@ -98,4 +99,12 @@ a.button,
             background: none;
         }
     }
+
+    .hollow-text {
+        color: var(--button-background-color);
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+    }
+    
 }

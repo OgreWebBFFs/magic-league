@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import OwnershipTable from './OwnershipTable';
 import WishlistTable from './WishlistTable';
-import { TradeProposalButtonLarge } from '../TradeProposal';
-import formatCard from './format-card';
-import WishlistToggleLarge from '../WishlistToggle/WishlistToggleLarge';
 import { CardImage } from '../CardGrid';
+import WishlistToggle from '../WishlistToggle';
+import WishlistContext from '../../contexts/WishlistContext';
 
 const CardOwnership = ({
-  card, currentUserId, totalCount, ownerDetails, wishlist, totalWishlisters, wishlisterDetails
+  card, currentUserId, totalCount, ownerships, wishlist, totalWishlisters, wishlisterDetails
 }) => {
-  const isWishlisted = wishlist[currentUserId] !== undefined;
+  const [currentUserWishlist, setCurrentUserWishlist] = useState(wishlist[currentUserId] !== undefined ? [{ card }] : []);
+  const wishlistContextValues = useMemo(() => ({
+    currentUserWishlist, setCurrentUserWishlist,
+  }), [wishlist, currentUserWishlist]);
+
   return (
-    <>
+    <WishlistContext.Provider value={wishlistContextValues}>
       <h3 className="card-profile__title">
         {card.name}
       </h3>
@@ -22,33 +25,24 @@ const CardOwnership = ({
         */}
         <div style={{ maxWidth: '350px', margin: 'auto' }}>
           <CardImage name={card.name} imageUrl={card.image_url} backImageUrl={card.back_image_url} />
+          <div className="card-grid__card-action" style={{ marginBottom: '1rem' }}>
+            <WishlistToggle cardId={card.id} userId={currentUserId} />
+          </div>
         </div>
       </div>
       <div className="card-profile__details">
-        <div className="card-profile__action-bar">
-          <TradeProposalButtonLarge
-            isAvailable={totalCount > 0}
-            card={formatCard(card, ownerDetails)}
-            currentUserId={currentUserId}
-          />
-          <WishlistToggleLarge
-            cardId={card.id}
-            userId={currentUserId}
-            isWishlistedInit={isWishlisted}
-          />
-        </div>
         <OwnershipTable
           card={card}
           currentUserId={currentUserId}
           totalCount={totalCount}
-          ownerDetails={ownerDetails}
+          ownerships={ownerships}
         />
         <WishlistTable
           totalWishlisters={totalWishlisters}
           wishlisterDetails={wishlisterDetails}
         />
       </div>
-    </>
+    </WishlistContext.Provider>
   );
 };
 

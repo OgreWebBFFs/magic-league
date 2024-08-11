@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import SearchInput from '../SearchInput';
-import { CardGrid, CardImageLink, QuantityControl } from '../CardGrid';
+import { CardGrid, CardImageLink } from '../CardGrid';
+import QuantityControl from './QuantityControl';
 import xhrRequest from '../../helpers/xhr-request';
 
 const fetchCollection = async (userId) => (await xhrRequest({
   url: `/collections/${userId}`,
   options: { method: 'GET' },
 })).data;
+
+const initialQuantity = (card, userId) => card.ownerships.find((ownership) => (
+    ownership.user_id === userId
+))?.quantity || 0;
 
 const SimpleEdit = ({ userId, collectionId }) => {
   const [cards, setCards] = useState([]);
@@ -24,15 +29,15 @@ const SimpleEdit = ({ userId, collectionId }) => {
       </a>
       <CardGrid>
         {cards.map((card) => (
-          <>
-            <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
-            <QuantityControl
-              key={`${card.attributes.name} quantity`}
-              collectionId={collectionId}
-              cardId={card.attributes.id}
-              value={card.attributes.count_in_collection}
-            />
-          </>
+            <>
+                <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
+                <QuantityControl
+                    key={`${card.attributes.name} quantity`}
+                    collectionId={collectionId}
+                    cardId={card.attributes.id}
+                    initialValue={initialQuantity(card.attributes, userId)}
+                />
+            </>
         ))}
       </CardGrid>
     </>

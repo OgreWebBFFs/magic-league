@@ -25,7 +25,7 @@ class Draffle < ApplicationRecord
   
   def validate
     @board.filled_slots.each do |slot|
-      slot.user.add_card slot.prize.card_id
+      slot.user.add_card_by_id slot.prize.card_id
     end
     OgreBot.instance.draffle_actions.complete self
     self.update(status: "completed")
