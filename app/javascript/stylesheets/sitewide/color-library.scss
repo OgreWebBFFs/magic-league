@@ -41,5 +41,6 @@
         --color-lightness-shift-basis: 1%;
         --color-text-theme: hsl(from var(--color-fill-theme) h s calc(l - 30%));
         --color-text-negative: hsl(from var(--color-fill-negative) h s calc(l - 30%));
+        --color-fill-theme-highlight: hsl(from var(--color-fill-theme) h s calc(l + 15%));
     }
 }
