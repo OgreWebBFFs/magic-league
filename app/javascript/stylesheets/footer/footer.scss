@@ -8,6 +8,9 @@
     background-color: var(--color-fill-neutral);
     --footer-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10) / 0.2);
     --footer-central-color: hsl(from var(--color-fill-neutral) h s l / 0.4);
+    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+        --footer-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10%) / 0.5);
+    }
     background: linear-gradient(
         56deg,
         var(--color-fill-neutral),

@@ -3,14 +3,19 @@ a.button,
     --button-text-color: var(--color-text-neutral);
     --button-background-color-opacity: 1;
     --button-lightness-shift: 0;
+    --button-lightness-shift-safari: 0%;
     --button-background-color-base: var(--color-fill-theme);
-    --button-background-color: hsl(
+
+    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+        --button-lightness-shift: var(--button-lightness-shift-safari);
+    }
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    background-color: hsl(
         from var(--button-background-color-base) h s calc(l + var(--button-lightness-shift)) /
             var(--button-background-color-opacity)
     );
-    -webkit-tap-highlight-color: transparent;
-    align-items: center;
-    background-color: var(--button-background-color);
+
     border-radius: 2px;
     border: none;
     box-sizing: border-box;

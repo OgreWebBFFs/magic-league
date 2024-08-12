@@ -7,7 +7,6 @@
     --desaturated-hue: 50;
     --desaturated-sat: 7%;
     --color-lightness-shift-basis: 1;
-
     //Derivative values
 
     --color-fill-inverse: var(--color-light);
@@ -34,4 +33,13 @@
     --color-red-mana: hsl(19, 66%, 68%);
     --color-green-mana: hsl(100, 55%, 43%);
     --color-colorless-mana: hsl(30, 8%, 77%);
+    //Safari Specific Values
+    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+        --color-dark: hsl(from var(--color-theme) h s calc(l - 40%));
+        --color-light: hsl(from var(--color-theme) h s calc(l + 40%));
+        --color-site-background: hsl(from var(--color-theme) h calc(s - 10%) calc(l + 50%));
+        --color-lightness-shift-basis: 1%;
+        --color-text-theme: hsl(from var(--color-fill-theme) h s calc(l - 30%));
+        --color-text-negative: hsl(from var(--color-fill-negative) h s calc(l - 30%));
+    }
 }

@@ -17,6 +17,9 @@
     background-color: var(--color-fill-neutral);
     --nav-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10) / 0.5);
     --nav-central-color: hsl(from var(--color-fill-neutral) h s l / 0.7);
+    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+        --nav-corner-color: hsl(from var(--color-fill-neutral) h s calc(l + 10%) / 0.5);
+    }
     background: linear-gradient(
         56deg,
         var(--color-fill-neutral),
