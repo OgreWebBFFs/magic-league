@@ -95,9 +95,9 @@ class TradesController < ApplicationController
       card_to_check = Card.find_by_id(cardId)
       amnt_in_trade = card_ids.count { |id| id == cardId }
 
-      is_in_collection = user.cards.count { |card| card.id == cardId } >= amnt_in_trade
+      has_sufficient_inventory = user.card_inventory(cardId) >= amnt_in_trade
       
-      if !is_in_collection
+      if !has_sufficient_inventory
         invalid_cards.push({:card => card_to_check.name, :player => user.name, :reason => "insufficient inventory"})
       end    
     end

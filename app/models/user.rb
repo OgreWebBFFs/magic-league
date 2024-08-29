@@ -93,6 +93,15 @@ class User < ApplicationRecord
     self.user_objectives.where.not(completed_at: nil)
   end
 
+  def card_inventory card_id
+    ownership = self.ownerships.where(card_id: card_id).first
+    if ownership.nil?
+      0
+    else
+      ownership.quantity
+    end
+  end
+
   def to_s
     email
   end
