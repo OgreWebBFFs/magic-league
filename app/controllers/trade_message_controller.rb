@@ -11,12 +11,13 @@ class TradeMessageController < ApplicationController
 
     if (to_user.discord_id.nil?)
       flash[:error] = "Message could not be sent. User has not linked their discord"
+      redirect_to request.referer
     else
-      OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
-      flash[:success] = "Your message has been successfully sent!"
+      # OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
+      MessageStatus.find_or_create_by(from_user: from_user, to_user: to_user, card: card).touch
+      render plain: "", status: :ok
     end
     
-    redirect_to request.referer
   end
 
   private
