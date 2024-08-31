@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :user_objectives
   has_many :objectives, through: :user_objectives
   has_many :draffle_participants
+  has_many :message_statuses, class_name: 'MessageStatus', foreign_key: 'from_user_id'
   has_one :reroll
 
   scope :unlocked, -> { self.where(locked_at: nil) }
