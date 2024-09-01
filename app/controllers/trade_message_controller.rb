@@ -15,7 +15,7 @@ class TradeMessageController < ApplicationController
     else
       # OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
       MessageStatus.find_or_create_by(from_user: from_user, to_user: to_user, card: card).touch
-      render plain: "", status: :ok
+      render json: {}, status: :ok
     end
     
   end
