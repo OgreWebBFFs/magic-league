@@ -106,7 +106,7 @@ a.button,
     }
 
     .hollow-text {
-        color: var(--button-background-color);
+        color: var(--button-background-color-base);
         transition-duration: 0.3s;
         transition-property: all;
         transition-timing-function: ease-in-out;

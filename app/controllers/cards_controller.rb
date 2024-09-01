@@ -13,6 +13,7 @@ class CardsController < ApplicationController
     @ownerships = @card.ownerships.includes(collection: :user).as_json({
         include: { collection: { include: :user }}
     })
+    @message_statuses = @card.message_statuses.where(from_user: current_user)
 
     @wishlisters_details = Hash.new
     @card.wishes.sort_by{ |w| w.user.name }.each do |w|

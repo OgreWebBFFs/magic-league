@@ -6,7 +6,7 @@ import WishlistToggle from '../WishlistToggle';
 import WishlistContext from '../../contexts/WishlistContext';
 
 const CardOwnership = ({
-  card, currentUserId, totalCount, ownerships, wishlist, totalWishlisters, wishlisterDetails
+  card, currentUserId, totalCount, ownerships, wishlist, messageStatuses, totalWishlisters, wishlisterDetails
 }) => {
   const [currentUserWishlist, setCurrentUserWishlist] = useState(wishlist[currentUserId] !== undefined ? [{ card }] : []);
   const wishlistContextValues = useMemo(() => ({
@@ -36,6 +36,7 @@ const CardOwnership = ({
           currentUserId={currentUserId}
           totalCount={totalCount}
           ownerships={ownerships}
+          messageStatuses={messageStatuses}
         />
         <WishlistTable
           totalWishlisters={totalWishlisters}

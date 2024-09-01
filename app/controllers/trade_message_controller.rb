@@ -10,13 +10,13 @@ class TradeMessageController < ApplicationController
     wishlist_cards = Wish.where(user_id: to_user).where(card_id: from_user.cards).map(&:card)
 
     if (to_user.discord_id.nil?)
-      flash[:error] = "Message could not be sent. User has not linked their discord"
+      render json: { error: "Message could not be sent. User has not linked their discord" }, status: :error
     else
       OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
-      flash[:success] = "Your message has been successfully sent!"
+      MessageStatus.find_or_create_by(from_user: from_user, to_user: to_user, card: card).touch
+      render json: {}, status: :ok
     end
     
-    redirect_to request.referer
   end
 
   private

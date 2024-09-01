@@ -3,6 +3,7 @@ class Card < ApplicationRecord
   has_many :collections, through: :ownerships 
   has_many :users, -> { distinct },  through: :collections 
   has_many :wishes
+  has_many :message_statuses
   scope :query_name, ->(string) { where(arel_table[:name].matches("%#{sanitize_sql_like string}%")) }
   scope :query_oracle_text, ->(string) { where(arel_table[:oracle_text].matches("%#{sanitize_sql_like string}%")) }
   scope :query_type_line, ->(string) { where(arel_table[:type_line].matches("%#{sanitize_sql_like string}%")) }

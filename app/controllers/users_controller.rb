@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @ownerships = @user.collection.ownerships.includes(:card).order("cards.name ASC").as_json(include: :card)
     @wishlist = @user.wishlist
     @current_user_wishlist = current_user.wishlist
+    @message_statuses = current_user.message_statuses.where(to_user: @user)
     @active_objectives = current_user.user_objectives.select{ |obj|
       current_user.id == @user.id && obj.completed_at == nil && obj.assigned_at != nil
     }.map{ |obj| UserObjectiveSerializer.new(obj)}
@@ -32,8 +33,7 @@ class UsersController < ApplicationController
     }.map{ |obj| UserObjectiveSerializer.new(obj)}
     @objective_rerolls = @user.reroll
     @trades = @user.trades
-    event_matches = Match.where(event_id: 1)
-    @event_ranking = EventRankingEngine.new().generate_event_user_ranking(@user)
+
   end
 
 

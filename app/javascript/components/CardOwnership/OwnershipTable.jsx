@@ -10,7 +10,7 @@ const AmountCell = ({ children }) => <Cell className="card-profile__cell--amount
 const NoOwnersMessage = () => <Cell isPriority>No one owns this card yet</Cell>;
 
 const OwnershipTable = ({
-  card, currentUserId, totalCount, ownerships,
+  card, currentUserId, totalCount, ownerships, messageStatuses
 }) => (
     <Table className="card-profile__table--ownership">
       <Row className="card-profile__row--headings" isHeading>
@@ -30,6 +30,7 @@ const OwnershipTable = ({
                     card={card}
                     currentUserId={currentUserId}
                     user={user}
+                    priorMessageTimestamp={messageStatuses.find(status => status.to_user_id === user.id)?.updated_at}
                 />
               )}
               {keeper && (

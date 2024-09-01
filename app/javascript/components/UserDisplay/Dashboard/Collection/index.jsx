@@ -8,7 +8,7 @@ import Button from "../../../Button";
 import KeeperToggle from "./KeeperToggle";
 import { TradeProposalButton } from "../../../TradeProposal";
 
-const Collection = ({ collection, currentUserId, user, isListView, viewModifiers }) => {
+const Collection = ({ collection, currentUserId, user, isListView, viewModifiers, messageStatuses }) => {
     const isEmpty = collection.length < 1;
     const isOwner = currentUserId === user.id;
     const filteredCollection = collection.filter(({ card }) =>
@@ -65,6 +65,7 @@ const Collection = ({ collection, currentUserId, user, isListView, viewModifiers
                                                 currentUserId={currentUserId}
                                                 user={user}
                                                 unavailable={keeper}
+                                                priorMessageTimestamp={messageStatuses.find(status => status.card_id === card.id)?.updated_at}
                                                 large
                                             />
                                         )}

@@ -21,6 +21,7 @@ const UserDispaly = ({
   tradeTrackerData,
   user,
   wishlist,
+  messageStatuses,
 }) => {
   const [isSeasonView] = useIsSeasonView();
 
@@ -75,6 +76,7 @@ const UserDispaly = ({
               collectionId={collectionId}
               wishlist={wishlist}
               trades={trades}
+              messageStatuses={messageStatuses}
             />
           ) : (
             <Objectives

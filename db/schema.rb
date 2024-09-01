@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_07_08_190006) do
+ActiveRecord::Schema.define(version: 2024_08_31_175110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,17 @@ ActiveRecord::Schema.define(version: 2024_07_08_190006) do
     t.integer "event_id"
   end
 
+  create_table "message_statuses", force: :cascade do |t|
+    t.bigint "from_user_id", null: false
+    t.bigint "to_user_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_message_statuses_on_card_id"
+    t.index ["from_user_id"], name: "index_message_statuses_on_from_user_id"
+    t.index ["to_user_id"], name: "index_message_statuses_on_to_user_id"
+  end
+
   create_table "objectives", force: :cascade do |t|
     t.string "description"
     t.integer "value"
@@ -242,6 +253,9 @@ ActiveRecord::Schema.define(version: 2024_07_08_190006) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "draffle_prizes", "draffles"
+  add_foreign_key "message_statuses", "cards"
+  add_foreign_key "message_statuses", "users", column: "from_user_id"
+  add_foreign_key "message_statuses", "users", column: "to_user_id"
   add_foreign_key "received_trades", "users"
   add_foreign_key "user_objectives", "objectives"
   add_foreign_key "user_objectives", "users"
