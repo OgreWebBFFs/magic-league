@@ -12,7 +12,7 @@ class TradeMessageController < ApplicationController
     if (to_user.discord_id.nil?)
       render json: { error: "Message could not be sent. User has not linked their discord" }, status: 500
     else
-      # OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
+      OgreBot.instance.trade_request.ask_about_card(to_user, from_user, card, wishlist_cards)
       MessageStatus.find_or_create_by(from_user: from_user, to_user: to_user, card: card).touch
       render json: {}, status: :ok
     end
