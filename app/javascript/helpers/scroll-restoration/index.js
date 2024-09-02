@@ -11,7 +11,7 @@ document.addEventListener('turbolinks:before-visit', () => {
   }
 });
 
-document.addEventListener('turbolinks:render', () => {
+document.addEventListener('turbolinks:load', () => {
   const savedScroll = Turbolinks.savedScrolls?.[window.location.href];
   if (!savedScroll) { return; }
 
