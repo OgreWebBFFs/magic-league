@@ -90,7 +90,7 @@ const Dashboard = ({
     }, [activeTab, isListView]);
 
     return (
-        <div data-preserve-scroll="true">
+        <div data-preserve-scroll>
             <div className="dashboard__tab-wrapper">
                 {Object.keys(Tabs).map((tabName) => (
                     <InterfaceTab
