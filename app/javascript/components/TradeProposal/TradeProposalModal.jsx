@@ -38,7 +38,7 @@ const TradeProposalModal = ({ onClose, card, currentUserId, user, priorMessageTi
     };
 
     return (
-        <Modal onClose={isComplete ? onClose : refreshPage}>
+        <Modal onClose={isComplete ? refreshPage : onClose}>
             <div className='trade-message--prompt'>
                 <div>
                     <h1>You are contacting:</h1>
