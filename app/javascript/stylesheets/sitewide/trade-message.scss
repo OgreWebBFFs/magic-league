@@ -5,9 +5,11 @@
         gap: 1rem;
         margin-bottom: 1rem;
 
-        .heading {
+        h1 {
             font-size: .8rem;
-            font-weight: 700;        
+            font-weight: 700;
+            line-height: 1;
+            margin: 0;       
         }
     }
 }

@@ -41,19 +41,17 @@ const TradeProposalModal = ({ onClose, card, currentUserId, user, priorMessageTi
         <Modal onClose={isComplete ? onClose : refreshPage}>
             <div className='trade-message--prompt'>
                 <div>
-                    <div className='heading'>You are contacting:</div>
-                    <div>{user.name}</div>
+                    <h1>You are contacting:</h1>
+                    {user.name}
                 </div>
                 <div>
-                    <div className='heading'>To talk about trading for:</div>
-                    <div>{card.name}</div>
+                    <h1>To talk about trading for:</h1>
+                    {card.name}
                 </div>
                 {priorMessageTimestamp && (
                     <div>
-                        <div className='heading'>You previously messaged them about this card on:</div>
-                        <div>
+                        <h1>You previously messaged them about this card on:</h1>
                             {(new Date(priorMessageTimestamp).toLocaleDateString('en-US', {  year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }))}
-                        </div>
                     </div>
                 )}
             </div>
