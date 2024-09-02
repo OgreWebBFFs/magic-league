@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import xhrRequest from '../../helpers/xhr-request';
+import { saveScrollPos } from '../../helpers/scroll-restoration';
 import Button from '../Button';
 import Modal from '../Modal';
 
@@ -12,7 +13,10 @@ const sendTradeMessage = (fromUserId, toUserId,  cardId) => xhrRequest({
     },
 })
 
-const refreshPage = () => window.location.reload();
+const refreshPage = () => {
+    saveScrollPos();
+    window.location.reload();
+}
 
 const TradeProposalModal = ({ onClose, card, currentUserId, user, priorMessageTimestamp }) => {
     const [reqState, setReqState] = useState('initial');

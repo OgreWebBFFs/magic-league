@@ -1,23 +1,24 @@
 /* eslint-disable no-undef */
 
+// eslint-disable-next-line import/prefer-default-export
+export function saveScrollPos() {
+    const scrollPos = document.documentElement.scrollTop;
+    sessionStorage.setItem(`scrollPos:${window.location.href}`, scrollPos);
+};
+
 document.addEventListener('turbolinks:before-visit', () => {
-  if (document.querySelector('*[data-preserve-scroll=true]')) {
-    Turbolinks.savedScrolls = {
-      [window.location.href]: {
-        document: document.documentElement.scrollTop,
-        body: document.body.scrollTop,
-      },
-    };
-  }
+    if (document.querySelector('*[data-preserve-scroll=true]')) {
+        saveScrollPos();
+    }
 });
 
 document.addEventListener('turbolinks:load', () => {
-  const savedScroll = Turbolinks.savedScrolls?.[window.location.href];
+  const savedScroll = parseInt(sessionStorage.getItem(`scrollPos:${window.location.href}`), 10);
   if (!savedScroll) { return; }
 
-  delete Turbolinks.savedScrolls[window.location.href];
+  sessionStorage.removeItem(`scrollPos:${window.location.href}`);
 
   window.requestAnimationFrame(() => {
-    document.documentElement.scrollTop = savedScroll.document;
+    document.documentElement.scrollTop = savedScroll;
   });
 });
