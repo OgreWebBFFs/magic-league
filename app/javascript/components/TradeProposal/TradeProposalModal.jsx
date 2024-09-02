@@ -15,7 +15,7 @@ const sendTradeMessage = (fromUserId, toUserId,  cardId) => xhrRequest({
 
 const refreshPage = () => {
     saveScrollPos();
-    window.location.reload();
+    Turbolinks.visit(window.location.href, { action: 'replace' });
 }
 
 const TradeProposalModal = ({ onClose, card, currentUserId, user, priorMessageTimestamp }) => {
