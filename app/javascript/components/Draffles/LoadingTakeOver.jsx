@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LoadingIcon from '../Icons/LoadingIcon';
 
 const LoadingTakeOver = () => {
   
@@ -10,16 +11,12 @@ const LoadingTakeOver = () => {
     <div style={{
       height: '100vh',
       width: '100vw',
-      background: '#90909088',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
       position: 'fixed',
       top: '0',
       left: '0',
       zIndex: '200',
     }}>
-      <div className="lds-ring"><div /><div /><div /><div /></div>
+      <LoadingIcon />
     </div>
   )  
 }
