@@ -13,6 +13,10 @@ const SET_DETAILS = {
         text: "Imagine: Courageous Critters",
         symbol: "ss ss-blc",
     },
+    dsk: {
+        text: "Duskmourn: House of Horror",
+        symbol: "ss ss-dsk",
+    },
 };
 
 const SetsPicker = ({ hashParams, onUpdate, options }) => (
