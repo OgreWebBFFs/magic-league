@@ -31,6 +31,8 @@
                 display: flex;
                 gap: var(--spacer-sm);
                 width: 100%;
+                height: var(--controls-wrapper-height);
+                overflow: hidden;
 
                 button {
                     width: 3.25rem;
