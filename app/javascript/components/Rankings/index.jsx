@@ -6,11 +6,22 @@ import Button from "../Button";
 import RankingsControls from "./RankingsControls";
 import PlayerRanking from "./PlayerRanking";
 
+const buildRankingsMap = (rankedPlayers) =>
+    rankedPlayers.reduce(
+        (acc, val, index) => ({
+            ...acc,
+            [val.user.id]: index + 1,
+        }),
+        {}
+    );
+
 const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers }) => {
     const [showRankings, setShowRankings] = useState(true);
     const [searchedPlayer, setSearchedPlayer] = useState("");
     const controlsRef = useRef();
     const isMobile = useIsMobile();
+
+    const playerRanks = buildRankingsMap(rankedPlayers);
 
     useEffect(() => {
         const draffleButton = document.querySelector(".draffle-view-button");
@@ -47,7 +58,7 @@ const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, ev
                                             user.name.toLowerCase().includes(searchedPlayer.toLowerCase())
                                     )
                                     .map((ranking, i) => (
-                                        <PlayerRanking {...ranking} rank={i + 1} />
+                                        <PlayerRanking {...ranking} rank={playerRanks[ranking.user.id]} />
                                     ))}
                             </div>
                             {unrankedPlayers.length > 0 && (
