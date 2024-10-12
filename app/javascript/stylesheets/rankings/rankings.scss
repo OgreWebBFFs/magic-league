@@ -6,13 +6,46 @@
     transition-property: opacity;
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
+    max-width: 350px;
+    margin: 0 auto;
 
-    &__date-wrapper {
-        display: flex;
-        gap: var(--spacer-sm);
-        align-items: center;
-        justify-content: center;
+    &__controls-wrapper {
         margin-bottom: calc(var(--spacer-lg) + var(--ranking-border-stroke-width));
+        overflow-x: hidden;
+
+        &--slider {
+            transition: transform 300ms ease-in;
+            display: flex;
+            gap: var(--spacer-sm);
+            align-items: center;
+            flex-wrap: nowrap;
+            position: relative;
+
+            &.slide {
+                transform: translateX(calc(-350px + 3.25rem));
+            }
+
+            .player-search {
+                position: absolute;
+                left: calc(100% - 3.25rem);
+                display: flex;
+                gap: var(--spacer-sm);
+                width: 100%;
+                height: var(--controls-wrapper-height);
+
+                button {
+                    width: 3.25rem;
+                }
+
+                input[type="text"] {
+                    flex: 1 1 auto;
+                    color: white;
+                    background: #44444466;
+                    text-align: center;
+                    box-sizing: border-box;
+                }
+            }
+        }
     }
     &__date_form {
         display: flex;
@@ -78,14 +111,12 @@
 
     &__wrapper {
         box-sizing: border-box;
-        margin: 0 auto;
         height: calc(
-            100vh - var(--nav-height) - var(--footer-height) - var(--draffle-button-height) - var(--date-wrapper-height) -
-                var(--spacer-section) - var(--spacer-section) - 6px
+            100vh - var(--nav-height) - var(--footer-height) - var(--draffle-button-height) -
+                var(--controls-wrapper-height) - var(--spacer-section) - var(--spacer-section) - 6px
         );
         //last value is for minor calc rounding errors
         position: relative;
-        max-width: 350px;
     }
 
     &__player-listing {
@@ -211,7 +242,7 @@
                 text-overflow: ellipsis;
             }
             &--unranked {
-                text-align: center;
+                margin-left: 35px;
             }
         }
 
