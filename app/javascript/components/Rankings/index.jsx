@@ -2,18 +2,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 import useIsMobile from "../../helpers/hooks/use-is-mobile";
-
 import Button from "../Button";
-import ViewToggleSwitch from "../ViewToggleSwitch";
-import useIsSeasonView from "../../helpers/hooks/use-is-season-view";
-import DatePicker from "./DatePicker";
+import RankingsControls from "./RankingsControls";
 import PlayerRanking from "./PlayerRanking";
-import EventPlayerRanking from "./EventPlayerRanking";
 
 const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers }) => {
     const [showRankings, setShowRankings] = useState(true);
-    const [isSeasonView] = useIsSeasonView();
-    const dateWrapperRef = useRef();
+    const [searchedPlayer, setSearchedPlayer] = useState("");
+    const controlsRef = useRef();
     const isMobile = useIsMobile();
 
     useEffect(() => {
@@ -26,42 +22,47 @@ const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, ev
             draffleFullButtonHeight = `${draffleButtonHeight + parseInt(draffleButtonStyle.marginBottom, 10)}px`;
         }
 
-        const dateWrapperHeight = dateWrapperRef?.current?.offsetHeight;
-        const dateWrapperStyle = window.getComputedStyle(dateWrapperRef?.current);
+        const dateWrapperHeight = controlsRef?.current?.offsetHeight;
+        const dateWrapperStyle = window.getComputedStyle(controlsRef?.current);
         const dateFullHeight = `${dateWrapperHeight + parseInt(dateWrapperStyle.marginBottom, 10)}px`;
 
         document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0px"}`);
-        document.documentElement.style.setProperty("--date-wrapper-height", dateFullHeight);
+        document.documentElement.style.setProperty("--controls-wrapper-height", dateFullHeight);
     }, [isMobile]);
 
     return (
         <div className="rankings__page">
             <div className={classNames("rankings", { "rankings--hidden": !showRankings })}>
-                <div ref={dateWrapperRef} className="rankings__date-wrapper">
-                    <DatePicker date={date} />
+                <div ref={controlsRef}>
+                    <RankingsControls date={date} onPlayerSearch={(val) => setSearchedPlayer(val)} />
                 </div>
-                <ViewToggleSwitch name="rankings-type" />
                 <div className="rankings__wrapper">
                     <div className="rankings__scroll-catcher">
                         <div className="rankings__player-listing">
                             <div id="ranked-players" className="rankings__player-bucket">
-                                {isSeasonView
-                                    ? rankedPlayers.map((ranking, i) => <PlayerRanking {...ranking} rank={i + 1} />)
-                                    : eventRankedPlayers.map((ranking, i) => (
-                                          <EventPlayerRanking {...ranking} rank={i + 1} />
-                                      ))}
+                                {rankedPlayers
+                                    .filter(
+                                        ({ user }) =>
+                                            searchedPlayer === "" ||
+                                            user.name.toLowerCase().includes(searchedPlayer.toLowerCase())
+                                    )
+                                    .map((ranking, i) => (
+                                        <PlayerRanking {...ranking} rank={i + 1} />
+                                    ))}
                             </div>
                             {unrankedPlayers.length > 0 && (
                                 <>
                                     <hr className="rankings__divider" />
                                     <div id="unranked-players" className="rankings__player-bucket">
-                                        {isSeasonView
-                                            ? unrankedPlayers.map((player) => (
-                                                  <PlayerRanking user={player} wins={0} losses={0} />
-                                              ))
-                                            : eventUnrankedPlayers.map((ranking) => (
-                                                  <EventPlayerRanking {...ranking} />
-                                              ))}
+                                        {unrankedPlayers
+                                            .filter(
+                                                (player) =>
+                                                    searchedPlayer === "" ||
+                                                    player.name.toLowerCase().includes(searchedPlayer.toLowerCase())
+                                            )
+                                            .map((player) => (
+                                                <PlayerRanking user={player} wins={0} losses={0} />
+                                            ))}
                                     </div>
                                 </>
                             )}
