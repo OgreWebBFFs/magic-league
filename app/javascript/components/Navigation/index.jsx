@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import useIsMobile from "../../helpers/hooks/use-is-mobile";
 
 import Logo from "../Logo";

@@ -18,35 +18,13 @@ const buildRankingsMap = (rankedPlayers) =>
 const Rankings = ({ date, rankedPlayers, unrankedPlayers, eventRankedPlayers, eventUnrankedPlayers }) => {
     const [showRankings, setShowRankings] = useState(true);
     const [searchedPlayer, setSearchedPlayer] = useState("");
-    const controlsRef = useRef();
-    const isMobile = useIsMobile();
 
     const playerRanks = buildRankingsMap(rankedPlayers);
-
-    useEffect(() => {
-        const draffleButton = document.querySelector(".draffle-view-button");
-        let draffleFullButtonHeight;
-        if (draffleButton) {
-            const draffleButtonHeight = draffleButton?.offsetHeight;
-            const draffleButtonStyle = window.getComputedStyle(draffleButton);
-
-            draffleFullButtonHeight = `${draffleButtonHeight + parseInt(draffleButtonStyle.marginBottom, 10)}px`;
-        }
-
-        const dateWrapperHeight = controlsRef?.current?.offsetHeight;
-        const dateWrapperStyle = window.getComputedStyle(controlsRef?.current);
-        const dateFullHeight = `${dateWrapperHeight + parseInt(dateWrapperStyle.marginBottom, 10)}px`;
-
-        document.documentElement.style.setProperty("--draffle-button-height", `${draffleFullButtonHeight || "0px"}`);
-        document.documentElement.style.setProperty("--controls-wrapper-height", dateFullHeight);
-    }, [isMobile]);
 
     return (
         <div className="rankings__page">
             <div className={classNames("rankings", { "rankings--hidden": !showRankings })}>
-                <div ref={controlsRef}>
-                    <RankingsControls date={date} onPlayerSearch={(val) => setSearchedPlayer(val)} />
-                </div>
+                <RankingsControls date={date} onPlayerSearch={(val) => setSearchedPlayer(val)} />
                 <div className="rankings__wrapper">
                     <div className="rankings__scroll-catcher">
                         <div className="rankings__player-listing">

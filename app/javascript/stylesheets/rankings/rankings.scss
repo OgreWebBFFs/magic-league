@@ -17,7 +17,7 @@
             transition: transform 300ms ease-in;
             display: flex;
             gap: var(--spacer-sm);
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: nowrap;
             position: relative;
 
@@ -35,6 +35,7 @@
 
                 button {
                     width: 3.25rem;
+                    height: 42px;
                 }
 
                 input[type="text"] {
