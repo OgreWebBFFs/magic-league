@@ -18,7 +18,7 @@ class TradesController < ApplicationController
           Exchange.create(card_id: card_id, user_id: params[:to][:id], trade_id: new_trade.id)
         }
         flash[:success] = "Your trade request was sent successfully!"
-        review_link = "#{request.base_url}#{user_path params[:to][:id]}#trades"
+        review_link = "#{request.base_url}#{user_path params[:to][:id]}#tab=trades"
         OgreBot.instance.trade_alerts.trade_requested new_trade, review_link
         render json: {status: 'success'}
       end

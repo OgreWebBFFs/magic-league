@@ -40,7 +40,7 @@
                 input[type="text"] {
                     flex: 1 1 auto;
                     color: white;
-                    background: #44444466;
+                    background: hsl(from var(--color-fill-neutral) h s l / 0.5);
                     text-align: center;
                     box-sizing: border-box;
                 }
