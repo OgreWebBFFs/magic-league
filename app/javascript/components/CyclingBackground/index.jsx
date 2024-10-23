@@ -1,12 +1,7 @@
-import React from 'react';
-import useIsSeasonView from '../../helpers/hooks/use-is-season-view';
+import React from "react";
 
 const CyclingBackground = ({ bgPath, eventBgPath }) => {
-  const [isSeasonView] = useIsSeasonView();
-
-  return (
-    <div className="cycling-background" style={{ backgroundImage: `url('${isSeasonView ? bgPath : eventBgPath}')` }} />
-  );
+    return <div className="cycling-background" style={{ backgroundImage: `url('${bgPath}')` }} />;
 };
 
 export default CyclingBackground;
