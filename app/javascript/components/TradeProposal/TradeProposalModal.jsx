@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import xhrRequest from "../../helpers/xhr-request";
-import { saveScrollPos } from "../../helpers/scroll-restoration";
 import LoadingIcon from "../Icons/LoadingIcon";
 import Button from "../Button";
 import Modal from "../Modal";
-
-const refreshPage = () => {
-    saveScrollPos();
-    // eslint-disable-next-line no-undef
-    // Turbolinks.visit(window.location.href, { action: 'replace' });
-};
 
 const Status = {
     initial: () => (

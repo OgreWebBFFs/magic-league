@@ -8,7 +8,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 gem 'rest-client', '~> 2.1.0'
 
-gem 'turbolinks', '~> 5.2.1'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.8.1'
 gem 'omniauth', '~> 2.1.0'
@@ -26,6 +25,7 @@ gem 'fast_jsonapi', '~> 1.5'
 
 gem 'react-rails', '~> 3.2.0'
 gem 'kaminari'
+gem 'device_detector'
 
 group :development, :test do
   gem 'byebug', '~> 11.1.3', platforms: [:mri, :mingw, :x64_mingw]

@@ -24,20 +24,14 @@ export const stringifyHash = (hashObj) =>
         );
 
 const useHashParams = () => {
-    const [hash, setHash] = useHash();
+    const [hash, setHash] = !globalThis.window ? ["", () => {}] : useHash();
     const hashParams = parseHash(hash.replace(/^#/, ""));
 
     const updateHashParams = (newHashParamsObj) => {
         const newHashString = `${stringifyHash(newHashParamsObj)}`;
         if (newHashString !== hash) {
             setHash(`#${newHashString}`);
-            window.history.replaceState(
-                {
-                    /*turbolinks: true*/
-                },
-                "",
-                `#${newHashString}`
-            );
+            window.history.replaceState({}, "", `#${newHashString}`);
         }
     };
 

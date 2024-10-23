@@ -1,18 +1,15 @@
-const { generateWebpackConfig, inliningCss } = require('shakapacker');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { existsSync } = require("fs");
+const { resolve } = require("path");
+const { env, generateWebpackConfig } = require("shakapacker");
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const envSpecificConfig = () => {
+    const path = resolve(__dirname, `${env.nodeEnv}.js`);
+    if (existsSync(path)) {
+        console.log(`Loading ENV specific webpack configuration file ${path}`);
+        return require(path);
+    } else {
+        return generateWebpackConfig();
+    }
+};
 
-const webpackConfig = generateWebpackConfig();
-
-if (isDevelopment && inliningCss) {
-  webpackConfig.plugins.push(
-    new ReactRefreshWebpackPlugin({
-      overlay: {
-        sockPort: webpackConfig.devServer.port,
-      },
-    })
-  );
-}
-
-module.exports = webpackConfig;
+module.exports = envSpecificConfig();

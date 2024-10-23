@@ -21,6 +21,7 @@
     <% if user_signed_in? %>
       <% unlocked_users = User.unlocked %>
       <%= react_component("Navigation", {
+        device: @device_type,
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
         unlockedUsers: unlocked_users,
@@ -28,7 +29,7 @@
           pendingTradeOffer: current_user.has_pending_trade_offer?,
           newAnnouncement: Rails.cache.read('new_announcement') === true
         }
-      }) %>
+      }, { prerender: true }) %>
     <% end %>
 
     <div class="app__section full-page">

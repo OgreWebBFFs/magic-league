@@ -1,13 +1,13 @@
-import xhrRequest from '../../../../../helpers/xhr-request';
+import xhrRequest from "../../../../../helpers/xhr-request";
 
 const postTradeReview = async (trade, status) => {
-    try{
+    try {
         await xhrRequest({
-        url: `/trades/${trade.id}`,
-        options: {
-            method: 'PUT',
-            body: JSON.stringify({ status }),
-        },
+            url: `/trades/${trade.id}`,
+            options: {
+                method: "PUT",
+                body: JSON.stringify({ status }),
+            },
         });
         window.location.reload();
     } catch (e) {
