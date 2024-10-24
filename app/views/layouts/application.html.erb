@@ -6,22 +6,22 @@
     <%= csp_meta_tag %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <meta name="turbolinks-cache-control" content="no-cache">
-    <script src="https://kit.fontawesome.com/bf38c6b1c9.js" crossorigin="anonymous"></script>
     <title>Ogre the Leaguening</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="//cdn.jsdelivr.net/npm/mana-font@latest/css/mana.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.jsdelivr.net/npm/keyrune@latest/css/keyrune.css" rel="stylesheet" type="text/css" />
-    
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
   <body>
     <% if user_signed_in? %>
       <% unlocked_users = User.unlocked %>
       <%= react_component("Navigation", {
+        device: @device_type,
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
         unlockedUsers: unlocked_users,
@@ -29,7 +29,7 @@
           pendingTradeOffer: current_user.has_pending_trade_offer?,
           newAnnouncement: Rails.cache.read('new_announcement') === true
         }
-      }) %>
+      }, { prerender: true }) %>
     <% end %>
 
     <div class="app__section full-page">

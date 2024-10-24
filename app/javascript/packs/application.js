@@ -14,23 +14,17 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import Rails from '@rails/ujs';
-import Turbolinks from 'turbolinks';
-import * as ActiveStorage from '@rails/activestorage';
-import '../helpers/scroll-restoration';
+import Rails from "@rails/ujs";
+import * as ActiveStorage from "@rails/activestorage";
 
 Rails.start();
-Turbolinks.start();
 ActiveStorage.start();
 
 // Support component names relative to this directory:
-const componentRequireContext = require.context('components', true);
-const ReactRailsUJS = require('react_ujs');
+const componentRequireContext = require.context("components", true);
+const ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
-document.addEventListener('turbolinks:before-render', () => {
-  ReactRailsUJS.unmountComponents()
-});
 
 // Include images from static asset directory
-const images = require.context('../images', true)
-const imagePath = (name) => images(name, true)
+const images = require.context("../images", true);
+const imagePath = (name) => images(name, true);
