@@ -3,6 +3,6 @@
     <%= react_component("CardBrowser", {
       userId: current_user.id,
       wishlist: current_user.wishlist
-    }) %>
+    }, { prerender: true }) %>
   </div>
 </div>
