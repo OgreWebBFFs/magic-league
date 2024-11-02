@@ -20,6 +20,8 @@ const Status = {
     ),
 };
 
+const refreshPage = () => window.location.reload();
+
 const TradeProposalModal = ({ onClose, card, currentUserId, user, priorMessageTimestamp }) => {
     const [reqState, setReqState] = useState("initial");
     const isComplete = reqState === "success" || reqState === "error";
