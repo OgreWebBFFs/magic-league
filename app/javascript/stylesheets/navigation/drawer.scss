@@ -66,3 +66,13 @@
         }
     }
 }
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    .drawer {
+        color: hsl(0, 78%, 88%);
+    }
+
+    .drawer__section {
+        background-color: hsl(0, 78%, 88%);
+    }
+}

@@ -45,3 +45,18 @@
         }
     }
 }
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    .footer {
+        background-color: hsl(0, 78%, 8%);
+        --footer-corner-color: hsl(0, 78%, 18% / 0.2);
+        --footer-central-color: hsl(0, 78%, 8% / 0.4);
+        background: linear-gradient(
+            56deg,
+            hsl(0, 78%, 8%),
+            hsl(0, 78%, 8% / 0.4) 40%,
+            hsl(0, 78%, 8% / 0.4) 92%,
+            hsl(0, 78%, 18% / 0.2)
+        );
+    }
+}

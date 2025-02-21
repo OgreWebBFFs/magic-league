@@ -30,3 +30,11 @@
         }
     }
 }
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    .trade-logger {
+        &__status-title.error {
+            color: hsl(2, 81%, 31%);
+        }
+    }
+}

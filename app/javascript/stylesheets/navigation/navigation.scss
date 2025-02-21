@@ -191,3 +191,18 @@
         }
     }
 }
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    .nav {
+        background-color: hsl(0, 78%, 8%);
+        --nav-corner-color: hsl(0, 78%, 18% / 0.5);
+        --nav-central-color: hsl(0, 78%, 8% / 0.7);
+        background: linear-gradient(
+            56deg,
+            hsl(0, 78%, 8%),
+            hsl(0, 78%, 8% / 0.7) 30%,
+            hsl(0, 78%, 8% / 0.7) 92%,
+            hsl(0, 78%, 18% / 0.5)
+        );
+    }
+}
