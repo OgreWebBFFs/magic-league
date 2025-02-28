@@ -16,6 +16,18 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+ <script>         
+            document.addEventListener("DOMContentLoaded", function() {
+            console.log("checking version")
+            var ua = navigator.userAgent;
+            var isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+           
+            console.log("is safari: " + isSafari)
+            if (isSafari) {
+              document.body.classList.add('safari');
+            }
+          });
+</script>
   </head>
   <body>
     <% if user_signed_in? %>

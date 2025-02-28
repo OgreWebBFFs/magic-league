@@ -6,9 +6,6 @@ a.button,
     --button-lightness-shift-safari: 0%;
     --button-background-color-base: var(--color-fill-theme);
 
-    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-        --button-lightness-shift: var(--button-lightness-shift-safari);
-    }
     -webkit-tap-highlight-color: transparent;
     align-items: center;
     background-color: hsl(
@@ -111,5 +108,4 @@ a.button,
         transition-property: all;
         transition-timing-function: ease-in-out;
     }
-    
 }

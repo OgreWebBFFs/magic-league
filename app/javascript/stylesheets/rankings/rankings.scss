@@ -160,16 +160,8 @@
         --rankings-central-color: hsl(
             from var(--color-fill-neutral) h s calc(l + var(--rankings-button-lightness-shift)) / 0.6
         );
-        @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-            --rankings-button-lightness-shift: 0%;
-            --rankings-corner-color: hsl(
-                from var(--color-fill-neutral) h s calc(l + 15% + var(--rankings-button-lightness-shift)) / 0.4
-            );
-            --rankings-central-color: hsl(
-                from var(--color-fill-neutral) h s calc(l + var(--rankings-button-lightness-shift)) / 0.6
-            );
-        }
-        background: linear-gradient(
+        background-color: var(--rankings-central-color);
+        background-image: linear-gradient(
             56deg,
             var(--color-fill-neutral),
             var(--rankings-central-color) 20%,
@@ -203,12 +195,6 @@
         --rankings-corner-color: hsl(
             from var(--color-fill-neutral) h s calc(l + 15 + var(--rankings-button-lightness-shift)) / 0.2
         );
-        @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-            --rankings-button-lightness-shift: 0%;
-            --rankings-corner-color: hsl(
-                from var(--color-fill-neutral) h s calc(l + 15% + var(--rankings-button-lightness-shift)) / 0.2
-            );
-        }
     }
 
     &__player {
@@ -316,4 +302,8 @@
         opacity: 0;
         pointer-events: none;
     }
+}
+
+.safari .rankings__user-button.rankings__user-button--unranked.button {
+    background-color: var(--rankings-central-color);
 }
