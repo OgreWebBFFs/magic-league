@@ -5,17 +5,9 @@ const SET_DETAILS = {
         text: "Special Guest",
         symbol: "ss ss-spg",
     },
-    blb: {
-        text: "Bloomburrow",
-        symbol: "ss ss-blb",
-    },
-    blc: {
-        text: "Imagine: Courageous Critters",
-        symbol: "ss ss-blc",
-    },
-    dsk: {
-        text: "Duskmourn: House of Horror",
-        symbol: "ss ss-dsk",
+    dft: {
+        text: "Aetherdrift",
+        symbol: "ss ss-dft",
     },
 };
 

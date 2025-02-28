@@ -1,6 +1,7 @@
 :root {
     //Current Theme Values
-    --color-theme: hsl(105, 16%, 58%);
+    --color-theme: hsl(190, 37%, 51%);
+    // --color-theme: hsl(298, 44%, 60%);
     --color-dark: hsl(from var(--color-theme) h s calc(l - 40));
     --color-light: hsl(from var(--color-theme) h s calc(l + 40));
     --color-site-background: hsl(from var(--color-theme) h calc(s - 10) calc(l + 50));
