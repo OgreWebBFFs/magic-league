@@ -22,11 +22,39 @@ const DrawerContents = {
     ),
 };
 
-const Navigation = ({ device, isAdmin, currentUserId, unlockedUsers, notifications }) => {
+const Navigation = ({
+    device,
+    isAdmin = false,
+    isLoggedIn = true,
+    currentUserId = "",
+    unlockedUsers = [],
+    notifications = {
+        pendingTradeOffer: false,
+        newAnnouncement: false,
+    },
+}) => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [drawerContetSelector, setDrawerContentSelector] = useState("match-logger");
+    const [drawerContentSelector, setDrawerContentSelector] = useState("match-logger");
     const isMobile = useIsMobile(device === "mobile");
     const navRef = useRef();
+
+    if (!isLoggedIn) {
+        return (
+            <nav
+                ref={navRef}
+                id="top-nav"
+                className={`nav ${isMobile ? "nav--mobile" : "nav--desktop"}`}
+                role="navigation"
+            >
+                <a href="/" className="nav__logo" aria-label="home">
+                    <Logo />
+                </a>
+                <Button className="button--small" href="/users/sign_up">
+                    Sign Up
+                </Button>
+            </nav>
+        );
+    }
 
     let links = [
         {
@@ -116,7 +144,7 @@ const Navigation = ({ device, isAdmin, currentUserId, unlockedUsers, notificatio
             </Button>
             <Drawer isOpen={isDrawerOpen} close={() => setIsDrawerOpen(false)}>
                 {isDrawerOpen &&
-                    DrawerContents[drawerContetSelector]({
+                    DrawerContents[drawerContentSelector]({
                         currentUserId,
                         unlockedUsers,
                     })}
