@@ -38,7 +38,7 @@ const Trades = ({ trades, user, currentUserId }) => {
                                 <DateStatusCell>{info.offer_date}</DateStatusCell>
                                 <NameCell>
                                     <MobileLabel>With: </MobileLabel>
-                                    {them.name}
+                                    <div>{them.name}</div>
                                 </NameCell>
                                 <CardListCell>
                                     <MobileLabel>Giving: </MobileLabel>

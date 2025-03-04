@@ -60,7 +60,15 @@
 
     @media only screen and (max-width: 850px) {
         .row {
-            display: block;
+            flex-direction: column;
+        }
+
+        .matches__cell {
+            &--date,
+            &--time {
+                flex: 0 0 auto;
+                width: 100%;
+            }
         }
 
         .matches__cell {
