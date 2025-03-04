@@ -1,7 +1,7 @@
 .trades-table {
     .row {
         @media only screen and (max-width: 850px) {
-            display: block;
+            flex-direction: column;
             &--headings {
                 display: none;
             }
@@ -10,6 +10,7 @@
             @media only screen and (max-width: 850px) {
                 color: var(--color-text-neutral);
                 background: var(--color-fill-neutral);
+                width: 100%;
             }
         }
     }
