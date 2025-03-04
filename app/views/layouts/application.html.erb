@@ -16,24 +16,12 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
- <script>         
-            document.addEventListener("DOMContentLoaded", function() {
-            console.log("checking version")
-            var ua = navigator.userAgent;
-            var isSafari = /^((?!chrome|android).)*safari/i.test(ua);
-           
-            console.log("is safari: " + isSafari)
-            if (isSafari) {
-              document.body.classList.add('safari');
-            }
-          });
-</script>
   </head>
-  <body>
+  <body class="<%= @user_device.safari? ? 'safari' : '' %>">
     <% if user_signed_in? %>
       <% unlocked_users = User.unlocked %>
       <%= react_component("Navigation", {
-        device: @device_type,
+        device: @user_device.device_type,
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
         unlockedUsers: unlocked_users,
