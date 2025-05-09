@@ -45,6 +45,7 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
                 <h3>Make a Trade</h3>
                 <p>Who would you like to trade with</p>
                 <PlayerSelect player={tradePartner} players={otherUsers} setSelectedPlayer={setTradePartner} />
+                <a onClick={() => e.preventDefault()}>+ Add Another Participant</a>
                 <p>What would you like to trade for</p>
                 <CardSelect onUpdate={setReceiveCards} userId={tradePartner.id} />
                 <p>What are you offering</p>
