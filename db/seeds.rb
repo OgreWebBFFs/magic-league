@@ -80,23 +80,17 @@ Result.find_or_create_by(match: match6, user: dustin, place: 2)
 
 # Trades
 # ===================================================
-pat_zack_trade = Trade.find_or_create_by(from_user: pat.id, to_user: zack.id)
-pat_dustin_trade = Trade.find_or_create_by(from_user: pat.id, to_user: dustin.id)
-dustin_zack_trade = Trade.find_or_create_by(from_user: dustin.id, to_user: zack.id, status: 'approved')
+pat_zack_trade = Trade.create( status: '1')
+pat_dustin_trade = Trade.create( status: '1')
+dustin_zack_trade = Trade.create( status: 'approved')
  
-Exchange.find_or_create_by(card_id: card1.id, user_id: pat.id, trade_id: pat_zack_trade.id)
-Exchange.find_or_create_by(card_id: card2.id, user_id: zack.id, trade_id: pat_zack_trade.id)
-Exchange.find_or_create_by(card_id: card3.id, user_id: dustin.id, trade_id: pat_dustin_trade.id)
-Exchange.find_or_create_by(card_id: card2.id, user_id: dustin.id, trade_id: pat_dustin_trade.id)
-Exchange.find_or_create_by(card_id: card2.id, user_id: pat.id, trade_id: pat_dustin_trade.id)
-Exchange.find_or_create_by(card_id: card1.id, user_id: dustin.id, trade_id: dustin_zack_trade.id)
-Exchange.find_or_create_by(card_id: card2.id, user_id: zack.id, trade_id: dustin_zack_trade.id)
-
-# Objectives
-# ====================================================
-objective1 = Objective.find_or_create_by(description: "Have 15 or more cards in your hand")
-objective2 = Objective.find_or_create_by(description: "Control 20 or more creatures  ")
-objective3 = Objective.find_or_create_by(description: "Hit an opponent with their own commander")
+Exchange.find_or_create_by(card_id: card1.id, to_user_id: pat.id, from_user_id: zack.id, trade_id: pat_zack_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, to_user_id: zack.id, from_user_id: pat.id, trade_id: pat_zack_trade.id)
+Exchange.find_or_create_by(card_id: card3.id, to_user_id: dustin.id, from_user_id: pat.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, to_user_id: dustin.id, from_user_id: pat.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, to_user_id: pat.id, from_user_id: dustin.id, trade_id: pat_dustin_trade.id)
+Exchange.find_or_create_by(card_id: card1.id, to_user_id: dustin.id, from_user_id: zack.id, trade_id: dustin_zack_trade.id)
+Exchange.find_or_create_by(card_id: card2.id, to_user_id: zack.id, from_user_id: dustin.id, trade_id: dustin_zack_trade.id)
 
 # Draffles
 # =====================================================
