@@ -10,7 +10,7 @@ class TradeForm
 
     def save
        return self unless valid?
-       puts "\n\n\nIT HAS BEEN SAVED!!!!\n\n\n"
+       TradeBuilderService.new(data).build
        self
     end
 end
