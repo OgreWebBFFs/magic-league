@@ -4,6 +4,10 @@ class Trade < ApplicationRecord
 
   validates :status, acceptance: { accept: ['pending', 'approved', 'rejected', 'error']}
 
+  def users
+    User.where(id: exchanges.pluck(:from_user_id, :to_user_id).flatten.uniq)
+  end
+
   private
   
   def to_cards
