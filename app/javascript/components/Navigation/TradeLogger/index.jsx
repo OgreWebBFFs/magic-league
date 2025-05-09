@@ -8,7 +8,7 @@ import buildTradeData from "./build-trade-data";
 
 const createTrade = async (tradeData) =>
     xhrRequest({
-        url: "/trades",
+        url: "/multi_trades",
         options: {
             method: "POST",
             body: JSON.stringify(tradeData),
