@@ -2,30 +2,42 @@ class TradeSerializer
   include FastJsonapi::ObjectSerializer
   attributes :status, :created_at, :updated_at, :id
 
-  attribute :offer_date do |trade|
+  attribute :offer_date do |trade, params|
     trade.created_at.strftime("%b #{trade.created_at.day.ordinalize}")
   end
   
-  attribute :from do |trade|
+  attribute :from do |trade, params|
+    puts params
+    user = params[:user]
     {
-      id: trade.from.id,
-      name: trade.from.name,
-      cards: get_cards(trade.from, trade)
+      id: user.id,
+      name: user.name,
+      cards: trade.exchanges
+        .select { |exchange| exchange.from_user_id == user.id }
+        .flat_map(&:card)
     }
   end
   
-  attribute :to do |trade|
+  attribute :to do |trade, params|
+    user = params[:user]
     {
-      id: trade.to.id,
-      name: trade.to.name,
-      cards: get_cards(trade.to, trade)
+      id: "1",
+      name: trade.users.filter{ |_user| _user.id != user.id},
+      cards: trade.exchanges
+      .select { |exchange| exchange.to_user_id == user.id }
+      .flat_map(&:card)
     }
   end
   
   private
 
-  def self.get_cards (user, trade)
-    user_exchanges = trade.exchanges.where('user_id = ?', user.id)
+  def get_from_cards (trade, user)
+    user_exchanges = trade.exchanges.where('from_user_id = ?', user.id)
+    user_exchanges.map { |exchange| trade.cards.find{ |card| card.id === exchange.card_id}}
+  end
+
+  def get_to_cards (trade, user)
+    user_exchanges = trade.exchanges.where('to_user_id = ?', user.id)
     user_exchanges.map { |exchange| trade.cards.find{ |card| card.id === exchange.card_id}}
   end
 
