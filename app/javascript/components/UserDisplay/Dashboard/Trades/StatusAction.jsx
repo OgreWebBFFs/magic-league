@@ -6,7 +6,11 @@ const StatusIcons = {
     rejected: () => <i className="fas fa-times rejected" />,
     error: () => <i className="fas fa-exclamation-triangle error" />,
     pending: ({ trade, currentUserId }) =>
-        trade.to.id === currentUserId ? <TradeReviewButton trade={trade} /> : <i className="fas fa-question waiting" />,
+        trade.status.split("|").includes(`${currentUserId}`) ? (
+            <i className="fas fa-question waiting" />
+        ) : (
+            <TradeReviewButton trade={trade} />
+        ),
 };
 
 const StatusAction = (props) => (StatusIcons[props.trade.status] || StatusIcons.pending)(props);
