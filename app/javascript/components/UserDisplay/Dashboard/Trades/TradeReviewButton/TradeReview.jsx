@@ -3,9 +3,9 @@ import Button from "../../../../Button";
 import postTradeReview from "./post-trade-review";
 import CardReviewTable from "./CardReviewTable";
 
-const TradeReview = ({ trade }) => {
+const TradeReview = ({ trade, currentUserId }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    
+
     return (
         <>
             <h3>Reviewing Trade</h3>
@@ -38,7 +38,7 @@ const TradeReview = ({ trade }) => {
                 <Button
                     onClick={() => {
                         setIsSubmitting(true);
-                        postTradeReview(trade, "approved");
+                        postTradeReview(trade, "approved", currentUserId);
                     }}
                     className="modal__action-button button--positive"
                     disabled={isSubmitting}

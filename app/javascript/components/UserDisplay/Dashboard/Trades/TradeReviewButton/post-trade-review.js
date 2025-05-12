@@ -1,12 +1,12 @@
 import xhrRequest from "../../../../../helpers/xhr-request";
 
-const postTradeReview = async (trade, status) => {
+const postTradeReview = async (trade, status, currentUserId) => {
     try {
         await xhrRequest({
-            url: `/trades/${trade.id}`,
+            url: `/multi_trades/${trade.id}`,
             options: {
-                method: "PUT",
-                body: JSON.stringify({ status }),
+                method: "PATCH",
+                body: JSON.stringify({ status, user_id: currentUserId }),
             },
         });
         window.location.reload();
