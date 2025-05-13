@@ -1,28 +1,57 @@
 import React, { useState } from "react";
 import Button from "../../../../Button";
 import postTradeReview from "./post-trade-review";
-import CardReviewTable from "./CardReviewTable";
+import { Table, Row, Cell } from "../../../../Table";
+// import CardReviewTable from "./CardReviewTable";
 
 const TradeReview = ({ trade, currentUserId }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-
     return (
         <>
             <h3>Reviewing Trade</h3>
             <p>
-                <span style={{ fontWeight: "900" }}>{trade.from.name}</span> has proposed the following trade:
+                <span style={{ fontWeight: "900" }}>
+                    Trade with {trade.other_users.map((user) => user.name).join(" and ")}
+                </span>
+                :
             </p>
             <div className="trade-review-modal__contents">
-                <CardReviewTable
-                    cards={trade.from.cards}
-                    header="You Receive"
-                    arrow={<i className="fas fa-arrow-left" />}
-                />
-                <CardReviewTable
-                    cards={trade.to.cards}
-                    header={`${trade.from.name} Receives`}
-                    arrow={<i className="fas fa-arrow-right" />}
-                />
+                <Table>
+                    <Row isHeading>
+                        <Cell>You</Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <ul>
+                                {trade.current_user.give_cards.map((card) => (
+                                    <li style={{ color: "red" }}>{`- ${card.name} (${card.rarity})`}</li>
+                                ))}
+                                {trade.current_user.receive_cards.map((card) => (
+                                    <li style={{ color: "green" }}>{`+ ${card.name} (${card.rarity})`}</li>
+                                ))}
+                            </ul>
+                        </Cell>
+                    </Row>
+                </Table>
+                {trade.other_users.map((user) => (
+                    <Table>
+                        <Row isHeading>
+                            <Cell>{user.name}</Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <ul>
+                                    {user.give_cards.map((card) => (
+                                        <li style={{ color: "red" }}>{`- ${card.name} (${card.rarity})`}</li>
+                                    ))}
+                                    {user.receive_cards.map((card) => (
+                                        <li style={{ color: "green" }}>{`+ ${card.name} (${card.rarity})`}</li>
+                                    ))}
+                                </ul>
+                            </Cell>
+                        </Row>
+                    </Table>
+                ))}
             </div>
             <div className="modal__actions">
                 <Button
