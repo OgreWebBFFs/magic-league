@@ -31,15 +31,13 @@ const Trades = ({ trades, user, currentUserId }) => {
                     </Row>
                     {trades.map((trade) => {
                         const info = trade.data.attributes;
-                        const me = info.from.id === user.id ? info.from : info.to;
-                        const them = info.from.id === user.id ? info.to : info.from;
                         return (
                             <Row>
                                 <DateStatusCell>{info.offer_date}</DateStatusCell>
                                 <NameCell>
                                     <MobileLabel>With: </MobileLabel>
                                     <ul>
-                                        {them.name.map((user) => (
+                                        {info.other_users.map((user) => (
                                             <li>{user.name}</li>
                                         ))}
                                     </ul>
@@ -47,7 +45,7 @@ const Trades = ({ trades, user, currentUserId }) => {
                                 <CardListCell>
                                     <MobileLabel>Giving: </MobileLabel>
                                     <ul>
-                                        {me.cards.map((card) => (
+                                        {info.current_user.give_cards.map((card) => (
                                             <li>{card.name}</li>
                                         ))}
                                     </ul>
@@ -55,7 +53,7 @@ const Trades = ({ trades, user, currentUserId }) => {
                                 <CardListCell>
                                     <MobileLabel>Receiving: </MobileLabel>
                                     <ul>
-                                        {them.cards.map((card) => (
+                                        {info.current_user.receive_cards.map((card) => (
                                             <li>{card.name}</li>
                                         ))}
                                     </ul>
