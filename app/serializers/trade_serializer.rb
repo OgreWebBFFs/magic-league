@@ -7,7 +7,6 @@ class TradeSerializer
   end
   
   attribute :from do |trade, params|
-    puts params
     user = params[:user]
     {
       id: user.id,

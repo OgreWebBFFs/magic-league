@@ -4,6 +4,18 @@ class Exchange < ApplicationRecord
   belongs_to :card
   belongs_to :trade
   
+  def you_give_s
+    "You give **#{card.name}** to  #{to_user.name}"
+  end
+
+  def you_get_s
+    "You get **#{card.name}** from #{from_user.name}"
+  end
+
+  def others_s
+    "#{to_user.name} gets **#{card.name}** from #{from_user.name}"   
+  end
+
   def execute
     from_user.remove_card card
     to_user.add_card card
