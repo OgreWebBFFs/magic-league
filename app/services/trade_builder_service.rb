@@ -20,6 +20,7 @@ class TradeBuilderService
         receive_entry[:receives].delete give_card
       end
     end
+    trade
   end
 
   private

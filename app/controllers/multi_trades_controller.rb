@@ -7,6 +7,10 @@ class MultiTradesController < ApplicationController
   
     def create
         trade_form = TradeForm.new(data: trade_params).save
+        if trade_form.valid?
+          flash[:success] = "Your trade request was sent successfully!"
+          trade_form.result.request
+        end
         render json: {status: trade_form.valid?, errors: trade_form.errors}
     end
   

@@ -6,6 +6,10 @@ class Trade < ApplicationRecord
     User.where(id: exchanges.pluck(:from_user_id, :to_user_id).flatten.uniq)
   end
 
+  def request
+    TradeAlertService.new(id).requested
+  end
+
   def approve user_id
     return if status == 'approved'
     approvals = (status || '').split('|').map(&:to_i)
@@ -14,7 +18,7 @@ class Trade < ApplicationRecord
     if all_participants_approved?(approvals)
       execute_trade
       self.status = 'approved'
-      # OgreBot.instance.trade_alerts.trade_accepted trade
+      TradeAlertService.new(id).approved
     else
       self.status = approvals.join('|')
     end
@@ -23,7 +27,7 @@ class Trade < ApplicationRecord
 
   def reject
     self.status = 'rejected'
-    # OgreBot.instance.trade_alerts.trade_rejected trade
+    TradeAlertService.new(id).rejected
     save!
   end
 
