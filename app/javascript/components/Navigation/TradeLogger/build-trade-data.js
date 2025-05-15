@@ -16,8 +16,8 @@ const validateParams = (...params) => {
     });
 };
 
-const buildTradeData = (toId, toCards, fromId, fromCards) => {
-    validateParams(toId, toCards, fromId, fromCards);
+const buildTradeData = (exchanges) => {
+    validateParams(exchanges);
     //   return {
     //     to: {
     //       id: toId,
@@ -29,10 +29,11 @@ const buildTradeData = (toId, toCards, fromId, fromCards) => {
     //     },
     //   };
     return {
-        data: [
-            { user: toId, gives: toCards.map(getCardId), receives: fromCards.map(getCardId) },
-            { user: fromId, gives: fromCards.map(getCardId), receives: toCards.map(getCardId) },
-        ],
+        data: exchanges.map(({ user, gives, receives }) => ({
+            user,
+            gives: gives.map((giveCardOption) => giveCardOption.card.id),
+            receives: receives.map((receiveCardOptions) => receiveCardOptions.card.id),
+        })),
     };
 };
 

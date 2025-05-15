@@ -11,7 +11,7 @@ class MultiTradesController < ApplicationController
           flash[:success] = "Your trade request was sent successfully!"
           trade_form.result.request
         end
-        render json: {status: trade_form.valid?, errors: trade_form.errors}
+        render json: {status: trade_form.valid? ? 'success' : 'error', errors: trade_form.errors}, :status => trade_form.valid? ? 200 : 400;
     end
   
     def update
