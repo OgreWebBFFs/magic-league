@@ -14,6 +14,18 @@ const LabelWithSet = ({ option }) => (
     </>
 );
 
+export const LimitedCardSelect = ({ onUpdate, cardOptions }) => (
+    <Select
+        isMulti
+        isSearchable
+        isClearable
+        options={cardOptions}
+        onChange={onUpdate}
+        className="trade-logger__card-select"
+        form="trade-form"
+    />
+);
+
 const CardSelect = ({ onUpdate, userId }) => {
     const [cardOptions, setCardOptions] = useState([]);
     const [inputValue, setInputValue] = useState("");

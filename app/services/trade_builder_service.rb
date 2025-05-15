@@ -8,6 +8,8 @@ class TradeBuilderService
     @data.each do |give_entry|
       give_entry[:gives].each do |give_card|
 
+        puts give_card
+        puts @data
         receive_entry = @data.find{ |entry| entry[:receives].include?(give_card) }
 
         Exchange.create({
@@ -17,7 +19,7 @@ class TradeBuilderService
           card_id: give_card
         });
 
-        receive_entry[:receives].delete give_card
+        receive_entry[:receives].delete_at(receive_entry[:receives].index(give_card))
       end
     end
     trade
