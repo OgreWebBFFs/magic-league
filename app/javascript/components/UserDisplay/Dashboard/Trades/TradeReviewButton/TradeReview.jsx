@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Button from "../../../../Button";
 import postTradeReview from "./post-trade-review";
 import { Table, Row, Cell } from "../../../../Table";
-// import CardReviewTable from "./CardReviewTable";
 
 const TradeReview = ({ trade, currentUserId }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const exchanges = [{ ...trade.current_user, name: "You" }, ...trade.other_users];
     return (
         <>
             <h3>Reviewing Trade</h3>
@@ -16,36 +16,19 @@ const TradeReview = ({ trade, currentUserId }) => {
                 :
             </p>
             <div className="trade-review-modal__contents">
-                <Table>
-                    <Row isHeading>
-                        <Cell>You</Cell>
-                    </Row>
-                    <Row>
-                        <Cell>
-                            <ul>
-                                {trade.current_user.give_cards.map((card) => (
-                                    <li style={{ color: "red" }}>{`- ${card.name} (${card.rarity})`}</li>
-                                ))}
-                                {trade.current_user.receive_cards.map((card) => (
-                                    <li style={{ color: "green" }}>{`+ ${card.name} (${card.rarity})`}</li>
-                                ))}
-                            </ul>
-                        </Cell>
-                    </Row>
-                </Table>
-                {trade.other_users.map((user) => (
-                    <Table>
+                {exchanges.map((user) => (
+                    <Table key={user.id}>
                         <Row isHeading>
                             <Cell>{user.name}</Cell>
                         </Row>
                         <Row>
-                            <Cell>
+                            <Cell className="trade-review-modal__exchange">
                                 <ul>
                                     {user.give_cards.map((card) => (
-                                        <li style={{ color: "red" }}>{`- ${card.name} (${card.rarity})`}</li>
+                                        <li className="gives">{`- ${card.name} (${card.rarity})`}</li>
                                     ))}
                                     {user.receive_cards.map((card) => (
-                                        <li style={{ color: "green" }}>{`+ ${card.name} (${card.rarity})`}</li>
+                                        <li className="receives">{`+ ${card.name} (${card.rarity})`}</li>
                                     ))}
                                 </ul>
                             </Cell>
