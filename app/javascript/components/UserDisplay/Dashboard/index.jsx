@@ -36,14 +36,13 @@ const Tabs = {
     },
     trades: {
         view: (props) => <Trades {...props} />,
-        notification: ({ trades, currentUserId }) => {
-            console.log(trades);
-            return trades.some(
+        notification: ({ trades, currentUserId }) =>
+            trades.some(
                 ({ data: { attributes } }) =>
                     attributes.current_user.id === currentUserId &&
-                    (attributes.status !== "rejected" || attributes.status !== "approved")
-            );
-        },
+                    (attributes.status !== "rejected" || attributes.status !== "approved") &&
+                    !attributes.status.includes(currentUserId)
+            ),
         actions: [],
     },
 };
