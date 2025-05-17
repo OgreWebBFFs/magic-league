@@ -90,11 +90,11 @@
             text-wrap: nowrap;
 
             &.gives {
-                color: var(--color-fill-negative);
+                color: red;
             }
 
             &.receives {
-                color: var(--color-fill-positive);
+                color: green;
             }
         }
     }
