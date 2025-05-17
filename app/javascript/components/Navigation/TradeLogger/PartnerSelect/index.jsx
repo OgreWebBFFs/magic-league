@@ -48,7 +48,11 @@ const PartnerSelect = ({ players, exchanges, setExchanges }) => {
                         setSelectedPlayer={(newPartner) => changeTradePartner(newPartner, partner)}
                     />
                     {partners.length > 1 && (
-                        <Button className="button--negative" onClick={() => removeTradePartner(partner)}>
+                        <Button
+                            className="button--negative"
+                            style={{ maxHeight: "45px" }}
+                            onClick={() => removeTradePartner(partner)}
+                        >
                             -
                         </Button>
                     )}

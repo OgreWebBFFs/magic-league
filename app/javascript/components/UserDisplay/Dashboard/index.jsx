@@ -40,8 +40,9 @@ const Tabs = {
             trades.some(
                 ({ data: { attributes } }) =>
                     attributes.current_user.id === currentUserId &&
-                    (attributes.status !== "rejected" || attributes.status !== "approved") &&
-                    !attributes.status.includes(currentUserId)
+                    attributes.status !== "rejected" &&
+                    attributes.status !== "approved" &&
+                    !attributes.status.split("|").includes(`${currentUserId}`)
             ),
         actions: [],
     },
