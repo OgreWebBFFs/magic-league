@@ -26,12 +26,16 @@ Rails.application.routes.draw do
   resources :collections, only: [:index, :show, :edit, :update]
   get 'collections/:id/bulk_edit', to: 'collections#bulk_edit', as: 'bulk_edit_collection'
   patch 'collections/:id/bulk_update', to: 'collections#bulk_update', as: 'bulk_update_collection'
+  get 'collections/:id/chaos_edit', to: 'collections#chaos_edit', as: 'chaos_edit_collection'
 
   resources :cards, only: [:index, :show] do
     member do
       get 'prints'
+      get 'scryfall'
     end
   end
+  get 'scryfall', to: 'cards#scryfall', as: 'cards_scryfall'
+
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
   resources :received_trades, only: [:create]

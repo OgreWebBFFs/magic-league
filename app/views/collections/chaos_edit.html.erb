@@ -1,0 +1,8 @@
+<div id="edit-collections__wrapper">
+    <div id="collections" class="collections__container">
+        <%= react_component("CollectionEdit/ChaosEdit", {
+            userId: current_user.id,
+            collectionId: @collection.id
+        }) %>
+    </div>
+</div>

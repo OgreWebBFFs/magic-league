@@ -108,7 +108,7 @@ module Filters
           scope.where(set: params[:sets].split(','))
         }
       }.freeze,
-      alwayas_apply: {
+      always_apply: {
         apply?: -> (params) { true },
         apply: ->(scope, params) {
           scope.where.not("type_line ILIKE ?", "%basic land%")
