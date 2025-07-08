@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, Fragment } from "react";
 import SetPicker from "./SetPicker";
 import SearchInput from "../../SearchInput";
 import { CardGrid, CardImageLink } from "../../CardGrid";
@@ -52,15 +52,14 @@ const SimpleEdit = ({ userId, collectionId }) => {
             </div>
             <CardGrid>
                 {setFilteredCards.map((card) => (
-                    <>
-                        <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
+                    <Fragment key={card.attributes.id}>
+                        <CardImageLink card={card.attributes} />
                         <QuantityControl
-                            key={`${card.attributes.name} quantity`}
                             collectionId={collectionId}
                             cardId={card.attributes.id}
                             initialValue={initialQuantity(card.attributes, userId)}
                         />
-                    </>
+                    </Fragment>
                 ))}
             </CardGrid>
         </>
