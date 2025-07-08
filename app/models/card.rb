@@ -13,7 +13,7 @@ class Card < ApplicationRecord
     rarity == 'mythic' ? 'rare' : rarity
   end
 
-  def self.create_from_scryfall_response card_res, temp
+  def self.create_from_scryfall_response card_res, temp = false
     new_card = find_by(scryfall_id: card_res['id']) || new(scryfall_id: card_res['id'])
     new_card.description = card_res['text']
     if card_res['image_uris']
