@@ -1,7 +1,7 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update, :bulk_edit, :bulk_update, :chaos_edit]
+  before_action :set_collection, only: [:show, :edit, :update, :bulk_edit, :bulk_update]
   before_action :set_user, only: [:show, :update]
-  after_action :verify_authorized, only: [:edit, :update, :chaos_edit]
+  after_action :verify_authorized, only: [:edit, :update]
 
   def index
     @collections = Collection.all.joins(:user)
@@ -28,10 +28,6 @@ class CollectionsController < ApplicationController
   def edit
     authorize(@collection)
     @cards = @collection.cards.group(:id).count
-  end
-
-  def chaos_edit
-    authorize(@collection)
   end
 
   def bulk_edit

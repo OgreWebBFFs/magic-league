@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import SetPicker from "./SetPicker";
 import SearchInput from "../../SearchInput";
 import { CardGrid, CardImageLink } from "../../CardGrid";
 import QuantityControl from "../QuantityControl";
@@ -17,13 +18,25 @@ const initialQuantity = (card, userId) =>
 
 const SimpleEdit = ({ userId, collectionId }) => {
     const [cards, setCards] = useState([]);
+    const ref = useRef();
 
     const resetToCollection = async () => setCards(await fetchCollection(userId));
 
     return (
         <>
-            <SearchInput onResults={setCards} onReset={resetToCollection} />
-            <a href={`/collections/${collectionId}/bulk_edit`}>Go to Bulk Edit &gt;</a>
+            <div>
+                <h1>
+                    Edit Your Collection
+                    <div style={{ fontSize: "1rem" }}>
+                        <a href={`/collections/${collectionId}/bulk_edit`}>Go to Bulk Edit &gt;</a>
+                    </div>
+                </h1>
+            </div>
+
+            <div ref={ref} className="search-bar">
+                <SetPicker />
+                <SearchInput onResults={setCards} onReset={resetToCollection} />
+            </div>
             <CardGrid>
                 {cards.map((card) => (
                     <>

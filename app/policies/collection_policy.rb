@@ -2,9 +2,6 @@ class CollectionPolicy < ApplicationPolicy
   def edit?
     user.collection.id == record.id
   end
-  def chaos_edit?
-    edit?
-  end
   def update?
     edit?
   end

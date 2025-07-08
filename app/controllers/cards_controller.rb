@@ -30,7 +30,7 @@ class CardsController < ApplicationController
   end
 
   def scryfall
-    res = RestClient.get("https://api.scryfall.com/cards/search?order=name&q=#{params[:q].gsub(" ", "+")}")
+    res = RestClient.get("https://api.scryfall.com/cards/search?order=name&q=#{params[:q].gsub(" ", "+")}+game:paper")
     puts res
     render json: res
   end
