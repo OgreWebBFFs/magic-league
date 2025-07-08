@@ -15,6 +15,7 @@ class Card < ApplicationRecord
 
   def self.create_from_scryfall_response card_res, temp = false
     new_card = find_by(scryfall_id: card_res['id']) || new(scryfall_id: card_res['id'])
+    new_card.name = card_res['name']
     new_card.description = card_res['text']
     if card_res['image_uris']
       new_card.image_url = card_res['image_uris']['normal']
