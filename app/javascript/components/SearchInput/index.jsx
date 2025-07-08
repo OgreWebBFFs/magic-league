@@ -6,38 +6,27 @@ import useHashParams from "../../helpers/hooks/use-hash-params";
 const MIN_QUERY_LENGTH = 3;
 const MINIMUM_QUERY_MSG = `Input at least ${MIN_QUERY_LENGTH} characters to search`;
 const NO_RESULTS_MSG = "There were no results found for this search";
-const REQUIRED_SET_CODE_MSG = "This query requires a 3 character set code";
 
-const searchCards = async (query) =>
+const searchCards = async (query, sets) =>
     (
         await xhrRequest({
-            url: `/cards?query=${query}`,
+            url: `/cards?name=${query}${
+                sets.length > 0 ? `&sets=${sets.map((set) => set.code.toLowerCase()).join(",")}` : ""
+            }`,
             options: {
                 method: "GET",
             },
         })
     ).data;
 
-const scrfyallSearchCards = async (query, setCode) =>
-    (
-        await xhrRequest({
-            url: `/scryfall?q=s:${setCode}+${encodeURIComponent(query)}`,
-            options: {
-                method: "GET",
-            },
-        })
-    ).data;
-
-const SearchInput = ({ onReset, onResults, setCode }) => {
+const SearchInput = ({ onReset, onResults, placeholder, sets }) => {
     const [{ query: initialQuery }] = useHashParams();
     const [query, setQuery] = useState((initialQuery || [""])[0]);
     const [error, setError] = useState("");
 
     const handleErrorMessaging = useCallback(
         (results) => {
-            if (setCode !== undefined && setCode.length < 3) {
-                setError(REQUIRED_SET_CODE_MSG);
-            } else if (query.length > 0 && query.length < MIN_QUERY_LENGTH) {
+            if (query.length > 0 && query.length < MIN_QUERY_LENGTH) {
                 setError(MINIMUM_QUERY_MSG);
             } else if (query.length > 0 && results.length === 0) {
                 setError(NO_RESULTS_MSG);
@@ -45,7 +34,7 @@ const SearchInput = ({ onReset, onResults, setCode }) => {
                 setError("");
             }
         },
-        [setError, query, setCode]
+        [setError, query]
     );
 
     useDebounce(
@@ -54,14 +43,14 @@ const SearchInput = ({ onReset, onResults, setCode }) => {
             if (query.length === 0) {
                 onReset();
             }
-            if (query.length >= MIN_QUERY_LENGTH && (setCode === undefined || setCode.length === 3)) {
-                results = setCode ? await scrfyallSearchCards(query, setCode) : await searchCards(query);
+            if (query.length >= MIN_QUERY_LENGTH) {
+                results = await searchCards(query, sets);
                 onResults(results, query);
             }
             handleErrorMessaging(results);
         },
         300,
-        [query]
+        [query, sets]
     );
 
     return (
@@ -69,7 +58,7 @@ const SearchInput = ({ onReset, onResults, setCode }) => {
             <input
                 id="card-search"
                 type="text"
-                placeholder={MINIMUM_QUERY_MSG}
+                placeholder={placeholder || MINIMUM_QUERY_MSG}
                 onChange={(e) => setQuery(e.target.value)}
                 value={query}
             />

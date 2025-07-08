@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PickerMenu from "./PickerMenu";
+import { ALL_SET_CODES, SETS } from "../sets-data";
 
-const sets = [
-    { code: "EOE", name: "Edge of Eternities", symbol: "ss ss-eoe" },
-    { code: "FIN", name: "Final Fantasy", symbol: "ss ss-fin" },
-    { code: "TDM", name: "Tarkir: Dragonstorm", symbol: "ss ss-tdm" },
-    { code: "DFT", name: "Aetherdrift", symbol: "ss ss-dft" },
-    { code: "FND", name: "Foundations", symbol: "ss ss-fnd" },
-    { code: "DSK", name: "Duskmourn: House of Horror", symbol: "ss ss-dsk" },
-    { code: "BLB", name: "Bloomburrow", symbol: "ss ss-blb" },
-];
+const ALL_SETS_OPTION = { code: "ALL", name: "All Valid Sets", symbol: "fas fa-infinity" };
 
-export default () => {
+export default ({ onPick }) => {
+    const [selectedSet, setSelectedSet] = useState(ALL_SETS_OPTION);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        setMenuOpen(false);
+        if (selectedSet === ALL_SETS_OPTION) {
+            onPick(SETS);
+        } else {
+            onPick([selectedSet]);
+        }
+    }, [selectedSet]);
+
     return (
         <>
             <button type="button" className="set-picker__select" onClick={() => setMenuOpen(!menuOpen)}>
                 <div className="set-picker__select_display">
-                    <i className="fas fa-infinity" /> Valid Sets
+                    <i className={selectedSet.symbol} /> {selectedSet.code || selectedSet.name}
                 </div>
                 <div className="set-picker__select_divider" />
                 <div>
                     <i className="fas fa-angle-down" />
                 </div>
             </button>
-            {menuOpen && <PickerMenu sets={sets} />}
+            {menuOpen && (
+                <PickerMenu
+                    sets={[ALL_SETS_OPTION, ...SETS]}
+                    onPick={setSelectedSet}
+                    close={() => setMenuOpen(false)}
+                />
+            )}
         </>
     );
 };

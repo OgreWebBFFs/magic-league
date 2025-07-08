@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 
-export default ({ sets }) => {
+export default ({ sets, onPick, close }) => {
     const [filteredSets, setFilteredSets] = useState(sets);
+    const searchRef = useRef();
 
     const filterSets = useCallback(
         (e) => {
@@ -16,17 +17,28 @@ export default ({ sets }) => {
         [setFilteredSets, sets]
     );
 
+    useEffect(() => {
+        searchRef.current?.focus();
+    }, []);
+
     return (
-        <div className="set-picker__menu">
+        <div className="set-picker__menu" onBlur={close}>
             <div className="set-picker__menu-search">
-                <input className="browser-default" type="text" placeholder="Search for sets" onInput={filterSets} />
+                <input
+                    ref={searchRef}
+                    className="browser-default"
+                    type="text"
+                    placeholder="Search for sets"
+                    onInput={filterSets}
+                />
                 <i className="fas fa-search set-picker__menu-search_icon" />
             </div>
-            {filteredSets.map(({ code, name, symbol }) => (
-                <button type="button" className="set-picker__menu-option">
-                    <i className={`${symbol} set-picker__menu-option_symbol`} />
+            {filteredSets.map((set) => (
+                <button type="button" className="set-picker__menu-option" onClick={() => onPick(set)}>
+                    <i className={`${set.symbol} set-picker__menu-option_symbol`} />
                     <div className="set-picker__menu-option_name">
-                        {name} <span className="set-picker__menu-option_code">{code}</span>
+                        {set.name}
+                        <span className="set-picker__menu-option_code">{set.code}</span>
                     </div>
                 </button>
             ))}

@@ -4,6 +4,7 @@ import SearchInput from "../../SearchInput";
 import { CardGrid, CardImageLink } from "../../CardGrid";
 import QuantityControl from "../QuantityControl";
 import xhrRequest from "../../../helpers/xhr-request";
+import { SETS } from "./sets-data";
 
 const fetchCollection = async (userId) =>
     (
@@ -17,10 +18,15 @@ const initialQuantity = (card, userId) =>
     card.ownerships.find((ownership) => ownership.user_id === userId)?.quantity || 0;
 
 const SimpleEdit = ({ userId, collectionId }) => {
+    const [selectedSets, setSelectedSets] = useState(SETS);
     const [cards, setCards] = useState([]);
     const ref = useRef();
 
     const resetToCollection = async () => setCards(await fetchCollection(userId));
+
+    const setFilteredCards = cards.filter((card) =>
+        selectedSets.some((set) => set.code.toLowerCase() === card.attributes.set.toLowerCase())
+    );
 
     return (
         <>
@@ -34,11 +40,18 @@ const SimpleEdit = ({ userId, collectionId }) => {
             </div>
 
             <div ref={ref} className="search-bar">
-                <SetPicker />
-                <SearchInput onResults={setCards} onReset={resetToCollection} />
+                <SetPicker onPick={setSelectedSets} />
+                <SearchInput
+                    onResults={setCards}
+                    onReset={resetToCollection}
+                    placeholder={`Search for a card name${
+                        selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
+                    }`}
+                    sets={selectedSets}
+                />
             </div>
             <CardGrid>
-                {cards.map((card) => (
+                {setFilteredCards.map((card) => (
                     <>
                         <CardImageLink key={`${card.attributes.name} image`} card={card.attributes} />
                         <QuantityControl

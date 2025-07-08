@@ -33,7 +33,15 @@
 
         &_display {
             flex-grow: 1;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 700;
+
+            i {
+                font-size: 1.5rem;
+            }
         }
 
         &_divider {
@@ -84,7 +92,7 @@
     &__menu-option {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
         padding: 1rem;
         border: none;
         background: none;
@@ -102,6 +110,7 @@
         &_code {
             font-size: 0.75rem;
             color: #888888;
+            margin-left: 1rem;
         }
     }
 }

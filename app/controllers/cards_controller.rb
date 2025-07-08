@@ -4,8 +4,19 @@ include Filters
 class CardsController < ApplicationController
   def index
     cards = CardsFilter.new.call(Card.all, params).order(:name)
+    if (params[:sets])
+      name = URI.encode_www_form_component(params[:name])
+      sets = URI.encode_www_form_component(params[:sets])
+      res = RestClient.get("https://api.scryfall.com/cards/search?order=name&q=%22#{name}%22+s%3A#{sets}+unique:prints+-is:boosterfun+-is:promo+lang:en+game:paper") rescue "{ \"data\": [] }";
+      scryfall_cards = JSON.parse(res)['data']
+      processed_cards = scryfall_cards.map{|card|
+       Card.create_from_scryfall_response(card, true)
+      }
+      cards += processed_cards
+    end
+    uniq_cards = cards.uniq { |card| card.scryfall_id }.sort_by{ |card| 0 - current_user.card_inventory(card.id) }
     options = {params: {current_user: current_user}}
-    render json: CardSerializer.new(cards, options).serialized_json
+    render json: CardSerializer.new(uniq_cards, options).serialized_json
   end
   
   def show

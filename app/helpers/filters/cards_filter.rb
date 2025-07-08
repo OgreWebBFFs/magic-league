@@ -105,7 +105,7 @@ module Filters
           params[:sets].is_a?(String) 
         },
         apply: ->(scope, params) {
-          scope.where(set: params[:sets].split(','))
+          scope.where("LOWER(set) IN (?)", params[:sets].downcase.split(','))
         }
       }.freeze,
       always_apply: {
