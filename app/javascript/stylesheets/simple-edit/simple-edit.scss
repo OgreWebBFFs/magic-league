@@ -86,6 +86,14 @@
         align-items: center;
         gap: 0.5rem;
         padding: 1rem;
+        border: none;
+        background: none;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+            background: var(--color-light);
+        }
 
         &_symbol {
             font-size: 1.5rem;

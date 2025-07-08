@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PickerMenu from "./PickerMenu";
 
 const sets = [
     { code: "EOE", name: "Edge of Eternities", symbol: "ss ss-eoe" },
@@ -23,22 +24,7 @@ export default () => {
                     <i className="fas fa-angle-down" />
                 </div>
             </button>
-            {menuOpen && (
-                <div className="set-picker__menu">
-                    <div className="set-picker__menu-search">
-                        <input className="browser-default" type="text" placeholder="Search for sets" />
-                        <i className="fas fa-search set-picker__menu-search_icon" />
-                    </div>
-                    {sets.map(({ code, name, symbol }) => (
-                        <div className="set-picker__menu-option">
-                            <i className={`${symbol} set-picker__menu-option_symbol`} />
-                            <div className="set-picker__menu-option_name">
-                                {name} <span className="set-picker__menu-option_code">{code}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
+            {menuOpen && <PickerMenu sets={sets} />}
         </>
     );
 };
