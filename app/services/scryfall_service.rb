@@ -18,9 +18,9 @@ class ScryfallService
       }.sort_by { |card| card['name'].downcase }
     rescue RestClient::ExceptionWithResponse => e
       puts "Scryfall error: #{e.response.code} - #{e.response.body}"
-      { 'data' => [] }
+      []
     rescue JSON::ParserError
-      { 'data' => [] }
+      []
     end
   end
 
