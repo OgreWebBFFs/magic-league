@@ -7,19 +7,17 @@ const MIN_QUERY_LENGTH = 3;
 const MINIMUM_QUERY_MSG = `Input at least ${MIN_QUERY_LENGTH} characters to search`;
 const NO_RESULTS_MSG = "There were no results found for this search";
 
-const searchCards = async (query, sets) =>
+const searchCards = async (query, scryfallQuery) =>
     (
         await xhrRequest({
-            url: `/cards?name=${query}${
-                sets.length > 0 ? `&sets=${sets.map((set) => set.code.toLowerCase()).join(",")}` : ""
-            }`,
+            url: `/cards?name=${query}${scryfallQuery ? `&scryfall="${query}"+${scryfallQuery}` : ""}`,
             options: {
                 method: "GET",
             },
         })
     ).data;
 
-const SearchInput = ({ onReset, onResults, placeholder, sets }) => {
+const SearchInput = ({ onReset, onResults, placeholder, scryfallQuery }) => {
     const [{ query: initialQuery }] = useHashParams();
     const [query, setQuery] = useState((initialQuery || [""])[0]);
     const [error, setError] = useState("");
@@ -44,13 +42,13 @@ const SearchInput = ({ onReset, onResults, placeholder, sets }) => {
                 onReset();
             }
             if (query.length >= MIN_QUERY_LENGTH) {
-                results = await searchCards(query, sets);
+                results = await searchCards(query, scryfallQuery);
                 onResults(results, query);
             }
             handleErrorMessaging(results);
         },
         300,
-        [query, sets]
+        [query, scryfallQuery]
     );
 
     return (

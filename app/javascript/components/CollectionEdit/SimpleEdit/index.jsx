@@ -47,7 +47,7 @@ const SimpleEdit = ({ userId, collectionId }) => {
                     placeholder={`Search for a card name${
                         selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
                     }`}
-                    sets={selectedSets}
+                    scryfallQuery={`s:${selectedSets.map((set) => set.code.toLowerCase()).join(",")}`}
                 />
             </div>
             <CardGrid>

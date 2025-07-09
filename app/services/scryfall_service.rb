@@ -7,8 +7,7 @@ class ScryfallService
   end
 
   def fetch
-    query_string = build_query
-    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(query_string)}+unique:prints+-is:boosterfun+-is:promo+lang:en+game:paper"
+    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(@params[:q])}+unique:prints+-is:boosterfun+-is:promo+lang:en+game:paper"
 
     begin
       response = RestClient.get(url)
@@ -36,27 +35,5 @@ class ScryfallService
     rescue JSON::ParserError
       nil
     end
-  end
-
-  private
-
-  def build_query
-    parts = []
-
-    # Handle name if present
-    parts << %Q("#{ @params[:name] }") if @params[:name].present?
-
-    # Handle set codes (s=)
-    if @params[:s].present?
-      set_codes = @params[:s].split(',').map(&:strip).join(',')
-      parts << "s:#{set_codes}"
-    end
-
-    # Append any other custom parameters (e.g. type, rarity)
-    @params.except(:name, :s).each do |key, value|
-      parts << "#{key}:#{value}"
-    end
-
-    parts.join(' ')
   end
 end
