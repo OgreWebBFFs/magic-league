@@ -58,6 +58,7 @@ const SimpleEdit = ({ userId, collectionId }) => {
                             key={`${card.attributes.scryfall_id} quantity`}
                             collectionId={collectionId}
                             cardId={card.attributes.id}
+                            scryfallId={card.attributes.scryfall_id}
                             initialValue={initialQuantity(card.attributes, userId)}
                         />
                     </>

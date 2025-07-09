@@ -4,7 +4,7 @@ import xhrRequest from "../../helpers/xhr-request";
 
 import Button from "../Button";
 
-const storeQuantity = ({ collectionId, cardId, quantity }) =>
+const storeQuantity = ({ collectionId, cardId, quantity, scryfallId }) =>
     xhrRequest({
         url: `/collections/${collectionId}`,
         options: {
@@ -14,19 +14,20 @@ const storeQuantity = ({ collectionId, cardId, quantity }) =>
                 quantity: {
                     quantity,
                     card_id: cardId,
+                    scryfall_id: scryfallId,
                     collection_id: collectionId,
                 },
             }),
         },
     });
 
-const QuantityControl = ({ collectionId, cardId, initialValue }) => {
+const QuantityControl = ({ collectionId, cardId, initialValue, scryfallId }) => {
     const [quantity, setQuantity] = useState(initialValue);
     const isInitial = useFirstMountState();
 
     useDebounce(
         async () => {
-            if (!isInitial) storeQuantity({ collectionId, cardId, quantity });
+            if (!isInitial) storeQuantity({ collectionId, cardId, quantity, scryfallId });
         },
         300,
         [quantity]

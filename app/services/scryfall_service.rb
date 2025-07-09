@@ -1,6 +1,7 @@
 class ScryfallService
   SCRYFALL_SEARCH_URL = 'https://api.scryfall.com/cards/search'
-
+  SCRYFALL_CARD_URL = 'https://api.scryfall.com/cards'
+  
   def initialize(params = {})
     @params = params.symbolize_keys
   end
@@ -20,6 +21,20 @@ class ScryfallService
       { 'data' => [] }
     rescue JSON::ParserError
       { 'data' => [] }
+    end
+  end
+
+  def fetch_and_create_card
+    url = "#{SCRYFALL_CARD_URL}/#{@params[:id]}"
+    puts url
+    begin
+      response = RestClient.get(url);
+      Card.create_from_scryfall_response JSON.parse(response)
+    rescue RestClient::ExceptionWithResponse => e
+      puts "Scryfall error: #{e.response.code} - #{e.response.body}"
+      nil
+    rescue JSON::ParserError
+      nil
     end
   end
 

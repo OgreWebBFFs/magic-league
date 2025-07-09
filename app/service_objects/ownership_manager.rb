@@ -1,6 +1,6 @@
 class OwnershipManager
   def initialize(params)
-    @card_id = params[:card_id]
+    @card_id = params[:card_id].presence || ScryfallService.new(id: params[:scryfall_id]).fetch_and_create_card.id
     @collection_id = params[:collection_id]
     @quantity = params[:quantity]&.to_i
     @keeper = params[:keeper]
