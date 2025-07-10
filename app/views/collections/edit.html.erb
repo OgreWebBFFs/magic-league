@@ -1,8 +1,11 @@
 <div id="edit-collections__wrapper">
-  <div id="collections" class="collections__container">
-    <%= react_component("SimpleEdit", {
-      userId: current_user.id,
-      collectionId: @collection.id
-    }) %>
-  </div>
+    <div id="collections" class="collections__container">
+        <%= react_component("CollectionEdit/SimpleEdit", {
+        userId: current_user.id,
+        collectionId: @collection.id
+        }) %>
+    </div>
+    <script>
+        window.VALID_SETS = <%= raw(ConfigurationConstants::VALID_SETS.to_json) %> ;
+    </script>
 </div>

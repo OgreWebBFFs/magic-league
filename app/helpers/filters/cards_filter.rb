@@ -105,10 +105,10 @@ module Filters
           params[:sets].is_a?(String) 
         },
         apply: ->(scope, params) {
-          scope.where(set: params[:sets].split(','))
+          scope.where("LOWER(set) IN (?)", params[:sets].downcase.split(','))
         }
       }.freeze,
-      alwayas_apply: {
+      always_apply: {
         apply?: -> (params) { true },
         apply: ->(scope, params) {
           scope.where.not("type_line ILIKE ?", "%basic land%")

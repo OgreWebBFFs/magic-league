@@ -1,0 +1,116 @@
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+    flex-direction: column;
+
+    @media screen and (min-width: 850px) {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+.set-picker {
+    &__select {
+        width: 100%;
+        border: 2px solid var(--color-theme);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        order: 2;
+        height: 40px;
+        cursor: pointer;
+        background: white;
+        color: var(--color-text-theme);
+
+        @media screen and (min-width: 850px) {
+            width: 12rem;
+            order: 0;
+            height: auto;
+        }
+
+        &_display {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 700;
+
+            i {
+                font-size: 1.5rem;
+            }
+        }
+
+        &_divider {
+            width: 2px;
+            background: var(--color-theme);
+            height: 100%;
+        }
+    }
+
+    &__menu {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: calc(56px + 40px + 1rem);
+        background: white;
+        z-index: 100;
+        box-shadow: 0 0 10px 2px #888888;
+        max-height: 250px;
+        overflow-y: scroll;
+
+        @media screen and (min-width: 850px) {
+            width: 50%;
+            top: calc(56px + 1rem);
+        }
+    }
+
+    &__menu-search {
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        background: white;
+
+        input {
+            border: 1px solid #888888;
+            border-radius: 999px;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        &_icon {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+        }
+    }
+
+    &__menu-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border: none;
+        background: none;
+        width: 100%;
+        cursor: pointer;
+
+        &:hover {
+            background: var(--color-light);
+        }
+
+        &_symbol {
+            font-size: 1.5rem;
+        }
+
+        &_code {
+            font-size: 0.75rem;
+            color: #888888;
+            margin-left: 1rem;
+        }
+    }
+}

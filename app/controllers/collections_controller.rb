@@ -43,7 +43,6 @@ class CollectionsController < ApplicationController
   def bulk_update
     authorize(@collection)
     
-    cards = @collection.cards
     errors = CardImporter.new(collection_params).save_cards
 
     if errors.blank?
@@ -67,7 +66,7 @@ class CollectionsController < ApplicationController
     params.permit(
         :id,
         :alerts,
-        quantity: [ :quantity, :card_id, :collection_id ],
+        quantity: [ :quantity, :card_id, :collection_id, :scryfall_id ],
         keeper: [:keeper, :card_id, :collection_id],
         collection: [:card_list]
     )

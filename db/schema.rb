@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_31_175110) do
+ActiveRecord::Schema.define(version: 2025_07_08_134223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
     t.string "description"
     t.string "set"
     t.string "image_url"
-    t.string "multiverse_id"
     t.string "oracle_text"
     t.string "type_line"
     t.string "mana_cost"
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
     t.string "colors", default: [], array: true
     t.string "rarity"
     t.string "back_image_url"
+    t.string "scryfall_id"
   end
 
   create_table "collections", force: :cascade do |t|

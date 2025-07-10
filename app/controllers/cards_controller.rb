@@ -3,9 +3,13 @@ include Filters
 
 class CardsController < ApplicationController
   def index
-    cards = CardsFilter.new.call(Card.all, params).order(:name)
+    cards = CardsFilter.new.call(Card.all, params).order(:name).sort_by{ |card| 0 - current_user.card_inventory(card.id) }
+    if (params[:scryfall])
+      cards += ScryfallService.new(q: params[:scryfall]).fetch
+    end
+    uniq_cards = cards.uniq { |card| card.scryfall_id }
     options = {params: {current_user: current_user}}
-    render json: CardSerializer.new(cards, options).serialized_json
+    render json: CardSerializer.new(uniq_cards, options).serialized_json
   end
   
   def show

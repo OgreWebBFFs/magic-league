@@ -30,8 +30,11 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :show] do
     member do
       get 'prints'
+      get 'scryfall'
     end
   end
+  get 'scryfall', to: 'cards#scryfall', as: 'cards_scryfall'
+
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
   resources :received_trades, only: [:create]

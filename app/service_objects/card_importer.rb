@@ -1,67 +1,46 @@
 class CardImporter
-  REGEX = /^((?<count>\d+)?(x)?\s*)?(?<card>.*)?$/
-  COUNT = 0
-  CARD_NAME = 1
+  REGEX = /^((\d+)?x?\s*)?(.*?)(?:\s*\(([a-zA-Z\d]{3})\))?$/
+  COUNT = 2
+  CARD_NAME = 3
+  SET = 4
 
   def initialize(params)
     @card_list = params[:collection][:card_list]
     @collection = Collection.find(params[:id])
-    @errors = []
   end
 
   def save_cards
-    cards_to_import = {}
+    raw_cards = CardImporterParser.new(@card_list).parse
 
-    # SAMPLE INPUT
-    # 1x Acclaimed Contender
-    # All That Glitters
-    # 2 Archon of Absolution
-    # 6x Plains
-    # 3x All That Glitters
-
-    # Use regex to break card list out to an hash of card counts
-    scanned_cards = @card_list.scan(REGEX)
-
-    scanned_cards.each do |match|
-      card_name = match[CARD_NAME].strip
-      card_count = match[COUNT].nil? ? 1 : match[COUNT].to_i
-
-      if cards_to_import[card_name]
-        # card found, update count
-        cards_to_import[card_name] += card_count
-      else
-        # new card, add it to hash
-        cards_to_import[card_name] = card_count
-      end
+    if raw_cards.empty?
+      return ["You cannot delete your entire collection in this way!"]
     end
 
-    # loop through array of strings and do a card lookup
-    # if card exists, add it to cards_to_import hash and update count
-    # if card does not exist, push card name to errors array
+    validator = CardImporterValidator.new(raw_cards)
 
-    # preprocess cards for errors
-    if @card_list.empty?
-      @errors << "You cannot delete your entire collection in this way!"
-    else
-      cards_to_import.each do |name, count|
-        card = Card.find_by('lower(name) = ?', name.downcase)
-        if card.nil?
-          @errors << "#{name} not found"
-        end
-      end
+    if !validator.valid?      
+      return validator.errors
     end
 
     # import cards if all cards found
-    if @errors.empty?
-      @collection.cards.destroy_all
-      cards_to_import.each do |name, count|
-        card = Card.find_by('lower(name) = ?', name.downcase)
-        (1..count).each do 
-          @collection.add_card card
-        end
+    @collection.cards.destroy_all
+    import_cards raw_cards
+
+    return []
+  end
+
+  private
+
+  def import_cards raw_cards
+    raw_cards.each do |raw_card|
+      card = Card.find_by(
+        'lower(name) = :name AND (lower(set) = :set OR :set = \'\')',
+        name: raw_card.name,
+        set: raw_card.set
+      )
+      (1..raw_card.count).each do 
+        @collection.add_card card
       end
     end
-
-    return @errors
   end
 end
