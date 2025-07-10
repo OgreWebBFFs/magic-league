@@ -7,14 +7,14 @@ class ScryfallService
   end
 
   def fetch
-    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(@params[:q])}+unique:prints+-is:boosterfun+-is:promo+lang:en+game:paper"
+    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(@params[:q])}+unique:prints+-is:boosterfun+is:booster+lang:en+game:paper"
 
     begin
       response = RestClient.get(url)
       scryfall_cards = JSON.parse(response)["data"]
       scryfall_cards.map{|card|
         Card.create_from_scryfall_response(card, true)
-      }.sort_by { |card| card['name'].downcase }
+      }.sort_by { |card| card['name'].downcase }.uniq{ |card| [card.name, card.set] }
     rescue RestClient::ExceptionWithResponse => e
       puts "Scryfall error: #{e.response.code} - #{e.response.body}"
       []
