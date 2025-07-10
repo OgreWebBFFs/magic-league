@@ -100,4 +100,54 @@
     &__table--ownership {
         margin-bottom: 15px;
     }
+
+    &__ownership-table {
+        margin-bottom: 15px;
+        .cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .set-tag {
+            color: #aaa;
+            border: none;
+            background: none;
+            padding: 0;
+            &.current {
+                color: var(--color-text-theme);
+            }
+        }
+    }
+}
+
+.ownership-table {
+    &__row {
+        display: grid;
+        grid-template-columns: auto 50px 50px;
+        width: 100%;
+        column-gap: 1rem;
+        padding: 0.5rem;
+        align-items: center;
+    }
+
+    &__quantity {
+        text-align: right;
+    }
+
+    &__message {
+        grid-row: 1 / span 2;
+        button {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &__sets {
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 0.5rem;
+    }
 }

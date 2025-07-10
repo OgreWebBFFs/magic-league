@@ -55,4 +55,8 @@ class Card < ApplicationRecord
   def owned
     self.ownerships.count > 0
   end
+
+  def variants
+    Card.where(name: self.name).where.not(id: self.id)
+  end
 end
