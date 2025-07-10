@@ -22,8 +22,16 @@ class CardImporter
       return validator.errors
     end
 
-    # # import cards if all cards found
+    # import cards if all cards found
     @collection.cards.destroy_all
+    import_cards raw_cards
+
+    return []
+  end
+
+  private
+
+  def import_cards raw_cards
     raw_cards.each do |raw_card|
       card = Card.find_by(
         'lower(name) = :name AND (lower(set) = :set OR :set = \'\')',
@@ -34,7 +42,5 @@ class CardImporter
         @collection.add_card card
       end
     end
-
-    return []
   end
 end

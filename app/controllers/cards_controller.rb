@@ -32,10 +32,4 @@ class CardsController < ApplicationController
     card = Card.find_by_id(params[:id])
     render json: get_card_prints(card)
   end
-
-  def scryfall
-    res = RestClient.get("https://api.scryfall.com/cards/search?order=name&q=#{params[:q].gsub(" ", "+")}+game:paper")
-    puts res
-    render json: res
-  end
 end

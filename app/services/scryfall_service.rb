@@ -7,7 +7,7 @@ class ScryfallService
   end
 
   def fetch
-    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(@params[:q])}+unique:prints+-is:boosterfun+is:booster+lang:en+game:paper"
+    url = "#{SCRYFALL_SEARCH_URL}?q=#{URI.encode_www_form_component(@params[:q])}+unique:prints+-is:boosterfun+-is:promo+lang:en+game:paper"
 
     begin
       response = RestClient.get(url)
@@ -25,7 +25,6 @@ class ScryfallService
 
   def fetch_and_create_card
     url = "#{SCRYFALL_CARD_URL}/#{@params[:id]}"
-    puts url
     begin
       response = RestClient.get(url);
       Card.create_from_scryfall_response JSON.parse(response)

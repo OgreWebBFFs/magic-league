@@ -5,7 +5,6 @@ class Collection < ApplicationRecord
 
   def add_card card
     o = ownerships.find_or_create_by(card: card)
-    puts o.to_json
     o.add
   end
 

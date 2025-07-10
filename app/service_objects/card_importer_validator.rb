@@ -36,6 +36,7 @@ class ScryfallCardValidator
 
   def initialize(raw_cards)
     @errors = []
+    validate_sets raw_cards
     query = build_query raw_cards
     @fetched_cards = ScryfallService.new(q: query).fetch
 
@@ -52,6 +53,14 @@ class ScryfallCardValidator
   end
 
   private
+
+  def validate_sets raw_cards
+    raw_cards.each do |raw_card|
+      if ConfigurationConstants::VALID_SETS.none? { |set| set[:code].downcase == raw_card.set }
+        @errors << "#{raw_card.name} (#{raw_card.set}) is not part of a valid set"
+      end
+    end
+  end
 
   def build_query raw_cards
     raw_cards.map {|raw_card| %Q((!"#{raw_card.name}" s:#{raw_card.set})) }.join(' or ')

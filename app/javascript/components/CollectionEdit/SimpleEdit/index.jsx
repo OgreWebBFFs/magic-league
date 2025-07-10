@@ -4,7 +4,6 @@ import SearchInput from "../../SearchInput";
 import { CardGrid, CardImageLink } from "../../CardGrid";
 import QuantityControl from "../QuantityControl";
 import xhrRequest from "../../../helpers/xhr-request";
-import { SETS } from "./sets-data";
 
 const fetchCollection = async (userId) =>
     (
@@ -18,7 +17,7 @@ const initialQuantity = (card, userId) =>
     card.ownerships.find((ownership) => ownership.user_id === userId)?.quantity || 0;
 
 const SimpleEdit = ({ userId, collectionId }) => {
-    const [selectedSets, setSelectedSets] = useState(SETS);
+    const [selectedSets, setSelectedSets] = useState(window.VALID_SETS);
     const [cards, setCards] = useState([]);
     const ref = useRef();
 

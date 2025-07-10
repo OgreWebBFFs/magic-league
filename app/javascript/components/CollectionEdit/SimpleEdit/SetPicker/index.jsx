@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PickerMenu from "./PickerMenu";
-import { ALL_SET_CODES, SETS } from "../sets-data";
 
 const ALL_SETS_OPTION = { code: "ALL", name: "All Valid Sets", symbol: "fas fa-infinity" };
+const SETS = window.VALID_SETS;
 
 export default ({ onPick }) => {
     const [selectedSet, setSelectedSet] = useState(ALL_SETS_OPTION);
