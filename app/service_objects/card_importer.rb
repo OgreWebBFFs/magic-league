@@ -59,17 +59,17 @@ class CardImporter
           card = Card.find_by('lower(name) = ? AND lower(set) = ?', name.downcase, set.downcase)
           if card.nil?
             # if card is not found in db, add it to a list to query against scryfall
-            cards_to_fetch << {:name => name, :set => set}
+            cards_to_fetch << {:name => name.downcase, :set => set.downcase}
           end
         end
       end
     end
 
     if cards_to_fetch.any?
-      cards_query = cards_to_fetch.map {|card| %Q((!"#{card[:name].downcase}" s:#{card[:set].downcase})) }.join(' or ')
+      cards_query = cards_to_fetch.map {|card| %Q((!"#{card[:name]}" s:#{card[:set]})) }.join(' or ')
       fetched_cards = ScryfallService.new(q: cards_query).fetch
       cards_to_fetch.each do |card|
-        if fetched_cards.none? { |fetched_card| fetched_card.name == card[:name] && fetched_card.set == card[:set] }
+        if fetched_cards.none? { |fetched_card| fetched_card.name.downcase == card[:name] && fetched_card.set.downcase == card[:set] }
           @errors << "#{card[:name]} (#{card[:set]}) not found in scryfall search"
         end
       end
