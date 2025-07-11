@@ -15,8 +15,8 @@ class CardsController < ApplicationController
   def show
     @card = Card.find_by_id(params[:id])
     @variants = @card.variants
-    @grid = OwnershipGridPresenter.new(@card, current_user);
-    @wishlist_grid = WishlistGridPresenter.new(@card)
+    @ownerships = OwnershipGridPresenter.new(@card, current_user)
+    @wishlists = WishlistGridPresenter.new(@card)
   end
 
   def prints

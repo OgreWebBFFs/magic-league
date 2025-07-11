@@ -3,16 +3,16 @@ import { Table, Row, Cell } from "../Table";
 
 const NoWishlistersMessage = () => <Cell isPriority>No one has put this card on their wishlist yet</Cell>;
 
-const WishlistTable = ({ wishlistGrid }) => (
+const WishlistTable = ({ wishlists }) => (
     <Table>
         <Row className="card-profile__row--headings" isHeading>
             <Cell isPriority>Wishlisted By</Cell>
             <Cell>Currently Owns</Cell>
         </Row>
-        {wishlistGrid.rows.length <= 0 ? (
+        {wishlists.rows.length <= 0 ? (
             <NoWishlistersMessage />
         ) : (
-            wishlistGrid.rows.map(({ id, name, count }) => (
+            wishlists.rows.map(({ id, name, count }) => (
                 <Row>
                     <Cell isPriority>
                         <a href={`/users/${id}`}>{name}</a>

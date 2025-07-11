@@ -10,18 +10,18 @@ import WishlistContext from "../../contexts/WishlistContext";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const CardOwnership = ({ card, currentUserId, wishlist_grid: wishlistGrid, grid, variants }) => {
+const CardOwnership = ({ card, currentUserId, wishlists, ownerships, variants }) => {
     const [selectedSet, setSelectedSet] = useState(card.set);
     const swiperRef = useRef(null);
     const [currentUserWishlist, setCurrentUserWishlist] = useState(
-        wishlistGrid.rows.some((row) => row.id === currentUserId) ? [{ card }] : []
+        wishlists.rows.some((row) => row.id === currentUserId) ? [{ card }] : []
     );
     const wishlistContextValues = useMemo(
         () => ({
             currentUserWishlist,
             setCurrentUserWishlist,
         }),
-        [wishlistGrid, currentUserWishlist]
+        [wishlists, currentUserWishlist]
     );
 
     return (
@@ -78,7 +78,7 @@ const CardOwnership = ({ card, currentUserId, wishlist_grid: wishlistGrid, grid,
             </div>
             <div className="card-profile__details">
                 <OwnershipTable
-                    grid={grid}
+                    ownerships={ownerships}
                     selectedSet={selectedSet}
                     onSetChange={(set) => {
                         setSelectedSet(set);
@@ -88,7 +88,7 @@ const CardOwnership = ({ card, currentUserId, wishlist_grid: wishlistGrid, grid,
                     }}
                     currentUserId={currentUserId}
                 />
-                <WishlistTable wishlistGrid={wishlistGrid} />
+                <WishlistTable wishlists={wishlists} />
             </div>
         </WishlistContext.Provider>
     );

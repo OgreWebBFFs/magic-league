@@ -20,7 +20,7 @@ const KeeperButton = () => (
     </div>
 );
 
-const OwnershipTable = ({ grid: { rows }, selectedSet, onSetChange, currentUserId }) => (
+const OwnershipTable = ({ ownerships: { rows }, selectedSet, onSetChange, currentUserId }) => (
     <Table className="ownership-table">
         <Row isHeading>
             <div className="ownership-table__row">
