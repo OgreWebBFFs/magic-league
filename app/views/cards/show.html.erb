@@ -1,11 +1,7 @@
 <%= react_component("CardOwnership", {
         card: @card,
-        grid: @grid,
+        variants: @variants,
         ownerships: @ownerships,
-        wishlist: @wishlisters_details,
-        messageStatuses: @message_statuses,
-        totalCount: @card.ownerships.sum(:quantity),
-        currentUserId: current_user.id,
-        totalWishlisters: @wishlisters_details.size,
-        wishlisterDetails: @wishlisters_details.collect { |key, value| value }
+        wishlists: @wishlists,
+        currentUserId: current_user.id
     }, {:class => "card-profile__container"}) %>

@@ -14,25 +14,9 @@ class CardsController < ApplicationController
   
   def show
     @card = Card.find_by_id(params[:id])
-    @grid = OwnershipGridPresenter.new(@card, current_user);
-    @ownerships = @card.ownerships.includes(collection: :user).as_json({
-        include: { collection: { include: :user }}
-    })
-    @message_statuses = @card.message_statuses.where(from_user: current_user)
-
-    @wishlisters_details = Hash.new
-    @card.wishes.sort_by{ |w| w.user.name }.each do |w|
-      user = w.user
-      ownership = user.collection.ownerships.find_by(card: @card)
-      count = ownership.present? ? ownership.quantity : 0
-      @wishlisters_details[user.id] = { id: user.id, name: user.name, count: count }
-    end
     @variants = @card.variants
-    @variant_ownerships = @card.variants.flat_map do |variant|
-      variant.ownerships.includes(collection: :user).as_json({
-        include: { collection: { include: :user }}
-      })
-    end
+    @ownerships = OwnershipGridPresenter.new(@card, current_user)
+    @wishlists = WishlistGridPresenter.new(@card)
   end
 
   def prints
