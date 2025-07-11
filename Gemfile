@@ -39,6 +39,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :development do
+  gem "ruby-lsp"
+end
+
 group :test do
   gem 'capybara', '~> 3.35.3'
   gem 'selenium-webdriver', '~> 3.142.7'

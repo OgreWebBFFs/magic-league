@@ -100,28 +100,11 @@
     &__table--ownership {
         margin-bottom: 15px;
     }
-
-    &__ownership-table {
-        margin-bottom: 15px;
-        .cell {
-            display: flex;
-            align-items: center;
-        }
-
-        .set-tag {
-            color: #aaa;
-            border: none;
-            background: none;
-            padding: 0;
-            cursor: pointer;
-            &.current {
-                color: var(--color-text-theme);
-            }
-        }
-    }
 }
 
 .ownership-table {
+    margin-bottom: 15px;
+
     &__row {
         display: grid;
         grid-template-columns: auto 55px 55px;
@@ -150,5 +133,44 @@
         align-items: center;
         justify-content: end;
         gap: 0.5rem;
+
+        .set-tag {
+            color: #aaa;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            &.current {
+                color: var(--color-text-theme);
+            }
+        }
+    }
+}
+
+.card-profile__image-carousel {
+    margin-bottom: 1rem;
+    .swiper-pagination {
+        position: relative;
+        margin-top: 1rem;
+        text-align: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .swiper-pagination-bullet {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        line-height: 20px;
+        font-size: 2rem;
+        color: #aaa;
+        opacity: 1;
+        background: none;
+    }
+
+    .swiper-pagination-bullet-active {
+        color: var(--color-text-theme);
     }
 }
