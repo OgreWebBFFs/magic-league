@@ -133,6 +133,7 @@
         align-items: center;
         justify-content: end;
         gap: 0.5rem;
+        overflow: hidden;
 
         .set-tag {
             color: #aaa;
@@ -154,6 +155,7 @@
         margin-top: 1rem;
         text-align: center;
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
         justify-content: center;
     }
