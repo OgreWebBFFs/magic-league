@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 2025_07_11_192131) do
     t.string "title"
     t.text "content"
     t.string "slug"
-    t.integer "children", array: true
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

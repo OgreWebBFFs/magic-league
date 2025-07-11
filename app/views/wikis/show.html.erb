@@ -1,5 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<% Wiki.where(parent: @wiki.id).each do |child_page|%>
+<li>
+    <%= link_to child_page.title, wiki_path(child_page) %>
+</li>
+<%end%>
+<% if @wiki.parent.present? %>
+<p>
+    Back to: <%= link_to @wiki.parent.title, wiki_path(@wiki.parent) %>
+</p>
+<% end %>
+<div><%= @wiki.id %></div>
+
 <p>
     <strong>Title:</strong>
     <%= @wiki.title %>
@@ -18,6 +30,11 @@
 <p>
     <strong>Children:</strong>
     <%= @wiki.children %>
+</p>
+
+<p>
+    <strong>Parent:</strong>
+    <%= @wiki.parent %>
 </p>
 
 <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
