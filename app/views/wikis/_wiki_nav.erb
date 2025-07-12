@@ -2,9 +2,9 @@
 <main class="wiki-main">
     <nav class="wiki-nav">
         <button class="wiki-nav__close"><i class="fa fa-times"></i></button>
-        <% Wiki.where(parent: nil).each do |top_level_wiki| %>
+        <% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
             <%= link_to top_level_wiki.title, wiki_path(top_level_wiki), class: 'wiki-nav__parent' %>
-            <% top_level_wiki.children.each do |child_wiki| %>
+            <% top_level_wiki.children.order(:sort_order).each do |child_wiki| %>
             <%= link_to child_wiki.title, wiki_path(child_wiki), class: 'wiki-nav__child' %>
             <% end %>
         <% end%>

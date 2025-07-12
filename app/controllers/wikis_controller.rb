@@ -70,6 +70,6 @@ class WikisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wiki_params
-      params.require(:wiki).permit(:title, :content, :slug, :parent_id)
+      params.require(:wiki).permit(:title, :content, :slug, :parent_id, :sort_order)
     end
 end

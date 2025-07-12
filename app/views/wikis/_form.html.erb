@@ -15,6 +15,7 @@
     <trix-toolbar id="my_toolbar"></trix-toolbar>
     <trix-editor toolbar="my_toolbar" input="content" class="trix-content wiki-form__content"></trix-editor>
     <%= f.input :slug, wrapper_html: { class: 'wiki-form__title' } %>
+    <%= f.input :sort_order, label: "Sidebar Order" %>
     <%= f.label :parent_id, "Parent Page", class: 'wiki-form__parent-label' %>
     <%= f.select :parent_id, options_for_select(Wiki.where.not(id: @wiki.id).where(parent: nil).pluck(:title, :id), @wiki.parent_id), include_blank: "None (top-level)", class: 'wiki-form__parent-select' %>
 </div>

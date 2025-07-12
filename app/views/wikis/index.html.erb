@@ -1,6 +1,6 @@
 <h1 class='wiki-title'>Wiki</h1>
 <%= render partial: 'wiki_nav', locals: { content: capture do %>
-<% Wiki.where(parent: nil).each do |top_level_wiki| %>
+<% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
 <li>
     <%= link_to top_level_wiki.title, wiki_path(top_level_wiki) %>
 </li>
