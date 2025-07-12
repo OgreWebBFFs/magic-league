@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
   before_action :set_wiki, only: %i[ show edit update destroy ]
+  after_action :verify_authorized, only: [:edit, :update, :destroy]
 
   # GET /wikis or /wikis.json
   def index
@@ -13,10 +14,12 @@ class WikisController < ApplicationController
   # GET /wikis/new
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   # GET /wikis/1/edit
   def edit
+    authorize @wiki
   end
 
   # POST /wikis or /wikis.json
@@ -36,6 +39,7 @@ class WikisController < ApplicationController
 
   # PATCH/PUT /wikis/1 or /wikis/1.json
   def update
+    authorize @wiki
     respond_to do |format|
       if @wiki.update(wiki_params)
         format.html { redirect_to wiki_url(@wiki), notice: "Wiki was successfully updated." }
@@ -49,6 +53,7 @@ class WikisController < ApplicationController
 
   # DELETE /wikis/1 or /wikis/1.json
   def destroy
+    authorize @wiki
     @wiki.destroy
 
     respond_to do |format|

@@ -1,0 +1,105 @@
+.wiki-title {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wiki-action {
+    width: fit-content;
+}
+
+.wiki-main {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 850px) {
+        display: flex;
+        gap: 4rem;
+    }
+}
+
+.wiki-content {
+    flex-grow: 1;
+}
+
+.wiki-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: max(-85vw, -450px);
+    width: min(85vw, 450px);
+    height: 100vh;
+    overflow-y: scroll;
+    z-index: 100;
+    background: white;
+    padding: 1rem 1rem;
+    gap: 0.5rem;
+    transition-property: left;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+
+    @media screen and (min-width: 850px) {
+        position: relative;
+        left: 0;
+        height: fit-content;
+        width: auto;
+        padding-right: 6rem;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+    }
+
+    &.open {
+        left: 0;
+    }
+
+    &__toggle {
+        @media screen and (min-width: 850px) {
+            display: none;
+        }
+    }
+
+    &__parent {
+    }
+
+    &__child {
+        margin-left: 0.5rem;
+    }
+
+    &__close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        @media screen and (min-width: 850px) {
+            display: none;
+        }
+    }
+
+    &__isolation {
+        display: none;
+        position: fixed;
+        z-index: 99;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: 300ms;
+        transition-timing-function: ease-out;
+
+        &.open {
+            display: block;
+            opacity: 1;
+        }
+    }
+}
+
+.trix-content {
+    margin-bottom: 4rem;
+    ul {
+        list-style: disc;
+    }
+}

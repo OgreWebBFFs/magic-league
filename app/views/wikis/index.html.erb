@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Wikis</h1>
+<h1 class='wiki-title'>Wiki</h1>
+<%= render partial: 'wiki_nav', locals: { content: capture do %>
 <% Wiki.where(parent: nil).each do |top_level_wiki| %>
 <li>
     <%= link_to top_level_wiki.title, wiki_path(top_level_wiki) %>
@@ -8,4 +7,7 @@
 <% end %>
 <br>
 
-<%= link_to 'New Wiki', new_wiki_path %>
+<% if current_user.admin? %>
+<%= link_to 'New Wiki', new_wiki_path, class: 'button wiki-action' %>
+<% end %>
+<% end } %>

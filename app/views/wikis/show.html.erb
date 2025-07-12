@@ -1,41 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<% Wiki.where(parent: @wiki.id).each do |child_page|%>
-<li>
-    <%= link_to child_page.title, wiki_path(child_page) %>
-</li>
-<%end%>
-<% if @wiki.parent.present? %>
-<p>
-    Back to: <%= link_to @wiki.parent.title, wiki_path(@wiki.parent) %>
-</p>
+<% content_for :head do %>
+<meta name="description" content="<%= truncate(@wiki.content, length: 150) %>">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 <% end %>
-<div><%= @wiki.id %></div>
 
-<p>
-    <strong>Title:</strong>
-    <%= @wiki.title %>
-</p>
+<h1 class="wiki-title"><%= link_to "Wiki", wikis_path %></h1>
+<%= render partial: "wiki_nav", locals: { content: capture do %>
+<h2><%= @wiki.title %></h2>
 
-<p>
-    <strong>Content:</strong>
-    <%= @wiki.content %>
-</p>
+<div class="trix-content">
+    <%= @wiki.content.html_safe %>
+</div>
 
-<p>
-    <strong>Slug:</strong>
-    <%= @wiki.slug %>
-</p>
-
-<p>
-    <strong>Children:</strong>
-    <%= @wiki.children %>
-</p>
-
-<p>
-    <strong>Parent:</strong>
-    <%= @wiki.parent %>
-</p>
-
-<%= link_to 'Edit', edit_wiki_path(@wiki) %> |
-<%= link_to 'Back', wikis_path %>
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_wiki_path(@wiki), class: 'button wiki-action' %>
+<% end %>
+<% end }%>

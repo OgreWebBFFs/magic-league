@@ -1,15 +1,27 @@
+<% content_for :head do %>
+<meta name="description" content="<%= truncate(@wiki.content, length: 150) %>">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+<% end %>
 <%= simple_form_for(@wiki) do |f| %>
 <%= f.error_notification %>
 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.input :slug %>
-    <%= f.input :children %>
+<div class="wiki-form">
+    <%= f.input :title, wrapper_html: { class: 'wiki-form__title' } %>
+    <%= f.hidden_field :content, id: 'content' %>
+    <trix-toolbar id="my_toolbar"></trix-toolbar>
+    <trix-editor toolbar="my_toolbar" input="content" class="trix-content wiki-form__content"></trix-editor>
+    <%= f.input :slug, wrapper_html: { class: 'wiki-form__title' } %>
+    <%= f.label :parent_id, "Parent Page", class: 'wiki-form__parent-label' %>
+    <%= f.select :parent_id, options_for_select(Wiki.where.not(id: @wiki.id).where.not(parent: @wiki.id).pluck(:title, :id), @wiki.parent_id), include_blank: "None (top-level)", class: 'wiki-form__parent-select' %>
 </div>
 
-<div class="form-actions">
-    <%= f.button :submit %>
+<div class="wiki-form__actions">
+    <%= f.button :submit, class: 'button wiki-action' %>
+    <% if @wiki.id.present? %>
+    <%= link_to "Delete", wiki_path(@wiki), method: :delete, data: { confirm: "Are you sure you want to delete this page?" }, class: "button button--negative wiki-action" %>
+    <% end %>
 </div>
 <% end %>
