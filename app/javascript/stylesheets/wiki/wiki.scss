@@ -26,6 +26,7 @@
 .wiki-nav {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     position: fixed;
     top: 0;
     left: max(-85vw, -450px);
