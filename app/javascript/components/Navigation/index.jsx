@@ -52,8 +52,8 @@ const Navigation = ({ device, isAdmin, currentUserId, unlockedUsers, notificatio
                     href: "matches",
                 },
                 {
-                    displayName: "Rules",
-                    href: "rules",
+                    displayName: "Wiki",
+                    href: "wiki",
                 },
             ],
         },
