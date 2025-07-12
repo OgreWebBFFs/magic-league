@@ -4,7 +4,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    is_admin
+    is_admin?
   end
   
   def destroy?
