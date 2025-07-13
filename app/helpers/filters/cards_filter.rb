@@ -6,7 +6,7 @@ module Filters
           params[:query].is_a?(String)
         },
         apply: ->(scope, params) {
-          scope.where('name ILIKE :query OR oracle_text ILIKE :query OR type_line ILIKE :query', query: "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
+          scope.where('cards.name ILIKE :query OR oracle_text ILIKE :query OR type_line ILIKE :query', query: "%#{ActiveRecord::Base.sanitize_sql params[:query]}%")
         }
       }.freeze,
       colors_exact_filter: {
@@ -113,7 +113,17 @@ module Filters
         apply: ->(scope, params) {
           scope.where.not("type_line ILIKE ?", "%basic land%")
         }
-      }.freeze
+      }.freeze,
+      user_owns_filter: {
+        apply?: ->(params) {
+          params[:user].present? && User.exists?(id: params[:user])
+        },
+        apply: ->(scope, params) {
+          scope.joins(ownerships: { collection: :user })
+            .where(collections: { user_id: params[:user] })
+            .distinct
+        }
+      }
     }.freeze
 
     def self.filters
