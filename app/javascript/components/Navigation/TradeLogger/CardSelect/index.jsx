@@ -10,7 +10,7 @@ const NO_OPTIONS_MSG = "No Results";
 const LabelWithSet = ({ option }) => (
     <>
         {option.label}
-        <i style={{ fontSize: "2rem", marginLeft: ".5rem" }} className={`ss ss-${option.card.attributes.set}`} />
+        <i style={{ fontSize: "1.75rem", marginLeft: ".5rem" }} className={`ss ss-${option.card.attributes.set}`} />
     </>
 );
 
@@ -50,13 +50,7 @@ const CardSelect = ({ onUpdate, userId }) => {
             form="trade-form"
             noOptionsMessage={() => loadingMsg}
             // eslint-disable-next-line react/no-unstable-nested-components
-            formatOptionLabel={(data) =>
-                cardOptions.filter((o) => o.label === data.label).length > 1 ? (
-                    <LabelWithSet option={data} />
-                ) : (
-                    data.label
-                )
-            }
+            formatOptionLabel={(data) => (data.showSet ? <LabelWithSet option={data} /> : data.label)}
         />
     );
 };

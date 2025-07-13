@@ -10,11 +10,13 @@ const searchCards = async (query, userId) =>
         })
     ).data;
 
-const fetchCardOptions = async (inputValue, userId) =>
-    (await searchCards(inputValue, userId)).map((card) => ({
+const fetchCardOptions = async (inputValue, userId) => {
+    const results = await searchCards(inputValue, userId);
+    return results.map((card) => ({
         value: `${card.id}#${Date.now()}`,
         label: card.attributes.name,
         card,
+        showSet: results.filter((c) => c.attributes.name === card.attributes.name).length > 1,
     }));
-
+};
 export default fetchCardOptions;
