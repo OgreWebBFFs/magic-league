@@ -78,6 +78,8 @@
         padding-right: 6rem;
         border: 1px solid #aaa;
         border-radius: 8px;
+        position: sticky;
+        top: 1rem;
     }
 
     &.open {
@@ -139,10 +141,11 @@
 }
 
 .wiki__more-links {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     margin-bottom: 2rem;
     background: #ddd;
     padding: 1rem;
     border-radius: 4px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }

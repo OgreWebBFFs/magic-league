@@ -6,14 +6,12 @@
 <% end %>
 <%= render partial: 'wiki_2_nav', locals: { content: capture do %>
         <div class="wiki__more-links">
-            <div style='display: flex; width: 100%; gap: .5rem; align-items: top;'>
-                <i class="fa fa-info-circle"></i> Looking for more information? Explore our wiki using the links below.
-            </div>
-            <ul style='margin-top: .5rem;'>
+            <i class="fa fa-link"></i>
+            <ul>
                 <%= Wiki.where(parent: nil)
                     .where.not(id: @wiki.id)
                     .order(:sort_order)
-                    .map { |item| item.is_a?(Wiki) ? link_to(item.title, wiki_path(item)) : item }
+                    .map { |item| item.is_a?(Wiki) ? link_to(item.title, wiki_2_path(item)) : item }
                     .join(' | ')
                     .html_safe %>
             </ul>
