@@ -6,6 +6,12 @@
 
 .wiki-action {
     width: fit-content;
+    display: inline;
+    margin-left: auto;
+}
+
+.wiki-action-bar {
+    display: none;
 }
 
 .wiki-main {
@@ -21,6 +27,29 @@
 
 .wiki-content {
     flex-grow: 1;
+
+    .hidden {
+        display: none;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(225, 225, 225, 0.5);
+            z-index: 200;
+            pointer-events: none;
+        }
+    }
+
+    &.admin-view {
+        .wiki-action-bar {
+            display: block;
+        }
+
+        .hidden {
+            display: block;
+        }
+    }
 }
 
 .wiki-nav {
@@ -59,9 +88,13 @@
         @media screen and (min-width: 850px) {
             display: none;
         }
+        padding: 1rem;
     }
 
-    &__parent {
+    &__link {
+        &.child {
+            margin-left: 0.5rem;
+        }
     }
 
     &__child {
@@ -103,4 +136,13 @@
     ul {
         list-style: disc;
     }
+}
+
+.wiki__more-links {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 2rem;
+    background: #ddd;
+    padding: 1rem;
+    border-radius: 4px;
 }

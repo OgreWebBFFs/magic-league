@@ -6,8 +6,16 @@ class Wiki < ApplicationRecord
 
   validates :slug, presence: true, uniqueness: true
 
+  scope :visible_to, ->(user) {
+    user.admin? ? all : where(hidden: [false, nil])
+  }
+
   def to_param
     slug
+  end
+
+  def toggle_hidden
+    self.hidden = !self.hidden
   end
 
   def generate_slug

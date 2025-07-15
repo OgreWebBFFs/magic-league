@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  before_action :set_wiki, only: %i[ show edit update destroy ]
+  before_action :set_wiki, only: %i[ show edit update destroy hide ]
   after_action :verify_authorized, only: [:edit, :update, :destroy]
 
   # GET /wikis or /wikis.json
@@ -9,6 +9,20 @@ class WikisController < ApplicationController
 
   # GET /wikis/1 or /wikis/1.json
   def show
+  end
+
+  def show2
+    @wiki = Wiki.find_by!(slug: params[:id])
+  end
+
+  def hide
+    # authorize @wiki
+    @wiki.toggle_hidden
+    if @wiki.save
+      redirect_back fallback_location: wiki_path(@wiki)
+    else
+      redirect_back fallback_location: wiki_path(@wiki), alert: "Failed to update."
+    end
   end
 
   # GET /wikis/new

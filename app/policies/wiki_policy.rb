@@ -14,4 +14,8 @@ class WikiPolicy < ApplicationPolicy
   def new?
     is_admin?
   end
+
+  def hide?
+    is_admin?
+  end
 end

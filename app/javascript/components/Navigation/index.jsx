@@ -52,8 +52,8 @@ const Navigation = ({ device, isAdmin, currentUserId, unlockedUsers, notificatio
                     href: "matches",
                 },
                 {
-                    displayName: "Wiki",
-                    href: "wiki",
+                    displayName: "League Info",
+                    href: "league-info/current-season",
                 },
             ],
         },
