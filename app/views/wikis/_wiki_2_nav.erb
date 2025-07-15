@@ -1,28 +1,17 @@
-<div style='display: flex; gap: 1.5rem; align-items: center; margin: 0 auto 1.5rem; max-width: 1200px'>
-    <button class="button wiki-nav__toggle"><i class="fa fa-bars"></i></button>
-    <div>
-        <h1 style="margin-bottom: 0;">League Info</h1>
-        <% if current_user.admin? %>
-            <%= link_to "Add Page", new_wiki_path(), class: 'wiki-action' %>
-            |
-            <a id="hide-actions">User View</a>
-        <% end %>
-    </div>
-</div>
-    
+<button class="wiki-nav__toggle"><i class="fa fa-bars"></i></button>
 <main class="wiki-main">
     <nav class="wiki-nav">
         <button class="wiki-nav__close"><i class="fa fa-times"></i></button>
         <% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
-            <%= link_to top_level_wiki.title, wiki_2_path(top_level_wiki), class: 'wiki-nav__link parent' %>
+            <%= link_to top_level_wiki.title, wiki_path(top_level_wiki), class: 'wiki-nav__parent' %>
             <% top_level_wiki.children.order(:sort_order).each do |child_wiki| %>
-            <%= link_to child_wiki.title, wiki_2_path(top_level_wiki, anchor: child_wiki.slug), class: 'wiki-nav__link child' %>
+            <%= link_to child_wiki.title, wiki_path(child_wiki), class: 'wiki-nav__child' %>
             <% end %>
         <% end%>
     </nav>
-    <%= content_tag :div, class: ['wiki-page', ('admin-view' if current_user.admin?)].compact.join(' ') do %>
+    <div class="wiki-content">
         <%= content %>
-    <% end %>
+    </div>
 </main>
 <div class="wiki-nav__isolation"></div>
 <script>
@@ -31,14 +20,8 @@
     const nav = document.querySelector(".wiki-nav");
     const isolation = document.querySelector(".wiki-nav__isolation");
     const closeButton = document.querySelector(".wiki-nav__close");
-    const links = document.querySelectorAll(".wiki-nav__link");
 
     if (toggleButton && nav && isolation && closeButton) {
-        links.forEach(link => {
-            link.addEventListener('click', event => {
-                nav.classList.remove('open');
-                isolation.classList.remove("open");
-        })});
       toggleButton.addEventListener("click", function () {
         nav.classList.toggle("open");
         isolation.classList.toggle("open");
@@ -54,22 +37,6 @@
         nav.classList.remove("open");
         isolation.classList.remove("open");
       });
-    }
-
-    const hideActions = document.querySelector('#hide-actions');
-
-    if (hideActions) {
-        const wikiContent = document.querySelector('.wiki-page');
-        hideActions.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (hideActions.textContent === "User View") {
-                wikiContent.classList.remove('admin-view');
-                hideActions.textContent = "Admin View";
-            } else {
-                wikiContent.classList.add('admin-view');
-                hideActions.textContent = "User View";
-            }
-        });
     }
   });
 </script>

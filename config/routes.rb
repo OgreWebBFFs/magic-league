@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :wikis, path: "wiki" do
+  resources :wikis, path: "league-info" do
     post :hide, on: :member
   end
-  get 'league-info/:id', to: 'wikis#show2', as: :wiki_2
+  # get 'league-info/:id', to: 'wikis#show2', as: :wiki_2
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
 
@@ -72,4 +72,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/.well-known/*path', to: proc { [204, {}, ['']] }
 end

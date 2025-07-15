@@ -1,19 +1,63 @@
 <% content_for :head do %>
-<meta name="description" content="<%= truncate(@wiki.content, length: 150) %>">
+<meta name="description" content="A description of rules and general information about the overall league and the current season">
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 <% end %>
+<%= render partial: 'wiki_nav', locals: { content: capture do %>
+        <div class="wiki__more-links">
+            <i class="fa fa-link" style="line-height: 1.5;"></i>
+            <ul>
+                <%= Wiki.where(parent: nil)
+                    .where.not(id: @wiki.id)
+                    .order(:sort_order)
+                    .map { |item| item.is_a?(Wiki) ? link_to(item.title, wiki_path(item), style: "white-space: nowrap;") : item }
+                    .join(' | ')
+                    .html_safe %>
+            </ul>
+        </div>
+        <div class="wiki-header">
+            <h2 style="margin-bottom: 0;">
+                <%= @wiki.title %>
+            </h2>
+            <div class="wiki-action-bar">
+                    <% if current_user.admin? %>
+                    <%= link_to "Add Section", new_wiki_path(parent: @wiki), params: ,class: 'wiki-action' %>
+                    |
+                    <%= link_to "Edit Page", edit_wiki_path(@wiki), class: 'wiki-action' %>
+                    |
+                    <%= link_to "Delete Page", wiki_path(@wiki), method: :delete, data: { confirm: "Are you sure you want to delete this page?" }, class: "wiki-action" %>
+                <% end %>
+            </div>
+        </div>
+        <div class="trix-content wiki-content">
+            <%= @wiki.content.html_safe %>
+        </div>
+        <% @wiki.children.visible_to(current_user).order(:sort_order).each do |section| %>
+            <%= content_tag :div, id: section.slug, class: ('hidden' if section.hidden), style: 'position: relative;' do %>
+                <div class='wiki-header wiki-subheader'>
+                    <% if section.hidden %>
+                        <div class="text-xs text-gray-600 italic mb-2">
+                            ⚠️ This section is hidden from normal users
+                        </div>
+                    <% end %>
+                    <h3>
+                        <%= section.title %>
+                    </h3>
+                    <% if current_user.admin? %>
+                        <div class='wiki-action-bar'>
+                            <%= link_to "Edit", edit_wiki_path(section), class: 'wiki-action' %>
+                            |
+                            <%= link_to (section.hidden ? "Show" : "Hide"), hide_wiki_path(section), method: :post, class: 'wiki-action' %>
+                            |
+                            <%= link_to "Delete", wiki_path(section), method: :delete, data: { confirm: "Are you sure you want to delete this page?" }, class: "wiki-action" %>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="trix-content wiki-content">
+                    <%= section.content.html_safe %>
+                </div>
+            <% end %>
+        <% end %>
 
-<h1 class="wiki-title"><%= link_to "Wiki", wikis_path %></h1>
-<%= render partial: "wiki_nav", locals: { content: capture do %>
-<h2><%= @wiki.title %></h2>
-
-<div class="trix-content">
-    <%= @wiki.content.html_safe %>
-</div>
-
-<% if current_user.admin? %>
-<%= link_to 'Edit', edit_wiki_path(@wiki), class: 'button wiki-action' %>
-<% end %>
-<% end }%>
+<% end } %>

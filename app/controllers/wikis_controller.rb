@@ -4,14 +4,23 @@ class WikisController < ApplicationController
 
   # GET /wikis or /wikis.json
   def index
-    @wikis = Wiki.all
+    respond_to do |format|
+      format.json do
+        @wikis = Wiki.all
+        render json: @wikis
+      end
+      format.html do
+        first_parent = Wiki.where(parent_id: nil).order(:sort_order).first
+        if first_parent
+          redirect_to wiki_path(first_parent)
+        else
+          head :not_found # or render a fallback page
+        end
+      end
+    end
   end
 
-  # GET /wikis/1 or /wikis/1.json
   def show
-  end
-
-  def show2
     @wiki = Wiki.find_by!(slug: params[:id])
   end
 
@@ -28,6 +37,7 @@ class WikisController < ApplicationController
   # GET /wikis/new
   def new
     @wiki = Wiki.new
+    @parent = Wiki.find_by(slug: params[:parent])
     authorize @wiki
   end
 

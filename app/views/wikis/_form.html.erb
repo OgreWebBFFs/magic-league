@@ -10,21 +10,21 @@
 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 <div class="wiki-form">
-    <%= f.input :title, wrapper_html: { class: 'wiki-form__title' } %>
-    <%= f.hidden_field :content, id: 'content' %>
-    <trix-toolbar id="my_toolbar"></trix-toolbar>
-    <trix-editor toolbar="my_toolbar" input="content" class="trix-content wiki-form__content"></trix-editor>
-    <%= f.input :slug, wrapper_html: { class: 'wiki-form__title' } %>
-    <%= f.input :sort_order, label: "Sidebar Order" %>
-    <%= f.label :parent_id, "Parent Page", class: 'wiki-form__parent-label' %>
-    <%= f.select :parent_id, options_for_select(Wiki.where.not(id: @wiki.id).where(parent: nil).pluck(:title, :id), @wiki.parent_id), include_blank: "None (top-level)", class: 'wiki-form__parent-select' %>
+    <%= f.input :title, wrapper_html: { class: 'wiki-form__field browser-default' } %>
+    <%= f.hidden_field :parent_id, value: (@parent&.id || @wiki.parent_id) %>
+    <div class="wiki-form__field">
+        <%= f.label :content, "Content" %>
+        <%= f.hidden_field :content %>
+        <trix-toolbar id="my_toolbar"></trix-toolbar>
+        <trix-editor toolbar="my_toolbar" input="wiki_content" class="trix-content wiki-form__content"></trix-editor>
+    </div>
+    <%= f.input :slug, wrapper_html: { class: 'wiki-form__field browser-default' } %>
+    <%= f.input :sort_order, label: "Sidebar Order",  wrapper_html: { class: 'wiki-form__field' } %>
 </div>
 
 <div class="wiki-form__actions">
-    <%= f.button :submit, class: 'button wiki-action' %>
-    <% if @wiki.id.present? %>
-    <%= link_to "Delete", wiki_path(@wiki), method: :delete, data: { confirm: "Are you sure you want to delete this page?" }, class: "button button--negative wiki-action" %>
-    <% end %>
+    <%= f.button :submit, "Save", class: 'button' %>
+    <%= link_to 'Cancel', wiki_path(@wiki.parent || @wiki || nil) %>
 </div>
 <% end %>
 <script>

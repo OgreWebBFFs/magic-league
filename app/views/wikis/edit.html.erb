@@ -1,9 +1,9 @@
-<h1>Editing Wiki</h1>
+<% if @wiki.parent.present? %>
+    <h1>Edit Section <p style="font-size: 1.25rem; margin: 0 0 0 1.25rem;">for <%= @wiki.parent.title %></p></h1>
+<% else %>
+    <h1>Edit Page</h1>
+<% end %>
 
 <div style='max-width: 1200px; margin-left: auto; margin-right: auto;'>
     <%= render 'form', wiki: @wiki %>
-
-
-    <%= link_to 'Show', @wiki %> |
-    <%= link_to 'Back', wikis_path %>
 </div>

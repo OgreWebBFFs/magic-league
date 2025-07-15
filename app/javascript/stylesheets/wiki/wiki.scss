@@ -134,7 +134,6 @@
 }
 
 .trix-content {
-    margin-bottom: 4rem;
     ul {
         list-style: disc;
     }
@@ -142,6 +141,7 @@
 
 .wiki-content {
     margin-left: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .wiki__more-links {
@@ -164,9 +164,18 @@
     position: sticky;
     top: 0;
     background: white;
-    z-index: 100;
     padding: 0.75rem 0;
     h3 {
         margin: 0;
     }
+}
+
+.wiki-form__field {
+    margin-bottom: 2rem;
+}
+
+.wiki-form__actions {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
 }
