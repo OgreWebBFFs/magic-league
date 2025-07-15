@@ -20,7 +20,7 @@
             <% end %>
         <% end%>
     </nav>
-    <%= content_tag :div, class: ['wiki-content', ('admin-view' if current_user.admin?)].compact.join(' ') do %>
+    <%= content_tag :div, class: ['wiki-page', ('admin-view' if current_user.admin?)].compact.join(' ') do %>
         <%= content %>
     <% end %>
 </main>
@@ -59,7 +59,7 @@
     const hideActions = document.querySelector('#hide-actions');
 
     if (hideActions) {
-        const wikiContent = document.querySelector('.wiki-content');
+        const wikiContent = document.querySelector('.wiki-page');
         hideActions.addEventListener("click", function(e) {
             e.preventDefault();
             if (hideActions.textContent === "User View") {

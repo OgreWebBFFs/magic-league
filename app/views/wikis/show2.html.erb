@@ -6,7 +6,7 @@
 <% end %>
 <%= render partial: 'wiki_2_nav', locals: { content: capture do %>
         <div class="wiki__more-links">
-            <i class="fa fa-link"></i>
+            <i class="fa fa-link" style="line-height: 1.5;"></i>
             <ul>
                 <%= Wiki.where(parent: nil)
                     .where.not(id: @wiki.id)
@@ -16,7 +16,7 @@
                     .html_safe %>
             </ul>
         </div>
-        <div>
+        <div class="wiki-header">
             <h2 style="margin-bottom: 0;">
                 <%= @wiki.title %>
             </h2>
@@ -30,15 +30,18 @@
                 <% end %>
             </div>
         </div>
+        <div class="trix-content wiki-content">
+            <%= @wiki.content.html_safe %>
+        </div>
         <% @wiki.children.visible_to(current_user).order(:sort_order).each do |section| %>
             <%= content_tag :div, id: section.slug, class: ('hidden' if section.hidden), style: 'position: relative; padding: 1rem 0;' do %>
-                <div style='position: sticky; top: 0; background: white; margin-bottom: 1rem;'>
+                <div class='wiki-header wiki-subheader' style='position: sticky; top: 0; background: white; margin-bottom: 1rem;'>
                     <% if section.hidden %>
                         <div class="text-xs text-gray-600 italic mb-2">
                             ⚠️ This section is hidden from normal users
                         </div>
                     <% end %>
-                    <h3 style='margin: 0;'>
+                    <h3>
                         <%= section.title %>
                     </h3>
                     <% if current_user.admin? %>
@@ -51,7 +54,7 @@
                         </div>
                     <% end %>
                 </div>
-                <div class="trix-content">
+                <div class="trix-content wiki-content">
                     <%= section.content.html_safe %>
                 </div>
             <% end %>
