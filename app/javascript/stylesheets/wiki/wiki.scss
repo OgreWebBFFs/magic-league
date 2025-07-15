@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: max(-85vw, -450px);
     width: min(85vw, 450px);
@@ -118,9 +118,10 @@
         z-index: 99;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
         top: 0;
         left: 0;
+        background-color: hsl(from var(--color-fill-neutral) h s l / 0.3);
         opacity: 0;
         transition-property: opacity;
         transition-duration: 300ms;

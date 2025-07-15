@@ -592,3 +592,9 @@ input[type="checkbox"] {
         align-self: center;
     }
 }
+
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}

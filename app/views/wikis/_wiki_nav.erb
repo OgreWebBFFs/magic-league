@@ -13,9 +13,9 @@
 <main class="wiki-main">
     <nav class="wiki-nav">
         <button class="wiki-nav__close"><i class="fa fa-times"></i></button>
-        <% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
+        <% Wiki.where(parent: nil).where(hidden: [false, nil]).order(:sort_order).each do |top_level_wiki| %>
             <%= link_to top_level_wiki.title, wiki_path(top_level_wiki), class: 'wiki-nav__link parent' %>
-            <% top_level_wiki.children.order(:sort_order).each do |child_wiki| %>
+            <% top_level_wiki.children.where(hidden: [false, nil]).order(:sort_order).each do |child_wiki| %>
             <%= link_to child_wiki.title, wiki_path(top_level_wiki, anchor: child_wiki.slug), class: 'wiki-nav__link child' %>
             <% end %>
         <% end%>
@@ -27,6 +27,7 @@
 <div class="wiki-nav__isolation"></div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    const body = document.querySelector("body");
     const toggleButton = document.querySelector(".wiki-nav__toggle");
     const nav = document.querySelector(".wiki-nav");
     const isolation = document.querySelector(".wiki-nav__isolation");
@@ -36,23 +37,27 @@
     if (toggleButton && nav && isolation && closeButton) {
         links.forEach(link => {
             link.addEventListener('click', event => {
+                body.classList.remove('no-scroll');
                 nav.classList.remove('open');
                 isolation.classList.remove("open");
         })});
       toggleButton.addEventListener("click", function () {
         nav.classList.toggle("open");
         isolation.classList.toggle("open");
+        body.classList.toggle("no-scroll");
       });
 
       // Optional: Clicking the isolation layer also closes the nav
       isolation.addEventListener("click", function () {
         nav.classList.remove("open");
         isolation.classList.remove("open");
+        body.classList.remove("no-scroll");
       });
 
       closeButton.addEventListener("click", function () {
         nav.classList.remove("open");
         isolation.classList.remove("open");
+        body.classList.remove("no-scroll");
       });
     }
 

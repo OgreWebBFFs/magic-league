@@ -24,7 +24,12 @@
 
 <div class="wiki-form__actions">
     <%= f.button :submit, "Save", class: 'button' %>
-    <%= link_to 'Cancel', wiki_path(@wiki.parent || @wiki || nil) %>
+    <% if @wiki.new_record? %>
+       <% back_link = wikis_path() %>
+    <% else %>
+        <% back_link = wiki_path(@wiki.parent || @wiki)%>
+    <% end %>
+    <%= link_to 'Cancel', back_link %>
 </div>
 <% end %>
 <script>
