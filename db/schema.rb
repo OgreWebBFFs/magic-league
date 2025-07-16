@@ -117,13 +117,15 @@ ActiveRecord::Schema.define(version: 2025_07_15_113137) do
 
   create_table "exchanges", force: :cascade do |t|
     t.bigint "card_id"
-    t.bigint "user_id"
     t.bigint "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "from_user_id"
+    t.bigint "to_user_id"
     t.index ["card_id"], name: "index_exchanges_on_card_id"
+    t.index ["from_user_id"], name: "index_exchanges_on_from_user_id"
+    t.index ["to_user_id"], name: "index_exchanges_on_to_user_id"
     t.index ["trade_id"], name: "index_exchanges_on_trade_id"
-    t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -200,8 +202,6 @@ ActiveRecord::Schema.define(version: 2025_07_15_113137) do
   end
 
   create_table "trades", force: :cascade do |t|
-    t.integer "from_user"
-    t.integer "to_user"
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -264,6 +264,8 @@ ActiveRecord::Schema.define(version: 2025_07_15_113137) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "draffle_prizes", "draffles"
+  add_foreign_key "exchanges", "users", column: "from_user_id"
+  add_foreign_key "exchanges", "users", column: "to_user_id"
   add_foreign_key "message_statuses", "cards"
   add_foreign_key "message_statuses", "users", column: "from_user_id"
   add_foreign_key "message_statuses", "users", column: "to_user_id"

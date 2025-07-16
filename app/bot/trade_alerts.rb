@@ -8,24 +8,19 @@ class TradeAlerts
     @bot = bot
   end
 
-  def trade_requested trade, review_link
-    to_user = trade.to
-    msg = TRADE_REQUESTED % {trade: trade.to_user_s, review_link: review_link}
+  def trade_requested(to_user, trade_details, review_link)
+    msg = TRADE_REQUESTED % {trade: trade_details, review_link: review_link}
     @bot.pm_user(to_user.discord_id.to_i, msg)
   end
 
-  def trade_accepted trade
-    to_user = trade.to
-    from_user = trade.from
-    msg = TRADE_ACCEPTED % {user: to_user.name, trade: trade.from_user_s}
-    @bot.pm_user(from_user.discord_id.to_i, msg)
+  def trade_accepted to_user, other_users, trade_details
+    msg = TRADE_ACCEPTED % {users: other_users, trade: trade_details}
+    @bot.pm_user(to_user.discord_id.to_i, msg)
   end
 
-  def trade_rejected trade
-    to_user = trade.to
-    from_user = trade.from
-    msg = TRADE_REJECTED % {user: to_user.name, trade: trade.from_user_s, discord: to_user.discord_username}
-    @bot.pm_user(from_user.discord_id.to_i, msg)
+  def trade_rejected to_user, other_users, trade_details
+    msg = TRADE_REJECTED % {users: other_users, trade: trade_details}
+    @bot.pm_user(to_user.discord_id.to_i, msg)
   end
 
   def trade_error trade, invalid_trade_targets

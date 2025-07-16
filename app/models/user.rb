@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :draffle_participants
   has_many :message_statuses, class_name: 'MessageStatus', foreign_key: 'from_user_id'
   has_one :reroll
+  has_many :sent_exchanges, class_name: "Exchange", foreign_key: "from_user_id"
+  has_many :received_exchanges, class_name: "Exchange", foreign_key: "to_user_id"
 
   scope :unlocked, -> { self.where(locked_at: nil) }
 
@@ -35,11 +37,23 @@ class User < ApplicationRecord
   end
    
   def trades
-    Trade.where("from_user = ? OR to_user = ?", id, id).order('created_at DESC')
+    Trade.joins(:exchanges)
+      .where(exchanges: { from_user_id: id })
+      .or(
+        Trade.joins(:exchanges).where(exchanges: { to_user_id: id })
+      )
+      .distinct
+      .order('created_at DESC')
   end
 
   def has_pending_trade_offer?
-    self.trades.where("to_user = ? AND status = ?", id, "pending").length > 0
+    trades.any? do |trade|
+      status = trade.status
+      next false if %w[rejected approved].include?(status)
+
+      approved_user_ids = status.split("|").map(&:to_i)
+      !approved_user_ids.include?(id)
+    end
   end
 
   def wishlist
