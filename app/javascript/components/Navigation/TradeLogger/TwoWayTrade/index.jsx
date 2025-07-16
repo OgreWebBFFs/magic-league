@@ -2,32 +2,31 @@ import React, { useCallback } from "react";
 import CardSelect from "../CardSelect";
 
 const TwoWayTrade = ({ exchanges, setExchanges }) => {
+    const [me, them] = exchanges;
     const setReceivesCards = useCallback(
         (cards) => {
-            const [me, them] = exchanges;
             me.receives = cards;
             them.gives = cards;
             setExchanges([me, them]);
         },
-        [exchanges]
+        [me, them]
     );
 
     const setGivesCards = useCallback(
         (cards) => {
-            const [me, them] = exchanges;
             me.gives = cards;
             them.receives = cards;
             setExchanges([me, them]);
         },
-        [exchanges]
+        [me, them]
     );
 
     return (
         <>
             <p>What would you like to trade for</p>
-            <CardSelect onUpdate={setReceivesCards} />
+            <CardSelect onUpdate={setReceivesCards} userId={them.user} />
             <p>What are you offering</p>
-            <CardSelect onUpdate={setGivesCards} />
+            <CardSelect onUpdate={setGivesCards} userId={me.user} />
         </>
     );
 };

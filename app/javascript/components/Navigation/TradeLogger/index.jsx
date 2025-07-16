@@ -57,7 +57,7 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
                 <CardSelect onUpdate={setGiveCards} userId={currentUserId} /> */}
                 <PartnerSelect players={otherUsers} exchanges={exchanges} setExchanges={setExchanges} />
                 {exchanges.length === 2 ? (
-                    <TwoWayTrade exchanges={exchanges} setExchanges={setExchanges} currentUserId={currentUserId} />
+                    <TwoWayTrade exchanges={exchanges} setExchanges={setExchanges} />
                 ) : (
                     <MultiWayTrade exchanges={exchanges} setExchanges={setExchanges} players={otherUsers} />
                 )}

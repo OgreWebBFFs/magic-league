@@ -42,12 +42,12 @@ const MultiWayTrade = ({ exchanges, setExchanges, players }) => {
             <p>What is each player giving?</p>
             <div style={{ marginBottom: ".5rem" }}>
                 <div style={{ textAlign: "left", fontWeight: "700" }}>You: </div>
-                <CardSelect onUpdate={(cards) => addGiveCards(me.user, cards)} />
+                <CardSelect onUpdate={(cards) => addGiveCards(me.user, cards)} userId={me.user} />
             </div>
             {partners.map((partner) => (
                 <div style={{ marginBottom: ".5rem" }}>
                     <div style={{ textAlign: "left", fontWeight: "700" }}>{partner.name}: </div>
-                    <CardSelect onUpdate={(cards) => addGiveCards(partner.id, cards)} />
+                    <CardSelect onUpdate={(cards) => addGiveCards(partner.id, cards)} userId={partner.id} />
                 </div>
             ))}
             <p>What is each player receiving?</p>
