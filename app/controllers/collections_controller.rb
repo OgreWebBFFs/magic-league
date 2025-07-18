@@ -43,7 +43,7 @@ class CollectionsController < ApplicationController
   def bulk_update
     authorize(@collection)
     
-    errors = CardImporter.new(collection_params).save_cards
+    errors = CardImporter::Importer.new(collection_params).save_cards
 
     if errors.blank?
       redirect_to @collection.user
