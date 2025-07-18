@@ -11,7 +11,7 @@ const PlayerSelect = ({ player, players, partners, setSelectedPlayer }) => {
                 <option
                     key={`${user.name}-${user.id}`}
                     value={user.id}
-                    disabled={partners.some((p) => p.id === user.id)}
+                    disabled={partners?.some((p) => p.id === user.id)}
                 >
                     {user.name}
                 </option>
