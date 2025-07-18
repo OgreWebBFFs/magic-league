@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   resources :trade_message, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
   
-  resources :multi_trades, only: [:index, :create, :update, :destroy]
-
   resources :draffles, only: [:index, :show, :create, :update, :destroy]
   get 'draffles/:id/portal', to: 'draffles#portal', as: 'draffle_portal'
   put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'

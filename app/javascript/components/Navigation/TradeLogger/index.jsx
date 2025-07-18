@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import xhrRequest from "../../../helpers/xhr-request";
 import Button from "../../Button";
 import StatusMessage from "./StatusMessage";
@@ -9,7 +9,7 @@ import PartnerSelect from "./PartnerSelect";
 
 const createTrade = async (tradeData) =>
     xhrRequest({
-        url: "/multi_trades",
+        url: "/trades",
         options: {
             method: "POST",
             body: JSON.stringify(tradeData),
