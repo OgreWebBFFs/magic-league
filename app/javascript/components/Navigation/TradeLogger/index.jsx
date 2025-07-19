@@ -33,7 +33,6 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
         setIsSubmitting(true);
         try {
             const postBody = buildTradeData(exchanges);
-            console.log(postBody);
             const response = await createTrade(postBody);
             setXhrResponse(response);
             window.location.reload();
@@ -48,13 +47,6 @@ const TradeLogger = ({ unlockedUsers, currentUserId }) => {
         <div className="trade-logger">
             <form id="trade-form" onSubmit={handleSubmit}>
                 <h3>Make a Trade</h3>
-                {/* <p>Who would you like to trade with</p>
-                <PlayerSelect player={tradePartner} players={otherUsers} setSelectedPlayer={setTradePartner} />
-                <a onClick={() => e.preventDefault()}>+ Add Another Participant</a>
-                <p>What would you like to trade for</p>
-                <CardSelect onUpdate={setReceiveCards} userId={tradePartner.id} />
-                <p>What are you offering</p>
-                <CardSelect onUpdate={setGiveCards} userId={currentUserId} /> */}
                 <PartnerSelect players={otherUsers} exchanges={exchanges} setExchanges={setExchanges} />
                 {exchanges.length === 2 ? (
                     <TwoWayTrade exchanges={exchanges} setExchanges={setExchanges} />

@@ -23,6 +23,8 @@ export const LimitedCardSelect = ({ onUpdate, cardOptions }) => (
         onChange={onUpdate}
         className="trade-logger__card-select"
         form="trade-form"
+        // eslint-disable-next-line react/no-unstable-nested-components
+        formatOptionLabel={(data) => (data.showSet ? <LabelWithSet option={data} /> : data.label)}
     />
 );
 

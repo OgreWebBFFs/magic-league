@@ -52,7 +52,10 @@ const SimpleEdit = ({ userId, collectionId }) => {
                         resetToCollection();
                     }}
                     onError={() => setLoading(false)}
-                    onLoading={() => setLoading(true)}
+                    onLoading={() => {
+                        setCards([]);
+                        setLoading(true);
+                    }}
                     placeholder={`Search for a card name${
                         selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
                     }`}
