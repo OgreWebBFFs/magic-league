@@ -36,7 +36,7 @@ const SearchInput = ({ onReset, onResults, onLoading, onError, placeholder, scry
         [setError, query]
     );
 
-    useDebounce(
+    const [, cancel] = useDebounce(
         async () => {
             onLoading();
             let results = [];
@@ -59,7 +59,10 @@ const SearchInput = ({ onReset, onResults, onLoading, onError, placeholder, scry
                 id="card-search"
                 type="text"
                 placeholder={placeholder || MINIMUM_QUERY_MSG}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                    cancel();
+                    setQuery(e.target.value);
+                }}
                 value={query}
             />
             {error ? <div>{error}</div> : null}
