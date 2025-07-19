@@ -4,6 +4,7 @@ import SearchInput from "../../SearchInput";
 import { CardGrid, CardImageLink } from "../../CardGrid";
 import QuantityControl from "../QuantityControl";
 import xhrRequest from "../../../helpers/xhr-request";
+import LoadingIcon from "../../Icons/LoadingIcon";
 
 const fetchCollection = async (userId) =>
     (
@@ -19,6 +20,7 @@ const initialQuantity = (card, userId) =>
 const SimpleEdit = ({ userId, collectionId }) => {
     const [selectedSets, setSelectedSets] = useState(window.VALID_SETS);
     const [cards, setCards] = useState([]);
+    const [loading, setLoading] = useState(true);
     const ref = useRef();
 
     const resetToCollection = async () => setCards(await fetchCollection(userId));
@@ -41,28 +43,40 @@ const SimpleEdit = ({ userId, collectionId }) => {
             <div ref={ref} className="search-bar">
                 <SetPicker onPick={setSelectedSets} />
                 <SearchInput
-                    onResults={setCards}
-                    onReset={resetToCollection}
+                    onResults={(newCards) => {
+                        setLoading(false);
+                        setCards(newCards);
+                    }}
+                    onReset={() => {
+                        setLoading(false);
+                        resetToCollection();
+                    }}
+                    onError={() => setLoading(false)}
+                    onLoading={() => setLoading(true)}
                     placeholder={`Search for a card name${
                         selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
                     }`}
                     scryfallQuery={`s:${selectedSets.map((set) => set.code.toLowerCase()).join(",")}`}
                 />
             </div>
-            <CardGrid>
-                {setFilteredCards.map((card) => (
-                    <>
-                        <CardImageLink key={`${card.attributes.scryfall_id} image`} card={card.attributes} />
-                        <QuantityControl
-                            key={`${card.attributes.scryfall_id} quantity`}
-                            collectionId={collectionId}
-                            cardId={card.attributes.id}
-                            scryfallId={card.attributes.scryfall_id}
-                            initialValue={initialQuantity(card.attributes, userId)}
-                        />
-                    </>
-                ))}
-            </CardGrid>
+            {loading ? (
+                <LoadingIcon />
+            ) : (
+                <CardGrid>
+                    {setFilteredCards.map((card) => (
+                        <>
+                            <CardImageLink key={`${card.attributes.scryfall_id} image`} card={card.attributes} />
+                            <QuantityControl
+                                key={`${card.attributes.scryfall_id} quantity`}
+                                collectionId={collectionId}
+                                cardId={card.attributes.id}
+                                scryfallId={card.attributes.scryfall_id}
+                                initialValue={initialQuantity(card.attributes, userId)}
+                            />
+                        </>
+                    ))}
+                </CardGrid>
+            )}
         </>
     );
 };

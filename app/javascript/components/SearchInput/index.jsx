@@ -17,13 +17,14 @@ const searchCards = async (query, scryfallQuery) =>
         })
     ).data;
 
-const SearchInput = ({ onReset, onResults, placeholder, scryfallQuery }) => {
+const SearchInput = ({ onReset, onResults, onLoading, onError, placeholder, scryfallQuery }) => {
     const [{ query: initialQuery }] = useHashParams();
     const [query, setQuery] = useState((initialQuery || [""])[0]);
     const [error, setError] = useState("");
 
     const handleErrorMessaging = useCallback(
         (results) => {
+            onError();
             if (query.length > 0 && query.length < MIN_QUERY_LENGTH) {
                 setError(MINIMUM_QUERY_MSG);
             } else if (query.length > 0 && results.length === 0) {
@@ -37,6 +38,7 @@ const SearchInput = ({ onReset, onResults, placeholder, scryfallQuery }) => {
 
     useDebounce(
         async () => {
+            onLoading();
             let results = [];
             if (query.length === 0) {
                 onReset();
