@@ -87,7 +87,8 @@ module ConfigurationConstants
   { code: 'EOS', name: 'Edge of Eternities: Stellar Sights', symbol: 'ss ss-eos' },
   { code: 'FCA', name: 'Final Fantasy: Through the Ages', symbol: 'ss ss-fca' },
   { code: 'SPG', name: 'Special Guests', symbol: 'ss ss-spg' },
-  { code: 'BIG', name: 'The Big Score', symbol: 'ss ss-big' }
+  { code: 'BIG', name: 'The Big Score', symbol: 'ss ss-big' },
+  { code: 'OGR', name: 'Beyond the Warp', symbol: 'ss ss-mtg' }
 ].freeze
 .freeze
 end

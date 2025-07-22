@@ -1,0 +1,1535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cockatrice_carddatabase version="4">
+  <sets>
+    <set>
+      <name>OGR</name>
+      <longname>Beyond the Warp</longname>
+      <settype></settype>
+    </set>
+  </sets>
+  <cards>
+
+    <card>
+      <name>COMP — The Love Bug</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>WG</colors>
+        <manacost>2G/WG/W</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Insect </type>
+        <maintype>Creature</maintype>
+        <pt>2/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Companion — Each creature card in your starting deck has power 3 or less.
+Creatures spells you cast have offspring {G/W} (You may pay an additional {G/W} as you cast a creature. If you do, when it enters, create a 1/1 token copy of it.)
+You must cast creatures with their offspring cost paid. Offspring tokens aren’t legendary.</text>
+    </card>
+    <card>
+      <name>Quantum Retriever</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>1W</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Spirit Dog </type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>At the beginning of your upkeep, you may have this become a copy of any creature card in exile until end of turn. Choose each card only once.</text>
+    </card>
+    <card>
+      <name>Sower of Fates</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>RG</colors>
+        <manacost>R/GR/G</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Druid </type>
+        <maintype>Creature</maintype>
+        <pt>1/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever one or more players shuffle their library, add {R} or {G}.
+{T}: Any number of target players shuffle their library.</text>
+    </card>
+    <card>
+      <name>Banishing Act</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>XW</manacost>
+        <cmc>1</cmc>
+        <type>Sorcery</type>
+        <maintype>Sorcery</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Choose one:
+• Exile target nontoken creature with mana value X. Note it permanently.
+• Create a token copy of a noted card with mana value X.
+Entwine {X} (Choose both if you pay the entwine cost.)</text>
+    </card>
+    <card>
+      <name>Eclipse of the Green Sun</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>XGG</manacost>
+        <cmc>2</cmc>
+        <type>Sorcery</type>
+        <maintype>Sorcery</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Tutor a random permanent with mana value X from target opponent’s library to the battlefield under your control.
+Flashback XGGGG</text>
+    </card>
+    <card>
+      <name>Murd-est</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>1BB</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Destroy target creature. If that creature would be put into a graveyard this way, remove it from its owner’s collection for the rest of the match instead.</text>
+    </card>
+    <card>
+      <name>Blabbermouth Countermage</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>2UU</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Wizard </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>While this card is in your hand, play with your hand revealed.
+Flash
+When this enters, counter target spell unless its controller pays {2}.</text>
+    </card>
+    <card>
+      <name>Contingency Cavalier</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2W</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Knight </type>
+        <maintype>Creature</maintype>
+        <pt>3/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>First strike, protection from sideboarded cards (Be honest, opponents. If you sideboarded in more copies of a card that was already in your deck during game 1, all copies count.)</text>
+    </card>
+    <card>
+      <name>Deep Cavern Brat</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>WB</colors>
+        <manacost>1W/BW/B</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Bat Child </type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, lifelink
+When this enters, look at target opponent’s hand and choose a card. Exchange that card with a card from your hand until this creature leaves the battlefield.</text>
+    </card>
+    <card>
+      <name>The Golden Boy</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>3</manacost>
+        <cmc>3</cmc>
+        <type>Legendary Artifact Creature - Child </type>
+        <maintype>Creature</maintype>
+        <pt>1/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When you win the game on a turn where The Golden Boy dealt damage, it gains the following ability for as long as you own it:
+“You may trade this card along with a sealed booster pack. The recipient may open the pack and add its contents to their collection.”</text>
+    </card>
+    <card>
+      <name>Fires of Alexandria</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>1RR</manacost>
+        <cmc>3</cmc>
+        <type>Enchantment</type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Play with the top card of your library revealed. As long as it’s a permanent, treat it as though it’s on the battlefield. If it’s a creature, it gains haste. (These permanents don’t trigger “enters” or “leaves” abilities from being revealed or drawn.)
+You may skip your draw step.</text>
+    </card>
+    <card>
+      <name>Topsy Turvy Stomper</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>WG</colors>
+        <manacost>3G/WG/W</manacost>
+        <cmc>5</cmc>
+        <type>Creature - Elephant </type>
+        <maintype>Creature</maintype>
+        <pt>5/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Vigilance, trample
+Reverse vigilance (Blocking causes this creature to tap.)
+Reverse trample (When blocking, this creature deals excess combat damage to the blocked creature’s controller.)</text>
+    </card>
+    <card>
+      <name>Llanowar Mafia</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>B</manacost>
+        <cmc>1</cmc>
+        <type>Creature - Elf Rogue </type>
+        <maintype>Creature</maintype>
+        <pt>1/1</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>{T}: Destroy target creature an opponent controls unless they let you add {G} to your mana pool.</text>
+    </card>
+    <card>
+      <name>Steward of Forgotten Lands</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>BG</colors>
+        <manacost>1BG</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Zombie Druid </type>
+        <maintype>Creature</maintype>
+        <pt>*/*</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>You can activate mana abilities of lands in your graveyard. 
+This creature’s power and toughness are equal to the number of untapped lands in your graveyard. (Untap your graveyard during your untap step.)</text>
+    </card>
+    <card>
+      <name>Stranger than Fact or Fiction</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>3U</manacost>
+        <cmc>4</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Reveal the top three cards of your library and the top three cards of an opponent’s library. That opponent separates those cards into two face up piles. Put one pile into your hand and the other into your graveyard.</text>
+    </card>
+    <card>
+      <name>Reflections of the Moon</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>2UU</manacost>
+        <cmc>4</cmc>
+        <type>Enchantment - Aura </type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Enchant permanent
+Nonbasic lands are copies of enchanted permanent.</text>
+    </card>
+    <card>
+      <name>Sphinx of Few Secrets</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>2UU</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Sphinx </type>
+        <maintype>Creature</maintype>
+        <pt>4/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, ward {2}
+Play with two cards in your hand revealed.
+When this attacks or dies, shuffle up to two cards from your hand into your library and draw that many cards.</text>
+    </card>
+    <card>
+      <name>We Need a Hero</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2WW</manacost>
+        <cmc>4</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Tutor a creature with mana value less than or equal to the total power of creatures attacking you to the battlefield.</text>
+    </card>
+    <card>
+      <name>Overzealous Spymaster</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>UB</colors>
+        <manacost>1U/B</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Rogue </type>
+        <maintype>Creature</maintype>
+        <pt>3/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Ward {U}
+Draw from an opponent’s library instead of your own.
+Whenever you play or cast a card you don’t own, create a treasure token.</text>
+    </card>
+    <card>
+      <name>Geoguessr</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>1G</manacost>
+        <cmc>2</cmc>
+        <type>Sorcery</type>
+        <maintype>Sorcery</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Search your library for a basic land card. An opponent guesses the name of that card. If they guess correctly, put it into your hand. Otherwise, choose one:
+• Put it onto the battlefield.
+• Put it into your hand, then return this card to your hand.</text>
+    </card>
+    <card>
+      <name>Stun Battalion</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>1WW</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Warrior </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Creatures you control get +1/+1 and are non-lethal. (If damage they deal would destroy a creature, instead tap and put a stun counter on that creature. Damage they deal can’t reduce a player’s life total to less than 1.)</text>
+    </card>
+    <card>
+      <name>Thunder Order Hellkite</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>3RR</manacost>
+        <cmc>5</cmc>
+        <type>Creature - Dragon </type>
+        <maintype>Creature</maintype>
+        <pt>4/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, trample, haste
+Cards in your hand are Shock.</text>
+    </card>
+    <card>
+      <name>Carnage Order Shaman</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>3GG</manacost>
+        <cmc>5</cmc>
+        <type>Creature - Druid </type>
+        <maintype>Creature</maintype>
+        <pt>3/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>{T}: Add {G} to your mana pool.
+Creature cards in your hand are Colossal Dreadmaw.</text>
+    </card>
+    <card>
+      <name>Grave Order Hellpriest</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>1BB</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Skeleton Cleric </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Noncreature, nonland cards in your hand are Murder.
+1BB: Return this creature from your graveyard to your hand.</text>
+    </card>
+    <card>
+      <name>Honor Order Halberd</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2W</manacost>
+        <cmc>3</cmc>
+        <type>Artifact - Equipment  </type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>When this enters, attach it to target creature you control.
+Creature cards in your hand are copies of equipped creature.
+Equip 1W</text>
+    </card>
+    <card>
+      <name>Spawning Slime</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>UG</colors>
+        <manacost>2G/UG/U</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Ooze Shapeshifter </type>
+        <maintype>Creature</maintype>
+        <pt>4/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever you cast a creature spell, you may pay {1}. If you do, create a copy of Spawning Slime.
+Channel — 2G/UG/U, Discard Spawning Slime: Target creature you control becomes a copy of another target creature.</text>
+    </card>
+    <card>
+      <name>The Hills Have Elves</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>1GG</manacost>
+        <cmc>3</cmc>
+        <type>Enchantment</type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Lands that enter the battlefield from your library enter as copies of Elvish Archdruid.
+Whenever one or more creatures deal combat damage to an opponent, tutor a basic land to the battlefield tapped.</text>
+    </card>
+    <card>
+      <name>Ninja Librarian</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>UB</colors>
+        <manacost>1UB</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Ninja </type>
+        <maintype>Creature</maintype>
+        <pt>2/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Ninjutsu from your library 1UB (1UB, Shuffle an unblocked attacker you control into your library: Tutor this card onto the battlefield tapped and attacking.)
+When this deals combat damage to a player, look at their hand. You may put a card from their hand on top of their library. If you do, shuffle this into your library.</text>
+    </card>
+    <card>
+      <name>Kidnapper</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>BB</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Ninja </type>
+        <maintype>Creature</maintype>
+        <pt>2/1</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Deathtouch
+Ninjutsu for an opponent’s creature 3U/BU/B (3U/BU/B, Return an unblocked attacker an opponent controls to your hand: Put this card onto the battlefield from your hand under the attacking player’s control tapped and attacking.)</text>
+    </card>
+    <card>
+      <name>Merchant of Magic</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2R</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Goblin Noble </type>
+        <maintype>Creature</maintype>
+        <pt>2/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this or another creature enters under your control, create a Treasure token.
+{T}: Create an exiled copy of a random card worth over $100. You may cast it for as long as it remains exiled.</text>
+    </card>
+    <card>
+      <name>Wurmfriend</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>2G</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Druid </type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this enters, create a tapped 6/6 green Wurm creature token with “This creature can’t attack or block.”
+2GG: Until end of turn, target creature loses all abilities and gains trample.</text>
+    </card>
+    <card>
+      <name>Peace</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>B // 2B</manacost>
+        <cmc>1</cmc>
+        <type>Sorcery // Sorcery</type>
+        <maintype>Sorcery</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Sacrifice a creature. Surveil 2.
+--- 
+Aftermath (Cast this spell only from your graveyard. Then exile it.)
+Return target creature card from your graveyard to the battlefield.</text>
+    </card>
+    <card>
+      <name>Winkmage</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>UR</colors>
+        <manacost>UR</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Wizard </type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>{2}, Sacrifice this creature: It deals X damage to any target, and target player draws X cards, where X is the number of spells on the stack.</text>
+    </card>
+    <card>
+      <name>Magpie Prizemage</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>2UU // 1U</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Bird Wizard  // Instant - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>3/4</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Flying, ward {1}
+Whenever one or more creatures deal combat damage to a player, their controller may put an exiled card with a prize counter into their hand.
+--- 
+Exile the top six cards of target player’s library and put prize counters on each.</text>
+    </card>
+    <card>
+      <name>Spontaneous Spellbag</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>2</manacost>
+        <cmc>2</cmc>
+        <type>Artifact</type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Before the match, set aside a spellbook of exactly five instant or sorcery cards with different names and mana value 2 or less. (These cards remain face down and aren’t part of your deck.)
+{2}, {T}: Cast a random card from Spontaneous Spellbag’s spellbook.</text>
+    </card>
+    <card>
+      <name>Land Tax Peacekeeper</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2WW</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Noble </type>
+        <maintype>Creature</maintype>
+        <pt>2/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this enters, put a +1/+1 counter on each land your opponents control.
+Whenever an opponent taps a land for mana, they move a counter from that land onto a creature you control of their choice. (This ability doesn’t use the stack and must be done before that mana is spent.)</text>
+    </card>
+    <card>
+      <name>Stackwise Street Gambler</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost>2U/R // 1R</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Rogue  // Instant - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>1/1</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Flash
+This enters with a +1/+1 counter on it for each spell or ability on the stack as it resolves.
+--- 
+Reorder all spells and abilities on the stack. (Don’t choose new targets.)</text>
+    </card>
+    <card>
+      <name>Randomate Dead</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>1B</manacost>
+        <cmc>2</cmc>
+        <type>Sorcery</type>
+        <maintype>Sorcery</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>As an additional cost to cast this, exile X creature cards from your graveyard, where X is the amount of mana spent to cast this spell.
+Return a random creature from your graveyard to the battlefield.
+Flashback XBB</text>
+    </card>
+    <card>
+      <name>Hunted Paranoiac</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2W</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Human Citizen </type>
+        <maintype>Creature</maintype>
+        <pt>5/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Vigilance
+When this enters, target opponent creates a Royal Assassin token. (It’s a 1/1 black Assassin creature token with “{T}: Destroy target tapped creature.”)</text>
+    </card>
+    <card>
+      <name>Boy With a Slingshot</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost>4 // 2R</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Human Child  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>1/1</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Anyone can cast this card from the adventure zone.
+Deathtouch, reach
+--- 
+Create a 4/4 red Dragon creature token with flying.</text>
+    </card>
+    <card>
+      <name>Snake Stomper</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>GG // G</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Ranger  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>2/2</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Trample
+This enters with two +1/+1 counters for each Snake your opponents control.
+--- 
+Target player creates a 1/1 green Snake creature token with deathtouch.</text>
+    </card>
+    <card>
+      <name>Darkslick Baron</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost>2B/R</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Warlock Noble  // Instant - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>2/3</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>{2}, Sacrifice an artifact: Scry 2.
+{2}, Sacrifice a Treasure: Draw a card.
+--- 
+Miracle XR (You may cast this card for its miracle cost when you draw it if it’s the first card you drew this turn.)
+Create X Treasure tokens.</text>
+    </card>
+    <card>
+      <name>Scabalanche</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>3H/BH/B</manacost>
+        <cmc>5</cmc>
+        <type>Creature - Zombie Ooze </type>
+        <maintype>Creature</maintype>
+        <pt>5/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Decayed (It can’t block. When it attacks, sacrifice it at end of combat.)
+When Scabalanche leaves the battlefield, you may have an opponent’s life total become equal to your life total.
+Unearth 5H/BH/B (5H/BH/B: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the end step or if it would leave the battlefield. Unearth only as a sorcery.)</text>
+    </card>
+    <card>
+      <name>Pugilla, the Punching Queen</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost>3R // XG</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Devil Fighter  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>3/6</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>When Pugilla enters, she fights any number of target modified creatures. (Equipment, Auras you control, and counters are modifications.)
+--- 
+Put a +1/+1 counter on each of up to X target creatures.</text>
+    </card>
+    <card>
+      <name>Ent Spawning Ground</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost> // 2G</manacost>
+        <cmc>0</cmc>
+        <type>Legendary Land - Forest  // Sorcery - Adventure </type>
+        <maintype>Land</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>When this enters, create a 1/1 green Treefolk creature token for each other land that entered this turn.
+{T}: Add {G}
+--- 
+Tutor a land onto the battlefield.</text>
+    </card>
+    <card>
+      <name>Persnickity Partygoer</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>W // 2WW</manacost>
+        <cmc>1</cmc>
+        <type>Creature - Elephant Guest  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>3/3</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>As an additional cost to cast this, target five creatures.
+Lifelink
+--- 
+Create three 1/1 white Bird creature tokens with flying.</text>
+    </card>
+    <card>
+      <name>Mindless Marauder</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>M</colors>
+        <manacost>BR // 1R</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Devil  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>0/0</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Menace, deathtouch
+This enters with X +1/+1 counters, where X is five minus the number of cards in your hand.
+--- 
+Discard any number of cards. Exile that many cards from the top of your library. You may play them until the end of your next turn.</text>
+    </card>
+    <card>
+      <name>Master Class</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>URG</colors>
+        <manacost>3U</manacost>
+        <cmc>4</cmc>
+        <type>Enchantment  - Class  </type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>(Gain the next level as a sorcery to add its ability.)
+You may look at and play the top card of your library.
+1R: Level 2
+Creatures you cast from the top of your library gain haste.
+3G: Level 3
+You may play any number of additional lands per turn from the top of your library.</text>
+    </card>
+    <card>
+      <name>Zip, Speed Dreamer</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>UR</colors>
+        <manacost>1UR</manacost>
+        <cmc>3</cmc>
+        <type>Legendary Creature - Sloth Wizard </type>
+        <maintype>Creature</maintype>
+        <pt>2/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, menace, haste
+When this deals combat damage to an opponent, the next instant or sorcery spell you cast this turn gains rebound. (Exile the next spell you cast as it resolves. At the beginning of your next upkeep, you may cast that card from exile without paying its mana cost.)</text>
+    </card>
+    <card>
+      <name>Copy Cap</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>22/U</manacost>
+        <cmc>4</cmc>
+        <type>Artifact - Equipment </type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>When this enters, choose target creature.
+Equipped creature is a copy of the chosen creature. (Exactly as the chosen creature was when this entered.)
+Equip {2/U}</text>
+    </card>
+    <card>
+      <name>Stitcharoo</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>2B</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Zombie Kangaroo </type>
+        <maintype>Creature</maintype>
+        <pt>3/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>{0}: This becomes a copy of target creature card in any graveyard, except it retains this ability, and this ability’s cost increases by {2}. Activate only once per turn.</text>
+    </card>
+    <card>
+      <name>Xzadaria, the Desirer</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>4UU</manacost>
+        <cmc>6</cmc>
+        <type>Legendary Creature - Jellyfish </type>
+        <maintype>Creature</maintype>
+        <pt>5/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, ward {2/U}
+Instead of drawing from your library, you may draw from any zone. (The zones are library, hand, battlefield, graveyard, stack, exile, and command zone. To draw from the stack, choose the top card. To draw from another public zone, choose any card from it. To draw from an opponent’s hand, choose a card at random.)</text>
+    </card>
+    <card>
+      <name>Ford Windstar</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>4</manacost>
+        <cmc>4</cmc>
+        <type>Artifact - Vehicle </type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Flying
+Multiverse Traveler — This creature’s power and toughness are equal to the number of different sets among other nonland, nontoken permanents on the battlefield. (Refer to set codes in the bottom left, or set symbols. Proxies don’t count.)
+Crew 2</text>
+    </card>
+    <card>
+      <name>Knockoff Tinkerer</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2W</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Artificer </type>
+        <maintype>Creature</maintype>
+        <pt>2/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever an opponent casts a creature spell, you may pay 1W. If you do, create a token that’s a copy of that creature, except it’s a 1/1 Toy artifact creature.
+Creature tokens you control get +1/+1.</text>
+    </card>
+    <card>
+      <name>Tharambuul the Ivory Tome</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>4GGG</manacost>
+        <cmc>7</cmc>
+        <type>Legendary Creature - Elephant God </type>
+        <maintype>Creature</maintype>
+        <pt>5/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever an opponent adds mana to their mana pool, add the same amount to yours. You don’t lose mana added this way as steps and phases end.
+2G: Creatures you control get +1/+1 and gain trample until end of turn.</text>
+    </card>
+    <card>
+      <name>Botanical Biohacker</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>2GG</manacost>
+        <cmc>4</cmc>
+        <type>Creature - Elf Druid </type>
+        <maintype>Creature</maintype>
+        <pt>2/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>{T}: Add one of any symbol among mana symbols on permanents you control to your mana pool. (Generic symbols add that much colorless mana.)</text>
+    </card>
+    <card>
+      <name>Spork</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>UR</colors>
+        <manacost>XUR</manacost>
+        <cmc>2</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Copy target spell unless its controller pays {X}. You may choose new targets for the copy.</text>
+    </card>
+    <card>
+      <name>Tabletop Game Cafe</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost></manacost>
+        <cmc>0</cmc>
+        <type>Legendary Land</type>
+        <maintype>Land</maintype>
+      </prop>
+      <tablerow>0</tablerow>
+      <text>{T}: Add {C}. You may shuffle.
+{T}: Draw a card, then discard it.
+{T}: Create a 1/1 artifact creature token with “When this enters, sacrifice it.”
+{T}: Cast a copy of Counterspell, targeting itself.
+{T}: Return this land to your hand.</text>
+    </card>
+    <card>
+      <name>Reimagine</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>1U</manacost>
+        <cmc>2</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Kicker 3U
+Put target nonland permanent on the stack under its owner’s control. If you paid the kicker cost, instead put it on the stack under your control.
+Overload UUU (You may cast this spell for its overload cost. If you do, change “target” in its text to “each.”)</text>
+    </card>
+    <card>
+      <name>Call of the Void</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>1B</manacost>
+        <cmc>2</cmc>
+        <type>Enchantment</type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>When this enters, each opponent may sacrifice a nontoken creature. If a player does, each player draws a card.
+{H/B}: Until end of turn, if a card says a player “may” do something, they must do it. (If able. Include reminder text.)</text>
+    </card>
+    <card>
+      <name>Lightning Rodrick</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2R</manacost>
+        <cmc>3</cmc>
+        <type>Legendary Creature - Human Knight </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Haste
+Ward—Choose one: {R} or Lightning Rodrick deals 3 damage to you.
+If a spell or ability could target this creature, it must.</text>
+    </card>
+    <card>
+      <name>Syr Ixarch the Inevitable</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>WBG</colors>
+        <manacost>2/WB2/G</manacost>
+        <cmc>5</cmc>
+        <type>Legendary Creature - Phyrexian Knight </type>
+        <maintype>Creature</maintype>
+        <pt>4/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Menace
+When this enters or attacks, put a toxic 1 counter on each creature you control. (Players dealt combat damage by those creatures also get poison counters equal to their toxic level.)</text>
+    </card>
+    <card>
+      <name>Gaea&apos;s Cradlemaker</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>3GG</manacost>
+        <cmc>5</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>5/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this attacks, create a Gaea’s Cradle token. (It’s a legendary land with “{T}: Add {G} for each creature you control.”)
+At the beginning of your end step, sacrifice a land token.</text>
+    </card>
+    <card>
+      <name>Sparkling Starling</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>1WW // 1W</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Bird  // Instant - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>3/3</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Flying
+You may cast this creature’s Adventure from the battlefield. (If you do, exile it on an Adventure.)
+--- 
+Exile another target creature. Return it to the battlefield at the beginning of the next end step.</text>
+    </card>
+    <card>
+      <name>It That Shuns Hope</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>8</manacost>
+        <cmc>8</cmc>
+        <type>Legendary Creature - Eldrazi </type>
+        <maintype>Creature</maintype>
+        <pt>8/8</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Menace, ward—Exile all but the bottom three cards of your library.
+When you cast this, exile target permanent.
+You may cast exiled cards your opponents own.
+Warp {5}</text>
+    </card>
+    <card>
+      <name>It That Lays Waste</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>6C</manacost>
+        <cmc>7</cmc>
+        <type>Legendary Creature - Eldrazi </type>
+        <maintype>Creature</maintype>
+        <pt>7/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Trample, ward—Sacrifice two lands
+When this enters or attacks, each opponent discards a card at random.
+At the beginning of your end step, return a card from each player’s graveyard that was put there this turn to your hand.
+Warp 3C</text>
+    </card>
+    <card>
+      <name>Seeker of Peace</name>
+      <set rarity="rare" splitterPath="/Seeker of Peace.jpg" >OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2W</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever you attack, put a charge counter on this for each attacking creature. Then if this has ten or more charge counters, unlock the other side.
+Untap X attacking creatures you control: Exile target nontoken creature with mana value X.
+---
+(Back): Swords to Plowshares</text>
+      <related attach="transform">Swords to Plowshares</related>
+    </card>
+    <card>
+      <name>Swords to Plowshares</name>
+      <set rarity="rare" splitterPath="/Swords to Plowshares.jpg" >OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>W</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>
+---
+(Front): Seeker of Peace</text>
+      <related attach="transform">Seeker of Peace</related>
+    </card>
+    <card>
+      <name>Seeker of Possibilities</name>
+      <set rarity="rare" splitterPath="/Seeker of Possibilities.jpg" >OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>2U</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>1/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever you scry, surveil, or shuffle, put a charge counter on this. Then if this has ten or more charge counters, unlock the other side.
+{T}: Draw a card, then put a card from your hand on top of your library.
+{4}: Shuffle your library. Untap this creature.
+---
+(Back): Brainstorm</text>
+      <related attach="transform">Brainstorm</related>
+    </card>
+    <card>
+      <name>Brainstorm</name>
+      <set rarity="rare" splitterPath="/Brainstorm.jpg" >OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>U</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>
+---
+(Front): Seeker of Possibilities</text>
+      <related attach="transform">Seeker of Possibilities</related>
+    </card>
+    <card>
+      <name>Seeker of the Void</name>
+      <set rarity="rare" splitterPath="/Seeker of the Void.jpg" >OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>2B</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>1/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever another creature dies, put a charge counter on this. Then if this has ten or more charge counters, unlock the other side.
+{T}, Sacrifice another creature: Add BBB.
+---
+(Back): Dark Ritual</text>
+      <related attach="transform">Dark Ritual</related>
+    </card>
+    <card>
+      <name>Dark Ritual</name>
+      <set rarity="rare" splitterPath="/Dark Ritual.jpg" >OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>B</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>
+---
+(Front): Seeker of the Void</text>
+      <related attach="transform">Seeker of the Void</related>
+    </card>
+    <card>
+      <name>Seeker of Paradise</name>
+      <set rarity="rare" splitterPath="/Seeker of Paradise.jpg" >OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>2G</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>1/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever you have ten or more mana in your mana pool, unlock the other side.
+{T}: Look at the top two cards of your library. You may put a land from among them onto the battlefield. If you do, it becomes a 1/1 green Insect creature land.
+---
+(Back): Birds of Paradise</text>
+      <related attach="transform">Birds of Paradise</related>
+    </card>
+    <card>
+      <name>Birds of Paradise</name>
+      <set rarity="rare" splitterPath="/Birds of Paradise.jpg" >OGR</set>
+      <prop>
+        <colors>G</colors>
+        <manacost>G</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <pt></pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>
+---
+(Front): Seeker of Paradise</text>
+      <related attach="transform">Seeker of Paradise</related>
+    </card>
+    <card>
+      <name>Seeker of Thunder</name>
+      <set rarity="rare" splitterPath="/Seeker of Thunder.jpg" >OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2R</manacost>
+        <cmc>3</cmc>
+        <type>Creature</type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Whenever you or a source you control deals noncombat damage, put that many charge counters on this. Then if this has ten or more charge counters, unlock the other side.
+{T}: This deals 1 damage to any target.
+---
+(Back): Lightning Bolt</text>
+      <related attach="transform">Lightning Bolt</related>
+    </card>
+    <card>
+      <name>Lightning Bolt</name>
+      <set rarity="rare" splitterPath="/Lightning Bolt.jpg" >OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>R</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>
+---
+(Front): Seeker of Thunder</text>
+      <related attach="transform">Seeker of Thunder</related>
+    </card>
+    <card>
+      <name>Lord of the Deep Caverns</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>3B</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Warlock </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this enters and at the beginning of your upkeep, create a 1/1 black Bat creature token with flying.
+Whenever a Bat deals combat damage to an opponent, choose one:
+• They exile a card from their hand until that Bat leaves the battlefield.
+• Draw a card and lose 1 life.</text>
+    </card>
+    <card>
+      <name>COMP — Bladebringer</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>WR</colors>
+        <manacost>2R/WR/W</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Warrior </type>
+        <maintype>Creature</maintype>
+        <pt>2/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Companion — Your starting deck contains at least ten equipment cards.
+Double strike, ward {1}
+When this enters or when it attacks while equipped, put two charge counters on it. Then tutor an equipment with mana value less than or equal to the number of charge counters on it to the battlefield.</text>
+    </card>
+    <card>
+      <name>The Crowned Mosses</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>UG</colors>
+        <manacost>3GU</manacost>
+        <cmc>5</cmc>
+        <type>Legendary Creature - Plant Elder </type>
+        <maintype>Creature</maintype>
+        <pt>6/6</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Magecraft — Whenever you cast an instant or sorcery, each player reveals the top card of their library. Put all lands revealed this way onto the battlefield under your control.
+Landfall — Copy target spell. You may choose new targets for the copy.</text>
+    </card>
+    <card>
+      <name>506174-R the Optimizer</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>UR</colors>
+        <manacost>3UR</manacost>
+        <cmc>5</cmc>
+        <type>Legendary Artifact Creature - Robot </type>
+        <maintype>Creature</maintype>
+        <pt>4/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this enters or attacks, scry 2.
+Whenever a player casts a noncreature spell, look at the top five cards of your library. You may exile that spell and replace it with one of those cards if it shares a card type. Then shuffle. (The new spell doesn’t count as being cast, and its controller chooses new targets.)</text>
+    </card>
+    <card>
+      <name>Isamaru, Who&apos;s A Good Boy</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>W</manacost>
+        <cmc>1</cmc>
+        <type>Legendary Planeswalker - Isamaru </type>
+        <maintype>Planeswalker</maintype>
+      <loyalty>2</loyalty>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>[+1]: Walk — Until end of turn, Isamaru becomes a 2/2 white Dog creature with indestructible that’s still a planeswalker.
+[0]: Fetch — Tutor an artifact card with mana value X or less, where X is Isamaru’s loyalty, and exile that card.
+[-2]: Drop it — Put a card exiled by Isamaru into your hand.</text>
+    </card>
+    <card>
+      <name>Lightning Billiards</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>RR // R</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Elemental  // Sorcery - Adventure </type>
+        <maintype>Creature</maintype>
+    <pt>2/1</pt>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Trample, haste
+Discardstorm (When you cast this spell, copy it for each card you’ve discarded this turn.)
+--- 
+Until end of turn, cards in your hand gain cycling {U/R}.</text>
+    </card>
+    <card>
+      <name>Shiv, Knifepoint Knave</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2RR</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Pirate Rogue </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Menace
+At the beginning of combat on your turn, target opponent may pay {2}. 
+• If they do, put a +1/+1 counter on this and create a Treasure token. 
+• If they don’t, Threaten target creature they control. </text>
+    </card>
+    <card>
+      <name>Animonument</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors></colors>
+        <manacost>2</manacost>
+        <cmc>2</cmc>
+        <type>Artifact</type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Level up {1} ({1}: Put a level counter on this. Level up only as a sorcery.)
+{T}: Add {C}.
+LEVEL 3-5
+3/3
+
+LEVEL 6+
+</text>
+    </card>
+    <card>
+      <name>Slingshot Whipgate</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>3R</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Artifact - Spacecraft </type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Station
+Permanent cards in your hand have warp. Their warp cost is equal to their casting cost reduced by {1} for each artifact you control.
+
+[  8+] First strike
+LEVEL 
+
+LEVEL 8+
+4/4
+</text>
+    </card>
+    <card>
+      <name>Liege of Collapsing Stars</name>
+      <set rarity="rare">OGR</set>
+      <prop>
+        <colors>WB</colors>
+        <manacost>5WB</manacost>
+        <cmc>7</cmc>
+        <type>Legendary Creature - Noble Warlock </type>
+        <maintype>Creature</maintype>
+        <pt>4/5</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Convoke
+1W/B, Sacrifice a tapped creature: Reveal the top card of your library. Put a number of +1/+1 counters on this creature equal to that card’s mana value, then draw a card. 
+Creature cards you sacrifice gain unearth 2W/B.</text>
+    </card>
+    <card>
+      <name>Worlds Aflame</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2R</manacost>
+        <cmc>3</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Choose one for each land that entered the battlefield this turn:
+• Worlds Aflame deals 3 damage to target creature. 
+• Worlds Aflame deals 3 damage to target opponent.
+• Worlds Aflame deals 2 damage to each creature without flying.
+• Destroy target artifact with mana value 0.</text>
+    </card>
+    <card>
+      <name>Starflock Borbgate</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>WU</colors>
+        <manacost>1W/UW/U</manacost>
+        <cmc>3</cmc>
+        <type>Enchantment</type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>When this enters or when one or more permanents are put into exile from the battlefield, create a 1/1 white Bird creature token with flying.
+Tap three untapped Birds you control: Exile target nontoken creature, then return it to the battlefield under its owner’s control.
+Warp WU</text>
+    </card>
+    <card>
+      <name>Zero Point Compact</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>BB</manacost>
+        <cmc>2</cmc>
+        <type>Instant</type>
+        <maintype>Instant</maintype>
+      </prop>
+      <tablerow>3</tablerow>
+      <text>Once you cast this card, it must stay in your starting deck forever. When you choose a mode, cross it out forever.
+• Draw 2 cards and lose 2 life.
+• Destroy target nonblack creature.
+• Destroy target black creature.
+• Put a deathtouch counter on target creature.
+• Each opponent discards a card.
+• Tutor a card.
+Pay 2 life, discard this card: Surveil 2. Activate only if all modes are crossed out.</text>
+    </card>
+    <card>
+      <name>COMP — Omn, INEVITA Seer</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>UB</colors>
+        <manacost>2U/BU/B</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Creature - Eye </type>
+        <maintype>Creature</maintype>
+        <pt>3/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Companion — You get no friendly seven or freebie mulligans.
+When this enters, each player mills 13 cards, then puts three random cards from their graveyard on top of their library in a random order.
+Eminence — If an opponent would mill one or more cards while this is on the battlefield or in the companion zone, they mill that many plus two.</text>
+    </card>
+    <card>
+      <name>Prophet of the Roiling Wilds</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2R</manacost>
+        <cmc>3</cmc>
+        <type>Enchantment Creature - Lizard Wizard </type>
+        <maintype>Creature</maintype>
+        <pt>1/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>When this enters,  (They lose all abilities and have “{T}, Sacrifice this land: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.)
+Warp {R}</text>
+    </card>
+    <card>
+      <name>Booksmart Sprite</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>1U</manacost>
+        <cmc>2</cmc>
+        <type>Creature - Faerie </type>
+        <maintype>Creature</maintype>
+        <pt>2/1</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying
+Whenever this deals combat damage to an opponent, put a page counter on it.
+Remove three page counters from this: The next instant or sorcery you cast this turn has drawstorm. (When you cast it, copy it for each card you’ve drawn this turn.)</text>
+    </card>
+    <card>
+      <name>DUSTIN 5000</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>2WW</manacost>
+        <cmc>4</cmc>
+        <type>Legendary Artifact - Spacecraft </type>
+        <maintype>Artifact</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>Station 
+[  5+] Vigilance
+DUSTIN 5000’s power is equal to the highest number found in the casting cost, text box, or power/toughness of any tapped permanent.
+
+LEVEL 5+
+
+LEVEL 
+*/5
+</text>
+    </card>
+    <card>
+      <name>Arcanis Ablaze</name>
+      <set rarity="uncommon">OGR</set>
+      <prop>
+        <colors>R</colors>
+        <manacost>2RRR</manacost>
+        <cmc>5</cmc>
+        <type>Legendary Creature - Wizard </type>
+        <maintype>Creature</maintype>
+        <pt>1/3</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Haste
+{T}: This deals 1 damage to any target.
+If a source you control would deal one damage, it deals three damage instead. (Including in combat, after dividing assigned damage.)</text>
+    </card>
+    <card>
+      <name>Bloodsport Beckoner</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>B</colors>
+        <manacost>2BBB</manacost>
+        <cmc>5</cmc>
+        <type>Creature - Demon </type>
+        <maintype>Creature</maintype>
+        <pt>4/4</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flying, lifelink
+When this enters, add BBB.
+You may cast creature cards from any graveyard.
+You must pay 2 life instead of paying for colored mana symbols of spells cast from graveyards. (Pay 2 life per symbol.)</text>
+    </card>
+    <card>
+      <name>Scroll-strike Sensei</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>W</colors>
+        <manacost>X1WW</manacost>
+        <cmc>3</cmc>
+        <type>Creature - Monk </type>
+        <maintype>Creature</maintype>
+        <pt>3/2</pt>
+      </prop>
+      <tablerow>2</tablerow>
+      <text>Flash, hexproof from cards that have ever targeted this in previous games. (Keep track.)
+When this enters, put a last strike counter on up to X target creatures your opponent controls. (They deal combat damage after creatures without last strike.)</text>
+    </card>
+    <card>
+      <name>Aeon Syzygy</name>
+      <set rarity="mythic">OGR</set>
+      <prop>
+        <colors>U</colors>
+        <manacost>3UU</manacost>
+        <cmc>5</cmc>
+        <type>Legendary Enchantment</type>
+        <maintype>Enchantment</maintype>
+      </prop>
+      <tablerow>1</tablerow>
+      <text>At the beginning of each player’s end step, if that player didn’t attack this turn and it’s not an extra turn, they take an extra turn after this one.
+Warp 4UU</text>
+    </card>
