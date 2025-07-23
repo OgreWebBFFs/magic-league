@@ -12,7 +12,12 @@ module CardImporter
     def parse
       parsed_cards = []
       @card_list.lines.each do |line|
-        match = REGEX.match(line.strip)
+        
+        line = line.strip
+        next if line.empty?
+
+        match = REGEX.match(line)
+
         if match
           card_name = match[CARD_NAME].strip
           card_count = match[COUNT].nil? ? 1 : match[COUNT].to_i
