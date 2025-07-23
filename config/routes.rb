@@ -37,7 +37,8 @@ Rails.application.routes.draw do
       get 'scryfall'
     end
   end
-  get 'scryfall', to: 'cards#scryfall', as: 'cards_scryfall'
+
+  get 'fancycard', to: 'cards#fancycard', as: 'cards_fancycard'
 
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]

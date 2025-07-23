@@ -35,4 +35,16 @@ class ScryfallService
       nil
     end
   end
+
+  def random_fancy_card
+    url = "#{SCRYFALL_CARD_URL}/random?q=usd>100+not:serialized+-t:land+lang:en"
+
+    begin
+      response = RestClient.get(url)
+      scryfall_card = JSON.parse(response)
+      {card: Card.create_from_scryfall_response(scryfall_card, true), link: scryfall_card['scryfall_uri']}
+    rescue RestClient::ExceptionWithResponse => e
+      puts "Scryfall error: #{e.response.code} - #{e.response.body}"
+    end
+  end
 end

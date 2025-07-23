@@ -23,4 +23,11 @@ class CardsController < ApplicationController
     card = Card.find_by_id(params[:id])
     render json: get_card_prints(card)
   end
+
+  def fancycard
+    card_info = ScryfallService.new().random_fancy_card
+    @fancy_card = card_info[:card]
+    @scryfall_link = card_info[:link]
+    puts @scryfall_link
+  end
 end
