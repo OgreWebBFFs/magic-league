@@ -17,7 +17,7 @@ const searchCards = async (query, scryfallQuery) =>
         })
     ).data;
 
-const SearchInput = ({ onReset, onResults, onLoading, onError, placeholder, scryfallQuery }) => {
+const SearchInput = ({ onReset, onResults, onLoading = () => {}, onError = () => {}, placeholder, scryfallQuery }) => {
     const [{ query: initialQuery }] = useHashParams();
     const [query, setQuery] = useState((initialQuery || [""])[0]);
     const [error, setError] = useState("");
