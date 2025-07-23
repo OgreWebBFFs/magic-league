@@ -1,0 +1,21 @@
+.bulk-edit__instructions {
+    list-style: disc;
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+}
+
+.bulk-edit__instructions,
+.bulk-edit__examples {
+    padding: 0rem 2rem;
+}
+
+.bulk-edit__instructions-title,
+.bulk-edit__examples-title {
+    margin-bottom: 0.75rem;
+}
+
+.bulk-edit__text-area {
+    margin-bottom: 1.5rem;
+}
