@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import SetPicker from "./SetPicker";
 import SearchInput from "../../SearchInput";
-import { CardGrid, CardImageLink } from "../../CardGrid";
+import { CardGrid, CardImage } from "../../CardGrid";
 import QuantityControl from "../QuantityControl";
 import xhrRequest from "../../../helpers/xhr-request";
 import LoadingIcon from "../../Icons/LoadingIcon";
@@ -68,7 +68,12 @@ const SimpleEdit = ({ userId, collectionId }) => {
                 <CardGrid>
                     {setFilteredCards.map((card) => (
                         <>
-                            <CardImageLink key={`${card.attributes.scryfall_id} image`} card={card.attributes} />
+                            <CardImage
+                                name={card.attributes.name}
+                                imageUrl={card.attributes.image_url}
+                                backImageUrl={card.attributes.back_image_url}
+                                key={`${card.attributes.scryfall_id} image`}
+                            />
                             <QuantityControl
                                 key={`${card.attributes.scryfall_id} quantity`}
                                 collectionId={collectionId}
