@@ -3,10 +3,10 @@ import Button from "../Button";
 import { CardGrid, CardImage } from "../CardGrid";
 import LoadingIcon from "../Icons/LoadingIcon";
 
-const getStoredCards = () => JSON.parse(window.sessionStorage.getItem("fancyCards") || "[]");
+const getStoredCards = () => JSON.parse(window.localStorage.getItem("fancyCards") || "[]");
 
 const getStoredCast = (cards) => {
-    const storedCastCards = JSON.parse(window.sessionStorage.getItem("castFancyCards") || "[]");
+    const storedCastCards = JSON.parse(window.localStorage.getItem("castFancyCards") || "[]");
     return cards.filter((card) => storedCastCards.some((c) => c.name === card.name));
 };
 
@@ -19,17 +19,17 @@ const FancyCard = () => {
 
     useEffect(() => {
         if (cards.length === 0) {
-            window.sessionStorage.removeItem("fancyCards");
+            window.localStorage.removeItem("fancyCards");
         } else {
-            window.sessionStorage.setItem("fancyCards", JSON.stringify(cards));
+            window.localStorage.setItem("fancyCards", JSON.stringify(cards));
         }
     }, [cards]);
 
     useEffect(() => {
         if (castCards.length === 0) {
-            window.sessionStorage.removeItem("castFancyCards");
+            window.localStorage.removeItem("castFancyCards");
         } else {
-            window.sessionStorage.setItem("castFancyCards", JSON.stringify(castCards));
+            window.localStorage.setItem("castFancyCards", JSON.stringify(castCards));
         }
     }, [castCards]);
 
