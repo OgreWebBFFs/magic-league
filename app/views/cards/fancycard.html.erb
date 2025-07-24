@@ -1,3 +1,2 @@
-<h1>Fancy Card</h1>
-<%= image_tag @fancy_card.image_url, class: 'fancy-card' %>
-<%= link_to "Scryfall Link - " + @fancy_card.name, @scryfall_link, class: 'fancy-card__link' %>
+<h1>Oh You Fancy, Huh?</h1>
+<%= react_component("FancyCard") %>

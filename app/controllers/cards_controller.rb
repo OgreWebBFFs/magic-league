@@ -25,9 +25,17 @@ class CardsController < ApplicationController
   end
 
   def fancycard
-    card_info = ScryfallService.new().random_fancy_card
-    @fancy_card = card_info[:card]
-    @scryfall_link = card_info[:link]
-    puts @scryfall_link
+    respond_to do |format|
+      format.html
+      format.json do
+        card_info = ScryfallService.new().random_fancy_card
+        render json: {
+          name: card_info[:card].name,
+          image_url: card_info[:card].image_url,
+          back_image_url: card_info[:card].back_image_url,
+          link: card_info[:link]
+        }
+      end
+    end
   end
 end
