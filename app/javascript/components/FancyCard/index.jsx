@@ -87,6 +87,12 @@ const FancyCard = () => {
                         <div className="fancy-card__card-controls">
                             <Button
                                 type="link"
+                                className="button--no-button"
+                                onClick={() => window.open(card.link, "_blank")}
+                            >
+                                View on Sryfall
+                            </Button>
+                            <Button
                                 onClick={() => setCastCards([card, ...castCards])}
                                 disabled={isCast(card, castCards)}
                             >
