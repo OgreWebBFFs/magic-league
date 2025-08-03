@@ -1,0 +1,52 @@
+.fancy-card__card-wrapper {
+    margin: 2rem auto;
+    width: fit-content;
+}
+
+.fancy-card__card-image {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 3/4;
+    filter: grayscale(0);
+    transition-property: filter;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+
+    &.cast {
+        filter: grayscale(1);
+    }
+}
+
+.fancy-card__card-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    button {
+        width: 75%;
+    }
+}
+
+.fancy-card__loading {
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 3/4;
+    margin: 2rem auto;
+    border: 2px solid black;
+    border-radius: 2rem;
+    display: grid;
+    place-content: center;
+}
+
+.fancy-card__top-controls {
+    position: sticky;
+    display: flex;
+    top: 0;
+    z-index: 100;
+    background: white;
+    padding: 1rem 2rem;
+    button {
+        width: 50%;
+        height: 5rem;
+    }
+}

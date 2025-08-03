@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_31_175110) do
+ActiveRecord::Schema.define(version: 2025_07_15_113137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
     t.string "description"
     t.string "set"
     t.string "image_url"
-    t.string "multiverse_id"
     t.string "oracle_text"
     t.string "type_line"
     t.string "mana_cost"
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
     t.string "colors", default: [], array: true
     t.string "rarity"
     t.string "back_image_url"
+    t.string "scryfall_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -117,13 +117,15 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
 
   create_table "exchanges", force: :cascade do |t|
     t.bigint "card_id"
-    t.bigint "user_id"
     t.bigint "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "from_user_id"
+    t.bigint "to_user_id"
     t.index ["card_id"], name: "index_exchanges_on_card_id"
+    t.index ["from_user_id"], name: "index_exchanges_on_from_user_id"
+    t.index ["to_user_id"], name: "index_exchanges_on_to_user_id"
     t.index ["trade_id"], name: "index_exchanges_on_trade_id"
-    t.index ["user_id"], name: "index_exchanges_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -200,8 +202,6 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
   end
 
   create_table "trades", force: :cascade do |t|
-    t.integer "from_user"
-    t.integer "to_user"
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -241,6 +241,17 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wikis", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "slug"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sort_order"
+    t.boolean "hidden"
+  end
+
   create_table "wishes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "card_id"
@@ -253,6 +264,8 @@ ActiveRecord::Schema.define(version: 2024_08_31_175110) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "draffle_prizes", "draffles"
+  add_foreign_key "exchanges", "users", column: "from_user_id"
+  add_foreign_key "exchanges", "users", column: "to_user_id"
   add_foreign_key "message_statuses", "cards"
   add_foreign_key "message_statuses", "users", column: "from_user_id"
   add_foreign_key "message_statuses", "users", column: "to_user_id"

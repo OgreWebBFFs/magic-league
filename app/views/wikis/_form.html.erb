@@ -1,0 +1,116 @@
+<% content_for :head do %>
+<meta name="description" content="<%= truncate(@wiki.content, length: 150) %>">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/spark-md5@3.0.2/spark-md5.min.js"></script>
+<% end %>
+<%= simple_form_for(@wiki) do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+<div class="wiki-form">
+    <%= f.input :title, wrapper_html: { class: 'wiki-form__field browser-default' } %>
+    <%= f.hidden_field :parent_id, value: (@parent&.id || @wiki.parent_id) %>
+    <div class="wiki-form__field">
+        <%= f.label :content, "Content" %>
+        <%= f.hidden_field :content %>
+        <trix-toolbar id="my_toolbar"></trix-toolbar>
+        <trix-editor toolbar="my_toolbar" input="wiki_content" class="trix-content wiki-form__content"></trix-editor>
+    </div>
+    <%= f.input :slug, wrapper_html: { class: 'wiki-form__field browser-default' } %>
+    <%= f.input :sort_order, label: "Sidebar Order",  wrapper_html: { class: 'wiki-form__field' } %>
+</div>
+
+<div class="wiki-form__actions">
+    <%= f.button :submit, "Save", class: 'button' %>
+    <% if @wiki.new_record? %>
+       <% back_link = wikis_path() %>
+    <% else %>
+        <% back_link = wiki_path(@wiki.parent || @wiki)%>
+    <% end %>
+    <%= link_to 'Cancel', back_link %>
+</div>
+<% end %>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener("trix-attachment-add", function(event) {
+            const attachment = event.attachment;
+
+            // Only upload if it's a file (not already uploaded)
+            if (attachment.file) {
+                uploadFile(attachment);
+            }
+        });
+
+        async function uploadFile(attachment) {
+            // Create form data for Active Storage
+            const file = attachment.file;
+            const checksum = await generateChecksum(file);
+            const form = new FormData();
+            form.append("blob", file);
+
+            // Send file to Active Storage direct_uploads controller
+            fetch("/rails/active_storage/direct_uploads", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        blob: {
+                            filename: file.name,
+                            content_type: file.type,
+                            byte_size: file.size,
+                            checksum: checksum,
+                        },
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
+                    },
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    // Step 2: Upload the actual file to blob URL
+                    const directUpload = data.direct_upload;
+                    console.log(directUpload);
+                    return fetch(directUpload.url, {
+                        method: "PUT",
+                        headers: directUpload.headers,
+                        body: file,
+                    }).then(() => data);
+                })
+                .then((blobData) => {
+                    // Step 3: Tell Trix where to find the uploaded file
+                    const url = `/rails/active_storage/blobs/${blobData.signed_id}/${blobData.filename}`;
+                    attachment.setAttributes({
+                        url: url,
+                        href: url,
+                    });
+                })
+                .catch((error) => {
+                    console.error("Upload failed:", error);
+                });
+        }
+
+        // Utility to compute MD5 and Base64-encode it
+        async function generateChecksum(file) {
+            const arrayBuffer = await file.arrayBuffer();
+            const binary = new Uint8Array(arrayBuffer);
+            let binaryString = "";
+            for (let i = 0; i < binary.byteLength; i++) {
+                binaryString += String.fromCharCode(binary[i]);
+            }
+
+            const rawMd5 = SparkMD5.hashBinary(binaryString);
+            const hexBytes = hexToBytes(rawMd5);
+            return btoa(String.fromCharCode.apply(null, hexBytes));
+        }
+
+        function hexToBytes(hex) {
+            const bytes = [];
+            for (let c = 0; c < hex.length; c += 2) {
+                bytes.push(parseInt(hex.substr(c, 2), 16));
+            }
+            return bytes;
+        }
+
+    })
+</script>

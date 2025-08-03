@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>MtgLeague</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= yield(:head) %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>Ogre the Leaguening</title>
@@ -16,11 +18,12 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
-  </head>
-  <body class="<%= @user_device.safari? ? 'safari' : '' %>">
+</head>
+
+<body class="<%= @user_device.safari? ? 'safari' : '' %>">
     <% if user_signed_in? %>
-      <% unlocked_users = User.unlocked %>
-      <%= react_component("Navigation", {
+    <% unlocked_users = User.unlocked %>
+    <%= react_component("Navigation", {
         device: @user_device.device_type,
         currentUserId: current_user.id,
         isAdmin:  current_user.admin,
@@ -33,30 +36,31 @@
     <% end %>
 
     <div class="app__section full-page">
-      <% flash.each do |key, value| %>
+        <% flash.each do |key, value| %>
         <%= react_component("Alert", {
           key: key,
           value: value,
           userSignedIn: user_signed_in? }) %>
-      <% end %>
-      <%= yield %>
+        <% end %>
+        <%= yield %>
     </div>
 
     <% if user_signed_in? %>
-      <footer class="footer">
+    <footer class="footer">
         <div class="footer__content">
-          <div class="footer__user">
-            <% if current_user %>
-              <p>Logged in as <% if current_user%><%=current_user.name%><%end%></p>
-              <%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class:"button button--small" %>
-            <% end %>
-          </div>
-          <div class="footer__copyright">
-            <p>Developed by OWB</p>
-          </div>
+            <div class="footer__user">
+                <% if current_user %>
+                <p>Logged in as <% if current_user%><%=current_user.name%><%end%></p>
+                <%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class:"button button--small" %>
+                <% end %>
+            </div>
+            <div class="footer__copyright">
+                <p>Developed by OWB</p>
+            </div>
         </div>
-      </footer>
+    </footer>
 
     <% end %>
-  </body>
+</body>
+
 </html>

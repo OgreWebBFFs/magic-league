@@ -1,33 +1,40 @@
 const getCardId = ({ card }) => parseInt(card.id, 10);
 
 const ParamValidationError = () => {
-  const error = new Error('[ERROR] Insufficient Parameters: trade request could not be processed');
-  error.data = {
-    status: 'invalid',
-  };
-  return error;
+    const error = new Error("[ERROR] Insufficient Parameters: trade request could not be processed");
+    error.data = {
+        status: "invalid",
+    };
+    return error;
 };
 
 const validateParams = (...params) => {
-  params.forEach((param) => {
-    if (!param || param.length === 0) {
-      throw new ParamValidationError();
-    }
-  });
+    params.forEach((param) => {
+        if (!param || param.length === 0) {
+            throw new ParamValidationError();
+        }
+    });
 };
 
-const buildTradeData = (toId, toCards, fromId, fromCards) => {
-  validateParams(toId, toCards, fromId, fromCards);
-  return {
-    to: {
-      id: toId,
-      cards: toCards.map(getCardId),
-    },
-    from: {
-      id: fromId,
-      cards: fromCards.map(getCardId),
-    },
-  };
+const buildTradeData = (exchanges) => {
+    validateParams(exchanges);
+    //   return {
+    //     to: {
+    //       id: toId,
+    //       cards: toCards.map(getCardId),
+    //     },
+    //     from: {
+    //       id: fromId,
+    //       cards: fromCards.map(getCardId),
+    //     },
+    //   };
+    return {
+        data: exchanges.map(({ user, gives, receives }) => ({
+            user,
+            gives: gives.map((giveCardOption) => giveCardOption.card.id),
+            receives: receives.map((receiveCardOptions) => receiveCardOptions.card.id),
+        })),
+    };
 };
 
 export default buildTradeData;

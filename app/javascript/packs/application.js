@@ -15,6 +15,7 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from "@rails/ujs";
+import { DirectUpload } from "@rails/activestorage";
 import * as ActiveStorage from "@rails/activestorage";
 
 Rails.start();

@@ -1,39 +1,46 @@
 class Trade < ApplicationRecord
-  belongs_to :from, class_name: 'User', foreign_key: 'from_user'
-  belongs_to :to, class_name: 'User', foreign_key: 'to_user'
-
   has_many :exchanges
   has_many :cards, through: :exchanges
 
-  validates :from, :to, presence: true
-  validates :status, acceptance: { accept: ['pending', 'approved', 'rejected', 'error']}
-
-  def to_user_s
-    <<~TEXT
-      ### #{from.name} receives:
-      #{self.to_cards.map{ |card| "- #{card.name}"}.join("\n")}
-      ### You receive:
-      #{self.from_cards.map{ |card| "- #{card.name}"}.join("\n")}
-    TEXT
+  def users
+    User.where(id: exchanges.pluck(:from_user_id, :to_user_id).flatten.uniq)
   end
 
-  def from_user_s
-    <<~TEXT
-      ### You receive:
-      #{self.to_cards.map{ |card| "- #{card.name}"}.join("\n")}
-      ### #{to.name} receives:
-      #{self.from_cards.map{ |card| "- #{card.name}"}.join("\n")}
-    TEXT
+  def request
+    TradeAlertService.new(id).requested
+  end
+
+  def approve user_id
+    return if status == 'approved'
+    approvals = (status || '').split('|').map(&:to_i)
+    return if approvals.include?(user_id)
+    approvals << user_id
+    if all_participants_approved?(approvals)
+      execute_trade
+      self.status = 'approved'
+      TradeAlertService.new(id).approved
+    else
+      self.status = approvals.join('|')
+    end
+    save!
+  end
+
+  def reject
+    self.status = 'rejected'
+    TradeAlertService.new(id).rejected
+    save!
   end
 
   private
-  
-  def to_cards
-    self.exchanges.where('user_id = ?', self.to.id).map{ |exch| exch.card }
+
+  def all_participants_approved?(approvals)
+    user_ids = exchanges.flat_map { |e| [e.from_user_id, e.to_user_id] }.uniq
+    (user_ids - approvals).empty?
   end
 
-  def from_cards
-    self.exchanges.where('user_id = ?', self.from.id).map{ |exch| exch.card }
+  def execute_trade
+    exchanges.each do |exchange|
+      exchange.execute        
+    end
   end
-
 end

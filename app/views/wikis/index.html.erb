@@ -1,0 +1,13 @@
+<h1 class='wiki-title'>Wiki</h1>
+<%= render partial: 'wiki_nav', locals: { content: capture do %>
+<% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
+<li>
+    <%= link_to top_level_wiki.title, wiki_path(top_level_wiki) %>
+</li>
+<% end %>
+<br>
+
+<% if current_user.admin? %>
+<%= link_to 'New Wiki', new_wiki_path, class: 'button wiki-action' %>
+<% end %>
+<% end } %>

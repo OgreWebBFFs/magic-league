@@ -13,8 +13,9 @@ class Card < ApplicationRecord
     rarity == 'mythic' ? 'rare' : rarity
   end
 
-  def self.create_from_scryfall_response card_res
-    new_card = find_or_create_by(name: card_res['name'])
+  def self.create_from_scryfall_response card_res, temp = false
+    new_card = find_by(scryfall_id: card_res['id']) || new(scryfall_id: card_res['id'])
+    new_card.name = card_res['name']
     new_card.description = card_res['text']
     if card_res['image_uris']
       new_card.image_url = card_res['image_uris']['normal']
@@ -34,7 +35,7 @@ class Card < ApplicationRecord
     else
       puts "Couldn't find an image_url for #{card_res['name']}"
     end
-    new_card.multiverse_id = card_res['multiverse_ids'].first
+    new_card.scryfall_id = card_res['id']
     new_card.set = card_res['set']
     new_card.oracle_text = card_res['oracle_text']
     new_card.type_line = card_res['type_line']
@@ -42,7 +43,8 @@ class Card < ApplicationRecord
     new_card.cmc = card_res['cmc']
     new_card.colors = card_res['color_identity']
     new_card.rarity = card_res['rarity']
-    new_card.save! 
+    new_card.save! if !temp
+    new_card
   end
 
   def discord_link
@@ -52,5 +54,9 @@ class Card < ApplicationRecord
 
   def owned
     self.ownerships.count > 0
+  end
+
+  def variants
+    Card.where(name: self.name).where.not(id: self.id)
   end
 end

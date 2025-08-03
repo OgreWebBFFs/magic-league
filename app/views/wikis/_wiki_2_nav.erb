@@ -1,0 +1,42 @@
+<button class="wiki-nav__toggle"><i class="fa fa-bars"></i></button>
+<main class="wiki-main">
+    <nav class="wiki-nav">
+        <button class="wiki-nav__close"><i class="fa fa-times"></i></button>
+        <% Wiki.where(parent: nil).order(:sort_order).each do |top_level_wiki| %>
+            <%= link_to top_level_wiki.title, wiki_path(top_level_wiki), class: 'wiki-nav__parent' %>
+            <% top_level_wiki.children.order(:sort_order).each do |child_wiki| %>
+            <%= link_to child_wiki.title, wiki_path(child_wiki), class: 'wiki-nav__child' %>
+            <% end %>
+        <% end%>
+    </nav>
+    <div class="wiki-content">
+        <%= content %>
+    </div>
+</main>
+<div class="wiki-nav__isolation"></div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector(".wiki-nav__toggle");
+    const nav = document.querySelector(".wiki-nav");
+    const isolation = document.querySelector(".wiki-nav__isolation");
+    const closeButton = document.querySelector(".wiki-nav__close");
+
+    if (toggleButton && nav && isolation && closeButton) {
+      toggleButton.addEventListener("click", function () {
+        nav.classList.toggle("open");
+        isolation.classList.toggle("open");
+      });
+
+      // Optional: Clicking the isolation layer also closes the nav
+      isolation.addEventListener("click", function () {
+        nav.classList.remove("open");
+        isolation.classList.remove("open");
+      });
+
+      closeButton.addEventListener("click", function () {
+        nav.classList.remove("open");
+        isolation.classList.remove("open");
+      });
+    }
+  });
+</script>

@@ -1,24 +1,31 @@
 <div class="bulk-edit__container">
-  <h3 class="bulk-edit__title">Bulk Update Collection</h3>
-  <%= link_to 'Go to Simple Edit >', edit_collection_path(@collection.id) %>
-  <% if !params['alerts'].blank?  %>
+    <h1 class="bulk-edit__title">Bulk Update Collection</h1>
+    <%= link_to 'Go to Simple Edit >', edit_collection_path(@collection.id) %>
+    <% if !params['alerts'].blank?  %>
     <div class="bulk-edit__error-alert" role="alert" style="display: block;">
-      <ul class="bulk-edit__error-list">
-        <% params['alerts'].each do |error| %>
-          <li class="bulk-edit__error-item"><%= error %></li>
-        <% end %>
-      </ul>
+        <ul class="bulk-edit__error-list">
+            <% params['alerts'].each do |error| %>
+            <li class="bulk-edit__error-item"><%= error %></li>
+            <% end %>
+        </ul>
     </div>
-  <% end %>
-  <%= simple_form_for @collection,  html: { class: "bulk-edit__form"}, url: bulk_update_collection_path(@collection) do |f| %>
+    <% end %>
+    <%= simple_form_for @collection,  html: { class: "bulk-edit__form"}, url: bulk_update_collection_path(@collection) do |f| %>
     <%= f.text_area :card_list, value: @card_list, class: 'bulk-edit__text-area'%>
-    <p class="help-text">
-      Enter your cards one line at a time with a number at the beginning specifying how many cards you have. Multiple single line card entries will get added togther as well. Some valid samples are provided below:
-
-      1x Acclaimed Contender
-      All That Glitters
-      2 Archon of Absolution
-    </p>
+    <h2 class="bulk-edit__instructions-title">Card Entry Instructions</h2>
+    <ul class="bulk-edit__instructions">
+        <li>Each card should be listed on a different line</li>
+        <li>To specify a quantity, put a number before the card name</li>
+        <li>To add split cards (dual-faced cards, adventures, omens, etc.) write both names separated by "// ".<br/><i>E.g. "Fable of the Mirror Breaker // Reflection of Kiki-Jiki"</i></li>
+        <li>To add a card from an outside set, add the (SET) code after the card name. You'll need to do this for all cards that aren't currently in the database.</li>
+    </ul>
+    <h2 class="bulk-edit__examples-title">Examples</h2>
+    <ul class="bulk-edit__examples">
+        <li>Murder</li>
+        <li>2x Murder</li>
+        <li>2 Murder</li>
+        <li>Murderous Rider // Swift End (eld)</li>
+    </ul>
     <%= f.submit 'Save Collection', class: 'bulk-edit_submit__btn' %>
-  <% end %>
+    <% end %>
 </div>

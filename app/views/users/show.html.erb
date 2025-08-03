@@ -7,9 +7,7 @@
   collection: @ownerships,
   collectionId: @user.collection.id,
   wishlist: @wishlist,
-  trades: @trades.select{ |trade|
-    (trade.from.id == @user.id || trade.to.id == @user.id) && (current_user.id == @user.id || trade.status.eql?('approved'))
-  }.map{ |trade| TradeSerializer.new(trade)},
+  trades: @trades.select{ |trade| trade.users.includes(@user) && (current_user.id == @user.id || trade.status.eql?('approved'))}.map{ |trade| TradeSerializer.new(trade, params: { user: @user })},
   tradeTrackerData: @user.trades_received_and_allowed_by_rarity,
   gravatar: gravatar(@user)
 }, { prerender: true }) %>

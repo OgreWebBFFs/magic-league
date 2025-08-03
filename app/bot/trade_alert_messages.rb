@@ -9,7 +9,7 @@ module TradeAlertMessages
     TEXT
 
   TRADE_ACCEPTED = <<~TEXT
-    Your trade request to %{user} has been ✅*ACCEPTED*✅ 
+    Your trade with %{users} has been ✅*ACCEPTED*✅ 
 
     %{trade}
 
@@ -17,11 +17,11 @@ module TradeAlertMessages
   TEXT
 
   TRADE_REJECTED = <<~TEXT
-    The following trade request to %{user} was ❌*REJECTED*❌
+    Your trade with %{users} was ❌*REJECTED*❌
 
     %{trade}
 
-    You can reach out to them on discord @%{discord} to work out another deal.
+    You can reach out to them on discord by selecting their handle above to work out another deal.
   TEXT
 
   TRADE_ERROR = <<~TEXT

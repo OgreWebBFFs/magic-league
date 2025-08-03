@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :wikis, path: "league-info" do
+    post :hide, on: :member
+  end
+  # get 'league-info/:id', to: 'wikis#show2', as: :wiki_2
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root "home#index"
 
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   resources :advanced_search, only: [:index]
   resources :trade_message, only: [:index, :create]
   resources :trades, only: [:index, :create, :update, :destroy]
-
+  
   resources :draffles, only: [:index, :show, :create, :update, :destroy]
   get 'draffles/:id/portal', to: 'draffles#portal', as: 'draffle_portal'
   put 'draffles/:id/start', to: 'draffles#start', as: 'start_draffle'
@@ -30,8 +34,12 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :show] do
     member do
       get 'prints'
+      get 'scryfall'
     end
   end
+
+  get 'fancycard', to: 'cards#fancycard', as: 'cards_fancycard'
+
   resources :ownerships, only: [:create, :destroy]
   resources :wishlists, only: [:index, :show, :update]
   resources :received_trades, only: [:create]
@@ -65,4 +73,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '/.well-known/*path', to: proc { [204, {}, ['']] }
 end

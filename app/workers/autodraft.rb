@@ -5,10 +5,10 @@ module Autodraft
     
     def initialize
       self.class.clear
-      # Delayed::Job.enqueue(AutodraftWarningJob.new(0), :queue => AUTODRAFT_QUEUE, :run_at => 24.hours.from_now)
-      # Delayed::Job.enqueue(AutodraftWarningJob.new(1), :queue => AUTODRAFT_QUEUE, :run_at => 30.hours.from_now)
-      # Delayed::Job.enqueue(AutodraftWarningJob.new(2), :queue => AUTODRAFT_QUEUE, :run_at => 35.hours.from_now)
-      Delayed::Job.enqueue(AutodraftPickJob.new, :queue => AUTODRAFT_QUEUE, :run_at => 90.seconds.from_now)
+      Delayed::Job.enqueue(AutodraftWarningJob.new(0), :queue => AUTODRAFT_QUEUE, :run_at => 24.hours.from_now)
+      Delayed::Job.enqueue(AutodraftWarningJob.new(1), :queue => AUTODRAFT_QUEUE, :run_at => 30.hours.from_now)
+      Delayed::Job.enqueue(AutodraftWarningJob.new(2), :queue => AUTODRAFT_QUEUE, :run_at => 35.hours.from_now)
+      Delayed::Job.enqueue(AutodraftPickJob.new, :queue => AUTODRAFT_QUEUE, :run_at => 36.hours.from_now)
     end
 
     def self.clear
