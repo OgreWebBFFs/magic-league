@@ -18,7 +18,8 @@ const initialQuantity = (card, userId) =>
     card.ownerships.find((ownership) => ownership.user_id === userId)?.quantity || 0;
 
 const SimpleEdit = ({ userId, collectionId }) => {
-    const [selectedSets, setSelectedSets] = useState(window.VALID_SETS);
+    const selectedSets = [{ code: "EOE", name: "Edge of Eternities", symbol: "ss ss-eoe" }];
+    // const [selectedSets, setSelectedSets] = useState(window.VALID_SETS);
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const ref = useRef();
@@ -41,7 +42,7 @@ const SimpleEdit = ({ userId, collectionId }) => {
             </div>
 
             <div ref={ref} className="search-bar">
-                <SetPicker onPick={setSelectedSets} />
+                {/* <SetPicker onPick={setSelectedSets} /> */}
                 <SearchInput
                     onResults={(newCards) => {
                         setLoading(false);
@@ -56,9 +57,10 @@ const SimpleEdit = ({ userId, collectionId }) => {
                         setCards([]);
                         setLoading(true);
                     }}
-                    placeholder={`Search for a card name${
-                        selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
-                    }`}
+                    // placeholder={`Search for a card name${
+                    //     selectedSets.length === 1 ? ` from ${selectedSets[0].name}` : ""
+                    // }`}
+                    placeholder="Search for a card name"
                     scryfallQuery={`s:${selectedSets.map((set) => set.code.toLowerCase()).join(",")}`}
                 />
             </div>
