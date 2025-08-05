@@ -6,7 +6,12 @@ module CardImporter
       @errors = []
       @raw_cards = params
 
+     
+
       missing_cards = @raw_cards.filter do |raw_card|
+        puts "\n\n\n\nHERE IS THE SET!!!!!"
+        puts raw_card.set.downcase
+        puts "END OF SET!!!!!!\n\n\n\n"
         card = Card.find_by(
           'lower(name) = :name AND (lower(set) = :set OR :set = \'\')',
           name: raw_card.name.downcase,
@@ -15,7 +20,8 @@ module CardImporter
         card.nil?
       end
 
-      
+      puts missing_cards
+
       scryfall_check_cards, missing_cards = missing_cards.partition do |raw_card|
         !raw_card.nil? && raw_card.has_set
       end

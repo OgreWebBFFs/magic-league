@@ -35,7 +35,7 @@ module CardImporter
     def import_cards raw_cards
       raw_cards.each do |raw_card|
         card = Card.find_by(
-          'lower(name) = :name AND (lower(set) = :set)',
+          'lower(name) = :name AND (lower(set) = :set OR :set = \'\')',
           name: raw_card.name,
           set: raw_card.set
         )

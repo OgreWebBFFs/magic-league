@@ -18,7 +18,7 @@ const initialQuantity = (card, userId) =>
     card.ownerships.find((ownership) => ownership.user_id === userId)?.quantity || 0;
 
 const SimpleEdit = ({ userId, collectionId }) => {
-    const selectedSets = [{ code: "EOE", name: "Edge of Eternities", symbol: "ss ss-eoe" }];
+    const selectedSets = window.VALID_SETS;
     // const [selectedSets, setSelectedSets] = useState(window.VALID_SETS);
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);

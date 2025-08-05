@@ -84,9 +84,9 @@ module ConfigurationConstants
   # { code: 'DBL', name: 'Innistrad: Double Feature', symbol: 'ss ss-dbl' },
   # { code: 'H2R', name: 'Modern Horizons 2 Timeshifts', symbol: 'ss ss-h2r' },
   # { code: 'H1R', name: 'Modern Horizons 1 Timeshifts', symbol: 'ss ss-h1r' },
-  # { code: 'EOS', name: 'Edge of Eternities: Stellar Sights', symbol: 'ss ss-eos' },
+  { code: 'EOS', name: 'Edge of Eternities: Stellar Sights', symbol: 'ss ss-eos' },
   # { code: 'FCA', name: 'Final Fantasy: Through the Ages', symbol: 'ss ss-fca' },
-  # { code: 'SPG', name: 'Special Guests', symbol: 'ss ss-spg' },
+  { code: 'SPG', name: 'Special Guests', symbol: 'ss ss-spg' },
   # { code: 'BIG', name: 'The Big Score', symbol: 'ss ss-big' },
   # { code: 'OGR', name: 'Beyond the Warp', symbol: 'ss ss-mtg' }
 ].freeze
