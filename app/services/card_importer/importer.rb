@@ -12,7 +12,6 @@ module CardImporter
 
     def save_cards
       raw_cards = CardImporter::Parser.new(@card_list).parse
-      puts raw_cards.to_json
       if raw_cards.empty?
         return ["You cannot delete your entire collection in this way!"]
       end

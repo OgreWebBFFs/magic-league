@@ -18,7 +18,6 @@ class OwnershipGridRow
     end
     @message_statuses = @user[:id] === current_user.id ? nil : ownerships.each_with_object(Hash.new(0)) do |ownership, hash|
       set_code = ownership.card.set
-      puts ownership.to_json
       if ownership.keeper
         hash[set_code] = 'keeper'
       else

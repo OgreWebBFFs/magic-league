@@ -5,7 +5,6 @@ class WishlistGridPresenter
     @rows = all_user_wishers.map do |user|
       WishlistRow.new(user, card)
     end
-    puts @rows.to_json
   end
 end
 
