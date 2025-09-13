@@ -19,7 +19,7 @@ class Exchange < ApplicationRecord
   def execute
     from_user.remove_card card
     to_user.add_card card
-    unless card.rarity == 'common' || card.set == 'OGR'
+    unless card.common_rarity? || card.set == 'OGR'
       tracked_trade = to_user.received_trades.find_or_initialize_by(rarity: card.received_trades_to_update)
       tracked_trade.increment
     end

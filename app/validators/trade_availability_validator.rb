@@ -8,7 +8,7 @@ class TradeAvailabilityValidator < ActiveModel::Validator
             entry[:receives].uniq.each { |card_id|
               card_to_check = Card.find_by_id card_id
               
-              if card_to_check.rarity != 'common'
+              unless card_to_check.common_rarity?
                 amnt_in_trade = entry[:receives].count { |id| id == card_id }
                 rarity_to_check = card_to_check.received_trades_to_update
                 has_sufficient_trade_slots = user.available_trades_for_rarity(rarity_to_check) - amnt_in_trade >= 0

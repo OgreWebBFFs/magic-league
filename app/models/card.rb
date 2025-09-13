@@ -13,6 +13,16 @@ class Card < ApplicationRecord
     rarity == 'mythic' ? 'rare' : rarity
   end
 
+  # Treats nil rarity as 'common' for business logic that checks commonness
+  def common_rarity?
+    rarity.nil? || rarity == 'common'
+  end
+
+  # Returns the single-letter rarity code (C/U/R/M), defaulting nil rarity to 'C'.
+  def rarity_letter
+    (rarity.presence || 'common')[0].upcase
+  end
+
   def self.create_from_scryfall_response card_res, temp = false
     new_card = find_by(scryfall_id: card_res['id']) || new(scryfall_id: card_res['id'])
     new_card.name = card_res['name']
