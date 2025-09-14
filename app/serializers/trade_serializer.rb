@@ -43,7 +43,7 @@ class TradeSerializer
       RARITY_ORDER[exchange.card.rarity] || Float::INFINITY
     }.map { |exchange| {
       name: exchange.card.name,
-      rarity: exchange.card.rarity[0].upcase
+      rarity: exchange.card.rarity_letter
     }}
   end
 
@@ -53,7 +53,7 @@ class TradeSerializer
       RARITY_ORDER[exchange.card.rarity] || Float::INFINITY
     }.map { |exchange| {
       name: exchange.card.name,
-      rarity: exchange.card.rarity[0].upcase
+      rarity: exchange.card.rarity_letter
     }}
   end
 

@@ -9,8 +9,10 @@ def format_mana_string(raw)
 end
 
 def card_image_url(card_name)
-  slug = card_name.to_s.downcase.gsub(',', '').gsub(' ', '_')
-  "/card_images/#{slug}.jpg"
+  slug = card_name.to_s.downcase
+    .gsub(/\s+/, '_')
+    .gsub(/[^a-z0-9\-_]/, '')
+  "/card_images/#{slug}.png"
 end
 
 namespace :cards do
