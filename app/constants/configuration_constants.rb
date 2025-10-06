@@ -88,7 +88,9 @@ module ConfigurationConstants
   { code: 'FCA', name: 'Final Fantasy: Through the Ages', symbol: 'ss ss-fca' },
   { code: 'SPG', name: 'Special Guests', symbol: 'ss ss-spg' },
   { code: 'BIG', name: 'The Big Score', symbol: 'ss ss-big' },
-  { code: 'OGR', name: 'Beyond the Warp', symbol: 'ss ss-mtg' }
+  { code: 'OGR', name: 'Beyond the Warp', symbol: 'ss ss-mtg' },
+  { code: 'M3C', name: 'Modern Horizons 3 Commander', symbol: 'ss ss-m3c' },
+  { code: 'PLST', name: 'The List & Mystery Booster Reprints', symbol: 'ss ss-mb1' }
 ].freeze
 .freeze
 end
