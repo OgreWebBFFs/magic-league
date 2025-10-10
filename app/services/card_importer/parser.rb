@@ -1,6 +1,6 @@
 module CardImporter
   class Parser
-    REGEX = /^((\d+)?x?\s*)?(.*?)(?:\s*\(([a-zA-Z\d]{3})\))?$/
+    REGEX = /^((\d+)?x?\s*)?(.*?)(?:\s*\(([a-zA-Z\d]{3,4})\))?$/
     COUNT = 2
     CARD_NAME = 3
     SET = 4
