@@ -10,7 +10,7 @@ class Card < ApplicationRecord
   scope :query_all_text, ->(string) { query_name(string).or(query_oracle_text(string)).or(query_type_line(string)) }
 
   def received_trades_to_update
-    rarity == 'mythic' ? 'rare' : rarity
+    (rarity == 'mythic' || rarity == 'special') ? 'rare' : rarity
   end
 
   # Treats nil rarity as 'common' for business logic that checks commonness
