@@ -20,7 +20,7 @@ const Wishlist = ({ currentUserId, user, isListView }) => {
                     isOwner={isOwner}
                     name={user?.name}
                     ActionButton={
-                        <Button className="empty-card-view__button button--small" href="/browse">
+                        <Button className="empty-card-view__button button--small" href="/search">
                             Make some wishes
                         </Button>
                     }
