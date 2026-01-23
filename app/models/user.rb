@@ -35,6 +35,10 @@ class User < ApplicationRecord
     victory_ids = Result.where("user_id = ? AND place = 1", id).pluck(:match_id)
     Match.where(id: victory_ids)
   end
+
+  def has_match_in_date_range(from_date, to_date)
+    matches.where(played_at: from_date..to_date).size > 0
+  end
    
   def trades
     Trade.joins(:exchanges)
