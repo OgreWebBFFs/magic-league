@@ -39,6 +39,10 @@ class User < ApplicationRecord
   def has_match_in_date_range(from_date, to_date)
     matches.where(played_at: from_date..to_date).size > 0
   end
+
+  def is_active_in_date_range(from_date, to_date)
+    (current_sign_in_at && current_sign_in_at >= from_date && current_sign_in_at <= to_date) || has_match_in_date_range(from_date, to_date)
+  end
    
   def trades
     Trade.joins(:exchanges)
