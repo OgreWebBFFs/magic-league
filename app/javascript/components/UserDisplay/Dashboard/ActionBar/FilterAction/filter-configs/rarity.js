@@ -4,7 +4,7 @@ export default {
         {
             id: "common",
             display: "Common",
-            criteria: (card) => (card.rairty ?? "common") === "common",
+            criteria: (card) => (card.rarity ?? "common") === "common",
         },
         {
             id: "uncommon",
@@ -19,7 +19,7 @@ export default {
         {
             id: "mythic",
             display: "Mythic",
-            criteria: (card) => card.rarity === "mythic",
+            criteria: (card) => (card.rarity === "mythic" || card.rarity === "special"),
         },
     ],
 };
